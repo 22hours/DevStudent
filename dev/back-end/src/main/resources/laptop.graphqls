@@ -1,0 +1,16 @@
+type Laptop{
+    id:ID
+    name: String
+    price : Int
+    ram : Int
+}
+
+type Query{
+    getAllLaptops:[Laptop]
+    getLaptopByID(id:ID):Laptop
+    getLaptopsLessThan(price:Int):[Laptop]
+}
+
+type Mutation{
+    deleteLaptop(id:ID):Laptop
+}
