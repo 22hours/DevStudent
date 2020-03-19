@@ -1,4 +1,4 @@
-package com.hours22.studev.graphql;
+/*package com.hours22.studev.graphql;
 
 import com.hours22.studev.DB.DummyLaptopDB;
 import com.hours22.studev.Model.Laptop;
@@ -25,3 +25,4 @@ public class LaptopDataFetcher {
         return dataFetchingEnvironment -> dummyLaptopDB.deleteLaptop(Integer.parseInt(dataFetchingEnvironment.getArgument("id")));
     }
 }
+*/

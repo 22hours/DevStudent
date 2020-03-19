@@ -1,4 +1,4 @@
-package com.hours22.studev.graphql;
+/*package com.hours22.studev.graphql;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
@@ -57,3 +57,4 @@ public class GraphqlProvider {
                 .dataFetcher("getLaptopsLessThan",laptopDataFetcher.getLaptopsLessThan());
     }
 }
+*/

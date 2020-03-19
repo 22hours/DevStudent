@@ -1,10 +1,8 @@
-package com.hours22.studev.DB;
+/*package com.hours22.studev.DB;
 
 import com.google.common.collect.Lists;
 import com.hours22.studev.Model.Laptop;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -29,13 +27,13 @@ public class DummyLaptopDB {
         return laptops
                 .stream()
                 .filter(
-                        laptop -> laptop.id == id).findFirst();
+                        laptop -> laptop.getId() == id).findFirst();
     }
     public List<Laptop> getLaptopsLessThan(int price){
         return laptops
                 .stream()
                 .filter(
-                        laptop -> laptop.price < price)
+                        laptop -> laptop.getPrice() < price)
                 .collect(Collectors.toList());
 
     }
@@ -45,3 +43,4 @@ public class DummyLaptopDB {
         return laptop;
     }
 }
+*/
