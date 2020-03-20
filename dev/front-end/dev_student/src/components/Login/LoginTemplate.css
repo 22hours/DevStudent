@@ -1,0 +1,75 @@
+.login-container-wrapper{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); /* 그림자 */ 
+    border-radius: 7px;
+    padding-bottom: 2%;
+}
+.login-title{
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    font-size: 40px;
+    color: white;
+}
+.login-title-span{
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    font-size: 30px;
+    color: black;
+}
+.login-container-header-area{
+    width: 100%;
+    color: black;
+}
+
+.login-email-input-wrapper{
+    width: 100%;
+    margin-top: 10%;
+    display: inline-block;
+}
+
+.login-email-input-wrapper input{
+    width: 100%;
+    display: inline-block;
+}
+.login-email-input-wrapper div{
+    width: 100%;
+    display: inline-block;
+}
+
+
+.login-password-input-wrapper{
+    width: 100%;
+    margin-top: 10%;
+    display: inline-block;
+}
+
+.login-password-input-wrapper input{
+    width: 100%;
+    display: inline-block;
+}
+.login-password-input-wrapper div{
+    width: 100%;
+    display: inline-block;
+}
+
+.button-login{
+    width:100%;
+}
+
+.button-signup{
+    width:100%;
+}
+
+.signup-text{
+    display: inline-block;
+    text-align: center;
+}
+
+
+.bottom-border{
+    height: 2px;
+    background-color: rgba(0,0,0,0.16);
+    margin-top: 2%;
+    margin-bottom: 2%;
+}

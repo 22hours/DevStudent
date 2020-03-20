@@ -1,0 +1,26 @@
+.content-list-item{
+   width: 100%;
+   cursor:pointer;
+}
+
+.content-list-item-title{
+    width: 80%;
+}
+
+.content-list-item-number{
+    width: 10%;
+
+}
+
+.content-list-item-author{
+    width: 10%;
+
+}
+
+a {
+    width: 100%; 
+    text-align: center;
+    display: table;
+    text-decoration: none;
+    color: black;
+  }

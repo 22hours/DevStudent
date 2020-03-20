@@ -1,0 +1,21 @@
+.content-list-item{
+    width: 100%;
+    cursor:pointer;
+ }
+
+.content-header-list-item-title{
+    width: 80%;
+        text-align: center;
+}
+
+.content-header-list-item-number{
+    width: 10%;
+    text-align: center;
+
+}
+
+.content-header-list-item-author{
+    width: 10%;
+    text-align: center;
+
+}
