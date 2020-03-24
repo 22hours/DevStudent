@@ -16,10 +16,10 @@ public class Answer {
     private int parentID;
     private String author;
     private String content;
-    private Date date;
+    private String date;
     private List<Comment> comments;
 
-    public Answer(int parentID, int _id ,String author, String content, Date date, List<Comment> comments) {
+    public Answer(int parentID, int _id ,String author, String content, String date, List<Comment> comments) {
         this.parentID = parentID;
         this._id = _id;
         this.author = author;

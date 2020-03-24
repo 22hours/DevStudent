@@ -23,7 +23,6 @@ public class ServletInitializer extends SpringBootServletInitializer {
     }
     @Bean
     public Query query(BoardRepository boardRepository){
-
         return new Query(boardRepository);
     }
     @Bean

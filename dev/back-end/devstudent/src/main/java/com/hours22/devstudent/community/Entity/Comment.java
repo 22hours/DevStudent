@@ -9,13 +9,14 @@ import java.util.Date;
 @Getter
 @ToString
 public class Comment {
+
     @Id
     private int _id;
     private String author;
     private String content;
-    private Date date;
+    private String date;
 
-    public Comment(int _id, String author, String content, Date date) {
+    public Comment(int _id, String author, String content, String date) {
         this._id = _id;
         this.author = author;
         this.content = content;

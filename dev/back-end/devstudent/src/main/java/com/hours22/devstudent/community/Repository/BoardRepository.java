@@ -8,5 +8,4 @@ import java.util.List;
 
 public interface BoardRepository extends MongoRepository<Board,String> {
     Board findBoardBy_id(int _id);
-
 }

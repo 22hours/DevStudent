@@ -12,6 +12,7 @@ import java.util.List;
 @Getter
 @Document(collection = "Boards")
 public class Board {
+
     @Id
     private int _id; // 고유 number
     private String title;
