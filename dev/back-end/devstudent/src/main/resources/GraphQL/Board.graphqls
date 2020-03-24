@@ -1,0 +1,26 @@
+type Board{
+    _id : Int
+    title : String!
+    author : String!
+    tags : [String]
+    date : String
+    content : String!
+    answerCount : Int
+    views : Int
+    solve : Boolean
+    comments : [Comment]!
+    answers : [Answer]!
+}
+
+
+# Root
+type Query{
+    findAllBoards : [Board]!
+    findBoardBy_id(_id:Int) : Board
+}
+
+# Root
+type Mutation{
+    createBoard(title : String!, author : String!, tags : [String]!, date : String, content : String!) : Board
+    deleteBoard(_id : Int) : Board
+}

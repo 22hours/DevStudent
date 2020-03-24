@@ -1,0 +1,6 @@
+type Comment{
+    _id : Int
+    author : String
+    content : String
+    date : Date
+}
