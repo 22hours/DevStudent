@@ -6,4 +6,5 @@ import MyPage from './MyPage';
 import Search from './Search';
 import NotFound from './NotFound';
 import Todo from './Todo';
-export { Home, About, Posts, Login, MyPage, Search, Todo, NotFound };
+import HowTo from './HowTo';
+export {HowTo, Home, About, Posts, Login, MyPage, Search, Todo, NotFound };

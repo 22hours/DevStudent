@@ -34,7 +34,7 @@ const Header = () => {
                 </NavLink>
                 <div width="20"></div>
                 <NavLink exact className="header-item" activeClassName="active" to="/">Home</NavLink>
-                <NavLink className="header-item" activeClassName="active" to="/search">HowTo</NavLink>
+                <NavLink className="header-item" activeClassName="active" to="/howto">HowTo</NavLink>
                 <NavLink className="header-item" activeClassName="active" to="/about/me">Crew</NavLink>
                 <NavLink className="header-item" activeClassName="active" to="/posts">Musium</NavLink>
                 <NavLink className="header-item" activeClassName="active" to="/mypage">OutSide</NavLink>

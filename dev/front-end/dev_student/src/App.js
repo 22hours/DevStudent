@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Home, Posts, About, Login, MyPage, Search, Todo, NotFound } from './routes';
+import { HowTo,Home, Posts, About, Login, MyPage, Search, Todo, NotFound } from './routes';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header';
 import { ApolloProvider } from 'react-apollo';
@@ -19,7 +19,7 @@ const App = () => {
             <Route path="/posts" component={Posts} />
             <Route path="/mypage" component={MyPage} />
             <Route path="/login" component={Login} />
-            <Route path="/search" component={Search} />
+            <Route path="/howto" component={HowTo} />
             <Route path="/todolist" component={Todo} />
             <Route path="/login" component={Login} />
             <Route component={NotFound} />

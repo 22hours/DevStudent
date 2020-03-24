@@ -1,0 +1,19 @@
+.questions-number-span{
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: x-large;
+    vertical-align: base;
+    display: inline-block;
+}
+
+.question-descript-span{
+    font-family: 'Do Hyeon', sans-serif;
+    vertical-align: base;
+    display: inline-block;
+    font-size: large;
+}
+
+.filter-button-wrapper{
+    position: absolute;
+    margin-right: 15px;
+    right:0px;
+}

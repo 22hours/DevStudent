@@ -1,0 +1,98 @@
+.box {
+    width: 100%;
+    height: 100%;
+    border-radius: 30%;
+    overflow: hidden;
+    background: #BDBDBD
+}
+.profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.howto-item-wrapper{
+    background-color: white;
+    border: gray;
+    border-bottom: 2px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.16), 0 2px 3px rgba(0,0,0,0.23); /* 그림자 */ 
+}
+
+.howto-item{
+    height: 150px;
+    width: 100%;
+}
+.howto-item .content{
+    margin-top: 10px;
+    position: absolute;
+    right:0px;
+    left:0px;
+    width: auto;
+    margin-right: 95px;
+    margin-left: 25px;
+}
+
+
+.howto-item .stats-area{
+    margin-top: 10px;
+    height : 100%;
+    float: right;
+}
+
+
+.howto-item .answer-wrapper{
+    height: 60px;
+}
+
+.howto-item .views-wrapper{
+    height: 60px;
+}
+
+.content .author-title-wrapper{
+    width: 100%;
+}
+
+.howto-item .asked-span{
+    color: gray;
+    font-size: small;
+}
+
+.howto-item .author-span{
+    color : black;
+    font-size: medium;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.howto-item .title-span{
+    color : 	#3366CC;
+    font-size: x-large;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.howto-item .answer-number-wrapper{
+    height: 35px;
+}
+.howto-item .answer-span-wrapper{
+    height: 5px;
+}
+.howto-item .answer-number{
+    text-align: center;
+    font-size: xx-large;
+}
+.howto-item .answer-span{
+    vertical-align: bottom;
+}
+
+.howto-item .views-number-wrapper{
+    height: 35px;
+}
+.howto-item .views-span-wrapper{
+    height: 5px;
+}
+.howto-item .views-number{
+    font-size: xx-large;
+}
+
+.howto-item .views-span{
+    vertical-align: bottom;
+}
