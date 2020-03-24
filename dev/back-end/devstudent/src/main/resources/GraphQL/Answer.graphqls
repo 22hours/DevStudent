@@ -1,0 +1,6 @@
+type Answer{
+    _id : Int
+    author : String
+    content : String
+    date : Date
+}
