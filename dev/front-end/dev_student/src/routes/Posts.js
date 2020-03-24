@@ -14,7 +14,6 @@ class Posts extends Component {
     handleContentPage = (number) => {
         console.log(number + "게시물로 page 전환!")
         this.props.history.push('/posts/'+number);
-
     }
 
     render() {

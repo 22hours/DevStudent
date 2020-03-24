@@ -1,4 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
 .Article{
-    margin-top: 3%;
+    margin-top: 5px;
     min-height: 100vh;
+}
+
+.margin-top-3{
+    margin-top: 3%;
+}
+
+.red-border{
+    border: 0px dashed red;
+}
+
+.howto-item{
+    margin-bottom: 2%;
+}
+
+.bottom-border{
+    height: 2px;
+    background-color: rgba(0,0,0,0.16);
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.content-header{
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 40px;
 }

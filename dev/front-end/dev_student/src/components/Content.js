@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react'
 import { gql } from 'apollo-boost';
-import { Query } from 'react-apollo';
+import { Query , Mutation } from 'react-apollo';
 import { Container, Row, Col, Table } from 'reactstrap';
 
 
@@ -21,6 +21,22 @@ query{
         price
         ram
     }
+}
+`;
+
+const POST_QUERY = gql`
+mutation{
+    createLaptop(
+        id : 3
+        name : "APPLE"
+        price : 104912049
+        ram : 1293293)
+        {
+            id
+            name
+            price
+            ram
+        }
 }
 `;
 
@@ -66,14 +82,14 @@ const Content = ({ match }) => {
                 <Row>
                     <Col></Col>
                     <Col>
-                        <h2>Continents</h2>
+                        <h2>POST QUERY</h2>
                         <Query query={GET_TEST}>
                             {({ loading, error, data }) => {
                                 if (loading) return <p>Loading...</p>;
                                 if (error) return <p>Error!</p>;
                                 return (
                                     <ul>
-                                        {data.continents.map(({ id, name,price,ram }) => (
+                                        {data.findAllLaptops.map(({ id, name,price,ram }) => (
                                             <li key={id}>{name}{price}{ram} </li>
                                         ))}
                                     </ul>
@@ -83,6 +99,7 @@ const Content = ({ match }) => {
                     </Col>
                     <Col></Col>
                 </Row>
+               
             </div>
         </div>
     );

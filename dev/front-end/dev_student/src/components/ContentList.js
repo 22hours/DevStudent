@@ -3,9 +3,7 @@ import ContentListItem from './ContentListItem'
 import { Table } from 'reactstrap';
 import ContentListHeader from './ContentListHeader';
 class ContentList extends Component{
-
     render(){
-
         const {items,handleContentPage} = this.props;
         const contents = items.map(
                 ({views,number,title,author}) => (
