@@ -5,5 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 
 public interface BoardRepository extends MongoRepository<Board,String> {
-    Board findTopBy_id(String _id);
+    Board findBy_id(String _id);
 }

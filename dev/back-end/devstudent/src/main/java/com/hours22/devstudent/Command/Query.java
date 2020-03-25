@@ -15,17 +15,17 @@ public class Query implements GraphQLQueryResolver {
         this.boardRepository = boardRepository;
     }
     public List<Board> findAllBoards(){
-        List<Board> boards = boardRepository.findAll();
         System.out.println("=== FindAllBoards ===");
+        List<Board> boards = boardRepository.findAll();
         for(Board board : boards){
             System.out.println(board.toString());
         }
         return boards;
     }
 
-    public Board findTopBy_id(String _id){
-        Board board = boardRepository.findTopBy_id(_id);
+    public Board findBy_id(String _id){
         System.out.println("=== findTopBy_id(_id = " + _id+" ===");
+        Board board = boardRepository.findBy_id(_id);
         System.out.println(board.toString());
         return board;
     }

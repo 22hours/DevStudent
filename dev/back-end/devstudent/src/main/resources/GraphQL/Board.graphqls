@@ -1,10 +1,10 @@
 type Board{
     _id : String
-    title : String
-    author : String
+    title : String!
+    author : String!
     tags : [String]
     date : String
-    content : String
+    content : String!
     answerCount : Int
     views : Int
     solved : Boolean
@@ -16,11 +16,11 @@ type Board{
 # Root
 type Query{
     findAllBoards : [Board]!
-    findTopBy_id(_id:String) : Board
+    findBy_id(_id:String) : Board
 }
 
 # Root
 type Mutation{
-    createBoard(title : String, author : String, tags : [String], date : String, content : String) : Board
+    createBoard(title : String!, author : String!, tags : [String]!, date : String, content : String!) : Board
     deleteBoard(_id : String) : Board
 }

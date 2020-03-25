@@ -18,13 +18,18 @@ public class Mutation implements GraphQLMutationResolver {
     }
 
     public Board createBoard(String title, String author, List<String> tags, String date, String content){
-        if(sequenceIDRepository.findTopBy_id("Board").equals(null)){
-            SequenceID sequenceID = new SequenceID("Board",0);
+        System.out.println("=== CreateBoard ===");
+        if(sequenceIDRepository.countBy_id("Board") == 0) {
+            System.out.println("Board는 없습니다.");
+            SequenceID sequenceID = new SequenceID("Board", 0);
             sequenceIDRepository.save(sequenceID);
         }
-        System.out.println("=== CreateBoard ===");
-        SequenceID sequenceID = sequenceIDRepository.findTopBy_idAfterOrderBySeqNumDesc("Board");
-        int seqNum = sequenceID.getSeqNum();
+        //SequenceID sequenceID = sequenceIDRepository.findTopBy_idAfterOrderBySeqNumDesc("Board");
+        SequenceID sequenceID = sequenceIDRepository.findTopBy_id("Board");
+        int seqNum = sequenceID.getSeqNum() + 1;
+        sequenceID.setSeqNum(seqNum);
+        System.out.println("SequenceID = " + sequenceID.toString());
+        sequenceIDRepository.save(sequenceID);
         Board board = new Board(String.valueOf(seqNum),title,author,tags,date,content);
         boardRepository.save(board);
         System.out.println(board.toString());
@@ -33,7 +38,7 @@ public class Mutation implements GraphQLMutationResolver {
 
     public Board deleteBoard(String _id){
         System.out.println("=== Delete Board ===");
-        Board board = boardRepository.findTopBy_id(_id);
+        Board board = boardRepository.findBy_id(_id);
         boardRepository.delete(board);
         System.out.println(board.toString());
         return board;
