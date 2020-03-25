@@ -14,8 +14,8 @@ public class Query implements GraphQLQueryResolver {
     public Query(BoardRepository boardRepository){
         this.boardRepository = boardRepository;
     }
-    public List<Board> findAllBoards(){
-        System.out.println("=== FindAllBoards ===");
+    public List<Board> findAllQuestions(){
+        System.out.println("=== FindAllQuestions ===");
         List<Board> boards = boardRepository.findAll();
         for(Board board : boards){
             System.out.println(board.toString());
@@ -23,10 +23,17 @@ public class Query implements GraphQLQueryResolver {
         return boards;
     }
 
-    public Board findBy_id(String _id){
-        System.out.println("=== findTopBy_id(_id = " + _id+" ===");
-        Board board = boardRepository.findBy_id(_id);
+    public Board findQuestionBy_id(String _id){
+        if(boardRepository.countBy_id(_id) == 0){
+            Board board = new Board("null","Exception","hours22",null,"null","Not Exist Board");
+            return board;
+        }
+        System.out.println("=== findTopBy_id(_id = " + _id+") ===");
+        Board board = boardRepository.findQuestionBy_id(_id);
         System.out.println(board.toString());
+        int views = board.getViews();
+        board.setViews(views + 1);
+        boardRepository.save(board);
         return board;
     }
 }

@@ -9,7 +9,6 @@ import java.util.List;
 @ToString
 @Getter
 public class Answer {
-
     @Id
     private String _id; // 고유 number
     private String author;

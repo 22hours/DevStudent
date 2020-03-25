@@ -5,6 +5,7 @@ type Board{
     tags : [String]
     date : String
     content : String!
+    previews : String!
     answerCount : Int
     views : Int
     solved : Boolean
@@ -15,12 +16,13 @@ type Board{
 
 # Root
 type Query{
-    findAllBoards : [Board]!
-    findBy_id(_id:String) : Board
+    findAllQuestions: [Board]!
+    findQuestionBy_id(_id:String) : Board
 }
 
 # Root
 type Mutation{
+    createAnswer(parentID : String!, author : String!, content : String!, date : String!) : Answer
     createBoard(title : String!, author : String!, tags : [String]!, date : String, content : String!) : Board
     deleteBoard(_id : String) : Board
 }

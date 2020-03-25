@@ -5,5 +5,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 
 public interface BoardRepository extends MongoRepository<Board,String> {
-    Board findBy_id(String _id);
+    Board findQuestionBy_id(String _id);
+    int countBy_id(String _id);
 }
