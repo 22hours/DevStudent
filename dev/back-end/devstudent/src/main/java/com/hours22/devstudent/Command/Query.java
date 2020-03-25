@@ -25,7 +25,7 @@ public class Query implements GraphQLQueryResolver {
 
     public Board findQuestionBy_id(String _id){
         if(boardRepository.countBy_id(_id) == 0){
-            Board board = new Board("null","Exception","hours22",null,"null","Not Exist Board");
+            Board board = new Board("null","Exception","hours22",null,"null","Not Exist Board","Not Exist Board");
             return board;
         }
         System.out.println("=== findTopBy_id(_id = " + _id+") ===");
