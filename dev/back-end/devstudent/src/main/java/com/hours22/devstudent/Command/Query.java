@@ -1,24 +1,18 @@
-package com.hours22.devstudent.community.Command;
+package com.hours22.devstudent.Command;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
-import com.hours22.devstudent.community.Entity.Board;
-import com.hours22.devstudent.community.Repository.BoardRepository;
-import com.hours22.devstudent.community.Repository.SequenceIDRepository;
+import com.hours22.devstudent.Entity.Board;
+import com.hours22.devstudent.Repository.BoardRepository;
 
 import java.util.List;
 
+
 public class Query implements GraphQLQueryResolver {
+
     private BoardRepository boardRepository;
 
     public Query(BoardRepository boardRepository){
         this.boardRepository = boardRepository;
-    }
-
-    public Board findBoardBy_id(int _id){
-        Board board = boardRepository.findBoardBy_id(_id);
-        System.out.println("=== FindBoardBy_id(_id = " + _id+" ===");
-        System.out.println(board.toString());
-        return board;
     }
     public List<Board> findAllBoards(){
         List<Board> boards = boardRepository.findAll();
@@ -27,5 +21,12 @@ public class Query implements GraphQLQueryResolver {
             System.out.println(board.toString());
         }
         return boards;
+    }
+
+    public Board findTopBy_id(String _id){
+        Board board = boardRepository.findTopBy_id(_id);
+        System.out.println("=== findTopBy_id(_id = " + _id+" ===");
+        System.out.println(board.toString());
+        return board;
     }
 }

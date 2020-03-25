@@ -1,7 +1,8 @@
-package com.hours22.devstudent.community.Repository;
+package com.hours22.devstudent.Repository;
 
-import com.hours22.devstudent.community.Entity.SequenceID;
+import com.hours22.devstudent.Entity.SequenceID;
 import org.springframework.data.mongodb.repository.MongoRepository;
+
 
 public interface SequenceIDRepository extends MongoRepository<SequenceID,String> {
     SequenceID findTopBy_idAfterOrderBySeqNumDesc(String _id);

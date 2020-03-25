@@ -1,5 +1,5 @@
 type Answer{
-    _id : Int
+    _id : String
     author : String
     content : String
     date : String

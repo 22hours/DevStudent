@@ -1,4 +1,4 @@
-package com.hours22.devstudent.community.Entity;
+package com.hours22.devstudent.Entity;
 
 import lombok.Getter;
 import lombok.Setter;

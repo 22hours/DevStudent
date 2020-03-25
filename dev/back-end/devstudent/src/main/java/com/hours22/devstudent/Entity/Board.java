@@ -1,4 +1,4 @@
-package com.hours22.devstudent.community.Entity;
+package com.hours22.devstudent.Entity;
 
 import lombok.Getter;
 import lombok.ToString;
@@ -14,19 +14,19 @@ import java.util.List;
 public class Board {
 
     @Id
-    private int _id; // 고유 number
+    private String _id; // 고유 number
     private String title;
     private String author;
     private List<String> tags;
     private String date;
     private String content;
-    private List<Comment> comments = null;
-    private List<Answer> answers = null;
     private int answerCount = 0;
     private int views = 1;
     private Boolean solved = false;
+    private List<Comment> comments = null;
+    private List<Answer> answers = null;
 
-    public Board(int _id, String title, String author, List<String> tags, String date, String content) {
+    public Board(String _id, String title, String author, List<String> tags, String date, String content) {
         this._id = _id;
         this.title = title;
         this.author = author;

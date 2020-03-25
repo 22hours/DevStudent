@@ -1,10 +1,10 @@
-package com.hours22.devstudent.community;
+package com.hours22.devstudent;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CommunityApplicationTests {
+class DevstudentApplicationTests {
 
     @Test
     void contextLoads() {
