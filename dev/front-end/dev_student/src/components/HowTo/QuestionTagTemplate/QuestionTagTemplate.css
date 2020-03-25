@@ -1,0 +1,22 @@
+.question-tag-wrapper{
+    border-radius: 5px;
+    border-color: lightgrey;
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 5%;
+    box-shadow: 3px 3px 3px 1px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.12); /* 그림자 */
+}
+.question-tag-list-wrapper{
+    margin-bottom: 1%;
+    float: left;
+    width: 100%;
+}
+.question-tag-header-wrapper{
+    border-bottom: 1px lightgray;
+    border-style: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-width: 100%;
+    margin-bottom: 1%;
+}
