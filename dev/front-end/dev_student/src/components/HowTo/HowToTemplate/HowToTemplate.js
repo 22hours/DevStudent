@@ -1,10 +1,8 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import './HowToTemplate.css';
-
-const HowToTemplate = ({children}) => {
+const HowToTemplate = ({children, match}) => {
     const renderLeft = () => <h1>dd</h1>
-
     return (
         <React.Fragment>
             <Container>
@@ -16,5 +14,4 @@ const HowToTemplate = ({children}) => {
         </React.Fragment>
     );
 }
-
 export default HowToTemplate;

@@ -1,0 +1,77 @@
+.how-to-content-header{
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0,0,0,0.16);
+}
+
+.how-to-content-header .author-span{
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: x-large;
+    vertical-align: base;
+    display: inline-block;
+}
+
+.how-to-content-header .fake{
+   color: white;
+}
+
+.how-to-content-header .content-header-question-mark{
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: xx-large;
+    vertical-align: base;
+    display: inline-block;
+    color : blue;
+}
+
+
+
+.how-to-content-header .author-level-span{
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: medium;
+    vertical-align: base;
+    display: inline-block;
+    color: #888888;
+}
+
+.how-to-content-header .author-outro{
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: large;
+    vertical-align: base;
+    display: inline-block;
+    color: black;
+}
+
+
+
+.content-intro-wrapper-div-right .date-text-span, .view-text-span{
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: large;
+    vertical-align: base;
+    display: inline-block;
+    color: black;
+}
+
+.how-to-content-header .content-intro-wrapper{
+    width: 100%;
+}
+
+.how-to-content-header .content-title-wrapper{
+    width: 100%;
+}
+
+.how-to-content-header .content-intro-wrapper .date-span, .view-span{
+    color: #888888;
+    font-family: 'Do Hyeon', sans-serif;
+}
+
+.how-to-content-header .content-intro-wrapper-div{
+ width: 100%;
+}
+
+.content-intro-wrapper-div .content-intro-wrapper-div-left{
+    float: left;
+}
+
+.content-intro-wrapper-div .content-intro-wrapper-div-right{
+    float: right;
+}
+

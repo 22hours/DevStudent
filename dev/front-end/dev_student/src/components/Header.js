@@ -30,7 +30,8 @@ const Header = () => {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <NavLink to="/">
-                    <img src="/img/topbar_logo_small2.png"></img>
+                    <img src="/img/java_logo.png"></img>
+
                 </NavLink>
                 <div width="20"></div>
                 <NavLink exact className="header-item" activeClassName="active" to="/">Home</NavLink>
@@ -52,3 +53,5 @@ const Header = () => {
     );
 }
 export default Header;
+
+//                    <img src="/img/topbar_logo_small2.png"></img>

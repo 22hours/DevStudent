@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
-import { Button, Container, Row, Col } from 'reactstrap';
+import { FormGroup, Label, Input, Button, ButtonToggle, Container, Row, Col, Collapse } from 'reactstrap';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import Tag from "../../Tag/Tag";
 import './HowToListHeaderTemplate.css';
 const HowToListHeaderTemplate = ({ tags, question_count }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [serachBarIsOpen, setSearchBarIsOpen] = useState(false);
 
-    const toggle = () => setDropdownOpen(prevState => !prevState);
+    const toggleSearchBar = () => {
+        console.log("SerachBar Open!");
+        setSearchBarIsOpen(prevState => !prevState);
+    }
+    const toggleDropDown = () => setDropdownOpen(prevState => !prevState);
 
     return (
         <React.Fragment>
@@ -19,8 +24,13 @@ const HowToListHeaderTemplate = ({ tags, question_count }) => {
                     <span className="questions-number-span"> {question_count} </span>
                     <span className="question-descript-span">  &nbsp; 건의 질문이 있습니다</span>
                 </p>
+                <div className="search-button-wrapper">
+                    <Button onClick={toggleSearchBar} color="primary">검색</Button>
+
+                </div>
+
                 <div className="filter-button-wrapper">
-                    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                    <Dropdown isOpen={dropdownOpen} toggle={toggleDropDown}>
                         <DropdownToggle caret>
                             필터
                         </DropdownToggle>
@@ -32,6 +42,18 @@ const HowToListHeaderTemplate = ({ tags, question_count }) => {
                         </DropdownMenu>
                     </Dropdown>
                 </div>
+                <Collapse isOpen={serachBarIsOpen}>
+                    <div className="searchbar-wrapper">
+                        <FormGroup>
+                            <Input
+                                type="search"
+                                name="search"
+                                id="exampleSearch"
+                                placeholder="무엇이든 검색해보세요!"
+                            />
+                        </FormGroup>
+                    </div>
+                </Collapse>
             </Row>
         </React.Fragment>
     );
