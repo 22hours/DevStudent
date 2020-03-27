@@ -10,7 +10,8 @@ const HotQuestionList = ({hot}) => {
             idx = {idx}
             id = {id}
             text = {text}
-            views={views}>
+            views={views}
+            key={idx}>
         </HotQuestionItem>
         )  
     )
