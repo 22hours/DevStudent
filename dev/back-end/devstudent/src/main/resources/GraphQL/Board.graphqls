@@ -16,7 +16,7 @@ type Board{
 
 # Root
 type Query{
-    findAllQuestions: [Board]!
+    findAllQuestions(param : String, pageNum : Int): [Board]!
     findQuestionBy_id(_id:String) : Board
 }
 
