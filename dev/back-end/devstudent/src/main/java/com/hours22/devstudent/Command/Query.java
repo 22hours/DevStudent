@@ -1,4 +1,3 @@
-
 package com.hours22.devstudent.Command;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
@@ -34,15 +33,12 @@ public class Query implements GraphQLQueryResolver {
         this.boardRepository = boardRepository;
     }
 
-    public List<Board> findAllQuestions(String param, int pageNum) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        Criteria criteria = new Criteria("tags");
-//        criteria.all(tags);
-
+    public List<Board> findAllQuestions(String param, int pageNum, int requiredCount) {
+        System.out.println("findAllQuestions 시작");
         org.springframework.data.mongodb.core.query.Query query = new org.springframework.data.mongodb.core.query.Query();
         query.with(Sort.by(Sort.Direction.DESC, param));
-        query.limit(10);
-        query.skip((pageNum - 1) * 10);
+        query.limit(requiredCount);
+        query.skip((pageNum - 1) * requiredCount);
         List<Board> boards = this.mongoTemplate.find(query, Board.class);
 
 
@@ -59,15 +55,20 @@ public class Query implements GraphQLQueryResolver {
         return boardRepository.save(board);
     }
 
-    public List<Board> findTagsQuestions(String param, int pageNum, List<String> tags) {
+    public List<Board> findTagsQuestions(String param, int pageNum, int requiredCount, List<String> tags, String logical) {
         System.out.println("findAllQuestions with tags 시작");
         Criteria criteria = new Criteria("tags");
-        criteria.all(tags);
-
+        if (logical.equals("and"))
+            criteria.all(tags);
+        else if (logical.equals("or"))
+            criteria.in(tags);
+        else {
+            return new ArrayList<Board>();
+        }
         org.springframework.data.mongodb.core.query.Query query = new org.springframework.data.mongodb.core.query.Query(criteria);
         query.with(Sort.by(Sort.Direction.DESC, param));
-        query.limit(10);
-        query.skip((pageNum - 1) * 10);
+        query.limit(requiredCount);
+        query.skip((pageNum - 1) * requiredCount);
         List<Board> boards = this.mongoTemplate.find(query, Board.class);
         System.out.println(boards.toString());
         return boards;

@@ -16,9 +16,9 @@ type Board{
 
 # Root
 type Query{
-    findAllQuestions(param : String, pageNum : Int): [Board]!
+    findAllQuestions(param : String, pageNum : Int, requiredCount : Int): [Board]!
+    findTagsQuestions(param : String, pageNum : Int, requiredCount: Int, tags: [String], logical: String): [Board]!
     findQuestionBy_id(_id:String) : Board
-    findTagsQuestions(param : String, pageNum : Int, tags: [String]): [Board]!
 }
 
 # Root
