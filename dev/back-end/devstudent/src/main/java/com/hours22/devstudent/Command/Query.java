@@ -3,13 +3,20 @@ package com.hours22.devstudent.Command;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.hours22.devstudent.Entity.Board;
 import com.hours22.devstudent.Repository.BoardRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 
 import java.lang.reflect.Array;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import static org.springframework.data.mongodb.core.aggregation.ObjectOperators.ObjectToArray.toArray;
@@ -19,20 +26,25 @@ public class Query implements GraphQLQueryResolver {
 
     private BoardRepository boardRepository;
 
+    @Autowired
+    private MongoTemplate mongoTemplate;
+
     public Query(BoardRepository boardRepository){
         this.boardRepository = boardRepository;
     }
 
     public List<Board> findAllQuestions(String param, int pageNum){
-        List<Board> boards = boardRepository.findAll(Sort.by(Sort.Direction.DESC,param));
-        for(Board board : boards){
-            if(board.getPreviews()==null){
-                String content = board.getContent();
-                String previews = (content.length() < 20) ? content : content.substring(0, 20);
-                board.setPreviews(previews);
-                boardRepository.save(board);
-            }
-        }
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        Criteria criteria = new Criteria("tags");
+//        criteria.all(tags);
+
+        org.springframework.data.mongodb.core.query.Query query = new org.springframework.data.mongodb.core.query.Query();
+        query.with(Sort.by(Sort.Direction.DESC, param));
+        query.limit(10);
+        query.skip((pageNum - 1)*10);
+        List<Board> boards = this.mongoTemplate.find(query, Board.class);
+
+
         return boards;
     }
 
@@ -45,4 +57,47 @@ public class Query implements GraphQLQueryResolver {
         board.setViews(views + 1);
         return boardRepository.save(board);
     }
+
+    public List<Board> findTagsQuestions(String param, int pageNum, List<String> tags){
+        System.out.println("findAllQuestions with tags 시작");
+        Criteria criteria = new Criteria("tags");
+        criteria.all(tags);
+
+        org.springframework.data.mongodb.core.query.Query query = new org.springframework.data.mongodb.core.query.Query(criteria);
+        query.with(Sort.by(Sort.Direction.DESC, param));
+        query.limit(10);
+        query.skip((pageNum - 1)*10);
+        List<Board> boards = this.mongoTemplate.find(query, Board.class);
+        System.out.println(boards.toString());
+        return boards;
+
+
+//        List<Board> boards = boardRepository.findByTags(tags);
+//
+//        System.out.println(boards.toString());
+//        return boards;
+
+//        List<AggregationOperation> aggregate_command = new ArrayList<AggregationOperation>();
+//        MatchOperation matchOperation;
+//        Criteria criteria;
+//        for(int round = 0; round < tag_size; round++){
+//            criteria = new Criteria().where("tags").is(tags.get(round));
+//            matchOperation = Aggregation.match(criteria);
+//            aggregate_command.add(matchOperation);
+//        }
+//        aggregate_command.add(new SkipOperation((Integer.parseInt(index) - 1)*10));
+//        aggregate_command.add(new LimitOperation(10));
+//        ProjectionOperation projectionOperation = Aggregation.project
+//                ("_id", "title", "author","tags","date","content",
+//                        "previews","answerCount","views","solved","comments","answers");
+//        aggregate_command.add(projectionOperation);
+//        AggregationResults<Board> aggregate =
+//                this.mongoTemplate.aggregate(Aggregation.newAggregation(aggregate_command),
+//                        Board.class,
+//                        Board.class);
+//        System.out.println(aggregate.getMappedResults().toString());
+//        return aggregate.getMappedResults();
+
+    }
+
 }
