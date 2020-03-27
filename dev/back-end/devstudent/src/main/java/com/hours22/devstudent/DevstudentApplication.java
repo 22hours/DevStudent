@@ -5,7 +5,6 @@ import com.hours22.devstudent.Command.Mutation;
 import com.hours22.devstudent.Command.Query;
 import com.hours22.devstudent.Repository.BoardRepository;
 import com.hours22.devstudent.Repository.SequenceIDRepository;
-import org.aspectj.lang.annotation.Before;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;

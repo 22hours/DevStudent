@@ -17,13 +17,14 @@ type Board{
 # Root
 type Query{
     findAllQuestions(param : String, pageNum : Int): [Board]!
-    findTagsQuestions(param : String, pageNum : Int, tags: [String]): [Board]!
     findQuestionBy_id(_id:String) : Board
+    findTagsQuestions(param : String, pageNum : Int, tags: [String]): [Board]!
 }
 
 # Root
 type Mutation{
     createAnswer(parentID : String!, author : String!, content : String!, date : String!) : Answer
-    createBoard(title : String!, author : String!, tags : [String]!, date : String, content : String!) : Board
-    deleteBoard(_id : String) : Board
+    createQuestion(title : String!, author : String!, tags : [String]!, date : String, content : String!) : Board
+    deleteQuestion(_id : String) : Board
+    createComment(question_id : String!, answer_id : String!, author : String!, content : String!, date : String!) : Comment
 }

@@ -1,9 +1,11 @@
 package com.hours22.devstudent.Entity;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @ToString
@@ -14,6 +16,8 @@ public class Answer {
     private String author;
     private String content;
     private String date;
+    @Setter
+    private List<Comment> comments = new ArrayList<Comment>();
     public Answer(String _id, String author, String content, String date){
         this._id = _id;
         this.author = author;

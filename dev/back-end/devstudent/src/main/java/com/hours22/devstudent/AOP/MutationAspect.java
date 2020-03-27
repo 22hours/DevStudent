@@ -1,10 +1,8 @@
 package com.hours22.devstudent.AOP;
 
 import com.hours22.devstudent.Entity.SequenceID;
-import com.hours22.devstudent.Repository.BoardRepository;
 import com.hours22.devstudent.Repository.SequenceIDRepository;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;

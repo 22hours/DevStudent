@@ -3,4 +3,5 @@ type Answer{
     author : String
     content : String
     date : String
+    comments : [Comment]!
 }
