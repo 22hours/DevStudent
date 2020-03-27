@@ -7,14 +7,19 @@ import {Button} from 'reactstrap';
 
 class HowToSidebarTemplate extends Component{
     render(){
-        const{ hot } = this.props;
+        const{ hot,tag } = this.props;
+        const btn_style={
+            fontSize:'24px'
+        }
         return(
             <Container className="howto-sidebar-wrapper">
                 <Row>
-                    <Button className="new-question-button" color="info">New Question!</Button>
+                    <Button className="new-question-button" color="info" style={btn_style}>New Question!</Button>
                 </Row>
                 <Row>
-                    <QuestionTagTemplate/>
+                    <QuestionTagTemplate
+                    tag={tag}>
+                    </QuestionTagTemplate>
                 </Row>
                 <Row>
                     <HotQuestionTemplate

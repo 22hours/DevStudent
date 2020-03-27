@@ -1,13 +1,22 @@
-import React, {Component} from 'react'
-import QuestionTag from '../QuestionTag/QuestionTag'
+import React from 'react'
+import QuestionTag from '../QuestionTag/QuestionTag';
+import { Container, Row, Col } from 'reactstrap';
 
-class QuestionTagList extends Component{
-    render(){
+const QuestionTagList = ({tag}) => {
+    const taglist = tag.map(
+        ({idx, tagname,tagcount}) => (
+            <QuestionTag
+                idx = {idx}
+                tagname={tagname}
+                tagcount={tagcount}
+                key = {tagname}>
+            </QuestionTag>
+            )  
+        )
         return(
-            <div>
-                <QuestionTag/>
-            </div>
+            <Container>
+                {taglist}
+            </Container>
         );
-    }
 }
 export default QuestionTagList;
