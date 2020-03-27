@@ -5,7 +5,9 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @ToString
@@ -18,10 +20,12 @@ public class Answer {
     private String date;
     @Setter
     private List<Comment> comments = new ArrayList<Comment>();
-    public Answer(String _id, String author, String content, String date){
+    public Answer(String _id, String author, String content){
         this._id = _id;
         this.author = author;
         this.content = content;
-        this.date = date;
+        long time = System.currentTimeMillis();
+        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        this.date = dayTime.format(new Date(time));
     }
 }

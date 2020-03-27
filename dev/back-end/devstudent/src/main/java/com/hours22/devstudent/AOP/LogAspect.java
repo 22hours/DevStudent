@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-@Order(3)
 public class LogAspect {
     @Around("execution(* com.hours22.devstudent.Command.*.*(..) )")
     public Object aroundAdvice(ProceedingJoinPoint pjp) throws Throwable {
@@ -16,6 +15,8 @@ public class LogAspect {
         System.out.println("=== " + pjp.getSignature().getName() + " ===");
 
         Object result = pjp.proceed();
+
+        System.out.println(result.toString());
 
         System.out.println("=== finished ===");
 

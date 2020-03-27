@@ -1,0 +1,31 @@
+type Question{
+    _id : String
+    title : String!
+    author : String!
+    tags : [String]
+    date : String
+    content : String!
+    previews : String!
+    answerCount : Int
+    views : Int
+    solved : Boolean
+    comments : [Comment]!
+    answers : [Answer]!
+}
+
+
+# Root
+type Query{
+    findAllQuestions(param : String, pageNum : Int, requiredCount : Int): [Question]!
+    findQuestionBy_id(_id:String) : Question
+    findQuestionsByTags(param : String, pageNum : Int, requiredCount: Int, tags: [String], logical: String): [Question]!
+
+}
+
+# Root
+type Mutation{
+    createAnswer(parentID : String!, author : String!, content : String!) : Answer
+    createQuestion(title : String!, author : String!, tags : [String]!,content : String!) : Question
+    deleteQuestion(_id : String) : Question
+    createComment(question_id : String!, answer_id : String!, author : String!, content : String!) : Comment
+}
