@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import React from 'react';
+import { Container } from 'reactstrap';
 import { useQuery } from '@apollo/react-hooks';
-import { Query } from 'react-apollo';
 import HowToContentHeader from '../HowToContentHeader/HowToContentHeader';
 import HowToReply from '../HowToReply/HowToReply';
 import './HowToContent.css'

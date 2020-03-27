@@ -7,4 +7,6 @@ import Search from './Search';
 import NotFound from './NotFound';
 import Todo from './Todo';
 import HowTo from './HowTo';
-export {HowTo, Home, About, Posts, Login, MyPage, Search, Todo, NotFound };
+import NewQuestion from './NewQuestion';
+import AuthRoute from './AuthRoute';
+export {AuthRoute, NewQuestion, HowTo, Home, About, Posts, Login, MyPage, Search, Todo, NotFound };

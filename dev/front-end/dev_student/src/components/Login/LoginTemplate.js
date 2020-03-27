@@ -1,8 +1,7 @@
 import React from 'react';
-import { Container, Col, Row, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Container, Col, Row} from 'reactstrap';
 import './LoginTemplate.css';
-import FormControl from '@material-ui/core/FormControl';
-import {Paper ,TextField, Button } from '@material-ui/core';
+import {TextField, Button } from '@material-ui/core';
 import {Link} from 'react-router-dom';
 const LoginTemplate = () => {
     return (

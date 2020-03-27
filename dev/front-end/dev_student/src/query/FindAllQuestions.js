@@ -1,6 +1,6 @@
 import React from 'react';
 import { gql } from 'apollo-boost';
-import { Query , Mutation, useQuery } from 'react-apollo';
+import { Query } from 'react-apollo';
 import HowToItem from '../components/HowTo/HowToItem/HowToItem';
 const FindAllQuestions = () => {
     var res = null;

@@ -1,9 +1,6 @@
 import React from 'react';
-import {Container, Row, Col} from 'reactstrap';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import HowToItem from '../HowToItem/HowToItem';
+import {Container} from 'reactstrap';
 import HowToListHeaderTemplate from '../HowToListHeaderTemplate/HowToListHeaderTemplate';
-import HowToQuestionListTemplate from '../HowToQuestionListTemplate/HowToQuestionListTemplate';
 const HowToListTemplate = ({questionList,question_count,tags}) => {
    
     // const questionList = questions.map(

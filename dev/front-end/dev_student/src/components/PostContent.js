@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Table } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import ContentListTemplate from './ContentListTemplate'
 class PostContent extends Component {
 

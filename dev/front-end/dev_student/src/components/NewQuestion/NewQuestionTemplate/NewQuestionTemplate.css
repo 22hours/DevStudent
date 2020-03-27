@@ -1,0 +1,100 @@
+.new-question-wrapper{
+    background-color: #f2f2f2;
+    height: 100vh;
+    padding-top: 2%;
+}
+
+
+.new-question-header-row span{
+    font-size: xx-large;
+    font-family: 'Do Hyeon', sans-serif;
+
+}
+
+.new-question-content-row{
+    margin-top: 3%;
+    padding: 15px;
+    background-color:white;
+    border: gray;
+    border-bottom: 1px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.16), 0 3px 6px rgba(112, 112, 112, 0.23); /* 그림자 */ 
+
+}
+
+.new-question-title-header-span-warpper{
+    margin-left: 5px;
+}
+
+.new-question-title-header-span{
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: large;
+}
+
+.new-question-notice-span{
+    font-size: small;
+    color : #8c8c8c;
+}
+
+.new-question-title-exam-span{
+    font-size: medium;
+}
+
+
+.new-question-title-area{
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 100%;
+    display: inline-block;
+}
+
+.new-question-title-area input{
+    width: 100%;
+    display: inline-block;
+
+}
+
+.new-question-title-input{
+    width: 100%;
+}
+
+.new-question-content-area{
+    margin-top: 3%;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 100%;
+    display: inline-block;
+}
+
+.new-question-content-header-span-warpper{
+    margin-left: 5px;
+}
+
+.new-question-content-header-span{
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: large;
+}
+
+.new-question-content-area textarea{
+    min-height: 200px;
+}
+
+.question-title{
+    margin-top: 5px;
+}
+
+.new-question-submit-area{
+    overflow: hidden;
+    margin-top: 3%;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 100%;
+    display: inline-block;
+}
+
+.new-question-submit-area .submit-left{
+    float: left;
+}
+.new-question-submit-area .submit-right{
+    float: right;
+}

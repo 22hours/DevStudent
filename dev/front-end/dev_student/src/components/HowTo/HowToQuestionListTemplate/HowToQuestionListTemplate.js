@@ -1,7 +1,4 @@
 import React from 'react';
-import {Table, Container, Row, Col} from 'reactstrap';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import HowToListHeaderTemplate from '../HowToListHeaderTemplate/HowToListHeaderTemplate';
 import HowToItem from '../HowToItem/HowToItem'
 const HowToQuestionListTemplate = () => {
     return (

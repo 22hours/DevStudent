@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './ContentListItem.css'
 class ContentListItem extends Component {
     render() {
-        const {views ,number, title, author, handleContentPage } = this.props;
+        const {views ,number, title, author } = this.props;
         return (
             <NavLink to={'/posts/' + number}> 
             <tr col className="content-list-item">

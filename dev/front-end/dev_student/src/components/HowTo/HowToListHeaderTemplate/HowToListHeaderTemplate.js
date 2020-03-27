@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { FormGroup, Label, Input, Button, ButtonToggle, Container, Row, Col, Collapse } from 'reactstrap';
+import { FormGroup, Input, Button, Row, Collapse } from 'reactstrap';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import Tag from "../../Tag/Tag";
 import './HowToListHeaderTemplate.css';
-const HowToListHeaderTemplate = ({ tags, question_count }) => {
+const HowToListHeaderTemplate = ({ question_count }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [serachBarIsOpen, setSearchBarIsOpen] = useState(false);
 

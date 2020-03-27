@@ -1,7 +1,7 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { gql } from 'apollo-boost';
-import { Query , Mutation } from 'react-apollo';
-import { Container, Row, Col, Table } from 'reactstrap';
+import { Query  } from 'react-apollo';
+import {Row, Col } from 'reactstrap';
 
 
 const GET_CONTINENTS = gql`

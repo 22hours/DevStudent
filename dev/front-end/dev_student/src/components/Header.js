@@ -1,57 +1,76 @@
-import React,{useState} from 'react'
-import { NavLink } from "react-router-dom"
+//import { NavLink } from "react-router-dom"
 import './Header.css'
 import { Container, Row, Col, Table } from 'reactstrap';
 import Login from './Login';
 import Button from '@material-ui/core/Button';
 import LoginModal from './Modal/LoginModal';
 import ModalExample from './Modal/ModalExample';
-const Header = () => {
+import React, { useState } from 'react';
+import {
+    Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink
+} from 'reactstrap';
 
+const Header = (props) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => setIsOpen(!isOpen);
 
     const handleLoginClick = () => {
         
     }
 
-    const styleUnLoggined = {
-        borderRadius: 3,
-        border: '1',
-        borderColor:'white',
-        color: 'white',
+    const sign_style={
+        justifyContent: 'flex-end'
+    }
+
+    const img_style = {
+       marginRight:'4px'
       };
 
-    return (
-        <nav className="navbar navbar-expand-lg sticky-top">
-            <div class="logo-div">
-            </div>
+      return (
+          
+            <Navbar color="light" light expand="md" className="header-wrapper sticky-top" >
             <Container>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <NavLink to="/">
-                    <img src="/img/java_logo.png"></img>
-
-                </NavLink>
-                <div width="20"></div>
-                <NavLink exact className="header-item" activeClassName="active" to="/">Home</NavLink>
-                <NavLink className="header-item" activeClassName="active" to="/howto">HowTo</NavLink>
-                <NavLink className="header-item" activeClassName="active" to="/about/me">Crew</NavLink>
-                <NavLink className="header-item" activeClassName="active" to="/posts">Musium</NavLink>
-                <NavLink className="header-item" activeClassName="active" to="/mypage">OutSide</NavLink>
-                <NavLink className="header-item" activeClassName="active" to="/todolist">Todo</NavLink>
-                <NavLink className="header-item" activeClassName="active" to="/login">
-                    <Button style={styleUnLoggined}>
-                        <img width="20px" height="20px" src="/img/user_area_button.png"></img>
-                        &nbsp;&nbsp;                    Sign In
-
-                    </Button>
-                </NavLink>
+            <NavbarToggler onClick={toggle} ></NavbarToggler>
+                <NavbarBrand href="/" >
+                    <img src="/img/devstu_text_logo.png"></img>
+                </NavbarBrand>
+            <Collapse isOpen={isOpen} navbar>
+                <Nav className="mr-auto" navbar>
+                <NavItem>
+                    <div className="nav-item-wrapper">
+                    <NavLink href="/" >Home</NavLink>
+                    </div>
+                </NavItem>
+                <NavItem>
+                <div className="nav-item-wrapper">
+                    <NavLink href="/howto">HowTo</NavLink>
+                    </div>
+                </NavItem>
+                <NavItem>
+                <div className="nav-item-wrapper">
+                    <NavLink href="/about/me">Crew</NavLink>
+                    </div>
+                </NavItem>
+                <NavItem>
+                <div className="nav-item-wrapper">
+                    <NavLink href="/posts">Musium</NavLink>
+                    </div>
+                </NavItem>
+                <NavItem>
+                <div className="nav-item-wrapper">
+                    <NavLink href="/mypage">OutSide</NavLink>
+                    </div>
+                </NavItem>
+                </Nav>
+            </Collapse>
+            <div className="nav-item-wrapper" style={sign_style} >
+                    <NavLink href="/login">
+                    <img width="18px" height="20px" style={img_style} src="/img/user_area_button_black.png"></img>
+                    </NavLink>
+                </div>
             </Container>
-
-        </nav>
+            </Navbar>
     );
 }
 export default Header;
-
-//                    <img src="/img/topbar_logo_small2.png"></img>

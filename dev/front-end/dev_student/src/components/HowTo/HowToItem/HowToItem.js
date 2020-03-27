@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { Table, Container, Row, Col } from 'reactstrap';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Tag from '../../Tag/Tag';
 import './HowToItem.css';
 class HowToItem extends Component {
 
     render() {
-        const { id, author, title, date, previews, tags, answers, views } = this.props;
+        const { id, author, title, date, previews, answers, views } = this.props;
         const noMarginStyle = {
             marginLeft: 0,
             marginRight: 0

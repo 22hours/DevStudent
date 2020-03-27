@@ -1,6 +1,5 @@
 import React from 'react';
 import './LoginModal.css'
-import { Container, Row, Col } from 'reactstrap';
 const LoginModalTemplate = () => {
     return (
         <React.Fragment>

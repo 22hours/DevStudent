@@ -1,8 +1,7 @@
 import React from 'react';
-import { Row, Col } from 'reactstrap'
 import './HowToContentHeader.css';
 const HowToContentHeader = (props) => {
-    const {title,author,date,content,answerCount,views} = props;
+    const {title,author,date,views} = props;
     return (
         <React.Fragment>
             <div>
