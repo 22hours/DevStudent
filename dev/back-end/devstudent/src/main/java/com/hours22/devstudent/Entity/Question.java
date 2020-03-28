@@ -32,7 +32,7 @@ public class Question {
 
     public Question(String _id, String title, String author, List<String> tags, String content, String previews) {
         long time = System.currentTimeMillis();
-        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.date = dayTime.format(new Date(time));
         this._id = _id;
         this.title = title;

@@ -16,7 +16,7 @@ public class Comment {
         this.author = author;
         this.content = content;
         long time = System.currentTimeMillis();
-        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.date = dayTime.format(new Date(time));
     }
 }

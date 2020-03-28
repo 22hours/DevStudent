@@ -5,3 +5,7 @@ type Answer{
     date : String
     comments : [Comment]!
 }
+
+extend type Mutation {
+    createAnswer(question_id : String!, author : String!, content : String!) : Answer
+}

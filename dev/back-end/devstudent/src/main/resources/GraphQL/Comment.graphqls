@@ -4,3 +4,7 @@ type Comment{
     content : String
     date : String
 }
+
+extend type Mutation {
+    createComment(question_id : String!, answer_id : String!, author : String!, content : String!) : Comment
+}
