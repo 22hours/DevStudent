@@ -1,10 +1,12 @@
 package com.hours22.devstudent.Entity;
 
+import lombok.Getter;
 import org.springframework.data.annotation.Id;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Getter
 public class Comment {
     @Id
     private String _id; // 고유 number

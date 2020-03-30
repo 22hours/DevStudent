@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Component
-public class DeleteQuestion extends Delete {
+public class DeleteQuestion{
     @Autowired
     private QuestionRepository questionRepository;
 

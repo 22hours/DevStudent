@@ -15,7 +15,6 @@ public abstract class Create {
         int seqNum = sequenceID.getSeqNum() + 1;
         sequenceID.setSeqNum(seqNum);
         sequenceIDRepository.save(sequenceID);
-        System.out.println(sequenceID.toString());
         return String.valueOf(seqNum);
     }
 }
