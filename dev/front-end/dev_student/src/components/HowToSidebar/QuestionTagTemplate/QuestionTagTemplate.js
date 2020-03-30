@@ -9,15 +9,15 @@ class QuestionTagTemplate extends Component {
         const {tag} = this.props;
         
         return(
-            <Container className="question-tag-wrapper" >
-                <Row  className="question-tag-header-wrapper">
+            <div className="question-tag-wrapper" >
+                <div  className="question-tag-header-wrapper">
                     <QuestionTagHeader/>
-                </Row>
-                <Row className="question-tag-list-wrapper">
+                </div>
+                <div className="question-tag-list-wrapper">
                     <QuestionTagList tag={tag}>
                     </QuestionTagList>
-                </Row>
-            </Container>
+                </div>
+            </div>
         );
     }
 }

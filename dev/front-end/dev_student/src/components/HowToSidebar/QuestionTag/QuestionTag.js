@@ -12,12 +12,13 @@ class QuestionTag extends Component{
         }
         const btn_group_style={
             float:'left',
-            marginRight:'12px',
-            marginTop:'1%'
+            marginRight:'5px',
+            marginTop:'3px',
+            fontSize:'10px'
         }
         const {idx,tagname,tagcount} = this.props;
         return(
-                <ButtonGroup arial-label="Basic example" style = {btn_group_style} className="question-tag-group">
+                <ButtonGroup size = "sm" arial-label="Basic example" style = {btn_group_style} className="question-tag-group">
                     <Button variant="secondary"  className="question-tag-button-name">{tagname}</Button>
                     <Button  disabled variant="secondary" className="question-tag-button-count" style={count_style}>{tagcount}</Button>
                 </ButtonGroup>

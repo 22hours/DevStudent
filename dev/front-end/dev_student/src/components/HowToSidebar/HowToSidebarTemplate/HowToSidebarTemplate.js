@@ -10,7 +10,7 @@ class HowToSidebarTemplate extends Component{
         
         const{ hot,tag,handleNewQuestion } = this.props;
         const btn_style={
-            fontSize:'24px'
+            fontSize:'20px'
         }
         return(
             <Container className="howto-sidebar-wrapper">

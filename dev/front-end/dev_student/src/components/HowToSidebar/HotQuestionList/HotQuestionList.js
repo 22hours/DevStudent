@@ -5,10 +5,9 @@ import HotQuestionItem from '../HotQuestionItem/HotQuestionItem';
 
 const HotQuestionList = ({hot}) => {
     const hotlist = hot.map(
-    ({idx, id,  views, text}) => (
+    ({idx,   views, text}) => (
         <HotQuestionItem
             idx = {idx}
-            id = {id}
             text = {text}
             views={views}
             key={idx}>
@@ -17,9 +16,9 @@ const HotQuestionList = ({hot}) => {
     )
     return(
         <Container className="hot-question-list-items">
-            <Row >
+            <div>
                  {hotlist}
-            </Row>
+            </div>
         </Container>
     );
 }

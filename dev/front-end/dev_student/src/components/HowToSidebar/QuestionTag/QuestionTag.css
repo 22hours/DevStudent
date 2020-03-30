@@ -5,3 +5,7 @@
 .question-tag-button-count{
     font-family: 'Do Hyeon', sans-serif;
 }
+
+.question-tag-group.btn-group{
+    font-size:10px
+}

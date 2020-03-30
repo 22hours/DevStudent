@@ -1,19 +1,27 @@
-.howto-hot-temp-row{
-    margin-top:5px;
+.howto-hot-question-item-wrapper{
+    margin-bottom:5px;
+    border-bottom:0.5px lightgray;
+    border-style: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-width: 100%;
+    overflow: hidden;
 }
-.howto-hot-question-col-id{
+
+.howto-hot-question-item-col-views{
     text-align: center;
     color: lightslategray;
-    font-weight: 500;
+    font-weight: 520;
+    font-size:11px;
+    margin: 1px auto;
     float:right;
-
+    width:20%;
 }
-.howto-hot-question-col-views{
+.howto-hot-question-item-col-text{
     text-align: center;
-    color: blue;
-}
-.howto-hot-question-col-text{
-    text-align: center;
-    font-size: 18px;
+    font-size: 13px;
     font-weight: 450;
+    float:left;
+    width:80%;
 }

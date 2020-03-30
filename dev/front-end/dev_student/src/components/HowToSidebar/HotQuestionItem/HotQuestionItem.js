@@ -4,19 +4,14 @@ import './HotQuestionItem.css'
 class HotQuestionItem extends Component{
 
     render(){
-        const {idx, id, views, text} = this.props;
+        const {idx, views, text} = this.props;
      
        return(
-           
-           <Container>
-               <Row className="howto-hot-temp-row">
-                   <Col className="howto-hot-question-col-id" md={2}>{id}</Col>
-                   <Col className="howto-hot-question-col-text">{text}</Col>
-                   <Col className="howto-hot-question-col-views" md = {2}> {views}</Col>
-               </Row>
-           </Container>
+            <div className="howto-hot-question-item-wrapper">
+                <div className="howto-hot-question-item-col-text" >{text}</div>
+                <div className="howto-hot-question-item-col-views" > {views}</div>
+            </div>
        );
-       
     }
 }
 export default HotQuestionItem;
