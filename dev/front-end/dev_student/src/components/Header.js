@@ -1,10 +1,8 @@
 //import { NavLink } from "react-router-dom"
 import './Header.css'
-import { Container, Row, Col, Table } from 'reactstrap';
-import Login from './Login';
-import Button from '@material-ui/core/Button';
-import LoginModal from './Modal/LoginModal';
-import ModalExample from './Modal/ModalExample';
+import { Container} from 'reactstrap';
+import AuthDebug from '../components/Debug/AuthDebug';
+import {Link} from 'react-router-dom';
 import React, { useState } from 'react';
 import {
     Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink
@@ -14,10 +12,7 @@ const Header = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
-
-    const handleLoginClick = () => {
-        
-    }
+    const {user, authenticated} = props;
 
     const sign_style={
         justifyContent: 'flex-end'
@@ -26,7 +21,7 @@ const Header = (props) => {
     const img_style = {
        marginRight:'4px'
       };
-
+    
       return (
           
             <Navbar color="light" light expand="md" className="header-wrapper sticky-top" >
@@ -39,28 +34,33 @@ const Header = (props) => {
                 <Nav className="mr-auto" navbar>
                 <NavItem>
                     <div className="nav-item-wrapper">
-                    <NavLink href="/" >Home</NavLink>
+                    <Link to="/" className="nav-link">Home</Link>
                     </div>
                 </NavItem>
                 <NavItem>
                 <div className="nav-item-wrapper">
-                    <NavLink href="/howto">HowTo</NavLink>
+                    <Link to="/howto" className="nav-link">HowTo</Link>
                     </div>
                 </NavItem>
                 <NavItem>
                 <div className="nav-item-wrapper">
-                    <NavLink href="/about/me">Crew</NavLink>
+                    <Link to="/about/me" className="nav-link">Crew</Link>
                     </div>
                 </NavItem>
                 <NavItem>
                 <div className="nav-item-wrapper">
-                    <NavLink href="/posts">Musium</NavLink>
+                    <Link to="/posts" className="nav-link">Musium</Link>
                     </div>
                 </NavItem>
                 <NavItem>
                 <div className="nav-item-wrapper">
-                    <NavLink href="/mypage">OutSide</NavLink>
+                    <Link to="/mypage" className="nav-link">OutSide</Link>
                     </div>
+                </NavItem>
+                <NavItem>
+                <div className="nav-item-wrapper">
+                    <AuthDebug user={user} authenticated={authenticated}></AuthDebug>
+                </div>
                 </NavItem>
                 </Nav>
             </Collapse>

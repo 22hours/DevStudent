@@ -1,29 +1,12 @@
 import React from 'react';
 import {Container} from 'reactstrap';
 import HowToListHeaderTemplate from '../HowToListHeaderTemplate/HowToListHeaderTemplate';
-const HowToListTemplate = ({questionList,question_count,tags}) => {
-   
-    // const questionList = questions.map(
-    //     ({id,author,title,previews,answers,views,date}) => (
-    //         <HowToItem
-    //         id={id}
-    //         key={id}
-    //         author={author}
-    //         title={title}
-    //         previews={previews}
-    //         answers={answers}
-    //         views={views}
-    //         date={date}>
-    //         </HowToItem>
-    //     )
-    // )
-
+const HowToListTemplate = ({questionCount,questionList,question_count,tags,param}) => {
     return (
         <React.Fragment>
         <Container className='margin-top-3 red-border'>
-           <HowToListHeaderTemplate tags={tags} question_count={question_count}></HowToListHeaderTemplate>
+           <HowToListHeaderTemplate tags={tags} question_count={questionCount}></HowToListHeaderTemplate>
         </Container>
- 
         <div >
            {questionList}
         </div>
@@ -32,5 +15,4 @@ const HowToListTemplate = ({questionList,question_count,tags}) => {
         </React.Fragment>
     );
 }
-
 export default HowToListTemplate;

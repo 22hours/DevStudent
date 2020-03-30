@@ -7,6 +7,8 @@ const NewQuestionTemplate = () => {
         <div className="new-question-wrapper">
             <Container>
                 <Row className="new-question-header-row">
+                    <span>안녕하세요 winterlood님!</span>
+                    
                     <span>무엇이든 물어보세요!</span>
                 </Row>
                 <Row className="new-question-content-row">
@@ -17,7 +19,7 @@ const NewQuestionTemplate = () => {
                             <br />
                             <span className="new-question-notice-span">궁금한점을 자세하고 구체적으로 적어주세요</span>
                         </div>
-                        <Input className="question-title" placeholder="default" />
+                        <Input className="question-title" placeholder="Title : Ex > 자바스크립트로 버튼클릭 이벤트를 핸들링하는것에 대해.." />
 
                     </div>
 
@@ -30,7 +32,14 @@ const NewQuestionTemplate = () => {
                             size="large"
                             type="textarea"></Input>
                     </div>
+                    <div className="new-question-title-area">
+                        <div className="new-question-title-header-span-warpper">
+                            <br />
+                            <span className="new-question-notice-span">태그를 달아주세요! [현재 사용 불가]</span>
+                        </div>
+                        <Input className="question-title" placeholder="Tags : Ex> Javascript..." />
 
+                    </div>
                     <div className="new-question-submit-area">
                         <div className="submit-left">
                             <Button variant="contained" color="secondary">
@@ -43,6 +52,7 @@ const NewQuestionTemplate = () => {
                             </Button>
                         </div>
                     </div>
+  
                 </Row>
             </Container>
         </div>

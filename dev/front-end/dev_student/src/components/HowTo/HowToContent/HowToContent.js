@@ -5,7 +5,7 @@ import HowToContentHeader from '../HowToContentHeader/HowToContentHeader';
 import HowToReply from '../HowToReply/HowToReply';
 import './HowToContent.css'
 import ReactMarkdown from 'react-markdown'
-import findQuestionBy_id_Query from '../../../query/queries'
+import {findQuestionBy_id_Query} from '../../../query/queries'
 
 const HowToContent = ({match}) => {
     const { loading, error, data } = useQuery(findQuestionBy_id_Query, {

@@ -4,6 +4,7 @@ import './HowToSidebarTemplate.css';
 import QuestionTagTemplate from '../QuestionTagTemplate/QuestionTagTemplate';
 import HotQuestionTemplate from '../HotQuestionTemplate/HotQuestionTemplate';
 import {Button} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 class HowToSidebarTemplate extends Component{
     render(){
@@ -15,7 +16,9 @@ class HowToSidebarTemplate extends Component{
         return(
             <Container className="howto-sidebar-wrapper">
                 <Row>
-                    <Button onClick={handleNewQuestion} className="new-question-button" color="info" style={btn_style}>New Question!</Button>
+                    <Button onClick={handleNewQuestion} className="new-question-button" color="info" style={btn_style}>
+                        <Link to="/newquestion">New Question!</Link>
+                        </Button>
                 </Row>
                 <Row>
                     <QuestionTagTemplate

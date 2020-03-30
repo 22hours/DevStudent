@@ -1,51 +1,48 @@
-import React, {useState} from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { AuthRoute, NewQuestion, HowTo,Home, Posts, About, Login, MyPage, Todo, NotFound } from './routes';
+import React, { Component, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { AuthRoute, NewQuestion, HowTo, Home, Posts, About, Login, MyPage, Todo, NotFound } from './routes';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header';
 import { ApolloProvider } from 'react-apollo';
 import client from "./apolloClient";
-import {signIn} from './auth';
+import { signIn } from './auth';
 import './App.css';
-const App = () => {
-  const [user, setUser] = useState(null);
-  const authenticated = user != null;
-  const login = ({ email, password }) =>setUser(signIn({ email, password }));
-  const logout = () => setUser(null);
-  return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div id="rt">
-          <Header user={user} authenticated={authenticated}/>
-          <div className="Article">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about/:username" component={About} />
-            <Route path="/posts" component={Posts} />
-            <Route path="/mypage" component={MyPage} />
-            <Route path="/todolist" component={Todo} />
-            <Route path="/newquestion" component={NewQuestion}></Route>
-            <Route
-            path="/login"
-            render={props => (
-              <Login authenticated={authenticated} login={login} {...props} />
-            )}
-          />
-            <AuthRoute 
-              authenticated={authenticated}
-             path="/howto" 
-             render ={
-               props => <HowTo user={user} {...props}></HowTo>
-             }
-             />
-            <Route component={NotFound} />
-          </Switch>
-          </div>
-          <Footer/>
-        </div>
-      </Router>
-    </ApolloProvider>
-  );
+import MyRouter from './MyRouter';
+class App extends Component {
+  constructor(props){
+    super(props);    
+    this.state = {
+      user : null,
+      authenticated : false
+    }
+    console.log("App.js State Init");
+  }
+
+  render() {
+    console.log("render this");
+    const {user, authenticated} = this.state;
+
+    const login = ({ email, password })  => {
+        this.setState({
+          user : signIn({email,password}),
+          authenticated : true
+        })
+    }
+
+    const logout = () => {
+      this.setState({
+        user : null,
+        authenticated :false
+      })
+    }
+
+    // const login = ({ email, password }) => { setUser(signIn({ email, password })); }
+    return (
+      <ApolloProvider client={client}>
+        <MyRouter user={user} authenticated={authenticated} login={login} logout={logout}></MyRouter>
+      </ApolloProvider>
+    );
+  };
 }
 //             <Route path="/howto" component={HowTo} />
 

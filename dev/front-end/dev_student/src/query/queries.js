@@ -28,4 +28,18 @@ export const findQuestionBy_id_Query = gql`
         }
         `;
 
-export default findQuestionBy_id_Query;
+
+export const findAllQuestions = gql`
+query findAllQuestion($param : String){
+    findAllQuestions(param : $param){
+        title,
+        views,
+        answerCount,
+        _id,
+        author,
+        previews,
+        tags
+    }
+}
+`;
+

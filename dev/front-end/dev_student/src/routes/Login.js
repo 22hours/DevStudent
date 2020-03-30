@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import LoginTemplate from '../components/Login/LoginTemplate';
 import '../components/Login/LoginTemplate.css';
 import { Redirect } from 'react-router-dom';
 
