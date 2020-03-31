@@ -43,7 +43,7 @@ class HowToItem extends Component {
                                         <span className="answer-number">{answers}</span>
                                     </p>
                                 </div>
-                                <div calssName="answer-span-wrapper"><p>
+                                <div className="answer-span-wrapper"><p>
                                     <span className="answer-span">answers</span></p>
                                 </div>
 
@@ -52,7 +52,7 @@ class HowToItem extends Component {
                                 <div className="views-number-wrapper">
                                     <span className="views-number">{views}</span>
                                 </div>
-                                <div calssName="views-span-wrapper">
+                                <div className="views-span-wrapper">
                                     <span className="views-span">watches</span>
                                 </div>
                             </div>
