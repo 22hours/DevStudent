@@ -1,0 +1,21 @@
+type User{
+    _id : String!
+    password : String!
+    nickName : String!
+    email : String!
+    schoolName : String!
+    date : String!
+    authState : String!
+
+}
+
+extend type Mutation{
+    createUser(_id : String!, password: String!, nickName: String!, email: String!, schoolName : String!) : User
+    updateUserAuthState(authState : String!) : Boolean
+    login(_id : String, password : String) : Boolean
+}
+
+
+extend type Query{
+    checkDuplicate(_id : String) : Boolean
+}

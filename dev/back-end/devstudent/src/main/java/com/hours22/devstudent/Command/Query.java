@@ -8,6 +8,7 @@ import com.hours22.devstudent.Command.Find.FindQuestionsByTags;
 import com.hours22.devstudent.Entity.Question;
 import com.hours22.devstudent.Repository.QuestionRepository;
 import com.hours22.devstudent.Repository.SequenceIDRepository;
+import com.hours22.devstudent.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Sort;
@@ -22,6 +23,7 @@ import java.util.List;
 public class Query implements GraphQLQueryResolver {
 
     private QuestionRepository questionRepository;
+    private UserRepository userRepository;
     @Autowired
     FindAllQuestions findAllQuestions;
     @Autowired
@@ -30,8 +32,10 @@ public class Query implements GraphQLQueryResolver {
     FindQuestionBy_id findQuestionBy_id;
     @Autowired
     FindQuestionsByOption findQuestionsByOption;
-    public Query(QuestionRepository questionRepository){
+
+    public Query(QuestionRepository questionRepository, UserRepository userRepository){
         this.questionRepository = questionRepository;
+        this.userRepository = userRepository;
     }
 
     public List<Question> findAllQuestions(String param, int pageNum, int requiredCount) {
@@ -44,10 +48,14 @@ public class Query implements GraphQLQueryResolver {
 
         public Question findQuestionBy_id(String _id) {
         return findQuestionBy_id.findQuestionBy_id(_id);
+        
     }
 
     public List<Question> findQuestionsByTags(String param, int pageNum, int requiredCount, List<String> tags, String logical) {
-        return findQuestionsByTags.findQuestionsByTags(param,pageNum,requiredCount,tags,logical);
+        return findQuestionsByTags.findQuestionsByTags(param, pageNum, requiredCount, tags, logical);
     }
 
+    public Boolean checkDuplicate(String _id){
+        return !userRepository.existsBy_id(_id);
+    }
 }

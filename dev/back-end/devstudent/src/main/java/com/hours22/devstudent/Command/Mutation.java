@@ -4,13 +4,15 @@ import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.hours22.devstudent.Command.Create.CreateAnswer;
 import com.hours22.devstudent.Command.Create.CreateComment;
 import com.hours22.devstudent.Command.Create.CreateQuestion;
+import com.hours22.devstudent.Command.Create.CreateUser;
 import com.hours22.devstudent.Command.Delete.DeleteAnswer;
 import com.hours22.devstudent.Command.Delete.DeleteComment;
 import com.hours22.devstudent.Command.Delete.DeleteQuestion;
+import com.hours22.devstudent.Command.Update.UpdateUserAuthState;
 import com.hours22.devstudent.Entity.Answer;
 import com.hours22.devstudent.Entity.Question;
 import com.hours22.devstudent.Entity.Comment;
-import com.hours22.devstudent.Repository.QuestionRepository;
+import com.hours22.devstudent.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +21,12 @@ import java.util.List;
 @Component
 public class Mutation implements GraphQLMutationResolver {
     //region properties
+    @Autowired
+    private CreateUser createUser;
+    @Autowired
+    private UpdateUserAuthState updateUserAuthState;
+    @Autowired
+    private Login login;
     @Autowired
     private CreateAnswer createAnswer;
     @Autowired
@@ -32,6 +40,7 @@ public class Mutation implements GraphQLMutationResolver {
     @Autowired
     private DeleteComment deleteComment;
     //endregion
+
     //region create Muation
     public Question createQuestion(String title, String author, List<String> tags, String content) {
         return createQuestion.createQuestion(title, author, tags, content);
@@ -56,6 +65,19 @@ public class Mutation implements GraphQLMutationResolver {
 
     public Comment deleteComment(String question_id, String answer_id, String comment_id) {
         return deleteComment.deleteComment(question_id, answer_id, comment_id);
+    }
+    //endregion
+
+    //region member Mutation
+    public User createUser(String _id, String password, String nickName, String email, String schoolName) {
+        return createUser.createUser(_id, password, nickName, email, schoolName);
+    }
+
+    public Boolean updateUserAuthState(String authState){
+        return updateUserAuthState.updateUserAuthState(authState);
+    }
+    public Boolean login(String _id, String password) {
+        return login.login(_id, password);
     }
     //endregion
 }
