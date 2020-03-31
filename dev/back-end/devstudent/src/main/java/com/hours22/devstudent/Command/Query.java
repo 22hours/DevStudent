@@ -3,6 +3,7 @@ package com.hours22.devstudent.Command;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.hours22.devstudent.Command.Find.FindAllQuestions;
 import com.hours22.devstudent.Command.Find.FindQuestionBy_id;
+import com.hours22.devstudent.Command.Find.FindQuestionsByOption;
 import com.hours22.devstudent.Command.Find.FindQuestionsByTags;
 import com.hours22.devstudent.Entity.Question;
 import com.hours22.devstudent.Repository.QuestionRepository;
@@ -21,14 +22,14 @@ import java.util.List;
 public class Query implements GraphQLQueryResolver {
 
     private QuestionRepository questionRepository;
-
     @Autowired
     FindAllQuestions findAllQuestions;
     @Autowired
     FindQuestionsByTags findQuestionsByTags;
     @Autowired
     FindQuestionBy_id findQuestionBy_id;
-
+    @Autowired
+    FindQuestionsByOption findQuestionsByOption;
     public Query(QuestionRepository questionRepository){
         this.questionRepository = questionRepository;
     }
@@ -37,7 +38,11 @@ public class Query implements GraphQLQueryResolver {
         return findAllQuestions.findAllQuestions(param,pageNum,requiredCount);
     }
 
-    public Question findQuestionBy_id(String _id) {
+    public List<Question> findQuestionsByOption(String param, String option, String searchContent, int pageNum, int requiredCount) {
+        return findQuestionsByOption.findQuestionsByOption(param,option,searchContent,pageNum,requiredCount);
+    }
+
+        public Question findQuestionBy_id(String _id) {
         return findQuestionBy_id.findQuestionBy_id(_id);
     }
 
