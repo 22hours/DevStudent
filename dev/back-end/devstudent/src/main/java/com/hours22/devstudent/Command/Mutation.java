@@ -8,6 +8,7 @@ import com.hours22.devstudent.Command.Create.CreateUser;
 import com.hours22.devstudent.Command.Delete.DeleteAnswer;
 import com.hours22.devstudent.Command.Delete.DeleteComment;
 import com.hours22.devstudent.Command.Delete.DeleteQuestion;
+import com.hours22.devstudent.Command.Module.Login;
 import com.hours22.devstudent.Command.Update.UpdateUserAuthState;
 import com.hours22.devstudent.Entity.Answer;
 import com.hours22.devstudent.Entity.Question;
@@ -73,10 +74,10 @@ public class Mutation implements GraphQLMutationResolver {
         return createUser.createUser(_id, password, nickName, email, schoolName);
     }
 
-    public Boolean updateUserAuthState(String authState){
+    public User updateUserAuthState(String authState){
         return updateUserAuthState.updateUserAuthState(authState);
     }
-    public Boolean login(String _id, String password) {
+    public User LoginToServer(String _id, String password) {
         return login.login(_id, password);
     }
     //endregion

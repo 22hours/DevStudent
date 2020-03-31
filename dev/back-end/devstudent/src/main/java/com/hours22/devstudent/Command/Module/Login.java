@@ -1,24 +1,30 @@
-package com.hours22.devstudent.Command;
+package com.hours22.devstudent.Command.Module;
 
 import com.hours22.devstudent.Entity.User;
 import com.hours22.devstudent.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Random;
+
 @Component
 public class Login {
-
+    @Autowired
+    private RandMaker randMaker;
     @Autowired
     private UserRepository userRepository;
 
-    public Boolean login(String _id, String password){
+    public User login(String _id, String password){
         if(!userRepository.existsBy_id(_id)){
-            return false;
+            return new User(null,"Login fail","Login fail","Login fail","Login fail","Login fail");
         }
         User user = userRepository.findBy_id(_id);
         if(!user.getPassword().equals(password) || !user.getAuthState().equals("Certificated")){
-            return false;
+            return new User(null,"Login fail","Login fail","Login fail","Login fail","Login fail");
         }
-        return true;
+        String key = randMaker.getKey(false, 20);
+        user.setToken(key);
+        userRepository.save(user);
+        return user;
     }
 }

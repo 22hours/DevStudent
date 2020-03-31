@@ -1,6 +1,6 @@
 package com.hours22.devstudent.Command.Create;
 
-import com.hours22.devstudent.Command.AuthMailSend;
+import com.hours22.devstudent.Command.Module.AuthMailSend;
 import com.hours22.devstudent.Entity.User;
 import com.hours22.devstudent.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

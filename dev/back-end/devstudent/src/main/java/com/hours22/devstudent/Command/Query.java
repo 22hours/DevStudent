@@ -1,11 +1,10 @@
 package com.hours22.devstudent.Command;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
-import com.hours22.devstudent.Command.Find.FindAllQuestions;
-import com.hours22.devstudent.Command.Find.FindQuestionBy_id;
-import com.hours22.devstudent.Command.Find.FindQuestionsByOption;
-import com.hours22.devstudent.Command.Find.FindQuestionsByTags;
+import com.hours22.devstudent.Command.Find.*;
+import com.hours22.devstudent.Entity.Duplicate;
 import com.hours22.devstudent.Entity.Question;
+import com.hours22.devstudent.Entity.User;
 import com.hours22.devstudent.Repository.QuestionRepository;
 import com.hours22.devstudent.Repository.SequenceIDRepository;
 import com.hours22.devstudent.Repository.UserRepository;
@@ -25,13 +24,15 @@ public class Query implements GraphQLQueryResolver {
     private QuestionRepository questionRepository;
     private UserRepository userRepository;
     @Autowired
-    FindAllQuestions findAllQuestions;
+    private FindAllQuestions findAllQuestions;
     @Autowired
-    FindQuestionsByTags findQuestionsByTags;
+    private FindQuestionsByTags findQuestionsByTags;
     @Autowired
-    FindQuestionBy_id findQuestionBy_id;
+    private FindQuestionBy_id findQuestionBy_id;
     @Autowired
-    FindQuestionsByOption findQuestionsByOption;
+    private FindQuestionsByOption findQuestionsByOption;
+    @Autowired
+    private FindUserBy_id findUserBy_id;
 
     public Query(QuestionRepository questionRepository, UserRepository userRepository){
         this.questionRepository = questionRepository;
@@ -55,7 +56,13 @@ public class Query implements GraphQLQueryResolver {
         return findQuestionsByTags.findQuestionsByTags(param, pageNum, requiredCount, tags, logical);
     }
 
-    public Boolean checkDuplicate(String _id){
-        return !userRepository.existsBy_id(_id);
+    public Duplicate checkDuplicate(String _id){
+        if(!userRepository.existsBy_id(_id))
+            return new Duplicate(true);
+        return new Duplicate(false);
+    }
+
+    public User findUserBy_id(String _id){
+        return findUserBy_id.findUserBy_id(_id);
     }
 }

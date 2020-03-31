@@ -22,6 +22,8 @@ public class User {
     private String date;
     @Setter
     private String authState;
+    @Setter
+    private String token;
 
     public User(String _id, String password, String nickName, String email, String schoolName, String authState) {
         long time = System.currentTimeMillis();
@@ -33,6 +35,7 @@ public class User {
         this.email = email;
         this.schoolName = schoolName;
         this.authState = authState;
+        this.token = "token create yet";
     }
 }
 

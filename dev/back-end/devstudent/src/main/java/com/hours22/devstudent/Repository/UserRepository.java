@@ -13,6 +13,8 @@ public interface UserRepository extends MongoRepository<User, String> {
     boolean existsBy_id(String _id);
 
     User findBy_id(String _id);
+
+    int countBy_id(String _id);
 }
 
 

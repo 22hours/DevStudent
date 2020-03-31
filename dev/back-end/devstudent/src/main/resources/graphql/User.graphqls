@@ -1,21 +1,22 @@
 type User{
-    _id : String!
+    _id : String
     password : String!
     nickName : String!
     email : String!
     schoolName : String!
     date : String!
     authState : String!
-
+    token : String
 }
 
 extend type Mutation{
     createUser(_id : String!, password: String!, nickName: String!, email: String!, schoolName : String!) : User
-    updateUserAuthState(authState : String!) : Boolean
-    login(_id : String, password : String) : Boolean
+    updateUserAuthState(authState : String!) : User
+    LoginToServer(_id : String, password : String) : User
 }
 
 
 extend type Query{
-    checkDuplicate(_id : String) : Boolean
+    findUserBy_id(_id : String) : User
+    checkDuplicate(_id : String) : Duplicate
 }

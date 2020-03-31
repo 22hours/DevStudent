@@ -1,4 +1,4 @@
-package com.hours22.devstudent.Command;
+package com.hours22.devstudent.Command.Module;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -14,39 +14,12 @@ import java.util.Random;
 public class AuthMailSend {
     @Autowired
     private JavaMailSender javaMailSender;
-
-    private String generateKey() {
-        Random random = new Random();
-        StringBuffer ranKey = new StringBuffer();
-        int num = 0;
-
-        do {
-            num = random.nextInt(75) + 48;
-            if ((num >= 48 && num <= 57) || (num >= 65 && num <= 90) || (num >= 97 && num <= 122)) {
-                ranKey.append((char) num);
-            } else {
-                continue;
-            }
-        } while (ranKey.length() < size);
-
-        if (lowerCheck) {
-            return ranKey.toString().toLowerCase();
-        }
-        return ranKey.toString();
-    }
-
-    private boolean lowerCheck;
-    private int size;
-
-    public String getKey(boolean lowerCheck, int size) {
-        this.lowerCheck = lowerCheck;
-        this.size = size;
-        return generateKey();
-    }
+    @Autowired
+    private RandMaker randMaker;
 
     public String authMailSend(String email, String _id) {
         System.out.println("authMailSend 시작");
-        String key = getKey(false, 20);
+        String key = randMaker.getKey(false, 20);
         System.out.println("authMailSend 키테스트");
         System.out.println(key);
         System.out.println("authMailSend 보내기 시작");

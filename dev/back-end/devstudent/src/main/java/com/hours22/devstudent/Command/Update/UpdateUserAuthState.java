@@ -11,14 +11,14 @@ public class UpdateUserAuthState {
     @Autowired
     private UserRepository userRepository;
 
-    public Boolean updateUserAuthState(String authState) {
+    public User updateUserAuthState(String authState) {
         if(!userRepository.existsByAuthState(authState)){
-            return false;
+            return new User(null,"fail","fail","fail","fail","fail");
         }
         User user = userRepository.findByAuthState(authState);
         user.setAuthState("Certificated");
         userRepository.save(user);
-        return true;
+        return user;
     }
 
 }

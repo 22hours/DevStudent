@@ -18,7 +18,8 @@ public class MutationAspect {
     }
 
     @Before("execution(* com.hours22.devstudent.Command.Mutation.create*(..) )")
-    public void beforeCreate(JoinPoint joinPoint) { // 해당 ID가 Sequence에 있나 없나 검사
+    public void beforeCreate(JoinPoint joinPoint) {
+        // 해당 ID가 Sequence에 있나 없나 검사
         String methodName = joinPoint.getSignature().getName().substring(6);
         if(sequenceIDRepository.countBy_id(methodName) == 0) {
             System.out.println(methodName + "이 Sequence에 없습니다!");
