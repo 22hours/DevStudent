@@ -62,7 +62,7 @@ public class Query implements GraphQLQueryResolver {
         return new Duplicate(false);
     }
 
-    public User findUserBy_id(String _id){
-        return findUserBy_id.findUserBy_id(_id);
+    public User findUserBy_id(String token,String _id){
+        return findUserBy_id.findUserBy_id(token,_id);
     }
 }

@@ -17,6 +17,6 @@ extend type Mutation{
 
 
 extend type Query{
-    findUserBy_id(_id : String) : User
+    findUserBy_id(token : String, _id : String) : User
     checkDuplicate(_id : String) : Duplicate
 }

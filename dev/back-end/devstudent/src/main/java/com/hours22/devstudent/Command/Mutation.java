@@ -43,16 +43,16 @@ public class Mutation implements GraphQLMutationResolver {
     //endregion
 
     //region create Muation
-    public Question createQuestion(String title, String author, List<String> tags, String content) {
-        return createQuestion.createQuestion(title, author, tags, content);
+    public Question createQuestion(String token, String title, String author, List<String> tags, String content) {
+        return createQuestion.createQuestion(token, title, author, tags, content);
     }
 
-    public Answer createAnswer(String question_id, String author, String content) {
-        return createAnswer.createAnswer(question_id, author, content);
+    public Answer createAnswer(String token, String question_id, String author, String content) {
+        return createAnswer.createAnswer(token, question_id, author, content);
     }
 
-    public Comment createComment(String question_id, String answer_id, String author, String content) {
-        return createComment.createComment(question_id, answer_id, author, content);
+    public Comment createComment(String token, String question_id, String answer_id, String author, String content) {
+        return createComment.createComment(token, question_id, answer_id, author, content);
     }
     //endregion
     //region delete Mutation
