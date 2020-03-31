@@ -105,5 +105,6 @@ margin-right: auto;
 }
 
 .nav_item_right{
-justify-content: flex-end;
+  justify-content: flex-end;
+  
 }

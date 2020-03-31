@@ -1,3 +1,7 @@
 .howto-wrapper{
     border-right : 2px inset	#DCDCDC;
 }
+.howto-page-navigater{
+    position: absolute; 
+    margin-top: 0.5%;
+}

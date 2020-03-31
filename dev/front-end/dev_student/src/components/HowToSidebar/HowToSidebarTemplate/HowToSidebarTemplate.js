@@ -11,14 +11,19 @@ class HowToSidebarTemplate extends Component{
         
         const{ hot,tag,handleNewQuestion } = this.props;
         const btn_style={
-            fontSize:'20px'
+            fontSize:'20px',
+            color:'white',
+            width:'100%'
         }
         return(
+            <React.Fragment>
             <Container className="howto-sidebar-wrapper">
                 <Row>
-                    <Button onClick={handleNewQuestion} className="new-question-button" color="info" style={btn_style}>
-                        <Link to="/newquestion">New Question!</Link>
+                    <Link to="/newquestion" style={btn_style}>
+                        <Button onClick={handleNewQuestion} className="new-question-button" color="info" style={btn_style}>
+                            NewQuestion!
                         </Button>
+                    </Link>
                 </Row>
                 <Row>
                     <QuestionTagTemplate
@@ -28,10 +33,13 @@ class HowToSidebarTemplate extends Component{
                 <Row>
                     <HotQuestionTemplate
                     hot={hot}>
-
                     </HotQuestionTemplate>
                 </Row>
             </Container>
+            <div style={{marginBottom:'3.5%'}}>
+
+            </div>
+            </React.Fragment>
         );
     }
 }

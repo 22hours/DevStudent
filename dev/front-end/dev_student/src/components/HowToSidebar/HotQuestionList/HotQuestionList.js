@@ -15,11 +15,9 @@ const HotQuestionList = ({hot}) => {
         )  
     )
     return(
-        <Container className="hot-question-list-items">
-            <div>
+            <div className="hot-question-list-items">
                  {hotlist}
             </div>
-        </Container>
     );
 }
 export default HotQuestionList;

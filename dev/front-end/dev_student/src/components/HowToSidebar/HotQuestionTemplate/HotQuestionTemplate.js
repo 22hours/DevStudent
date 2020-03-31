@@ -18,6 +18,7 @@ class HotQuestionTemplate extends Component{
                     </HotQuestionList>
                 </Row>
             </Container>
+            
         );
     }
 }

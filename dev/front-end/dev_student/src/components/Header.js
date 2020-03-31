@@ -1,12 +1,13 @@
 //import { NavLink } from "react-router-dom"
 import './Header.css'
-import { Container} from 'reactstrap';
+import { Container, UncontrolledButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 import AuthDebug from '../components/Debug/AuthDebug';
 import {Link} from 'react-router-dom';
 import React, { useState } from 'react';
 import {
     Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink
 } from 'reactstrap';
+import Dropdownbutton from './MypageButton/MypageDropdownButton';
 
 const Header = (props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -17,11 +18,9 @@ const Header = (props) => {
     const sign_style={
         justifyContent: 'flex-end'
     }
-
     const img_style = {
-       marginRight:'4px'
-      };
-    
+        marginRight:'4px'
+       };
       return (
           
             <Navbar color="light" light expand="md" className="header-wrapper sticky-top" >
@@ -65,10 +64,13 @@ const Header = (props) => {
                 </Nav>
             </Collapse>
             <div className="nav-item-wrapper" style={sign_style} >
-                    <NavLink href="/login">
+                    <Link to="/login">
                     <img width="18px" height="20px" style={img_style} src="/img/user_area_button_black.png"></img>
-                    </NavLink>
-                </div>
+                    </Link>
+            </div>
+            <div>
+                <Dropdownbutton></Dropdownbutton>
+            </div>
             </Container>
             </Navbar>
     );
