@@ -7,15 +7,15 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FindUserBy_id {
+public class ExistsBy_id {
     @Autowired
     private MongoTemplate mongoTemplate;
 
     @Autowired
     private UserRepository userRepository;
 
-    public User findUserBy_id(String _id){
-        return userRepository.findUserBy_id(_id);
+    public boolean existsBy_id(String _id){
+        return userRepository.existsBy_id(_id);
     }
 
 }

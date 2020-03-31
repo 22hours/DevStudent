@@ -15,11 +15,12 @@ enum AuthState{
 
 
 type Mutation{
-    createUser(_id : String!, password: String!, nickName: String!, email: String!, schoolName : String!, date:String!) : User!
-    updateUserAuthState(authState : String!) : User!
+    createUser(_id : String!, password: String!, nickName: String!, email: String!, schoolName : String!, date:String!) : User
+    updateUserAuthState(authState : String!) : User
 }
 
 
 type Query{
     findUserBy_id(_id: String!) : User
+    login(_id:String!, password:String!) : User
 }

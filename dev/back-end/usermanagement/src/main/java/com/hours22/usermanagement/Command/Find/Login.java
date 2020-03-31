@@ -7,15 +7,18 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FindUserBy_id {
-    @Autowired
-    private MongoTemplate mongoTemplate;
+public class Login {
 
     @Autowired
     private UserRepository userRepository;
 
-    public User findUserBy_id(String _id){
-        return userRepository.findUserBy_id(_id);
+    public User login(String _id, String password){
+        User user = userRepository.findUserBy_id(_id);
+        if(user == null)
+            return new User(null, "exception", "_id miss",null,null,null,null);
+        if(!password.equals(user.getPassword()))
+            return new User(null, "exception", "password miss",null,null,null,null);
+        return user;
     }
 
 }

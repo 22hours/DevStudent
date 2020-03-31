@@ -2,7 +2,7 @@ package com.hours22.usermanagement.Command;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.hours22.usermanagement.Command.Find.FindUserBy_id;
-import com.hours22.usermanagement.Command.Update.UpdateUserAuthState;
+import com.hours22.usermanagement.Command.Find.Login;
 import com.hours22.usermanagement.Entity.User;
 import com.hours22.usermanagement.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class Query implements GraphQLQueryResolver {
     FindUserBy_id findUserBy_id;
 
     @Autowired
-    UpdateUserAuthState updateUserAuthState;
+    Login login;
 
     public Query(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -28,4 +28,7 @@ public class Query implements GraphQLQueryResolver {
         return findUserBy_id.findUserBy_id(_id);
     }
 
+    public User login(String _id, String password) {
+        return login.login(_id, password);
+    }
 }
