@@ -1,0 +1,25 @@
+type User{
+    _id : String!
+    password : String!
+    nickName : String!
+    email : String!
+    schoolName : String!
+    date : String!
+    authState : String!
+}
+
+enum AuthState{
+    Uncertified
+    Certified
+}
+
+
+type Mutation{
+    createUser(_id : String!, password: String!, nickName: String!, email: String!, schoolName : String!, date:String!) : User!
+    updateUserAuthState(authState : String!) : User!
+}
+
+
+type Query{
+    findUserBy_id(_id: String!) : User
+}
