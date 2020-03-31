@@ -1,0 +1,10 @@
+.home-root-wrapper{
+    background: url('http://drive.google.com/uc?export=view&id=1xYwZSN-5yOl6t8zLvWqV7CU0DvAdWmvp') no-repeat fixed 50% 0;
+    
+    /* background: url('http://drive.google.com/uc?export=view&id=1D3u1pU5FnfCTI4_I0hnxGjEoybruCKe3') top left/cover no-repeat; */
+    height: 20em;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+}
+

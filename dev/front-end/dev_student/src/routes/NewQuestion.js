@@ -4,10 +4,11 @@ import NewQuestionTemplate from '../components/NewQuestion/NewQuestionTemplate/N
 import {CREATE_QUESTION} from '../Mutation/mutations';
 
 const NewQuestion = ({}) => {
-    
+    const sessionToken = window.sessionStorage.getItem('token');
     const [createQuestion] = useMutation(CREATE_QUESTION);
     const handleSubmit = async(authorParam,titleParam,contentParam,tagsParam) =>{
         createQuestion({variables : {
+            token : sessionToken,
             author : authorParam,
             title : titleParam,
             content : contentParam,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect , useRef, useLayoutEffect } from 'react';
 import '../components/Login/LoginTemplate.css';
 import { Redirect } from 'react-router-dom';
 import { Container, Col, Row } from 'reactstrap';
@@ -10,28 +10,31 @@ import { useMutation } from '@apollo/react-hooks';
 import { LOGIN } from '../Mutation/mutations';
 
 const Login = ({ saveLoginState, authenticated, location }) => {
-    const [logintoserver, { data }] = useMutation(LOGIN);
+    const [LoginToServer, { data }] = useMutation(LOGIN);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const handleClick = async () => {
-        logintoserver({
-            variables: {
-                _id: email,
-                password: password,
-            }})
-        .then(response => {
-            if (data?.logIn._id) {
-                alert('Success to login');
-                console.log(data.logIn._id);
-                saveLoginState(email);
-            }
-            else {
-                alert('Failed to login');
-                setEmail('');
-                setPassword('');
-            }
-        })
-    };
+    
+    const firstUpdate = useRef(true);
+    useLayoutEffect(() => {
+        if (firstUpdate.current) {
+          firstUpdate.current = false;
+          return;
+        }
+        if(data == null)return;
+        if(data?.LoginToServer.token){
+            console.log("1");
+            saveLoginState(email,data.LoginToServer.token);
+            return ;
+        }
+        else {
+            console.log("2");
+            setPassword('');
+            alert("로그인 시스템의 정보와 다릅니다!");
+            return ;
+        };
+    },[data]);
+
+
 
     const { from } = location.state || { from: { pathname: "/" } };
     if (authenticated) return <Redirect to={from} />;
@@ -73,7 +76,14 @@ const Login = ({ saveLoginState, authenticated, location }) => {
                             <div className="login-form-wrapper" >
                                 <div className="login-form-resize-wrapper">
                                     <Button
-                                        onClick={handleClick}
+                                        onClick={() => {
+                                            if(email.length < 1)return;
+                                            if(password.length < 1)return;
+                                            LoginToServer({variables : {
+                                                _id : email,
+                                                password : password
+                                            }})
+                                        }}
                                         variant="contained" color="primary">
                                         login
                                     </Button>

@@ -29,13 +29,14 @@ class App extends Component {
   }
 
   render() {
-    const saveLoginState = (email)  => {
+    const saveLoginState = (email,token)  => {
         this.setState({
           user : email,
           authenticated : true
         })
         window.sessionStorage.setItem('user',email);
         window.sessionStorage.setItem('auth',true);
+        window.sessionStorage.setItem('token',token);
 
     }
 
