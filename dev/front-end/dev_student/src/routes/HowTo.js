@@ -24,10 +24,10 @@ const HowTo = () => {
         { idx: 4, tagname: 'Html', tagcount: '200' }
     ])
 
-
     const { loading, error, data } = useQuery(findAllQuestions, {
         variables: { param: param },
     });
+
     if (loading) return <p>Loading ...</p>;
     if (error) return <p>Error!</p>;
     const questionCount = Object.keys(data.findAllQuestions).length;
@@ -59,6 +59,7 @@ const HowTo = () => {
                     <Route exact path="/howto"
                         render={() =>
                             <HowToListTemplate
+                                setParam={setParam}
                                 questionCount={questionCount}
                                 param={param}
                                 questionList={questionList}

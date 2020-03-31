@@ -2,8 +2,9 @@ import React,{useState, useContext} from 'react'
 import './NewQuestionTemplate.css';
 import { Container, Row , Input } from 'reactstrap';
 import {  Button } from '@material-ui/core';
+import UserContext from '../../../Context/UserContext';
 const NewQuestionTemplate = ({handleSubmit}) => {
-    const user = window.sessionStorage.getItem('user');
+    const {user} = useContext(UserContext);
     const [title,setTitle] = useState('');
     const [body,setBody] = useState('');
     const [tags,setTags]=useState('');
@@ -60,7 +61,7 @@ const NewQuestionTemplate = ({handleSubmit}) => {
                         </div>
                         <div className="submit-right">
                             <Button 
-                            onClick={()=>{handleSubmit("winterlood",title,body,testTag)}}
+                            onClick={()=>{handleSubmit(user,title,body,testTag)}}
                             variant="contained" color="primary">
                                 Submit
                             </Button>

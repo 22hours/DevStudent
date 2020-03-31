@@ -13,13 +13,11 @@
 
 .howto-item-wrapper{
     background-color: white;
-    border: gray;
-    border-bottom: 2px;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.16), 0 2px 3px rgba(0,0,0,0.23); /* 그림자 */ 
+    border-top: 0.5px solid #E3E3E3;
 }
 
 .howto-item{
-    height: 150px;
+    height: 120px;
     width: 100%;
 }
 .howto-item .content{
@@ -58,41 +56,56 @@
 }
 
 .howto-item .author-span{
-    color : black;
+    color : gr;
     font-size: medium;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
 .howto-item .title-span{
     color : 	#3366CC;
-    font-size: x-large;
+    font-size: large;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
 .howto-item .answer-number-wrapper{
-    height: 35px;
+    height: 30px;
 }
 .howto-item .answer-span-wrapper{
     height: 5px;
 }
 .howto-item .answer-number{
     text-align: center;
-    font-size: xx-large;
+    font-size: 23px;
+    width:100%;
+    display: inline-block;
 }
 .howto-item .answer-span{
     vertical-align: bottom;
+    text-align: center;
+    width:100%;
+    display: inline-block;
 }
 
 .howto-item .views-number-wrapper{
-    height: 35px;
+    height: 30px;
 }
 .howto-item .views-span-wrapper{
     height: 5px;
 }
 .howto-item .views-number{
-    font-size: xx-large;
+    font-size: 23px;
+    text-align: center;
+    width:100%;
+    display: inline-block;
 }
 
 .howto-item .views-span{
     vertical-align: bottom;
+    text-align: center;
+    width:100%;
+    display: inline-block;
+}
+
+.howto-item .previews-span{
+    font-size: medium;
 }

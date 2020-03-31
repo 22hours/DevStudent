@@ -1,7 +1,7 @@
 import React from 'react';
 import './HowToContentHeader.css';
 const HowToContentHeader = (props) => {
-    const {title,author,date,views} = props;
+    const {title,author,date,views,mine} = props;
     return (
         <React.Fragment>
             <div>

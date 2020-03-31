@@ -19,3 +19,9 @@ mutation logIn($_id:String!, $password:String!){
     }
 }
 `;
+
+export const UPDATE_USER_AUTH_STATE = gql`
+mutation updateUserAuthState($authState : String!){
+    updateUserAuthState(authState : $authState)
+}
+`;

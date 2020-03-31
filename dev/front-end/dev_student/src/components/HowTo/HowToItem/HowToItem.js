@@ -19,7 +19,7 @@ class HowToItem extends Component {
                     <div className="howto-item">
                         <div className="red-border content">
                             <div className="red-border">
-                                <span className="author-span">{author} lvl : 200</span>
+                                <span className="author-span">{author}</span>
                             </div>
                             <div className="red-border">
                                 <span className="title-span">
@@ -32,7 +32,8 @@ class HowToItem extends Component {
                                     {date}
                                 </span>
                             </div>
-                            <div className="red-border">{previews}</div>
+                            <div>
+                                <span className="previews-span">{previews}</span></div>
                             <div className="red-border"><Tag></Tag></div>
                         </div>
                         <div style={noPaddingStyle} className="red-border stats-area">
@@ -52,7 +53,7 @@ class HowToItem extends Component {
                                     <span className="views-number">{views}</span>
                                 </div>
                                 <div calssName="views-span-wrapper">
-                                    <span className="views-span">Views</span>
+                                    <span className="views-span">watches</span>
                                 </div>
                             </div>
                         </div>

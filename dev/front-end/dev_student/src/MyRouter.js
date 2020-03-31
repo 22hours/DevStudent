@@ -17,7 +17,7 @@ const MyRouter =(props) =>{
                   <Route path="/mypage" component={MyPage} />
                   <Route path="/todolist" component={Todo} />
                   <Route path="/howto" component={HowTo}/>
-                  <Route path="/emailChekc/:rand" component={EmailCheck}/>
+                  <Route path="/emailCheck/:rand" component={EmailCheck}/>
           
                   <Route
                     path="/login"

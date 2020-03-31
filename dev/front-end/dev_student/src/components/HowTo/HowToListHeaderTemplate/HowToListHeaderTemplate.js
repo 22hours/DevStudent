@@ -3,7 +3,7 @@ import { FormGroup, Input, Button, Row, Collapse } from 'reactstrap';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import Tag from "../../Tag/Tag";
 import './HowToListHeaderTemplate.css';
-const HowToListHeaderTemplate = ({ question_count }) => {
+const HowToListHeaderTemplate = ({ question_count, param, setParam}) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [serachBarIsOpen, setSearchBarIsOpen] = useState(false);
 
@@ -16,7 +16,7 @@ const HowToListHeaderTemplate = ({ question_count }) => {
     return (
         <React.Fragment>
             <Row>
-                <span className="content-header">HowTo : [  전체보기 ] </span>
+                <span className="content-header">HowTo : [  {param} ] </span>
             </Row>
             <Row><Tag></Tag></Row>
             <Row >
@@ -30,15 +30,15 @@ const HowToListHeaderTemplate = ({ question_count }) => {
                 </div>
 
                 <div className="filter-button-wrapper">
-                    <Dropdown isOpen={dropdownOpen} toggle={toggleDropDown}>
+                    <Dropdown  isOpen={dropdownOpen} toggle={toggleDropDown}>
                         <DropdownToggle caret>
                             필터
                         </DropdownToggle>
                         <DropdownMenu>
                             <DropdownItem header>정렬기준</DropdownItem>
-                            <DropdownItem>조회순</DropdownItem>
-                            <DropdownItem>화제순</DropdownItem>
-                            <DropdownItem>최신순</DropdownItem>
+                            <DropdownItem onClick={()=>{setParam("views")}}>조회순</DropdownItem>
+                            <DropdownItem onClick={()=>{setParam("answers")}}>화제순</DropdownItem>
+                            <DropdownItem onClick={()=>{setParam("date")}}>최신순</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </div>

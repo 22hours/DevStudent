@@ -1,13 +1,16 @@
 import React from 'react';
 import {Container} from 'reactstrap';
 import HowToListHeaderTemplate from '../HowToListHeaderTemplate/HowToListHeaderTemplate';
-const HowToListTemplate = ({questionCount,questionList,question_count,tags,param}) => {
+const HowToListTemplate = ({questionCount,questionList,question_count,tags,param,setParam}) => {
     return (
         <React.Fragment>
         <Container className='margin-top-3 red-border'>
-           <HowToListHeaderTemplate tags={tags} question_count={questionCount}></HowToListHeaderTemplate>
+           <HowToListHeaderTemplate 
+            setParam={setParam}           
+            param={param} 
+            tags={tags} question_count={questionCount}></HowToListHeaderTemplate>
         </Container>
-        <div >
+        <div>
            {questionList}
         </div>
         <Container className='margin-top-3 red-border'>

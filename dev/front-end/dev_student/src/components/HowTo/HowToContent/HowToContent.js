@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Container } from 'reactstrap';
 import { useQuery } from '@apollo/react-hooks';
 import HowToContentHeader from '../HowToContentHeader/HowToContentHeader';
@@ -6,16 +6,23 @@ import HowToReply from '../HowToReply/HowToReply';
 import './HowToContent.css'
 import ReactMarkdown from 'react-markdown'
 import {findQuestionBy_id_Query} from '../../../query/queries'
+import UserContext from '../../../Context/UserContext';
 
 const HowToContent = ({match}) => {
+    const {user} = useContext(UserContext);
     const { loading, error, data } = useQuery(findQuestionBy_id_Query, {
         variables: { _id: match.params.id },
       });
       if (loading) return <p>Loading ...</p>;
+      var mine = false;
+      if(data.findQuestionBy_id.author === user){
+        mine = true;
+      }
     return (
         <React.Fragment>
         <Container className="margin-top-3 how-to-content-header">
             <HowToContentHeader 
+            mine={mine}
             title={data.findQuestionBy_id.title}
             author={data.findQuestionBy_id.author}
             date={data.findQuestionBy_id.date}

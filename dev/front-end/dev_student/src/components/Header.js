@@ -76,7 +76,7 @@ const Header = (props) => {
                 </NavItem>
                 <NavItem>
                 <div className="nav-item-wrapper">
-                    <Link to="/posts" className="nav-link">Musium</Link>
+                    <Link to="/posts" className="nav-link">뮤지엄</Link>
                     </div>
                 </NavItem>
                 <NavItem>

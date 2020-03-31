@@ -1,8 +1,12 @@
 import React from 'react';
-
+import {} from '../Mutation/mutations'
+import EmailCheckTemplate from '../components/EmailCheck/EmailCheckTemplate/EmailCheckTemplate';
 const EmailCheck = ({match}) => {
     return(
-        <div>{match.params.rand}</div>
+        
+        <EmailCheckTemplate 
+        rand={match.params.rand}></EmailCheckTemplate>
+
     );
 }
 

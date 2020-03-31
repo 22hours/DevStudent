@@ -23,7 +23,7 @@ const Login = ({ saveLoginState, authenticated, location }) => {
             if (data?.logIn._id) {
                 alert('Success to login');
                 console.log(data.logIn._id);
-                saveLoginState(data.logIn._id);
+                saveLoginState(email);
             }
             else {
                 alert('Failed to login');

@@ -68,7 +68,7 @@
   background-color: #222a35;
   border: gray;
   border-bottom: 2px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); /* 그림자 */ 
+  box-shadow: 0 2px 4px rgba(167, 167, 167, 0.16), 0 2px 4px rgba(122, 122, 122, 0.23); /* 그림자 */ 
 
 }
 
