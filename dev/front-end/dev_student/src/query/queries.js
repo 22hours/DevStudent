@@ -42,4 +42,3 @@ query findAllQuestion($param : String){
     }
 }
 `;
-

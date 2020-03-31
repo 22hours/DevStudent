@@ -1,32 +1,42 @@
 import React, { Component, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { AuthRoute, NewQuestion, HowTo, Home, Posts, About, Login, MyPage, Todo, NotFound } from './routes';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header';
 import { ApolloProvider } from 'react-apollo';
 import client from "./apolloClient";
 import { signIn } from './auth';
+
 import './App.css';
 import MyRouter from './MyRouter';
+import UserContext from './Context/UserContext';
+
 class App extends Component {
   constructor(props){
     super(props);    
     this.state = {
-      user : null,
+      user : 'null',
       authenticated : false
     }
     console.log("App.js State Init");
   }
 
-  render() {
-    console.log("render this");
-    const {user, authenticated} = this.state;
+  componentDidMount(){
+    const sessionUser = window.sessionStorage.getItem('user');
+    const sessionAuth = window.sessionStorage.getItem('auth');
+    if(sessionUser){
+      this.setState({
+        user : sessionUser,
+        authenticated : sessionAuth
+      })
+    }
+  }
 
-    const login = ({ email, password })  => {
+  render() {
+    const saveLoginState = (email)  => {
         this.setState({
-          user : signIn({email,password}),
+          user : email,
           authenticated : true
         })
+        window.sessionStorage.setItem('user',email);
+        window.sessionStorage.setItem('auth',true);
+
     }
 
     const logout = () => {
@@ -34,12 +44,15 @@ class App extends Component {
         user : null,
         authenticated :false
       })
+      window.sessionStorage.clear();
     }
 
     // const login = ({ email, password }) => { setUser(signIn({ email, password })); }
     return (
       <ApolloProvider client={client}>
-        <MyRouter user={user} authenticated={authenticated} login={login} logout={logout}></MyRouter>
+        <UserContext.Provider value={this.state}>
+        <MyRouter authenticated={this.state.authenticated} saveLoginState={saveLoginState} logout={logout}></MyRouter>
+        </UserContext.Provider>
       </ApolloProvider>
     );
   };

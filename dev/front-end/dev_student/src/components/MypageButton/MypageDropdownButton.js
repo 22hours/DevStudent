@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 const Example = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
   const toggle = () => setDropdownOpen(prevState => !prevState);
-
+  const {user} = props;
   const img_style = {
     marginRight:'4px'
    };
@@ -18,7 +17,7 @@ const Example = (props) => {
         <DropdownMenu right className="nav-smypage-dropdown-btn">
           <DropdownItem header>
             <div style={{fontSize: '16px'}}>
-              sg05138
+              {user}님
             </div>
             <br></br>
             <div>

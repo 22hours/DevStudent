@@ -3,11 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Content from '../components/Content';
 import PostContent from '../components/PostContent';
 
-const Post = ({ match }) => (
-    <h2>
-        {match.params.title}
-    </h2>
-);
 
 class Posts extends Component {
 

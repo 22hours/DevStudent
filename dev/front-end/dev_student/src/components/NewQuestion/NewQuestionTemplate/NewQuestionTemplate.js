@@ -1,13 +1,18 @@
-import React from 'react'
+import React,{useState, useContext} from 'react'
 import './NewQuestionTemplate.css';
 import { Container, Row , Input } from 'reactstrap';
 import {  Button } from '@material-ui/core';
-const NewQuestionTemplate = () => {
+const NewQuestionTemplate = ({handleSubmit}) => {
+    const user = window.sessionStorage.getItem('user');
+    const [title,setTitle] = useState('');
+    const [body,setBody] = useState('');
+    const [tags,setTags]=useState('');
+    const testTag = ["javascript","c++"];
     return (
         <div className="new-question-wrapper">
             <Container>
                 <Row className="new-question-header-row">
-                    <span>안녕하세요 winterlood님!</span>
+                   <span>{user}님 &nbsp;</span>
                     
                     <span>무엇이든 물어보세요!</span>
                 </Row>
@@ -19,7 +24,10 @@ const NewQuestionTemplate = () => {
                             <br />
                             <span className="new-question-notice-span">궁금한점을 자세하고 구체적으로 적어주세요</span>
                         </div>
-                        <Input className="question-title" placeholder="Title : Ex > 자바스크립트로 버튼클릭 이벤트를 핸들링하는것에 대해.." />
+                        <Input
+                         value={title} 
+                        onChange={({target : {value}}) => setTitle(value)}
+                         className="question-title" placeholder="Title : Ex > 자바스크립트로 버튼클릭 이벤트를 핸들링하는것에 대해.." />
 
                     </div>
 
@@ -29,6 +37,8 @@ const NewQuestionTemplate = () => {
                             <span className="new-question-notice-span">궁금한점을 자세하고 구체적으로 적어주세요</span>
                         </div>
                         <Input
+                            value={body}
+                            onChange={({target : {value}}) => setBody(value)}
                             size="large"
                             type="textarea"></Input>
                     </div>
@@ -37,7 +47,9 @@ const NewQuestionTemplate = () => {
                             <br />
                             <span className="new-question-notice-span">태그를 달아주세요! [현재 사용 불가]</span>
                         </div>
-                        <Input className="question-title" placeholder="Tags : Ex> Javascript..." />
+                        <Input
+                         onChange={({target : {value}}) => setTags(value)}
+                        className="question-title" placeholder="Tags : Ex> Javascript..." />
 
                     </div>
                     <div className="new-question-submit-area">
@@ -47,7 +59,9 @@ const NewQuestionTemplate = () => {
                              </Button>
                         </div>
                         <div className="submit-right">
-                            <Button variant="contained" color="primary">
+                            <Button 
+                            onClick={()=>{handleSubmit("winterlood",title,body,testTag)}}
+                            variant="contained" color="primary">
                                 Submit
                             </Button>
                         </div>

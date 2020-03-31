@@ -1,13 +1,10 @@
-import React, { Component, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { AuthRoute, NewQuestion, HowTo, Home, Posts, About, Login, MyPage, Todo, NotFound } from './routes';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { EmailCheck, AuthRoute, NewQuestion, HowTo, Home, Posts, About, Login, MyPage, Todo, NotFound } from './routes';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header';
-import UserContext from './Context/UserContenxt';
-class MyRouter extends Component{
-
-    render(){
-        const {user, authenticated, login, logout} = this.props;
+const MyRouter =(props) =>{
+        const {saveLoginState,user, authenticated, login} = props;
         return(
             <Router>
             <div id="rt">
@@ -20,19 +17,21 @@ class MyRouter extends Component{
                   <Route path="/mypage" component={MyPage} />
                   <Route path="/todolist" component={Todo} />
                   <Route path="/howto" component={HowTo}/>
+                  <Route path="/emailChekc/:rand" component={EmailCheck}/>
+          
                   <Route
                     path="/login"
                     render={props => (
-                      <Login authenticated={authenticated} login={login} {...props} />
+                      <Login authenticated={authenticated} saveLoginState={saveLoginState} {...props} />
                     )}
                   />
-                   <AuthRoute
+
+                  <AuthRoute
                     authenticated={authenticated}
                     path="/newquestion"
-                    render={
-                      props => <NewQuestion user={user} {...props}></NewQuestion>
-                    }
+                    render={props => <NewQuestion user={user} {...props} />}
                   />
+
                   <Route component={NotFound} />
                 </Switch>
               </div>
@@ -40,7 +39,6 @@ class MyRouter extends Component{
             </div>
           </Router>
         );
-    }
 }
 
 export default MyRouter;

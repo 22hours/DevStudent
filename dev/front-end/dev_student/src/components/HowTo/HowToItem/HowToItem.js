@@ -6,10 +6,6 @@ class HowToItem extends Component {
 
     render() {
         const { id, author, title, date, previews, answers, views } = this.props;
-        const noMarginStyle = {
-            marginLeft: 0,
-            marginRight: 0
-        };
         const noPaddingStyle = {
             paddingLeft: 0,
             paddingRight: 0,

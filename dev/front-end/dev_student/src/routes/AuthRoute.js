@@ -1,21 +1,22 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import UserContext from '../Context/UserContext';
 
-function AuthRoute({ authenticated, component: Component, render, ...rest }) {
-    console.log(authenticated)
+function AuthRoute({authenticated,component: Component, render, ...rest }) {
+  console.log(authenticated);
   return (
     <Route
-      {...rest}
-      render={props =>
-        authenticated ? (
-          render ? render(props) : <Component {...props} />
-        ) : (
-            <Redirect
-            to={{ pathname: '/login', state: { from: props.location } }}
-          />
-        )
-      }
-    />
+    {...rest}
+    render={props =>
+      authenticated? (
+        render ? render(props) : <Component {...props} />
+      ) : (
+        <Redirect
+          to={{ pathname: '/login', state: { from: props.location } }}
+        />
+      )
+    }
+  />
   );
 }
 

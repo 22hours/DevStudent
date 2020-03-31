@@ -9,4 +9,5 @@ import Todo from './Todo';
 import HowTo from './HowTo';
 import NewQuestion from './NewQuestion';
 import AuthRoute from './AuthRoute';
-export {AuthRoute, NewQuestion, HowTo, Home, About, Posts, Login, MyPage, Search, Todo, NotFound };
+import EmailCheck from './EmailCheck'
+export {EmailCheck, AuthRoute, NewQuestion, HowTo, Home, About, Posts, Login, MyPage, Search, Todo, NotFound };
