@@ -18,13 +18,11 @@ class HowToItem extends Component {
                 <div className="howto-item-wrapper">
                     <div className="howto-item">
                         <div className="red-border content">
-                            <div className="red-border">
-                                <span className="author-span">{author}</span>
-                            </div>
+
                             <div className="red-border">
                                 <span className="title-span">
                                     <NavLink to={"/howto/question/" + id}>
-                                       {title}
+                                        {title}
                                     </NavLink>
                                 </span>
                                     &nbsp;&nbsp;
@@ -33,7 +31,12 @@ class HowToItem extends Component {
                                 </span>
                             </div>
                             <div>
-                                <span className="previews-span">{previews}</span></div>
+                                <span className="previews-span">{previews}</span>
+                            </div>
+                            <div className="red-border">
+                                <span className="author-span">{author} </span>
+                                <span className="author-span-add">님의 글</span>
+                            </div>
                             <div className="red-border"><Tag></Tag></div>
                         </div>
                         <div style={noPaddingStyle} className="red-border stats-area">

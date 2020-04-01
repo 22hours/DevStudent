@@ -5,8 +5,7 @@ const EmailCheck = ({match}) => {
     return(
         
         <EmailCheckTemplate 
-            rand={match.params.rand}>
-        </EmailCheckTemplate>
+        rand={match.params.rand}></EmailCheckTemplate>
 
     );
 }

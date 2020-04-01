@@ -25,12 +25,12 @@ const HowToListHeaderTemplate = ({ question_count, param, setParam}) => {
                     <span className="question-descript-span">  &nbsp; 건의 질문이 있습니다</span>
                 </p>
                 <div className="search-button-wrapper">
-                    <Button onClick={toggleSearchBar} color="primary">검색</Button>
+                    <Button onClick={toggleSearchBar} color="info">검색</Button>
 
                 </div>
 
                 <div className="filter-button-wrapper">
-                    <Dropdown  isOpen={dropdownOpen} toggle={toggleDropDown}>
+                    <Dropdown color="info" isOpen={dropdownOpen} toggle={toggleDropDown}>
                         <DropdownToggle caret>
                             필터
                         </DropdownToggle>

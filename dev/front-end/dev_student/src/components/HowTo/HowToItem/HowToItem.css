@@ -39,11 +39,11 @@
 
 
 .howto-item .answer-wrapper{
-    height: 60px;
+    height: 55px;
 }
 
 .howto-item .views-wrapper{
-    height: 60px;
+    height: 55px;
 }
 
 .content .author-title-wrapper{
@@ -56,26 +56,32 @@
 }
 
 .howto-item .author-span{
-    color : gr;
-    font-size: medium;
+    color : #494949;
+    font-size: 15px;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-.howto-item .title-span{
-    color : 	#3366CC;
+.howto-item .author-span-add{
+    color : #494949;
+    font-size: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.howto-item .title-span a{
+    color : 	#0005B3;
     font-size: large;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
 .howto-item .answer-number-wrapper{
-    height: 30px;
+    height: 25px;
 }
 .howto-item .answer-span-wrapper{
     height: 5px;
 }
 .howto-item .answer-number{
     text-align: center;
-    font-size: 23px;
+    font-size: 20px;
     width:100%;
     display: inline-block;
 }
@@ -84,16 +90,18 @@
     text-align: center;
     width:100%;
     display: inline-block;
+    font-size: 13px;
+    color:gray;
 }
 
 .howto-item .views-number-wrapper{
-    height: 30px;
+    height: 25px;
 }
 .howto-item .views-span-wrapper{
     height: 5px;
 }
 .howto-item .views-number{
-    font-size: 23px;
+    font-size: 20px;
     text-align: center;
     width:100%;
     display: inline-block;
@@ -104,8 +112,11 @@
     text-align: center;
     width:100%;
     display: inline-block;
+    font-size: 13px;
+    color:gray;
 }
 
 .howto-item .previews-span{
-    font-size: medium;
+    font-size: 15px;
+    color : #494949
 }

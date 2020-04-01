@@ -37,7 +37,6 @@ class App extends Component {
         window.sessionStorage.setItem('user',email);
         window.sessionStorage.setItem('auth',true);
         window.sessionStorage.setItem('token',token);
-
     }
 
     const logout = () => {

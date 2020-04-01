@@ -5,18 +5,12 @@
   width: 100%;
 }
 
-.header-item {
-  text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  display: table-cell;
-  color: white;
-  text-decoration: none;
-  font-size: 1.1rem;
+.nav-link {
+  color :black;
 }
 
-.header-item:hover {
-  color:white;
+.nav-link :hover {
+  color:red !important;
   text-decoration: none;
 }
 
@@ -64,16 +58,17 @@
 .logo-div{
     background-image: url(/public/img/topbar_logo3.png);
 }
+
 .navbar{
-  background-color: #222a35;
+  background-color: #fafafa;
+  opacity: 80%;
   border: gray;
   border-bottom: 2px;
   box-shadow: 0 2px 4px rgba(167, 167, 167, 0.16), 0 2px 4px rgba(122, 122, 122, 0.23); /* 그림자 */ 
-
 }
 
 .header-item{
-  color: gray;
+  color: white;
 }
 
 .header-user-area{
@@ -89,19 +84,28 @@ height: 100%;
 }
 
 .nav-item-wrapper .nav-link{
-padding-top: 20px;
-vertical-align: bottom;
+padding-top: 15px;
+vertical-align: middle;
 display: inline-block;
 text-align: center;
-font-size: 20px;
-margin-left:15px;
+font-size: 16px;
+margin-left:30px;
 font-family: 'Do Hyeon', sans-serif;
+}
+
+.nav-item-wrapper a{
+  vertical-align: middle;
 }
 
 .navbar-nav{
 display: table;
-margin-left: auto;
-margin-right: auto;
+margin-left: 0;
+margin-right: 0;
+
+}
+
+.header-wrapper .container{
+  padding: 0px;
 }
 
 .nav_item_right{

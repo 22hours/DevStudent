@@ -13,12 +13,12 @@ import Dropdownbutton from './MypageButton/MypageDropdownButton';
 
 const Header = (props) => {
     const {user,authenticated} = useContext(UserContext);
-
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
     const sign_style={
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
+        padding : "13px"
     }
     const img_style = {
         marginRight:'4px'
@@ -36,10 +36,18 @@ const Header = (props) => {
 
     const MemberMenu = () =>{
         return (
-            <div>
+            <div style={sign_style}>
                 <Dropdownbutton user={user}></Dropdownbutton>
             </div>
         );
+    }
+
+    const navBarInlineStyle = {
+        padding : "0px"
+    }
+
+    const navbarItemTextStyle = {
+        color : 'black'
     }
 
     const PrivateMenu = () =>{
@@ -49,24 +57,27 @@ const Header = (props) => {
             return <GuestMenu/>
         }
     }
+
+    const triggeredHoverStyle =() =>{
+
+    }
       return (
-          
-            <Navbar color="light" light expand="md" className="header-wrapper sticky-top" >
+            <Navbar style={navBarInlineStyle} color="black" light expand="md" className="header-wrapper sticky-top" >
             <Container>
             <NavbarToggler onClick={toggle} ></NavbarToggler>
                 <NavbarBrand href="/" >
-                    <img src="/img/devstu_text_logo.png"></img>
+                    <img src="/img/devstu_text_logo_empty.png"></img>
                 </NavbarBrand>
             <Collapse isOpen={isOpen} navbar>
-                <Nav className="mr-auto" navbar>
+                <Nav className="mr-auto" navbar >
                 <NavItem>
                     <div className="nav-item-wrapper">
-                    <Link to="/" className="nav-link">Home</Link>
+                    <Link onMouse to="/" className="nav-link">Home</Link>
                     </div>
                 </NavItem>
                 <NavItem>
                 <div className="nav-item-wrapper">
-                    <Link to="/howto" className="nav-link">HowTo</Link>
+                    <Link to="/howto" className="nav-link">Howto</Link>
                     </div>
                 </NavItem>
                 <NavItem>
@@ -76,24 +87,17 @@ const Header = (props) => {
                 </NavItem>
                 <NavItem>
                 <div className="nav-item-wrapper">
-                    <Link to="/posts" className="nav-link">뮤지엄</Link>
+                    <Link to="/posts" className="nav-link">Museum</Link>
                     </div>
                 </NavItem>
                 <NavItem>
                 <div className="nav-item-wrapper">
-                    <Link to="/mypage" className="nav-link">OutSide</Link>
+                    <Link to="/mypage" className="nav-link">Outside</Link>
                     </div>
-                </NavItem>
-                <NavItem>
-                <div className="nav-item-wrapper">
-                    <AuthDebug ></AuthDebug>
-                </div>
                 </NavItem>
                 </Nav>
             </Collapse>
-            <div>
-                <PrivateMenu></PrivateMenu>
-            </div>
+            <PrivateMenu></PrivateMenu>
             <div>
             </div>
             </Container>
