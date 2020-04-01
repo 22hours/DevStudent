@@ -42,3 +42,17 @@ query findAllQuestion($param : String){
     }
 }
 `;
+
+export const findAllQuestionsByViews = gql`
+query findAllQuestion($param : String, $requiredCount:Int){
+    findAllQuestions(param : $param, requiredCount: $requiredCount){
+        title,
+        views,
+        answerCount,
+        _id,
+        author,
+        previews,
+        tags
+    }
+}
+`;

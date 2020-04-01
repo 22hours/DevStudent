@@ -6,15 +6,11 @@ import HowToContent from '../components/HowTo/HowToContent/HowToContent';
 import { useQuery } from '@apollo/react-hooks';
 import { findAllQuestions } from '../query/queries'
 import HowToItem from '../components/HowTo/HowToItem/HowToItem';
+import HotQuestionItem from '../components/HowToSidebar/HotQuestionItem/HotQuestionItem';
 
 
 const HowTo = () => {
     const [param, setParam] = useState('date');
-    const [hot, setHot] = useState([
-        { idx: 0, id: 'winterlood', text: '내가 문어강정 사줄게 효빈아', views: '1,221' },
-        { idx: 1, id: 'damin8', text: '나는 와플사줄게', views: '1,998' },
-        { idx: 2, id: 'hagujung', text: '얘들아 나는 정구야', views: '12,345' }
-    ])
 
     const [tag, setTag] = useState([
         { idx: 0, tagname: 'JavaScript', tagcount: '500' },
@@ -29,7 +25,7 @@ const HowTo = () => {
     });
 
     if (loading) return <p>Loading ...</p>;
-    if (error) return <p>Error!</p>;
+    if (error) return <p>Error!</p>;    
     const questionCount = Object.keys(data.findAllQuestions).length;
     const questionList = <div>
         {
@@ -42,18 +38,20 @@ const HowTo = () => {
                     answers={answerCount}
                     views={views}
                     date={date}
-                    previews={previews}>
-                    ></HowToItem>
+                    previews={previews}
+                ></HowToItem>
             ))
         }
     </div>
+
     const handleParam = (value) => {
         setParam({
             param:value
         })
     }
+
     return (
-        <HowToTemplate hot={hot} tag={tag}>
+        <HowToTemplate  tag={tag}>
             <Router>
                 <Switch>
                     <Route exact path="/howto"

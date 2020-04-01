@@ -4,9 +4,8 @@ import HotQuestionHeader from '../HotQuestionHeader/HotQuestionHeader';
 import HotQuestionList from '../HotQuestionList/HotQuestionList';
 import './HotQuestionTemplate.css';
 
-class HotQuestionTemplate extends Component{
-    render(){
-        const{ hot } = this.props;
+const HotQuestionTemplate = ({hotquestionList}) => {
+        
         return(
             <Container className="howto-hot-question-wrapper">
                 <Row  className="howto-hot-question-header-wrapper">
@@ -14,12 +13,12 @@ class HotQuestionTemplate extends Component{
                 </Row>
                 <Row  className="howto-hot-question-list-wrapper">
                     <HotQuestionList
-                    hot={hot}>
+                    hotquestionList={hotquestionList}>
                     </HotQuestionList>
                 </Row>
             </Container>
             
         );
     }
-}
+
 export default HotQuestionTemplate;
