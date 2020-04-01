@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-const Example = (props) => {
+const MypageDropdownButton = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen(prevState => !prevState);
   const {user} = props;
@@ -35,4 +35,4 @@ const Example = (props) => {
   );
 }
 
-export default Example;
+export default MypageDropdownButton;
