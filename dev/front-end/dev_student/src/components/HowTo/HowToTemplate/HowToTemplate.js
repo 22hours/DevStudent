@@ -15,9 +15,7 @@ const HowToTemplate = ({children,hot,tag,handleNewQuestion}) => {
                     <Col md={3} ><HowToSidebarTemplate hot={hot} tag={tag} handleNewQuestion={handleNewQuestion}></HowToSidebarTemplate></Col>
                 </Row>
             </Container>
-            <Container>
-                <Pagination className="howto-page-navigater" count={15} variant="outlined" shape="rounded"/>
-            </Container>
+            
         </React.Fragment>
     );
 }

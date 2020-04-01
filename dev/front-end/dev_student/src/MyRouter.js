@@ -12,7 +12,7 @@ const MyRouter =(props) =>{
               <div className="Article">
                 <Switch>
                   <Route exact path="/" component={Home} />
-                  <Route path="/about/:username" component={About} />
+                  <Route path="/about/:user" component={About} />
                   <Route path="/posts" component={Posts} />
                   <Route path="/mypage" component={MyPage} />
                   <Route path="/todolist" component={Todo} />
