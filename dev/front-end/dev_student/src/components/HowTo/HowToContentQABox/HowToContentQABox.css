@@ -1,0 +1,103 @@
+
+@media only screen 
+and (max-width : 800px)
+{
+    .howto-wrapper .is-question-box-q{
+        display: none;
+    }
+    .howto-wrapper .is-question-box-a{
+        display: none;
+    }
+
+/* Add Your CSS Styling Here */
+
+}
+
+@media only screen 
+and (min-width : 800px)
+{
+
+/* Add Your CSS Styling Here */
+.header-box .header-box-is-question-box-q, .header-box-is-question-box-a{
+    display: none;
+}
+}
+
+
+.howto-wrapper .question-box{
+    margin-top: 3%;
+    padding-top: 1px;
+    background-color:white;
+    border: 0.5px solid rgb(224, 224, 224);
+    border-radius: 3px;
+    overflow: hidden;
+    /* box-shadow: 0 1px 3px rgba(0,0,0,0.16), 0 3px 6px rgba(112, 112, 112, 0.23); */
+}
+
+.question-box .header-box{
+    background-color: rgb(243, 243, 243);
+    border-bottom: 1px solid rgb(212, 212, 212);
+    height: 28px;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.howto-wrapper .is-question-box-q{
+    font-family: 'Do Hyeon', sans-serif;
+    float: left;
+    width: 30px;
+    height: 30px;
+    font-size: 25px;
+    margin-right: 10px;
+    background-color: #4BA0B5;
+    border-radius: 5px;
+    vertical-align: middle;
+    text-align: center;
+    color:white ;
+}
+
+.howto-wrapper .is-question-box-a{
+    font-family: 'Do Hyeon', sans-serif;
+    float: left;
+    width: 30px;
+    height: 30px;
+    font-size: 25px;
+    margin-right: 10px;
+    background-color: red;
+    border-radius: 5px;
+    vertical-align: middle;
+    text-align: center;
+    color:white ;
+}
+
+.header-box .header-box-is-question-box-q{
+    font-family: 'Do Hyeon', sans-serif;
+    background-color: #4BA0B5;
+    color:white;
+    margin-top: 2px;
+    width: 23px;
+    height: 23px;
+    margin-right: 10px;
+    border-radius: 5px;
+    float: left;
+    text-align: center;
+}
+
+.header-box .header-box-is-question-box-a{
+    font-family: 'Do Hyeon', sans-serif;
+    background-color: red;
+    color:white;
+    margin-top: 2px;
+    width: 23px;
+    height: 23px;
+    margin-right: 10px;
+    float: left;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.question-box .main-box{
+    padding-left: 10px;
+    padding-top: 5px;
+}
+

@@ -72,7 +72,7 @@ const Header = (props) => {
                 <Nav className="mr-auto" navbar >
                 <NavItem>
                     <div className="nav-item-wrapper">
-                    <Link onMouse to="/" className="nav-link">Home</Link>
+                    <Link to="/" className="nav-link">Home</Link>
                     </div>
                 </NavItem>
                 <NavItem>
