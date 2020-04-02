@@ -5,12 +5,9 @@ import HowToListTemplate from '../components/HowTo/HowToListTemplate/HowToListTe
 import HowToContent from '../components/HowTo/HowToContent/HowToContent';
 import { useQuery } from '@apollo/react-hooks';
 import { findAllQuestions } from '../query/queries'
-import HowToItem from '../components/HowTo/HowToItem/HowToItem';
-import HotQuestionItem from '../components/HowToSidebar/HotQuestionItem/HotQuestionItem';
 
 
 const HowTo = () => {
-    const [param, setParam] = useState('date');
 
     const [tag, setTag] = useState([
         { idx: 0, tagname: 'JavaScript', tagcount: '500' },
@@ -21,34 +18,13 @@ const HowTo = () => {
     ])
 
     const { loading, error, data } = useQuery(findAllQuestions, {
-        variables: { param: param },
+        variables: { param: 'date'},  
     });
 
     if (loading) return <p>Loading ...</p>;
     if (error) return <p>Error!</p>;    
-    const questionCount = Object.keys(data.findAllQuestions).length;
-    const questionList = <div>
-        {
-            data.findAllQuestions.map(({ _id, title, author, tags, date, content, answerCount, views, previews }) => (
-                <HowToItem
-                    id={_id}
-                    key={_id}
-                    author={author}
-                    title={title}
-                    answers={answerCount}
-                    views={views}
-                    date={date}
-                    previews={previews}
-                ></HowToItem>
-            ))
-        }
-    </div>
 
-    const handleParam = (value) => {
-        setParam({
-            param:value
-        })
-    }
+    const questionCount = Object.keys(data.findAllQuestions).length;
 
     return (
         <HowToTemplate  tag={tag}>
@@ -56,13 +32,11 @@ const HowTo = () => {
                 <Switch>
                     <Route exact path="/howto"
                         render={() =>
+                            <div>
                             <HowToListTemplate
-                                setParam={setParam}
-                                questionCount={questionCount}
-                                param={param}
-                                questionList={questionList}
-                                question_count={"unimplemented"}>
+                              questionCount={questionCount}  >
                             </HowToListTemplate>
+                            </div>
                         } />
 
                     <Route path="/howto/question/:id"
