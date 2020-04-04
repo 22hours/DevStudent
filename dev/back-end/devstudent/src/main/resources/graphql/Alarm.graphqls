@@ -1,0 +1,15 @@
+type Alarm{
+    _id : String #고유 번호
+    question_id : String # 그 질문으로 바로 이동하기 위한 _id
+    user_id : String
+    respondent : String
+    content : String
+    date : String
+    read : Boolean # true는 읽은거, false는 안읽은거
+
+}
+
+extend type Query{
+    findAllAlarms(user_id : String, pageNum : Int, requiredCount : Int) : [Alarm]
+    countUnreadAlarms(user_id : String) : Count
+}

@@ -2,20 +2,14 @@ package com.hours22.devstudent.Command;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.hours22.devstudent.Command.Find.*;
-import com.hours22.devstudent.Entity.Duplicate;
-import com.hours22.devstudent.Entity.Question;
-import com.hours22.devstudent.Entity.User;
+import com.hours22.devstudent.Command.Module.CountUnreadAlarms;
+import com.hours22.devstudent.Entity.*;
 import com.hours22.devstudent.Repository.QuestionRepository;
-import com.hours22.devstudent.Repository.SequenceIDRepository;
 import com.hours22.devstudent.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -33,6 +27,10 @@ public class Query implements GraphQLQueryResolver {
     private FindQuestionsByOption findQuestionsByOption;
     @Autowired
     private FindUserBy_id findUserBy_id;
+    @Autowired
+    private FindAllAlarms findAllAlarms;
+    @Autowired
+    private CountUnreadAlarms countUnreadAlarms;
 
     public Query(QuestionRepository questionRepository, UserRepository userRepository){
         this.questionRepository = questionRepository;
@@ -56,13 +54,20 @@ public class Query implements GraphQLQueryResolver {
         return findQuestionsByTags.findQuestionsByTags(param, pageNum, requiredCount, tags, logical);
     }
 
-    public Duplicate checkDuplicate(String _id){
+    public Isit checkDuplicate(String _id){
         if(!userRepository.existsBy_id(_id))
-            return new Duplicate(true);
-        return new Duplicate(false);
+            return new Isit(true);
+        return new Isit(false);
     }
 
     public User findUserBy_id(String token,String _id){
         return findUserBy_id.findUserBy_id(token,_id);
+    }
+
+    public List<Alarm> findAllAlarms(String user_id, int pageNum, int requiredCount){
+        return findAllAlarms.findAllAlarms(user_id,pageNum,requiredCount);
+    }
+    public Count countUnreadAlarms(String user_id){
+        return countUnreadAlarms.countUnreadAlarms(user_id);
     }
 }
