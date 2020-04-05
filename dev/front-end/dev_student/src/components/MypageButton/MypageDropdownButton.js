@@ -25,7 +25,7 @@ const MypageDropdownButton = (props) => {
             </div>
           </DropdownItem>
           <DropdownItem style={{fontFamily:'Do Hyeon'}}>
-             안녕하세요
+             알림
           </DropdownItem>
           <DropdownItem style={{fontFamily:'Do Hyeon'}}>
              마이페이지

@@ -29,7 +29,7 @@ const ReplyAnswer = ({id}) => {
             }else{
                 alert("댓글 저장 실패");
             }
-            // window.location.href = 'http://localhost:3000/howto/id';
+            window.location.href = 'http://localhost:3000/howto/question/'+id;
         })
         .catch(err => {
             alert(err.messeage)

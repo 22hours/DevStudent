@@ -10,4 +10,5 @@ import HowTo from './HowTo';
 import NewQuestion from './NewQuestion';
 import AuthRoute from './AuthRoute';
 import EmailCheck from './EmailCheck'
-export {EmailCheck, AuthRoute, NewQuestion, HowTo, Home, About, Posts, Login, MyPage, Search, Todo, NotFound };
+import Alarm from './Alarm'
+export {Alarm,EmailCheck, AuthRoute, NewQuestion, HowTo, Home, About, Posts, Login, MyPage, Search, Todo, NotFound };

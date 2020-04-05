@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { EmailCheck, AuthRoute, NewQuestion, HowTo, Home, Posts, About, Login, MyPage, Todo, NotFound } from './routes';
+import { Alarm, EmailCheck, AuthRoute, NewQuestion, HowTo, Home, Posts, About, Login, MyPage, Todo, NotFound } from './routes';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header';
 const MyRouter =(props) =>{
@@ -24,6 +24,14 @@ const MyRouter =(props) =>{
                     render={props => (
                       <Login authenticated={authenticated} saveLoginState={saveLoginState} {...props} />
                     )}
+                  />
+
+
+
+                  <AuthRoute
+                    authenticated={authenticated}
+                    path="/alarm"
+                    render={props => <Alarm user={user} {...props} />}
                   />
 
                   <AuthRoute
