@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactMarkdown from 'react-markdown'
+import MarkdownContent from '../../MarkdownContent/MarkdownContent';
 import './HowToContentQABox.css'
-const HowToContentQABox = ({ isQuestion, author, date, likes, content }) => {
+const HowToContentQABox = ({ id, isQuestion, author, date, likes, content }) => {
     const IsQorAOutter = () =>{
         if(isQuestion=="Q"){
             return (
@@ -45,10 +45,7 @@ const HowToContentQABox = ({ isQuestion, author, date, likes, content }) => {
                     <span>{author}</span>
                 </div>
                 <div className="main-box">
-                <ReactMarkdown
-                    source={content}
-                    escapeHtml={false}
-                />
+                    <MarkdownContent content={content}/>
                 </div>
             </div>
             </div>

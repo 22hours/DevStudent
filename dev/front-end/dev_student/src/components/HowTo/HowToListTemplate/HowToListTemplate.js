@@ -9,7 +9,7 @@ import { findAllQuestionsPage } from '../../../query/queries';
 const HowToListTemplate = ({tags, questionCount}) => {
 
     const [param, setParam] = useState('date');
-    const [requiredCount] = useState('10');
+    const [requiredCount] = useState(10);
     const [pageNum, setPage] = useState(1);
     const handleChange = (event, value) => {
         setPage(value);

@@ -1,15 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
+import {CREATE_ANSWER} from '../../../Mutation/mutations';
+import { useMutation } from '@apollo/react-hooks';
+import UserContext from '../../../Context/UserContext';
 import { Container, Input, TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
-import ReactMarkDown from 'react-markdown'
 import './ReplyAnswer.css'
-
-const ReplyAnswer = () => {
+import MarkdownContent from '../../MarkdownContent/MarkdownContent';
+const ReplyAnswer = ({id}) => {   
+    const {user} = useContext(UserContext);
+    const sessionToken = window.sessionStorage.getItem('token');
     const [activeTab, setActiveTab] = useState('1');
-
+    const [comment,setComment] = useState();
+    const [createAnswer] = useMutation(CREATE_ANSWER);
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
     }
+
+    const handleCreateAnswer = async() =>{
+        createAnswer({variables : {
+            token : sessionToken,
+            question_id : id,
+            author : user,
+            content : comment
+        }})
+        .then(response => {
+            if(response.data.createAnswer._id){
+                alert("댓글을 저장했습니다.");
+            }else{
+                alert("댓글 저장 실패");
+            }
+            // window.location.href = 'http://localhost:3000/howto/id';
+        })
+        .catch(err => {
+            alert(err.messeage)
+        })
+    }
+
 
     return (
         <div className="reply-answer-wrapper">
@@ -34,33 +60,44 @@ const ReplyAnswer = () => {
                 </Nav>
             </div>
             <div className="reply-answer-main">
-            <TabContent activeTab={activeTab}>
-                <TabPane tabId="1">
-                    <Row>
-                        <Col sm="12">
-                            <h4>Tab 1 Contents</h4>
-                        </Col>
-                    </Row>
-                </TabPane>
-                <TabPane tabId="2">
-                    <Row>
-                        <Col sm="6">
-                            <Card body>
-                                <CardTitle>Special Title Treatment</CardTitle>
-                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                <Button>Go somewhere</Button>
-                            </Card>
-                        </Col>
-                        <Col sm="6">
-                            <Card body>
-                                <CardTitle>Special Title Treatment</CardTitle>
-                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                <Button>Go somewhere</Button>
-                            </Card>
-                        </Col>
-                    </Row>
-                </TabPane>
-            </TabContent>
+                <TabContent activeTab={activeTab}>
+                    <TabPane tabId="1">
+                        <Row>
+                            <Col sm="12">
+                                <Input
+                                    placeholder="write your opinion.."
+                                    value={comment}
+                                    onChange={({target : {value}}) => setComment(value)}
+                                    size="large"
+                                    type="textarea"></Input>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col sm="12">
+                            <Button onClick={handleCreateAnswer} color="info">
+                                    Comment
+                                </Button>
+                            </Col>
+                        </Row>
+                    </TabPane>
+                    <TabPane tabId="2">
+                     <Row>
+                            <Col sm="12">
+                            <div className="reply-wrapper">
+                                <MarkdownContent
+                                content={comment}/>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col sm="12">
+                                <Button onClick={handleCreateAnswer} color="info">
+                                    Comment
+                                </Button>
+                            </Col>
+                        </Row>
+                    </TabPane>
+                </TabContent>
             </div>
         </div>
     );

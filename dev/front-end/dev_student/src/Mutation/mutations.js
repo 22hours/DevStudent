@@ -23,3 +23,26 @@ mutation updateUserAuthState($authState : String!){
     updateUserAuthState(authState : $authState)
 }
 `;
+
+export const CREATE_ANSWER = gql`
+mutation createAnswer(
+    $token : String!,
+    $question_id : String!,
+    $author : String!,
+    $content : String!,
+    ){
+    createAnswer
+    (
+    token : $token,
+    question_id : $question_id,
+    author : $author,
+    content : $content
+    )
+    {
+        _id
+        author
+        content
+        date
+    }
+}
+`;

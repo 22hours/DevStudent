@@ -1,6 +1,10 @@
-.nav-tabs .nav-link{
+
+.reply-answer-wrapper .nav-tabs .nav-link{
     font-size:12px;
-    padding :5px;
+    padding-top :8px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .reply-answer-wrapper{
@@ -10,11 +14,30 @@
 }
 
 .reply-answer-wrapper .reply-answer-header{
-    background-color: gray;
-    padding: 5px;
+    background-color: rgb(243, 243, 243);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
 }
 
 .reply-answer-wrapper .reply-answer-main{
     background-color: white;
     padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
+
+.reply-answer-main textarea{
+    min-height: 100px;
+    height: auto;
+}
+
+
+.reply-answer-main button {
+    float: right;
+}
+
+.reply-answer-main .row{
+    margin-top: 5px;
+}
+
