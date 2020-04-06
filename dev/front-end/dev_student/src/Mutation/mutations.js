@@ -54,6 +54,7 @@ mutation createUser(
     $email: String!,
     $schoolName: String!, $nickName: String!){
         createUser(_id: $_id, password: $password, email: $email, schoolName: $schoolName, nickName: $nickName){
+            _id
         }
     }
 `;
