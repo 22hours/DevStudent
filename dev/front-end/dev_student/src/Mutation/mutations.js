@@ -46,3 +46,14 @@ mutation createAnswer(
     }
 }
 `;
+
+export const CREATE_USER = gql`
+mutation createUser(
+    $_id: String!,
+    $password: String!,
+    $email: String!,
+    $schoolName: String!, $nickName: String!){
+        createUser(_id: $_id, password: $password, email: $email, schoolName: $schoolName, nickName: $nickName){
+        }
+    }
+`;

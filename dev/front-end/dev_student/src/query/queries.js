@@ -72,7 +72,6 @@ query findAllQuestion($param : String, $requiredCount:Int){
 }
 `;
 
-
 export const FIND_ALL_ALARMS = gql`
 query findAllAlarms(
     $user_id : String!, 
@@ -102,3 +101,11 @@ query countUnreadAlarms($user_id : String!){
     }
 }
 `;
+
+export const checkDuplicate = gql`
+query checkDuplicate($_id: String){
+    checkDuplicate(_id: $_id){
+        isit
+    }
+}`;
+

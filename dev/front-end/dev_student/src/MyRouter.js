@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Alarm, EmailCheck, AuthRoute, NewQuestion, HowTo, Home, Posts, About, Login, MyPage, Todo, NotFound } from './routes';
+import { Alarm, EmailCheck, AuthRoute, NewQuestion,Register, HowTo, Home, Posts, About, Login, MyPage, Todo, NotFound } from './routes';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header';
+
 const MyRouter =(props) =>{
         const {saveLoginState,user, authenticated, login} = props;
         return(
@@ -18,7 +19,7 @@ const MyRouter =(props) =>{
                   <Route path="/todolist" component={Todo} />
                   <Route path="/howto" component={HowTo}/>
                   <Route path="/emailCheck/:rand" component={EmailCheck}/>
-          
+                  <Route path="/register" component={Register}/>
                   <Route
                     path="/login"
                     render={props => (
