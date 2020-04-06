@@ -1,3 +1,41 @@
+@media only screen 
+and (max-width : 530px)
+{
+    .howto-item .stats-area{
+        display: none;
+    }
+    .howto-item .content{
+        margin-left: 95px;
+        margin-right: 0;
+    }
+/* Add Your CSS Styling Here */
+
+}
+
+@media only screen 
+and (min-width : 530px)
+{
+    .howto-item .stats-area-mobile{
+        display: none;
+    }
+    .howto-item .content{
+        margin-right: 95px;
+        margin-left: 25px;
+    }
+    .howto-item .answer-wrapper{
+        margin-bottom: 5px;
+    }
+
+/* Add Your CSS Styling Here */
+
+}
+.howto-item .stats-area-mobile{
+    width: 80px;
+    float: left;
+}
+.howto-item .content{
+    float: left;
+}
 .box {
     width: 100%;
     height: 100%;
@@ -21,22 +59,66 @@
     width: 100%;
 }
 .howto-item .content{
-    margin-top: 10px;
+    margin-top: 5px;
     position: absolute;
     right:0px;
     left:0px;
     width: auto;
-    margin-right: 95px;
-    margin-left: 25px;
 }
 
 
 .howto-item .stats-area{
-    margin-top: 10px;
+    width: 80px;
     height : 100%;
     float: right;
 }
+.howto-item p{
+    /* margin: 0px !important; */
+}
+.howto-item .stats-inner-box{
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
 
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.howto-item .stats-inner-box .stats-inner-box-solved{
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.howto-item .stats-inner-box .stats-inner-box-solved .answer-number-wrapper p{
+    background-color: rgb(212, 91, 91);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    color:white;
+    border-radius: 12px;
+    width: 30px;
+    height: 30px;
+}
+
+.howto-item .stats-inner-box .stats-inner-box-hot{
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.howto-item .stats-inner-box .stats-inner-box-hot .answer-number-wrapper p{
+    /* background-color: rgb(17, 149, 182); */
+    border: 1px solid rgb(212, 91, 91);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    color:rgb(212, 91, 91);
+    border-radius: 12px;
+    width: 30px;
+    height: 30px;
+}
+
+ .howto-item .stats-inner-box .stats-inner-box-default{
+ }
 
 .howto-item .answer-wrapper{
     height: 55px;
@@ -68,16 +150,19 @@
 }
 
 .howto-item .title-span a{
-    color : 	#0005B3;
+    /* color : 	rgb(17, 149, 182);  */
+    color : 	black; 
+
     font-size: large;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
 .howto-item .answer-number-wrapper{
     height: 25px;
+    vertical-align: middle;
 }
 .howto-item .answer-span-wrapper{
-    height: 5px;
+    height: auto;
 }
 .howto-item .answer-number{
     text-align: center;
@@ -98,7 +183,7 @@
     height: 25px;
 }
 .howto-item .views-span-wrapper{
-    height: 5px;
+    height: auto;
 }
 .howto-item .views-number{
     font-size: 20px;
@@ -117,6 +202,12 @@
 }
 
 .howto-item .previews-span{
-    font-size: 15px;
-    color : #494949
+    font-size: 13px;
+    color : #696969;
+
+}
+
+.howto-item .previews-box{
+    max-height: 50px;
+    overflow: hidden;
 }

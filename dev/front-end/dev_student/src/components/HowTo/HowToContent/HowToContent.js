@@ -19,6 +19,7 @@ const HowToContent = ({ match }) => {
     if (data.findQuestionBy_id.author === user) {
         mine = true;
     }
+    
     const answers = data.findQuestionBy_id.answers.map(({ _id, author, content, date }) => (
         <HowToContentQABox
             _id={_id}
@@ -34,6 +35,7 @@ const HowToContent = ({ match }) => {
             <div className="left-line"></div>
             <Container className="margin-top-3 how-to-content-header">
                 <HowToContentHeader
+                    solved ={data.findQuestionBy_id.solved}
                     mine={mine}
                     _id={data.findQuestionBy_id._id}
                     title={data.findQuestionBy_id.title}

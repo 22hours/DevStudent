@@ -71,3 +71,34 @@ query findAllQuestion($param : String, $requiredCount:Int){
     }
 }
 `;
+
+
+export const FIND_ALL_ALARMS = gql`
+query findAllAlarms(
+    $user_id : String!, 
+    $pageNum : Int, 
+    $requiredCount : Int
+){
+    findAllAlarms(
+        user_id : $user_id, 
+        pageNum : $pageNum, 
+        requiredCount : $requiredCount
+        ){
+        _id
+        question_id
+        user_id
+        respondent
+        content
+        date
+        read
+    }
+}
+`;
+
+export const COUNT_UNREAD_ALARMS = gql`
+query countUnreadAlarms($user_id : String!){
+    countUnreadAlarms(user_id : $user_id){
+        count
+    }
+}
+`;

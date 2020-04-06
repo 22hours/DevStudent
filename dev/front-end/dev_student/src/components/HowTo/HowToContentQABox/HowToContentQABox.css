@@ -63,7 +63,7 @@ and (min-width : 800px)
     height: 30px;
     font-size: 25px;
     margin-right: 10px;
-    background-color: red;
+    background-color: rgb(238, 128, 128);
     border-radius: 5px;
     vertical-align: middle;
     text-align: center;
@@ -85,7 +85,7 @@ and (min-width : 800px)
 
 .header-box .header-box-is-question-box-a{
     font-family: 'Do Hyeon', sans-serif;
-    background-color: red;
+    background-color: rgb(238, 128, 128);
     color:white;
     margin-top: 2px;
     width: 23px;
@@ -98,6 +98,7 @@ and (min-width : 800px)
 
 .question-box .main-box{
     padding-left: 10px;
+    padding-right: 10px;
     padding-top: 5px;
 }
 

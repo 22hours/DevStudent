@@ -1,11 +1,10 @@
 import React from 'react';
 import './Tag.css'
-const Tag = () => {
+import {Link} from 'react-router-dom';
+const Tag = ({tagItem}) => {
     return (
         <React.Fragment>
-        <div className="tags small">
-			<a title="" href="" className="color5">Javascript</a>
-		</div>
+			<Link to="/" className="tag">{tagItem}</Link>
         </React.Fragment>
     );
 }

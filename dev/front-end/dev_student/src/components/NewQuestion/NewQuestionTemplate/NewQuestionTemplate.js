@@ -3,18 +3,18 @@ import './NewQuestionTemplate.css';
 import { Container, Row , Input } from 'reactstrap';
 import {  Button } from '@material-ui/core';
 import UserContext from '../../../Context/UserContext';
+import TagInput from '../../TagInput/TagInput';
 const NewQuestionTemplate = ({handleSubmit}) => {
     const {user} = useContext(UserContext);
     const [title,setTitle] = useState('');
     const [body,setBody] = useState('');
-    const [tags,setTags]=useState('');
-    const testTag = ["javascript","c++"];
+    const [tags,setTags]=useState([]);
+
     return (
         <div className="new-question-wrapper">
             <Container>
                 <Row className="new-question-header-row">
                    <span>{user}님 &nbsp;</span>
-                    
                     <span>무엇이든 물어보세요!</span>
                 </Row>
                 <Row className="new-question-content-row">
@@ -48,10 +48,10 @@ const NewQuestionTemplate = ({handleSubmit}) => {
                             <br />
                             <span className="new-question-notice-span">태그를 달아주세요! [현재 사용 불가]</span>
                         </div>
-                        <Input
+                        {/* <Input
                          onChange={({target : {value}}) => setTags(value)}
-                        className="question-title" placeholder="Tags : Ex> Javascript..." />
-
+                        className="question-title" placeholder="Tags : Ex> Javascript..." /> */}
+                        <TagInput tags={tags} setTags={setTags}/>
                     </div>
                     <div className="new-question-submit-area">
                         <div className="submit-left">
@@ -61,7 +61,7 @@ const NewQuestionTemplate = ({handleSubmit}) => {
                         </div>
                         <div className="submit-right">
                             <Button 
-                            onClick={()=>{handleSubmit(user,title,body,testTag)}}
+                            onClick={()=>{handleSubmit(user,title,body,tags)}}
                             variant="contained" color="primary">
                                 Submit
                             </Button>

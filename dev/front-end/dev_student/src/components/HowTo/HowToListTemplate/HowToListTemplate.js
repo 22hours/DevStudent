@@ -39,6 +39,7 @@ const HowToListTemplate = ({tags, questionCount}) => {
                     views={views}
                     date={date}
                     previews={previews}
+                    tags={tags}
                 ></HowToItem>
             ))
         }

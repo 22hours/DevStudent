@@ -46,6 +46,7 @@
 .how-to-content-header .quetsion-id{
     font-size: 19px;
     color: gray;
+    margin-right: 10px;
 }
 
 
@@ -83,3 +84,32 @@
     float: left;
 }
 
+.how-to-content-header .solved-bagde{
+    margin-left: 2px;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    vertical-align: initial;
+    margin-top: 10px;
+    height: 12px;
+    font-weight: bold;
+    background-color: rgb(212, 91, 91);
+    color:white;
+    border-radius: 5px;
+}
+
+.how-to-content-header .mine-bagde{
+    margin-left: 2px;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    vertical-align: initial;
+    margin-top: 10px;
+    height: 12px;
+    font-weight: bold;
+    background-color: rgb(98, 96, 96);
+    color:white;
+    border-radius: 5px;
+}

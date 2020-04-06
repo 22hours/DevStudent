@@ -3,21 +3,33 @@ import {Container, Alert} from 'reactstrap';
 import './AlarmTemplate.css'
 import '../AlarmItem/AlarmItem';
 import AlarmItem from '../AlarmItem/AlarmItem';
-const AlarmTemplate = () => {
-    return (
+const AlarmTemplate = ({alarms}) => {    
+     const alramlist = alarms.map(({_id,question_id,user_id,respondent,content,date,read})=>(
+        <AlarmItem
+            key={_id}
+            question_id={question_id}
+            respondent = {respondent}
+            content={content}
+            date ={date}
+            read={read}
+        />
+     ));
+     const alarmCount = alarms.length;
+     return (
         <Container>
             <div className="margin-top-3">
             <div>
                 <span className="content-header">알림</span>
             </div>
             <div>
-                <Alert color="info">6건의 알림이 있어요</Alert>
+                <Alert color="info">{alarmCount}건의 알림이 있어요</Alert>
                 <div className="alarm-list-wrapper">
+                    {alramlist}
+                    {/* <AlarmItem url={"1239"} content={"아 배고파"}/>
                     <AlarmItem url={"1239"} content={"아 배고파"}/>
                     <AlarmItem url={"1239"} content={"아 배고파"}/>
                     <AlarmItem url={"1239"} content={"아 배고파"}/>
-                    <AlarmItem url={"1239"} content={"아 배고파"}/>
-                    <AlarmItem url={"1239"} content={"아 배고파"}/>
+                    <AlarmItem url={"1239"} content={"아 배고파"}/> */}
 
                 </div>
             </div>

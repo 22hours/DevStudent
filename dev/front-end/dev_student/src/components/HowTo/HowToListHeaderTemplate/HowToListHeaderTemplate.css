@@ -1,8 +1,26 @@
+@media only screen 
+and (max-width : 800px)
+{
+/* Add Your CSS Styling Here */
+}
+
+@media only screen 
+and (min-width : 800px)
+{
+/* Add Your CSS Styling Here */
+}
 .questions-number-span{
     font-family: 'Do Hyeon', sans-serif;
     font-size: x-large;
     vertical-align: base;
     display: inline-block;
+}
+
+.howto-list-header-header {
+    width: 100%;
+}
+.howto-list-header-header .mobile-new-question-button{
+    float: right;
 }
 
 .question-descript-span{
@@ -27,7 +45,4 @@
 
 .collapse{
     width: 100%;
-}
-
-.collapse .searchbar-wrapper{
 }

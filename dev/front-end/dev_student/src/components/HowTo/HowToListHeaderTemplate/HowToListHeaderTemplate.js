@@ -15,10 +15,11 @@ const HowToListHeaderTemplate = ({ question_count, param, setParam}) => {
 
     return (
         <React.Fragment>
-            <Row>
+            <Row className="howto-list-header-header">
                 <span className="content-header">HowTo : [  {param} ] </span>
+                <span className="mobile-new-question-button"></span>
             </Row>
-            <Row><Tag></Tag></Row>
+            {/* <Row><Tag></Tag></Row> */}
             <Row >
                 <p>
                     <span className="questions-number-span"> {question_count} </span>
