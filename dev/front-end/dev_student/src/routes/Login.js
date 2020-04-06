@@ -4,8 +4,6 @@ import { Redirect } from 'react-router-dom';
 import { Container, Col, Row } from 'reactstrap';
 import { TextField, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-
-//Apollo
 import { useMutation } from '@apollo/react-hooks';
 import { LOGIN } from '../Mutation/mutations';
 
@@ -13,7 +11,10 @@ const Login = ({ saveLoginState, authenticated, location }) => {
     const [LoginToServer, { data }] = useMutation(LOGIN);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    
+    const btn_style={
+        backgroundColor:'#4BA0B5',
+        color: 'white'
+    }
     const firstUpdate = useRef(true);
     useLayoutEffect(() => {
         if (firstUpdate.current) {
@@ -84,7 +85,7 @@ const Login = ({ saveLoginState, authenticated, location }) => {
                                                 password : password
                                             }})
                                         }}
-                                        variant="contained" color="primary">
+                                        variant="contained" style={btn_style}>
                                         login
                                     </Button>
                                 </div>
@@ -92,7 +93,7 @@ const Login = ({ saveLoginState, authenticated, location }) => {
                             <div className="login-form-wrapper" >
                                 <div className="login-form-resize-wrapper">
                                     <span>아직 계정이 없으신가요?<br /></span>
-                                    <Link to="/">회원가입</Link>
+                                    <Link to="/register">회원가입</Link>
                                 </div>
                             </div>
                         </Col>
