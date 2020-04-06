@@ -14,9 +14,9 @@ import java.util.List;
 public class CountUnreadAlarms {
     @Autowired
     private MongoTemplate mongoTemplate;
-    public Count countUnreadAlarms(String userNickname){
-        Criteria criteria = new Criteria("userNickname");
-        criteria.is(userNickname);
+    public Count countUnreadAlarms(String nickName){
+        Criteria criteria = new Criteria("nickName");
+        criteria.is(nickName);
         criteria.and("read").is(false);
         Query query = new Query(criteria);
         System.out.println(query.toString());

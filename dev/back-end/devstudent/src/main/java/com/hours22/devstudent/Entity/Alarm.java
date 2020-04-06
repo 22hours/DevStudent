@@ -16,16 +16,16 @@ public class Alarm {
     @Id
     private String _id;
     private String question_id;
-    private String userNickname;
+    private String nickName;
     private String respondent;
     private String content;
     private String date;
     @Setter
     private Boolean read;
-    public Alarm(String _id, String question_id, String userNickname, String respondent, String content){
+    public Alarm(String _id, String question_id, String nickName, String respondent, String content){
         this._id = _id;
         this.question_id = question_id;
-        this.userNickname = userNickname;
+        this.nickName = nickName;
         this.respondent = respondent;
         this.content = content;
         long time = System.currentTimeMillis();

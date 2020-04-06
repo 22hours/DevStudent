@@ -27,7 +27,7 @@ public class Query implements GraphQLQueryResolver {
     @Autowired
     private FindQuestionsByOption findQuestionsByOption;
     @Autowired
-    private FindUserByNickname findUserBy_id;
+    private FindUserByNickname findUserByNickname;
     @Autowired
     private FindAllAlarms findAllAlarms;
     @Autowired
@@ -58,14 +58,14 @@ public class Query implements GraphQLQueryResolver {
     }
 
     public User findUserByNickname(String token,String nickname){
-        return findUserBy_id.findUserByNickname(token,nickname);
+        return findUserByNickname.findUserByNickname(token,nickname);
     }
 
-    public List<Alarm> findAllAlarms(String userNickname, int pageNum, int requiredCount){
-        return findAllAlarms.findAllAlarms(userNickname,pageNum,requiredCount);
+    public List<Alarm> findAllAlarms(String nickName, int pageNum, int requiredCount){
+        return findAllAlarms.findAllAlarms(nickName,pageNum,requiredCount);
     }
-    public Count countUnreadAlarms(String userNickname){
-        return countUnreadAlarms.countUnreadAlarms(userNickname);
+    public Count countUnreadAlarms(String nickName){
+        return countUnreadAlarms.countUnreadAlarms(nickName);
     }
     public Count countAllQuestions(){
         return countAllQuestions.countAllQuestions();

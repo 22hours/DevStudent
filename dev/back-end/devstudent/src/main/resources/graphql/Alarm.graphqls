@@ -1,7 +1,7 @@
 type Alarm{
     _id : String #고유 번호
     question_id : String # 그 질문으로 바로 이동하기 위한 _id
-    userNickname : String
+    nickname : String
     respondent : String
     content : String
     date : String
@@ -9,7 +9,7 @@ type Alarm{
 }
 
 extend type Query{
-    findAllAlarms(userNickname : String, pageNum : Int, requiredCount : Int) : [Alarm]
+    findAllAlarms(nickname : String, pageNum : Int, requiredCount : Int) : [Alarm]
     countUnreadAlarms(userNickname : String) : Count
 }
 

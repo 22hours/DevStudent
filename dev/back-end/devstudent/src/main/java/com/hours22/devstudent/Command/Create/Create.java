@@ -28,8 +28,8 @@ public abstract class Create {
         if(!user.getToken().equals(token)) return false;
         return true;
     }
-    public void createAlarm(String question_id, String userNickname, String respondent, String content){
-        if(userNickname.equals(respondent)) return; //자신이 알람을 일으키진 않는다
+    public void createAlarm(String question_id, String nickName, String respondent, String content){
+        if(nickName.equals(respondent)) return; //자신이 알람을 일으키진 않는다
 
         if(sequenceIDRepository.countBy_id("Alarm") == 0) {
             System.out.println("Alarm" + "이 Sequence에 없습니다!");
@@ -41,7 +41,7 @@ public abstract class Create {
         int seqNum = sequenceID.getSeqNum() + 1;
         sequenceID.setSeqNum(seqNum);
         sequenceIDRepository.save(sequenceID);
-        Alarm alarm = new Alarm(String.valueOf(seqNum),question_id,userNickname,respondent,content);
+        Alarm alarm = new Alarm(String.valueOf(seqNum),question_id,nickName,respondent,content);
         alarmRepository.save(alarm);
     }
 }
