@@ -1,7 +1,7 @@
 type User{
     email : String!
     password : String!
-    nickName : String!
+    nickname : String!
     schoolName : String!
     date : String!
     authState : String!
@@ -9,7 +9,7 @@ type User{
 }
 
 extend type Mutation{
-    createUser(email: String!, password: String!, nickName: String!, schoolName : String!) : User
+    createUser(email: String!, password: String!, nickname: String!, schoolName : String!) : User
     updateUserAuthState(authState : String!) : User
     loginToServer(email : String, password : String) : User
     checkDuplicateEmail(email : String) : Count

@@ -16,7 +16,7 @@ public class User {
     @Id
     private String email;
     private String password;
-    private String nickName;
+    private String nickname;
     private String schoolName;
     private String date;
     @Setter
@@ -24,12 +24,12 @@ public class User {
     @Setter
     private String token;
 
-    public User(String email, String password, String nickName, String schoolName, String authState) {
+    public User(String email, String password, String nickname, String schoolName, String authState) {
         long time = System.currentTimeMillis();
         SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.date = dayTime.format(new Date(time));
         this.password = password;
-        this.nickName = nickName;
+        this.nickname = nickname;
         this.email = email;
         this.schoolName = schoolName;
         this.authState = authState;

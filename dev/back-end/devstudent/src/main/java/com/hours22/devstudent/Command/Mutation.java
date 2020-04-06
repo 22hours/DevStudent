@@ -73,8 +73,8 @@ public class Mutation implements GraphQLMutationResolver {
     //endregion
 
     //region member Mutation
-    public User createUser(String email, String password, String nickName, String schoolName) {
-        return createUser.createUser(email, password, nickName, schoolName);
+    public User createUser(String email, String password, String nickname, String schoolName) {
+        return createUser.createUser(email, password, nickname, schoolName);
     }
     public Count checkDuplicateEmail(String email){
         if(!userRepository.existsByEmail(email))
@@ -83,7 +83,7 @@ public class Mutation implements GraphQLMutationResolver {
     }
 
     public Count checkDuplicateNickname(String nickname){
-        if(!userRepository.existsByNickName(nickname))
+        if(!userRepository.existsByNickname(nickname))
             return new Count(1);
         return new Count(0);
     }

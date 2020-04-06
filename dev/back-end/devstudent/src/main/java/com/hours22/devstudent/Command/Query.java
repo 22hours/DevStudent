@@ -61,11 +61,11 @@ public class Query implements GraphQLQueryResolver {
         return findUserByNickname.findUserByNickname(token,nickname);
     }
 
-    public List<Alarm> findAllAlarms(String nickName, int pageNum, int requiredCount){
-        return findAllAlarms.findAllAlarms(nickName,pageNum,requiredCount);
+    public List<Alarm> findAllAlarms(String nickname, int pageNum, int requiredCount){
+        return findAllAlarms.findAllAlarms(nickname,pageNum,requiredCount);
     }
-    public Count countUnreadAlarms(String nickName){
-        return countUnreadAlarms.countUnreadAlarms(nickName);
+    public Count countUnreadAlarms(String nickname){
+        return countUnreadAlarms.countUnreadAlarms(nickname);
     }
     public Count countAllQuestions(){
         return countAllQuestions.countAllQuestions();
