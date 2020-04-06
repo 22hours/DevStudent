@@ -14,13 +14,13 @@ public class Login {
     @Autowired
     private UserRepository userRepository;
 
-    public User login(String _id, String password){
-        if(!userRepository.existsBy_id(_id)){
-            return new User(null,"Login fail","Login fail","Login fail","Login fail","Login fail");
+    public User login(String email, String password){
+        if(!userRepository.existsByEmail(email)){
+            return new User(null,"Login fail","Login fail","Login fail","Login fail");
         }
-        User user = userRepository.findBy_id(_id);
+        User user = userRepository.findByEmail(email);
         if(!user.getPassword().equals(password) || !user.getAuthState().equals("Certificated")){
-            return new User(null,"Login fail","Login fail","Login fail","Login fail","Login fail");
+            return new User(null,"Login fail","Login fail","Login fail","Login fail");
         }
         String key = randMaker.getKey(false, 20);
         user.setToken(key);

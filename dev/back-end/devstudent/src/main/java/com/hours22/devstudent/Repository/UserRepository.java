@@ -10,11 +10,15 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     Boolean existsByAuthState(String authState);
 
-    boolean existsBy_id(String _id);
+    Boolean existsByEmail(String email);
 
-    User findBy_id(String _id);
+    boolean existsByNickName(String nickname);
 
-    int countBy_id(String _id);
+    User findByNickName(String nickname);
+
+    User findByEmail(String email);
+
+    int countByNickName(String nickname);
 }
 
 

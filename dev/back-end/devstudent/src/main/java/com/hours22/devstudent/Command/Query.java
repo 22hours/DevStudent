@@ -27,7 +27,7 @@ public class Query implements GraphQLQueryResolver {
     @Autowired
     private FindQuestionsByOption findQuestionsByOption;
     @Autowired
-    private FindUserBy_id findUserBy_id;
+    private FindUserByNickname findUserBy_id;
     @Autowired
     private FindAllAlarms findAllAlarms;
     @Autowired
@@ -57,21 +57,15 @@ public class Query implements GraphQLQueryResolver {
         return findQuestionsByTags.findQuestionsByTags(param, pageNum, requiredCount, tags, logical);
     }
 
-    public Isit checkDuplicate(String _id){
-        if(!userRepository.existsBy_id(_id))
-            return new Isit(true);
-        return new Isit(false);
+    public User findUserByNickname(String token,String nickname){
+        return findUserBy_id.findUserByNickname(token,nickname);
     }
 
-    public User findUserBy_id(String token,String _id){
-        return findUserBy_id.findUserBy_id(token,_id);
+    public List<Alarm> findAllAlarms(String userNickname, int pageNum, int requiredCount){
+        return findAllAlarms.findAllAlarms(userNickname,pageNum,requiredCount);
     }
-
-    public List<Alarm> findAllAlarms(String user_id, int pageNum, int requiredCount){
-        return findAllAlarms.findAllAlarms(user_id,pageNum,requiredCount);
-    }
-    public Count countUnreadAlarms(String user_id){
-        return countUnreadAlarms.countUnreadAlarms(user_id);
+    public Count countUnreadAlarms(String userNickname){
+        return countUnreadAlarms.countUnreadAlarms(userNickname);
     }
     public Count countAllQuestions(){
         return countAllQuestions.countAllQuestions();
