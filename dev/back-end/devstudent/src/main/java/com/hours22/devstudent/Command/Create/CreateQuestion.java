@@ -18,7 +18,7 @@ public class CreateQuestion extends Create {
         if(!isAuthorized(author,token))
             return new Question(null,"error",author,tags,"Not Authorized User","Not Authorized User");
         String seqNum = makeSequence("Question");
-        String previews = (content.length() < 20) ? content : content.substring(0, 20);
+        String previews = (content.length() < 100) ? content : content.substring(0, 100);
         Question question = new Question(seqNum,title,author,tags,content, previews);
         questionRepository.save(question);
         return question;

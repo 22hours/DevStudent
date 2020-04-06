@@ -5,15 +5,13 @@ import com.hours22.devstudent.Command.Create.CreateAnswer;
 import com.hours22.devstudent.Command.Create.CreateComment;
 import com.hours22.devstudent.Command.Create.CreateQuestion;
 import com.hours22.devstudent.Command.Create.CreateUser;
+import com.hours22.devstudent.Command.Delete.DeleteAlarm;
 import com.hours22.devstudent.Command.Delete.DeleteAnswer;
 import com.hours22.devstudent.Command.Delete.DeleteComment;
 import com.hours22.devstudent.Command.Delete.DeleteQuestion;
 import com.hours22.devstudent.Command.Module.Login;
 import com.hours22.devstudent.Command.Update.UpdateUserAuthState;
-import com.hours22.devstudent.Entity.Answer;
-import com.hours22.devstudent.Entity.Question;
-import com.hours22.devstudent.Entity.Comment;
-import com.hours22.devstudent.Entity.User;
+import com.hours22.devstudent.Entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -40,6 +38,8 @@ public class Mutation implements GraphQLMutationResolver {
     private DeleteAnswer deleteAnswer;
     @Autowired
     private DeleteComment deleteComment;
+    @Autowired
+    private DeleteAlarm deleteAlarm;
     //endregion
 
     //region create Muation
@@ -79,6 +79,9 @@ public class Mutation implements GraphQLMutationResolver {
     }
     public User LoginToServer(String _id, String password) {
         return login.login(_id, password);
+    }
+    public Alarm deleteAlarm(String alarm_id){
+        return deleteAlarm.deleteAlarm(alarm_id);
     }
     //endregion
 }

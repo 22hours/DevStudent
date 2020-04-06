@@ -6,10 +6,13 @@ type Alarm{
     content : String
     date : String
     read : Boolean # true는 읽은거, false는 안읽은거
-
 }
 
 extend type Query{
     findAllAlarms(user_id : String, pageNum : Int, requiredCount : Int) : [Alarm]
     countUnreadAlarms(user_id : String) : Count
+}
+
+extend type Mutation {
+    deleteAlarm(alarm_id : String) : Alarm
 }
