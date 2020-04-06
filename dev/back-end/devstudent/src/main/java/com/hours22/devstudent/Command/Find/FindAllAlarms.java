@@ -18,9 +18,9 @@ public class FindAllAlarms {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public List<Alarm> findAllAlarms(String user_id, int pageNum, int requiredCount){
-        Criteria criteria = new Criteria("user_id");
-        criteria.is(user_id);
+    public List<Alarm> findAllAlarms(String nickname, int pageNum, int requiredCount){
+        Criteria criteria = new Criteria("nickname");
+        criteria.is(nickname);
         Query query = new Query(criteria);
         query.with(Sort.by(Sort.Direction.DESC, "date"));
         query.limit(requiredCount);

@@ -17,7 +17,7 @@ public class AuthMailSend {
     @Autowired
     private RandMaker randMaker;
 
-    public String authMailSend(String email, String _id) {
+    public String authMailSend(String email, String nickname) {
         System.out.println("authMailSend 시작");
         String key = randMaker.getKey(false, 20);
         System.out.println("authMailSend 키테스트");
@@ -26,7 +26,7 @@ public class AuthMailSend {
         System.out.println("authMailSend 끝");
         MimeMessage mail = javaMailSender.createMimeMessage();
         String htmlStr = "<h2>안녕하세요. DevStudent 계정인증 메일입니다!</h2><br><br>"
-                + "<h3>" + _id + "님</h3>" + "<p>인증하기 버튼을 누르시면 로그인을 하실 수 있습니다 : <p>"
+                + "<h3>" + nickname + "님</h3>" + "<p>인증하기 버튼을 누르시면 로그인을 하실 수 있습니다 : <p>"
                 //+ "<a href='http://devstudent/emailCheck/"+key+"'>인증하기</a></p>";
             +"<a href='https://af2d60b9.ngrok.io/emailCheck/"+key+"'>인증하기</a></p>";
 //                + _id + "&#34;, authState:&#34;"+ key +"&#34;){_id, authState}}'>인증하기</a></p>";

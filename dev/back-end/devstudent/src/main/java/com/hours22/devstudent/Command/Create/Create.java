@@ -22,15 +22,14 @@ public abstract class Create {
         return String.valueOf(seqNum);
     }
     public boolean isAuthorized(String author,String token){
-        System.out.println(userRepository.countBy_id(author));
-        if(userRepository.countBy_id(author) == 0) return false;
-        User user = userRepository.findBy_id(author);
+        if(userRepository.countByNickname(author) == 0) return false;
+        User user = userRepository.findByNickname(author);
         System.out.println(user.toString());
         if(!user.getToken().equals(token)) return false;
         return true;
     }
-    public void createAlarm(String question_id, String user_id, String respondent, String content){
-        if(user_id.equals(respondent)) return; //자신이 알람을 일으키진 않는다
+    public void createAlarm(String question_id, String nickname, String respondent, String content){
+        if(nickname.equals(respondent)) return; //자신이 알람을 일으키진 않는다
 
         if(sequenceIDRepository.countBy_id("Alarm") == 0) {
             System.out.println("Alarm" + "이 Sequence에 없습니다!");
@@ -42,7 +41,7 @@ public abstract class Create {
         int seqNum = sequenceID.getSeqNum() + 1;
         sequenceID.setSeqNum(seqNum);
         sequenceIDRepository.save(sequenceID);
-        Alarm alarm = new Alarm(String.valueOf(seqNum),question_id,user_id,respondent,content);
+        Alarm alarm = new Alarm(String.valueOf(seqNum),question_id,nickname,respondent,content);
         alarmRepository.save(alarm);
     }
 }

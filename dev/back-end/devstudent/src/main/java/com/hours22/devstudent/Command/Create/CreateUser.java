@@ -16,15 +16,15 @@ public class CreateUser {
     @Autowired
     private AuthMailSend authMailSend;
 
-    public User createUser(String _id, String password, String nickName, String email, String schoolName) {
+    public User createUser(String email, String password, String nickname, String schoolName) {
         User user;
-        String genKey = authMailSend.authMailSend(email, _id);
+        String genKey = authMailSend.authMailSend(email, nickname);
         if(genKey.equals("error")){
             System.out.println("error 발생");
-            user = new User(null, "exception", "authState generate error", null, null, null);
+            user = new User(null, "exception", "authState generate error", null, null);
             return user;
         }
-        user = new User(_id, password, nickName, email, schoolName, genKey);
+        user = new User(email, password, nickname, schoolName, genKey);
         userRepository.save(user);
         return user;
     }

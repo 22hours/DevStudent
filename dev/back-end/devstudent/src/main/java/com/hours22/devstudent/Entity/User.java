@@ -14,10 +14,9 @@ import java.util.Date;
 @Document(collection = "Users")
 public class User {
     @Id
-    private String _id; // 고유 number
-    private String password;
-    private String nickName;
     private String email;
+    private String password;
+    private String nickname;
     private String schoolName;
     private String date;
     @Setter
@@ -25,13 +24,12 @@ public class User {
     @Setter
     private String token;
 
-    public User(String _id, String password, String nickName, String email, String schoolName, String authState) {
+    public User(String email, String password, String nickname, String schoolName, String authState) {
         long time = System.currentTimeMillis();
         SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.date = dayTime.format(new Date(time));
-        this._id = _id;
         this.password = password;
-        this.nickName = nickName;
+        this.nickname = nickname;
         this.email = email;
         this.schoolName = schoolName;
         this.authState = authState;

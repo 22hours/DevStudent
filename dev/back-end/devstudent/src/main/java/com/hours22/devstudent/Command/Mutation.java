@@ -12,6 +12,7 @@ import com.hours22.devstudent.Command.Delete.DeleteQuestion;
 import com.hours22.devstudent.Command.Module.Login;
 import com.hours22.devstudent.Command.Update.UpdateUserAuthState;
 import com.hours22.devstudent.Entity.*;
+import com.hours22.devstudent.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,8 @@ import java.util.List;
 @Component
 public class Mutation implements GraphQLMutationResolver {
     //region properties
+    @Autowired
+    private UserRepository userRepository;
     @Autowired
     private CreateUser createUser;
     @Autowired
@@ -70,15 +73,25 @@ public class Mutation implements GraphQLMutationResolver {
     //endregion
 
     //region member Mutation
-    public User createUser(String _id, String password, String nickName, String email, String schoolName) {
-        return createUser.createUser(_id, password, nickName, email, schoolName);
+    public User createUser(String email, String password, String nickname, String schoolName) {
+        return createUser.createUser(email, password, nickname, schoolName);
+    }
+    public Count checkDuplicateEmail(String email){
+        if(!userRepository.existsByEmail(email))
+            return new Count(1);
+        return new Count(0);
     }
 
+    public Count checkDuplicateNickname(String nickname){
+        if(!userRepository.existsByNickname(nickname))
+            return new Count(1);
+        return new Count(0);
+    }
     public User updateUserAuthState(String authState){
         return updateUserAuthState.updateUserAuthState(authState);
     }
-    public User LoginToServer(String _id, String password) {
-        return login.login(_id, password);
+    public User loginToServer(String email, String password) {
+        return login.login(email, password);
     }
     public Alarm deleteAlarm(String alarm_id){
         return deleteAlarm.deleteAlarm(alarm_id);

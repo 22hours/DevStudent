@@ -1,8 +1,7 @@
 type User{
-    _id : String
-    password : String!
-    nickName : String!
     email : String!
+    password : String!
+    nickname : String!
     schoolName : String!
     date : String!
     authState : String!
@@ -10,13 +9,14 @@ type User{
 }
 
 extend type Mutation{
-    createUser(_id : String!, password: String!, nickName: String!, email: String!, schoolName : String!) : User
+    createUser(email: String!, password: String!, nickname: String!, schoolName : String!) : User
     updateUserAuthState(authState : String!) : User
-    LoginToServer(_id : String, password : String) : User
+    loginToServer(email : String, password : String) : User
+    checkDuplicateEmail(email : String) : Count
+    checkDuplicateNickname(nickname : String) : Count
 }
 
 
 extend type Query{
-    findUserBy_id(token : String, _id : String) : User
-    checkDuplicate(_id : String) : Isit
+    findUserByNickname(token : String, nickname : String) : User
 }
