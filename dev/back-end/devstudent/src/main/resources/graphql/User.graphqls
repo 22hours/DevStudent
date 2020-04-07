@@ -16,7 +16,6 @@ extend type Mutation{
     checkDuplicateNickname(nickname : String) : Count
 }
 
-
 extend type Query{
     findUserByNickname(token : String, nickname : String) : User
 }

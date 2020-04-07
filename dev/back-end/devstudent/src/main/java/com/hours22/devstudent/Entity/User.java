@@ -33,7 +33,7 @@ public class User {
         this.email = email;
         this.schoolName = schoolName;
         this.authState = authState;
-        this.token = "token create yet";
+        this.token = null;
     }
 }
 
