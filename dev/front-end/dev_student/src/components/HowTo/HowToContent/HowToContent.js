@@ -5,6 +5,7 @@ import HowToContentHeader from "../HowToContentHeader/HowToContentHeader";
 import "./HowToContent.css";
 import { findQuestionBy_id_Query } from "../../../query/queries";
 import UserContext from "../../../Context/UserContext";
+import ReplyAnswer from "../ReplyAnswer/ReplyAnswer";
 import HowToContentQABox from "../HowToContentQABox/HowToContentQABox";
 const HowToContent = ({ match }) => {
     const { user } = useContext(UserContext);
@@ -22,7 +23,7 @@ const HowToContent = ({ match }) => {
     ));
     return (
         <React.Fragment>
-         <div className="left-line"></div>
+            <div className="left-line"></div>
             <Container className="margin-top-3 how-to-content-header">
                 <HowToContentHeader
                     solved={data.findQuestionBy_id.solved}
@@ -53,7 +54,9 @@ const HowToContent = ({ match }) => {
                 content={"이렇게 해보시면 어떨까요?"}></HowToContentQABox>} */
                 }
             </Container>
-            <Container className="how-to-reply-answer-wrapper"></Container>
+            <Container className="how-to-reply-answer-wrapper">
+                <ReplyAnswer />
+            </Container>
         </React.Fragment>
     );
 };
