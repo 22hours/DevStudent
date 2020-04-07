@@ -34,7 +34,7 @@ class App extends Component {
           user : nickname,
           authenticated : true
         })
-        window.sessionStorage.setItem('user',nickname);
+        window.sessionStorage.setItem('nickname',nickname);
         window.sessionStorage.setItem('auth',true);
         window.sessionStorage.setItem('token',token);
     }
