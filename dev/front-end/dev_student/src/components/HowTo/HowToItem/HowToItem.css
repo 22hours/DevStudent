@@ -1,39 +1,33 @@
-@media only screen 
-and (max-width : 530px)
-{
-    .howto-item .stats-area{
+@media only screen and (max-width: 530px) {
+    .howto-item .stats-area {
         display: none;
     }
-    .howto-item .content{
+    .howto-item .content {
         margin-left: 95px;
         margin-right: 0;
     }
-/* Add Your CSS Styling Here */
-
+    /* Add Your CSS Styling Here */
 }
 
-@media only screen 
-and (min-width : 530px)
-{
-    .howto-item .stats-area-mobile{
+@media only screen and (min-width: 530px) {
+    .howto-item .stats-area-mobile {
         display: none;
     }
-    .howto-item .content{
+    .howto-item .content {
         margin-right: 95px;
         margin-left: 25px;
     }
-    .howto-item .answer-wrapper{
+    .howto-item .answer-wrapper {
         margin-bottom: 5px;
     }
 
-/* Add Your CSS Styling Here */
-
+    /* Add Your CSS Styling Here */
 }
-.howto-item .stats-area-mobile{
+.howto-item .stats-area-mobile {
     width: 80px;
     float: left;
 }
-.howto-item .content{
+.howto-item .content {
     float: left;
 }
 .box {
@@ -41,7 +35,7 @@ and (min-width : 530px)
     height: 100%;
     border-radius: 30%;
     overflow: hidden;
-    background: #BDBDBD
+    background: #bdbdbd;
 }
 .profile {
     width: 100%;
@@ -49,33 +43,30 @@ and (min-width : 530px)
     object-fit: cover;
 }
 
-.howto-item-wrapper{
+.howto-item-wrapper {
     background-color: white;
-    border-top: 0.5px solid #E3E3E3;
+    border-top: 0.5px solid #e3e3e3;
 }
 
-.howto-item{
+.howto-item {
     height: 120px;
     width: 100%;
 }
-.howto-item .content{
+.howto-item .content {
     margin-top: 5px;
     position: absolute;
-    right:0px;
-    left:0px;
+    right: 0px;
+    left: 0px;
     width: auto;
 }
 
-
-.howto-item .stats-area{
+.howto-item .stats-area {
     width: 80px;
-    height : 100%;
+    height: 100%;
     float: right;
 }
-.howto-item p{
-    /* margin: 0px !important; */
-}
-.howto-item .stats-inner-box{
+
+.howto-item .stats-inner-box {
     height: auto;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -84,130 +75,126 @@ and (min-width : 530px)
     padding-right: 10px;
 }
 
-.howto-item .stats-inner-box .stats-inner-box-solved{
+.howto-item .stats-inner-box .stats-inner-box-solved {
     border-radius: 5px;
     padding-left: 5px;
     padding-right: 5px;
 }
-.howto-item .stats-inner-box .stats-inner-box-solved .answer-number-wrapper p{
+.howto-item .stats-inner-box .stats-inner-box-solved .answer-number-wrapper p {
     background-color: rgb(212, 91, 91);
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 5px;
-    color:white;
+    color: white;
     border-radius: 12px;
     width: 30px;
     height: 30px;
 }
 
-.howto-item .stats-inner-box .stats-inner-box-hot{
+.howto-item .stats-inner-box .stats-inner-box-hot {
     border-radius: 5px;
     padding-left: 5px;
     padding-right: 5px;
 }
-.howto-item .stats-inner-box .stats-inner-box-hot .answer-number-wrapper p{
+.howto-item .stats-inner-box .stats-inner-box-hot .answer-number-wrapper p {
     /* background-color: rgb(17, 149, 182); */
     border: 1px solid rgb(212, 91, 91);
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 5px;
-    color:rgb(212, 91, 91);
+    color: rgb(212, 91, 91);
     border-radius: 12px;
     width: 30px;
     height: 30px;
 }
 
- .howto-item .stats-inner-box .stats-inner-box-default{
- }
-
-.howto-item .answer-wrapper{
+.howto-item .answer-wrapper {
     height: 55px;
 }
 
-.howto-item .views-wrapper{
+.howto-item .views-wrapper {
     height: 55px;
 }
 
-.content .author-title-wrapper{
+.content .author-title-wrapper {
     width: 100%;
 }
 
-.howto-item .asked-span{
+.howto-item .asked-span {
     color: gray;
     font-size: small;
 }
 
-.howto-item .author-span{
-    color : #494949;
+.howto-item .author-span {
+    color: #494949;
     font-size: 15px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
 }
 
-.howto-item .author-span-add{
-    color : #494949;
+.howto-item .author-span-add {
+    color: #494949;
     font-size: 10px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
 }
 
-.howto-item .title-span a{
+.howto-item .title-span a {
     /* color : 	rgb(17, 149, 182);  */
-    color : 	black; 
+    color: black;
 
     font-size: large;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
 }
 
-.howto-item .answer-number-wrapper{
+.howto-item .answer-number-wrapper {
     height: 25px;
     vertical-align: middle;
 }
-.howto-item .answer-span-wrapper{
+.howto-item .answer-span-wrapper {
     height: auto;
 }
-.howto-item .answer-number{
+.howto-item .answer-number {
     text-align: center;
     font-size: 20px;
-    width:100%;
+    width: 100%;
     display: inline-block;
 }
-.howto-item .answer-span{
+.howto-item .answer-span {
     vertical-align: bottom;
     text-align: center;
-    width:100%;
+    width: 100%;
     display: inline-block;
     font-size: 13px;
-    color:gray;
+    color: gray;
 }
 
-.howto-item .views-number-wrapper{
+.howto-item .views-number-wrapper {
     height: 25px;
 }
-.howto-item .views-span-wrapper{
+.howto-item .views-span-wrapper {
     height: auto;
 }
-.howto-item .views-number{
+.howto-item .views-number {
     font-size: 20px;
     text-align: center;
-    width:100%;
+    width: 100%;
     display: inline-block;
 }
 
-.howto-item .views-span{
+.howto-item .views-span {
     vertical-align: bottom;
     text-align: center;
-    width:100%;
+    width: 100%;
     display: inline-block;
     font-size: 13px;
-    color:gray;
+    color: gray;
 }
 
-.howto-item .previews-span{
+.howto-item .previews-span {
     font-size: 13px;
-    color : #696969;
-
+    color: #696969;
 }
 
-.howto-item .previews-box{
+.howto-item .previews-box {
     max-height: 50px;
     overflow: hidden;
 }

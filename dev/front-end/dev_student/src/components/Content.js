@@ -1,56 +1,38 @@
-import React, { useState } from 'react'
-import { gql } from 'apollo-boost';
-import { Query  } from 'react-apollo';
-import {Row, Col } from 'reactstrap';
-
+import React, { useState } from "react";
+import { gql } from "apollo-boost";
+import { Query } from "react-apollo";
+import { Row, Col } from "reactstrap";
 
 const GET_CONTINENTS = gql`
-query{
-    continents{
-        code
-        name
+    query {
+        continents {
+            code
+            name
+        }
     }
-}
 `;
 
 const GET_TEST = gql`
-query{
-    findAllLaptops{
-        id
-        name
-        price
-        ram
-    }
-}
-`;
-
-const POST_QUERY = gql`
-mutation{
-    createLaptop(
-        id : 3
-        name : "APPLE"
-        price : 104912049
-        ram : 1293293)
-        {
+    query {
+        findAllLaptops {
             id
             name
             price
             ram
         }
-}
+    }
 `;
 
 const Content = ({ match }) => {
-
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState(0);
 
     const Increase = () => {
         setCount(count + 1);
-    }
+    };
 
     const Decrease = () => {
         setCount(count - 1);
-    }
+    };
 
     return (
         <div>
@@ -70,7 +52,10 @@ const Content = ({ match }) => {
                                 return (
                                     <ul>
                                         {data.continents.map(({ code, name }) => (
-                                            <li key={code}>{name}{name} {code}</li>
+                                            <li key={code}>
+                                                {name}
+                                                {name} {code}
+                                            </li>
                                         ))}
                                     </ul>
                                 );
@@ -89,8 +74,12 @@ const Content = ({ match }) => {
                                 if (error) return <p>Error!</p>;
                                 return (
                                     <ul>
-                                        {data.findAllLaptops.map(({ id, name,price,ram }) => (
-                                            <li key={id}>{name}{price}{ram} </li>
+                                        {data.findAllLaptops.map(({ id, name, price, ram }) => (
+                                            <li key={id}>
+                                                {name}
+                                                {price}
+                                                {ram}{" "}
+                                            </li>
                                         ))}
                                     </ul>
                                 );
@@ -99,12 +88,9 @@ const Content = ({ match }) => {
                     </Col>
                     <Col></Col>
                 </Row>
-               
             </div>
         </div>
     );
-}
-
-
+};
 
 export default Content;

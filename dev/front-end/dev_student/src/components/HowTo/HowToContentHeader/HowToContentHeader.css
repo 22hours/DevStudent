@@ -1,90 +1,91 @@
-.how-to-content-header{
+.how-to-content-header {
     overflow: hidden;
-    border-bottom: 0.5px solid rgba(0,0,0,0.16);
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.16);
     background-color: white;
 }
 
-.how-to-content-header .author-span{
-    font-family: 'Do Hyeon', sans-serif;
+.how-to-content-header .author-span {
+    font-family: "Do Hyeon", sans-serif;
     font-size: large;
     vertical-align: base;
     display: inline-block;
 }
 
-.how-to-content-header .fake{
-   color: white;
+.how-to-content-header .fake {
+    color: white;
 }
 
-.how-to-content-header .content-header-question-mark{
-    font-family: 'Do Hyeon', sans-serif;
+.how-to-content-header .content-header-question-mark {
+    font-family: "Do Hyeon", sans-serif;
     font-size: x-large;
     vertical-align: base;
     display: inline-block;
-    color : #4BA0B5;
+    color: #4ba0b5;
 }
 
-.how-to-content-header .author-level-span{
+.how-to-content-header .author-level-span {
     font-size: 12px;
     vertical-align: base;
     display: inline-block;
     color: #888888;
 }
 
-.how-to-content-header .author-outro{
+.how-to-content-header .author-outro {
     font-size: 14px;
-    font-family: 'Do Hyeon', sans-serif;
+    font-family: "Do Hyeon", sans-serif;
     vertical-align: base;
     display: inline-block;
     color: gray;
 }
 
-.how-to-content-header .question-header{
-    font-family: 'Do Hyeon', sans-serif;
+.how-to-content-header .question-header {
+    font-family: "Do Hyeon", sans-serif;
     font-size: 26px;
 }
 
-.how-to-content-header .quetsion-id{
+.how-to-content-header .quetsion-id {
     font-size: 19px;
     color: gray;
     margin-right: 10px;
 }
 
-
-.content-intro-wrapper-div-right .date-text-span, .view-text-span{
-    font-family: 'Do Hyeon', sans-serif;
+.content-intro-wrapper-div-right .date-text-span,
+.view-text-span {
+    font-family: "Do Hyeon", sans-serif;
     font-size: 14px;
     vertical-align: base;
     display: inline-block;
     color: black;
 }
 
-.how-to-content-header .content-intro-wrapper{
+.how-to-content-header .content-intro-wrapper {
     width: 100%;
 }
 
-.how-to-content-header .content-title-wrapper{
+.how-to-content-header .content-title-wrapper {
     width: 100%;
 }
 
-.how-to-content-header .content-intro-wrapper .date-span, .view-span{
+.how-to-content-header .content-intro-wrapper .date-span,
+.view-span {
     color: #888888;
-    font-family: 'Do Hyeon', sans-serif;
+    font-family: "Do Hyeon", sans-serif;
     font-size: 14px;
 }
 
-.how-to-content-header .content-intro-wrapper-div{
- width: 100%;
+.how-to-content-header .content-intro-wrapper-div {
+    width: 100%;
 }
 
-.content-intro-wrapper-div .content-intro-wrapper-div-left{
+.content-intro-wrapper-div .content-intro-wrapper-div-left {
     float: left;
 }
 
-.content-intro-wrapper-div .content-intro-wrapper-div-right{
+.content-intro-wrapper-div .content-intro-wrapper-div-right {
     float: left;
 }
 
-.how-to-content-header .solved-bagde{
+.how-to-content-header .solved-bagde {
     margin-left: 2px;
     padding-left: 5px;
     padding-top: 3px;
@@ -95,11 +96,11 @@
     height: 12px;
     font-weight: bold;
     background-color: rgb(212, 91, 91);
-    color:white;
+    color: white;
     border-radius: 5px;
 }
 
-.how-to-content-header .mine-bagde{
+.how-to-content-header .mine-bagde {
     margin-left: 2px;
     padding-left: 5px;
     padding-top: 3px;
@@ -110,6 +111,6 @@
     height: 12px;
     font-weight: bold;
     background-color: rgb(98, 96, 96);
-    color:white;
+    color: white;
     border-radius: 5px;
 }

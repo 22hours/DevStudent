@@ -1,18 +1,16 @@
-.content-list-item{
-   width: 100%;
-   cursor:pointer;
+.content-list-item {
+    width: 100%;
+    cursor: pointer;
 }
 
-.content-list-item-title{
+.content-list-item-title {
     width: 80%;
 }
 
-.content-list-item-number{
+.content-list-item-number {
     width: 10%;
-
 }
 
-.content-list-item-author{
+.content-list-item-author {
     width: 10%;
-
 }

@@ -1,38 +1,28 @@
-import React from 'react';
-import './HowToContentHeader.css';
+import React from "react";
+import "./HowToContentHeader.css";
 const HowToContentHeader = (props) => {
-    const { _id, title, author, date, views, mine,solved } = props;
-    const HeaderBadge =()=>{
-        if(solved){
-            return(
-                <span className="solved-bagde">SOLVED</span>
-            );
+    const { _id, title, author, date, views, mine, solved } = props;
+    const HeaderBadge = () => {
+        if (solved) {
+            return <span className="solved-bagde">SOLVED</span>;
+        } else {
+            return <span className="solved-bagde">SOLVED</span>;
         }
-        else{
-            return(
-                <span className="solved-bagde">SOLVED</span>
-            );
+    };
+    const MineBadge = () => {
+        if (mine) {
+            return <span className="mine-bagde">내글</span>;
+        } else {
+            return <p></p>;
         }
-    }
-    const MineBadge = () =>{
-        if(mine){
-            return(
-                <span className="mine-bagde">내글</span>
-            );
-        }
-        else{
-            return(
-                <p></p>
-            );
-        }
-    }
+    };
     return (
         <React.Fragment>
             <div>
                 <span className="question-header">{title}</span>
                 <span className="quetsion-id">&nbsp;#{_id}</span>
-                <HeaderBadge/>
-                <MineBadge/>
+                <HeaderBadge />
+                <MineBadge />
             </div>
             <div className="content-intro-wrapper-div">
                 <div className="content-intro-wrapper-div-left">
@@ -51,10 +41,8 @@ const HowToContentHeader = (props) => {
                     </p>
                 </div>
             </div>
-
-
         </React.Fragment>
     );
-}
+};
 
 export default HowToContentHeader;
