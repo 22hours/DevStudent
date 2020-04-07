@@ -14,7 +14,7 @@ const MypageDropdownButton = (props) => {
 
   //  },[1])
    const {loading,error,data} = useQuery(COUNT_UNREAD_ALARMS, {
-    variables: { user_id: user}  
+    variables: { nickname: user}  
   });
   if (loading) return <p>Loading ...</p>;
   if (error) return <p>Error!</p>;  

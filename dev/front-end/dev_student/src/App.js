@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    const sessionUser = window.sessionStorage.getItem('user');
+    const sessionUser = window.sessionStorage.getItem('nickname');
     const sessionAuth = window.sessionStorage.getItem('auth');
     if(sessionUser){
       this.setState({
@@ -29,12 +29,12 @@ class App extends Component {
   }
 
   render() {
-    const saveLoginState = (email,token)  => {
+    const saveLoginState = (nickname,token)  => {
         this.setState({
-          user : email,
+          user : nickname,
           authenticated : true
         })
-        window.sessionStorage.setItem('user',email);
+        window.sessionStorage.setItem('user',nickname);
         window.sessionStorage.setItem('auth',true);
         window.sessionStorage.setItem('token',token);
     }

@@ -1,4 +1,4 @@
-import React, { useState , useEffect , useRef, useLayoutEffect } from 'react';
+import React, { useState  , useRef, useLayoutEffect } from 'react';
 import '../components/Login/LoginTemplate.css';
 import { Redirect } from 'react-router-dom';
 import { Container, Col, Row } from 'reactstrap';
@@ -8,7 +8,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { LOGIN } from '../Mutation/mutations';
 
 const Login = ({ saveLoginState, authenticated, location }) => {
-    const [LoginToServer, { data }] = useMutation(LOGIN);
+    const [loginToServer, { data }] = useMutation(LOGIN);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const btn_style={
@@ -22,13 +22,11 @@ const Login = ({ saveLoginState, authenticated, location }) => {
           return;
         }
         if(data == null)return;
-        if(data?.LoginToServer.token){
-            console.log("1");
-            saveLoginState(email,data.LoginToServer.token);
+        if(data?.loginToServer.token){
+            saveLoginState(data.loginToServer.nickname,data.loginToServer.token);
             return ;
         }
         else {
-            console.log("2");
             setPassword('');
             alert("로그인 시스템의 정보와 다릅니다!");
             return ;
@@ -80,8 +78,8 @@ const Login = ({ saveLoginState, authenticated, location }) => {
                                         onClick={() => {
                                             if(email.length < 1)return;
                                             if(password.length < 1)return;
-                                            LoginToServer({variables : {
-                                                _id : email,
+                                            loginToServer({variables : {
+                                                email : email,
                                                 password : password
                                             }})
                                         }}

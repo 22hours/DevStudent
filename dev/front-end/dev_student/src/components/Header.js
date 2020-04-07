@@ -7,7 +7,7 @@ import React, { useState , useContext} from 'react';
 import UserContext from '../Context/UserContext';
 
 import {
-    Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink
+    Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem
 } from 'reactstrap';
 import Dropdownbutton from './MypageButton/MypageDropdownButton';
 
@@ -58,9 +58,6 @@ const Header = (props) => {
         }
     }
 
-    const triggeredHoverStyle =() =>{
-
-    }
       return (
             <Navbar style={navBarInlineStyle} color="black" light expand="md" className="header-wrapper sticky-top" >
             <Container>

@@ -74,18 +74,17 @@ query findAllQuestion($param : String, $requiredCount:Int){
 
 export const FIND_ALL_ALARMS = gql`
 query findAllAlarms(
-    $user_id : String!, 
+    $nickname : String!, 
     $pageNum : Int, 
-    $requiredCount : Int
-){
+    $requiredCount : Int){
     findAllAlarms(
-        user_id : $user_id, 
+        nickname : $nickname, 
         pageNum : $pageNum, 
         requiredCount : $requiredCount
         ){
         _id
         question_id
-        user_id
+        nickname
         respondent
         content
         date
@@ -95,17 +94,9 @@ query findAllAlarms(
 `;
 
 export const COUNT_UNREAD_ALARMS = gql`
-query countUnreadAlarms($user_id : String!){
-    countUnreadAlarms(user_id : $user_id){
+query countUnreadAlarms($nickname : String!){
+    countUnreadAlarms(nickname : $nickname){
         count
     }
 }
 `;
-
-export const checkDuplicate = gql`
-query checkDuplicate($_id: String){
-    checkDuplicate(_id: $_id){
-        isit
-    }
-}`;
-

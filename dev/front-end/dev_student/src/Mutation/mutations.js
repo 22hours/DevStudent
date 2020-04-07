@@ -10,9 +10,10 @@ export const CREATE_QUESTION = gql`
 `;
 
 export const LOGIN = gql`
-mutation LoginToServer($_id:String!, $password:String!){
-    LoginToServer(_id : $_id, password : $password)
+mutation loginToServer($email:String!, $password:String!){
+    loginToServer(email : $email, password : $password)
     {
+        nickname
         token
     }
 }
@@ -49,12 +50,22 @@ mutation createAnswer(
 
 export const CREATE_USER = gql`
 mutation createUser(
-    $_id: String!,
-    $password: String!,
     $email: String!,
-    $schoolName: String!, $nickName: String!){
-        createUser(_id: $_id, password: $password, email: $email, schoolName: $schoolName, nickName: $nickName){
-            _id
+    $password: String!,
+    $nickname: String!,
+    $schoolName: String!)
+    {
+        createUser(email: $email, password: $password, nickname: $nickname, schoolName: $schoolName){
+            email
+            nickname
         }
     }
+`;
+
+export const CHECK_DUPLICATE_EMAIL = gql`
+mutation checkDuplicateEmail($email:String!){
+    checkDuplicateEmail(email:$email){
+        count
+    }
+}
 `;
