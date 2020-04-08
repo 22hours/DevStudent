@@ -45,10 +45,6 @@ const Header = (props) => {
         padding : "0px"
     }
 
-    const navbarItemTextStyle = {
-        color : 'black'
-    }
-
     const PrivateMenu = () =>{
         if(authenticated){
             return <MemberMenu/>

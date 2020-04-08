@@ -22,7 +22,7 @@ const MypageDropdownButton = (props) => {
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
         <DropdownToggle style={{backgroundColor: '#F8F9FA', borderColor:'#F8F9FA'}}>
-        <img width="30px" height="30px" style={img_style} src="/img/mypage.png" ></img>
+        <img width="18px" height="20px" style={img_style} src="/img/user_area_button_black.png" ></img>
         </DropdownToggle>
         <DropdownMenu right className="nav-smypage-dropdown-btn">
           <DropdownItem header>
