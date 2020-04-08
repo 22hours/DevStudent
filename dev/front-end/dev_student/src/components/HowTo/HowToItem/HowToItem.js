@@ -5,7 +5,7 @@ import "./HowToItem.css";
 class HowToItem extends Component {
     render() {
         const { id, author, title, date, previews, answers, views, solved, tags } = this.props;
-        const TagList = tags.map((tagItem) => <Tag tagItem={tagItem}></Tag>);
+        const TagList = tags.map((tagItem) => <Tag key={tagItem} tagItem={tagItem}></Tag>);
         const StatsArea = ({ children }) => {
             if (solved) {
                 return (
