@@ -1,5 +1,4 @@
-import React,{Component} from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import React from 'react';
 import './HotQuestionItem.css'
 import { ListGroup, ListGroupItem, Badge } from 'reactstrap';
 

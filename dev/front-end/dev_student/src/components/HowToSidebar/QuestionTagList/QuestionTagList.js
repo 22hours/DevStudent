@@ -1,6 +1,5 @@
 import React from 'react'
 import QuestionTag from '../QuestionTag/QuestionTag';
-import { Container, Row, Col } from 'reactstrap';
 
 const QuestionTagList = ({tag}) => {
     const taglist = tag.map(
@@ -14,9 +13,9 @@ const QuestionTagList = ({tag}) => {
             )  
         )
         return(
-            <Container>
+            <div>
                 {taglist}
-            </Container>
+            </div>
         );
 }
 export default QuestionTagList;

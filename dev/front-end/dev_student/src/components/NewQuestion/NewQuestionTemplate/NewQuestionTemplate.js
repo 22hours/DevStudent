@@ -5,6 +5,7 @@ import { Button } from "@material-ui/core";
 import UserContext from "../../../Context/UserContext";
 import TagInput from "../../TagInput/TagInput";
 import NewQuestionMain from "../NewQuestionMain/NewQuestionMain";
+import NewQuestionSidebarTemplate from "../NewQuestionSideBar/NewQuestionSideBarTemplate/NewQuestionSideBarTemplate";
 const NewQuestionTemplate = ({ handleSubmit }) => {
     const { user } = useContext(UserContext);
     const [title, setTitle] = useState("");
@@ -30,7 +31,9 @@ const NewQuestionTemplate = ({ handleSubmit }) => {
                         handleSubmit={handleSubmit}
                     />
                 </div>
-                <div className="new-question-sidebar-col">d</div>
+                <div className="new-question-sidebar-col">
+                    <NewQuestionSidebarTemplate/>
+                </div>
             </div>
         </div>
     );

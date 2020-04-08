@@ -1,27 +1,35 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import './QuestionTag.css';
-import {ButtonGroup} from 'reactstrap';
-import {Button} from 'reactstrap';
-
+import { ListGroup, ListGroupItem, Badge } from 'reactstrap';
 
 class QuestionTag extends Component{
     render(){
-        const count_style={
-            background: 'white',
-            color: 'black'
-        }
-        const btn_group_style={
-            float:'left',
-            marginRight:'5px',
-            marginTop:'3px',
-            fontSize:'10px'
-        }
         const {idx,tagname,tagcount} = this.props;
+        const liststyle={
+            fontSize:'13px',
+            width:'100%',
+            textAlign:'left',
+            borderRadius:"0",
+            borderTop:"0",
+            borderLeft:"0",
+            borderRight:"0",
+            borderBottom:"0",
+            paddingLeft:"0.6rem",
+            paddingTop:"0.40rem",
+            paddingBottom:"0.40rem",
+            
+        }
+
+        const badge_style={
+            fontWeight:'400',
+            textAlign:'center',
+            marginLeft:'15px'
+        }
+
         return(
-                <ButtonGroup size = "sm" arial-label="Basic example" style = {btn_group_style} className="question-tag-group">
-                    <Button variant="secondary"  className="question-tag-button-name">{tagname}</Button>
-                    <Button  disabled variant="secondary" className="question-tag-button-count" style={count_style}>{tagcount}</Button>
-                </ButtonGroup>
+            <ListGroup width='100%'>
+                <ListGroupItem className="justify-content-between" style={liststyle}>{tagname}  <Badge pill style={badge_style} >{tagcount}</Badge></ListGroupItem>
+            </ListGroup>
         );
     }
 }
