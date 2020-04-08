@@ -56,13 +56,8 @@ const HowToContentQABox = ({ _id, isQuestion, author, date, likes, content, tags
             },
         })
             .then((response) => {
-                console.log(response._id);
-                if (response._id) {
-                    alert("댓글을 달았습니다!");
-                    // window.location.href = "http://localhost:3000/howto/question/" + question_id;
-                } else {
-                    alert("실패");
-                }
+                alert("댓글을 달았습니다!");
+                window.location.href = "http://localhost:3000/howto/question/" + question_id;
             })
             .catch((err) => {
                 alert(err.messeage);
