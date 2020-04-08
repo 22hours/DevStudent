@@ -4,7 +4,7 @@ import classnames from "classnames";
 import "./MarkdownEditor.css";
 import { Alert, Collapse, Input, TabContent, TabPane, Nav, NavItem, NavLink, Button, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
-const MarkdownEditor = ({ comment, setComment }) => {
+const MarkdownEditor = ({ comment, setComment, children }) => {
     // const [comment, setComment] = useState("");
     const [activeTab, setActiveTab] = useState("1");
     const [isOpen, setIsOpen] = useState(false);
@@ -72,7 +72,7 @@ const MarkdownEditor = ({ comment, setComment }) => {
                             </Alert>
                         </Collapse>
                         <Input
-                            placeholder="Write your questions.."
+                            placeholder="Write.."
                             value={comment}
                             onChange={({ target: { value } }) => setComment(value)}
                             size="large"
@@ -88,6 +88,7 @@ const MarkdownEditor = ({ comment, setComment }) => {
                             </Col>
                         </Row>
                     </TabPane>
+                    {children}
                 </TabContent>{" "}
             </div>
         </React.Fragment>

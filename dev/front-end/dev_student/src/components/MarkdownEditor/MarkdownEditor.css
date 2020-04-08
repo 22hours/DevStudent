@@ -30,10 +30,13 @@ button {
     padding-right: 10px;
 }
 
+.new-question-wrapper .markdown-eiditor-wrapper textarea {
+    min-height: 250px;
+}
+
 .markdown-eiditor-wrapper textarea {
     padding: 2px;
     border: none;
-    min-height: 250px;
 }
 
 .markdown-editor-button-box button {

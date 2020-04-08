@@ -90,7 +90,63 @@
 }
 
 .question-box .main-box {
+    padding: 10px;
+    overflow: hidden;
+}
+
+.question-box .add-comment-box {
+    float: right;
+}
+
+.question-box .add-comment-box a {
+    color: gray;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.question-box .comment-box {
+    background-color: rgb(248, 248, 248);
+    border-top: 0.4px solid rgb(226, 226, 226);
     padding-left: 10px;
-    padding-right: 10px;
     padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    height: auto;
+}
+
+.comment-box #author {
+    color: #4ba0b5;
+    font-size: 14px;
+}
+
+.comment-box #date {
+    color: gray;
+    font-size: 12px;
+}
+
+.comment-box #content {
+    font-size: 16px;
+}
+
+.question-box .comment-button {
+    float: right;
+}
+
+.question-comment-warpper textarea {
+    min-height: 28px;
+}
+
+.question-comment-warpper .comment-box {
+    padding: 10px;
+    width: 100%;
+}
+
+.question-comment-warpper .comment-box a {
+    width: 100%;
+    color: gray;
+}
+
+.question-comment-warpper .comment-box #comment-link {
+    text-align: right;
+    width: 100%;
 }

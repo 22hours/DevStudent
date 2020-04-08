@@ -19,8 +19,17 @@ const HowToContent = ({ match }) => {
         mine = true;
     }
 
-    const answers = data.findQuestionBy_id.answers.map(({ _id, author, content, date }) => (
-        <HowToContentQABox _id={_id} key={_id} author={author} date={date} isQuestion={"A"} content={content} />
+    const answers = data.findQuestionBy_id.answers.map(({ _id, author, content, date, comments }) => (
+        <HowToContentQABox
+            _id={_id}
+            key={_id}
+            author={author}
+            date={date}
+            isQuestion={"A"}
+            content={content}
+            comments={comments}
+            question_id={match.params.id}
+        />
     ));
     return (
         <React.Fragment>
@@ -39,12 +48,15 @@ const HowToContent = ({ match }) => {
 
             <Container className="how-to-content margin-top-3">
                 <HowToContentQABox
-                    id={match.params.id}
+                    key={"0"}
+                    tags={data.findQuestionBy_id.tags}
+                    _id={match.params.id}
                     isQuestion={"Q"}
                     author={data.findQuestionBy_id.author}
                     date={data.findQuestionBy_id.date}
                     likes={"3"}
                     content={data.findQuestionBy_id.content}
+                    comments={data.findQuestionBy_id.comments}
                 ></HowToContentQABox>
                 {answers}
             </Container>
