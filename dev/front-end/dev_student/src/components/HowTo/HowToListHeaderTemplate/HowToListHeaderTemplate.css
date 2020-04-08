@@ -1,16 +1,12 @@
-@media only screen 
-and (max-width : 800px)
-{
-/* Add Your CSS Styling Here */
+@media only screen and (max-width: 800px) {
+    /* Add Your CSS Styling Here */
 }
 
-@media only screen 
-and (min-width : 800px)
-{
-/* Add Your CSS Styling Here */
+@media only screen and (min-width: 800px) {
+    /* Add Your CSS Styling Here */
 }
-.questions-number-span{
-    font-family: 'Do Hyeon', sans-serif;
+.questions-number-span {
+    font-family: "Do Hyeon", sans-serif;
     font-size: x-large;
     vertical-align: base;
     display: inline-block;
@@ -19,30 +15,34 @@ and (min-width : 800px)
 .howto-list-header-header {
     width: 100%;
 }
-.howto-list-header-header .mobile-new-question-button{
+.howto-list-header-header .mobile-new-question-button {
     float: right;
 }
 
-.question-descript-span{
-    font-family: 'Do Hyeon', sans-serif;
+.question-descript-span {
+    font-family: "Do Hyeon", sans-serif;
     vertical-align: base;
     display: inline-block;
     font-size: large;
 }
 
-.filter-button-wrapper{
-    position: absolute;
-    right:0px;
-    width:100px;
-}
-
-.search-button-wrapper{
+.filter-button-wrapper {
     position: absolute;
     right: 0px;
-    width : 100px;
+    width: 100px;
+}
+
+.search-button-wrapper {
+    position: absolute;
+    right: 0px;
+    width: 100px;
     margin-right: 75px;
 }
 
-.collapse{
+.collapse {
+    width: 100%;
+}
+
+.serach-bar-collapse-wrapper {
     width: 100%;
 }

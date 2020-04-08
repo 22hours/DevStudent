@@ -59,6 +59,8 @@ const HowToListHeaderTemplate = ({ question_count, param, setParam }) => {
                         </DropdownMenu>
                     </Dropdown>
                 </div>
+            </Row>
+            <div className="serach-bar-collapse-wrapper">
                 <Collapse isOpen={serachBarIsOpen}>
                     <div className="searchbar-wrapper">
                         <FormGroup>
@@ -71,7 +73,7 @@ const HowToListHeaderTemplate = ({ question_count, param, setParam }) => {
                         </FormGroup>
                     </div>
                 </Collapse>
-            </Row>
+            </div>
         </React.Fragment>
     );
 };
