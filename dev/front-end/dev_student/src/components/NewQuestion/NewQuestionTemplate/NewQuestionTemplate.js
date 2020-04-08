@@ -30,7 +30,7 @@ const NewQuestionTemplate = ({ handleSubmit }) => {
                         handleSubmit={handleSubmit}
                     />
                 </div>
-                <div className="new-question-sidebar-col"></div>
+                <div className="new-question-sidebar-col">d</div>
             </div>
         </div>
     );
