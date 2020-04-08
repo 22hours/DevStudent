@@ -1,0 +1,51 @@
+.new-question-main-wrapper {
+}
+
+.new-question-main-wrapper {
+    background-color: white;
+    border: gray;
+    border-bottom: 1px;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(112, 112, 112, 0.23); /* 그림자 */
+}
+
+.new-question-title-header-span-warpper {
+    margin-left: 5px;
+}
+
+.new-question-title-header-span {
+    font-family: "Do Hyeon", sans-serif;
+    font-size: large;
+}
+
+.new-question-notice-span {
+    font-size: small;
+    color: #8c8c8c;
+}
+
+.new-question-title-exam-span {
+    font-size: medium;
+}
+
+.new-question-main-wrapper .new-question-main-element-box {
+    margin-bottom: 20px;
+}
+.new-question-main-wrapper .new-question-main-element-box input {
+    margin-right: 10px;
+}
+
+.new-question-title-input {
+    width: 100%;
+}
+
+.new-question-content-header-span-warpper {
+}
+
+.new-question-content-header-span {
+    font-family: "Do Hyeon", sans-serif;
+    font-size: large;
+}
+
+.question-title {
+}
