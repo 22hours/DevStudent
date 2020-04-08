@@ -54,7 +54,7 @@ const MarkdownEditor = ({ comment, setComment }) => {
                             </NavLink>
                         </NavItem>
                         <Link id="test" color="primary" onClick={toggleCollapse}>
-                            help...
+                            Markdown?
                         </Link>
                     </Nav>
                 </div>
