@@ -72,7 +72,7 @@ const MarkdownEditor = ({ comment, setComment }) => {
                             </Alert>
                         </Collapse>
                         <Input
-                            placeholder="write your opinion.."
+                            placeholder="Write your questions.."
                             value={comment}
                             onChange={({ target: { value } }) => setComment(value)}
                             size="large"
