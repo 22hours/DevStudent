@@ -8,20 +8,6 @@
         padding-right: 0px !important;
     }
 }
-/* 
-@media only screen and (min-width: 1000px) {
-    .howto-item .stats-area-mobile {
-        display: none;
-    }
-    .howto-item .content {
-        margin-right: 95px;
-        margin-left: 25px;
-    }
-    .howto-item .answer-wrapper {
-        margin-bottom: 5px;
-    }
-
-} */
 .new-question-wrapper {
     background-color: #f2f2f2;
     height: 100vh;
@@ -29,8 +15,7 @@
 }
 
 .new-question-wrapper .new-question-header-row {
-    padding-left: 15px;
-    padding-right: 15px;
+    margin-bottom: 15px;
 }
 
 .new-question-header-row span {
@@ -39,8 +24,6 @@
 }
 
 .new-question-wrapper .new-question-body-warpper {
-    padding-left: 15px;
-    padding-right: 15px;
     width: 100%;
     overflow: hidden;
 }
