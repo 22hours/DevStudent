@@ -54,7 +54,7 @@ const MarkdownEditor = ({ comment, setComment }) => {
                             </NavLink>
                         </NavItem>
                         <Link id="test" color="primary" onClick={toggleCollapse}>
-                            help...
+                            Markdown?
                         </Link>
                     </Nav>
                 </div>
@@ -72,7 +72,7 @@ const MarkdownEditor = ({ comment, setComment }) => {
                             </Alert>
                         </Collapse>
                         <Input
-                            placeholder="write your opinion.."
+                            placeholder="Write your questions.."
                             value={comment}
                             onChange={({ target: { value } }) => setComment(value)}
                             size="large"

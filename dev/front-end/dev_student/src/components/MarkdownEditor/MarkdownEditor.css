@@ -3,6 +3,7 @@
     border: 0.5px solid rgb(224, 224, 224);
     border-radius: 5px;
     margin-bottom: 10px;
+    overflow: hidden;
 }
 
 .markdown-eiditor-wrapper .markdown-editor-header a,
@@ -20,7 +21,7 @@ button {
 
 .markdown-eiditor-wrapper .markdown-editor-header {
     padding-top: 5px;
-
+    background-color: rgb(241, 240, 240);
     /* border: 0.5px solid rgb(224, 224, 224); */
 }
 
@@ -58,4 +59,9 @@ button {
 
 .markdown-eiditor-wrapper .reply-wrapper {
     border: none;
+}
+
+.markdown-eiditor-wrapper a {
+    font-size: 14px;
+    color: gray;
 }
