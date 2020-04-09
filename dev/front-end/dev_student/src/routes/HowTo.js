@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HowToListTemplate from "../components/HowTo/HowToListTemplate/HowToListTemplate";
 import HowToContent from "../components/HowTo/HowToContent/HowToContent";
@@ -7,7 +7,7 @@ import { findAllQuestions } from "../query/queries";
 import { Container, Row, Col } from "reactstrap";
 import HowToSidebarTemplate from "../components/HowToSidebar/HowToSidebarTemplate/HowToSidebarTemplate";
 
-const HowTo = () => {
+const HowTo = ({ location }) => {
     const [tag, setTag] = useState([
         { idx: 0, tagname: "JavaScript", tagcount: "500" },
         { idx: 1, tagname: ".NetFramework", tagcount: "100" },
@@ -37,7 +37,10 @@ const HowTo = () => {
                                     path="/howto"
                                     render={() => (
                                         <div>
-                                            <HowToListTemplate questionCount={questionCount}></HowToListTemplate>
+                                            <HowToListTemplate
+                                                location={location}
+                                                questionCount={questionCount}
+                                            ></HowToListTemplate>
                                         </div>
                                     )}
                                 />

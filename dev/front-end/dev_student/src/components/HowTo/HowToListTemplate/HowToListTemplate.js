@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "reactstrap";
 import HowToListHeaderTemplate from "../HowToListHeaderTemplate/HowToListHeaderTemplate";
 import Pagination from "@material-ui/lab/Pagination";
@@ -6,14 +6,17 @@ import { useQuery } from "@apollo/react-hooks";
 import HowToItem from "../HowToItem/HowToItem";
 import { findAllQuestionsPage } from "../../../query/queries";
 
-const HowToListTemplate = ({ tags, questionCount }) => {
+const HowToListTemplate = ({ tags, questionCount, location }) => {
     const [param, setParam] = useState("date");
     const [requiredCount] = useState(10);
+    const [nowTag, setNowTag] = useState(location.search.split("=")[1]);
     const [pageNum, setPage] = useState(1);
+    const handleTagClick = (value) => {
+        setNowTag(value);
+    };
     const handleChange = (event, value) => {
         setPage(value);
     };
-
     const { loading, error, data } = useQuery(findAllQuestionsPage, {
         variables: { param: param, requiredCount: requiredCount, pageNum: pageNum },
     });
@@ -26,9 +29,18 @@ const HowToListTemplate = ({ tags, questionCount }) => {
     if (questionCount % 10 === 0) pageCount = questionCount / 10;
     else pageCount = Math.floor(questionCount / 10) + 1;
 
+    // ======================
+    // << Tag 별 필터 적용 >>
+    let filteredData = data.findAllQuestions;
+    if (nowTag) {
+        filteredData = data.findAllQuestions.filter((item) => item.tags.includes(nowTag));
+    }
+    // ======================
+
+    console.log(filteredData);
     const questionList = (
         <div>
-            {data.findAllQuestions.map(({ _id, title, author, tags, date, content, answerCount, views, previews }) => (
+            {filteredData.map(({ _id, title, author, tags, date, content, answerCount, views, previews }) => (
                 <HowToItem
                     id={_id}
                     key={_id}

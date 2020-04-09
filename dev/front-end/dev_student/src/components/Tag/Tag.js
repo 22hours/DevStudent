@@ -1,12 +1,12 @@
 import React from "react";
 import "./Tag.css";
 import { Link } from "react-router-dom";
-const Tag = ({ tagItem }) => {
+const Tag = ({ tagItem, history }) => {
     return (
         <React.Fragment>
-            <Link to="/" className="tag">
+            <a href={"/howto?tags=" + tagItem} className="tag">
                 {tagItem}
-            </Link>
+            </a>
         </React.Fragment>
     );
 };
