@@ -14,16 +14,17 @@ import {
     MyPage,
     Todo,
     NotFound,
-} from "./routes";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
+} from "./pages";
+import FooterModule from "module/FooterModule/FooterModule";
+import HeaderComponent from "component/HeaderComponent/HeaderComponent";
+// import HeaderModule from "module/HeaderModule/HeaderModule";
 
 const MyRouter = (props) => {
     const { saveLoginState, user, authenticated } = props;
     return (
         <Router>
             <div id="rt">
-                <Header user={user} authenticated={authenticated} />
+                <HeaderComponent user={user} authenticated={authenticated} />
                 <div className="Article">
                     <Switch>
                         <Route exact path="/" component={Home} />
@@ -54,7 +55,7 @@ const MyRouter = (props) => {
                         <Route component={NotFound} />
                     </Switch>
                 </div>
-                <Footer />
+                <FooterModule />
             </div>
         </Router>
     );

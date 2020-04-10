@@ -1,6 +1,5 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 
-const UserContext = 
-createContext({ userState: {}, setUserState: () => {} });
+const UserContext = createContext({ userState: {}, setUserState: () => {} });
 
 export default UserContext;
