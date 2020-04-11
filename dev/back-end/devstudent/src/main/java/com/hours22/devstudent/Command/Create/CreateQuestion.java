@@ -1,6 +1,5 @@
 package com.hours22.devstudent.Command.Create;
 
-import com.hours22.devstudent.Entity.Answer;
 import com.hours22.devstudent.Entity.Question;
 import com.hours22.devstudent.Repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
