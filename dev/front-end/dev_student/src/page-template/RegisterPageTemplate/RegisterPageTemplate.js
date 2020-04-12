@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "./RegisterPageTemplate.css";
 import { Container, Row, Col } from "reactstrap";
 import { Input, Button } from "reactstrap";
-import { CREATE_USER } from "Mutation/mutations";
+import { CREATE_USER } from "mutation/mutations";
 import { useMutation } from "@apollo/react-hooks";
 const RegisterTemplate = ({
-    userEmail,
-    setUserEmail,
+    email,
+    setEmail,
     password,
     setPassword,
     nickName,
@@ -16,6 +16,9 @@ const RegisterTemplate = ({
     RepwInputRenderer,
 }) => {
     const [createUser, { data }] = useMutation(CREATE_USER);
+    const btn_style = {
+        fontSize: "12px",
+    };
     return (
         <div className="register-container-top-wrapper">
             <Container>
@@ -38,8 +41,8 @@ const RegisterTemplate = ({
                                 <span className="register-label-style">Email</span>
                                 <div className="register-input-box">
                                     <Input
-                                        value={userEmail}
-                                        onChange={({ target: { value } }) => setUserEmail(value)}
+                                        value={email}
+                                        onChange={({ target: { value } }) => setEmail(value)}
                                         type="email"
                                         name="email"
                                         _id="inputEmail"
@@ -69,7 +72,7 @@ const RegisterTemplate = ({
                             </div>
                             <div className="input-box">
                                 <span className="register-label-style">Nickname</span>
-                                <div className="register-input-box">
+                                <div className="nickName-input-box">
                                     <Input
                                         onChange={({ target: { value } }) => setNickName(value)}
                                         type="text"
@@ -77,6 +80,9 @@ const RegisterTemplate = ({
                                         _id="inputnickname"
                                         placeholder="devstu"
                                     />
+                                    <div className="nickName-check-button-wrapper">
+                                        <Button style={btn_style}>확인</Button>
+                                    </div>
                                 </div>
                             </div>
                             <div className="input-box">
@@ -94,11 +100,10 @@ const RegisterTemplate = ({
                             <div className="input-box">
                                 <Button
                                     color="info"
-                                    className="register-email-check-btn"
                                     onClick={() => {
                                         if (
                                             password.length < 1 ||
-                                            userEmail.length < 1 ||
+                                            email.length < 1 ||
                                             schoolName.length < 1 ||
                                             nickName < 1
                                         )
@@ -106,8 +111,8 @@ const RegisterTemplate = ({
                                         createUser({
                                             variables: {
                                                 password: password,
-                                                email: userEmail,
-                                                nickName: nickName,
+                                                email: email,
+                                                nickname: nickName,
                                                 schoolName: schoolName,
                                             },
                                         });

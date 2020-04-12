@@ -8,6 +8,7 @@ const Register = () => {
     const [repwd, setRepwd] = useState("");
     const [schoolName, setSchoolName] = useState("");
     const [nickName, setNickName] = useState("");
+
     const RepwInputRenderer = () => {
         if (password === repwd) {
             return (

@@ -53,6 +53,15 @@
     width: 100%;
 }
 
-.register-email-input-wrapper {
-    margin-right: -70px;
+.nickName-check-button-wrapper {
+    width: 50px;
+    float: right;
+}
+
+.register-container-wrapper .nickName-input-box {
+    margin-right: 70px;
+}
+
+.nickName-check-button {
+    font-size: 12px;
 }
