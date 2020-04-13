@@ -70,7 +70,7 @@ class HowToItem extends Component {
                                 <span className="asked-span">{date}</span>
                             </div>
                             <div className="previews-box">
-                                <span className="previews-span">{previews}</span>
+                                <p className="previews-span">{previews}</p>
                             </div>
                             <div>{TagList}</div>
                             <div>

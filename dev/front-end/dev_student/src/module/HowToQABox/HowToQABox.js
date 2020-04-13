@@ -4,18 +4,19 @@ import { useMutation } from "@apollo/react-hooks";
 import { CREATE_COMMENT } from "mutation/mutations";
 import "./HowToQABox.css";
 import { Link } from "react-router-dom";
+
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-// modules
+import DoneIcon from "@material-ui/icons/Done"; // modules
 import RequireLoginBoxModule from "../RequireLoginBoxModule/RequireLoginBoxModule";
 
 // atoms
 import Tag from "atom/Tag/Tag";
 import MarkdownParser from "atom/MarkdownParser/MarkdownParser";
 
-const HowToQABox = ({ _id, isQuestion, author, date, likes, content, tags, comments, question_id }) => {
+const HowToQABox = ({ _id, isQuestion, author, date, likes, content, tags, comments, question_id, solved }) => {
     const [createComment] = useMutation(CREATE_COMMENT);
     const [isOpen, setIsOpen] = useState(false);
     const toggleCollapse = () => setIsOpen(!isOpen);
@@ -109,12 +110,39 @@ const HowToQABox = ({ _id, isQuestion, author, date, likes, content, tags, comme
             </React.Fragment>
         );
     };
+    const SolvedBoxOutter = () => {
+        if (solved === _id) {
+            return (
+                <React.Fragment>
+                    <div className="solved-outter">
+                        <Link style={{ color: "green" }}>
+                            <DoneIcon />
+                        </Link>
+                    </div>
+                </React.Fragment>
+            );
+        }
+        if (isQuestion === "Q") {
+            return <React.Fragment></React.Fragment>;
+        } else {
+            return (
+                <React.Fragment>
+                    <div className="solved-outter">
+                        <Link style={{ color: "rgb(98, 98, 98);" }}>
+                            <DoneIcon />
+                        </Link>
+                    </div>
+                </React.Fragment>
+            );
+        }
+    };
     return (
         <React.Fragment>
             <div>
                 <div className="qa-status-box">
                     <IsQorAOutter />
                     <LikesBoxOutter />
+                    <SolvedBoxOutter />
                 </div>
                 <div className="question-box">
                     <div className="header-box">

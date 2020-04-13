@@ -74,6 +74,10 @@
     float: right;
 }
 
+.howto-wrapper .solved-outter {
+    text-align: center;
+}
+
 .howto-wrapper .question-box {
     margin-top: 3%;
     padding-top: 1px;

@@ -9,44 +9,16 @@ const RegisterTemplate = ({
     setEmail,
     password,
     setPassword,
-    rePwd,
-    setRePwd,
     nickName,
     setNickName,
     schoolName,
     setSchoolName,
-    checkDuplicateNickname,
-    nickCheck,
-    pwdCheck,
-    setPwdCheck,
-    pwdRuleCheck,
-    setPwdRuleCheck,
     RepwInputRenderer,
 }) => {
     const [createUser, { data }] = useMutation(CREATE_USER);
     const btn_style = {
         fontSize: "12px",
     };
-    const passwordRule = () => {
-        var num = password.search(/[0-9]/g);
-        var eng = password.search(/[a-z]/gi);
-        var spe = password.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-        if (password.length < 8 || password.length > 15) {
-            alert("8자리~ 15자리 이내로 입력해주세요.");
-            return;
-        }
-        if (password.search(/₩s/) !== -1) {
-            alert("비밀번호는 공백업이 입력해주세요.");
-            return;
-        }
-        if (num < 0 || eng < 0 || spe < 0) {
-            alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
-            return;
-        } else {
-            setPwdRuleCheck("true");
-        }
-    };
-
     return (
         <div className="register-container-top-wrapper">
             <Container>
@@ -73,7 +45,7 @@ const RegisterTemplate = ({
                                         onChange={({ target: { value } }) => setEmail(value)}
                                         type="email"
                                         name="email"
-                                        id="inputEmail"
+                                        _id="inputEmail"
                                         placeholder="devstu@developer.com"
                                     />
                                 </div>
@@ -84,26 +56,18 @@ const RegisterTemplate = ({
                                     <Input
                                         value={password}
                                         onChange={({ target: { value } }) => setPassword(value)}
+                                        val_id
                                         type="password"
                                         name="password"
-                                        id="inputPassword"
-                                        placeholder="devstu2020!!"
-                                        onBlur={passwordRule}
+                                        _id="inputPassword"
+                                        placeholder="password"
                                     />
                                 </div>
                             </div>
                             <div className="input-box">
                                 <span className="register-label-style">Checking</span>
                                 <div className="register-input-box">
-                                    <Input
-                                        value={rePwd}
-                                        onChange={({ target: { value } }) => setRePwd(value)}
-                                        type="password"
-                                        name="password"
-                                        id="inputPassword"
-                                        placeholder="passwordCheck"
-                                        onBlur={RepwInputRenderer}
-                                    />
+                                    <RepwInputRenderer />
                                 </div>
                             </div>
                             <div className="input-box">
@@ -119,19 +83,7 @@ const RegisterTemplate = ({
                                         />
                                     </div>
                                     <div className="nickName-check-button-wrapper">
-                                        <Button
-                                            style={btn_style}
-                                            onClick={() => {
-                                                if (nickName == null) return;
-                                                checkDuplicateNickname({
-                                                    variables: {
-                                                        nickname: nickName,
-                                                    },
-                                                });
-                                            }}
-                                        >
-                                            확인
-                                        </Button>
+                                        <Button style={btn_style}>확인</Button>
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +94,7 @@ const RegisterTemplate = ({
                                         onChange={({ target: { value } }) => setSchoolName(value)}
                                         type="text"
                                         name="universityname"
-                                        id="inputschool"
+                                        _id="inputschool"
                                         placeholder="catholic"
                                     />
                                 </div>
@@ -158,27 +110,14 @@ const RegisterTemplate = ({
                                             nickName < 1
                                         )
                                             return alert("입력란을 모두 채워주세요.");
-                                        if (nickCheck === "false") {
-                                            alert("닉네임 중복 확인을 해주세요!!");
-                                            return;
-                                        }
-                                        if (pwdCheck === "false") {
-                                            alert("비밀번호가 일치하지 않습니다.");
-                                            return;
-                                        }
-                                        if (pwdRuleCheck === "false") {
-                                            alert("비밀번호를 규칙에 맞게 입력해주세요.");
-                                            return;
-                                        } else {
-                                            createUser({
-                                                variables: {
-                                                    password: password,
-                                                    email: email,
-                                                    nickname: nickName,
-                                                    schoolName: schoolName,
-                                                },
-                                            });
-                                        }
+                                        createUser({
+                                            variables: {
+                                                password: password,
+                                                email: email,
+                                                nickname: nickName,
+                                                schoolName: schoolName,
+                                            },
+                                        });
                                     }}
                                 >
                                     가입하기

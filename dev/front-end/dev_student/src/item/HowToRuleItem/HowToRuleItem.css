@@ -1,0 +1,28 @@
+.HowToRuleItem {
+    height: auto;
+    cursor: pointer;
+    z-index: 100;
+    pointer-events: auto;
+    position: relative;
+}
+
+.HowToRuleItem .howto-rule-item-box {
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+    margin-top: 20px;
+    margin-right: 10px;
+    height: 100%;
+    color: gray;
+    font-size: 20px;
+    font-family: "Do Hyeon", sans-serif;
+    text-align: center;
+}
+
+.HowToRuleItem .clicked {
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(100, 100, 100, 0.16), 0 3px 6px rgba(146, 146, 146, 0.23); /* 그림자 */
+    border-radius: 7px;
+    color: black;
+}

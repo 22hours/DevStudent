@@ -3,6 +3,7 @@
         display: none;
     }
     .howto-item .content {
+        overflow: hidden;
         margin-left: 95px;
         margin-right: 0;
     }
@@ -14,6 +15,7 @@
         display: none;
     }
     .howto-item .content {
+        overflow: hidden;
         margin-right: 95px;
         margin-left: 25px;
     }
@@ -29,6 +31,7 @@
 }
 .howto-item .content {
     float: left;
+    overflow: hidden;
 }
 .box {
     width: 100%;
@@ -192,6 +195,8 @@
 .howto-item .previews-span {
     font-size: 13px;
     color: #696969;
+    text-overflow: clip;
+    text-overflow: ellipsis;
 }
 
 .howto-item .previews-box {

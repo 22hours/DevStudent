@@ -1,28 +1,38 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:700');
-@import url('https://fonts.googleapis.com/css?family=Lato');
-@import url('https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
-.Article{
-    margin-top: 5px;
+@import url("https://fonts.googleapis.com/css?family=Roboto:700");
+@import url("https://fonts.googleapis.com/css?family=Lato");
+@import url("https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap");
+.Article {
     min-height: 100vh;
 }
 
-.margin-top-3{
+.margin-top-3 {
     margin-top: 3%;
 }
 
-.red-border{
+.red-border {
     border: 0px dashed red;
 }
 
-
-.bottom-border{
+.bottom-border {
     height: 2px;
-    background-color: rgba(0,0,0,0.16);
+    background-color: rgba(0, 0, 0, 0.16);
     margin-bottom: 2%;
 }
 
-.content-header{
-    font-family: 'Do Hyeon', sans-serif;
+.content-header {
+    font-family: "Do Hyeon", sans-serif;
     font-size: xx-large;
+}
+
+@media only screen and (max-width: 800px) {
+    .pc-only {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .mobile-only {
+        display: none;
+    }
 }
