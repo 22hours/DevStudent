@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 public class Test {
-    public void hi(DataFetchingEnvironment dataFetchingEnvironment){
+    public void hi(){
         RestTemplate restTemplate = new RestTemplate();
         String url = "http://172.30.1.48:8080/graphql";
         HttpHeaders headers = new HttpHeaders();

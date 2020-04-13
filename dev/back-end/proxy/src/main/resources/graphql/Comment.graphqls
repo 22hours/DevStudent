@@ -1,0 +1,11 @@
+type Comment{
+    _id : String
+    author : String
+    content : String
+    date : String
+}
+
+extend type Mutation {
+    createComment(token : String, question_id : String!, answer_id : String!, author : String!, content : String!) : Comment
+    deleteComment(question_id : String!, answer_id : String!, comment_id : String!) : Comment
+}
