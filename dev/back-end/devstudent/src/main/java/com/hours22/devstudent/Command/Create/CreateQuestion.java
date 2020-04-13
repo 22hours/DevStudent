@@ -1,5 +1,6 @@
 package com.hours22.devstudent.Command.Create;
 
+import com.hours22.devstudent.Command.Module.Test;
 import com.hours22.devstudent.Entity.Question;
 import com.hours22.devstudent.Repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class CreateQuestion extends Create {
         String previews = (content.length() < 100) ? content : content.substring(0, 100);
         Question question = new Question(seqNum,title,author,tags,content, previews);
         questionRepository.save(question);
+        Test test = new Test();
+        test.hi();
         return question;
     }
 }

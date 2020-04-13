@@ -1,10 +1,10 @@
 type User{
-    email : String!
-    password : String!
-    nickname : String!
-    schoolName : String!
-    date : String!
-    authState : String!
+    email : String
+    password : String
+    nickname : String
+    schoolName : String
+    date : String
+    authState : String
     token : String
 }
 
