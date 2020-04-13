@@ -1,4 +1,4 @@
-package com.hours22.devstudent.Command.Module;
+package com.hours22.devstudent.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.hours22.devstudent.Configuration.HttpConnectionConfig;
 import com.hours22.devstudent.Entity.Question;
+import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
@@ -14,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 public class Test {
-    public void hi(){
+    public void hi(DataFetchingEnvironment dataFetchingEnvironment){
         RestTemplate restTemplate = new RestTemplate();
         String url = "http://172.30.1.48:8080/graphql";
         HttpHeaders headers = new HttpHeaders();
@@ -55,11 +56,7 @@ public class Test {
                 "}\n" +
                 "\n" +
                 "    ";
-        System.out.println("Query = " + query);
-        System.out.println("URL = " + url);
-        System.out.println("URL = " + new HttpEntity<>(query, headers).toString());
         ResponseEntity<String> response = restTemplate.postForEntity(url,new HttpEntity<>(query, headers), String.class);
-        System.out.println("Response = " + response.getBody());
         Gson gson = new Gson();
         String str = response.getBody();
         str = str.substring(str.indexOf('['),str.lastIndexOf(']')+1);
