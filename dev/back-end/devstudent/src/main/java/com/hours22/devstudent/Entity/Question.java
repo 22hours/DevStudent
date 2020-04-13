@@ -28,10 +28,13 @@ public class Question {
     private String content;
     private String previews="";
     private int answerCount = 0;
+    private int likesCount = 0;
     private int views = 1;
     private Boolean solved = false;
     private List<Comment> comments = new ArrayList<Comment>();
     private List<Answer> answers = new ArrayList<Answer>();
+    private List<Like> likes = new ArrayList<Like>();
+
 
     public Question(String _id, String title, String author, List<String> tags, String content, String previews) {
         long time = System.currentTimeMillis();

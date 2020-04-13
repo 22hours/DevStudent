@@ -1,10 +1,7 @@
 package com.hours22.devstudent.Command;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
-import com.hours22.devstudent.Command.Create.CreateAnswer;
-import com.hours22.devstudent.Command.Create.CreateComment;
-import com.hours22.devstudent.Command.Create.CreateQuestion;
-import com.hours22.devstudent.Command.Create.CreateUser;
+import com.hours22.devstudent.Command.Create.*;
 import com.hours22.devstudent.Command.Delete.DeleteAlarm;
 import com.hours22.devstudent.Command.Delete.DeleteAnswer;
 import com.hours22.devstudent.Command.Delete.DeleteComment;
@@ -36,6 +33,8 @@ public class Mutation implements GraphQLMutationResolver {
     @Autowired
     private CreateComment createComment;
     @Autowired
+    private CreateLike createLike;
+    @Autowired
     private DeleteQuestion deleteQuestion;
     @Autowired
     private DeleteAnswer deleteAnswer;
@@ -56,6 +55,10 @@ public class Mutation implements GraphQLMutationResolver {
 
     public Comment createComment(String token, String question_id, String answer_id, String author, String content) {
         return createComment.createComment(token, question_id, answer_id, author, content);
+    }
+
+    public Question createLike(String question_id, String answer_id, String nickname, String status){
+        return createLike.createLike(question_id,answer_id,nickname,status);
     }
     //endregion
     //region delete Mutation

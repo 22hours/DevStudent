@@ -19,7 +19,11 @@ public class Answer {
     private String content;
     private String date;
     @Setter
+    private int likesCount = 0;
+    @Setter
     private List<Comment> comments = new ArrayList<Comment>();
+    @Setter
+    private List<Like> likes = new ArrayList<Like>();
     public Answer(String _id, String author, String content){
         this._id = _id;
         this.author = author;

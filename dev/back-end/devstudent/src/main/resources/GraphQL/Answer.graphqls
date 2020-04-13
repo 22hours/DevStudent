@@ -3,7 +3,9 @@ type Answer{
     author : String
     content : String
     date : String
-    comments : [Comment]!
+    likesCount : Int
+    comments : [Comment]
+    likes : [Like]
 }
 
 extend type Mutation {
@@ -11,4 +13,3 @@ extend type Mutation {
     deleteAnswer(question_id : String!, answer_id : String!) : Answer
 
 }
-
