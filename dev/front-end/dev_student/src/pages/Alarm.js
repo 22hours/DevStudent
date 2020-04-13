@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import AlarmTemplate from "page-template/AlarmTemplate/AlarmTemplate";
 import { FIND_ALL_ALARMS } from "../query/queries";
-import UserContext from "../Context/UserContext";
+import UserContext from "context/UserContext";
 import { useQuery } from "react-apollo";
 const Alarm = () => {
     const { user } = useContext(UserContext);

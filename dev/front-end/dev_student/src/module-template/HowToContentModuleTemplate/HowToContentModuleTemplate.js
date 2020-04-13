@@ -9,7 +9,7 @@ import "./HowToContentModuleTemplate.css";
 import { findQuestionBy_id_Query } from "query/queries";
 
 // context
-import UserContext from "Context/UserContext";
+import UserContext from "context/UserContext";
 
 // module
 import ContentHeaderModule from "module/ContentHeaderModule/ContentHeaderModule";

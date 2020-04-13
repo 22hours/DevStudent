@@ -3,7 +3,7 @@ import { ApolloProvider } from "react-apollo";
 import client from "./apolloClient";
 import "./App.css";
 import MyRouter from "./MyRouter";
-import UserContext from "./Context/UserContext";
+import UserContext from "context/UserContext";
 
 class App extends Component {
     constructor(props) {

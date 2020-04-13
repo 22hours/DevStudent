@@ -2,7 +2,7 @@ import "./HeaderComponent.css";
 import { Container } from "reactstrap";
 import { Link } from "react-router-dom";
 import React, { useState, useContext } from "react";
-import UserContext from "../../Context/UserContext";
+import UserContext from "context/UserContext";
 
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from "reactstrap";
 

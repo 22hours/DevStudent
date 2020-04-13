@@ -1,7 +1,7 @@
 import React, { useState, useRef, useLayoutEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
-import { LOGIN } from "../Mutation/mutations";
+import { LOGIN } from "mutation/mutations";
 import LoginPageTemplate from "page-template/LoginPageTemplate/LoginPageTemplate";
 const Login = ({ saveLoginState, authenticated, location }) => {
     const [loginToServer, { data }] = useMutation(LOGIN);

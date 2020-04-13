@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import { CREATE_ANSWER } from "../../Mutation/mutations";
+import { CREATE_ANSWER } from "mutation/mutations";
 import { useMutation } from "@apollo/react-hooks";
-import UserContext from "../../Context/UserContext";
+import UserContext from "context/UserContext";
 import { Input, TabContent, TabPane, Nav, NavItem, NavLink, Button, Row, Col } from "reactstrap";
 import classnames from "classnames";
 import "./MarkdownAnswerModule.css";

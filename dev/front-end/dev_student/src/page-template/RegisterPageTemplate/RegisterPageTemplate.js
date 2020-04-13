@@ -73,13 +73,15 @@ const RegisterTemplate = ({
                             <div className="input-box">
                                 <span className="register-label-style">Nickname</span>
                                 <div className="nickName-input-box">
-                                    <Input
-                                        onChange={({ target: { value } }) => setNickName(value)}
-                                        type="text"
-                                        name="nickname"
-                                        _id="inputnickname"
-                                        placeholder="devstu"
-                                    />
+                                    <div className="nickName-input">
+                                        <Input
+                                            id="inputnickname"
+                                            onChange={({ target: { value } }) => setNickName(value)}
+                                            type="text"
+                                            name="nickname"
+                                            placeholder="devstu"
+                                        />
+                                    </div>
                                     <div className="nickName-check-button-wrapper">
                                         <Button style={btn_style}>확인</Button>
                                     </div>

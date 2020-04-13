@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Collapse, Input } from "reactstrap";
 import { useMutation } from "@apollo/react-hooks";
-import { CREATE_COMMENT } from "../../Mutation/mutations";
+import { CREATE_COMMENT } from "mutation/mutations";
 import "./HowToQABox.css";
 import { Link } from "react-router-dom";
 

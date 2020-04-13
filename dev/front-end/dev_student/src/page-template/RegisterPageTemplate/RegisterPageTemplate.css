@@ -33,6 +33,26 @@
     background-color: white;
 }
 
+.register-container-wrapper .nickName-input-box {
+}
+
+.register-container-top-wrapper .nickName-input-box {
+    overflow: hidden;
+}
+
+.register-container-top-wrapper .nickName-input {
+    width: 100%;
+    margin-right: 50px;
+    float: left;
+}
+
+.register-container-top-wrapper .nickName-input #inputnickname {
+}
+.register-container-top-wrapper .nickName-check-button-wrapper {
+    width: 50px;
+    display: inline-block;
+}
+
 .register-input-box {
     margin-left: 0;
 }
@@ -51,15 +71,6 @@
 
 .register-container-wrapper .input-box button {
     width: 100%;
-}
-
-.nickName-check-button-wrapper {
-    width: 50px;
-    float: right;
-}
-
-.register-container-wrapper .nickName-input-box {
-    margin-right: 70px;
 }
 
 .nickName-check-button {

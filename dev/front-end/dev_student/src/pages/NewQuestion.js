@@ -2,7 +2,7 @@ import React from "react";
 import { useMutation } from "@apollo/react-hooks";
 
 // muatations
-import { CREATE_QUESTION } from "Mutation/mutations";
+import { CREATE_QUESTION } from "mutation/mutations";
 
 // page-template
 import NewQuestionPageTemplate from "page-template/NewQuestionPageTemplate/NewQuestionPageTemplate";

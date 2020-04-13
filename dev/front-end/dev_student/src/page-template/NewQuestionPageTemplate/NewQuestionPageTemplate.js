@@ -3,7 +3,7 @@ import "./NewQuestionPageTemplate.css";
 import { Container } from "reactstrap";
 
 // context
-import UserContext from "Context/UserContext";
+import UserContext from "context/UserContext";
 
 // components
 import NewQuestionMainComponent from "component/NewQuestionMainComponent/NewQuestionMainComponent";
