@@ -1,10 +1,11 @@
 @media only screen and (max-width: 800px) {
-    .howto-wrapper .is-question-box-q {
+    .howto-wrapper .qa-status-box {
         display: none;
     }
-    .howto-wrapper .is-question-box-a {
+
+    /* .howto-wrapper .is-question-box-a {
         display: none;
-    }
+    } */
 
     /* Add Your CSS Styling Here */
 }
@@ -15,6 +16,62 @@
     .header-box-is-question-box-a {
         display: none;
     }
+    .howto-wrapper .likes-inner {
+        display: none;
+    }
+}
+
+.howto-wrapper .qa-status-box {
+    float: left;
+    width: 30px;
+    margin-right: 13px;
+}
+
+.howto-wrapper .likes-outter .likes-count-box {
+    font-family: "Do Hyeon", sans-serif;
+    text-align: center;
+    font-size: 19px;
+    color: gray;
+}
+
+.howto-wrapper .likes-outter .likes-count-up,
+.likes-count-down {
+    text-align: center;
+    font-size: 12px;
+    color: gray;
+}
+
+.howto-wrapper .likes-inner {
+    padding-right: 10px;
+}
+
+.howto-wrapper .likes-inner .likes-count-up,
+.likes-count-down {
+    text-align: center;
+    font-size: 12px;
+    color: gray;
+    float: left;
+    margin-right: 8px;
+}
+.howto-wrapper .likes-inner .likes-count-box {
+    font-family: "Do Hyeon", sans-serif;
+    text-align: center;
+    font-size: 19px;
+    color: gray;
+    float: left;
+    margin-right: 10px;
+}
+
+.howto-wrapper .likes-outter .likes-count-up {
+    margin-bottom: -10px;
+}
+
+.howto-wrapper .likes-outter .likes-count-down {
+    margin-top: -10px;
+}
+
+.howto-wrapper .likes-inner {
+    float: right;
 }
 
 .howto-wrapper .question-box {
@@ -37,11 +94,10 @@
 
 .howto-wrapper .is-question-box-q {
     font-family: "Do Hyeon", sans-serif;
-    float: left;
+    /* float: left; */
     width: 30px;
     height: 30px;
     font-size: 25px;
-    margin-right: 10px;
     background-color: #4ba0b5;
     border-radius: 5px;
     vertical-align: middle;
@@ -51,7 +107,7 @@
 
 .howto-wrapper .is-question-box-a {
     font-family: "Do Hyeon", sans-serif;
-    float: left;
+    /* float: left; */
     width: 30px;
     height: 30px;
     font-size: 25px;

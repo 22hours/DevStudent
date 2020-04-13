@@ -15,11 +15,8 @@ const EmailCheckPageTemplate = ({ rand }) => {
         })
             .then((response) => {
                 alert("이메일 인증에 성공하셨습니다");
-                return <Redirect to="/"></Redirect>;
-                window.location.href = "http://localhost:3000/login";
             })
             .catch((err) => {
-                return <Redirect to="/"></Redirect>;
                 alert(err.messeage);
             });
     };

@@ -4,7 +4,10 @@ import { useMutation } from "@apollo/react-hooks";
 import { CREATE_COMMENT } from "mutation/mutations";
 import "./HowToQABox.css";
 import { Link } from "react-router-dom";
-
+import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 // modules
 import RequireLoginBoxModule from "../RequireLoginBoxModule/RequireLoginBoxModule";
 
@@ -66,14 +69,58 @@ const HowToQABox = ({ _id, isQuestion, author, date, likes, content, tags, comme
                 alert(err.messeage);
             });
     };
+
+    const LikesBoxOutter = () => {
+        return (
+            <React.Fragment>
+                <div className="likes-outter">
+                    <div className="likes-count-up">
+                        <Link style={{ color: "gray" }}>
+                            <ArrowDropUpIcon style={{ fontSize: 30 }} />
+                        </Link>
+                    </div>
+                    <div className="likes-count-box">13</div>
+                    <div className="likes-count-down">
+                        <Link style={{ color: "gray" }}>
+                            <ArrowDropDownIcon style={{ fontSize: 30 }} />
+                        </Link>
+                    </div>
+                </div>
+            </React.Fragment>
+        );
+    };
+
+    const LikesBoxInner = () => {
+        return (
+            <React.Fragment>
+                <div className="likes-inner">
+                    <div className="likes-count-box">50</div>
+                    <div className="likes-count-up">
+                        <Link style={{ color: "gray" }}>
+                            <ThumbUpIcon style={{ fontSize: 15 }} color="action" />
+                        </Link>
+                    </div>
+                    <div className="likes-count-down">
+                        <Link style={{ color: "gray" }}>
+                            <ThumbDownIcon style={{ fontSize: 15 }} color="action" />
+                        </Link>
+                    </div>
+                </div>
+            </React.Fragment>
+        );
+    };
     return (
         <React.Fragment>
             <div>
-                <IsQorAOutter />
+                <div className="qa-status-box">
+                    <IsQorAOutter />
+                    <LikesBoxOutter />
+                </div>
                 <div className="question-box">
                     <div className="header-box">
                         <IsQorAInner />
                         <span>{author}</span>
+                        <LikesBoxInner />
                     </div>
                     <div className="main-box">
                         <div>
@@ -88,7 +135,7 @@ const HowToQABox = ({ _id, isQuestion, author, date, likes, content, tags, comme
                     </div>
                     {CommentList}
                     <Collapse className="question-comment-warpper" isOpen={isOpen}>
-                        <RequireLoginBoxModule color={"dark"}>
+                        <RequireLoginBoxModule color="info">
                             <div className="comment-box">
                                 <Input
                                     placeholder="Write.."

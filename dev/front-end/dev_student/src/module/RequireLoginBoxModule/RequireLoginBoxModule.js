@@ -9,7 +9,7 @@ const RequireLoginBoxModule = ({ children, color }) => {
     } else {
         return (
             <React.Fragment>
-                <Alert color={color}>
+                <Alert color="info">
                     댓글을 남기려면 <a href="http://localhost:3000/login">로그인 </a>
                     하세요
                 </Alert>
