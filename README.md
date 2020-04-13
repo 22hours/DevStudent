@@ -6,4 +6,4 @@
 
 - graphQL, nginx, mongoDB, react, Rest API, Spring Boot
 
-![img](./img/stack.PNG)
+![img](./img/stack.PNG =100x20)
