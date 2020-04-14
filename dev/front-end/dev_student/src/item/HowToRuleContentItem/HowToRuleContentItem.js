@@ -1,12 +1,18 @@
 import React from "react";
 import "./HowToRuleContentItem.css";
+
+// imgs
+import newquestion from "img/howto-rule/newquestion.png";
+
 const HowToRuleContentItem = ({ nowClicked }) => {
     const ContentRender = ({ children }) => {
         switch (nowClicked) {
             case 1:
                 return (
                     <React.Fragment>
-                        <div className="content-img-div"></div>
+                        <div className="content-img-div">
+                            <img src={newquestion}></img>
+                        </div>
                     </React.Fragment>
                 );
             case 2:

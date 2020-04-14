@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./HowToRuleModule.css";
 import { Container } from "reactstrap";
 
@@ -16,7 +16,16 @@ import HowToRuleContentItem from "item/HowToRuleContentItem/HowToRuleContentItem
 import { Link } from "react-router-dom";
 
 const HowToRuleModule = () => {
-    const [clicked, setClicked] = useState();
+    const [clicked, setClicked] = useState(1);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            let now = clicked;
+            let next = (now + 1) % 7;
+            if (next === 0) next += 1;
+            setClicked(next);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [clicked]);
     return (
         <Container>
             <div className="HowToRuleModule">

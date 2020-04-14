@@ -13,7 +13,7 @@ const HowToRuleItem = ({ id, nowClicked, setClicked, children, icon, message }) 
             <ItemBox>
                 <div>
                     {icon}
-                    &nbsp; &nbsp; {message}
+                    &nbsp; {message}
                 </div>
             </ItemBox>
         </div>

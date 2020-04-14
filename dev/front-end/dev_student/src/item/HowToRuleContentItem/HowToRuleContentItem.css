@@ -4,7 +4,10 @@
 }
 
 .HowToRuleContentItem .content-img-div {
-    background-image: url("../../img/howto-rule/new-question.png");
+    width: 100%;
+}
+
+.HowToRuleContentItem .content-img-div img {
     width: 100%;
     height: 300px;
 }
