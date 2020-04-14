@@ -14,7 +14,11 @@ const Register = () => {
     const [nickCheck, setNickCheck] = useState("false");
     const [pwdCheck, setPwdCheck] = useState("false");
     const [pwdRuleCheck, setPwdRuleCheck] = useState("false");
+    const [rePwdClassName, setRePwdClassName] = useState("is-invalid");
+    const [emailRuelCheck, setEmailRuleCheck] = useState("false");
+    const [pwdClassName, setPwdClassName] = useState("is-invalid");
 
+    //닉네임 중복체크
     useLayoutEffect(() => {
         if (data == null) return;
         if (data.checkDuplicateNickname.count === 0) {
@@ -26,23 +30,40 @@ const Register = () => {
         }
     }, [data]);
 
+    //비밀번호 확인용
     const RepwInputRenderer = () => {
         if (password !== rePwd) {
-            return (
-                <Input
-                    invalid
-                    value={rePwd}
-                    onChange={({ target: { value } }) => setRePwd(value)}
-                    type="password"
-                    name="password"
-                    id="inputPassword"
-                    placeholder="password"
-                    onBlur={RepwInputRenderer}
-                />
-            );
+            setRePwdClassName("is-invalid");
+            alert("비밀번호가 일치하지 않습니다.");
+            return rePwdClassName;
         } else {
             setPwdCheck("true");
-            return <div>pwd 확인</div>;
+            setRePwdClassName("is-valid");
+            return rePwdClassName;
+        }
+    };
+
+    const passwordRule = () => {
+        var num = password.search(/[0-9]/g);
+        var eng = password.search(/[a-z]/gi);
+        var spe = password.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+        if (password.length < 8 || password.length > 15) {
+            alert("8자리~ 15자리 이내로 입력해주세요.");
+            setPwdClassName("is-invalid");
+            return;
+        }
+        if (password.search(/₩s/) !== -1) {
+            alert("비밀번호는 공백없이 입력해주세요.");
+            setPwdClassName("is-invalid");
+            return;
+        }
+        if (num < 0 || eng < 0 || spe < 0) {
+            alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
+            setPwdClassName("is-invalid");
+            return;
+        } else {
+            setPwdRuleCheck("true");
+            setPwdClassName("is-valid");
         }
     };
 
@@ -59,12 +80,17 @@ const Register = () => {
             schoolName={schoolName}
             setSchoolName={setSchoolName}
             RepwInputRenderer={RepwInputRenderer}
+            passwordRule={passwordRule}
             checkDuplicateNickname={checkDuplicateNickname}
             nickCheck={nickCheck}
             pwdCheck={pwdCheck}
             pwdRuleCheck={pwdRuleCheck}
             setPwdRuleCheck={setPwdRuleCheck}
             setPwdCheck={setPwdCheck}
+            rePwdClassName={rePwdClassName}
+            pwdClassName={pwdClassName}
+            emailRuelCheck={emailRuelCheck}
+            setEmailRuleCheck={setEmailRuleCheck}
         ></RegisterPageTemplate>
     );
 };

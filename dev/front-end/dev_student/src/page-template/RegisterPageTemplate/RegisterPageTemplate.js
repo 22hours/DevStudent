@@ -1,9 +1,11 @@
 import React from "react";
 import "./RegisterPageTemplate.css";
 import { Container, Row, Col } from "reactstrap";
-import { Input, Button } from "reactstrap";
+import { Input, Button, FormText, Form } from "reactstrap";
 import { CREATE_USER } from "mutation/mutations";
 import { useMutation } from "@apollo/react-hooks";
+import { Link } from "react-router-dom";
+
 const RegisterTemplate = ({
     email,
     setEmail,
@@ -18,32 +20,28 @@ const RegisterTemplate = ({
     checkDuplicateNickname,
     nickCheck,
     pwdCheck,
-    setPwdCheck,
     pwdRuleCheck,
-    setPwdRuleCheck,
     RepwInputRenderer,
+    rePwdClassName,
+    pwdClassName,
+    emailRuleCheck,
+    setEmailRuleCheck,
+    passwordRule,
 }) => {
     const [createUser, { data }] = useMutation(CREATE_USER);
     const btn_style = {
         fontSize: "12px",
+        height: "100%",
+        marginBottom: "5px",
     };
-    const passwordRule = () => {
-        var num = password.search(/[0-9]/g);
-        var eng = password.search(/[a-z]/gi);
-        var spe = password.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-        if (password.length < 8 || password.length > 15) {
-            alert("8자리~ 15자리 이내로 입력해주세요.");
-            return;
-        }
-        if (password.search(/₩s/) !== -1) {
-            alert("비밀번호는 공백업이 입력해주세요.");
-            return;
-        }
-        if (num < 0 || eng < 0 || spe < 0) {
-            alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
+    const emailRule = () => {
+        var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+        if (email.match(regExp) == null) {
+            alert("이메일을 다시 입력해주세요.");
             return;
         } else {
-            setPwdRuleCheck("true");
+            setEmailRuleCheck("true");
         }
     };
 
@@ -58,9 +56,10 @@ const RegisterTemplate = ({
                             <img src="/img/devstu_round_logo.png"></img>
                         </div>
                         <div className="registertemplate-info">
-                            계정이 이미 있는 경우에는 로그인해주세요.
+                            계정이 이미 있는 경우에는 <Link to="/login">로그인</Link>해주세요.
                             <br />
-                            가입을 하면 DEVSTU의 이용약관, 개인정보취급방침 및 개인정보3자제공에 동의하게 됩니다.
+                            가입을 하면 DEVSTU의 <Link to="/terms">이용약관</Link>,{" "}
+                            <Link to="privacy">개인정보취급방침 및 개인정보3자제공</Link>에 동의하게 됩니다.
                             <br />
                             가입 후 아이디는 변경할 수 없습니다.
                         </div>
@@ -75,14 +74,17 @@ const RegisterTemplate = ({
                                         name="email"
                                         id="inputEmail"
                                         placeholder="devstu@developer.com"
+                                        onBlur={emailRule}
                                     />
                                 </div>
                             </div>
                             <div className="input-box">
                                 <span className="register-label-style">Password</span>
+
                                 <div className="register-input-box">
                                     <Input
                                         value={password}
+                                        className={pwdClassName}
                                         onChange={({ target: { value } }) => setPassword(value)}
                                         type="password"
                                         name="password"
@@ -90,13 +92,17 @@ const RegisterTemplate = ({
                                         placeholder="devstu2020!!"
                                         onBlur={passwordRule}
                                     />
+                                    <FormText>
+                                        비밀번호는 8자~15자 이내로, 영문,숫자, 특수문자를 혼합하여 입력해주세요.{" "}
+                                    </FormText>
                                 </div>
                             </div>
                             <div className="input-box">
-                                <span className="register-label-style">Checking</span>
+                                <span className="register-label-style">Password (Check)</span>
                                 <div className="register-input-box">
                                     <Input
                                         value={rePwd}
+                                        className={rePwdClassName}
                                         onChange={({ target: { value } }) => setRePwd(value)}
                                         type="password"
                                         name="password"
@@ -106,6 +112,7 @@ const RegisterTemplate = ({
                                     />
                                 </div>
                             </div>
+
                             <div className="input-box">
                                 <span className="register-label-style">Nickname</span>
                                 <div className="nickName-input-box">
@@ -123,6 +130,9 @@ const RegisterTemplate = ({
                                             style={btn_style}
                                             onClick={() => {
                                                 if (nickName == null) return;
+                                                if (nickName > 8 || nickName < 3) {
+                                                    alert("4자리~ 8자리 닉네임을 사용해주세요.");
+                                                }
                                                 checkDuplicateNickname({
                                                     variables: {
                                                         nickname: nickName,
@@ -143,7 +153,7 @@ const RegisterTemplate = ({
                                         type="text"
                                         name="universityname"
                                         id="inputschool"
-                                        placeholder="catholic"
+                                        placeholder="Catholic University"
                                     />
                                 </div>
                             </div>
@@ -158,8 +168,12 @@ const RegisterTemplate = ({
                                             nickName < 1
                                         )
                                             return alert("입력란을 모두 채워주세요.");
+                                        if (emailRuleCheck === "false") {
+                                            alert("이메일을 다시 입력해주세요.");
+                                            return;
+                                        }
                                         if (nickCheck === "false") {
-                                            alert("닉네임 중복 확인을 해주세요!!");
+                                            alert("닉네임 중복 확인을 해주세요.");
                                             return;
                                         }
                                         if (pwdCheck === "false") {

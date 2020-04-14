@@ -26,6 +26,10 @@
     margin-bottom: 5%;
 }
 
+.registertemplate-info a {
+    color: #4ba0b5;
+}
+
 .register-container-wrapper {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); /* 그림자 */
     border-radius: 7px;
@@ -33,24 +37,21 @@
     background-color: white;
 }
 
-.register-container-wrapper .nickName-input-box {
-}
-
 .register-container-top-wrapper .nickName-input-box {
     overflow: hidden;
 }
 
 .register-container-top-wrapper .nickName-input {
-    width: 100%;
-    margin-right: 50px;
-    float: left;
+    display: inline-block;
+    width: calc(100% - 60px);
+    height: 100%;
 }
 
-.register-container-top-wrapper .nickName-input #inputnickname {
-}
 .register-container-top-wrapper .nickName-check-button-wrapper {
     width: 50px;
     display: inline-block;
+    height: 38px;
+    margin-left: 10px;
 }
 
 .register-input-box {
@@ -71,8 +72,4 @@
 
 .register-container-wrapper .input-box button {
     width: 100%;
-}
-
-.nickName-check-button {
-    font-size: 12px;
 }
