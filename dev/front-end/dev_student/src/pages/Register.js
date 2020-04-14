@@ -17,7 +17,7 @@ const Register = () => {
     const [rePwdClassName, setRePwdClassName] = useState("is-invalid");
     const [emailRuelCheck, setEmailRuleCheck] = useState("false");
     const [pwdClassName, setPwdClassName] = useState("is-invalid");
-    const [emailSelect, setEmailSelect] = useState("gmail.com");
+    const [emailSelect, setEmailSelect] = useState("@gmail.com");
 
     //닉네임 중복체크
     useLayoutEffect(() => {
