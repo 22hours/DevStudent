@@ -14,9 +14,9 @@ const Register = () => {
     const [nickCheck, setNickCheck] = useState("false");
     const [pwdCheck, setPwdCheck] = useState("false");
     const [pwdRuleCheck, setPwdRuleCheck] = useState("false");
-    const [rePwdClassName, setRePwdClassName] = useState("is-invalid");
+    const [rePwdClassName, setRePwdClassName] = useState("");
     const [emailRuelCheck, setEmailRuleCheck] = useState("false");
-    const [pwdClassName, setPwdClassName] = useState("is-invalid");
+    const [pwdClassName, setPwdClassName] = useState("");
     const [emailSelect, setEmailSelect] = useState("@gmail.com");
 
     //닉네임 중복체크
@@ -24,6 +24,7 @@ const Register = () => {
         if (data == null) return;
         if (data.checkDuplicateNickname.count === 0) {
             alert("중복된 닉네임 입니다.");
+            setNickCheck("false");
             return;
         } else {
             alert("사용 가능한 닉네임 입니다.");
@@ -37,15 +38,18 @@ const Register = () => {
         var spe = password.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
         if (password.length < 8 || password.length > 15) {
             alert("8자리~ 15자리 이내로 입력해주세요.");
+            setPwdRuleCheck("false");
             setPwdClassName("is-invalid");
             return;
         }
         if (password.search(/₩s/) !== -1) {
             alert("비밀번호는 공백없이 입력해주세요.");
+            setPwdRuleCheck("false");
             setPwdClassName("is-invalid");
             return;
         }
         if (num < 0 || eng < 0 || spe < 0) {
+            setPwdRuleCheck("false");
             alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
             setPwdClassName("is-invalid");
             return;
@@ -75,7 +79,6 @@ const Register = () => {
             setPwdCheck={setPwdCheck}
             pwdRuleCheck={pwdRuleCheck}
             setPwdRuleCheck={setPwdRuleCheck}
-            setPwdCheck={setPwdCheck}
             rePwdClassName={rePwdClassName}
             pwdClassName={pwdClassName}
             emailRuelCheck={emailRuelCheck}

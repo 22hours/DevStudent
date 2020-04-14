@@ -33,7 +33,7 @@ const PageHeaderModule = ({ question_count, param, setParam }) => {
                 <div className="filter-button-wrapper">
                     <Dropdown color="info" isOpen={dropdownOpen} toggle={toggleDropDown}>
                         <DropdownToggle caret>필터</DropdownToggle>
-                        <DropdownMenu>
+                        <DropdownMenu right>
                             <DropdownItem header>정렬기준</DropdownItem>
                             <DropdownItem
                                 onClick={() => {
