@@ -30,19 +30,6 @@ const Register = () => {
         }
     }, [data]);
 
-    //비밀번호 확인용
-    const RepwInputRenderer = () => {
-        if (password !== rePwd) {
-            setRePwdClassName("is-invalid");
-            alert("비밀번호가 일치하지 않습니다.");
-            return rePwdClassName;
-        } else {
-            setPwdCheck("true");
-            setRePwdClassName("is-valid");
-            return rePwdClassName;
-        }
-    };
-
     const passwordRule = () => {
         var num = password.search(/[0-9]/g);
         var eng = password.search(/[a-z]/gi);
@@ -79,11 +66,12 @@ const Register = () => {
             setNickName={setNickName}
             schoolName={schoolName}
             setSchoolName={setSchoolName}
-            RepwInputRenderer={RepwInputRenderer}
             passwordRule={passwordRule}
             checkDuplicateNickname={checkDuplicateNickname}
             nickCheck={nickCheck}
             pwdCheck={pwdCheck}
+            setRePwdClassName={setRePwdClassName}
+            setPwdCheck={setPwdCheck}
             pwdRuleCheck={pwdRuleCheck}
             setPwdRuleCheck={setPwdRuleCheck}
             setPwdCheck={setPwdCheck}

@@ -21,11 +21,13 @@ const RegisterTemplate = ({
     nickCheck,
     pwdCheck,
     pwdRuleCheck,
-    RepwInputRenderer,
     rePwdClassName,
     pwdClassName,
     emailRuleCheck,
     setEmailRuleCheck,
+    setPwdRuleCheck,
+    setPwdCheck,
+    setRePwdClassName,
     passwordRule,
 }) => {
     const [createUser, { data }] = useMutation(CREATE_USER);
@@ -34,6 +36,11 @@ const RegisterTemplate = ({
         height: "100%",
         marginBottom: "5px",
     };
+
+    const register_btn_style = {
+        marginTop: "10px",
+    };
+
     const emailRule = () => {
         var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
@@ -42,6 +49,21 @@ const RegisterTemplate = ({
             return;
         } else {
             setEmailRuleCheck("true");
+        }
+    };
+
+    //비밀번호 확인용
+    const RepwInputRenderer = () => {
+        if (pwdRuleCheck === "true") {
+            if (password !== rePwd) {
+                setRePwdClassName("is-invalid");
+                alert("비밀번호가 일치하지 않습니다.");
+                return rePwdClassName;
+            } else {
+                setPwdCheck("true");
+                setRePwdClassName("is-valid");
+                return rePwdClassName;
+            }
         }
     };
 
@@ -65,7 +87,7 @@ const RegisterTemplate = ({
                         </div>
                         <div className="main-content-wrapper">
                             <div className="input-box">
-                                <span className="register-label-style">Email</span>
+                                <span className="register-label-style">이메일</span>
                                 <div className="register-input-box">
                                     <Input
                                         value={email}
@@ -79,7 +101,7 @@ const RegisterTemplate = ({
                                 </div>
                             </div>
                             <div className="input-box">
-                                <span className="register-label-style">Password</span>
+                                <span className="register-label-style">비밀번호</span>
 
                                 <div className="register-input-box">
                                     <Input
@@ -98,7 +120,7 @@ const RegisterTemplate = ({
                                 </div>
                             </div>
                             <div className="input-box">
-                                <span className="register-label-style">Password (Check)</span>
+                                <span className="register-label-style">비밀번호(확인)</span>
                                 <div className="register-input-box">
                                     <Input
                                         value={rePwd}
@@ -107,14 +129,14 @@ const RegisterTemplate = ({
                                         type="password"
                                         name="password"
                                         id="inputPassword"
-                                        placeholder="passwordCheck"
+                                        placeholder="devstu2020!!"
                                         onBlur={RepwInputRenderer}
                                     />
                                 </div>
                             </div>
 
                             <div className="input-box">
-                                <span className="register-label-style">Nickname</span>
+                                <span className="register-label-style">닉네임</span>
                                 <div className="nickName-input-box">
                                     <div className="nickName-input">
                                         <Input
@@ -146,7 +168,7 @@ const RegisterTemplate = ({
                                 </div>
                             </div>
                             <div className="input-box">
-                                <span className="register-label-style">University</span>
+                                <span className="register-label-style">대학교</span>
                                 <div className="register-input-box">
                                     <Input
                                         onChange={({ target: { value } }) => setSchoolName(value)}
@@ -159,6 +181,7 @@ const RegisterTemplate = ({
                             </div>
                             <div className="input-box">
                                 <Button
+                                    style={register_btn_style}
                                     color="info"
                                     onClick={() => {
                                         if (
@@ -184,6 +207,7 @@ const RegisterTemplate = ({
                                             alert("비밀번호를 규칙에 맞게 입력해주세요.");
                                             return;
                                         } else {
+                                            alert("이메일을 확인해주세요.");
                                             createUser({
                                                 variables: {
                                                     password: password,
