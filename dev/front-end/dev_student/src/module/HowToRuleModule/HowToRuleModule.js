@@ -23,12 +23,12 @@ const HowToRuleModule = () => {
             let next = (now + 1) % 7;
             if (next === 0) next += 1;
             setClicked(next);
-        }, 3000);
+        }, 5000);
         return () => clearInterval(interval);
     }, [clicked]);
     return (
-        <Container>
-            <div className="HowToRuleModule">
+        <div className="HowToRuleModule">
+            <Container>
                 <div className="howto-rule-header">
                     DEVSTU 에서는 이렇게 질문과 답변을 주고받아요 누구나 할 수 있어요
                 </div>
@@ -103,8 +103,8 @@ const HowToRuleModule = () => {
                     </div>
                 </div>
                 <div className="mobile-only">mobile</div>
-            </div>
-        </Container>
+            </Container>
+        </div>
     );
 };
 

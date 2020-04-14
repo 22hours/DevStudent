@@ -1,12 +1,15 @@
 .HowToRuleModule {
-    height: 500px;
-    margin-top: 50px;
+    height: auto;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(249, 249, 249);
 }
 .HowToRuleModule .howto-rule-header {
     font-family: "Do Hyeon", sans-serif;
     width: 100%;
     text-align: center;
-    font-size: 30px;
+    font-size: 0px;
 }
 .HowToRuleModule .pc-only {
     height: 100%;

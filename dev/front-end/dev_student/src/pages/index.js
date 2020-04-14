@@ -12,6 +12,7 @@ import AuthRoute from "./AuthRoute";
 import EmailCheck from "./EmailCheck";
 import Alarm from "./Alarm";
 import Register from "./Register";
+import DevNote from "./DevNote";
 export {
     Alarm,
     EmailCheck,
@@ -27,4 +28,5 @@ export {
     Search,
     Todo,
     NotFound,
+    DevNote,
 };

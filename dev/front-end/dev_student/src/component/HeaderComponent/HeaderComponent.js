@@ -96,6 +96,13 @@ const HeaderModule = (props) => {
                                 </Link>
                             </div>
                         </NavItem>
+                        <NavItem>
+                            <div className="nav-item-wrapper">
+                                <Link to="/devnote" className="nav-link">
+                                    DevNote
+                                </Link>
+                            </div>
+                        </NavItem>
                     </Nav>
                 </Collapse>
                 <PrivateMenu></PrivateMenu>
