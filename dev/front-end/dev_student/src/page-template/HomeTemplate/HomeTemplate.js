@@ -3,6 +3,7 @@ import "./HomeTamplate.css";
 
 //modules
 import HowToRuleModule from "module/HowToRuleModule/HowToRuleModule";
+import RecruitScheduleModule from "module/RecruitScheduleModule/RecruitScheduleModule";
 
 //img
 import catholic_wide from "img/home/catholic_wide.png";
@@ -27,6 +28,7 @@ const HomeTamplate = () => {
                 </Container>
             </div>
             <HowToRuleModule />
+            <RecruitScheduleModule />
         </div>
     );
 };
