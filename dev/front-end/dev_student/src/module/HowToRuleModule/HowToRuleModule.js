@@ -23,7 +23,7 @@ const HowToRuleModule = () => {
             let next = (now + 1) % 7;
             if (next === 0) next += 1;
             setClicked(next);
-        }, 300000);
+        }, 3000);
         return () => clearInterval(interval);
     }, [clicked]);
     return (
