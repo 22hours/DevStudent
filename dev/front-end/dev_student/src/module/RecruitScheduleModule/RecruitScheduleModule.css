@@ -1,0 +1,51 @@
+.RecruitScheduleModule {
+    height: auto;
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.RecruitScheduleModule a {
+    text-decoration: none !important;
+    color: rgb(54, 54, 54);
+    cursor: pointer;
+}
+
+.RecruitScheduleModule .recruit-header {
+    text-align: center;
+}
+
+.RecruitScheduleModule .recruit-header #header {
+    font-family: "Do Hyeon", sans-serif;
+    font-size: 24px;
+    margin-bottom: 1px !important;
+}
+
+.RecruitScheduleModule .recruit-header #reference {
+    font-size: 14px;
+    font-family: "Do Hyeon", sans-serif;
+    color: gray;
+}
+
+.RecruitScheduleModule .recruit-header a {
+    font-family: "Do Hyeon", sans-serif;
+    font-size: 14px;
+    color: rgb(36, 168, 230);
+}
+
+.RecruitScheduleModule .recruit-item {
+    text-align: center;
+    background-color: rgb(251, 251, 251);
+    border: 1px solid rgb(238, 238, 238);
+    margin-bottom: 10px;
+    border-radius: 7px;
+}
+
+.recruit-item #description {
+    font-family: "Noto Sans KR", sans-serif;
+    margin-bottom: 1px !important;
+}
+.recruit-item #endData {
+    font-family: "Noto Sans KR", sans-serif;
+    margin-bottom: 1px !important;
+    color: gray;
+}
