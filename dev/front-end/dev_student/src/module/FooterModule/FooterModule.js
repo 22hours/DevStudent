@@ -23,10 +23,18 @@ const FooterModule = () => {
                     </div>
                     <div className="footer-col">
                         <div className="footer-col-header">MEMBERS</div>
-                        <div className="footer-col-content">이정환</div>
-                        <div className="footer-col-content">신다민</div>
-                        <div className="footer-col-content">하정구</div>
-                        <div className="footer-col-content">김효빈</div>
+                        <div className="footer-col-content">
+                            <a href="https://github.com/winterlood">이정환</a>
+                        </div>
+                        <div className="footer-col-content">
+                            <a href="https://github.com/damin8">신다민</a>
+                        </div>
+                        <div className="footer-col-content">
+                            <a href="https://github.com/hjg0629">하정구</a>
+                        </div>
+                        <div className="footer-col-content">
+                            <a href="https://github.com/sg05138">김효빈</a>
+                        </div>
                     </div>
                     <div className="footer-col">
                         <div className="footer-col-header">SITEMAP</div>
