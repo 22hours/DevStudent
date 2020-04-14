@@ -6,6 +6,7 @@ import reverseproxy.proxy.Entity.Question;
 import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class CreateQuestion extends ConnectMainServer {
@@ -13,11 +14,11 @@ public class CreateQuestion extends ConnectMainServer {
         //region Query
         String query = "mutation{\n" +
                 "    createQuestion\n" +
-                "    (   token : " + token + ",\n" +
-                "        title : " + title + ",\n" +
-                "        author : " + author + ", \n" +
-                "        tags:" + tags + ", \n" +
-                "        content : " + content + " )\n" +
+                "    (   token : \"" + token + "\",\n" +
+                "        title : \"" + title + "\",\n" +
+                "        author : \"" + author + "\", \n" +
+                "        tags:\"" + tags + "\", \n" +
+                "        content : \"" + content + "\" )\n" +
                 "    {\n" +
                 "        title\n" +
                 "        _id\n" +
@@ -61,7 +62,8 @@ public class CreateQuestion extends ConnectMainServer {
                 "}";
         //endregion
         Gson gson = new Gson();
-        String str = getResponse(query);
+        String name = new Object(){}.getClass().getEnclosingMethod().getName();
+        String str = getResponse(query,name);
         Question question = gson.fromJson(str, Question.class);
         return question;
     }

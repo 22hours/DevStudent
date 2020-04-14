@@ -16,13 +16,13 @@ type Question{
 }
 
 
-# Root
+#Root
 type Query{
-    findAllQuestions(param : String, pageNum : Int, requiredCount : Int): [Question]
-    findQuestionBy_id(_id:String) : Question
-    findQuestionsByTags(param : String, pageNum : Int, requiredCount: Int, tags: [String], logical: String): [Question]
-    findQuestionsByOption(param : String, option : String! , searchContent : String!, pageNum : Int, requiredCount: Int) : [Question]
-    countAllQuestions : Count
+#    findAllQuestions(param : String, pageNum : Int, requiredCount : Int): [Question]
+#    findQuestionBy_id(_id:String) : Question
+#    findQuestionsByTags(param : String, pageNum : Int, requiredCount: Int, tags: [String], logical: String): [Question]
+#    findQuestionsByOption(param : String, option : String! , searchContent : String!, pageNum : Int, requiredCount: Int) : [Question]
+#    countAllQuestions : Count
 }
 
 # Root

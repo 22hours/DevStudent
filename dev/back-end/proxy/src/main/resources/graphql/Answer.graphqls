@@ -11,5 +11,4 @@ type Answer{
 extend type Mutation {
     createAnswer(token : String, question_id : String!, author : String!, content : String!) : Answer
     deleteAnswer(question_id : String!, answer_id : String!) : Answer
-
 }

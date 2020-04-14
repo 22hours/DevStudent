@@ -1,20 +1,17 @@
-package reverseproxy.proxy.GraphQLMainServer.Create;
+package reverseproxy.proxy.GraphQLMainServer.Find;
 
 import com.google.gson.Gson;
-import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.Question;
 import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
-@Component
-public class CreateLike extends ConnectMainServer {
-    public Question createLike(String question_id, String answer_id, String nickname, String status) {
+import java.util.List;
+
+public class FindAllQuestions extends ConnectMainServer {
+    public List<Question> findAllQuestions(String param, int pageNum, int requiredCount)
+    {
         //region Query
-        String query = "mutation{\n" +
-                "    createLike(question_id : \"" + question_id + "\", " +
-                "\"answer_id : " + answer_id + "\", " +
-                "\"nickname : " + nickname + "\", " +
-                "\"status : " + status + "\")\n" +
-                "    {\n" +
+        String query = "query{\n" +
+                "    findAllQuestions( param:\""+param+"\", pageNum:"+pageNum+", requiredCount:"+requiredCount+"){\n" +
                 "        title\n" +
                 "        _id\n" +
                 "        author\n" +
@@ -59,7 +56,6 @@ public class CreateLike extends ConnectMainServer {
         Gson gson = new Gson();
         String name = new Object(){}.getClass().getEnclosingMethod().getName();
         String str = getResponse(query,name);
-        Question question = gson.fromJson(str, Question.class);
-        return question;
+        return null;
     }
 }

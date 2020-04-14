@@ -1,17 +1,19 @@
 package reverseproxy.proxy.GraphQLLoginServer;
 
 import com.google.gson.Gson;
+import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.User;
 
+@Component
 public class CreateUser extends ConnectLoginServer {
     public User createUser(String email, String password, String nickname, String schoolName) {
         //region Query
         String query = "mutation{\n" +
                 "    createUser(\n" +
-                "        email: " + email + ", \n" +
-                "        password: " + password + ", \n" +
-                "        nickname: " + nickname + ", \n" +
-                "        schoolName : " + schoolName + ", \n" +
+                "        email: \"" + email + "\", \n" +
+                "        password: \"" + password + "\", \n" +
+                "        nickname: \"" + nickname + "\", \n" +
+                "        schoolName : \"" + schoolName + "\", \n" +
                 "        )\n" +
                 "    {\n" +
                 "        email\n" +
@@ -24,7 +26,8 @@ public class CreateUser extends ConnectLoginServer {
                 "}";
         //endregion
         Gson gson = new Gson();
-        String str = getResponse(query);
+        String name = new Object(){}.getClass().getEnclosingMethod().getName();
+        String str = getResponse(query,name);
         User user = gson.fromJson(str, User.class);
         return user;
     }

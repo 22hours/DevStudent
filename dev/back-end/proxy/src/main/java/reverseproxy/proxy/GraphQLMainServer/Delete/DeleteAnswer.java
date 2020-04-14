@@ -1,9 +1,11 @@
 package reverseproxy.proxy.GraphQLMainServer.Delete;
 
 import com.google.gson.Gson;
+import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.Answer;
 import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
+@Component
 public class DeleteAnswer extends ConnectMainServer {
     public Answer deleteAnswer(String question_id, String answer_id) {
         //region Query
@@ -11,8 +13,8 @@ public class DeleteAnswer extends ConnectMainServer {
                 "mutation{\n" +
                 "    deleteAnswer\n" +
                 "    (\n" +
-                "    question_id : " + question_id + ",\n" +
-                "    answer_id : " + answer_id + ",\n" +
+                "    question_id : \"" + question_id + "\",\n" +
+                "    answer_id : \"" + answer_id + "\",\n" +
                 "    )\n" +
                 "    {\n" +
                 "        _id\n" +
@@ -28,7 +30,8 @@ public class DeleteAnswer extends ConnectMainServer {
                 "}";
         //endregion
         Gson gson = new Gson();
-        String str = getResponse(query);
+        String name = new Object(){}.getClass().getEnclosingMethod().getName();
+        String str = getResponse(query,name);
         Answer answer = gson.fromJson(str, Answer.class);
         return answer;
     }

@@ -11,11 +11,11 @@ public class CreateComment extends ConnectMainServer {
         //region Query
         String query = "mutation{\n" +
                 "    createComment\n" +
-                "    (token : " + token + ",\n" +
-                "    question_id : " + question_id + ",\n" +
-                "    answer_id : " + answer_id + ",\n" +
-                "    author : " + author + ",\n" +
-                "    content : " + content + ",\n" +
+                "    (token : \"" + token + "\",\n" +
+                "    question_id : \"" + question_id + "\",\n" +
+                "    answer_id : \"" + answer_id + "\",\n" +
+                "    author : \"" + author + "\",\n" +
+                "    content : \"" + content + "\",\n" +
                 "    )\n" +
                 "    {\n" +
                 "        _id\n" +
@@ -26,7 +26,8 @@ public class CreateComment extends ConnectMainServer {
                 "}";
         //endregion
         Gson gson = new Gson();
-        String str = getResponse(query);
+        String name = new Object(){}.getClass().getEnclosingMethod().getName();
+        String str = getResponse(query,name);
         Comment comment = gson.fromJson(str, Comment.class);
         return comment;
     }

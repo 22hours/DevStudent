@@ -12,10 +12,10 @@ public class CreateAnswer extends ConnectMainServer {
         String query = "\n" +
                 "mutation{\n" +
                 "    createAnswer(\n" +
-                "        token : " + token + ",\n" +
-                "        question_id:" + question_id + ",\n" +
-                "        author:" + author + ",\n" +
-                "        content:" + content + "){\n" +
+                "        token : \"" + token + "\",\n" +
+                "        question_id:\"" + question_id + "\",\n" +
+                "        author:\"" + author + "\",\n" +
+                "        content:\"" + content + "\"){\n" +
                 "        _id\n" +
                 "        author\n" +
                 "        content\n" +
@@ -29,7 +29,8 @@ public class CreateAnswer extends ConnectMainServer {
                 "}\n";
         //endregion
         Gson gson = new Gson();
-        String str = getResponse(query);
+        String name = new Object(){}.getClass().getEnclosingMethod().getName();
+        String str = getResponse(query,name);
         Answer answer = gson.fromJson(str, Answer.class);
         return answer;
     }
