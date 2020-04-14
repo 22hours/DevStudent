@@ -73,3 +73,20 @@
 .register-container-wrapper .input-box button {
     width: 100%;
 }
+
+.register-container-top-wrapper .email-input-box {
+    overflow: hidden;
+}
+
+.register-container-top-wrapper .email-input {
+    display: inline-block;
+    width: 56%;
+    height: 100%;
+}
+
+.register-container-top-wrapper .email-select-wrapper {
+    width: 42%;
+    display: inline-block;
+    height: 38px;
+    margin-left: 2%;
+}

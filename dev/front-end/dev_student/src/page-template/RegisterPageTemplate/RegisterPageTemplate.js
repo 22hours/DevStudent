@@ -1,7 +1,7 @@
 import React from "react";
 import "./RegisterPageTemplate.css";
 import { Container, Row, Col } from "reactstrap";
-import { Input, Button, FormText, Form } from "reactstrap";
+import { Input, Button, FormText } from "reactstrap";
 import { CREATE_USER } from "mutation/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import { Link } from "react-router-dom";
@@ -25,7 +25,8 @@ const RegisterTemplate = ({
     pwdClassName,
     emailRuleCheck,
     setEmailRuleCheck,
-    setPwdRuleCheck,
+    setEmailSelect,
+    emailSelect,
     setPwdCheck,
     setRePwdClassName,
     passwordRule,
@@ -42,10 +43,7 @@ const RegisterTemplate = ({
     };
 
     const emailRule = () => {
-        var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
-        if (email.match(regExp) == null) {
-            alert("이메일을 다시 입력해주세요.");
+        if (email === null) {
             return;
         } else {
             setEmailRuleCheck("true");
@@ -88,16 +86,28 @@ const RegisterTemplate = ({
                         <div className="main-content-wrapper">
                             <div className="input-box">
                                 <span className="register-label-style">이메일</span>
-                                <div className="register-input-box">
-                                    <Input
-                                        value={email}
-                                        onChange={({ target: { value } }) => setEmail(value)}
-                                        type="email"
-                                        name="email"
-                                        id="inputEmail"
-                                        placeholder="devstu@developer.com"
-                                        onBlur={emailRule}
-                                    />
+                                <div className="email-input-box">
+                                    <div className="email-input">
+                                        <Input
+                                            value={email}
+                                            onChange={({ target: { value } }) => setEmail(value)}
+                                            type="text"
+                                            name="email"
+                                            id="inputEmail"
+                                            placeholder="devstudent"
+                                            onBlur={emailRule}
+                                        />
+                                    </div>
+                                    <div className="email-select-wrapper">
+                                        <Input
+                                            type="select"
+                                            onChange={({ target: { value } }) => setEmailSelect(value)}
+                                        >
+                                            <option>@gmail.com</option>
+                                            <option>@naver.com</option>
+                                            <option>@daum.net</option>
+                                        </Input>
+                                    </div>
                                 </div>
                             </div>
                             <div className="input-box">
@@ -134,7 +144,6 @@ const RegisterTemplate = ({
                                     />
                                 </div>
                             </div>
-
                             <div className="input-box">
                                 <span className="register-label-style">닉네임</span>
                                 <div className="nickName-input-box">
@@ -211,7 +220,7 @@ const RegisterTemplate = ({
                                             createUser({
                                                 variables: {
                                                     password: password,
-                                                    email: email,
+                                                    email: email + emailSelect,
                                                     nickname: nickName,
                                                     schoolName: schoolName,
                                                 },
