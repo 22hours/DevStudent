@@ -44,7 +44,6 @@ const RegisterTemplate = ({
 
     const emailRule = () => {
         if (email === null) {
-            setEmailRuleCheck("false");
             return;
         } else {
             setEmailRuleCheck("true");
@@ -56,7 +55,6 @@ const RegisterTemplate = ({
         if (pwdRuleCheck === "true") {
             if (password !== rePwd) {
                 setRePwdClassName("is-invalid");
-                setPwdCheck("false");
                 alert("비밀번호가 일치하지 않습니다.");
                 return rePwdClassName;
             } else {

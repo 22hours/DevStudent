@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Collapse, Alert } from "reactstrap";
 import "./RecruitScheduleModule.css";
+import "module/AnimateCss/AnimateCss.css";
 const RecruitScheduleModule = () => {
     const [item, setItem] = useState();
     const [remain, setRemain] = useState();
@@ -41,7 +42,9 @@ const RecruitScheduleModule = () => {
             <div className="RecruitScheduleModule">
                 <Container>
                     <div className="recruit-header">
-                        <p id="header">실시간 채용 정보</p>
+                        <span id="header" className="bounce">
+                            실시간 채용 정보
+                        </span>
                         <p id="reference">
                             출처 :&nbsp;
                             <a href="https://github.com/jojoldu/junior-recruit-scheduler">

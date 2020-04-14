@@ -33,7 +33,6 @@ const MyRouter = (props) => {
                             <Route exact path="/" component={Home} />
                             <Route path="/about/:user" component={About} />
                             <Route path="/posts" component={Posts} />
-                            <Route path="/mypage" component={MyPage} />
                             <Route path="/todolist" component={Todo} />
                             <Route path="/howto" component={HowTo} />
                             <Route path="/emailCheck/:rand" component={EmailCheck} />
@@ -53,6 +52,11 @@ const MyRouter = (props) => {
                                 authenticated={authenticated}
                                 path="/newquestion"
                                 render={(props) => <NewQuestion user={user} {...props} />}
+                            />
+                            <AuthRoute
+                                authenticated={authenticated}
+                                path="/mypage"
+                                render={(props) => <MyPage user={user} {...props} />}
                             />
                             <Route path="/devnote" component={DevNote} />
 

@@ -1,0 +1,34 @@
+.MypageTemplate {
+    overflow: hidden;
+    padding-top: 30px;
+}
+
+.MypageTemplate .mypage-user-header-row {
+    width: 100%;
+}
+
+.mypage-user-header-row .avatar-col {
+    float: left;
+}
+
+.mypage-user-header-row .avatar-col {
+    width: 100px;
+    height: 100px;
+}
+
+.mypage-user-header-row .avatar-col img {
+    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); /* 그림자 */
+}
+
+.mypage-user-header-row .info-col {
+    padding-left: 10px;
+    width: 100%;
+    height: 100px;
+    margin-left: 100px;
+}
+
+.info-col .nickname-row {
+}
