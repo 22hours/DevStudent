@@ -8,14 +8,14 @@ type User{
     token : String
 }
 
-extend type Mutation{
+type Query{
+    findUserByNickname(token : String, nickname : String) : User
+}
+
+type Mutation{
     createUser(email: String!, password: String!, nickname: String!, schoolName : String!) : User
     updateUserAuthState(authState : String!) : User
     loginToServer(email : String, password : String) : User
     checkDuplicateEmail(email : String) : Count
     checkDuplicateNickname(nickname : String) : Count
-}
-
-extend type Query{
-    findUserByNickname(token : String, nickname : String) : User
 }

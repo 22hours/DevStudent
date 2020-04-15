@@ -13,7 +13,8 @@ public class Comment {
     private String author;
     private String content;
     private String date;
-    public Comment(String _id, String author, String content){
+
+    public Comment(String _id, String author, String content) {
         this._id = _id;
         this.author = author;
         this.content = content;

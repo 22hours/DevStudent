@@ -18,7 +18,7 @@ public class FindAllAlarms {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public List<Alarm> findAllAlarms(String nickname, int pageNum, int requiredCount){
+    public List<Alarm> findAllAlarms(String nickname, int pageNum, int requiredCount) {
         Criteria criteria = new Criteria("nickname");
         criteria.is(nickname);
         Query query = new Query(criteria);
@@ -26,7 +26,7 @@ public class FindAllAlarms {
         query.limit(requiredCount);
         query.skip((pageNum - 1) * requiredCount);
         List<Alarm> alarms = this.mongoTemplate.find(query, Alarm.class);
-        if(alarms!=null)
+        if (alarms != null)
             readAlarm.readAlarms(alarms);
         return alarms;
     }

@@ -1,8 +1,7 @@
-package com.hours22.devstudent.Repository;
+package loginserver.loginserver.Repository;
 
-import com.hours22.devstudent.Entity.User;
+import loginserver.loginserver.Entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
-
 
 public interface UserRepository extends MongoRepository<User, String> {
 

@@ -1,4 +1,4 @@
-package com.hours22.devstudent.Command.Module;
+package loginserver.loginserver.Module;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -8,7 +8,6 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.util.Random;
 
 @Component
 public class AuthMailSend {
@@ -28,7 +27,7 @@ public class AuthMailSend {
         String htmlStr = "<h2>안녕하세요. DevStudent 계정인증 메일입니다!</h2><br><br>"
                 + "<h3>" + nickname + "님</h3>" + "<p>인증하기 버튼을 누르시면 로그인을 하실 수 있습니다 : <p>"
                 //+ "<a href='http://devstudent/emailCheck/"+key+"'>인증하기</a></p>";
-            +"<a href='http://13.209.25.45/emailCheck/"+key+"'>인증하기</a></p>";
+                + "<a href='http://13.209.25.45/emailCheck/" + key + "'>인증하기</a></p>";
 //                + _id + "&#34;, authState:&#34;"+ key +"&#34;){_id, authState}}'>인증하기</a></p>";
         try {
             System.out.println("setSubject");

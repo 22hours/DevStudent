@@ -10,7 +10,7 @@ public class DeleteAlarm {
     @Autowired
     private AlarmRepository alarmRepository;
 
-    public Alarm deleteAlarm(String alarm_id){
+    public Alarm deleteAlarm(String alarm_id) {
         Alarm alarm = alarmRepository.findBy_id(alarm_id);
         alarmRepository.delete(alarm);
         return alarm;

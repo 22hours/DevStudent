@@ -22,7 +22,8 @@ public class Alarm {
     private String date;
     @Setter
     private Boolean read;
-    public Alarm(String _id, String question_id, String nickname, String respondent, String content){
+
+    public Alarm(String _id, String question_id, String nickname, String respondent, String content) {
         this._id = _id;
         this.question_id = question_id;
         this.nickname = nickname;

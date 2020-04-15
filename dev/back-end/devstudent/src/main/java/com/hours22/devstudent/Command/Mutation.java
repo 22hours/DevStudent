@@ -6,10 +6,7 @@ import com.hours22.devstudent.Command.Delete.DeleteAlarm;
 import com.hours22.devstudent.Command.Delete.DeleteAnswer;
 import com.hours22.devstudent.Command.Delete.DeleteComment;
 import com.hours22.devstudent.Command.Delete.DeleteQuestion;
-import com.hours22.devstudent.Command.Module.Login;
-import com.hours22.devstudent.Command.Update.UpdateUserAuthState;
 import com.hours22.devstudent.Entity.*;
-import com.hours22.devstudent.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,14 +15,6 @@ import java.util.List;
 @Component
 public class Mutation implements GraphQLMutationResolver {
     //region properties
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private CreateUser createUser;
-    @Autowired
-    private UpdateUserAuthState updateUserAuthState;
-    @Autowired
-    private Login login;
     @Autowired
     private CreateAnswer createAnswer;
     @Autowired
@@ -57,9 +46,10 @@ public class Mutation implements GraphQLMutationResolver {
         return createComment.createComment(token, question_id, answer_id, author, content);
     }
 
-    public Question createLike(String question_id, String answer_id, String nickname, String status){
-        return createLike.createLike(question_id,answer_id,nickname,status);
+    public Question createLike(String question_id, String answer_id, String nickname, String status) {
+        return createLike.createLike(question_id, answer_id, nickname, status);
     }
+
     //endregion
     //region delete Mutation
     public Question deleteQuestion(String _id) {
@@ -73,31 +63,10 @@ public class Mutation implements GraphQLMutationResolver {
     public Comment deleteComment(String question_id, String answer_id, String comment_id) {
         return deleteComment.deleteComment(question_id, answer_id, comment_id);
     }
-    //endregion
-
-    //region member Mutation
-    public User createUser(String email, String password, String nickname, String schoolName) {
-        return createUser.createUser(email, password, nickname, schoolName);
-    }
-    public Count checkDuplicateEmail(String email){
-        if(!userRepository.existsByEmail(email))
-            return new Count(1);
-        return new Count(0);
-    } // query로 이동해야 함
-
-    public Count checkDuplicateNickname(String nickname){
-        if(!userRepository.existsByNickname(nickname))
-            return new Count(1);
-        return new Count(0);
-    } // query로 이동해야 함
-    public User updateUserAuthState(String authState){
-        return updateUserAuthState.updateUserAuthState(authState);
-    }
-    public User loginToServer(String email, String password) {
-        return login.login(email, password);
-    }
     public Alarm deleteAlarm(String alarm_id){
         return deleteAlarm.deleteAlarm(alarm_id);
     }
     //endregion
+
+
 }

@@ -13,7 +13,7 @@ public class Like {
     String status;
 
 
-    public Like(String nickname, String status){
+    public Like(String nickname, String status) {
         this.nickname = nickname;
         this.status = status;
     }

@@ -1,4 +1,4 @@
-package com.hours22.devstudent.Entity;
+package loginserver.loginserver.Entity;
 
 import lombok.Getter;
 import lombok.Setter;

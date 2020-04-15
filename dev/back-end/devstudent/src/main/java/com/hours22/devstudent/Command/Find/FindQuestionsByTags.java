@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class FindQuestionsByTags extends Find{
-    public List<Question> findQuestionsByTags(String param, int pageNum, int requiredCount, List<String> tags, String logical){
+public class FindQuestionsByTags extends Find {
+    public List<Question> findQuestionsByTags(String param, int pageNum, int requiredCount, List<String> tags, String logical) {
         Criteria criteria = new Criteria("tags");
         if (logical.equals("and"))
             criteria.all(tags);
@@ -18,6 +18,6 @@ public class FindQuestionsByTags extends Find{
         else {
             return new ArrayList<Question>();
         }
-        return getQuestions(param,pageNum,requiredCount,criteria);
+        return getQuestions(param, pageNum, requiredCount, criteria);
     }
 }
