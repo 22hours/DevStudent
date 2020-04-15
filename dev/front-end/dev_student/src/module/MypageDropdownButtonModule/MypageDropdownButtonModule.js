@@ -33,6 +33,9 @@ const MyPageDropdownButtonModule = (props) => {
                 <Link to="/mypage">
                     <DropdownItem style={{ fontFamily: "Do Hyeon" }}>마이페이지</DropdownItem>
                 </Link>
+                <Link to="/logout">
+                    <DropdownItem style={{ fontFamily: "Do Hyeon" }}>로그아웃</DropdownItem>
+                </Link>
             </DropdownMenu>
         </Dropdown>
     );

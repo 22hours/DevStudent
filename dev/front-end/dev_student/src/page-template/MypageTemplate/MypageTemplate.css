@@ -16,6 +16,7 @@
 .MypageTemplate {
     overflow: hidden;
     padding-top: 30px;
+    padding-bottom: 90px;
     font-family: "Noto Sans KR", sans-serif;
 }
 
@@ -123,6 +124,19 @@
 .mypage-item-row .item-box {
     border-bottom: 1px solid rgb(233, 233, 233);
     margin-bottom: 10px;
+}
+
+.mypage-item-row .item-box {
+    color: black !important;
+}
+.mypage-item-row .item-box:hover {
+    background-color: rgb(243, 243, 243) !important;
+}
+.mypage-item-row .item-preview {
+    text-decoration: none !important;
+}
+.mypage-item-row .item-preview a:hover {
+    text-decoration: none;
 }
 
 .mypage-item-row .item-preview {
