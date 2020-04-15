@@ -6,11 +6,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 
-public class ConnectLoginServer {
+public abstract class ConnectLoginServer {
 
     public String getResponse(String query,String name){
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://localhost:8080/graphql";
+        String url = "http://localhost:8090/graphql";
         HttpHeaders headers = new HttpHeaders();
         headers.add("content-type", "application/graphql");
         ResponseEntity<String> response = restTemplate.postForEntity(url,new HttpEntity<>(query, headers), String.class);

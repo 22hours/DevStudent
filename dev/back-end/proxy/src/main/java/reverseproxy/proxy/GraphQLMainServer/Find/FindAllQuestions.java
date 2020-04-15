@@ -1,11 +1,14 @@
 package reverseproxy.proxy.GraphQLMainServer.Find;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.Question;
 import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
 import java.util.List;
 
+@Component
 public class FindAllQuestions extends ConnectMainServer {
     public List<Question> findAllQuestions(String param, int pageNum, int requiredCount)
     {
@@ -54,8 +57,8 @@ public class FindAllQuestions extends ConnectMainServer {
                 "}";
         //endregion
         Gson gson = new Gson();
-        String name = new Object(){}.getClass().getEnclosingMethod().getName();
-        String str = getResponse(query,name);
-        return null;
+        String str = getResponse(query);
+        List<Question> questions = gson.fromJson(str,new TypeToken<List<Question>>(){}.getType());
+        return questions;
     }
 }

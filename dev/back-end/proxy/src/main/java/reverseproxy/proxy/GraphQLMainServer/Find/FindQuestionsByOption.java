@@ -1,27 +1,24 @@
-package reverseproxy.proxy.GraphQLMainServer.Create;
+package reverseproxy.proxy.GraphQLMainServer.Find;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.Question;
 import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Component
-public class CreateQuestion extends ConnectMainServer {
-    public Question createQuestion(String token, String title, String author, List<String> tags, String content) {
-        String result = tags.stream()
-                .collect(Collectors.joining("\", \"", "\"", "\""));
+public class FindQuestionsByOption extends ConnectMainServer {
+    public List<Question> findQuestionsByOption(String param, String option, String searchContent, int pageNum, int requiredCount) {
         //region Query
-        String query = "mutation{\n" +
-                "    createQuestion\n" +
-                "    (   token : \"" + token + "\",\n" +
-                "        title : \"" + title + "\",\n" +
-                "        author : \"" + author + "\", \n" +
-                "        tags:[" + result + "], \n" +
-                "        content : \"" + content + "\" )\n" +
+        String query = "query{\n" +
+                "        findQuestionsByOption(param : \"" + param + "\",\n" +
+                "        option : \"" + option + "\" , \n" +
+                "        searchContent : \"" + searchContent + "\", \n" +
+                "        pageNum : " + pageNum + ", \n" +
+                "        requiredCount: " + requiredCount + "\n" +
+                "        )\n" +
                 "    {\n" +
                 "        title\n" +
                 "        _id\n" +
@@ -62,13 +59,11 @@ public class CreateQuestion extends ConnectMainServer {
                 "            }\n" +
                 "        }\n" +
                 "    }\n" +
-                "}";
+                "} \n";
         //endregion
-        System.out.println(query);
         Gson gson = new Gson();
-        String name = new Object(){}.getClass().getEnclosingMethod().getName();
-        String str = getResponse(query,name);
-        Question question = gson.fromJson(str, Question.class);
-        return question;
+        String str = getResponse(query);
+        List<Question> questions = gson.fromJson(str, new TypeToken<List<Question>>() {}.getType());
+        return questions;
     }
 }

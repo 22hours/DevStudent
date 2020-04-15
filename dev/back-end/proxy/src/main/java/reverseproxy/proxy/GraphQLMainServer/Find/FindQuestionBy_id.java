@@ -1,28 +1,16 @@
-package reverseproxy.proxy.GraphQLMainServer.Create;
+package reverseproxy.proxy.GraphQLMainServer.Find;
 
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.Question;
 import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 @Component
-public class CreateQuestion extends ConnectMainServer {
-    public Question createQuestion(String token, String title, String author, List<String> tags, String content) {
-        String result = tags.stream()
-                .collect(Collectors.joining("\", \"", "\"", "\""));
+public class FindQuestionBy_id extends ConnectMainServer {
+    public Question findQuestionBy_id(String _id) {
         //region Query
-        String query = "mutation{\n" +
-                "    createQuestion\n" +
-                "    (   token : \"" + token + "\",\n" +
-                "        title : \"" + title + "\",\n" +
-                "        author : \"" + author + "\", \n" +
-                "        tags:[" + result + "], \n" +
-                "        content : \"" + content + "\" )\n" +
-                "    {\n" +
+        String query = "query{\n" +
+                "    findQuestionBy_id(_id:\""+ _id +"\"){\n" +
                 "        title\n" +
                 "        _id\n" +
                 "        author\n" +
@@ -64,7 +52,6 @@ public class CreateQuestion extends ConnectMainServer {
                 "    }\n" +
                 "}";
         //endregion
-        System.out.println(query);
         Gson gson = new Gson();
         String name = new Object(){}.getClass().getEnclosingMethod().getName();
         String str = getResponse(query,name);
