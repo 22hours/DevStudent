@@ -7,7 +7,7 @@
 }
 .questions-number-span {
     font-family: "Do Hyeon", sans-serif;
-    font-size: x-large;
+    font-size: 20px;
     vertical-align: base;
     display: inline-block;
 }
@@ -23,7 +23,7 @@
     font-family: "Do Hyeon", sans-serif;
     vertical-align: base;
     display: inline-block;
-    font-size: large;
+    font-size: 15px;
 }
 
 .filter-button-wrapper {

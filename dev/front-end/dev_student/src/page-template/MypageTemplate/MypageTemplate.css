@@ -1,9 +1,29 @@
+@media only screen and (max-width: 1000px) {
+    .MypageTemplate .mypage-item-wrapper {
+        width: 100%;
+        margin-right: 0px !important;
+        padding-right: 0px !important;
+        float: left;
+        box-sizing: border-box;
+    }
+    .MypageTemplate .mypage-alarm-wrapper {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+}
 .MypageTemplate {
     overflow: hidden;
     padding-top: 30px;
+    font-family: "Noto Sans KR", sans-serif;
 }
 
+/* HEADER */ /* HEADER */
+/* HEADER */ /* HEADER */
+
 .MypageTemplate .mypage-user-header-row {
+    padding-right: 10px;
     width: 100%;
 }
 
@@ -18,8 +38,8 @@
 
 .mypage-user-header-row .avatar-col img {
     border-radius: 10px;
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); /* 그림자 */
 }
 
@@ -30,5 +50,90 @@
     margin-left: 100px;
 }
 
+.info-col .bage-row {
+    font-size: 14px;
+}
+
 .info-col .nickname-row {
+    font-size: 24px;
+    font-family: "Do Hyeon", sans-serif;
+}
+
+.sub-row #github,
+#notion {
+    font-family: "Noto Sans KR", sans-serif;
+    color: gray;
+    font-size: 12px;
+    margin-right: 20px;
+}
+
+.sub-row #edit-email,
+#edit-myinfo {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 14px;
+    color: gray;
+}
+
+/* NAV */
+
+.MypageTemplate .mypage-nav-row {
+}
+
+.mypage-nav-row .mypage-nav-item {
+    display: inline-block;
+    font-family: "Noto Sans KR", sans-serif;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    color: gray;
+}
+
+/* NAV */
+
+/* USER INFO */
+
+.MypageTemplate .mypage-item-wrapper {
+    width: 100%;
+    margin-right: -350px;
+    padding-right: 390px;
+    float: left;
+    box-sizing: border-box;
+}
+.MypageTemplate .mypage-alarm-wrapper {
+    width: 330px;
+    height: auto;
+    float: right;
+}
+
+.MypageTemplate .mypage-item-row {
+    margin-top: 50px;
+}
+
+.mypage-item-row .item-header {
+    font-family: "Noto Sans KR", sans-serif;
+    color: rgb(63, 63, 63);
+    font-size: 20px;
+    padding-bottom: 5px;
+    padding-left: 3px;
+    border-bottom: 1px solid rgb(179, 179, 179);
+    margin-bottom: 10px;
+}
+
+.mypage-item-row .item-box {
+    border-bottom: 1px solid rgb(233, 233, 233);
+    margin-bottom: 10px;
+}
+
+.mypage-item-row .item-preview {
+    padding-left: 3px;
+}
+
+.item-preview #item-label {
+    color: gray;
+    font-size: 14px;
+}
+
+.item-preview #item-value {
+    font-size: 15px;
 }

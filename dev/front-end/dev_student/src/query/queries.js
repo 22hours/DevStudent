@@ -144,3 +144,60 @@ export const FIND_QUESTIONS_BY_TAG = gql`
         }
     }
 `;
+
+export const FIND_QUESTIONS_BY_OPTION = gql`
+    query findQuestionsByOption(
+        $param: String!
+        $option: String!
+        $searchContent: String!
+        $pageNum: Int
+        $requiredCount: Int
+    ) {
+        findQuestionsByOption(
+            param: $param
+            option: $option
+            searchContent: $searchContent
+            pageNum: $pageNum
+            requiredCount: $requiredCount
+        ) {
+            title
+            _id
+            author
+            tags
+            date
+            content
+            previews
+            answerCount
+            likesCount
+            views
+            solved
+            likes {
+                nickname
+                status
+            }
+            comments {
+                _id
+                author
+                content
+                date
+            }
+            answers {
+                _id
+                author
+                content
+                date
+                likesCount
+                comments {
+                    _id
+                    author
+                    content
+                    date
+                }
+                likes {
+                    nickname
+                    status
+                }
+            }
+        }
+    }
+`;
