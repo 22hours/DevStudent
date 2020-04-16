@@ -29,9 +29,10 @@ public class Login {
             return new User(null, "Login fail", "Login fail", "Login fail", "Login fail");
         }
         //String key = randMaker.getKey(false, 20);
-        user.setAccessToken(createNewAccessToken.create(user.getNickname(), email));
         user.setRefreshToken(createNewRefreshToken.create(user.getNickname(), email));
         userRepository.save(user);
+        user.setPassword(null);
+        user.setAccessToken(createNewAccessToken.create(user.getNickname(), email));
         return user;
     }
 }

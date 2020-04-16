@@ -11,6 +11,7 @@ import java.util.Date;
 
 @ToString
 @Getter
+@Setter
 @Document(collection = "Users")
 public class User {
     @Id

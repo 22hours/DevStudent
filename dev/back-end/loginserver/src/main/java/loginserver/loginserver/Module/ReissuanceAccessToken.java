@@ -26,11 +26,15 @@ public class ReissuanceAccessToken {
         if(user.getEmail()!=null){
             tokenState = verifyRefreshToken.verifyRefreshToken(refreshToken, nickname, user.getEmail());
         }
+        else{
+            return new User(null, "Not Exist Email","Reissue fail","Reissue fail","Reissue fail");
+        }
         if (!tokenState.equals("Safe")) {
             return new User(null, tokenState, "Reissue fail", "Reissue fail", "Reissue fail");
         }
         //String key = randMaker.getKey(false, 20);
         user.setAccessToken(createNewAccessToken.create(nickname, user.getEmail()));
+        user.setPassword(null);
         user.setRefreshToken(null);
         return user;
     }
