@@ -19,6 +19,7 @@ const MypageTemplate = ({ alarmData, myContent }) => {
     //         </p>
     //     </div>
     // ));
+    const email = window.localStorage.getItem("email");
     return (
         <React.Fragment>
             <div className="MypageTemplate">
@@ -51,7 +52,7 @@ const MypageTemplate = ({ alarmData, myContent }) => {
                             <div className="item-preview">
                                 <div className="item-box">
                                     <span id="item-label">이메일</span>
-                                    <p id="item-value">king199777@gamil.com</p>
+                                    <p id="item-value">{email}</p>
                                 </div>
                                 <div className="item-box">
                                     <span id="item-label">닉네임</span>
@@ -59,14 +60,21 @@ const MypageTemplate = ({ alarmData, myContent }) => {
                                 </div>
                                 <div className="item-box">
                                     <span id="item-label">GitHub</span>
-                                    <p id="item-value">https://github.com/winterlood</p>
+                                    <div clsassName="link-input-box-wrapper">
+                                        <input id="item-value" className="link-input-box"></input>
+                                        <div className="submit-btn-wrapper">
+                                            <button>저장</button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="item-box">
                                     <span id="item-label">LinkedIn</span>
-                                    <p id="item-value">king199777@gamil.com</p>
-                                </div>
-                                <div className="item-box">
-                                    <p id="item-value">더보기</p>
+                                    <div clsassName="link-input-box-wrapper">
+                                        <input id="item-value" className="link-input-box"></input>
+                                        <div className="submit-btn-wrapper">
+                                            <button>저장</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="item-collapse"></div>

@@ -151,3 +151,25 @@
 .item-preview #item-value {
     font-size: 15px;
 }
+
+.mypage-item-row .link-input-box {
+    border-radius: 3px;
+    border-width: 1px;
+}
+
+.mypage-item-row .link-input-box-wrapper {
+    display: inline-block;
+    width: 100%;
+}
+
+.mypage-item-row .submit-btn-wrapper {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.submit-btn-wrapper button {
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 3px;
+    border-width: 1px;
+}
