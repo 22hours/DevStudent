@@ -3,7 +3,7 @@ import "./RequireLoginBoxModule.css";
 import { Alert } from "reactstrap";
 import { Link } from "react-router-dom";
 const RequireLoginBoxModule = ({ children, color }) => {
-    const auth = window.sessionStorage.getItem("auth");
+    const auth = window.localStorage.getItem("auth");
     if (auth) {
         return <React.Fragment>{children}</React.Fragment>;
     } else {

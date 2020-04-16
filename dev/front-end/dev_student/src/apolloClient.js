@@ -4,6 +4,7 @@ const client1 = new ApolloClient({
     // uri : "https://countries.trevorblades.com/"
     uri: "http://15.164.164.141:8080/graphql",
 });
+
 const client = new ApolloClient({
     request: (operation) => {
         const token = localStorage.getItem("token");
@@ -22,5 +23,8 @@ const client = new ApolloClient({
         });
     },
     uri: "http://15.164.164.141:8080/graphql",
+    onError: (error) => {
+        console.log("ERROR CAPTURED!!!");
+    },
 });
 export default client;
