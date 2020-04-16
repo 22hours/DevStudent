@@ -7,7 +7,7 @@ import reverseproxy.proxy.GraphQLLoginServer.ConnectLoginServer;
 
 @Component
 public class CountAllQuestions extends ConnectLoginServer {
-    public Count countAllQuestions(){
+    public Count countAllQuestions() {
         //region Query
         String query = "query{\n" +
                 "    countAllQuestions{\n" +
@@ -16,7 +16,8 @@ public class CountAllQuestions extends ConnectLoginServer {
                 "}";
         //endregion
         Gson gson = new Gson();
-        String name = new Object() {}.getClass().getEnclosingMethod().getName();
+        String name = new Object() {
+        }.getClass().getEnclosingMethod().getName();
         String str = getResponse(query, name);
         Count count = gson.fromJson(str, Count.class);
         return count;

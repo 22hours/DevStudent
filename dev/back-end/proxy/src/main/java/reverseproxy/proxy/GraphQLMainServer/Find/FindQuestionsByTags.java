@@ -60,7 +60,8 @@ public class FindQuestionsByTags extends ConnectMainServer {
         //endregion
         Gson gson = new Gson();
         String str = getResponse(query);
-        List<Question> questions = gson.fromJson(str, new TypeToken<List<Question>>() {}.getType());
+        List<Question> questions = gson.fromJson(str, new TypeToken<List<Question>>() {
+        }.getType());
         return questions;
     }
 }

@@ -1,6 +1,7 @@
 package reverseproxy.proxy.Command;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.Alarm;
@@ -34,11 +35,11 @@ public class Query implements GraphQLQueryResolver {
     private FindUserByNickname findUserByNickname;
 
     public List<Question> findAllQuestions(String param, int pageNum, int requiredCount) {
-        return findAllQuestions.findAllQuestions(param,pageNum,requiredCount);
+        return findAllQuestions.findAllQuestions(param, pageNum, requiredCount);
     }
 
     public List<Question> findQuestionsByOption(String param, String option, String searchContent, int pageNum, int requiredCount) {
-        return findQuestionsByOption.findQuestionsByOption(param,option,searchContent,pageNum,requiredCount);
+        return findQuestionsByOption.findQuestionsByOption(param, option, searchContent, pageNum, requiredCount);
     }
 
     public Question findQuestionBy_id(String _id) {
@@ -49,17 +50,22 @@ public class Query implements GraphQLQueryResolver {
         return findQuestionsByTags.findQuestionsByTags(param, pageNum, requiredCount, tags, logical);
     }
 
-    public List<Alarm> findAllAlarms(String nickname, int pageNum, int requiredCount){
-        return findAllAlarms.findAllAlarms(nickname,pageNum,requiredCount);
+    public List<Alarm> findAllAlarms(String nickname, int pageNum, int requiredCount, DataFetchingEnvironment env) {
+        // token 검사
+        return findAllAlarms.findAllAlarms(nickname, pageNum, requiredCount);
     }
-    public Count countUnreadAlarms(String nickname){
+
+    public Count countUnreadAlarms(String nickname, DataFetchingEnvironment env) {
+        // token 검사
         return countUnreadAlarms.countUnreadAlarms(nickname);
     }
 
-    public Count countAllQuestions(){
+    public Count countAllQuestions() {
         return countAllQuestions.countAllQuestions();
     }
-    public User findUserByNickname(String token, String nickname){
-        return findUserByNickname.findUserByNickname(token,nickname);
+
+    public User findUserByNickname(String token, String nickname, DataFetchingEnvironment env) {
+        // token 검사
+        return findUserByNickname.findUserByNickname(token, nickname);
     }
 }

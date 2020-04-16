@@ -29,8 +29,9 @@ public class CreateAnswer extends ConnectMainServer {
                 "}\n";
         //endregion
         Gson gson = new Gson();
-        String name = new Object(){}.getClass().getEnclosingMethod().getName();
-        String str = getResponse(query,name);
+        String name = new Object() {
+        }.getClass().getEnclosingMethod().getName();
+        String str = getResponse(query, name);
         Answer answer = gson.fromJson(str, Answer.class);
         return answer;
     }

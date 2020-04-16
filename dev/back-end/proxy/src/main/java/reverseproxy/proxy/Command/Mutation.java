@@ -48,44 +48,44 @@ public class Mutation implements GraphQLMutationResolver {
     private CheckDuplicateNickname checkDuplicateNickname;
 
     //region MainServer Create
-    public Question createQuestion(String token, String title, String author, List<String> tags, String content) {
+    public Question createQuestion(String token, String title, String author, List<String> tags, String content, DataFetchingEnvironment env) {
         // token 검사
         return createQuestion.createQuestion(token, title, author, tags, content);
     }
 
-    public Answer createAnswer(String token, String question_id, String author, String content) {
+    public Answer createAnswer(String token, String question_id, String author, String content, DataFetchingEnvironment env) {
         // token 검사
         return createAnswer.createAnswer(token, question_id, author, content);
     }
 
-    public Comment createComment(String token, String question_id, String answer_id, String author, String content) {
+    public Comment createComment(String token, String question_id, String answer_id, String author, String content, DataFetchingEnvironment env) {
         // token 검사
         return createComment.createComment(token, question_id, answer_id, author, content);
     }
 
-    public Question createLike(String question_id, String answer_id, String nickname, String status) {
+    public Question createLike(String question_id, String answer_id, String nickname, String status, DataFetchingEnvironment env) {
         // token 검사
         return createLike.createLike(question_id, answer_id, nickname, status);
     }
 
     //endregion
     //region MainServer Delete
-    public Question deleteQuestion(String _id) {
+    public Question deleteQuestion(String _id, DataFetchingEnvironment env) {
         // token 검사
         return deleteQuestion.deleteQuestion(_id);
     }
 
-    public Answer deleteAnswer(String question_id, String answer_id) {
+    public Answer deleteAnswer(String question_id, String answer_id, DataFetchingEnvironment env) {
         // token 검사
         return deleteAnswer.deleteAnswer(question_id, answer_id);
     }
 
-    public Comment deleteComment(String question_id, String answer_id, String comment_id) {
+    public Comment deleteComment(String question_id, String answer_id, String comment_id, DataFetchingEnvironment env) {
         // token 검사
         return deleteComment.deleteComment(question_id, answer_id, comment_id);
     }
 
-    public Alarm deleteAlarm(String alarm_id) {
+    public Alarm deleteAlarm(String alarm_id, DataFetchingEnvironment env) {
         // token 검사
         return deleteAlarm.deleteAlarm(alarm_id);
     }
@@ -93,7 +93,6 @@ public class Mutation implements GraphQLMutationResolver {
     //endregion
     //region LoginServer
     public User loginToServer(String email, String password) {
-        // token 검사
         return login.login(email, password);
     }
 
@@ -104,6 +103,7 @@ public class Mutation implements GraphQLMutationResolver {
     public User updateUserAuthState(String authState) {
         return updateUserAuthState.updateUserAuthState(authState);
     }
+
     //endregion
     public Count checkDuplicateEmail(String email) {
         return checkDuplicateEmail.checkDuplicateEmail(email);
@@ -111,5 +111,8 @@ public class Mutation implements GraphQLMutationResolver {
 
     public Count checkDuplicateNickname(String nickname) {
         return checkDuplicateNickname.checkDuplicateNickname(nickname);
+    }
+    public String createNewAccessToken(DataFetchingEnvironment env){
+        return "";
     }
 }

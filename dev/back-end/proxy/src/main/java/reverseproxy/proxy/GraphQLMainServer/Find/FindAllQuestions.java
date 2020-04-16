@@ -10,11 +10,10 @@ import java.util.List;
 
 @Component
 public class FindAllQuestions extends ConnectMainServer {
-    public List<Question> findAllQuestions(String param, int pageNum, int requiredCount)
-    {
+    public List<Question> findAllQuestions(String param, int pageNum, int requiredCount) {
         //region Query
         String query = "query{\n" +
-                "    findAllQuestions( param:\""+param+"\", pageNum:"+pageNum+", requiredCount:"+requiredCount+"){\n" +
+                "    findAllQuestions( param:\"" + param + "\", pageNum:" + pageNum + ", requiredCount:" + requiredCount + "){\n" +
                 "        title\n" +
                 "        _id\n" +
                 "        author\n" +
@@ -58,7 +57,8 @@ public class FindAllQuestions extends ConnectMainServer {
         //endregion
         Gson gson = new Gson();
         String str = getResponse(query);
-        List<Question> questions = gson.fromJson(str,new TypeToken<List<Question>>(){}.getType());
+        List<Question> questions = gson.fromJson(str, new TypeToken<List<Question>>() {
+        }.getType());
         return questions;
     }
 }

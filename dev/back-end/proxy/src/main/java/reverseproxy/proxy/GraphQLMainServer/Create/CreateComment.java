@@ -26,8 +26,9 @@ public class CreateComment extends ConnectMainServer {
                 "}";
         //endregion
         Gson gson = new Gson();
-        String name = new Object(){}.getClass().getEnclosingMethod().getName();
-        String str = getResponse(query,name);
+        String name = new Object() {
+        }.getClass().getEnclosingMethod().getName();
+        String str = getResponse(query, name);
         Comment comment = gson.fromJson(str, Comment.class);
         return comment;
     }

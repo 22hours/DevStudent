@@ -10,7 +10,7 @@ public class FindQuestionBy_id extends ConnectMainServer {
     public Question findQuestionBy_id(String _id) {
         //region Query
         String query = "query{\n" +
-                "    findQuestionBy_id(_id:\""+ _id +"\"){\n" +
+                "    findQuestionBy_id(_id:\"" + _id + "\"){\n" +
                 "        title\n" +
                 "        _id\n" +
                 "        author\n" +
@@ -53,8 +53,9 @@ public class FindQuestionBy_id extends ConnectMainServer {
                 "}";
         //endregion
         Gson gson = new Gson();
-        String name = new Object(){}.getClass().getEnclosingMethod().getName();
-        String str = getResponse(query,name);
+        String name = new Object() {
+        }.getClass().getEnclosingMethod().getName();
+        String str = getResponse(query, name);
         Question question = gson.fromJson(str, Question.class);
         return question;
     }

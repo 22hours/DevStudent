@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.User;
 
 @Component
-public class Login extends ConnectLoginServer{
+public class Login extends ConnectLoginServer {
     public User login(String email, String password) {
         //region Query
         String query = "mutation{\n" +
@@ -23,9 +23,10 @@ public class Login extends ConnectLoginServer{
                 "}";
         //endregion
         Gson gson = new Gson();
-        String name = new Object(){}.getClass().getEnclosingMethod().getName();
-        String str = getResponse(query,name);
-        User user = gson.fromJson(str,User.class);
+        String name = new Object() {
+        }.getClass().getEnclosingMethod().getName();
+        String str = getResponse(query, name);
+        User user = gson.fromJson(str, User.class);
         return user;
     }
 }

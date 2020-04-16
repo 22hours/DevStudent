@@ -19,7 +19,7 @@ public class Question {
     private List<String> tags;
     private String date;
     private String content;
-    private String previews="";
+    private String previews = "";
     private int answerCount = 0;
     private int likesCount = 0;
     private int views = 1;

@@ -26,7 +26,8 @@ public class FindAllAlarms extends ConnectMainServer {
         //endregion
         Gson gson = new Gson();
         String str = getResponse(query);
-        List<Alarm> alarms = gson.fromJson(str, new TypeToken<List<Alarm>>() {}.getType());
+        List<Alarm> alarms = gson.fromJson(str, new TypeToken<List<Alarm>>() {
+        }.getType());
         return alarms;
     }
 }

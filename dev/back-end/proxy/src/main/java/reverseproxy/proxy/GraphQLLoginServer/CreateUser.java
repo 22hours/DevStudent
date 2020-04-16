@@ -26,8 +26,9 @@ public class CreateUser extends ConnectLoginServer {
                 "}";
         //endregion
         Gson gson = new Gson();
-        String name = new Object(){}.getClass().getEnclosingMethod().getName();
-        String str = getResponse(query,name);
+        String name = new Object() {
+        }.getClass().getEnclosingMethod().getName();
+        String str = getResponse(query, name);
         User user = gson.fromJson(str, User.class);
         return user;
     }

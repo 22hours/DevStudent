@@ -22,9 +22,10 @@ public class DeleteAlarm extends ConnectMainServer {
                 "}";
         //endregion
         Gson gson = new Gson();
-        String name = new Object(){}.getClass().getEnclosingMethod().getName();
-        String str = getResponse(query,name);
-        Alarm alarm = gson.fromJson(str,Alarm.class);
+        String name = new Object() {
+        }.getClass().getEnclosingMethod().getName();
+        String str = getResponse(query, name);
+        Alarm alarm = gson.fromJson(str, Alarm.class);
         return alarm;
     }
 }

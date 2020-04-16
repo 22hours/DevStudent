@@ -66,8 +66,9 @@ public class CreateQuestion extends ConnectMainServer {
         //endregion
         System.out.println(query);
         Gson gson = new Gson();
-        String name = new Object(){}.getClass().getEnclosingMethod().getName();
-        String str = getResponse(query,name);
+        String name = new Object() {
+        }.getClass().getEnclosingMethod().getName();
+        String str = getResponse(query, name);
         Question question = gson.fromJson(str, Question.class);
         return question;
     }
