@@ -13,6 +13,7 @@ import {
     About,
     Login,
     MyPage,
+    Logout,
     Todo,
     NotFound,
 } from "./pages";
@@ -43,6 +44,8 @@ const MyRouter = (props) => {
                                     <Login authenticated={authenticated} saveLoginState={saveLoginState} {...props} />
                                 )}
                             />
+                            <Route path="/logout" component={Logout} />
+
                             <AuthRoute
                                 authenticated={authenticated}
                                 path="/alarm"

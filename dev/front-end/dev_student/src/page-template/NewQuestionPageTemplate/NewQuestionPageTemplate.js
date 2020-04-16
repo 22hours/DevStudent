@@ -3,14 +3,13 @@ import "./NewQuestionPageTemplate.css";
 import { Container } from "reactstrap";
 
 // context
-import UserContext from "context/UserContext";
 
 // components
 import NewQuestionMainComponent from "component/NewQuestionMainComponent/NewQuestionMainComponent";
 import NewQuestionSideBarComponent from "component/NewQuestionSideBarComponent/NewQuestionSideBarComponent";
 
 const NewQuestionPageTemplate = ({ handleSubmit }) => {
-    const { user } = useContext(UserContext);
+    const nickname = window.sessionStorage.getItem("nickname");
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     const [tags, setTags] = useState([]);
@@ -18,13 +17,13 @@ const NewQuestionPageTemplate = ({ handleSubmit }) => {
         <div className="new-question-wrapper">
             <Container>
                 <div className="new-question-header-row">
-                    <span>{user}님 &nbsp;</span>
+                    <span>{nickname}님 &nbsp;</span>
                     <span>무엇이든 물어보세요!</span>
                 </div>
                 <div className="new-question-body-warpper">
                     <div className="new-question-main-col">
                         <NewQuestionMainComponent
-                            user={user}
+                            nickname={nickname}
                             title={title}
                             setTitle={setTitle}
                             body={body}

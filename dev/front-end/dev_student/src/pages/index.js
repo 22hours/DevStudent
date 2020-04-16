@@ -13,6 +13,7 @@ import EmailCheck from "./EmailCheck";
 import Alarm from "./Alarm";
 import Register from "./Register";
 import DevNote from "./DevNote";
+import Logout from "./Logout";
 export {
     Alarm,
     EmailCheck,
@@ -29,4 +30,5 @@ export {
     Todo,
     NotFound,
     DevNote,
+    Logout,
 };

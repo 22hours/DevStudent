@@ -48,13 +48,11 @@ class App extends Component {
         // const login = ({ email, password }) => { setUser(signIn({ email, password })); }
         return (
             <ApolloProvider client={client}>
-                <UserContext.Provider value={this.state}>
-                    <MyRouter
-                        authenticated={this.state.authenticated}
-                        saveLoginState={saveLoginState}
-                        logout={logout}
-                    ></MyRouter>
-                </UserContext.Provider>
+                <MyRouter
+                    authenticated={this.state.authenticated}
+                    saveLoginState={saveLoginState}
+                    logout={logout}
+                ></MyRouter>
             </ApolloProvider>
         );
     }

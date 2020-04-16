@@ -2,15 +2,18 @@ import "./HeaderComponent.css";
 import { Container } from "reactstrap";
 import { Link } from "react-router-dom";
 import React, { useState, useContext } from "react";
-import UserContext from "context/UserContext";
 
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from "reactstrap";
 
 // module
 import MypageDropdownButtonModule from "module/MypageDropdownButtonModule/MypageDropdownButtonModule";
 
+// icons
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+
 const HeaderModule = (props) => {
-    const { user, authenticated } = useContext(UserContext);
+    const auth = window.sessionStorage.getItem("auth");
+    const nickname = window.sessionStorage.getItem("nickname");
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
@@ -26,7 +29,7 @@ const HeaderModule = (props) => {
         return (
             <div className="nav-item-wrapper" style={sign_style}>
                 <Link to="/login">
-                    <img width="18px" height="20px" style={img_style} src="/img/user_area_button_black.png"></img>
+                    <ExitToAppIcon style={{ color: "gray" }} />
                 </Link>
             </div>
         );
@@ -35,7 +38,7 @@ const HeaderModule = (props) => {
     const MemberMenu = () => {
         return (
             <div style={sign_style}>
-                <MypageDropdownButtonModule user={user}></MypageDropdownButtonModule>
+                <MypageDropdownButtonModule user={nickname}></MypageDropdownButtonModule>
             </div>
         );
     };
@@ -45,7 +48,7 @@ const HeaderModule = (props) => {
     };
 
     const PrivateMenu = () => {
-        if (authenticated) {
+        if (auth) {
             return <MemberMenu />;
         } else {
             return <GuestMenu />;
@@ -106,6 +109,7 @@ const HeaderModule = (props) => {
                     </Nav>
                 </Collapse>
                 <PrivateMenu></PrivateMenu>
+
                 <div></div>
             </Container>
         </Navbar>

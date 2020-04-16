@@ -6,7 +6,7 @@ import "./NewQuestionMainComponent.css";
 import TagInputModule from "module/TagInputModule/TagInputModule";
 import MarkdownEditorModule from "module/MarkdownEditorModule/MarkdownEditorModule";
 
-const NewQuestionMainComponent = ({ user, title, setTitle, body, setBody, tags, setTags, handleSubmit }) => {
+const NewQuestionMainComponent = ({ nickname, title, setTitle, body, setBody, tags, setTags, handleSubmit }) => {
     return (
         <div className="new-question-main-wrapper">
             <div className="new-question-main-element-box">
@@ -54,7 +54,7 @@ const NewQuestionMainComponent = ({ user, title, setTitle, body, setBody, tags, 
                 <div className="submit-right">
                     <Button
                         onClick={() => {
-                            handleSubmit(user, title, body, tags);
+                            handleSubmit(nickname, title, body, tags);
                         }}
                         variant="contained"
                         color="info"
