@@ -25,8 +25,13 @@ const client = new ApolloClient({
     uri: "http://15.164.164.141:8080/graphql",
     onError: (error) => {
         console.log("ERROR CAPTURED!!!");
-        localStorage.clear();
-        alert("다시 로그인 하세요");
+        const nickname = localStorage.getItem("nickname");
+        if (nickname) {
+            localStorage.clear();
+            alert("다시 로그인 하세요");
+        } else {
+            alert("서버에 장애가 발생하였습니다 잠시후 다시 시도해 주세요");
+        }
         window.location.replace("/");
     },
 });
