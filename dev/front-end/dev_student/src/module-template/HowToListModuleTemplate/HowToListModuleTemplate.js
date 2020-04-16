@@ -56,7 +56,6 @@ const NonTagProvider = ({ param, nowTag, pageNum }) => {
 
 const DataProvider = ({ param, nowTag, pageNum }) => {
     if (nowTag) {
-        // TAG별 조회
         return <TagProvider param={param} nowTag={nowTag} pageNum={pageNum} />;
     } else {
         return <NonTagProvider param={param} nowTag={nowTag} pageNum={pageNum} />;
@@ -73,41 +72,11 @@ const HowToListTemplate = ({ tags, questionCount, location }) => {
     const handleChange = (event, value) => {
         setPage(value);
     };
-    // const { loading, error, data } = useQuery(findAllQuestionsPage, {
-    //     variables: { param: param, requiredCount: 10, pageNum: pageNum },
-    // });
 
     let pageCount = null;
 
     if (questionCount % 10 === 0) pageCount = questionCount / 10;
     else pageCount = Math.floor(questionCount / 10) + 1;
-
-    // ======================
-    // << Tag 별 필터 적용 >>
-    // let filteredData = data.findAllQuestions;
-    // if (nowTag) {
-    //     filteredData = data.findAllQuestions.filter((item) => item.tags.includes(nowTag));
-    // }
-    // ======================
-
-    // console.log(filteredData);
-    // const questionList = (
-    //     <div>
-    //         {filteredData.map(({ _id, title, author, tags, date, content, answerCount, views, previews }) => (
-    //             <HowToItem
-    //                 id={_id}
-    //                 key={_id}
-    //                 author={author}
-    //                 title={title}
-    //                 answers={answerCount}
-    //                 views={views}
-    //                 date={date}
-    //                 previews={previews}
-    //                 tags={tags}
-    //             ></HowToItem>
-    //         ))}
-    //     </div>
-    // );
 
     return (
         <React.Fragment>
@@ -119,7 +88,6 @@ const HowToListTemplate = ({ tags, questionCount, location }) => {
                     question_count={questionCount}
                 ></PageHeaderModule>
             </Container>
-            {/* <div>{questionList}</div> */}
             <div>
                 <DataProvider param={param} nowTag={nowTag} pageNum={pageNum} />
             </div>

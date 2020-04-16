@@ -12,7 +12,12 @@
     }
     /* Add Your CSS Styling Here */
 }
-
+@media only screen and (max-width: 1000px) {
+    .howto-item .previews-box {
+        display: none;
+    }
+    /* Add Your CSS Styling Here */
+}
 @media only screen and (min-width: 530px) {
     .howto-item .stats-area-mobile {
         display: none;
