@@ -5,6 +5,18 @@ import { TextField, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { hashPassword } from "auth";
 const LoginPageTemplate = ({ email, setEmail, password, setPassword, loginToServer, btn_style }) => {
+    const EnterKey = (e) => {
+        if (e.key === "Enter") {
+            if (email.length < 1) return;
+            if (password.length < 1) return;
+            loginToServer({
+                variables: {
+                    email: email,
+                    password: hashPassword(password),
+                },
+            });
+        }
+    };
     return (
         <React.Fragment>
             <div className="login-container-top-wrapper">
@@ -26,6 +38,7 @@ const LoginPageTemplate = ({ email, setEmail, password, setPassword, loginToServ
                                         width="100%"
                                         id="standard-basic"
                                         label="이메일 주소"
+                                        onKeyPress={EnterKey}
                                     />
                                 </div>
                             </div>
@@ -38,6 +51,7 @@ const LoginPageTemplate = ({ email, setEmail, password, setPassword, loginToServ
                                         label="비밀번호"
                                         type="password"
                                         autoComplete="current-password"
+                                        onKeyPress={EnterKey}
                                     />
                                 </div>
                             </div>

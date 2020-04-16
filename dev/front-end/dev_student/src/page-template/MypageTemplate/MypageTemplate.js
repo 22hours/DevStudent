@@ -1,25 +1,22 @@
-import React from "react";
-import { Container } from "reactstrap";
+import React, { useState } from "react";
+import { Container, Input } from "reactstrap";
 import "./MypageTemplate.css";
 
 //imgs
 import avatar_test from "img/mypage/avatar_test.png";
-import avatar_test2 from "img/mypage/avatar_test2.png";
 
 //icons
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
+
 const MypageTemplate = ({ alarmData, myContent }) => {
-    const nickname = window.localStorage.getItem("nickname");
-    // const alarms = alarmData.map(({ _id, content, date, respondent }) => (
-    //     <div key={_id} className="item-box">
-    //         <span id="item-label">{date}</span>
-    //         <p id="item-value">
-    //             {respondent} {content}
-    //         </p>
-    //     </div>
-    // ));
     const email = window.localStorage.getItem("email");
+    const nickname = window.localStorage.getItem("nickname");
+
+    //example
+    const [gitAddress, setGitAddress] = useState("");
+    const [linkedInAddress, setLinkedInAddress] = useState("king199777@gmail.com");
+
     return (
         <React.Fragment>
             <div className="MypageTemplate">
@@ -70,9 +67,11 @@ const MypageTemplate = ({ alarmData, myContent }) => {
                                 <div className="item-box">
                                     <span id="item-label">LinkedIn</span>
                                     <div clsassName="link-input-box-wrapper">
-                                        <input id="item-value" className="link-input-box"></input>
+                                        <text id="item-value" className="link-input-box">
+                                            {linkedInAddress}
+                                        </text>
                                         <div className="submit-btn-wrapper">
-                                            <button>저장</button>
+                                            <button>수정</button>
                                         </div>
                                     </div>
                                 </div>
