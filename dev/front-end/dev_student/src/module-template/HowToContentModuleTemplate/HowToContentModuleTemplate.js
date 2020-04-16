@@ -9,7 +9,6 @@ import "./HowToContentModuleTemplate.css";
 import { findQuestionBy_id_Query } from "query/queries";
 
 // context
-import UserContext from "context/UserContext";
 
 // module
 import ContentHeaderModule from "module/ContentHeaderModule/ContentHeaderModule";
@@ -18,14 +17,14 @@ import HowToQABox from "module/HowToQABox/HowToQABox";
 import RequireLoginBoxModule from "module/RequireLoginBoxModule/RequireLoginBoxModule";
 
 const HowToContentModuleTemplate = ({ match }) => {
-    const { user } = useContext(UserContext);
+    const nickname = window.localStorage.getItem("nickname");
     const { loading, error, data } = useQuery(findQuestionBy_id_Query, {
         variables: { _id: match.params.id },
     });
     if (loading) return <p>Loading ...</p>;
     if (error) return <p>error!</p>;
     var mine = false;
-    if (data.findQuestionBy_id.author === user) {
+    if (data.findQuestionBy_id.author === nickname) {
         mine = true;
     }
 

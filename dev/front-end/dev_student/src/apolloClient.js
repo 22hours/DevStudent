@@ -25,6 +25,9 @@ const client = new ApolloClient({
     uri: "http://15.164.164.141:8080/graphql",
     onError: (error) => {
         console.log("ERROR CAPTURED!!!");
+        localStorage.clear();
+        alert("다시 로그인 하세요");
+        window.location.replace("/");
     },
 });
 export default client;
