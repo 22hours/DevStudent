@@ -30,6 +30,7 @@ const RegisterTemplate = ({
     setPwdCheck,
     setRePwdClassName,
     passwordRule,
+    nickNameCheck,
 }) => {
     const [createUser, { data }] = useMutation(CREATE_USER);
     const btn_style = {
@@ -150,7 +151,7 @@ const RegisterTemplate = ({
                                     <div className="nickName-input">
                                         <Input
                                             id="inputnickname"
-                                            onChange={({ target: { value } }) => setNickName(value)}
+                                            onChange={({ target: { value } }) => nickNameCheck(value)}
                                             type="text"
                                             name="nickname"
                                             placeholder="devstu"
@@ -158,6 +159,7 @@ const RegisterTemplate = ({
                                     </div>
                                     <div className="nickName-check-button-wrapper">
                                         <Button
+                                            color="info"
                                             style={btn_style}
                                             onClick={() => {
                                                 if (nickName == null) return;

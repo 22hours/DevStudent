@@ -32,6 +32,11 @@ const Register = () => {
         }
     }, [data]);
 
+    const nickNameCheck = (value) => {
+        setNickName(value);
+        setNickCheck("false");
+    };
+
     const passwordRule = () => {
         var num = password.search(/[0-9]/g);
         var eng = password.search(/[a-z]/gi);
@@ -85,6 +90,7 @@ const Register = () => {
             setEmailRuleCheck={setEmailRuleCheck}
             emailSelect={emailSelect}
             setEmailSelect={setEmailSelect}
+            nickNameCheck={nickNameCheck}
         ></RegisterPageTemplate>
     );
 };
