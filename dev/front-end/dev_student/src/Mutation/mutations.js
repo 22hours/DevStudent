@@ -32,8 +32,8 @@ export const UPDATE_USER_AUTH_STATE = gql`
 `;
 
 export const CREATE_ANSWER = gql`
-    mutation createAnswer($token: String!, $question_id: String!, $author: String!, $content: String!) {
-        createAnswer(token: $token, question_id: $question_id, author: $author, content: $content) {
+    mutation createAnswer($question_id: String!, $author: String!, $content: String!) {
+        createAnswer(question_id: $question_id, author: $author, content: $content) {
             _id
             author
             content

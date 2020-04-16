@@ -55,16 +55,15 @@ const HowToQABox = ({ _id, isQuestion, author, date, likes, content, tags, comme
     const handleSubmit = async () => {
         createComment({
             variables: {
-                token: window.sessionStorage.getItem("token"),
                 question_id: question_id,
                 answer_id: _id,
-                author: window.sessionStorage.getItem("nickname"),
+                author: window.localStorage.getItem("nickname"),
                 content: commentValue,
             },
         })
             .then((response) => {
                 alert("댓글을 달았습니다!");
-                window.location.href = "http://localhost:3000/howto/question/" + question_id;
+                window.location.href = "/howto/question/" + question_id;
             })
             .catch((err) => {
                 alert(err.messeage);

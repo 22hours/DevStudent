@@ -9,8 +9,7 @@ import "./MarkdownAnswerModule.css";
 import MarkdownParser from "atom/MarkdownParser/MarkdownParser";
 
 const MarkdownAnswerModule = ({ id }) => {
-    const { user } = useContext(UserContext);
-    const sessionToken = window.sessionStorage.getItem("token");
+    const nickname = window.localStorage.getItem("nickname");
     const [activeTab, setActiveTab] = useState("1");
     const [comment, setComment] = useState();
     const [createAnswer] = useMutation(CREATE_ANSWER);
@@ -21,9 +20,8 @@ const MarkdownAnswerModule = ({ id }) => {
     const handleCreateAnswer = async () => {
         createAnswer({
             variables: {
-                token: sessionToken,
                 question_id: id,
-                author: user,
+                author: nickname,
                 content: comment,
             },
         })
@@ -33,7 +31,7 @@ const MarkdownAnswerModule = ({ id }) => {
                 } else {
                     alert("댓글 저장 실패");
                 }
-                window.location.href = "http://localhost:3000/howto/question/" + id;
+                window.location.href = "/howto/question/" + id;
             })
             .catch((err) => {
                 alert(err.messeage);

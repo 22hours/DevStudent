@@ -27,12 +27,12 @@ const client = new ApolloClient({
         console.log("ERROR CAPTURED!!!");
         const nickname = localStorage.getItem("nickname");
         if (nickname) {
-            localStorage.clear();
+            // localStorage.clear();
             alert("다시 로그인 하세요");
         } else {
             alert("서버에 장애가 발생하였습니다 잠시후 다시 시도해 주세요");
         }
-        window.location.replace("/");
+        // window.location.replace("/");
     },
 });
 export default client;

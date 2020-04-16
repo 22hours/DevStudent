@@ -71,7 +71,7 @@ const HowToContentModuleTemplate = ({ match }) => {
             </Container>
             <Container className="how-to-reply-answer-wrapper">
                 <RequireLoginBoxModule>
-                    <MarkdownAnswerModule />
+                    <MarkdownAnswerModule id={match.params.id} />
                 </RequireLoginBoxModule>
             </Container>
         </React.Fragment>
