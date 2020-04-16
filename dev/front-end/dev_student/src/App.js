@@ -4,7 +4,7 @@ import client from "./apolloClient";
 import "./App.css";
 import MyRouter from "./MyRouter";
 import UserContext from "context/UserContext";
-
+import PublicIpGetter from "module/PublicIpGetter/PublicIpGetter";
 class App extends Component {
     constructor(props) {
         super(props);
@@ -17,6 +17,7 @@ class App extends Component {
     }
 
     componentDidMount() {
+        PublicIpGetter();
         const nickname = window.localStorage.getItem("nickname");
         const email = window.localStorage.getItem("email");
         const auth = window.localStorage.getItem("auth");
