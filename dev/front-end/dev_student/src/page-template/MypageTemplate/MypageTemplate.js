@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Input } from "reactstrap";
+import { Container, Input, Collapse, Button, Alert } from "reactstrap";
 import "./MypageTemplate.css";
 
 //imgs
@@ -12,10 +12,29 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 const MypageTemplate = ({ alarmData, myContent }) => {
     const email = window.localStorage.getItem("email");
     const nickname = window.localStorage.getItem("nickname");
-
+    const [isOpen, setIsOpen] = useState(false);
+    const [alertOpen, setAlertOpen] = useState(false);
+    const toggle = () => setIsOpen(!isOpen);
+    const showAlert = () => setAlertOpen(!alertOpen);
     //example
-    const [gitAddress, setGitAddress] = useState("");
+    const [gitAddress, setGitAddress] = useState("winterlood.github.com");
     const [linkedInAddress, setLinkedInAddress] = useState("king199777@gmail.com");
+
+    const btn_style = {
+        backgroundColor: "lightgray",
+        fontSize: "15px",
+        color: "black",
+        borderColor: "lightgray",
+        float: "right",
+        marginBottom: "10px",
+        width: "60px",
+    };
+    const alert_style = {
+        width: "calc(100% - 80px)",
+        fontSize: "15px",
+        height: "40px",
+        paddingBottom: "32px",
+    };
 
     return (
         <React.Fragment>
@@ -37,7 +56,6 @@ const MypageTemplate = ({ alarmData, myContent }) => {
                             <div className="sub-row">
                                 <span id="edit-myinfo"> 회원 정보수정 </span>
                                 &nbsp; &nbsp; &nbsp; &nbsp;
-                                <span id="edit-email"> 이메일 정보수정 </span>
                             </div>
                         </div>
                     </div>
@@ -45,6 +63,9 @@ const MypageTemplate = ({ alarmData, myContent }) => {
                         <div className="mypage-item-row">
                             <div className="item-header">
                                 <span>유저 정보</span>
+                                <span className="edit-myinfo" onClick={toggle}>
+                                    수정
+                                </span>
                             </div>
                             <div className="item-preview">
                                 <div className="item-box">
@@ -55,26 +76,39 @@ const MypageTemplate = ({ alarmData, myContent }) => {
                                     <span id="item-label">닉네임</span>
                                     <p id="item-value">{nickname}</p>
                                 </div>
-                                <div className="item-box">
-                                    <span id="item-label">GitHub</span>
-                                    <div clsassName="link-input-box-wrapper">
-                                        <input id="item-value" className="link-input-box"></input>
-                                        <div className="submit-btn-wrapper">
-                                            <button>저장</button>
+                                <Collapse isOpen={isOpen}>
+                                    <div className="item-box">
+                                        <span id="item-label">GitHub</span>
+                                        <div clsassName="link-input-box-wrapper">
+                                            <Input
+                                                id="item-value"
+                                                className="link-input-box"
+                                                value={gitAddress}
+                                                onChange={({ target: { value } }) => setGitAddress(value)}
+                                            ></Input>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="item-box">
-                                    <span id="item-label">LinkedIn</span>
-                                    <div clsassName="link-input-box-wrapper">
-                                        <text id="item-value" className="link-input-box">
-                                            {linkedInAddress}
-                                        </text>
-                                        <div className="submit-btn-wrapper">
-                                            <button>수정</button>
+                                    <div className="item-box">
+                                        <span id="item-label">LinkedIn</span>
+                                        <div clsassName="link-input-box-wrapper">
+                                            <Input
+                                                id="item-value"
+                                                className="link-input-box"
+                                                value={linkedInAddress}
+                                                onChange={({ target: { value } }) => setLinkedInAddress(value)}
+                                            ></Input>
                                         </div>
                                     </div>
-                                </div>
+                                    <div></div>
+                                    <div>
+                                        <Button style={btn_style} onClick={showAlert}>
+                                            저장
+                                        </Button>
+                                        <Alert color="info" isOpen={alertOpen} style={alert_style}>
+                                            회원정보가 수정되었습니다.
+                                        </Alert>
+                                    </div>
+                                </Collapse>
                             </div>
                             <div className="item-collapse"></div>
                         </div>

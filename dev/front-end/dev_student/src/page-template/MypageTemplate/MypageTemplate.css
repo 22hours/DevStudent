@@ -119,6 +119,7 @@
     padding-left: 3px;
     border-bottom: 1px solid rgb(179, 179, 179);
     margin-bottom: 10px;
+    line-height: 20px;
 }
 
 .mypage-item-row .item-box {
@@ -153,8 +154,9 @@
 }
 
 .mypage-item-row .link-input-box {
-    border-radius: 3px;
-    border-width: 1px;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    width: 50%;
 }
 
 .mypage-item-row .link-input-box-wrapper {
@@ -172,4 +174,13 @@
     padding: 5px;
     border-radius: 3px;
     border-width: 1px;
+}
+
+.item-header .edit-myinfo {
+    float: right;
+    font-size: 18px;
+    cursor: pointer;
+    color: gray;
+    font-size: 15px;
+    vertical-align: text-bottom;
 }
