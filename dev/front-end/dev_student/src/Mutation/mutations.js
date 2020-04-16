@@ -68,20 +68,8 @@ export const CHECK_DUPLICATE_NICKNAME = gql`
 `;
 
 export const CREATE_COMMENT = gql`
-    mutation createComment(
-        $token: String!
-        $question_id: String!
-        $answer_id: String!
-        $author: String!
-        $content: String!
-    ) {
-        createComment(
-            token: $token
-            question_id: $question_id
-            answer_id: $answer_id
-            author: $author
-            content: $content
-        ) {
+    mutation createComment($question_id: String!, $answer_id: String!, $author: String!, $content: String!) {
+        createComment(question_id: $question_id, answer_id: $answer_id, author: $author, content: $content) {
             _id
             author
             content
