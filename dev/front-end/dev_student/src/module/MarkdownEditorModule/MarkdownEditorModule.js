@@ -7,6 +7,12 @@ import { Link } from "react-router-dom";
 //atom
 import MarkdownParser from "atom/MarkdownParser/MarkdownParser";
 
+//icons
+import FormatBoldIcon from "@material-ui/icons/FormatBold";
+import FormatItalicIcon from "@material-ui/icons/FormatItalic";
+import FormatUnderlinedIcon from "@material-ui/icons/FormatUnderlined";
+import CodeIcon from "@material-ui/icons/Code";
+import FormatQuoteIcon from "@material-ui/icons/FormatQuote";
 const MarkdownEditorModule = ({ comment, setComment, children }) => {
     // const [comment, setComment] = useState("");
     const [activeTab, setActiveTab] = useState("1");
@@ -66,11 +72,21 @@ const MarkdownEditorModule = ({ comment, setComment, children }) => {
                         <Collapse isOpen={isOpen}>
                             <Alert color="info">
                                 <div className="markdown-editor-button-box">
-                                    <button onClick={handleBold}>B</button>
-                                    <button onClick={handleItalic}>I</button>
-                                    <button onClick={handleH1}>H1</button>
-                                    <button onClick={handleCode}>{"code"}</button>
-                                    <button onClick={handleQuote}>quote</button>
+                                    <button onClick={handleBold}>
+                                        <FormatBoldIcon style={{ color: "gray", fontSize: "20px" }} />
+                                    </button>
+                                    <button onClick={handleItalic}>
+                                        <FormatItalicIcon style={{ color: "gray", fontSize: "20px" }} />
+                                    </button>
+                                    <button onClick={handleH1}>
+                                        <FormatUnderlinedIcon style={{ color: "gray", fontSize: "20px" }} />
+                                    </button>
+                                    <button onClick={handleCode}>
+                                        <CodeIcon style={{ color: "gray", fontSize: "20px" }} />
+                                    </button>
+                                    <button onClick={handleQuote}>
+                                        <FormatQuoteIcon style={{ color: "gray", fontSize: "20px" }} />
+                                    </button>
                                 </div>
                             </Alert>
                         </Collapse>

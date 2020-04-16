@@ -16,6 +16,7 @@ import {
     Logout,
     Todo,
     NotFound,
+    SitesInfo,
 } from "./pages";
 import FooterModule from "module/FooterModule/FooterModule";
 import HeaderComponent from "component/HeaderComponent/HeaderComponent";
@@ -62,7 +63,7 @@ const MyRouter = (props) => {
                                 render={(props) => <MyPage user={user} {...props} />}
                             />
                             <Route path="/devnote" component={DevNote} />
-
+                            <Route path="/sitesinfo/:infotype" component={SitesInfo} />
                             <Route component={NotFound} />
                         </Switch>
                     </ScrollToTop>

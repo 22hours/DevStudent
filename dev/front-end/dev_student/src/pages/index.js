@@ -14,6 +14,7 @@ import Alarm from "./Alarm";
 import Register from "./Register";
 import DevNote from "./DevNote";
 import Logout from "./Logout";
+import SitesInfo from "./SitesInfo";
 export {
     Alarm,
     EmailCheck,
@@ -31,4 +32,5 @@ export {
     NotFound,
     DevNote,
     Logout,
+    SitesInfo,
 };
