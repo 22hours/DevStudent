@@ -16,6 +16,7 @@ extend type Mutation{
     checkDuplicateNickname(nickname : String) : Count
     checkDuplicateEmail(email : String) : Count
     logoutFromServer(email : String) : Count
+    isValidate(nickname : String) : Count
 }
 
 extend type Query{
