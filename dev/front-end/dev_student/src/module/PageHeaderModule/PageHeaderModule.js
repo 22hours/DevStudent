@@ -45,7 +45,6 @@ const PageHeaderModule = ({ question_count, param, setParam }) => {
                     </Button>
                 </div>
             </Row>
-            {/* <Row><Tag></Tag></Row> */}
             <Row>
                 <p>
                     <span className="questions-number-span"> {question_count} </span>

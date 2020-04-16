@@ -30,7 +30,7 @@ class App extends Component {
     }
 
     render() {
-        const logIn = (nickname, email, token) => {
+        const logIn = (nickname, email, accessToken, refreshToken) => {
             this.setState({
                 nickname: nickname,
                 email: email,
@@ -39,7 +39,8 @@ class App extends Component {
             window.localStorage.setItem("nickname", nickname);
             window.localStorage.setItem("auth", true);
             window.localStorage.setItem("email", email);
-            window.localStorage.setItem("token", token);
+            window.localStorage.setItem("token", accessToken);
+            window.localStorage.setItem("refreshToken", refreshToken);
         };
 
         const logout = () => {

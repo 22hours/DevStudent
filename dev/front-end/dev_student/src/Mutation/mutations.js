@@ -1,8 +1,8 @@
 import { gql } from "apollo-boost";
 
 export const CREATE_QUESTION = gql`
-    mutation createquestion($token: String!, $author: String!, $title: String!, $content: String!, $tags: [String]!) {
-        createQuestion(token: $token, author: $author, title: $title, content: $content, tags: $tags) {
+    mutation createquestion($author: String!, $title: String!, $content: String!, $tags: [String]!) {
+        createQuestion(author: $author, title: $title, content: $content, tags: $tags) {
             _id
         }
     }
@@ -11,8 +11,14 @@ export const CREATE_QUESTION = gql`
 export const LOGIN = gql`
     mutation loginToServer($email: String!, $password: String!) {
         loginToServer(email: $email, password: $password) {
+            email
+            password
             nickname
-            token
+            schoolName
+            date
+            authState
+            accessToken
+            refreshToken
         }
     }
 `;
@@ -80,6 +86,21 @@ export const CREATE_COMMENT = gql`
             author
             content
             date
+        }
+    }
+`;
+
+export const REISSUANCE_ACCESS_TOKEN = gql`
+    mutation reissuanceAccessToken($nickname: String!) {
+        reissuanceAccessToken(nickname: $nickname) {
+            email
+            password
+            nickname
+            schoolName
+            date
+            authState
+            accessToken
+            refreshToken
         }
     }
 `;

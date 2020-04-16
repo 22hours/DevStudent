@@ -10,6 +10,7 @@ const client = new ApolloClient({
         operation.setContext({
             headers: {
                 Authorization: `${token}`,
+                EncodingType: "utf-8",
             },
         });
     },

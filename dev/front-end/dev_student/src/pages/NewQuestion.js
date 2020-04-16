@@ -12,7 +12,6 @@ const NewQuestion = ({}) => {
     const handleSubmit = async (authorParam, titleParam, contentParam, tagsParam) => {
         createQuestion({
             variables: {
-                token: sessionToken,
                 author: authorParam,
                 title: titleParam,
                 content: contentParam,

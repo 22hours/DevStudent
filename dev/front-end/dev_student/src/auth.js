@@ -1,3 +1,4 @@
+import { useMutation } from "react-apollo";
 const users = [
     { email: "test", password: "123", name: "Kim" },
     { email: "lee@test.com", password: "456", name: "Lee" },
@@ -40,6 +41,11 @@ const hashPassword = (password) => {
 
     const hashed = crypto.createHmac("sha256", secret).update(pw).digest("hex");
     return hashed;
+};
+
+const AuthStateCheck = () => {
+    const accessToken = window.localStorage.getItem("token");
+    const refreshToken = window.localStorage.getItem("refreshToken");
 };
 
 export { logIn, logOut, setAuthInfo, getAuthInfo, hashPassword };

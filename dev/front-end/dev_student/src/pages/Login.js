@@ -22,8 +22,8 @@ const Login = ({ logIn, location }) => {
             return;
         }
         if (data == null) return;
-        if (data?.loginToServer.token) {
-            logIn(data.loginToServer.nickname, email, data.loginToServer.token);
+        if (data?.loginToServer.accessToken) {
+            logIn(data.loginToServer.nickname, email, data.loginToServer.accessToken, data.loginToServer.refreshToken);
             return;
         } else {
             setPassword("");
