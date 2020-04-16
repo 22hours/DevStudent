@@ -4,7 +4,7 @@ import MypageTemplate from "page-template/MypageTemplate/MypageTemplate";
 import { FIND_ALL_ALARMS, FIND_QUESTIONS_BY_OPTION } from "query/queries";
 import { Link } from "react-router-dom";
 const AlarmPovider = () => {
-    const user = window.sessionStorage.getItem("nickname");
+    const user = window.localStorage.getItem("nickname");
     const { loading, error, data } = useQuery(FIND_ALL_ALARMS, {
         variables: { nickname: user, pageNum: 1, requiredCount: 10 },
     });
@@ -22,7 +22,7 @@ const AlarmPovider = () => {
     ));
 };
 const MyContentProvider = () => {
-    const user = window.sessionStorage.getItem("nickname");
+    const user = window.localStorage.getItem("nickname");
     const { loading, error, data } = useQuery(FIND_QUESTIONS_BY_OPTION, {
         variables: { param: "date", option: "author", searchContent: user, pageNum: 1, requiredCount: 10 },
     });

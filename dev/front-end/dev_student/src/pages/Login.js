@@ -2,8 +2,9 @@ import React, { useState, useRef, useLayoutEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN } from "mutation/mutations";
+import { setAuthInfo, getAuthInfo } from "auth";
 import LoginPageTemplate from "page-template/LoginPageTemplate/LoginPageTemplate";
-const Login = ({ saveLoginState, authenticated, location }) => {
+const Login = ({ logIn, location }) => {
     const [loginToServer, { data }] = useMutation(LOGIN);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -11,6 +12,9 @@ const Login = ({ saveLoginState, authenticated, location }) => {
         backgroundColor: "#4BA0B5",
         color: "white",
     };
+
+    const { auth } = getAuthInfo();
+
     const firstUpdate = useRef(true);
     useLayoutEffect(() => {
         if (firstUpdate.current) {
@@ -19,7 +23,7 @@ const Login = ({ saveLoginState, authenticated, location }) => {
         }
         if (data == null) return;
         if (data?.loginToServer.token) {
-            saveLoginState(data.loginToServer.nickname, data.loginToServer.token);
+            logIn(data.loginToServer.nickname, email, data.loginToServer.token);
             return;
         } else {
             setPassword("");
@@ -29,13 +33,13 @@ const Login = ({ saveLoginState, authenticated, location }) => {
     }, [data]);
 
     const { from } = location.state || { from: { pathname: "/" } };
-    if (authenticated) return <Redirect to={from} />;
+    if (auth) return <Redirect to={from} />;
 
     return (
         <React.Fragment>
             <LoginPageTemplate
-                saveLoginState={saveLoginState}
-                authenticated={authenticated}
+                logIn={logIn}
+                authenticated={auth}
                 setEmail={setEmail}
                 password={password}
                 setPassword={setPassword}

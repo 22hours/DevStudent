@@ -7,7 +7,7 @@ import { CREATE_QUESTION } from "mutation/mutations";
 // page-template
 import NewQuestionPageTemplate from "page-template/NewQuestionPageTemplate/NewQuestionPageTemplate";
 const NewQuestion = ({}) => {
-    const sessionToken = window.sessionStorage.getItem("token");
+    const sessionToken = window.localStorage.getItem("token");
     const [createQuestion] = useMutation(CREATE_QUESTION);
     const handleSubmit = async (authorParam, titleParam, contentParam, tagsParam) => {
         createQuestion({

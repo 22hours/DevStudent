@@ -24,11 +24,11 @@ import ScrollToTop from "module/ScrollToTop/ScrollToTop";
 // import HeaderModule from "module/HeaderModule/HeaderModule";
 
 const MyRouter = (props) => {
-    const { saveLoginState, user, authenticated } = props;
+    const { logIn, logout, nickname } = props;
     return (
         <Router>
             <div id="rt">
-                <HeaderComponent user={user} authenticated={authenticated} />
+                <HeaderComponent nickname={nickname} />
                 <div className="Article">
                     <ScrollToTop>
                         <Switch>
@@ -39,29 +39,12 @@ const MyRouter = (props) => {
                             <Route path="/howto" component={HowTo} />
                             <Route path="/emailCheck/:rand" component={EmailCheck} />
                             <Route path="/register" component={Register} />
-                            <Route
-                                path="/login"
-                                render={(props) => (
-                                    <Login authenticated={authenticated} saveLoginState={saveLoginState} {...props} />
-                                )}
-                            />
+                            <Route path="/login" render={(props) => <Login logIn={logIn} {...props} />} />
                             <Route path="/logout" component={Logout} />
 
-                            <AuthRoute
-                                authenticated={authenticated}
-                                path="/alarm"
-                                render={(props) => <Alarm user={user} {...props} />}
-                            />
-                            <AuthRoute
-                                authenticated={authenticated}
-                                path="/newquestion"
-                                render={(props) => <NewQuestion user={user} {...props} />}
-                            />
-                            <AuthRoute
-                                authenticated={authenticated}
-                                path="/mypage"
-                                render={(props) => <MyPage user={user} {...props} />}
-                            />
+                            <AuthRoute path="/alarm" render={(props) => <Alarm {...props} />} />
+                            <AuthRoute path="/newquestion" render={(props) => <NewQuestion {...props} />} />
+                            <AuthRoute path="/mypage" render={(props) => <MyPage {...props} />} />
                             <Route path="/devnote" component={DevNote} />
                             <Route path="/sitesinfo/:infotype" component={SitesInfo} />
                             <Route component={NotFound} />

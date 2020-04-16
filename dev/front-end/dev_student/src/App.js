@@ -9,38 +9,44 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: "null",
-            authenticated: false,
+            nickname: null,
+            email: null,
+            auth: false,
         };
         console.log("App.js State Init");
     }
 
     componentDidMount() {
-        const sessionUser = window.sessionStorage.getItem("nickname");
-        const sessionAuth = window.sessionStorage.getItem("auth");
-        if (sessionUser) {
+        const nickname = window.localStorage.getItem("nickname");
+        const email = window.localStorage.getItem("email");
+        const auth = window.localStorage.getItem("auth");
+        if (auth) {
             this.setState({
-                user: sessionUser,
-                authenticated: sessionAuth,
+                nickname: nickname,
+                email: email,
+                auth: auth,
             });
         }
     }
 
     render() {
-        const saveLoginState = (nickname, token) => {
+        const logIn = (nickname, email, token) => {
             this.setState({
-                user: nickname,
-                authenticated: true,
+                nickname: nickname,
+                email: email,
+                auth: true,
             });
-            window.sessionStorage.setItem("nickname", nickname);
-            window.sessionStorage.setItem("auth", true);
-            window.sessionStorage.setItem("token", token);
+            window.localStorage.setItem("nickname", nickname);
+            window.localStorage.setItem("auth", true);
+            window.localStorage.setItem("email", email);
+            window.localStorage.setItem("token", token);
         };
 
         const logout = () => {
             this.setState({
-                user: null,
-                authenticated: false,
+                nickname: null,
+                email: null,
+                auth: false,
             });
             window.sessionStorage.clear();
         };
@@ -48,11 +54,9 @@ class App extends Component {
         // const login = ({ email, password }) => { setUser(signIn({ email, password })); }
         return (
             <ApolloProvider client={client}>
-                <MyRouter
-                    authenticated={this.state.authenticated}
-                    saveLoginState={saveLoginState}
-                    logout={logout}
-                ></MyRouter>
+                <UserContext.Provider value={this.state}>
+                    <MyRouter nickname={this.state.nickname} logIn={logIn} logout={logout}></MyRouter>
+                </UserContext.Provider>
             </ApolloProvider>
         );
     }

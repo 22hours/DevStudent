@@ -1,8 +1,8 @@
 import "./HeaderComponent.css";
 import { Container } from "reactstrap";
 import { Link } from "react-router-dom";
-import React, { useState, useContext } from "react";
-
+import React, { useState, useEffect } from "react";
+import { setAuthInfo, getAuthInfo } from "auth";
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from "reactstrap";
 
 // module
@@ -11,11 +11,8 @@ import MypageDropdownButtonModule from "module/MypageDropdownButtonModule/Mypage
 // icons
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-const HeaderModule = (props) => {
-    const auth = window.sessionStorage.getItem("auth");
-    const nickname = window.sessionStorage.getItem("nickname");
+const HeaderComponent = ({ nickname }) => {
     const [isOpen, setIsOpen] = useState(false);
-
     const toggle = () => setIsOpen(!isOpen);
     const sign_style = {
         justifyContent: "flex-end",
@@ -47,8 +44,8 @@ const HeaderModule = (props) => {
         padding: "0px",
     };
 
-    const PrivateMenu = () => {
-        if (auth) {
+    const PrivateMenu = ({ nickname }) => {
+        if (nickname) {
             return <MemberMenu />;
         } else {
             return <GuestMenu />;
@@ -108,11 +105,11 @@ const HeaderModule = (props) => {
                         </NavItem>
                     </Nav>
                 </Collapse>
-                <PrivateMenu></PrivateMenu>
+                <PrivateMenu nickname={nickname}></PrivateMenu>
 
                 <div></div>
             </Container>
         </Navbar>
     );
 };
-export default HeaderModule;
+export default HeaderComponent;
