@@ -14,12 +14,15 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 const HeaderComponent = ({ nickname }) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
+    const [linkClick, setLinkClick] = useState(false);
     const sign_style = {
         justifyContent: "flex-end",
         padding: "13px",
     };
-    const img_style = {
-        marginRight: "4px",
+
+    const LinkClick = () => {
+        toggle();
+        setLinkClick(true);
     };
 
     const GuestMenu = () => {
@@ -63,42 +66,42 @@ const HeaderComponent = ({ nickname }) => {
                     <Nav className="mr-auto" navbar>
                         <NavItem>
                             <div className="nav-item-wrapper">
-                                <Link to="/" className="nav-link">
+                                <Link to="/" className="nav-link" onClick={LinkClick}>
                                     Home
                                 </Link>
                             </div>
                         </NavItem>
                         <NavItem>
                             <div className="nav-item-wrapper">
-                                <Link to="/howto" className="nav-link">
+                                <Link to="/howto" className="nav-link" onClick={LinkClick}>
                                     Howto
                                 </Link>
                             </div>
                         </NavItem>
                         <NavItem>
                             <div className="nav-item-wrapper">
-                                <Link to="/about/me" className="nav-link">
+                                <Link to="/about/me" className="nav-link" onClick={LinkClick}>
                                     Crew
                                 </Link>
                             </div>
                         </NavItem>
                         <NavItem>
                             <div className="nav-item-wrapper">
-                                <Link to="/posts" className="nav-link">
+                                <Link to="/posts" className="nav-link" onClick={LinkClick}>
                                     Museum
                                 </Link>
                             </div>
                         </NavItem>
                         <NavItem>
                             <div className="nav-item-wrapper">
-                                <Link to="/mypage" className="nav-link">
+                                <Link to="/mypage" className="nav-link" onClick={LinkClick}>
                                     Outside
                                 </Link>
                             </div>
                         </NavItem>
                         <NavItem>
                             <div className="nav-item-wrapper">
-                                <Link to="/devnote" className="nav-link">
+                                <Link to="/devnote" className="nav-link" onClick={LinkClick}>
                                     DevNote
                                 </Link>
                             </div>
