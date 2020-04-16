@@ -22,11 +22,12 @@ const MypageTemplate = ({ alarmData, myContent }) => {
 
     const btn_style = {
         backgroundColor: "lightgray",
-        fontSize: "15px",
+        fontSize: "17px",
         color: "black",
         borderColor: "lightgray",
         float: "right",
         marginBottom: "10px",
+        marginTop: "2px",
         width: "60px",
     };
     const alert_style = {

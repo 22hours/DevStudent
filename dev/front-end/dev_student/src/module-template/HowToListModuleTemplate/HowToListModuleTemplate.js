@@ -72,7 +72,10 @@ const HowToListTemplate = ({ tags, questionCount, location }) => {
     const handleChange = (event, value) => {
         setPage(value);
     };
-
+    const navigation_style = {
+        paddinLeft: "0px",
+        marginBottom: "18px",
+    };
     let pageCount = null;
 
     if (questionCount % 10 === 0) pageCount = questionCount / 10;
@@ -92,16 +95,16 @@ const HowToListTemplate = ({ tags, questionCount, location }) => {
                 <DataProvider param={param} nowTag={nowTag} pageNum={pageNum} />
             </div>
             <Container className="margin-top-3 red-border" />
-            <Container>
+            <div className="howto-page-navigater">
                 <Pagination
-                    className="howto-page-navigater"
+                    style={navigation_style}
                     count={pageCount}
                     variant="outlined"
                     page={pageNum}
                     onChange={handleChange}
                     shape="rounded"
                 />
-            </Container>
+            </div>
         </React.Fragment>
     );
 };
