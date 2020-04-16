@@ -23,7 +23,7 @@ import java.nio.charset.Charset;
 public abstract class ConnectMainServer {
     @Autowired
     private SHA256K sha256K;
-    String url = "http://192.168.43.25:8090/graphql";
+    String url = "http://localhost:8090/graphql";
     private String secretKey = "DevStudentJWTAuthTimeWithJeongHwanAndDaMinAndHyoBinAndJeongGu";
     private String hashSecretKey = "";
     // 응답형이 단일일때

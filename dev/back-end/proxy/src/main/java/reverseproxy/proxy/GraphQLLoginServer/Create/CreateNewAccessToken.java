@@ -14,6 +14,9 @@ public class CreateNewAccessToken extends ConnectLoginServer {
     public User reissuanceAccessToken(String nickname, DataFetchingEnvironment env) {
         GraphQLContext context =  env.getContext();
         HttpServletRequest request = context.getHttpServletRequest().get();
+        if(request.getHeader("Authorization").equals(null)){
+            return new User("-1"); // invalidate
+        }
         String jwt = request.getHeader("Authorization"); // refreshToken 주기
         //region Query
         String query = "mutation{\n" +
