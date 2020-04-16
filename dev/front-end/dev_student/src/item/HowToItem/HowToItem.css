@@ -4,7 +4,7 @@
     }
     .howto-item .content {
         overflow: hidden;
-        margin-left: 95px;
+        margin-left: 85px;
         margin-right: 0;
     }
     .howto-item .previews-box {
@@ -25,7 +25,7 @@
     .howto-item .content {
         overflow: hidden;
         margin-right: 95px;
-        margin-left: 25px;
+        margin-left: 15px;
     }
     .howto-item .answer-wrapper {
         margin-bottom: 5px;
@@ -33,8 +33,9 @@
     /* Add Your CSS Styling Here */
 }
 .howto-item .stats-area-mobile {
-    width: 80px;
+    width: 60px;
     float: left;
+    height: 100%;
 }
 .howto-item .content {
     float: left;
@@ -78,9 +79,6 @@
 
 .howto-item .stats-inner-box {
     height: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
-
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -102,9 +100,9 @@
 }
 
 .howto-item .stats-inner-box .stats-inner-box-hot {
-    border-radius: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
+    /* border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px; */
 }
 .howto-item .stats-inner-box .stats-inner-box-hot .answer-number-wrapper p {
     /* background-color: rgb(17, 149, 182); */

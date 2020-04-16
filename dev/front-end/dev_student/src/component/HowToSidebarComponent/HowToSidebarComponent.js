@@ -41,7 +41,7 @@ const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
 
     return (
         <React.Fragment>
-            <Container className="howto-sidebar-wrapper">
+            <Container className="howto-sidebar-wrapper pc-only">
                 <Row>
                     <Link to="/newquestion" style={btn_style}>
                         <Button

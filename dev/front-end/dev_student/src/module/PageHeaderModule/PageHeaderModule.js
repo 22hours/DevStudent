@@ -39,6 +39,11 @@ const PageHeaderModule = ({ question_count, param, setParam }) => {
         <div className="PageHeaderModule">
             <Row className="howto-list-header-header">
                 <span className="content-header">HowTo </span>
+                <div style={{ marginLeft: "10px" }} className="mobile-only">
+                    <Button style={{ fontSize: "11px", marginTop: "8px" }} color="info">
+                        NEWQUESTION
+                    </Button>
+                </div>
             </Row>
             {/* <Row><Tag></Tag></Row> */}
             <Row>
