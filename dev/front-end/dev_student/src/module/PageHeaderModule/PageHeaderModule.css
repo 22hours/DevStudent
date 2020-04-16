@@ -62,13 +62,15 @@
     border: 1px solid rgb(211, 211, 211);
     margin-top: 10px;
     margin-bottom: 10px;
+    overflow: hidden;
     /* text-align: center; */
 }
 
-.PageHeaderModule .filter-wrapper .filter-header span {
+.PageHeaderModule .filter-wrapper .filter-header .filter-item {
     cursor: pointer;
     margin-left: 15px;
     margin-right: 15px;
+    float: left;
 }
 .PageHeaderModule .filter-wrapper .filter-header #selected {
     color: #4ba0b5;

@@ -22,12 +22,16 @@ const PageHeaderModule = ({ question_count, param, setParam }) => {
     const FilterItem = ({ type, content }) => {
         if (type === param) {
             return (
-                <span onClick={setParam(type)} id="selected">
-                    {content}
-                </span>
+                <div className="filter-item" id="selected">
+                    <span id="selected">{content}</span>{" "}
+                </div>
             );
         } else {
-            return <span onClick={setParam(type)}>{content}</span>;
+            return (
+                <div className="filter-item" onClick={() => setParam(type)}>
+                    <span>{content}</span>
+                </div>
+            );
         }
     };
 
@@ -51,7 +55,9 @@ const PageHeaderModule = ({ question_count, param, setParam }) => {
                 <Collapse isOpen={filterIsOpen}>
                     <div className="filter-wrapper">
                         <div className="filter-header">
-                            <BrightnessLowIcon style={{ fontSize: "18px" }} />
+                            <div className="filter-item">
+                                <BrightnessLowIcon style={{ fontSize: "18px" }} />
+                            </div>
                             <FilterItem content="최신순" type="date" />
                             <FilterItem content="조회순" type="views" />
                             <FilterItem content="화제순" type="answers" />
