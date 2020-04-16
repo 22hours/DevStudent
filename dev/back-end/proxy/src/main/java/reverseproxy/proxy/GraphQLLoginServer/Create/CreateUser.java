@@ -23,6 +23,8 @@ public class CreateUser extends ConnectLoginServer {
                 "        schoolName\n" +
                 "        date\n" +
                 "        authState\n" +
+                "        accessToken\n" +
+                "        refreshToken\n" +
                 "    }\n" +
                 "}";
         //endregion

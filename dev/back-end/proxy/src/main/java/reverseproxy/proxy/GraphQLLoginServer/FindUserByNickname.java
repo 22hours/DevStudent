@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Component
 public class FindUserByNickname extends ConnectLoginServer {
-    public User findUserByNickname(String token, String nickname, DataFetchingEnvironment env) throws Exception {
+    public User findUserByNickname(String nickname, DataFetchingEnvironment env) throws Exception {
         String authorized = checkJwt(nickname,env);
         String invalidate = "invalidate";
         String expired = "expired";
@@ -20,7 +20,7 @@ public class FindUserByNickname extends ConnectLoginServer {
             return new User(expired);
         //region Query
         String query = "query{\n" +
-                "    findUserByNickname(token : \"" + token + "\",nickname : \"" + nickname + "\")\n" +
+                "    findUserByNickname(nickname : \"" + nickname + "\")\n" +
                 "    {\n" +
                 "        email\n" +
                 "        password\n" +
@@ -28,7 +28,8 @@ public class FindUserByNickname extends ConnectLoginServer {
                 "        schoolName\n" +
                 "        date\n" +
                 "        authState\n" +
-                "        token\n" +
+                "        accessToken\n" +
+                "        refreshToken\n" +
                 "    }\n" +
                 "}";
         //endregion

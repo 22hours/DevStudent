@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class CreateQuestion extends ConnectMainServer {
-    public Question createQuestion(String token, String title, String author, List<String> tags, String content, DataFetchingEnvironment env) throws Exception {
+    public Question createQuestion(String title, String author, List<String> tags, String content, DataFetchingEnvironment env) throws Exception {
         String authorized = checkJwt(author, env);
         String invalidate = "invalidate";
         String expired = "expired";
@@ -26,7 +26,7 @@ public class CreateQuestion extends ConnectMainServer {
         //region Query
         String query = "mutation{\n" +
                 "    createQuestion\n" +
-                "    (   token : \"" + token + "\",\n" +
+                "    (   \n" +
                 "        title : \"" + title + "\",\n" +
                 "        author : \"" + author + "\", \n" +
                 "        tags:[" + result + "], \n" +

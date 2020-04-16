@@ -57,19 +57,19 @@ public class Mutation implements GraphQLMutationResolver {
     private CreateNewAccessToken createNewAccessToken;
 
     //region MainServer Create
-    public Question createQuestion(String token, String title, String author, List<String> tags, String content, DataFetchingEnvironment env) throws Exception {
+    public Question createQuestion(String title, String author, List<String> tags, String content, DataFetchingEnvironment env) throws Exception {
         // token 검사
-        return createQuestion.createQuestion(token, title, author, tags, content, env);
+        return createQuestion.createQuestion(title, author, tags, content, env);
     }
 
-    public Answer createAnswer(String token, String question_id, String author, String content, DataFetchingEnvironment env) throws Exception {
+    public Answer createAnswer(String question_id, String author, String content, DataFetchingEnvironment env) throws Exception {
         // token 검사
-        return createAnswer.createAnswer(token, question_id, author, content, env);
+        return createAnswer.createAnswer(question_id, author, content, env);
     }
 
-    public Comment createComment(String token, String question_id, String answer_id, String author, String content, DataFetchingEnvironment env) throws Exception {
+    public Comment createComment(String question_id, String answer_id, String author, String content, DataFetchingEnvironment env) throws Exception {
         // token 검사
-        return createComment.createComment(token, question_id, answer_id, author, content, env);
+        return createComment.createComment(question_id, answer_id, author, content, env);
     }
 
     public Question createLike(String question_id, String answer_id, String nickname, String status, DataFetchingEnvironment env) throws Exception {
@@ -129,7 +129,7 @@ public class Mutation implements GraphQLMutationResolver {
         return checkDuplicateNickname.checkDuplicateNickname(nickname);
     }
 
-    public User createNewAccessToken(String nickname, DataFetchingEnvironment env) {
+    public User reissuanceAccessToken(String nickname, DataFetchingEnvironment env) {
         return createNewAccessToken.createNewAccessToken(nickname,env);
     }
 }

@@ -18,7 +18,8 @@ public class Login extends ConnectLoginServer {
                 "        schoolName\n" +
                 "        date\n" +
                 "        authState\n" +
-                "        token\n" +
+                "        accessToken\n" +
+                "        refreshToken\n" +
                 "    }\n" +
                 "\n" +
                 "}";

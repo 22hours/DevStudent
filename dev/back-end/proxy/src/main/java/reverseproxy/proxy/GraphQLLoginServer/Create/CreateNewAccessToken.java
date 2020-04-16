@@ -17,7 +17,7 @@ public class CreateNewAccessToken extends ConnectLoginServer {
         String jwt = request.getHeader("Authorization"); // refreshToken 주기
         //region Query
         String query = "mutation{\n" +
-                "    createUser(\n" +
+                "    reissuanceAccessToken(\n" +
                 "        nickname: \"" + nickname + "\", \n" +
                 "        refreshToken : \"" + jwt + "\", \n" +
                 "        )\n" +
@@ -28,6 +28,8 @@ public class CreateNewAccessToken extends ConnectLoginServer {
                 "        schoolName\n" +
                 "        date\n" +
                 "        authState\n" +
+                "        accessToken\n" +
+                "        refreshToken\n" +
                 "    }\n" +
                 "}";
         //endregion

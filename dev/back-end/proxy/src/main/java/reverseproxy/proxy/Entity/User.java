@@ -18,7 +18,9 @@ public class User {
     @Setter
     private String authState = null;
     @Setter
-    private String token = null;
+    private String accessToken = null;
+    @Setter
+    private String refreshToken = null;
     public User(String email){
         this.email = email;
     }

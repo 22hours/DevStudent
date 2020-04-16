@@ -16,7 +16,6 @@ public class SHA256K {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return toReturn;
     }
 }

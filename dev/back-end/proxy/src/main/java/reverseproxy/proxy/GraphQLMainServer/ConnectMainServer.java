@@ -50,6 +50,9 @@ public abstract class ConnectMainServer {
     public String checkJwt(String nickname, DataFetchingEnvironment env) throws Exception {
         GraphQLContext context =  env.getContext();
         HttpServletRequest request = context.getHttpServletRequest().get();
+        if(request.getHeader("Authorization").equals(null)){
+            return "invalidate";
+        }
         String jwt = request.getHeader("Authorization");
         hashSecretKey = sha256K.hashValueForSecret(secretKey + nickname);
         try {

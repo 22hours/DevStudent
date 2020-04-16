@@ -64,8 +64,8 @@ public class Query implements GraphQLQueryResolver {
         return countAllQuestions.countAllQuestions();
     }
 
-    public User findUserByNickname(String token, String nickname, DataFetchingEnvironment env) throws Exception {
+    public User findUserByNickname(String nickname, DataFetchingEnvironment env) throws Exception {
         // token 검사 완료
-        return findUserByNickname.findUserByNickname(token, nickname,env);
+        return findUserByNickname.findUserByNickname(nickname,env);
     }
 }

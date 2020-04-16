@@ -8,7 +8,7 @@ import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
 @Component
 public class CreateComment extends ConnectMainServer {
-    public Comment createComment(String token, String question_id, String answer_id, String author, String content, DataFetchingEnvironment env) throws Exception {
+    public Comment createComment(String question_id, String answer_id, String author, String content, DataFetchingEnvironment env) throws Exception {
         String authorized = checkJwt(author, env);
         String invalidate = "invalidate";
         String expired = "expired";
@@ -19,7 +19,7 @@ public class CreateComment extends ConnectMainServer {
         //region Query
         String query = "mutation{\n" +
                 "    createComment\n" +
-                "    (token : \"" + token + "\",\n" +
+                "    (\n" +
                 "    question_id : \"" + question_id + "\",\n" +
                 "    answer_id : \"" + answer_id + "\",\n" +
                 "    author : \"" + author + "\",\n" +

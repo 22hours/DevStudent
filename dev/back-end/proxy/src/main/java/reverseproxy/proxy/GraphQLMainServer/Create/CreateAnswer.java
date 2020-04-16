@@ -8,7 +8,7 @@ import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
 @Component
 public class CreateAnswer extends ConnectMainServer {
-    public Answer createAnswer(String token, String question_id, String author, String content, DataFetchingEnvironment env) throws Exception {
+    public Answer createAnswer(String question_id, String author, String content, DataFetchingEnvironment env) throws Exception {
         String authorized = checkJwt(author, env);
         String invalidate = "invalidate";
         String expired = "expired";
@@ -20,7 +20,6 @@ public class CreateAnswer extends ConnectMainServer {
         String query = "\n" +
                 "mutation{\n" +
                 "    createAnswer(\n" +
-                "        token : \"" + token + "\",\n" +
                 "        question_id:\"" + question_id + "\",\n" +
                 "        author:\"" + author + "\",\n" +
                 "        content:\"" + content + "\"){\n" +
