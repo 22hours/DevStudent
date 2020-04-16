@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Component
 public class CreateNewAccessToken extends ConnectLoginServer {
-    public User createNewAccessToken(String nickname, DataFetchingEnvironment env) {
+    public User reissuanceAccessToken(String nickname, DataFetchingEnvironment env) {
         GraphQLContext context =  env.getContext();
         HttpServletRequest request = context.getHttpServletRequest().get();
         String jwt = request.getHeader("Authorization"); // refreshToken 주기
@@ -37,6 +37,7 @@ public class CreateNewAccessToken extends ConnectLoginServer {
         String name = new Object() {
         }.getClass().getEnclosingMethod().getName();
         String str = getResponse(query, name);
+        System.out.println(str);
         User user = gson.fromJson(str, User.class);
         return user;
     }

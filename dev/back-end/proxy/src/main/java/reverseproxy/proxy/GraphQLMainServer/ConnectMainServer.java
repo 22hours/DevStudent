@@ -21,13 +21,12 @@ import javax.xml.bind.DatatypeConverter;
 public abstract class ConnectMainServer {
     @Autowired
     private SHA256K sha256K;
-
+    String url = "http://localhost:8090/graphql";
     private String secretKey = "DevStudentJWTAuthTimeWithJeongHwanAndDaMinAndHyoBinAndJeongGu";
     private String hashSecretKey = "";
     // 응답형이 단일일때
     public String getResponse(String query, String name) {
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://localhost:8090/graphql";
         HttpHeaders headers = new HttpHeaders();
         headers.add("content-type", "application/graphql");
         ResponseEntity<String> response = restTemplate.postForEntity(url, new HttpEntity<>(query, headers), String.class);
@@ -40,7 +39,6 @@ public abstract class ConnectMainServer {
     // 응답형이 복수일때
     public String getResponse(String query) {
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://localhost:8090/graphql";
         HttpHeaders headers = new HttpHeaders();
         headers.add("content-type", "application/graphql");
         ResponseEntity<String> response = restTemplate.postForEntity(url, new HttpEntity<>(query, headers), String.class);

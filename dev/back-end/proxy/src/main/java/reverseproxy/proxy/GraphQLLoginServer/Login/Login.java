@@ -7,7 +7,7 @@ import reverseproxy.proxy.GraphQLLoginServer.ConnectLoginServer;
 
 @Component
 public class Login extends ConnectLoginServer {
-    public User login(String email, String password) {
+    public User loginToServer(String email, String password) {
         //region Query
         String query = "mutation{\n" +
                 "    loginToServer(email:\"" + email + "\",password:\"" + password + "\")\n" +
@@ -28,6 +28,7 @@ public class Login extends ConnectLoginServer {
         String name = new Object() {
         }.getClass().getEnclosingMethod().getName();
         String str = getResponse(query, name);
+        System.out.println(str);
         User user = gson.fromJson(str, User.class);
         return user;
     }

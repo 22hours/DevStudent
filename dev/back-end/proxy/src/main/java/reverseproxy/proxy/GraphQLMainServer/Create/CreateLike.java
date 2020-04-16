@@ -19,9 +19,9 @@ public class CreateLike extends ConnectMainServer {
         //region Query
         String query = "mutation{\n" +
                 "    createLike(question_id : \"" + question_id + "\", " +
-                "\"answer_id : " + answer_id + "\", " +
-                "\"nickname : " + nickname + "\", " +
-                "\"status : " + status + "\")\n" +
+                "answer_id : \"" + answer_id + "\", " +
+                "nickname : \"" + nickname + "\", " +
+                "status : \"" + status + "\")\n" +
                 "    {\n" +
                 "        title\n" +
                 "        _id\n" +

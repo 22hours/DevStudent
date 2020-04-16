@@ -102,7 +102,7 @@ public class Mutation implements GraphQLMutationResolver {
     //endregion
     //region LoginServer
     public User loginToServer(String email, String password) {
-        return login.login(email, password);
+        return login.loginToServer(email, password);
     }
 
     public Count logoutFromServer(String email) { // 토큰 만료 시키기
@@ -130,6 +130,6 @@ public class Mutation implements GraphQLMutationResolver {
     }
 
     public User reissuanceAccessToken(String nickname, DataFetchingEnvironment env) {
-        return createNewAccessToken.createNewAccessToken(nickname,env);
+        return createNewAccessToken.reissuanceAccessToken(nickname,env);
     }
 }
