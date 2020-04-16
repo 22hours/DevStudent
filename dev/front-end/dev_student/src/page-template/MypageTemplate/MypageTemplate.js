@@ -10,7 +10,7 @@ import avatar_test2 from "img/mypage/avatar_test2.png";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 const MypageTemplate = ({ alarmData, myContent }) => {
-    const nickname = window.sessionStorage.getItem("nickname");
+    const nickname = window.localStorage.getItem("nickname");
     // const alarms = alarmData.map(({ _id, content, date, respondent }) => (
     //     <div key={_id} className="item-box">
     //         <span id="item-label">{date}</span>
