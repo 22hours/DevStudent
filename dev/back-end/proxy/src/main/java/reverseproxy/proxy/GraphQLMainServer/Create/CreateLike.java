@@ -1,21 +1,13 @@
 package reverseproxy.proxy.GraphQLMainServer.Create;
 
 import com.google.gson.Gson;
-import graphql.schema.DataFetchingEnvironment;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.Question;
 import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
 @Component
 public class CreateLike extends ConnectMainServer {
-    public Question createLike(String question_id, String answer_id, String nickname, String status, DataFetchingEnvironment env) throws Exception {
-        String authorized = checkJwt(nickname, env);
-        String invalidate = "invalidate";
-        String expired = "expired";
-        if(authorized.equals(invalidate))
-            return new Question(invalidate);
-        if(authorized.equals(expired))
-            return new Question(expired);
+    public Question createLike(String question_id, String answer_id, String nickname, String status) {
         //region Query
         String query = "mutation{\n" +
                 "    createLike(question_id : \"" + question_id + "\", " +

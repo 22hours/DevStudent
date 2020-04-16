@@ -28,5 +28,5 @@ type Query{
 # Root
 type Mutation{
     createQuestion(title : String!, author : String!, tags : [String]!, content : String!) : Question
-    deleteQuestion(_id : String, nickname : String) : Question
+    deleteQuestion(_id : String) : Question
 }

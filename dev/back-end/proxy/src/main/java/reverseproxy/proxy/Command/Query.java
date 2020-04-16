@@ -34,6 +34,7 @@ public class Query implements GraphQLQueryResolver {
     @Autowired
     private FindUserByNickname findUserByNickname;
 
+
     public List<Question> findAllQuestions(String param, int pageNum, int requiredCount) {
         return findAllQuestions.findAllQuestions(param, pageNum, requiredCount);
     }
@@ -50,22 +51,23 @@ public class Query implements GraphQLQueryResolver {
         return findQuestionsByTags.findQuestionsByTags(param, pageNum, requiredCount, tags, logical);
     }
 
-    public List<Alarm> findAllAlarms(String nickname, int pageNum, int requiredCount, DataFetchingEnvironment env) throws Exception {
+    public List<Alarm> findAllAlarms(String nickname, int pageNum, int requiredCount){
         // token 검사 완료
-        return findAllAlarms.findAllAlarms(nickname, pageNum, requiredCount, env);
+        return findAllAlarms.findAllAlarms(nickname, pageNum, requiredCount);
     }
 
-    public Count countUnreadAlarms(String nickname, DataFetchingEnvironment env) throws Exception {
+    public Count countUnreadAlarms(String nickname) {
         // token 검사 완료
-        return countUnreadAlarms.countUnreadAlarms(nickname,env);
+        return countUnreadAlarms.countUnreadAlarms(nickname);
     }
 
     public Count countAllQuestions() {
         return countAllQuestions.countAllQuestions();
     }
 
-    public User findUserByNickname(String nickname, DataFetchingEnvironment env) throws Exception {
+    public User findUserByNickname(String nickname) {
         // token 검사 완료
-        return findUserByNickname.findUserByNickname(nickname,env);
+        return findUserByNickname.findUserByNickname(nickname);
     }
+
 }
