@@ -1,0 +1,34 @@
+.NotImplemented {
+    height: 100vh;
+    text-align: center;
+    padding-top: 20px;
+    background-color: rgb(243, 243, 243);
+}
+
+.NotImplemented #notimp {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 50px;
+}
+
+.NotImplemented #notimp-notice {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 25px;
+}
+.NotImplemented #notimp-exit {
+    margin-top: 40px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 30px;
+    cursor: pointer;
+    color: rgb(62, 139, 149);
+    font-weight: bold;
+}
+
+.NotImplemented .image-row {
+    width: 100%;
+}
+
+.NotImplemented .image-row img {
+    text-align: center;
+    width: 50%;
+    height: 30%;
+}

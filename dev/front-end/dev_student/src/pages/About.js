@@ -1,7 +1,8 @@
 import React from "react";
+import NotImplementedPageTemplate from "page-template/NotImplementedPageTemplate/NotImplementedPageTemplate";
 
 const About = ({ match }) => {
-    return <div>{match.params.username}의 소개입니다 방가요.</div>;
+    return <NotImplementedPageTemplate />;
 };
 
 export default About;

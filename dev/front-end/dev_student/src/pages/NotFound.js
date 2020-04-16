@@ -1,7 +1,7 @@
 import React from "react";
-
+import NotFoundPageTemplate from "page-template/NotFoundPageTemplate/NotFoundPageTemplate";
 const NotFound = () => {
-    return <div>Not NotFound 404</div>;
+    return <NotFoundPageTemplate />;
 };
 
 export default NotFound;
