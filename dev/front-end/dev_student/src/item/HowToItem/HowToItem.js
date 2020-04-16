@@ -73,7 +73,7 @@ class HowToItem extends Component {
                                 <p className="previews-span">{previews}</p>
                             </div>
                             <div>{TagList}</div>
-                            <div>
+                            <div className="autor-box">
                                 <span className="author-span">{author} </span>
                                 <span className="author-span-add">님의 글</span>
                             </div>

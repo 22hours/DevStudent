@@ -7,6 +7,9 @@
         margin-left: 95px;
         margin-right: 0;
     }
+    .howto-item .previews-box {
+        display: none;
+    }
     /* Add Your CSS Styling Here */
 }
 
@@ -22,7 +25,6 @@
     .howto-item .answer-wrapper {
         margin-bottom: 5px;
     }
-
     /* Add Your CSS Styling Here */
 }
 .howto-item .stats-area-mobile {
