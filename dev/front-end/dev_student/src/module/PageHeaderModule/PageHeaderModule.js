@@ -2,21 +2,39 @@ import React, { useState } from "react";
 import { FormGroup, Input, Button, Row, Collapse } from "reactstrap";
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import "./PageHeaderModule.css";
+
+//icons
+import SearchIcon from "@material-ui/icons/Search";
+import BrightnessLowIcon from "@material-ui/icons/BrightnessLow";
 const PageHeaderModule = ({ question_count, param, setParam }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [serachBarIsOpen, setSearchBarIsOpen] = useState(false);
+    const [filterIsOpen, setFilterIsOpen] = useState(false);
 
     const toggleSearchBar = () => {
-        console.log("SerachBar Open!");
         setSearchBarIsOpen((prevState) => !prevState);
+    };
+    const toggleFilter = () => {
+        setFilterIsOpen((prevState) => !prevState);
     };
     const toggleDropDown = () => setDropdownOpen((prevState) => !prevState);
 
+    const FilterItem = ({ type, content }) => {
+        if (type === param) {
+            return (
+                <span onClick={setParam(type)} id="selected">
+                    {content}
+                </span>
+            );
+        } else {
+            return <span onClick={setParam(type)}>{content}</span>;
+        }
+    };
+
     return (
-        <React.Fragment>
+        <div className="PageHeaderModule">
             <Row className="howto-list-header-header">
-                <span className="content-header">HowTo : [ {param} ] </span>
-                <span className="mobile-new-question-button"></span>
+                <span className="content-header">HowTo </span>
             </Row>
             {/* <Row><Tag></Tag></Row> */}
             <Row>
@@ -25,42 +43,21 @@ const PageHeaderModule = ({ question_count, param, setParam }) => {
                     <span className="question-descript-span"> &nbsp; 건의 질문이 있습니다</span>
                 </p>
                 <div className="search-button-wrapper">
-                    <Button onClick={toggleSearchBar} color="info">
-                        검색
-                    </Button>
-                </div>
-
-                <div className="filter-button-wrapper">
-                    <Dropdown color="info" isOpen={dropdownOpen} toggle={toggleDropDown}>
-                        <DropdownToggle caret>필터</DropdownToggle>
-                        <DropdownMenu right>
-                            <DropdownItem header>정렬기준</DropdownItem>
-                            <DropdownItem
-                                onClick={() => {
-                                    setParam("views");
-                                }}
-                            >
-                                조회순
-                            </DropdownItem>
-                            <DropdownItem
-                                onClick={() => {
-                                    setParam("answers");
-                                }}
-                            >
-                                화제순
-                            </DropdownItem>
-                            <DropdownItem
-                                onClick={() => {
-                                    setParam("date");
-                                }}
-                            >
-                                최신순
-                            </DropdownItem>
-                        </DropdownMenu>
-                    </Dropdown>
+                    <SearchIcon id="clickable-icon" onClick={toggleSearchBar} />
+                    <BrightnessLowIcon id="clickable-icon" onClick={toggleFilter} />
                 </div>
             </Row>
             <div className="serach-bar-collapse-wrapper">
+                <Collapse isOpen={filterIsOpen}>
+                    <div className="filter-wrapper">
+                        <div className="filter-header">
+                            <BrightnessLowIcon style={{ fontSize: "18px" }} />
+                            <FilterItem content="최신순" type="date" />
+                            <FilterItem content="조회순" type="views" />
+                            <FilterItem content="화제순" type="answers" />
+                        </div>
+                    </div>
+                </Collapse>
                 <Collapse isOpen={serachBarIsOpen}>
                     <div className="searchbar-wrapper">
                         <FormGroup>
@@ -74,7 +71,7 @@ const PageHeaderModule = ({ question_count, param, setParam }) => {
                     </div>
                 </Collapse>
             </div>
-        </React.Fragment>
+        </div>
     );
 };
 

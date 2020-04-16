@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { findAllQuestions } from "query/queries";
@@ -15,6 +15,9 @@ import HowToContentModuleTemplate from "module-template/HowToContentModuleTempla
 // atom
 
 const HowTo = ({ location }) => {
+    useEffect(() => {
+        console.log("haha");
+    }, [location]);
     const [tag, setTag] = useState([
         { idx: 0, tagname: "JavaScript", tagcount: "500" },
         { idx: 1, tagname: ".NetFramework", tagcount: "100" },

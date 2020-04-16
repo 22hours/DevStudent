@@ -5,6 +5,7 @@ import { Input, Button, FormText } from "reactstrap";
 import { CREATE_USER } from "mutation/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import { Link } from "react-router-dom";
+import { hashPassword } from "auth";
 
 const RegisterTemplate = ({
     email,
@@ -219,9 +220,10 @@ const RegisterTemplate = ({
                                             return;
                                         } else {
                                             alert("이메일을 확인해주세요.");
+
                                             createUser({
                                                 variables: {
-                                                    password: password,
+                                                    password: hashPassword(password),
                                                     email: email + emailSelect,
                                                     nickname: nickName,
                                                     schoolName: schoolName,

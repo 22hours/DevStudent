@@ -32,4 +32,14 @@ const getAuthInfo = () => {
     };
 };
 
-export { logIn, logOut, setAuthInfo, getAuthInfo };
+const hashPassword = (password) => {
+    const crypto = require("crypto");
+
+    const pw = password;
+    const secret = "MySecretKey1$1$234";
+
+    const hashed = crypto.createHmac("sha256", secret).update(pw).digest("hex");
+    return hashed;
+};
+
+export { logIn, logOut, setAuthInfo, getAuthInfo, hashPassword };

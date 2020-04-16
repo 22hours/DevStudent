@@ -3,7 +3,7 @@ import "./LoginPageTemplate.css";
 import { Container, Col, Row } from "reactstrap";
 import { TextField, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-
+import { hashPassword } from "auth";
 const LoginPageTemplate = ({ email, setEmail, password, setPassword, loginToServer, btn_style }) => {
     return (
         <React.Fragment>
@@ -50,7 +50,7 @@ const LoginPageTemplate = ({ email, setEmail, password, setPassword, loginToServ
                                             loginToServer({
                                                 variables: {
                                                     email: email,
-                                                    password: password,
+                                                    password: hashPassword(password),
                                                 },
                                             });
                                         }}
