@@ -19,14 +19,6 @@ public abstract class Create {
         return String.valueOf(seqNum);
     }
 
-    public boolean isAuthorized(String author, String token) { // 없애야 함.
-        /*if (userRepository.countByNickname(author) == 0) return false;
-        User user = userRepository.findByNickname(author);
-        System.out.println(user.toString());
-        if (!user.getToken().equals(token)) return false;*/
-        return true;
-    }
-
     public void createAlarm(String question_id, String nickname, String respondent, String content) {
         if (nickname.equals(respondent)) return; //자신이 알람을 일으키진 않는다
 

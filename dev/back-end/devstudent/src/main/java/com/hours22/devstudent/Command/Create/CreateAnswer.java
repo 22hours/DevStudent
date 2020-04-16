@@ -14,9 +14,7 @@ public class CreateAnswer extends Create {
     @Autowired
     private QuestionRepository questionRepository;
 
-    public Answer createAnswer(String token, String question_id, String author, String content) {
-        if (!isAuthorized(author, token))
-            return new Answer(null, "Exception", "Not Authorized");
+    public Answer createAnswer(String question_id, String author, String content) {
         if (questionRepository.countBy_id(question_id) == 0)
             return new Answer(null, "Exception", "Not Exist Question");
         String seqNum = makeSequence("Answer");

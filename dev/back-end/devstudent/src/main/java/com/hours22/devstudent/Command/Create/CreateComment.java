@@ -15,9 +15,7 @@ public class CreateComment extends Create {
     @Autowired
     private QuestionRepository questionRepository;
 
-    public Comment createComment(String token, String question_id, String answer_id, String author, String content) {
-        if (!isAuthorized(author, token))
-            return new Comment(null, "Exception", "Not Authorized");
+    public Comment createComment(String question_id, String answer_id, String author, String content) {
         if (questionRepository.countBy_id(question_id) == 0)
             return new Comment("null", "Exception", "Not Exist Question");
         Question question = questionRepository.findQuestionBy_id(question_id);

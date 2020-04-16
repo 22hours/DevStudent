@@ -12,10 +12,8 @@ public class CreateQuestion extends Create {
     @Autowired
     private QuestionRepository questionRepository;
 
-    public Question createQuestion(String token, String title, String author, List<String> tags, String content) {
+    public Question createQuestion(String title, String author, List<String> tags, String content) {
         System.out.println("Start");
-        if (!isAuthorized(author, token))
-            return new Question(null, "error", author, tags, "Not Authorized User", "Not Authorized User");
         String seqNum = makeSequence("Question");
         String previews = (content.length() < 100) ? content : content.substring(0, 100);
         Question question = new Question(seqNum, title, author, tags, content, previews);
