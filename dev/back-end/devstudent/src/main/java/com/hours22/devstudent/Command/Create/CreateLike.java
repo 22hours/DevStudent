@@ -16,47 +16,45 @@ public class CreateLike extends Create {
     @Autowired
     private QuestionRepository questionRepository;
 
-    public Question createLike(String question_id, String answer_id, String nickname, String status)
-    {
-        if(questionRepository.countBy_id(question_id)==0)
-            return new Question(null,"Question Not Exist Exception", null, null, null, null);
+    public Question createLike(String question_id, String answer_id, String nickname, String status) {
+        if (questionRepository.countBy_id(question_id) == 0)
+            return new Question(null, "Question Not Exist Exception", null, null, null, null);
         Question question = questionRepository.findQuestionBy_id(question_id);
         List<Like> likes = new ArrayList<Like>();
-        if(answer_id.equals("Question")){
+        if (answer_id.equals("Question")) {
 
-            if(question.getLikes().size() > 0){
+            if (question.getLikes().size() > 0) {
                 likes = question.getLikes();
-                for(Like like : likes){
-                    if(like.getNickname().equals(nickname) == true)
-                        return new Question(null,"Like Already Exception", null, null, null, null);
+                for (Like like : likes) {
+                    if (like.getNickname().equals(nickname) == true)
+                        return new Question(null, "Like Already Exception", null, null, null, null);
                 }
             }
             Like like = new Like(nickname, status);
             likes.add(like);
             question.setLikes(likes);
-            if(status.equals("up"))
+            if (status.equals("up"))
                 question.setLikesCount(question.getLikesCount() + 1);
             else
                 question.setLikesCount(question.getLikesCount() - 1);
 
             questionRepository.save(question);
             return question;
-        }
-        else {
+        } else {
             Boolean isAnswerExist = false;
             List<Answer> answers = question.getAnswers();
-            for(Answer answer : answers){
-                if(answer.get_id().equals(answer_id) == true){
+            for (Answer answer : answers) {
+                if (answer.get_id().equals(answer_id) == true) {
                     isAnswerExist = true;
                     likes = answer.getLikes();
-                    for(Like like : likes){
-                        if(like.getNickname().equals(nickname) == true)
-                            return new Question(null,"Like Already Exception", null, null, null, null);
+                    for (Like like : likes) {
+                        if (like.getNickname().equals(nickname) == true)
+                            return new Question(null, "Like Already Exception", null, null, null, null);
                     }
                     Like like = new Like(nickname, status);
                     likes.add(like);
                     answer.setLikes(likes);
-                    if(status.equals("up"))
+                    if (status.equals("up"))
                         answer.setLikesCount(answer.getLikesCount() + 1);
                     else
                         answer.setLikesCount(answer.getLikesCount() - 1);
@@ -66,8 +64,8 @@ public class CreateLike extends Create {
                     return question;
                 }
             }
-            if(isAnswerExist == false)
-                return new Question(null,"Answer Not Exist Exception", null, null, null, null);
+            if (isAnswerExist == false)
+                return new Question(null, "Answer Not Exist Exception", null, null, null, null);
         }
 
 

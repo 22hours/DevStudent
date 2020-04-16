@@ -6,6 +6,6 @@ type Comment{
 }
 
 extend type Mutation {
-    createComment(token : String, question_id : String!, answer_id : String!, author : String!, content : String!) : Comment
+    createComment(question_id : String!, answer_id : String!, author : String!, content : String!) : Comment
     deleteComment(question_id : String!, answer_id : String!, comment_id : String!) : Comment
 }

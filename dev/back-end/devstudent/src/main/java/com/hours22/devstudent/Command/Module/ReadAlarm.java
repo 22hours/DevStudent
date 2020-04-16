@@ -11,11 +11,11 @@ import java.util.List;
 public class ReadAlarm {
     @Autowired
     private AlarmRepository alarmRepository;
-    public void readAlarms(List<Alarm> alarms){
-        for(Alarm alarm : alarms)
-         {
-             alarm.setRead(true);
-             alarmRepository.save(alarm);
-         }
+
+    public void readAlarms(List<Alarm> alarms) {
+        for (Alarm alarm : alarms) {
+            alarm.setRead(true);
+            alarmRepository.save(alarm);
+        }
     }
 }

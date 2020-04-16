@@ -24,7 +24,7 @@ public class DeleteAnswer extends Delete {
             if (answer.get_id().equals(answer_id)) { // 게시물도 있고, 해당 답변도 있다면
                 answers.remove(answer);
                 Question.setAnswers(answers);
-                Question.setAnswerCount(Question.getAnswerCount()-1);
+                Question.setAnswerCount(Question.getAnswerCount() - 1);
                 questionRepository.save(Question);
                 return answer;
             }

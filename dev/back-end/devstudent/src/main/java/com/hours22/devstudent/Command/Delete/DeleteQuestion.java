@@ -8,13 +8,13 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Component
-public class DeleteQuestion{
+public class DeleteQuestion {
     @Autowired
     private QuestionRepository questionRepository;
 
-    public Question deleteQuestion(String _id){
-        if(questionRepository.countBy_id(_id) == 0)
-            return new Question("null","Exception","hours22",new ArrayList<String>(),"Not Exist Question","Not Exist Question");
+    public Question deleteQuestion(String _id) {
+        if (questionRepository.countBy_id(_id) == 0)
+            return new Question("null", "Exception", "hours22", new ArrayList<String>(), "Not Exist Question", "Not Exist Question");
         Question question = questionRepository.findQuestionBy_id(_id);
         questionRepository.delete(question);
         return question;
