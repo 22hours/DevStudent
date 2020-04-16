@@ -10,14 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Component
 public class FindUserByNickname extends ConnectLoginServer {
-    public User findUserByNickname(String nickname, DataFetchingEnvironment env) throws Exception {
-        String authorized = checkJwt(nickname,env);
-        String invalidate = "invalidate";
-        String expired = "expired";
-        if(authorized.equals(invalidate))
-            return new User(invalidate);
-        if(authorized.equals(expired))
-            return new User(expired);
+    public User findUserByNickname(String nickname) {
         //region Query
         String query = "query{\n" +
                 "    findUserByNickname(nickname : \"" + nickname + "\")\n" +

@@ -4,6 +4,7 @@ import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import reverseproxy.proxy.Command.Security.IsValidate;
 import reverseproxy.proxy.Entity.*;
 import reverseproxy.proxy.GraphQLLoginServer.*;
 import reverseproxy.proxy.GraphQLLoginServer.Check.CheckDuplicateEmail;
@@ -55,48 +56,51 @@ public class Mutation implements GraphQLMutationResolver {
     private Logout logout;
     @Autowired
     private CreateNewAccessToken createNewAccessToken;
+    @Autowired
+    private IsValidate isValidate;
 
     //region MainServer Create
-    public Question createQuestion(String title, String author, List<String> tags, String content, DataFetchingEnvironment env) throws Exception {
+    public Question createQuestion(String title, String author, List<String> tags, String content)  {
         // token 검사
-        return createQuestion.createQuestion(title, author, tags, content, env);
+        System.out.println("Request 값 : " + title+"\t"+author+"\t"+tags+"\t"+content);
+        return createQuestion.createQuestion(title, author, tags, content);
     }
 
-    public Answer createAnswer(String question_id, String author, String content, DataFetchingEnvironment env) throws Exception {
+    public Answer createAnswer(String question_id, String author, String content) {
         // token 검사
-        return createAnswer.createAnswer(question_id, author, content, env);
+        return createAnswer.createAnswer(question_id, author, content);
     }
 
-    public Comment createComment(String question_id, String answer_id, String author, String content, DataFetchingEnvironment env) throws Exception {
+    public Comment createComment(String question_id, String answer_id, String author, String content) {
         // token 검사
-        return createComment.createComment(question_id, answer_id, author, content, env);
+        return createComment.createComment(question_id, answer_id, author, content);
     }
 
-    public Question createLike(String question_id, String answer_id, String nickname, String status, DataFetchingEnvironment env) throws Exception {
+    public Question createLike(String question_id, String answer_id, String nickname, String status)  {
         // token 검사
-        return createLike.createLike(question_id, answer_id, nickname, status, env);
+        return createLike.createLike(question_id, answer_id, nickname, status);
     }
 
     //endregion
     //region MainServer Delete
-    public Question deleteQuestion(String _id, String nickname, DataFetchingEnvironment env) throws Exception {
+    public Question deleteQuestion(String _id){
         // token 검사
-        return deleteQuestion.deleteQuestion(_id, nickname, env);
+        return deleteQuestion.deleteQuestion(_id);
     }
 
-    public Answer deleteAnswer(String question_id, String answer_id, String nickname, DataFetchingEnvironment env) throws Exception {
+    public Answer deleteAnswer(String question_id, String answer_id){
         // token 검사
-        return deleteAnswer.deleteAnswer(question_id, answer_id, nickname, env);
+        return deleteAnswer.deleteAnswer(question_id, answer_id);
     }
 
-    public Comment deleteComment(String question_id, String answer_id, String comment_id, String nickname, DataFetchingEnvironment env) throws Exception {
+    public Comment deleteComment(String question_id, String answer_id, String comment_id) {
         // token 검사
-        return deleteComment.deleteComment(question_id, answer_id, comment_id, nickname, env);
+        return deleteComment.deleteComment(question_id, answer_id, comment_id);
     }
 
-    public Alarm deleteAlarm(String alarm_id, String nickname, DataFetchingEnvironment env) throws Exception {
+    public Alarm deleteAlarm(String alarm_id) {
         // token 검사
-        return deleteAlarm.deleteAlarm(alarm_id, nickname, env);
+        return deleteAlarm.deleteAlarm(alarm_id);
     }
 
     //endregion
@@ -131,5 +135,8 @@ public class Mutation implements GraphQLMutationResolver {
 
     public User reissuanceAccessToken(String nickname, DataFetchingEnvironment env) {
         return createNewAccessToken.reissuanceAccessToken(nickname,env);
+    }
+    public Count isValidate(String nickname, DataFetchingEnvironment env) throws Exception {
+        return isValidate.isValidate(nickname,env);
     }
 }

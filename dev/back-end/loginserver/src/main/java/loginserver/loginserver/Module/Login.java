@@ -16,11 +16,11 @@ public class Login {
 
     @Autowired
     private CreateNewAccessToken createNewAccessToken;
-    @Autowired
-    private CreateNewRefreshToken createNewRefreshToken;
+//    @Autowired
+//    private CreateNewRefreshToken createNewRefreshToken;
 
 
-    public User login(String email, String password) {
+    public User login(String email, String password, String ip) {
         if (!userRepository.existsByEmail(email)) {
             return new User(null, "Login fail", "Login fail", "Login fail", "Login fail");
         }
@@ -29,9 +29,10 @@ public class Login {
             return new User(null, "Login fail", "Login fail", "Login fail", "Login fail");
         }
         //String key = randMaker.getKey(false, 20);
-        user.setAccessToken(createNewAccessToken.create(user.getNickname(), email));
-        user.setRefreshToken(createNewRefreshToken.create(user.getNickname(), email));
+        //user.setRefreshToken(createNewRefreshToken.create(user.getNickname(), email));
         userRepository.save(user);
+        user.setPassword(null);
+        user.setAccessToken(createNewAccessToken.create(user.getNickname(), email, ip));
         return user;
     }
 }

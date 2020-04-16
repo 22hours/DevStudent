@@ -17,7 +17,7 @@ public class ReissuanceAccessToken {
     private VerifyRefreshToken verifyRefreshToken;
     @Autowired
     private CreateNewAccessToken createNewAccessToken;
-    public User reissuanceAccessToken(String nickname, String refreshToken){
+    public User reissuanceAccessToken(String nickname, String refreshToken, String ip){
         String tokenState = "";
         if (!userRepository.existsByNickname(nickname)) {
             return new User(null, "Not exist nickname", "Reissue fail", "Reissue fail", "Reissue fail");
@@ -26,12 +26,16 @@ public class ReissuanceAccessToken {
         if(user.getEmail()!=null){
             tokenState = verifyRefreshToken.verifyRefreshToken(refreshToken, nickname, user.getEmail());
         }
+        else{
+            return new User(null, "Not Exist Email","Reissue fail","Reissue fail","Reissue fail");
+        }
         if (!tokenState.equals("Safe")) {
             return new User(null, tokenState, "Reissue fail", "Reissue fail", "Reissue fail");
         }
         //String key = randMaker.getKey(false, 20);
-        user.setAccessToken(createNewAccessToken.create(nickname, user.getEmail()));
-        user.setRefreshToken(null);
+        user.setAccessToken(createNewAccessToken.create(nickname, user.getEmail(), ip));
+        user.setPassword(null);
+//        user.setRefreshToken(null);
         return user;
     }
 }

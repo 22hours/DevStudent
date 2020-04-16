@@ -24,8 +24,8 @@ public class Mutation implements GraphQLMutationResolver {
     @Autowired
     private Login login;
 
-    @Autowired
-    private ReissuanceAccessToken reissuanceAccessToken;
+    /*@Autowired
+    private ReissuanceAccessToken reissuanceAccessToken;*/
 
     //region member Mutation
     public User createUser(String email, String password, String nickname, String schoolName) {
@@ -36,8 +36,8 @@ public class Mutation implements GraphQLMutationResolver {
         return updateUserAuthState.updateUserAuthState(authState);
     }
 
-    public User loginToServer(String email, String password) {
-        return login.login(email, password);
+    public User loginToServer(String email, String password, String ip) {
+        return login.login(email, password, ip);
     }
 
     public Count checkDuplicateEmail(String email) {
@@ -51,8 +51,8 @@ public class Mutation implements GraphQLMutationResolver {
             return new Count(1);
         return new Count(0);
     }
-    public User reissuanceAccessToken(String nickname, String refreshToken) {
+    /*public User reissuanceAccessToken(String nickname, String refreshToken) {
         return reissuanceAccessToken.reissuanceAccessToken(nickname, refreshToken);
-    }
+    }*/
     //endregion
 }

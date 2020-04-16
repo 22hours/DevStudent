@@ -14,5 +14,5 @@ extend type Query{
 }
 
 extend type Mutation {
-    deleteAlarm(alarm_id : String, nickname : String) : Alarm
+    deleteAlarm(alarm_id : String) : Alarm
 }

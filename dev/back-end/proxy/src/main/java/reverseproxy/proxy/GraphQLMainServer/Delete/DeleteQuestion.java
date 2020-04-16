@@ -8,14 +8,7 @@ import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
 @Component
 public class DeleteQuestion extends ConnectMainServer {
-    public Question deleteQuestion(String _id,String nickname, DataFetchingEnvironment env) throws Exception {
-        String authorized = checkJwt(nickname, env);
-        String invalidate = "invalidate";
-        String expired = "expired";
-        if(authorized.equals(invalidate))
-            return new Question(invalidate);
-        if(authorized.equals(expired))
-            return new Question(expired);
+    public Question deleteQuestion(String _id) {
         //region Query
         String query = "mutation{\n" +
                 "    deleteQuestion\n" +

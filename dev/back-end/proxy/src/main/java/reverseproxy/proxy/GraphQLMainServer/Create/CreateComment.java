@@ -1,21 +1,13 @@
 package reverseproxy.proxy.GraphQLMainServer.Create;
 
 import com.google.gson.Gson;
-import graphql.schema.DataFetchingEnvironment;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.Comment;
 import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
 @Component
 public class CreateComment extends ConnectMainServer {
-    public Comment createComment(String question_id, String answer_id, String author, String content, DataFetchingEnvironment env) throws Exception {
-        String authorized = checkJwt(author, env);
-        String invalidate = "invalidate";
-        String expired = "expired";
-        if(authorized.equals(invalidate))
-            return new Comment(invalidate);
-        if(authorized.equals(expired))
-            return new Comment(expired);
+    public Comment createComment(String question_id, String answer_id, String author, String content){
         //region Query
         String query = "mutation{\n" +
                 "    createComment\n" +
