@@ -25,6 +25,7 @@ public class CreateUser {
         }
         user = new User(email, password, nickname, schoolName, genKey);
         userRepository.save(user);
+        user.setPassword(null);
         return user;
     }
 }

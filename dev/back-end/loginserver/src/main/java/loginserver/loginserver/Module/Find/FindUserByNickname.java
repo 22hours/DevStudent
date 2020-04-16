@@ -17,6 +17,7 @@ public class FindUserByNickname {
         User user = userRepository.findByNickname(nickname);
         user.setRefreshToken(null);
         user.setAccessToken(null);
+        user.setPassword(null);
         return user;
     }
 }
