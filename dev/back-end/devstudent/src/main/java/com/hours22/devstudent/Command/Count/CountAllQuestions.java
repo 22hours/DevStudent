@@ -9,8 +9,9 @@ import org.springframework.stereotype.Component;
 public class CountAllQuestions {
     @Autowired
     QuestionRepository questionRepository;
-    public Count countAllQuestions(){
-        int num = (int)questionRepository.count();
+
+    public Count countAllQuestions() {
+        int num = (int) questionRepository.count();
         Count count = new Count(num);
         return count;
     }

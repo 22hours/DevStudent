@@ -1,6 +1,5 @@
 package com.hours22.devstudent.Command.Create;
 
-import com.hours22.devstudent.Command.Module.Test;
 import com.hours22.devstudent.Entity.Question;
 import com.hours22.devstudent.Repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +12,14 @@ public class CreateQuestion extends Create {
     @Autowired
     private QuestionRepository questionRepository;
 
-    public Question createQuestion(String token,String title, String author, List<String> tags, String content)
-    {
-        if(!isAuthorized(author,token))
-            return new Question(null,"error",author,tags,"Not Authorized User","Not Authorized User");
+    public Question createQuestion(String title, String author, List<String> tags, String content) {
+        System.out.println("Start");
         String seqNum = makeSequence("Question");
         String previews = (content.length() < 100) ? content : content.substring(0, 100);
-        Question question = new Question(seqNum,title,author,tags,content, previews);
+        Question question = new Question(seqNum, title, author, tags, content, previews);
         questionRepository.save(question);
-        Test test = new Test();
-        test.hi();
+        //Test test = new Test();
+        //test.hi();
         return question;
     }
 }

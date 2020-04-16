@@ -14,9 +14,9 @@ public abstract class Find {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public List<Question> getQuestions(String param, int pageNum, int requiredCount, Criteria criteria){
+    public List<Question> getQuestions(String param, int pageNum, int requiredCount, Criteria criteria) {
         Query query;
-        if(criteria == null)
+        if (criteria == null)
             query = new Query();
         else query = new Query(criteria);
         query.with(Sort.by(Sort.Direction.DESC, param));

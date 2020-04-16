@@ -24,7 +24,8 @@ public class Answer {
     private List<Comment> comments = new ArrayList<Comment>();
     @Setter
     private List<Like> likes = new ArrayList<Like>();
-    public Answer(String _id, String author, String content){
+
+    public Answer(String _id, String author, String content) {
         this._id = _id;
         this.author = author;
         this.content = content;

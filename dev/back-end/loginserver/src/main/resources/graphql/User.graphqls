@@ -1,0 +1,23 @@
+type User{
+    email : String
+    password : String
+    nickname : String
+    schoolName : String
+    date : String
+    authState : String
+    accessToken : String
+    refreshToken : String
+}
+
+type Query{
+    findUserByNickname(nickname : String) : User
+}
+
+type Mutation{
+    reissuanceAccessToken(nickname : String, refreshToken : String) : User
+    createUser(email: String!, password: String!, nickname: String!, schoolName : String!) : User
+    updateUserAuthState(authState : String!) : User
+    loginToServer(email : String, password : String) : User
+    checkDuplicateEmail(email : String) : Count
+    checkDuplicateNickname(nickname : String) : Count
+}

@@ -1,0 +1,14 @@
+type Answer{
+    _id : String
+    author : String
+    content : String
+    date : String
+    likesCount : Int
+    comments : [Comment]
+    likes : [Like]
+}
+
+extend type Mutation {
+    createAnswer(question_id : String!, author : String!, content : String!) : Answer
+    deleteAnswer(question_id : String!, answer_id : String!, nickname : String) : Answer
+}

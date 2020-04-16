@@ -13,9 +13,9 @@ public class FindQuestionsByOption extends Find {
     @Autowired
     private QuestionRepository questionRepository;
 
-    public List<Question> findQuestionsByOption(String param, String option, String searchContent, int pageNum, int requiredCount){
+    public List<Question> findQuestionsByOption(String param, String option, String searchContent, int pageNum, int requiredCount) {
         Criteria criteria = new Criteria(option);
-        criteria.regex(searchContent,"i");
-        return getQuestions(param,pageNum,requiredCount,criteria);
+        criteria.regex(searchContent, "i");
+        return getQuestions(param, pageNum, requiredCount, criteria);
     }
 }

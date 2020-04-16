@@ -12,10 +12,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Sequence")
 public class SequenceID {
     @Id
-    private  String _id;
+    private String _id;
     private int seqNum;
 
-    public SequenceID(String _id, int seqNum){
+    public SequenceID(String _id, int seqNum) {
         this._id = _id;
         this.seqNum = seqNum;
     }
