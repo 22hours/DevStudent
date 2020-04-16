@@ -1,5 +1,5 @@
 package loginserver.loginserver.Module.Create;
 
 public interface CreateToken {
-    public String create();
+    public String create(String nickname, String email);
 }

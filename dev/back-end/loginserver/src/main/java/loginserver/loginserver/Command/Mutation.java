@@ -4,8 +4,10 @@ import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import graphql.schema.DataFetchingEnvironment;
 import loginserver.loginserver.Entity.Count;
 import loginserver.loginserver.Entity.User;
+import loginserver.loginserver.Module.Create.CreateNewAccessToken;
 import loginserver.loginserver.Module.Create.CreateUser;
 import loginserver.loginserver.Module.Login;
+import loginserver.loginserver.Module.ReissuanceAccessToken;
 import loginserver.loginserver.Module.Update.UpdateUserAuthState;
 import loginserver.loginserver.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class Mutation implements GraphQLMutationResolver {
     private UpdateUserAuthState updateUserAuthState;
     @Autowired
     private Login login;
+
+    @Autowired
+    private ReissuanceAccessToken reissuanceAccessToken;
 
     //region member Mutation
     public User createUser(String email, String password, String nickname, String schoolName) {
@@ -46,8 +51,8 @@ public class Mutation implements GraphQLMutationResolver {
             return new Count(1);
         return new Count(0);
     }
-    public String createNewAccessToken(String refreshToken) {
-        return "";
+    public User reissuanceAccessToken(String nickname, String refreshToken) {
+        return reissuanceAccessToken.reissuanceAccessToken(nickname, refreshToken);
     }
     //endregion
 }

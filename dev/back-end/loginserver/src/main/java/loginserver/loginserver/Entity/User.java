@@ -22,7 +22,9 @@ public class User {
     @Setter
     private String authState;
     @Setter
-    private String token;
+    private String accessToken;
+    @Setter
+    private String refreshToken;
 
     public User(String email, String password, String nickname, String schoolName, String authState) {
         long time = System.currentTimeMillis();
@@ -33,7 +35,8 @@ public class User {
         this.email = email;
         this.schoolName = schoolName;
         this.authState = authState;
-        this.token = null;
+        this.accessToken = null;
+        this.refreshToken = null;
     }
 }
 

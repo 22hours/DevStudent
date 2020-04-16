@@ -5,15 +5,16 @@ type User{
     schoolName : String
     date : String
     authState : String
-    token : String
+    accessToken : String
+    refreshToken : String
 }
 
 type Query{
-    findUserByNickname(token : String, nickname : String) : User
+    findUserByNickname(nickname : String) : User
 }
 
 type Mutation{
-    createNewAccessToken(refreshToken : String) : String
+    reissuanceAccessToken(nickname : String, refreshToken : String) : User
     createUser(email: String!, password: String!, nickname: String!, schoolName : String!) : User
     updateUserAuthState(authState : String!) : User
     loginToServer(email : String, password : String) : User

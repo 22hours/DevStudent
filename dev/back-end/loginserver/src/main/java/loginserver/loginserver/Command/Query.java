@@ -12,7 +12,7 @@ public class Query implements GraphQLQueryResolver {
     @Autowired
     private FindUserByNickname findUserByNickname;
 
-    public User findUserByNickname(String token, String nickname){
-        return findUserByNickname.findUserByNickname(token,nickname);
+    public User findUserByNickname(String nickname){
+        return findUserByNickname.findUserByNickname(nickname);
     }
 }
