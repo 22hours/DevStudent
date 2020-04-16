@@ -13,6 +13,7 @@ type Query{
 }
 
 type Mutation{
+    createNewAccessToken(refreshToken : String) : String
     createUser(email: String!, password: String!, nickname: String!, schoolName : String!) : User
     updateUserAuthState(authState : String!) : User
     loginToServer(email : String, password : String) : User

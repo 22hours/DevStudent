@@ -1,6 +1,7 @@
 package loginserver.loginserver.Command;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import graphql.schema.DataFetchingEnvironment;
 import loginserver.loginserver.Entity.Count;
 import loginserver.loginserver.Entity.User;
 import loginserver.loginserver.Module.Create.CreateUser;
@@ -44,6 +45,9 @@ public class Mutation implements GraphQLMutationResolver {
         if (!userRepository.existsByNickname(nickname))
             return new Count(1);
         return new Count(0);
+    }
+    public String createNewAccessToken(String refreshToken) {
+        return "";
     }
     //endregion
 }
