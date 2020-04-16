@@ -10,12 +10,16 @@ import java.util.Date;
 @ToString
 @Getter
 public class Alarm {
-    private String _id;
-    private String question_id;
-    private String nickname;
-    private String respondent;
-    private String content;
-    private String date;
+    private String _id = null;
+    private String question_id = null;
+    private String nickname = null;
+    private String respondent = null;
+    private String content = null;
+    private String date = null;
     @Setter
-    private Boolean read;
+    private Boolean read = null;
+    public Alarm(String _id){
+        this._id = _id;
+    }
+
 }

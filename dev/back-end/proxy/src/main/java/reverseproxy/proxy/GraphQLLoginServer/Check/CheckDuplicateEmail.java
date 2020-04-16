@@ -1,15 +1,16 @@
-package reverseproxy.proxy.GraphQLLoginServer;
+package reverseproxy.proxy.GraphQLLoginServer.Check;
 
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.Count;
+import reverseproxy.proxy.GraphQLLoginServer.ConnectLoginServer;
 
 @Component
-public class CheckDuplicateNickname extends ConnectLoginServer {
-    public Count checkDuplicateNickname(String nickname) {
+public class CheckDuplicateEmail extends ConnectLoginServer {
+    public Count checkDuplicateEmail(String email) {
         //region Query
         String query = "mutation{\n" +
-                "    checkDuplicateNickname(nickname : \"" + nickname + "\"){\n" +
+                "    checkDuplicateEmail(email : \"" + email + "\"){\n" +
                 "        count\n" +
                 "    }\n" +
                 "}";

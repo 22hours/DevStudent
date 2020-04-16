@@ -1,26 +1,26 @@
-package reverseproxy.proxy.GraphQLLoginServer;
+package reverseproxy.proxy.GraphQLLoginServer.Create;
 
 import com.google.gson.Gson;
 import graphql.schema.DataFetchingEnvironment;
 import graphql.servlet.GraphQLContext;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.User;
+import reverseproxy.proxy.GraphQLLoginServer.ConnectLoginServer;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Component
-public class FindUserByNickname extends ConnectLoginServer {
-    public User findUserByNickname(String token, String nickname, DataFetchingEnvironment env) throws Exception {
-        String authorized = checkJwt(nickname,env);
-        String invalidate = "invalidate";
-        String expired = "expired";
-        if(authorized.equals(invalidate))
-            return new User(invalidate);
-        if(authorized.equals(expired))
-            return new User(expired);
+public class CreateNewAccessToken extends ConnectLoginServer {
+    public User createNewAccessToken(String nickname, DataFetchingEnvironment env) {
+        GraphQLContext context =  env.getContext();
+        HttpServletRequest request = context.getHttpServletRequest().get();
+        String jwt = request.getHeader("Authorization"); // refreshToken 주기
         //region Query
-        String query = "query{\n" +
-                "    findUserByNickname(token : \"" + token + "\",nickname : \"" + nickname + "\")\n" +
+        String query = "mutation{\n" +
+                "    createUser(\n" +
+                "        nickname: \"" + nickname + "\", \n" +
+                "        refreshToken : \"" + jwt + "\", \n" +
+                "        )\n" +
                 "    {\n" +
                 "        email\n" +
                 "        password\n" +
@@ -28,7 +28,6 @@ public class FindUserByNickname extends ConnectLoginServer {
                 "        schoolName\n" +
                 "        date\n" +
                 "        authState\n" +
-                "        token\n" +
                 "    }\n" +
                 "}";
         //endregion

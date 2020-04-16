@@ -10,11 +10,12 @@ type User{
 
 extend type Mutation{
     createUser(email: String!, password: String!, nickname: String!, schoolName : String!) : User
-    createNewAccessToken : String
+    createNewAccessToken(nickname : String) : User
     updateUserAuthState(authState : String!) : User
     loginToServer(email : String, password : String) : User
     checkDuplicateNickname(nickname : String) : Count
     checkDuplicateEmail(email : String) : Count
+    logoutFromServer(email : String) : Count
 }
 
 extend type Query{

@@ -1,6 +1,7 @@
 package reverseproxy.proxy.GraphQLMainServer.Create;
 
 import com.google.gson.Gson;
+import graphql.schema.DataFetchingEnvironment;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.Question;
 import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
@@ -11,7 +12,15 @@ import java.util.stream.Collectors;
 
 @Component
 public class CreateQuestion extends ConnectMainServer {
-    public Question createQuestion(String token, String title, String author, List<String> tags, String content) {
+    public Question createQuestion(String token, String title, String author, List<String> tags, String content, DataFetchingEnvironment env) throws Exception {
+        String authorized = checkJwt(author, env);
+        String invalidate = "invalidate";
+        String expired = "expired";
+        if(authorized.equals(invalidate))
+            return new Question(invalidate);
+        if(authorized.equals(expired))
+            return new Question(expired);
+
         String result = tags.stream()
                 .collect(Collectors.joining("\", \"", "\"", "\""));
         //region Query

@@ -1,13 +1,21 @@
 package reverseproxy.proxy.GraphQLMainServer.Delete;
 
 import com.google.gson.Gson;
+import graphql.schema.DataFetchingEnvironment;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.Comment;
 import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
 @Component
 public class DeleteComment extends ConnectMainServer {
-    public Comment deleteComment(String question_id, String answer_id, String comment_id) {
+    public Comment deleteComment(String question_id, String answer_id, String comment_id,String nickname, DataFetchingEnvironment env) throws Exception {
+        String authorized = checkJwt(nickname, env);
+        String invalidate = "invalidate";
+        String expired = "expired";
+        if(authorized.equals(invalidate))
+            return new Comment(invalidate);
+        if(authorized.equals(expired))
+            return new Comment(expired);
         //region Query
         String query = "mutation{\n" +
                 "    deleteComment\n" +

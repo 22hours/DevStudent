@@ -1,8 +1,9 @@
-package reverseproxy.proxy.GraphQLLoginServer;
+package reverseproxy.proxy.GraphQLLoginServer.Create;
 
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.User;
+import reverseproxy.proxy.GraphQLLoginServer.ConnectLoginServer;
 
 @Component
 public class CreateUser extends ConnectLoginServer {
