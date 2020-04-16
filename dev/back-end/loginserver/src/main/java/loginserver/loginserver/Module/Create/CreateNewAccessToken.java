@@ -22,11 +22,11 @@ public class CreateNewAccessToken implements CreateToken {
     private String secretKey = "DevStudentJWTAuthTimeWithJeongHwanAndDaMinAndHyoBinAndJeongGu";
     private String hashSecretKey = "";
     @Override
-    public String create(String nickname, String email) {
+    public String create(String nickname, String email, String ip) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
-        Date expireTime = new Date();
-        expireTime.setTime(expireTime.getTime() + 1000 * 60 * 60);
-        hashSecretKey = sha256K.hashValueForSecret(secretKey + nickname);
+        //Date expireTime = new Date();
+        //expireTime.setTime(expireTime.getTime() + 1000 * 60 * 60);
+        hashSecretKey = sha256K.hashValueForSecret(secretKey + ip);
         byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(hashSecretKey);
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
         Map<String, Object> headerMap = new HashMap<String, Object>();
@@ -42,7 +42,7 @@ public class CreateNewAccessToken implements CreateToken {
 
         JwtBuilder builder = Jwts.builder().setHeader(headerMap)
                 .setClaims(map)
-                .setExpiration(expireTime)
+                //.setExpiration(expireTime)
                 .signWith(signatureAlgorithm, signingKey);
 
         return builder.compact();

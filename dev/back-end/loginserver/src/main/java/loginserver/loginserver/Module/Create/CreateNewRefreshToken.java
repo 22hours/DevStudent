@@ -22,7 +22,7 @@ public class CreateNewRefreshToken implements CreateToken {
     private String secretKey = "WeAreFancyDevStudentThisIsKoreanTraditionalLifeTogetherJeongHwanAndDaMinAndHyoBinAndJeongGu";
     private String hashSecretKey = "";
     @Override
-    public String create(String nickname, String email) {
+    public String create(String nickname, String email, String ip) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
         Date expireTime = new Date();
         expireTime.setTime(expireTime.getTime() + 1000 * 60 * 60 * 24 *14);
