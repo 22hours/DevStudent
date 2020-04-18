@@ -8,9 +8,17 @@ const SitesInfo = ({ match }) => {
     const InfoTypeRenderer = () => {
         switch (match.params.infotype) {
             case "privacy":
-                return <React.Fragment>privacy</React.Fragment>;
+                return (
+                    <React.Fragment>
+                        <Container>privacy</Container>
+                    </React.Fragment>
+                );
             case "terms":
-                return <React.Fragment>terms</React.Fragment>;
+                return (
+                    <React.Fragment>
+                        <Container> terms</Container>
+                    </React.Fragment>
+                );
             default:
                 return <React.Fragment>404</React.Fragment>;
         }
