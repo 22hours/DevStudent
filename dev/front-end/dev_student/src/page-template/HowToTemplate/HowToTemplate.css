@@ -1,3 +1,30 @@
+@media only screen and (max-width: 800px) {
+    .HowToTemplate .howto-main-col {
+        width: 100% !important;
+        margin-right: 0px !important;
+    }
+}
+
+.HowToTemplate {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background-color: rgb(245, 245, 245);
+}
+
+.HowToTemplate .howto-main-col {
+    float: left;
+    height: 100%;
+    width: calc(100% - 230px);
+    margin-right: 30px;
+}
+
+.HowToTemplate .howto-side-col {
+    float: left;
+    height: 100%;
+    width: 200px;
+}
+
 .howto-wrapper {
     border-right: 1px inset #dcdcdc;
 }

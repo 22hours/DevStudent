@@ -1,9 +1,9 @@
 @media only screen and (max-width: 800px) {
-    .howto-wrapper .qa-status-box {
+    .HowToTemplate .qa-status-box {
         display: none;
     }
 
-    /* .howto-wrapper .is-question-box-a {
+    /* .HowToTemplate .is-question-box-a {
         display: none;
     } */
 
@@ -16,36 +16,36 @@
     .header-box-is-question-box-a {
         display: none;
     }
-    .howto-wrapper .likes-inner {
+    .HowToTemplate .likes-inner {
         display: none;
     }
 }
 
-.howto-wrapper .qa-status-box {
+.HowToTemplate .qa-status-box {
     float: left;
     width: 30px;
     margin-right: 13px;
 }
 
-.howto-wrapper .likes-outter .likes-count-box {
+.HowToTemplate .likes-outter .likes-count-box {
     font-family: "Do Hyeon", sans-serif;
     text-align: center;
     font-size: 19px;
     color: gray;
 }
 
-.howto-wrapper .likes-outter .likes-count-up,
+.HowToTemplate .likes-outter .likes-count-up,
 .likes-count-down {
     text-align: center;
     font-size: 12px;
     color: gray;
 }
 
-.howto-wrapper .likes-inner {
+.HowToTemplate .likes-inner {
     padding-right: 10px;
 }
 
-.howto-wrapper .likes-inner .likes-count-up,
+.HowToTemplate .likes-inner .likes-count-up,
 .likes-count-down {
     text-align: center;
     font-size: 12px;
@@ -53,7 +53,7 @@
     float: left;
     margin-right: 8px;
 }
-.howto-wrapper .likes-inner .likes-count-box {
+.HowToTemplate .likes-inner .likes-count-box {
     font-family: "Do Hyeon", sans-serif;
     text-align: center;
     font-size: 19px;
@@ -62,23 +62,23 @@
     margin-right: 10px;
 }
 
-.howto-wrapper .likes-outter .likes-count-up {
+.HowToTemplate .likes-outter .likes-count-up {
     margin-bottom: -10px;
 }
 
-.howto-wrapper .likes-outter .likes-count-down {
+.HowToTemplate .likes-outter .likes-count-down {
     margin-top: -10px;
 }
 
-.howto-wrapper .likes-inner {
+.HowToTemplate .likes-inner {
     float: right;
 }
 
-.howto-wrapper .solved-outter {
+.HowToTemplate .solved-outter {
     text-align: center;
 }
 
-.howto-wrapper .question-box {
+.HowToTemplate .question-box {
     margin-top: 3%;
     padding-top: 1px;
     background-color: white;
@@ -96,7 +96,7 @@
     padding-left: 10px;
 }
 
-.howto-wrapper .is-question-box-q {
+.HowToTemplate .is-question-box-q {
     font-family: "Do Hyeon", sans-serif;
     /* float: left; */
     width: 30px;
@@ -109,7 +109,7 @@
     color: white;
 }
 
-.howto-wrapper .is-question-box-a {
+.HowToTemplate .is-question-box-a {
     font-family: "Do Hyeon", sans-serif;
     /* float: left; */
     width: 30px;

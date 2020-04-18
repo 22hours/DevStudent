@@ -1,0 +1,101 @@
+.HowToBoxItem {
+    background-color: white;
+    border: 1px solid rgb(233, 233, 233);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+    height: auto;
+    overflow: hidden;
+}
+
+.HowToBoxItem .howto-item-stats-col {
+    padding-top: 5px;
+    width: 50px;
+    height: 100%;
+    float: left;
+}
+
+.HowToBoxItem .howto-item-stats-col .stats-row {
+    text-align: center;
+}
+.howto-item-stats-col .stats-row #stats-value {
+    line-height: 1em;
+    font-size: 16px;
+}
+
+.howto-item-stats-col .stats-row #stats-label {
+    font-size: 10px;
+    color: gray;
+}
+
+.howto-item-stats-col .stats-row #stats-br {
+    line-height: 0em;
+}
+
+.HowToBoxItem .howto-item-main-col {
+    width: calc(100% - 55px);
+    margin-left: 5px;
+    height: 100%;
+    font-family: "Noto Sans KR", sans-serif;
+
+    float: left;
+}
+.howto-item-main-col .header-row {
+    height: 23px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.howto-item-main-col .header-row a {
+    color: black;
+    text-decoration: none;
+}
+
+.howto-item-main-col .preview-row {
+    width: 100%;
+    color: gray;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.howto-item-main-col .item-info-row {
+    overflow: hidden;
+    width: 100%;
+}
+
+.howto-item-main-col .item-info-row .item-info-content-col #views-row {
+    margin-top: 10px;
+    font-size: 10px;
+    color: gray;
+}
+
+.howto-item-main-col .item-info-row .item-info-content-col {
+    width: calc(100% - 120px);
+    float: left;
+}
+.howto-item-main-col .item-info-row .item-info-person-col {
+    padding-top: 5px;
+    float: left;
+    width: 120px;
+}
+
+.item-info-person-col .person-info-col {
+    width: calc(100% - 50px);
+    float: left;
+}
+.item-info-person-col .person-avatar-col {
+    padding-top: 3px;
+    margin-right: 3px;
+    width: 33px;
+    float: left;
+}
+.item-info-person-col .person-info-col #user-nickname {
+    font-size: 12px;
+    color: rgb(68, 68, 68);
+}
+
+.item-info-person-col .person-info-col #user-stat {
+    font-size: 10px;
+    color: gray;
+}

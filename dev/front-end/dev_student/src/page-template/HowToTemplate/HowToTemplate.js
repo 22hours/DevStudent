@@ -8,16 +8,14 @@ import HowToSidebarComponent from "component/HowToSidebarComponent/HowToSidebarC
 const HowToTemplate = ({ children, tag, handleNewQuestion }) => {
     return (
         <React.Fragment>
-            <Container>
-                <Row>
-                    <Col md={9} className="howto-wrapper">
-                        {children}
-                    </Col>
-                    <Col md={3}>
+            <div className="HowToTemplate">
+                <Container>
+                    <div className="howto-main-col">{children}</div>
+                    <div className="howto-side-col">
                         <HowToSidebarComponent tag={tag} handleNewQuestion={handleNewQuestion}></HowToSidebarComponent>
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                </Container>
+            </div>
         </React.Fragment>
     );
 };

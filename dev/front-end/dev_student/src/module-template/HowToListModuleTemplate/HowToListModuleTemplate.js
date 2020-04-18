@@ -9,6 +9,7 @@ import PageHeaderModule from "module/PageHeaderModule/PageHeaderModule";
 
 // items
 import HowToItem from "item/HowToItem/HowToItem";
+import HowToBoxItem from "item/HowToBoxItem/HowToBoxItem";
 
 const TagProvider = ({ param, nowTag, pageNum }) => {
     const { loading, error, data } = useQuery(FIND_QUESTIONS_BY_TAG, {
@@ -38,9 +39,13 @@ const NonTagProvider = ({ param, nowTag, pageNum }) => {
     });
     if (loading) return <p>Loading ...</p>;
     if (error) return <p>Error!</p>;
-
+    console.log(data);
+    if (data === null) {
+        alert("Error!");
+        return <p>Error!</p>;
+    }
     return data.findAllQuestions.map(({ _id, title, author, tags, date, content, answerCount, views, previews }) => (
-        <HowToItem
+        <HowToBoxItem
             id={_id}
             key={_id}
             author={author}
@@ -50,7 +55,8 @@ const NonTagProvider = ({ param, nowTag, pageNum }) => {
             date={date}
             previews={previews}
             tags={tags}
-        ></HowToItem>
+            date={date}
+        ></HowToBoxItem>
     ));
 };
 

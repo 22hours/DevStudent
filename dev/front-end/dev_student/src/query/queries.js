@@ -42,6 +42,7 @@ export const findAllQuestionsPage = gql`
             answerCount
             _id
             author
+            date
             previews
             tags
         }
@@ -54,6 +55,7 @@ export const findAllQuestions = gql`
             title
             views
             answerCount
+            date
             _id
             author
             previews
@@ -70,6 +72,7 @@ export const findAllQuestionsByViews = gql`
             answerCount
             _id
             author
+            date
             previews
             tags
         }

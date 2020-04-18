@@ -26,17 +26,9 @@
     font-size: 15px;
 }
 
-.filter-button-wrapper {
-    position: absolute;
-    right: 0px;
-    width: 100px;
-}
-
 .search-button-wrapper {
-    position: absolute;
-    right: 0px;
     width: 100px;
-    margin-right: 75px;
+    margin-left: 10px;
     cursor: pointer;
 }
 
