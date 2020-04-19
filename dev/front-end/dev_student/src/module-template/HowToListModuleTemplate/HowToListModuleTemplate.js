@@ -5,7 +5,7 @@ import { FIND_QUESTIONS_BY_TAG, findAllQuestionsPage } from "query/queries";
 
 // modules
 import PageHeaderModule from "module/PageHeaderModule/PageHeaderModule";
-import PageNavigation from "../../module/PageNavigtion/PageNavigation";
+import PageNavigation from "module/PageNavigtion/PageNavigation";
 
 // items
 import HowToBoxItem from "item/HowToBoxItem/HowToBoxItem";

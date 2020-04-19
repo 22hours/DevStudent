@@ -1,8 +1,20 @@
+.navbar {
+    background-color: rgba(245, 245, 245, 0.8);
+    border: gray;
+    border-bottom: 2px solid rgb(233, 233, 233);
+}
 .header {
     background: #5c7cfa;
     display: table;
     table-layout: fixed;
     width: 100%;
+}
+
+.header-brand-box {
+    cursor: pointer;
+}
+#brand-img {
+    width: 70px;
 }
 
 .nav-link {
@@ -60,13 +72,6 @@
     background-image: url(/public/img/topbar_logo3.png);
 }
 
-.navbar {
-    background-color: rgba(245, 245, 245, 0.8);
-    border: gray;
-    border-bottom: 2px;
-    box-shadow: 0 2px 4px rgba(167, 167, 167, 0.16), 0 2px 4px rgba(122, 122, 122, 0.23); /* 그림자 */
-}
-
 .header-item {
     color: white;
 }
@@ -76,8 +81,11 @@
 }
 
 .header-wrapper li {
-    height: 50px;
     float: left;
+}
+
+.nav-item {
+    width: auto;
 }
 
 .nav-item-wrapper {
@@ -86,12 +94,24 @@
 
 .nav-item-wrapper .nav-link {
     padding-top: 15px;
+    padding-bottom: 10px;
     vertical-align: middle;
     display: inline-block;
     text-align: center;
-    font-size: 16px;
+    font-size: 12px;
     margin-left: 30px;
-    font-family: "Do Hyeon", sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
+}
+.nav-item-wrapper .nav-link .selected {
+    border-bottom: 1px solid black;
+}
+
+.navbar #navbar-light {
+    width: 39px;
+    height: 1px;
+    position: absolute;
+    margin-top: 20px;
+    background-color: black;
 }
 
 .nav-item-wrapper a {

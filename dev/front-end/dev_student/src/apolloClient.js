@@ -25,7 +25,6 @@ const client = new ApolloClient({
     },
     uri: "http://15.164.164.141:8080/graphql",
     onError: (error) => {
-        console.log("ERROR CAPTURED!!!");
         const nickname = localStorage.getItem("nickname");
         if (nickname) {
             localStorage.clear();

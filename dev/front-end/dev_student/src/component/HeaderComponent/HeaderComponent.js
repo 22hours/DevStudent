@@ -13,14 +13,16 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const HeaderComponent = ({ nickname }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [clicked, setClicked] = useState();
     const toggle = () => setIsOpen(!isOpen);
     const [linkClick, setLinkClick] = useState(false);
     const sign_style = {
         justifyContent: "flex-end",
-        padding: "13px",
+        padding: "10px",
     };
 
     const LinkClick = () => {
+        console.log("nav bar toggle");
         toggle();
         setLinkClick(true);
     };
@@ -29,7 +31,7 @@ const HeaderComponent = ({ nickname }) => {
         return (
             <div className="nav-item-wrapper" style={sign_style}>
                 <Link to="/login">
-                    <ExitToAppIcon style={{ color: "gray" }} />
+                    <ExitToAppIcon style={{ verticalAlign: "middle", fontSize: "18px", color: "gray" }} />
                 </Link>
             </div>
         );
@@ -58,11 +60,11 @@ const HeaderComponent = ({ nickname }) => {
     return (
         <Navbar style={navBarInlineStyle} color="black" light expand="md" className="header-wrapper sticky-top">
             <Container>
-                <NavbarToggler onClick={toggle}></NavbarToggler>
-                <NavbarBrand href="/">
-                    <img src="/img/devstu_text_logo_empty.png"></img>
-                </NavbarBrand>
-                <Collapse isOpen={isOpen} navbar>
+                <NavbarToggler style={{ marginLeft: "3px", fontSize: "12px" }} onClick={toggle}></NavbarToggler>
+                <div className="header-brand-box" onClick={() => (window.location.href = "/")}>
+                    <img id="brand-img" src="/img/devstu_text_logo_empty.png"></img>
+                </div>
+                <Collapse style={{ lineHeight: "0px" }} isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         <NavItem>
                             <div className="nav-item-wrapper">
