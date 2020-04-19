@@ -7,6 +7,7 @@ import Avatar from "atom/Avatar/Avatar";
 
 // img
 import avatar_test from "img/mypage/avatar_test.png";
+import debal from "img/mypage/debal.png";
 
 const ContentHeaderModule = (props) => {
     const { _id, title, author, date, views, mine, solved } = props;
@@ -34,7 +35,7 @@ const ContentHeaderModule = (props) => {
             </div>
             <div className="content-intro-wrapper-div">
                 <div className="avatar-box">
-                    <Avatar img={avatar_test} />
+                    <Avatar img={debal} />
                 </div>
                 <div className="author-date-wrapper">
                     <div className="author-box">{author}</div>

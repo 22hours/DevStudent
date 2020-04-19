@@ -17,14 +17,14 @@
 .HowToTemplate .howto-main-col {
     float: left;
     height: 100%;
-    width: calc(100% - 230px);
+    width: calc(100% - 280px);
     margin-right: 30px;
 }
 
 .HowToTemplate .howto-side-col {
     float: left;
     height: 100%;
-    width: 200px;
+    width: 250px;
 }
 
 .howto-wrapper {

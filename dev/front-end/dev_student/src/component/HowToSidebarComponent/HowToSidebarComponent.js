@@ -17,7 +17,7 @@ import HotQuestionItem from "item/HotQuestionItem/HotQuestionItem";
 
 const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
     const btn_style = {
-        fontSize: "17px",
+        fontSize: "20px",
         color: "white",
         width: "100%",
     };
@@ -44,12 +44,7 @@ const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
             <div className="howto-sidebar-wrapper pc-only">
                 <div>
                     <Link to="/newquestion" style={btn_style}>
-                        <Button
-                            onClick={handleNewQuestion}
-                            className="new-question-button"
-                            color="info"
-                            style={btn_style}
-                        >
+                        <Button onClick={handleNewQuestion} id="new-question-button" color="info" style={btn_style}>
                             NewQuestion!
                         </Button>
                     </Link>

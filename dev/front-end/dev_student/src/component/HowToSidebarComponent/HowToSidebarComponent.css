@@ -2,7 +2,7 @@
     margin: 0 auto;
 }
 
-.new-question-button {
+#new-question-button {
     width: 100%;
     margin-top: 5%;
     font-family: "Do Hyeon", sans-serif;
@@ -10,7 +10,7 @@
 }
 .hot-question-header {
     text-align: left;
-    font-size: 14px;
+    font-size: 16px;
     font-family: "Noto Sans KR", sans-serif;
     font-weight: bold;
     margin-bottom: 10px;

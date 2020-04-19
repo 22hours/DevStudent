@@ -29,7 +29,7 @@ const HotQuestionItem = ({ id, views, title }) => {
     return (
         <div width="100%">
             <div className="hot-links-list-group-item">
-                <LinkIcon style={{ fontSize: "10px", color: "gray" }} /> {title}{" "}
+                <LinkIcon style={{ fontSize: "14px", color: "gray" }} /> {title}{" "}
                 <span id="views">
                     {" "}
                     &nbsp;

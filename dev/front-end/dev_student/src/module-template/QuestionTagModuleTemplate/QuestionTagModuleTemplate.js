@@ -17,7 +17,7 @@ class QuestionTagModuleTemplate extends Component {
             <div className="question-tag-wrapper">
                 <div className="question-tag-header-wrapper">
                     <div className="question-tag-header">
-                        태그 <LocalOfferIcon style={{ fontSize: "12px" }} />
+                        태그 <LocalOfferIcon style={{ fontSize: "14px" }} />
                     </div>{" "}
                 </div>
                 <div className="question-tag-list-wrapper">

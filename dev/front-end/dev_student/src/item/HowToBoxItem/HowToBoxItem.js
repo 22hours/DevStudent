@@ -39,7 +39,7 @@ const HowToBoxItem = (props) => {
                 </div>
                 <div className="stats-row">
                     <div id="stats-label">
-                        <VisibilityIcon style={{ fontSize: "10px" }} /> {views}
+                        <VisibilityIcon style={{ fontSize: "12px" }} /> {views}
                     </div>
                 </div>
             </div>

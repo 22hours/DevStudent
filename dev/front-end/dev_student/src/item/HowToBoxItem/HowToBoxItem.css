@@ -20,11 +20,11 @@
 }
 .howto-item-stats-col .stats-row #stats-value {
     line-height: 1em;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .howto-item-stats-col .stats-row #stats-label {
-    font-size: 10px;
+    font-size: 13px;
     color: gray;
 }
 
@@ -37,36 +37,37 @@
     margin-left: 5px;
     height: 100%;
     font-family: "Noto Sans KR", sans-serif;
-
     float: left;
 }
 .howto-item-main-col .header-row {
-    height: 23px;
+    height: 30px;
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .howto-item-main-col .header-row a {
     color: black;
+    font-size: 18px;
     text-decoration: none;
 }
 
 .howto-item-main-col .preview-row {
     width: 100%;
     color: gray;
-    font-size: 12px;
+    font-size: 13px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .howto-item-main-col .item-info-row {
     overflow: hidden;
+    margin-top: 5px;
     width: 100%;
 }
 
 .howto-item-main-col .item-info-row .item-info-content-col #views-row {
     margin-top: 10px;
-    font-size: 10px;
+    font-size: 12px;
     color: gray;
 }
 
@@ -91,11 +92,11 @@
     float: left;
 }
 .item-info-person-col .person-info-col #user-nickname {
-    font-size: 12px;
+    font-size: 14px;
     color: rgb(68, 68, 68);
 }
 
 .item-info-person-col .person-info-col #user-stat {
-    font-size: 10px;
+    font-size: 12px;
     color: gray;
 }

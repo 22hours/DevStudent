@@ -36,11 +36,11 @@ class QuestionTagItem extends Component {
                 <div className="howto-list-group-wrapper">
                     <span className="howto-list-group-item-tagname">{tagname}</span>
                     <span id="x">
-                        <ClearIcon style={{ fontSize: "8px" }} />
+                        <ClearIcon style={{ fontSize: "10px" }} />
                     </span>
                     <span id="tagcount">
                         {" "}
-                        <VisibilityIcon style={{ fontSize: "9px" }} />
+                        <VisibilityIcon style={{ fontSize: "10px" }} />
                         &nbsp;
                         {tagcount}
                     </span>

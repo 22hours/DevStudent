@@ -9,7 +9,7 @@ const HotLinksModuleTemplate = ({ hotquestionList }) => {
             <div className="howto-hot-question-header-wrapper">
                 <div className="hot-question-header">
                     핫 게시물 &nbsp;
-                    <WhatshotIcon style={{ fontSize: "12px" }} />
+                    <WhatshotIcon style={{ fontSize: "14px" }} />
                 </div>
             </div>
             <div className="howto-hot-question-list-wrapper">

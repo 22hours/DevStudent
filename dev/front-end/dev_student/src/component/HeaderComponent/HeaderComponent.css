@@ -14,7 +14,7 @@
     cursor: pointer;
 }
 #brand-img {
-    width: 70px;
+    width: 90px;
 }
 
 .nav-link {
@@ -98,7 +98,7 @@
     vertical-align: middle;
     display: inline-block;
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     margin-left: 30px;
     font-family: "Noto Sans KR", sans-serif;
 }
