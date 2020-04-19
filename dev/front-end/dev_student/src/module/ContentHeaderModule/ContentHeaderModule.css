@@ -41,12 +41,12 @@
 }
 
 .how-to-content-header .question-header {
-    font-family: "Do Hyeon", sans-serif;
-    font-size: 20px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 22px;
 }
 
 .how-to-content-header .quetsion-id {
-    font-size: 19px;
+    font-size: 20px;
     color: gray;
     margin-right: 10px;
 }
@@ -54,7 +54,7 @@
 .content-intro-wrapper-div-right .date-text-span,
 .view-text-span {
     font-family: "Noto Sans KR", sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     vertical-align: base;
     display: inline-block;
     color: black;
@@ -72,7 +72,7 @@
 .view-span {
     color: #888888;
     font-family: "Noto Sans KR", sans-serif;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .how-to-content-header .content-intro-wrapper-div {
@@ -81,14 +81,14 @@
 }
 
 .content-header-header {
-    line-height: 20px;
+    line-height: 22px;
     margin-bottom: 10px;
 }
 
 .how-to-content-header .solved-bagde {
     vertical-align: text-bottom;
     font-family: "Noto Sans KR", sans-serif;
-    font-size: 10px;
+    font-size: 12px;
     margin-left: 2px;
     padding-left: 5px;
     padding-top: 3px;
@@ -106,7 +106,7 @@
 .how-to-content-header .mine-bagde {
     vertical-align: text-bottom;
     font-family: "Noto Sans KR", sans-serif;
-    font-size: 10px;
+    font-size: 12px;
     margin-left: 2px;
     padding-left: 5px;
     padding-top: 3px;

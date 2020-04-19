@@ -30,14 +30,14 @@
 .HowToTemplate .likes-outter .likes-count-box {
     font-family: "Do Hyeon", sans-serif;
     text-align: center;
-    font-size: 19px;
+    font-size: 20px;
     color: gray;
 }
 
 .HowToTemplate .likes-outter .likes-count-up,
 .likes-count-down {
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     color: gray;
 }
 
@@ -48,7 +48,7 @@
 .HowToTemplate .likes-inner .likes-count-up,
 .likes-count-down {
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     color: gray;
     float: left;
     margin-right: 8px;
@@ -176,12 +176,12 @@
 
 .comment-box #author {
     color: #4ba0b5;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .comment-box #date {
     color: gray;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .comment-box #content {

@@ -11,7 +11,7 @@ import HowToListModuleTemplate from "module-template/HowToListModuleTemplate/How
 import HowToContentModuleTemplate from "module-template/HowToContentModuleTemplate/HowToContentModuleTemplate";
 
 // module
-
+import ScrollToTop from "module/ScrollToTop/ScrollToTop";
 // atom
 
 const HowTo = ({ location }) => {
@@ -38,21 +38,23 @@ const HowTo = ({ location }) => {
     return (
         <HowToTemplate tag={tag}>
             <Router>
-                <Switch>
-                    <Route
-                        exact
-                        path="/howto"
-                        render={() => (
-                            <div>
-                                <HowToListModuleTemplate
-                                    location={location}
-                                    questionAll={questionAll}
-                                ></HowToListModuleTemplate>
-                            </div>
-                        )}
-                    />
-                    <Route path="/howto/question/:id" component={HowToContentModuleTemplate} />
-                </Switch>
+                <ScrollToTop>
+                    <Switch>
+                        <Route
+                            exact
+                            path="/howto"
+                            render={() => (
+                                <div>
+                                    <HowToListModuleTemplate
+                                        location={location}
+                                        questionAll={questionAll}
+                                    ></HowToListModuleTemplate>
+                                </div>
+                            )}
+                        />
+                        <Route path="/howto/question/:id" component={HowToContentModuleTemplate} />
+                    </Switch>
+                </ScrollToTop>
             </Router>
         </HowToTemplate>
     );
