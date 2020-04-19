@@ -1,13 +1,14 @@
 .howto-hot-question-list-wrapper {
+    width: 100%;
     margin-bottom: 1%;
 }
 .howto-hot-question-header-wrapper {
-    border-bottom: 1px lightgray;
+    /* border-bottom: 1px lightgray;
     border-style: solid;
     border-top: none;
     border-left: none;
     border-right: none;
-    border-width: 100%;
+    border-width: 100%; */
     margin-bottom: 1%;
 }
 .howto-hot-question-wrapper {
@@ -16,6 +17,9 @@
     border-style: solid;
     border-width: 1px;
     margin-top: 5%;
+    padding: 5px;
+    padding-left: 10px;
+    background-color: white;
 }
 
 .hot-question-list-items {

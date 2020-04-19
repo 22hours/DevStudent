@@ -41,8 +41,8 @@ const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
 
     return (
         <React.Fragment>
-            <Container className="howto-sidebar-wrapper pc-only">
-                <Row>
+            <div className="howto-sidebar-wrapper pc-only">
+                <div>
                     <Link to="/newquestion" style={btn_style}>
                         <Button
                             onClick={handleNewQuestion}
@@ -53,14 +53,14 @@ const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
                             NewQuestion!
                         </Button>
                     </Link>
-                </Row>
-                <Row>
+                </div>
+                <div>
                     <QuestionTagModuleTemplate tag={tag}></QuestionTagModuleTemplate>
-                </Row>
-                <Row>
+                </div>
+                <div>
                     <HotLinksModuleTemplate hotquestionList={hotquestionList}></HotLinksModuleTemplate>
-                </Row>
-            </Container>
+                </div>
+            </div>
             <div style={{ marginBottom: "3.5%" }}></div>
         </React.Fragment>
     );

@@ -1,9 +1,11 @@
 import React from "react";
-import { ListGroup, ListGroupItem, Badge } from "reactstrap";
 
 // css
 import "./HotQuestionItem.css";
 
+//icons
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import LinkIcon from "@material-ui/icons/Link";
 const HotQuestionItem = ({ id, views, title }) => {
     const list_style = {
         fontSize: "11px",
@@ -25,14 +27,19 @@ const HotQuestionItem = ({ id, views, title }) => {
     };
 
     return (
-        <ListGroup width="100%">
-            <ListGroupItem className="hot-links-list-group-item" style={list_style}>
-                {title}{" "}
-                <Badge pill style={badge_style}>
+        <div width="100%">
+            <div className="hot-links-list-group-item">
+                <LinkIcon style={{ fontSize: "10px", color: "gray" }} /> {title}{" "}
+                <span id="views">
+                    {" "}
+                    &nbsp;
                     {views}
-                </Badge>
-            </ListGroupItem>
-        </ListGroup>
+                </span>
+                {/* <Badge pill style={badge_style}>
+                    {views}
+                </Badge> */}
+            </div>
+        </div>
     );
 };
 

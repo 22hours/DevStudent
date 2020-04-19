@@ -13,10 +13,19 @@
     text-align: center;
     font-size: 13px;
     font-weight: 450;
-    float: left;
     width: 100%;
 }
 
 .hot-links-list-group-item {
-    background-color: rgb(245, 245, 245) !important;
+    color: rgb(44, 44, 44);
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 11px;
+    text-align: left;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.hot-question-list-items #views {
+    color: rgb(95, 143, 158);
+    font-size: 10px;
 }

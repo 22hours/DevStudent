@@ -4,6 +4,9 @@ import { ListGroup, ListGroupItem, Badge } from "reactstrap";
 //css
 import "./QuestionTagItem.css";
 
+//icons
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import ClearIcon from "@material-ui/icons/Clear";
 class QuestionTagItem extends Component {
     render() {
         const { idx, tagname, tagcount } = this.props;
@@ -29,15 +32,23 @@ class QuestionTagItem extends Component {
         };
 
         return (
-            <ListGroup width="100%">
-                <ListGroupItem className="howto-list-group-wrapper" style={liststyle}>
+            <div width="100%">
+                <div className="howto-list-group-wrapper">
                     <span className="howto-list-group-item-tagname">{tagname}</span>
-                    <span>X</span>
-                    <Badge pill style={badge_style}>
+                    <span id="x">
+                        <ClearIcon style={{ fontSize: "8px" }} />
+                    </span>
+                    <span id="tagcount">
+                        {" "}
+                        <VisibilityIcon style={{ fontSize: "9px" }} />
+                        &nbsp;
                         {tagcount}
-                    </Badge>
-                </ListGroupItem>
-            </ListGroup>
+                    </span>
+                    {/* <Badge pill style={badge_style}>
+                        {tagcount}
+                    </Badge> */}
+                </div>
+            </div>
         );
     }
 }

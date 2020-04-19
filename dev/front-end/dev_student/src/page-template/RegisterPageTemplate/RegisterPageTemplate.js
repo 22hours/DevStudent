@@ -80,8 +80,8 @@ const RegisterTemplate = ({
                         <div className="registertemplate-info">
                             계정이 이미 있는 경우에는 <Link to="/login">로그인</Link>해주세요.
                             <br />
-                            가입을 하면 DEVSTU의 <Link to="/sitesinfo/terms">이용약관</Link>,{" "}
-                            <Link to="/sitesinfo/privacy">개인정보취급방침 및 개인정보3자제공</Link>에 동의하게 됩니다.
+                            가입을 하면 DEVSTU의 <Link to="/terms">이용약관</Link>,{" "}
+                            <Link to="privacy">개인정보취급방침 및 개인정보3자제공</Link>에 동의하게 됩니다.
                             <br />
                             가입 후 아이디는 변경할 수 없습니다.
                         </div>
