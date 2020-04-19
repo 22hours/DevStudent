@@ -33,7 +33,7 @@ const HowTo = ({ location }) => {
     if (loading) return <p>Loading ...</p>;
     if (error) return <p>Error!</p>;
 
-    const questionCount = Object.keys(data.findAllQuestions).length;
+    const questionAll = Object.keys(data.findAllQuestions).length;
 
     return (
         <HowToTemplate tag={tag}>
@@ -46,7 +46,7 @@ const HowTo = ({ location }) => {
                             <div>
                                 <HowToListModuleTemplate
                                     location={location}
-                                    questionCount={questionCount}
+                                    questionAll={questionAll}
                                 ></HowToListModuleTemplate>
                             </div>
                         )}

@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import { Container } from "reactstrap";
-import Pagination from "@material-ui/lab/Pagination";
 import { useQuery } from "@apollo/react-hooks";
 import { FIND_QUESTIONS_BY_TAG, findAllQuestionsPage } from "query/queries";
 
 // modules
 import PageHeaderModule from "module/PageHeaderModule/PageHeaderModule";
+import PageNavigation from "../../module/PageNavigtion/PageNavigation";
 
 // items
 import HowToBoxItem from "item/HowToBoxItem/HowToBoxItem";
 
-const TagProvider = ({ param, nowTag, pageNum }) => {
+const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
     const { loading, error, data } = useQuery(FIND_QUESTIONS_BY_TAG, {
         variables: { param: param, requiredCount: 10, pageNum: pageNum, tags: nowTag, logical: "or" },
     });
     if (loading) return <p>Loading ...</p>;
     if (error) return <p>Error!</p>;
+
+    setQuestionCount(Object.keys(data.findQuestionsByTags).length);
 
     return data.findQuestionsByTags.map(({ _id, title, author, tags, date, content, answerCount, views, previews }) => (
         <HowToBoxItem
@@ -32,13 +34,16 @@ const TagProvider = ({ param, nowTag, pageNum }) => {
     ));
 };
 
-const NonTagProvider = ({ param, nowTag, pageNum }) => {
+const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount, questionAll }) => {
     const { loading, error, data } = useQuery(findAllQuestionsPage, {
         variables: { param: param, requiredCount: 10, pageNum: pageNum },
     });
     if (loading) return <p>Loading ...</p>;
     if (error) return <p>Error!</p>;
     console.log(data);
+
+    setQuestionCount(questionAll);
+
     if (data === null) {
         alert("Error!");
         return <p>Error!</p>;
@@ -59,30 +64,40 @@ const NonTagProvider = ({ param, nowTag, pageNum }) => {
     ));
 };
 
-const DataProvider = ({ param, nowTag, pageNum }) => {
+const DataProvider = ({ param, nowTag, pageNum, setQuestionCount, questionCount, questionAll }) => {
     if (nowTag) {
-        return <TagProvider param={param} nowTag={nowTag} pageNum={pageNum} />;
+        return (
+            <TagProvider
+                param={param}
+                nowTag={nowTag}
+                pageNum={pageNum}
+                setQuestionCount={setQuestionCount}
+                questionCount={questionCount}
+            />
+        );
     } else {
-        return <NonTagProvider param={param} nowTag={nowTag} pageNum={pageNum} />;
+        return (
+            <NonTagProvider
+                param={param}
+                nowTag={nowTag}
+                pageNum={pageNum}
+                setQuestionCount={setQuestionCount}
+                questionCount={questionCount}
+                questionAll={questionAll}
+            />
+        );
     }
 };
 
-const HowToListTemplate = ({ tags, location, questionCount }) => {
+const HowToListTemplate = ({ tags, location, questionAll }) => {
     const [param, setParam] = useState("date");
     const [nowTag, setNowTag] = useState(location.search.split("=")[1]);
     const [pageNum, setPage] = useState(1);
+    const [questionCount, setQuestionCount] = useState(questionAll);
 
     const handleChange = (event, value) => {
         setPage(value);
     };
-    const navigation_style = {
-        paddinLeft: "0px",
-        marginBottom: "18px",
-    };
-    let pageCount = null;
-
-    if (questionCount % 10 === 0) pageCount = questionCount / 10;
-    else pageCount = Math.floor(questionCount / 10) + 1;
 
     return (
         <React.Fragment>
@@ -95,18 +110,18 @@ const HowToListTemplate = ({ tags, location, questionCount }) => {
                 ></PageHeaderModule>
             </Container>
             <div>
-                <DataProvider param={param} nowTag={nowTag} pageNum={pageNum} />
+                <DataProvider
+                    param={param}
+                    nowTag={nowTag}
+                    pageNum={pageNum}
+                    questionCount={questionCount}
+                    setQuestionCount={setQuestionCount}
+                    questionAll={questionAll}
+                />
             </div>
             <Container className="margin-top-3 red-border" />
             <div className="howto-page-navigater">
-                <Pagination
-                    style={navigation_style}
-                    count={pageCount}
-                    variant="outlined"
-                    page={pageNum}
-                    onChange={handleChange}
-                    shape="rounded"
-                />
+                <PageNavigation questionCount={questionCount} handleChange={handleChange} pageNum={pageNum} />
             </div>
         </React.Fragment>
     );
