@@ -67,3 +67,7 @@
 .PageHeaderModule .filter-wrapper .filter-header #selected {
     color: #4ba0b5;
 }
+
+.question-count-alert {
+    width: 100%;
+}

@@ -26,10 +26,12 @@ const HowToBoxItem = (props) => {
     return (
         <div className="HowToBoxItem">
             <div className="howto-item-stats-col">
-                <div className="stats-row">
-                    <div id="stats-value">{answers}</div>
-                    <div id="stats-br">&nbsp;</div>
-                    <div id="stats-label">답변</div>
+                <div className={"stats-row "}>
+                    <div className={solved === true ? "solved" : answers === 0 ? "default" : "hot"}>
+                        <div id="stats-value">{answers}</div>
+                        <div id="stats-br">&nbsp;</div>
+                        <div id="stats-label">답변</div>
+                    </div>
                 </div>
                 <div style={{ lineHeight: "0.5rem" }}>&nbsp;</div>
                 <div className="stats-row">

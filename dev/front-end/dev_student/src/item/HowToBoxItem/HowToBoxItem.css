@@ -100,3 +100,17 @@
     font-size: 12px;
     color: gray;
 }
+.howto-item-stats-col {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.howto-item-stats-col .hot {
+    border-radius: 3px;
+    border: 1px solid rgb(60, 144, 165);
+}
+.howto-item-stats-col .hot #stats-label {
+    color: rgb(15, 78, 15);
+}
+.howto-item-stats-col .hot #stats-value {
+    color: rgb(15, 78, 15);
+}

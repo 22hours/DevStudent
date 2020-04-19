@@ -24,6 +24,13 @@
 .content-header {
     font-family: "Do Hyeon", sans-serif;
     font-size: 30px;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    background-color: #4ba0b5;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 1px 1px rgb(226, 226, 226);
 }
 
 @media only screen and (max-width: 800px) {

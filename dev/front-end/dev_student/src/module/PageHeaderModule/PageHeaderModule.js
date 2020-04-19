@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { FormGroup, Input, Button, Row, Collapse } from "reactstrap";
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
+import { FormGroup, Input, Button, Row, Collapse, Alert } from "reactstrap";
 import "./PageHeaderModule.css";
 
 //icons
 import SearchIcon from "@material-ui/icons/Search";
 import BrightnessLowIcon from "@material-ui/icons/BrightnessLow";
+import HelpIcon from "@material-ui/icons/Help";
 const PageHeaderModule = ({ question_count, param, setParam }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [serachBarIsOpen, setSearchBarIsOpen] = useState(false);
@@ -38,18 +38,22 @@ const PageHeaderModule = ({ question_count, param, setParam }) => {
     return (
         <div className="PageHeaderModule">
             <Row className="howto-list-header-header">
-                <span className="content-header">HowTo </span>
+                <span className="content-header">
+                    HOW TO <HelpIcon />
+                </span>
+
                 <div style={{ marginLeft: "10px" }} className="mobile-only">
                     <Button style={{ fontSize: "11px", marginTop: "8px" }} color="info">
                         NEWQUESTION
                     </Button>
                 </div>
             </Row>
+
             <Row>
-                <p>
+                <Alert id="question-count-alert" color="info">
                     <span className="questions-number-span"> {question_count} </span>
                     <span className="question-descript-span"> &nbsp; 건의 질문이 있습니다</span>
-                </p>
+                </Alert>
                 <div className="search-button-wrapper">
                     <SearchIcon id="clickable-icon" onClick={toggleSearchBar} />
                     <BrightnessLowIcon id="clickable-icon" onClick={toggleFilter} />
