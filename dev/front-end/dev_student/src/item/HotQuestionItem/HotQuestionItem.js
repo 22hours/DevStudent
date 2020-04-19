@@ -9,7 +9,6 @@ const HotQuestionItem = ({ id, views, title }) => {
         fontSize: "11px",
         width: "100%",
         textAlign: "left",
-        borderRadius: "0",
         borderTop: "0",
         borderLeft: "0",
         borderRight: "0",
@@ -27,7 +26,7 @@ const HotQuestionItem = ({ id, views, title }) => {
 
     return (
         <ListGroup width="100%">
-            <ListGroupItem className="justify-content-between" style={list_style}>
+            <ListGroupItem className="hot-links-list-group-item" style={list_style}>
                 {title}{" "}
                 <Badge pill style={badge_style}>
                     {views}

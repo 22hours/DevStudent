@@ -9,19 +9,14 @@
     overflow: hidden;
 }
 
-.howto-hot-question-item-col-views {
-    text-align: center;
-    color: lightslategray;
-    font-weight: 520;
-    font-size: 11px;
-    margin: 1px auto;
-    float: right;
-    width: 20%;
-}
-.howto-hot-question-item-col-text {
+.hot-question-list-items {
     text-align: center;
     font-size: 13px;
     font-weight: 450;
     float: left;
-    width: 80%;
+    width: 100%;
+}
+
+.hot-links-list-group-item {
+    background-color: rgb(245, 245, 245) !important;
 }

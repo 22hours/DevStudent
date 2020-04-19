@@ -18,7 +18,7 @@ class QuestionTagItem extends Component {
             borderBottom: "0",
             paddingLeft: "0.6rem",
             paddingTop: "0.40rem",
-            paddingBottom: "0.40rem",
+            paddingBottom: "0.20rem",
             paddingRight: "0.6rem",
         };
 

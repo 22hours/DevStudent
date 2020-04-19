@@ -17,7 +17,7 @@ import HotQuestionItem from "item/HotQuestionItem/HotQuestionItem";
 
 const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
     const btn_style = {
-        fontSize: "20px",
+        fontSize: "17px",
         color: "white",
         width: "100%",
     };
