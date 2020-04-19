@@ -11,7 +11,7 @@ import Avatar from "atom/Avatar/Avatar";
 //icons
 import VisibilityIcon from "@material-ui/icons/Visibility";
 const HowToBoxItem = (props) => {
-    const { id, author, title, date, previews, answers, views, solved, tags } = props;
+    const { id, author, title, date, previews, answers, views, solved, tags } = props; //likes 도 추가해야함
     console.log(tags);
 
     const TagListRenderer = () => {
@@ -27,7 +27,7 @@ const HowToBoxItem = (props) => {
         <div className="HowToBoxItem">
             <div className="howto-item-stats-col">
                 <div className="stats-row">
-                    <div id="stats-value">4</div>
+                    <div id="stats-value">{answers}</div>
                     <div id="stats-br">&nbsp;</div>
                     <div id="stats-label">답변</div>
                 </div>

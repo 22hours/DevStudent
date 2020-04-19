@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { Container } from "reactstrap";
 import Pagination from "@material-ui/lab/Pagination";
 import { useQuery } from "@apollo/react-hooks";
-import { FIND_QUESTIONS_BY_TAG, findAllQuestionsPage } from "../../query/queries";
+import { FIND_QUESTIONS_BY_TAG, findAllQuestionsPage } from "query/queries";
 
 // modules
 import PageHeaderModule from "module/PageHeaderModule/PageHeaderModule";
 
 // items
-import HowToItem from "item/HowToItem/HowToItem";
 import HowToBoxItem from "item/HowToBoxItem/HowToBoxItem";
 
 const TagProvider = ({ param, nowTag, pageNum }) => {
@@ -19,7 +18,7 @@ const TagProvider = ({ param, nowTag, pageNum }) => {
     if (error) return <p>Error!</p>;
 
     return data.findQuestionsByTags.map(({ _id, title, author, tags, date, content, answerCount, views, previews }) => (
-        <HowToItem
+        <HowToBoxItem
             id={_id}
             key={_id}
             author={author}
@@ -29,7 +28,7 @@ const TagProvider = ({ param, nowTag, pageNum }) => {
             date={date}
             previews={previews}
             tags={tags}
-        ></HowToItem>
+        ></HowToBoxItem>
     ));
 };
 
@@ -68,13 +67,11 @@ const DataProvider = ({ param, nowTag, pageNum }) => {
     }
 };
 
-const HowToListTemplate = ({ tags, questionCount, location }) => {
+const HowToListTemplate = ({ tags, location, questionCount }) => {
     const [param, setParam] = useState("date");
     const [nowTag, setNowTag] = useState(location.search.split("=")[1]);
     const [pageNum, setPage] = useState(1);
-    const handleTagClick = (value) => {
-        setNowTag(value);
-    };
+
     const handleChange = (event, value) => {
         setPage(value);
     };

@@ -20,7 +20,7 @@ const HowTo = ({ location }) => {
     }, [location]);
     const [tag, setTag] = useState([
         { idx: 0, tagname: "JavaScript", tagcount: "500" },
-        { idx: 1, tagname: ".NetFramework", tagcount: "100" },
+        { idx: 1, tagname: ".Net", tagcount: "100" },
         { idx: 2, tagname: "C++", tagcount: "400" },
         { idx: 3, tagname: "Android", tagcount: "300" },
         { idx: 4, tagname: "Html", tagcount: "200" },
