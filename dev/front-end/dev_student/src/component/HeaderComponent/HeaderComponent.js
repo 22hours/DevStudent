@@ -13,7 +13,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const HeaderComponent = ({ nickname }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [clicked, setClicked] = useState();
+    const [clicked, setClicked] = useState("home");
     const toggle = () => setIsOpen(!isOpen);
     const [linkClick, setLinkClick] = useState(false);
     const sign_style = {
@@ -68,42 +68,66 @@ const HeaderComponent = ({ nickname }) => {
                     <Nav className="mr-auto" navbar>
                         <NavItem>
                             <div className="nav-item-wrapper">
-                                <Link to="/" className="nav-link" onClick={LinkClick}>
+                                <Link
+                                    to="/"
+                                    className={"nav-link " + (clicked === "home" ? "selected " : "unselected")}
+                                    onClick={() => setClicked("home")}
+                                >
                                     Home
                                 </Link>
                             </div>
                         </NavItem>
                         <NavItem>
                             <div className="nav-item-wrapper">
-                                <Link to="/howto" className="nav-link" onClick={LinkClick}>
+                                <Link
+                                    to="/howto"
+                                    className={"nav-link " + (clicked === "howto" ? "selected " : "unselected")}
+                                    onClick={() => setClicked("howto")}
+                                >
                                     Howto
                                 </Link>
                             </div>
                         </NavItem>
                         <NavItem>
                             <div className="nav-item-wrapper">
-                                <Link to="/about/me" className="nav-link" onClick={LinkClick}>
+                                <Link
+                                    to="/about/me"
+                                    className={"nav-link " + (clicked === "crew" ? "selected " : "unselected")}
+                                    onClick={() => setClicked("crew")}
+                                >
                                     Crew
                                 </Link>
                             </div>
                         </NavItem>
                         <NavItem>
                             <div className="nav-item-wrapper">
-                                <Link to="/posts" className="nav-link" onClick={LinkClick}>
+                                <Link
+                                    to="/posts"
+                                    className={"nav-link " + (clicked === "posts" ? "selected " : "unselected")}
+                                    onClick={() => setClicked("posts")}
+                                >
                                     Museum
                                 </Link>
                             </div>
                         </NavItem>
                         <NavItem>
                             <div className="nav-item-wrapper">
-                                <Link to="/mypage" className="nav-link" onClick={LinkClick}>
+                                <Link
+                                    to="/mypage"
+                                    className={"nav-link " + (clicked === "mypage" ? "selected " : "unselected")}
+                                    onClick={() => setClicked("mypage")}
+                                >
                                     Outside
                                 </Link>
                             </div>
                         </NavItem>
                         <NavItem>
                             <div className="nav-item-wrapper">
-                                <Link to="/devnote" className="nav-link" onClick={LinkClick}>
+                                <Link
+                                    to="/devnote"
+                                    className={"nav-link " + (clicked === "devnote" ? "selected " : "unselected")}
+                                    onClick={() => setClicked("devnote")}
+                                >
                                     DevNote
                                 </Link>
                             </div>

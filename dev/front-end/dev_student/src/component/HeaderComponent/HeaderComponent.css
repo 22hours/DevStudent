@@ -102,8 +102,9 @@
     margin-left: 30px;
     font-family: "Noto Sans KR", sans-serif;
 }
-.nav-item-wrapper .nav-link .selected {
-    border-bottom: 1px solid black;
+.nav-item-wrapper .selected {
+    color: black !important;
+    font-weight: bold;
 }
 
 .navbar #navbar-light {
