@@ -25,6 +25,8 @@ public class CreateUser extends ConnectLoginServer {
                 "        authState\n" +
                 "        accessToken\n" +
                 "        gitLink\n" +
+                "        grade\n" +
+                "        point\n" +
                 "    }\n" +
                 "}";
         //endregion

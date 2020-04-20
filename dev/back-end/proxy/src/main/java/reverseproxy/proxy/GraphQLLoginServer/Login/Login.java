@@ -17,19 +17,7 @@ public class Login extends ConnectLoginServer {
         GraphQLContext context =  env.getContext();
         HttpServletRequest request = context.getHttpServletRequest().get();
         String ip = request.getHeaders("ip").nextElement();
-        System.out.println(ip);
-        System.out.println();
-
-
         request.getHeader("content-type");
-        System.out.println(request.getHeader("content-type").toString());
-        //System.out.println(request.getHeader("Authorization").toString());
-        System.out.println("------------");
-        System.out.println("테스트");
-        System.out.println(request.getHeaders("HTTP_CLIENT_IP").toString());
-        System.out.println("------------");
-        System.out.println(request.getRemoteAddr().toString());
-
         //region Query
         String query = "mutation{\n" +
                 "    loginToServer(email:\"" + email + "\",password:\"" + password + "\", ip:\"" + ip + "\")\n" +
@@ -42,6 +30,8 @@ public class Login extends ConnectLoginServer {
                 "        authState\n" +
                 "        accessToken\n" +
                 "        gitLink\n" +
+                "        grade\n" +
+                "        point\n" +
                 "    }\n" +
                 "\n" +
                 "}";

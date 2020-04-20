@@ -26,6 +26,10 @@ public class User {
     private String accessToken;
     @Setter
     private String gitLink = null;
+    @Setter
+    private String grade = "bean";
+    @Setter
+    private int point = 0;
 //    @Setter
 //    private String refreshToken;
 

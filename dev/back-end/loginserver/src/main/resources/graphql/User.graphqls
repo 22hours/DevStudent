@@ -8,6 +8,8 @@ type User{
     accessToken : String
     #refreshToken : String
     gitLink : String
+    grade : String
+    point : Int
 }
 
 type Query{

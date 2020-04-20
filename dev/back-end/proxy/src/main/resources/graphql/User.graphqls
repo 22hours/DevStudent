@@ -7,6 +7,8 @@ type User{
     authState : String
     accessToken : String
     gitLink : String
+    grade : String
+    point : Int
 }
 extend type Mutation{
     createUser(email: String!, password: String!, nickname: String!, schoolName : String!) : User
