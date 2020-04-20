@@ -184,3 +184,8 @@
     font-size: 15px;
     vertical-align: text-bottom;
 }
+
+.mypage-githubicon {
+    display: inline;
+    cursor: pointer;
+}

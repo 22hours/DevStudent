@@ -1,21 +1,9 @@
 import React from "react";
 import Chips from "react-chips";
+import { tagArray } from "array/arrays";
+
 const TagInput = ({ tags, setTags }) => {
-    const suggestions = [
-        "Java",
-        "Javascript",
-        "React.js",
-        "Spring",
-        "C#",
-        "C++",
-        "WPF",
-        "WinForm",
-        "C",
-        "Python",
-        "Node.js",
-        "MySQL",
-        "Firebase",
-    ];
+    const suggestions = tagArray;
     return (
         <div>
             <Chips value={tags} onChange={(chips) => setTags(chips)} suggestions={suggestions} />

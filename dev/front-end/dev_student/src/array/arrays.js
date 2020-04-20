@@ -1,0 +1,15 @@
+export const tagArray = [
+    "Java",
+    "Javascript",
+    "React.js",
+    "Spring",
+    "C#",
+    "C++",
+    "WPF",
+    "WinForm",
+    "C",
+    "Python",
+    "Node.js",
+    "MySQL",
+    "Firebase",
+];

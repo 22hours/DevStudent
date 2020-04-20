@@ -17,7 +17,7 @@ const MypageTemplate = ({ alarmData, myContent }) => {
     const toggle = () => setIsOpen(!isOpen);
     const showAlert = () => setAlertOpen(!alertOpen);
     //example
-    const [gitAddress, setGitAddress] = useState("winterlood.github.com");
+    const [gitAddress, setGitAddress] = useState("github.com/sg05138");
     const [linkedInAddress, setLinkedInAddress] = useState("king199777@gmail.com");
 
     const btn_style = {
@@ -37,6 +37,10 @@ const MypageTemplate = ({ alarmData, myContent }) => {
         paddingBottom: "32px",
     };
 
+    const moveGithubLink = () => {
+        window.open("http://" + gitAddress, "_blank");
+    };
+
     return (
         <React.Fragment>
             <div className="MypageTemplate">
@@ -50,7 +54,9 @@ const MypageTemplate = ({ alarmData, myContent }) => {
                             <div className="nickname-row">
                                 {nickname}
                                 &nbsp; &nbsp;
-                                <GitHubIcon style={{ fontSize: "18px" }} />
+                                <div className="mypage-githubicon" onClick={moveGithubLink}>
+                                    <GitHubIcon style={{ fontSize: "18px" }} />
+                                </div>
                                 &nbsp;
                                 <LinkedInIcon style={{ fontSize: "18px" }} />
                             </div>
@@ -86,6 +92,7 @@ const MypageTemplate = ({ alarmData, myContent }) => {
                                                 className="link-input-box"
                                                 value={gitAddress}
                                                 onChange={({ target: { value } }) => setGitAddress(value)}
+                                                placeholder="github.com/devstu"
                                             ></Input>
                                         </div>
                                     </div>
