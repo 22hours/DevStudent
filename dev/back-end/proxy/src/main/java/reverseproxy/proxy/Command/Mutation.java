@@ -105,8 +105,8 @@ public class Mutation implements GraphQLMutationResolver {
 
     //endregion
     //region LoginServer
-    public User loginToServer(String email, String password) {
-        return login.loginToServer(email, password);
+    public User loginToServer(String email, String password, DataFetchingEnvironment env) {
+        return login.loginToServer(email, password, env);
     }
 
     public Count logoutFromServer(String email) { // 토큰 만료 시키기

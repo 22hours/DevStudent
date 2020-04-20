@@ -6,7 +6,6 @@ type User{
     date : String
     authState : String
     accessToken : String
-    refreshToken : String
 }
 extend type Mutation{
     createUser(email: String!, password: String!, nickname: String!, schoolName : String!) : User
