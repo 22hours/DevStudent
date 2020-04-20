@@ -9,6 +9,7 @@ import loginserver.loginserver.Module.Create.CreateUser;
 import loginserver.loginserver.Module.Login;
 import loginserver.loginserver.Module.ReissuanceAccessToken;
 import loginserver.loginserver.Module.Update.UpdateUserAuthState;
+import loginserver.loginserver.Module.Update.UpdateUserInfo;
 import loginserver.loginserver.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,8 @@ public class Mutation implements GraphQLMutationResolver {
     @Autowired
     private UpdateUserAuthState updateUserAuthState;
     @Autowired
+    private UpdateUserInfo updateUserInfo;
+    @Autowired
     private Login login;
 
     /*@Autowired
@@ -34,6 +37,10 @@ public class Mutation implements GraphQLMutationResolver {
 
     public User updateUserAuthState(String authState) {
         return updateUserAuthState.updateUserAuthState(authState);
+    }
+
+    public User updateUserInfo(String nickname, String gitLink){
+        return updateUserInfo.updateUserInfo(nickname, gitLink);
     }
 
     public User loginToServer(String email, String password, String ip) {

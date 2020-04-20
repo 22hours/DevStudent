@@ -24,6 +24,8 @@ public class User {
     private String authState;
     @Setter
     private String accessToken;
+    @Setter
+    private String gitLink = null;
 //    @Setter
 //    private String refreshToken;
 
