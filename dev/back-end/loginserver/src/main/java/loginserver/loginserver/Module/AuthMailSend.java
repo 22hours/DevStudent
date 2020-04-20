@@ -18,10 +18,6 @@ public class AuthMailSend {
 
     public String authMailSend(String email, String nickname) {
         String key = randMaker.getKey(false, 20);
-        System.out.println("authMailSend 키테스트");
-        System.out.println(key);
-        System.out.println("authMailSend 보내기 시작");
-        System.out.println("authMailSend 끝");
         MimeMessage mail = javaMailSender.createMimeMessage();
         String htmlStr = "<h2>안녕하세요. DevStudent 계정인증 메일입니다!</h2><br><br>"
                 + "<h3>" + nickname + "님</h3>" + "<p>인증 코드를 입력하시면 인증에 성공합니다 :) <p>인증 코드 : "
