@@ -5,15 +5,24 @@ import "./HowToBoxItem.css";
 import avatar_test from "img/mypage/avatar_test.png";
 import debal from "img/mypage/debal.png";
 
+import bean from "img/rate/bean.png";
+import short from "img/rate/short.png";
+import tall from "img/rate/tall.png";
+import grande from "img/rate/grande.png";
+import venti from "img/rate/venti.png";
+
+import trenta from "img/rate/trenta.png";
+
 // atoms
 import Tag from "atom/Tag/Tag";
 import Avatar from "atom/Avatar/Avatar";
+
 //icons
 import VisibilityIcon from "@material-ui/icons/Visibility";
 const HowToBoxItem = (props) => {
     const { id, author, title, date, previews, answers, views, solved, tags } = props; //likes 도 추가해야함
     console.log(tags);
-
+    const nickname = localStorage.getItem("nickname");
     const TagListRenderer = () => {
         var TagList = null;
         if (tags[0] !== "") {
@@ -24,7 +33,7 @@ const HowToBoxItem = (props) => {
         }
     };
     return (
-        <div className="HowToBoxItem">
+        <div className={"HowToBoxItem " + (author === nickname ? "myItem" : "none")}>
             <div className="howto-item-stats-col">
                 <div className={"stats-row "}>
                     <div className={solved === true ? "solved" : answers === 0 ? "default" : "hot"}>
