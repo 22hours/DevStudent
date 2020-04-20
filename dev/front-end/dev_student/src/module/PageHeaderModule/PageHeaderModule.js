@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FormGroup, Input, Button, Row, Collapse, Alert } from "reactstrap";
 import "./PageHeaderModule.css";
-
 //icons
 import SearchIcon from "@material-ui/icons/Search";
 import BrightnessLowIcon from "@material-ui/icons/BrightnessLow";
@@ -37,28 +36,29 @@ const PageHeaderModule = ({ question_count, param, setParam }) => {
 
     return (
         <div className="PageHeaderModule">
-            <Row className="howto-list-header-header">
+            <div className="howto-list-header-header">
                 <span className="content-header">
                     HOW TO <HelpIcon />
                 </span>
+            </div>
 
-                <div style={{ marginLeft: "10px" }} className="mobile-only">
-                    <Button style={{ fontSize: "11px", marginTop: "8px" }} color="info">
-                        NEWQUESTION
-                    </Button>
-                </div>
-            </Row>
-
-            <Row>
-                <Alert id="question-count-alert" color="info">
+            <div className="option-wrapper">
+                <div className="option-left">
                     <span className="questions-number-span"> {question_count} </span>
-                    <span className="question-descript-span"> &nbsp; 건의 질문이 있습니다</span>
-                </Alert>
-                <div className="search-button-wrapper">
-                    <SearchIcon id="clickable-icon" onClick={toggleSearchBar} />
-                    <BrightnessLowIcon id="clickable-icon" onClick={toggleFilter} />
+                    <span className="question-descript-span"> &nbsp; 개의 질문이 있습니다</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
-            </Row>
+                <div className="option-right">
+                    <span id="search" onClick={toggleSearchBar}>
+                        검색 <SearchIcon style={{ fontSize: "18px" }} id="clickable-icon" />
+                    </span>
+                    &nbsp;&nbsp;
+                    <span id="filter" onClick={toggleFilter}>
+                        필터 <BrightnessLowIcon style={{ fontSize: "18px" }} id="clickable-icon" />
+                    </span>
+                </div>
+            </div>
+
             <div className="serach-bar-collapse-wrapper">
                 <Collapse isOpen={filterIsOpen}>
                     <div className="filter-wrapper">
@@ -84,6 +84,13 @@ const PageHeaderModule = ({ question_count, param, setParam }) => {
                         </FormGroup>
                     </div>
                 </Collapse>
+            </div>
+            <div className="mobile-only new-question">
+                <a href="/newquestion">
+                    <Button style={{ width: "100%", fontSize: "11px", marginTop: "8px" }} color="info">
+                        새 질문
+                    </Button>
+                </a>
             </div>
         </div>
     );

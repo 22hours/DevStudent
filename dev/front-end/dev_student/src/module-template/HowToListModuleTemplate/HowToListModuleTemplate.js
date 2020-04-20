@@ -101,14 +101,12 @@ const HowToListTemplate = ({ tags, location, questionAll }) => {
 
     return (
         <React.Fragment>
-            <Container className="margin-top-3 red-border">
-                <PageHeaderModule
-                    setParam={setParam}
-                    param={param}
-                    tags={tags}
-                    question_count={questionCount}
-                ></PageHeaderModule>
-            </Container>
+            <PageHeaderModule
+                setParam={setParam}
+                param={param}
+                tags={tags}
+                question_count={questionCount}
+            ></PageHeaderModule>
             <div>
                 <DataProvider
                     param={param}
