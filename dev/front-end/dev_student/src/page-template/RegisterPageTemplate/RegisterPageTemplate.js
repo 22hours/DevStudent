@@ -32,6 +32,8 @@ const RegisterTemplate = ({
     setRePwdClassName,
     passwordRule,
     nickNameCheck,
+    emailAuthState,
+    setEmailAuthState,
 }) => {
     const [createUser, { data }] = useMutation(CREATE_USER);
     const btn_style = {
@@ -54,7 +56,7 @@ const RegisterTemplate = ({
 
     //비밀번호 확인용
     const RepwInputRenderer = () => {
-        if (pwdRuleCheck === "true") {
+        if (pwdRuleCheck === "true" && emailRuleCheck === "true") {
             if (password !== rePwd) {
                 setRePwdClassName("is-invalid");
                 alert("비밀번호가 일치하지 않습니다.");
@@ -92,29 +94,68 @@ const RegisterTemplate = ({
                             <div className="input-box">
                                 <span className="register-label-style">이메일</span>
                                 <div className="email-input-box">
-                                    <div className="email-input">
-                                        <Input
-                                            value={email}
-                                            onChange={({ target: { value } }) => setEmail(value)}
-                                            type="text"
-                                            name="email"
-                                            id="inputEmail"
-                                            placeholder="devstudent"
-                                            onBlur={emailRule}
-                                        />
+                                    <div className="email-input-wrapper">
+                                        <div className="email-input">
+                                            <Input
+                                                value={email}
+                                                onChange={({ target: { value } }) => setEmail(value)}
+                                                type="text"
+                                                name="email"
+                                                id="inputEmail"
+                                                placeholder="devstudent"
+                                                onBlur={emailRule}
+                                            />
+                                        </div>
+                                        <div className="email-select-wrapper">
+                                            <Input
+                                                type="select"
+                                                onChange={({ target: { value } }) => setEmailSelect(value)}
+                                            >
+                                                <option>@gmail.com</option>
+                                                <option>@naver.com</option>
+                                                <option>@daum.net</option>
+                                            </Input>
+                                        </div>
                                     </div>
-                                    <div className="email-select-wrapper">
-                                        <Input
-                                            type="select"
-                                            onChange={({ target: { value } }) => setEmailSelect(value)}
-                                        >
-                                            <option>@gmail.com</option>
-                                            <option>@naver.com</option>
-                                            <option>@daum.net</option>
-                                        </Input>
+                                    <div className="nickName-check-button-wrapper">
+                                        <Button color="info" style={btn_style}>
+                                            확인
+                                        </Button>
                                     </div>
                                 </div>
                             </div>
+                            <Collapse isOpen={isOpen}>
+                                <div className="input-box">
+                                    <span className="register-label-style">인증번호</span>
+                                    <div className="nickName-input-box">
+                                        <div className="nickName-input">
+                                            <Input
+                                                id="inputrandnum"
+                                                type="text"
+                                                onChange={({ target: { value } }) => setEmailAuthState(value)}
+                                                placeholder="이메일의 인증번호를 입력해주세요."
+                                            />
+                                        </div>
+                                        <div className="nickName-check-button-wrapper">
+                                            <Button
+                                                color="info"
+                                                style={btn_style}
+                                                onClick={() => {
+                                                    if (data.authState === emailAuthState) {
+                                                        alert("회원가입이 완료되었습니다.");
+                                                    } else {
+                                                        alert("인증번호가 일치하지 않습니다. 다시 입력해주세요.");
+                                                        console.log(data.authState);
+                                                        return;
+                                                    }
+                                                }}
+                                            >
+                                                확인
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Collapse>
                             <div className="input-box">
                                 <span className="register-label-style">비밀번호</span>
 
@@ -193,21 +234,7 @@ const RegisterTemplate = ({
                                     />
                                 </div>
                             </div>
-                            <Collapse isOpen={isOpen}>
-                                <div className="input-box">
-                                    <span className="register-label-style">인증번호</span>
-                                    <div className="nickName-input-box">
-                                        <div className="nickName-input">
-                                            <Input id="inputrandnum" type="text" />
-                                        </div>
-                                        <div className="nickName-check-button-wrapper">
-                                            <Button color="info" style={btn_style}>
-                                                확인
-                                            </Button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Collapse>
+
                             <div className="input-box">
                                 <Button
                                     style={register_btn_style}

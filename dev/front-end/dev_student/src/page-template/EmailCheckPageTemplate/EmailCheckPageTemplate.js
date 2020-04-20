@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import { Redirect } from "react-router-dom";
 import "./EmailCheckPageTemplate.css";
-import { UPDATE_USER_AUTH_STATE } from "../../mutation/mutations";
+import { UPDATE_USER_AUTH_STATE } from "mutation/mutations";
 import { useMutation } from "react-apollo";
 const EmailCheckPageTemplate = ({ rand }) => {
     const [updateUserAuthState] = useMutation(UPDATE_USER_AUTH_STATE);

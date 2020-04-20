@@ -46,6 +46,7 @@ export const CREATE_USER = gql`
         createUser(email: $email, password: $password, nickname: $nickname, schoolName: $schoolName) {
             email
             nickname
+            authState
         }
     }
 `;

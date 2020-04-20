@@ -1,5 +1,4 @@
 import React, { useState, useLayoutEffect } from "react";
-import { Input } from "reactstrap";
 import RegisterPageTemplate from "page-template/RegisterPageTemplate/RegisterPageTemplate";
 import { CHECK_DUPLICATE_NICKNAME } from "mutation/mutations";
 import { useMutation } from "react-apollo";
@@ -18,6 +17,7 @@ const Register = () => {
     const [emailRuelCheck, setEmailRuleCheck] = useState("false");
     const [pwdClassName, setPwdClassName] = useState("");
     const [emailSelect, setEmailSelect] = useState("@gmail.com");
+    const [emailAuthState, setEmailAuthState] = useState("");
 
     //닉네임 중복체크
     useLayoutEffect(() => {
@@ -91,6 +91,8 @@ const Register = () => {
             emailSelect={emailSelect}
             setEmailSelect={setEmailSelect}
             nickNameCheck={nickNameCheck}
+            emailAuthState={emailAuthState}
+            setEmailAuthState={setEmailAuthState}
         ></RegisterPageTemplate>
     );
 };
