@@ -21,7 +21,7 @@ public class CountUnreadAlarms {
         criteria.and("read").is(false);
         Query query = new Query(criteria);
         List<Alarm> alarms = this.mongoTemplate.find(query, Alarm.class);
-        int count = alarms.size();
+        String count = String.valueOf(alarms.size());
         return new Count(count);
     }
 }

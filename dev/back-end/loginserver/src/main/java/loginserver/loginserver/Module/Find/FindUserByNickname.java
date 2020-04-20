@@ -13,7 +13,7 @@ public class FindUserByNickname {
 
     public User findUserByNickname(String nickname) {
         if (userRepository.countByNickname(nickname) == 0)
-            return new User(null, "fail", "not exist user", "fail", "fail");
+            return new User();
         User user = userRepository.findByNickname(nickname);
 //        user.setRefreshToken(null);
         user.setAccessToken(null);

@@ -13,7 +13,7 @@ public class UpdateUserAuthState {
 
     public User updateUserAuthState(String authState) {
         if (!userRepository.existsByAuthState(authState)) {
-            return new User(null, "fail", "fail", "fail", "fail");
+            return new User();
         }
         User user = userRepository.findByAuthState(authState);
         user.setAuthState("Certificated");

@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
-import java.util.Comparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,10 +28,7 @@ public class CountTags {
             Tag tag = new Tag(name,count);
             tagList.add(tag);
         }
-        System.out.println("Tag Sort 전");
-        System.out.println(tagList.toString());
         Collections.sort(tagList);
-        System.out.println(tagList.toString());
         if(requiredCount>tagList.size() || requiredCount == -1)
             return tagList;
 

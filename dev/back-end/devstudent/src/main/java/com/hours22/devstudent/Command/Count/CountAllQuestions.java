@@ -11,7 +11,7 @@ public class CountAllQuestions {
     QuestionRepository questionRepository;
 
     public Count countAllQuestions() {
-        int num = (int) questionRepository.count();
+        String num = String.valueOf(questionRepository.count());
         Count count = new Count(num);
         return count;
     }

@@ -10,7 +10,6 @@ public class RandMaker {
         Random random = new Random();
         StringBuffer ranKey = new StringBuffer();
         int num = 0;
-
         do {
             num = random.nextInt(75) + 48;
             if ((num >= 48 && num <= 57) || (num >= 65 && num <= 90) || (num >= 97 && num <= 122)) {

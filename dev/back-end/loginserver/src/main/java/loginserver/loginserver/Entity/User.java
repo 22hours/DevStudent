@@ -15,15 +15,15 @@ import java.util.Date;
 @Document(collection = "Users")
 public class User {
     @Id
-    private String email;
-    private String password;
-    private String nickname;
-    private String schoolName;
-    private String date;
+    private String email = null;
+    private String password = null;
+    private String nickname = null;
+    private String schoolName = null;
+    private String date = null;
     @Setter
-    private String authState;
+    private String authState = null;
     @Setter
-    private String accessToken;
+    private String accessToken = null;
     @Setter
     private String gitLink = null;
     @Setter
@@ -33,7 +33,7 @@ public class User {
 //    @Setter
 //    private String refreshToken;
 
-    public User(String email, String password, String nickname, String schoolName, String authState) {
+    public User(String email, String password, String nickname, String schoolName) {
         long time = System.currentTimeMillis();
         SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.date = dayTime.format(new Date(time));
@@ -41,9 +41,14 @@ public class User {
         this.nickname = nickname;
         this.email = email;
         this.schoolName = schoolName;
-        this.authState = authState;
         this.accessToken = null;
-//        this.refreshToken = null;
+    }
+    public User(String email, String nickname){ // Dummy User용 생성자
+        this.email = email;
+        this.nickname = nickname;
+    }
+    public User(){
+
     }
 }
 

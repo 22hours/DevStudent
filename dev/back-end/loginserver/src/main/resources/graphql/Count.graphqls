@@ -1,3 +1,8 @@
 type Count{
-    count : Int
+    count : String
+}
+
+extend type Mutation {
+    checkDuplicateNickname(nickname : String) : Count
+    checkEmail(email : String, nickname : String) : Count
 }
