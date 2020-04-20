@@ -5,10 +5,31 @@ const client1 = new ApolloClient({
     // uri : "https://countries.trevorblades.com/"
     uri: "http://15.164.164.141:8080/graphql",
 });
+const token = localStorage.getItem("token");
+
+const getMyHeader = () => {
+    PublicIpGetter();
+    const ip = localStorage.getItem("ip");
+    if (token) {
+        console.log("token true");
+        if (ip) {
+            return {
+                Authorization: `${token}`,
+                EncodingType: "utf-8",
+                ip: ip,
+            };
+        }
+    } else {
+        console.log("token false");
+        return {
+            EncodingType: "utf-8",
+            ip: ip,
+        };
+    }
+};
 
 const client = new ApolloClient({
     request: (operation) => {
-        const token = localStorage.getItem("token");
         var ip = localStorage.getItem("ip");
         if (ip) {
         } else {
@@ -16,11 +37,7 @@ const client = new ApolloClient({
             ip = localStorage.getItem("ip");
         }
         operation.setContext({
-            headers: {
-                Authorization: `${token}`,
-                EncodingType: "utf-8",
-                ip: ip,
-            },
+            headers: getMyHeader(),
         });
     },
     uri: "http://15.164.164.141:8080/graphql",
