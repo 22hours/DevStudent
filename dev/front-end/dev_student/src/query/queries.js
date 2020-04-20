@@ -204,3 +204,12 @@ export const FIND_QUESTIONS_BY_OPTION = gql`
         }
     }
 `;
+
+export const COUNT_TAGS = gql`
+    query countTags($requiredCount: String!, $tags: [String]!) {
+        countTags(requiredCount: $requiredCount, tags: $tags) {
+            name
+            count
+        }
+    }
+`;
