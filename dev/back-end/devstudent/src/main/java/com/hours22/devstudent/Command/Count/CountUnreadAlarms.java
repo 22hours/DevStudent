@@ -20,7 +20,6 @@ public class CountUnreadAlarms {
         criteria.is(nickname);
         criteria.and("read").is(false);
         Query query = new Query(criteria);
-        System.out.println(query.toString());
         List<Alarm> alarms = this.mongoTemplate.find(query, Alarm.class);
         int count = alarms.size();
         return new Count(count);
