@@ -41,6 +41,7 @@ public class Login extends ConnectLoginServer {
                 "        date\n" +
                 "        authState\n" +
                 "        accessToken\n" +
+                "        gitLink\n" +
                 "    }\n" +
                 "\n" +
                 "}";

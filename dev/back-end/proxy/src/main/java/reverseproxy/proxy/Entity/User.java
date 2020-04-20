@@ -20,7 +20,7 @@ public class User {
     @Setter
     private String accessToken = null;
     @Setter
-    private String refreshToken = null;
+    private String gitLink = null;
     public User(String email){
         this.email = email;
     }

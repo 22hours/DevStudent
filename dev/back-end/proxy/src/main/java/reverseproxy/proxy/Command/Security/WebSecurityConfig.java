@@ -23,8 +23,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // jwt token으로 인증하므로 세션은 필요없으므로 생성안함.
                 .and()
                 .authorizeRequests()
-                .anyRequest().access("hasIpAddress('0:0:0:0:0:0:0:1') or hasIpAddress('172.30.1.26') or hasIpAddress('127.0.0.1')")//로컬 호스트, 정구 ip : 나중에 수정 요망
-                .and()
+                .anyRequest().permitAll()
+                //.anyRequest().access("hasIpAddress('13.209.25.45') or hasIpAddress('0:0:0:0:0:0:0:1') or hasIpAddress('127.0.0.1')")//로컬 호스트, 정구 ip : 나중에 수정 요망
+                .and()//http://13.209.25.45/
                 .addFilterAfter(new JwtAuthenticationFilter(checkJwt), UsernamePasswordAuthenticationFilter.class);
         System.out.println("와우!");
     }

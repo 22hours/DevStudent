@@ -5,11 +5,11 @@ import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.User;
 
 @Component
-public class UpdateUserAuthState extends ConnectLoginServer {
-    public User updateUserAuthState(String authState) {
+public class UpdateUserInfo extends ConnectLoginServer {
+    public User updateUserInfo(String nickname, String gitLink) {
         //region Query
         String query = "mutation{\n" +
-                "    updateUserAuthState(authState:\"" + authState + "\")\n" +
+                "    updateUserInfo(nickname:\"" + nickname + "\", gitLink:\"" + gitLink + "\")\n" +
                 "    {\n" +
                 "        email\n" +
                 "        password\n" +
