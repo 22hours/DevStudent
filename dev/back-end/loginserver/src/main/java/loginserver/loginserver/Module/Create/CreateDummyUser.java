@@ -37,7 +37,7 @@ public class CreateDummyUser implements Runnable{
             }
             else{ // email은 있고, nickname이 null인 경우
                 User dummyUser = userRepository.findByEmail(email);
-                if(dummyUser.getPassword().equals(null)){
+                if(dummyUser.getPassword() == null){
                     userRepository.delete(dummyUser);
                 }
             }
