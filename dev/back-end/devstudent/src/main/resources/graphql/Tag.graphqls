@@ -1,0 +1,8 @@
+type Tag{
+    name : String
+    count : Int
+}
+
+extend type Query{
+    countTags(requiredCount : Int, tags : [String]) : [Tag]
+}

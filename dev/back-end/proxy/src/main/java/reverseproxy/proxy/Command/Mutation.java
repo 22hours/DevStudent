@@ -4,12 +4,10 @@ import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import reverseproxy.proxy.Command.Security.IsValidate;
 import reverseproxy.proxy.Entity.*;
 import reverseproxy.proxy.GraphQLLoginServer.*;
 import reverseproxy.proxy.GraphQLLoginServer.Check.CheckDuplicateEmail;
 import reverseproxy.proxy.GraphQLLoginServer.Check.CheckDuplicateNickname;
-import reverseproxy.proxy.GraphQLLoginServer.Create.CreateNewAccessToken;
 import reverseproxy.proxy.GraphQLLoginServer.Create.CreateUser;
 import reverseproxy.proxy.GraphQLLoginServer.Login.Login;
 import reverseproxy.proxy.GraphQLLoginServer.Login.Logout;
@@ -55,9 +53,7 @@ public class Mutation implements GraphQLMutationResolver {
     @Autowired
     private Logout logout;
     @Autowired
-    private CreateNewAccessToken createNewAccessToken;
-    @Autowired
-    private IsValidate isValidate;
+    private UpdateUserInfo updateUserInfo;
 
     //region MainServer Create
     public Question createQuestion(String title, String author, List<String> tags, String content)  {
@@ -105,8 +101,8 @@ public class Mutation implements GraphQLMutationResolver {
 
     //endregion
     //region LoginServer
-    public User loginToServer(String email, String password) {
-        return login.loginToServer(email, password);
+    public User loginToServer(String email, String password, DataFetchingEnvironment env) {
+        return login.loginToServer(email, password, env);
     }
 
     public Count logoutFromServer(String email) { // 토큰 만료 시키기
@@ -124,6 +120,9 @@ public class Mutation implements GraphQLMutationResolver {
         return updateUserAuthState.updateUserAuthState(authState);
     }
 
+    public User updateUserInfo(String nickname, String gitLink){
+        return updateUserInfo.updateUserInfo(nickname, gitLink);
+    }
     //endregion
     public Count checkDuplicateEmail(String email) {
         return checkDuplicateEmail.checkDuplicateEmail(email);
@@ -131,12 +130,5 @@ public class Mutation implements GraphQLMutationResolver {
 
     public Count checkDuplicateNickname(String nickname) {
         return checkDuplicateNickname.checkDuplicateNickname(nickname);
-    }
-
-    public User reissuanceAccessToken(String nickname, DataFetchingEnvironment env) {
-        return createNewAccessToken.reissuanceAccessToken(nickname,env);
-    }
-    public Count isValidate(String nickname, DataFetchingEnvironment env) throws Exception {
-        return isValidate.isValidate(nickname,env);
     }
 }

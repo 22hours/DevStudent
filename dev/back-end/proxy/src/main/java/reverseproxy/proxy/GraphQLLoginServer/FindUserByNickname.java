@@ -22,7 +22,9 @@ public class FindUserByNickname extends ConnectLoginServer {
                 "        date\n" +
                 "        authState\n" +
                 "        accessToken\n" +
-                "        refreshToken\n" +
+                "        gitLink\n" +
+                "        grade\n" +
+                "        point\n" +
                 "    }\n" +
                 "}";
         //endregion

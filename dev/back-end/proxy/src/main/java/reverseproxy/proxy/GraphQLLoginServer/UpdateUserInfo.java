@@ -1,21 +1,15 @@
-package reverseproxy.proxy.GraphQLLoginServer.Create;
+package reverseproxy.proxy.GraphQLLoginServer;
 
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.User;
-import reverseproxy.proxy.GraphQLLoginServer.ConnectLoginServer;
 
 @Component
-public class CreateUser extends ConnectLoginServer {
-    public User createUser(String email, String password, String nickname, String schoolName) {
+public class UpdateUserInfo extends ConnectLoginServer {
+    public User updateUserInfo(String nickname, String gitLink) {
         //region Query
         String query = "mutation{\n" +
-                "    createUser(\n" +
-                "        email: \"" + email + "\", \n" +
-                "        password: \"" + password + "\", \n" +
-                "        nickname: \"" + nickname + "\", \n" +
-                "        schoolName : \"" + schoolName + "\", \n" +
-                "        )\n" +
+                "    updateUserInfo(nickname:\"" + nickname + "\", gitLink:\"" + gitLink + "\")\n" +
                 "    {\n" +
                 "        email\n" +
                 "        password\n" +

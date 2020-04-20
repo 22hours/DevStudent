@@ -2,6 +2,7 @@ package com.hours22.devstudent.Command;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.hours22.devstudent.Command.Count.CountAllQuestions;
+import com.hours22.devstudent.Command.Count.CountTags;
 import com.hours22.devstudent.Command.Find.*;
 import com.hours22.devstudent.Command.Count.CountUnreadAlarms;
 import com.hours22.devstudent.Entity.*;
@@ -30,6 +31,8 @@ public class Query implements GraphQLQueryResolver {
     private CountUnreadAlarms countUnreadAlarms;
     @Autowired
     private CountAllQuestions countAllQuestions;
+    @Autowired
+    private CountTags countTags;
 
     public Query(QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
@@ -63,5 +66,9 @@ public class Query implements GraphQLQueryResolver {
 
     public Count countAllQuestions() {
         return countAllQuestions.countAllQuestions();
+    }
+
+    public List<Tag> countTags(int requiredCount, List<String> tags){
+        return countTags.countTags(requiredCount, tags);
     }
 }

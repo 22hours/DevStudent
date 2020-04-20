@@ -20,17 +20,17 @@ public class ReissuanceAccessToken {
     public User reissuanceAccessToken(String nickname, String refreshToken, String ip){
         String tokenState = "";
         if (!userRepository.existsByNickname(nickname)) {
-            return new User(null, "Not exist nickname", "Reissue fail", "Reissue fail", "Reissue fail");
+            return new User();
         }
         User user = userRepository.findByNickname(nickname);
         if(user.getEmail()!=null){
             tokenState = verifyRefreshToken.verifyRefreshToken(refreshToken, nickname, user.getEmail());
         }
         else{
-            return new User(null, "Not Exist Email","Reissue fail","Reissue fail","Reissue fail");
+            return new User();
         }
         if (!tokenState.equals("Safe")) {
-            return new User(null, tokenState, "Reissue fail", "Reissue fail", "Reissue fail");
+            return new User();
         }
         //String key = randMaker.getKey(false, 20);
         user.setAccessToken(createNewAccessToken.create(nickname, user.getEmail(), ip));

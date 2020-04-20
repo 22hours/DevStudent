@@ -1,9 +1,9 @@
 package com.hours22.devstudent.Entity;
 
 public class Count {
-    private int count;
+    private String count;
 
-    public Count(int count) {
+    public Count(String count) {
         this.count = count;
     }
 }

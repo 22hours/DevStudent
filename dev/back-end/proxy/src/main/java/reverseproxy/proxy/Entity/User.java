@@ -20,7 +20,11 @@ public class User {
     @Setter
     private String accessToken = null;
     @Setter
-    private String refreshToken = null;
+    private String gitLink = null;
+    @Setter
+    private String grade = "bean";
+    @Setter
+    private int point = 0;
     public User(String email){
         this.email = email;
     }
