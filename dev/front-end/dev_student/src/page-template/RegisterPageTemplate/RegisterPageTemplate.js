@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./RegisterPageTemplate.css";
 import { Container, Row, Col } from "reactstrap";
-import { Input, Button, FormText } from "reactstrap";
+import { Input, Button, FormText, Collapse } from "reactstrap";
 import { CREATE_USER } from "mutation/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import { Link } from "react-router-dom";
@@ -67,6 +67,9 @@ const RegisterTemplate = ({
         }
     };
 
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => setIsOpen(true);
+
     return (
         <div className="register-container-top-wrapper">
             <Container>
@@ -126,9 +129,7 @@ const RegisterTemplate = ({
                                         placeholder="devstu2020!!"
                                         onBlur={passwordRule}
                                     />
-                                    <FormText>
-                                        비밀번호는 8자~15자 이내로, 영문,숫자, 특수문자를 혼합하여 입력해주세요.{" "}
-                                    </FormText>
+                                    <FormText>8자~15자 이내, 영문,숫자,특수문자를 혼합하여 입력해주세요. </FormText>
                                 </div>
                             </div>
                             <div className="input-box">
@@ -164,14 +165,15 @@ const RegisterTemplate = ({
                                             style={btn_style}
                                             onClick={() => {
                                                 if (nickName == null) return;
-                                                if (nickName > 8 || nickName < 3) {
-                                                    alert("4자리~ 8자리 닉네임을 사용해주세요.");
+                                                if (nickName.length > 8 || nickName.length < 3) {
+                                                    alert("3자리~ 8자리 닉네임을 사용해주세요.");
+                                                } else {
+                                                    checkDuplicateNickname({
+                                                        variables: {
+                                                            nickname: nickName,
+                                                        },
+                                                    });
                                                 }
-                                                checkDuplicateNickname({
-                                                    variables: {
-                                                        nickname: nickName,
-                                                    },
-                                                });
                                             }}
                                         >
                                             확인
@@ -191,6 +193,21 @@ const RegisterTemplate = ({
                                     />
                                 </div>
                             </div>
+                            <Collapse isOpen={isOpen}>
+                                <div className="input-box">
+                                    <span className="register-label-style">인증번호</span>
+                                    <div className="nickName-input-box">
+                                        <div className="nickName-input">
+                                            <Input id="inputrandnum" type="text" />
+                                        </div>
+                                        <div className="nickName-check-button-wrapper">
+                                            <Button color="info" style={btn_style}>
+                                                확인
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Collapse>
                             <div className="input-box">
                                 <Button
                                     style={register_btn_style}
@@ -220,7 +237,7 @@ const RegisterTemplate = ({
                                             return;
                                         } else {
                                             alert("이메일을 확인해주세요.");
-
+                                            toggle();
                                             createUser({
                                                 variables: {
                                                     password: hashPassword(password),
