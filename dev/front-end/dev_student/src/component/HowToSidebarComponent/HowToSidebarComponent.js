@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Container, Row } from "reactstrap";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
-import { findAllQuestionsByViews } from "../../query/queries";
+import { findAllQuestionsByViews } from "query/queries";
 import { useQuery } from "@apollo/react-hooks";
 
 // css
