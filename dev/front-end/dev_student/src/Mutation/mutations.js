@@ -18,7 +18,6 @@ export const LOGIN = gql`
             date
             authState
             accessToken
-            refreshToken
         }
     }
 `;
