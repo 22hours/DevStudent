@@ -91,11 +91,11 @@ const HeaderComponent = ({ nickname }) => {
                         <NavItem>
                             <div className="nav-item-wrapper">
                                 <Link
-                                    to="/about/me"
+                                    to="/rule"
                                     className={"nav-link " + (clicked === "crew" ? "selected " : "unselected")}
                                     onClick={() => setClicked("crew")}
                                 >
-                                    Crew
+                                    Rule
                                 </Link>
                             </div>
                         </NavItem>

@@ -12,6 +12,7 @@ import {
     Posts,
     About,
     Login,
+    Rule,
     MyPage,
     Logout,
     Todo,
@@ -47,6 +48,8 @@ const MyRouter = (props) => {
                             <AuthRoute path="/mypage" render={(props) => <MyPage {...props} />} />
                             <Route path="/devnote" component={DevNote} />
                             <Route path="/sitesinfo/:infotype" component={SitesInfo} />
+                            <Route path="/rule" component={Rule} />
+
                             <Route component={NotFound} />
                         </Switch>
                     </ScrollToTop>

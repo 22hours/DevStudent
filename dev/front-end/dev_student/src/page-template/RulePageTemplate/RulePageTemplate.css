@@ -1,0 +1,99 @@
+.RulePageTemplate {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    min-height: 100vh;
+    height: auto;
+    overflow: hidden;
+    background-color: rgb(245, 245, 245);
+}
+
+.RulePageTemplate .description-row {
+    color: gray;
+    margin-bottom: 30px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgb(207, 207, 207);
+}
+
+.RulePageTemplate .rule-section-row {
+    /* padding: 15px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid rgb(211, 211, 211); */
+}
+
+.rule-section-row .rule-header-row {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: rgb(18, 82, 116);
+    font-weight: bold;
+}
+.rule-section-row .rule-item-row {
+    margin-top: 10px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.rule-section-row .rule-item-row .grade-img-col {
+    float: left;
+}
+.rule-section-row .rule-item-row .grade-img-col .image-row {
+    padding-left: 0px !important;
+    padding: 5px;
+    margin-top: 10px;
+    height: 60px;
+    overflow: hidden;
+}
+.rule-section-row .rule-item-row .grade-img-col img {
+    padding: 3px;
+    width: 40px;
+    height: 40px;
+    box-shadow: 1px 1px 1px 1px rgb(167, 167, 167);
+    background-color: white;
+    border-radius: 50%;
+}
+.rule-section-row .rule-item-row .grade-description-col {
+    margin-left: 10px;
+    float: left;
+}
+
+.rule-section-row .rule-item-row .grade-description-col .ds-row {
+    width: auto;
+    padding: 5px;
+    margin-top: 10px;
+    height: 60px;
+    max-height: 60px;
+}
+.rule-section-row .rule-item-row .grade-description-col .ds-row span {
+    line-height: 40px;
+    vertical-align: middle;
+}
+.rule-section-row .rule-item-row .grade-description-col .ds-row #grade-name {
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    width: 65px;
+}
+.rule-section-row .rule-item-row .grade-description-col .ds-row #grade-ds {
+    font-size: 16px;
+    display: inline-block;
+
+    width: 200px;
+    color: rgb(98, 98, 98);
+}
+.rule-section-row .rule-item-row .grade-description-col .ds-row #grade-point {
+    font-size: 16px;
+    display: inline-block;
+    text-align: left;
+    width: 100px;
+    color: rgb(0, 0, 0);
+}
+@media only screen and (max-width: 450px) {
+    #grade-ds {
+        display: none !important;
+    }
+}
+
+.rule-section-footer {
+    margin-bottom: 30px;
+}
