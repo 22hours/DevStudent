@@ -97,3 +97,19 @@
 .rule-section-footer {
     margin-bottom: 30px;
 }
+
+.rule-item-row table {
+    text-align: center;
+}
+
+.rule-item-row td {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 15px;
+}
+
+.rule-item-row th {
+    font-size: 18px;
+}

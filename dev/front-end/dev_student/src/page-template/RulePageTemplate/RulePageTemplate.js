@@ -93,7 +93,6 @@ const RulePageTemplate = () => {
                         등급은 사이트 이용에 큰 영향을 주지는 않습니다만, 클린한 HOWTO 게시판을 위해, 반대 투표와 같은
                         기능에 한하여
                     </div>
-                    <div className="rule-item-row"></div>
                     <div className="rule-item-row">등급별로 사이트 내에서 할 수 있는 행동에 제약이 있습니다</div>
                     <div className="rule-section-footer">&nbsp;</div>
                 </div>
@@ -102,8 +101,42 @@ const RulePageTemplate = () => {
                     <div className="rule-header-row">등급은 어떻게 올리나요?</div>
                     <div className="rule-item-row">사이트 내에서는 회원들의 활발한 활동을 장려하기 위해</div>
                     <div className="rule-item-row">회원들의 여러가지 활동에 포인트를 부여합니다</div>
-                    <div className="rule-item-row">여기에 포인트 표를 넣자</div>
-
+                    <div className="rule-item-row"></div>
+                    <div className="rule-item-row">
+                        <table border="1">
+                            <tr>
+                                <th> 여러 활동들 </th> <th> 포인트 </th>
+                            </tr>
+                            <tr>
+                                <td> 질문 등록하기 </td> <td> +2 point </td>
+                            </tr>
+                            <tr>
+                                <td> 답변 달기 </td> <td> +5 point </td>
+                            </tr>
+                            <tr>
+                                <td> 좋은 답변을 채택하기 </td> <td> +2 point </td>
+                            </tr>
+                            <tr>
+                                <td> 내가 쓴 답변이 채택되었을 경우 </td> <td> +5 point </td>
+                            </tr>
+                            <tr>
+                                <td> 좋은 글에 좋아요 누르기 </td> <td> +1 point </td>
+                            </tr>
+                            <tr>
+                                <td> 나의 글에 좋아요가 달렸을 경우 </td> <td> +2 point </td>
+                            </tr>
+                            <tr>
+                                <td> 나쁜 글에 싫어요 누르기 </td> <td> -1 point </td>
+                            </tr>
+                            <tr>
+                                <td> 나의 글에 싫어요가 달렸을 경우 </td> <td> -2 point </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div className="rule-item-row"></div>
+                    <div className="rule-item-row">
+                        다른사람의 글에 싫어요를 누를 때에는 포인트가 차감되므로 신중하게 판단해주시기 바랍니다.
+                    </div>
                     <div className="rule-section-footer">&nbsp;</div>
                 </div>
             </Container>
