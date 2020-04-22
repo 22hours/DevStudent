@@ -1,7 +1,7 @@
 # DevStudent
 
 
-<center><img src="/img/contributors.png" width="300" height="70"></center>
+<center><img src="/img/contributors.png" width="100%" height="70"></center>
 
 > 시작은 미약하지만 끝은 창대하리라
 
