@@ -15,6 +15,7 @@ export const LOGIN = gql`
             password
             nickname
             schoolName
+            gitLink
             date
             authState
             accessToken
@@ -89,6 +90,22 @@ export const REISSUANCE_ACCESS_TOKEN = gql`
             authState
             accessToken
             refreshToken
+        }
+    }
+`;
+
+export const CHECK_EMAIL = gql`
+    mutation checkEmail($email: String!, $nickname: String!) {
+        checkEmail(email: $email, nickname: $nickname) {
+            count
+        }
+    }
+`;
+
+export const UPDATE_USER_INFO = gql`
+    mutation updateUserInfo($nickname: String!, $gitLink: String!) {
+        updateUserInfo(nickname: $nickname, gitLink: $gitLink) {
+            gitLink
         }
     }
 `;
