@@ -10,7 +10,6 @@ type Alarm{
 
 extend type Query{
     findAllAlarms(nickname : String, pageNum : Int, requiredCount : Int) : [Alarm]
-    countUnreadAlarms(nickname : String) : Count
 }
 
 extend type Mutation {

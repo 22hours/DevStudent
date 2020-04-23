@@ -107,9 +107,9 @@ public class Mutation implements GraphQLMutationResolver {
 
     public Count logoutFromServer(String email) { // 토큰 만료 시키기
         if (logout.logoutFromServer(email)) {
-            return new Count(1); // 성공했다
+            return new Count("1"); // 성공했다
         }
-        return new Count(0); // 실패했다
+        return new Count("0"); // 실패했다
     }
 
     public User createUser(String email, String password, String nickname, String schoolName) {

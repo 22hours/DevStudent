@@ -4,8 +4,8 @@ import lombok.Getter;
 
 @Getter
 public class Count {
-    private int count;
-    public Count(int count) {
+    private String count;
+    public Count(String count) {
         this.count = count;
     }
 }
