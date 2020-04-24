@@ -2,6 +2,7 @@ import React from "react";
 import "./QuestionTagModuleTemplate.css";
 import { COUNT_TAGS } from "query/queries";
 import { useQuery } from "@apollo/react-hooks";
+import { tagArray } from "array/arrays";
 
 // items
 import QuestionTagItem from "item/QuestionTagItem/QuestionTagItem";
@@ -9,9 +10,16 @@ import QuestionTagItem from "item/QuestionTagItem/QuestionTagItem";
 //icons
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 
-const QuestionTagModuleTemplate = ({ tag }) => {
-    const taglist = tag.map(({ idx, tagname, tagcount }) => (
-        <QuestionTagItem idx={idx} tagname={tagname} tagcount={tagcount} key={tagname}></QuestionTagItem>
+const QuestionTagModuleTemplate = () => {
+    const { loading, error, data } = useQuery(COUNT_TAGS, {
+        variables: { requiredCount: 10, tags: tagArray },
+    });
+    if (loading) return <p>Loading ...</p>;
+    if (error) return <p>Error!</p>;
+    console.log(data);
+
+    const taglist = data.countTags.map(({ name, count }) => (
+        <QuestionTagItem name={name} count={count}></QuestionTagItem>
     ));
     return (
         <div className="question-tag-wrapper">

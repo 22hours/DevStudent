@@ -7,11 +7,11 @@ import "./QuestionTagItem.css";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import ClearIcon from "@material-ui/icons/Clear";
 
-const QuestionTagItem = ({ tagcount, tagname }) => {
+const QuestionTagItem = ({ count, name }) => {
     return (
         <div width="100%">
             <div className="howto-list-group-wrapper">
-                <span className="howto-list-group-item-tagname">{tagname}</span>
+                <span className="howto-list-group-item-tagname">{name}</span>
                 <span id="x">
                     <ClearIcon style={{ fontSize: "10px" }} />
                 </span>
@@ -19,7 +19,7 @@ const QuestionTagItem = ({ tagcount, tagname }) => {
                     {" "}
                     <VisibilityIcon style={{ fontSize: "10px" }} />
                     &nbsp;
-                    {tagcount}
+                    {count}
                 </span>
             </div>
         </div>
