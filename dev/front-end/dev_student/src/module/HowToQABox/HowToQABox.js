@@ -140,6 +140,9 @@ const HowToQABox = ({
 
     const adoptThisAnswer = () => {
         var adoptReturn = null;
+        if (localStorage.getItem("nickname") !== author) {
+            return;
+        }
         if (!solved) adoptReturn = window.confirm("이 댓글을 채택하시겠습니까?");
         else {
             window.alert("이미 채택된 답변이 있습니다");

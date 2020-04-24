@@ -62,6 +62,8 @@ const RegisterTemplate = ({
 
     //비밀번호 확인용
     const RepwInputRenderer = () => {
+        if (password < 1 || rePwd < 1) return;
+        if (pwdRuleCheck === "false") return;
         if (pwdRuleCheck === "true" && emailRuleCheck === "true") {
             if (password !== rePwd) {
                 setRePwdClassName("is-invalid");

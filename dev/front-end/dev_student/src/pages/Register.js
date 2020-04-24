@@ -37,6 +37,7 @@ const Register = () => {
     };
 
     const passwordRule = () => {
+        if (password.length < 1) return;
         var num = password.search(/[0-9]/g);
         var eng = password.search(/[a-z]/gi);
         var spe = password.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
