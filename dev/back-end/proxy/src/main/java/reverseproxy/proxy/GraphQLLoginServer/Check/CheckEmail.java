@@ -1,6 +1,7 @@
 package reverseproxy.proxy.GraphQLLoginServer.Check;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.Count;
 import reverseproxy.proxy.GraphQLLoginServer.ConnectLoginServer;
@@ -8,18 +9,11 @@ import reverseproxy.proxy.GraphQLLoginServer.ConnectLoginServer;
 @Component
 public class CheckEmail extends ConnectLoginServer {
     public Count checkEmail(String email) {
-        //region Query
-        String query = "mutation{\n" +
-                "    checkEmail(email : \"" + email + "\"){\n" +
-                "        count\n" +
-                "    }\n" +
-                "}";
-        //endregion
-        System.out.println(query);
+        String url = "/check/email";
+        JsonObject json = new JsonObject();
+        json.addProperty("email",email);
         Gson gson = new Gson();
-        String name = new Object() {
-        }.getClass().getEnclosingMethod().getName();
-        String str = getResponse(query, name);
+        String str = getResponse(url,json);
         System.out.println(str);
         Count count = gson.fromJson(str, Count.class);
         return count;

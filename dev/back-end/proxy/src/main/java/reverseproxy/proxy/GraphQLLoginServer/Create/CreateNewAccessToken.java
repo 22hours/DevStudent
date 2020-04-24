@@ -39,9 +39,9 @@ public class CreateNewAccessToken extends ConnectLoginServer {
         Gson gson = new Gson();
         String name = new Object() {
         }.getClass().getEnclosingMethod().getName();
-        String str = getResponse(query, name);
-        System.out.println(str);
-        User user = gson.fromJson(str, User.class);
-        return user;
+        //String str = getResponse(query, name);
+        //System.out.println(str);
+        //User user = gson.fromJson(str, User.class);
+        return null;
     }
 }

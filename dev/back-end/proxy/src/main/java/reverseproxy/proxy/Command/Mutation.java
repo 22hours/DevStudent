@@ -132,6 +132,7 @@ public class Mutation implements GraphQLMutationResolver {
     }
     //endregion
     public Count checkEmail(String email) {
+
         return checkEmail.checkEmail(email);
     }
 
