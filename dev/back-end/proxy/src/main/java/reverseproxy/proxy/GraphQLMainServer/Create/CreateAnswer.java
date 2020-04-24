@@ -20,6 +20,7 @@ public class CreateAnswer extends ConnectMainServer {
                 "        content\n" +
                 "        date\n" +
                 "        likesCount\n" +
+                "        isLiked\n" +
                 "        likes{\n" +
                 "            nickname\n" +
                 "            status\n" +

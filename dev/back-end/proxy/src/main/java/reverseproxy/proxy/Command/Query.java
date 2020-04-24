@@ -43,8 +43,8 @@ public class Query implements GraphQLQueryResolver {
         return findQuestionsByOption.findQuestionsByOption(param, option, searchContent, pageNum, requiredCount);
     }
 
-    public Question findQuestionBy_id(String _id) {
-        return findQuestionBy_id.findQuestionBy_id(_id);
+    public Question findQuestionBy_id(String _id, DataFetchingEnvironment env) {
+        return findQuestionBy_id.findQuestionBy_id(_id, env);
     }
 
     public List<Question> findQuestionsByTags(String param, int pageNum, int requiredCount, List<String> tags, String logical) {

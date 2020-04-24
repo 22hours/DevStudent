@@ -1,4 +1,4 @@
-package reverseproxy.proxy.GraphQLMainServer.Create;
+package reverseproxy.proxy.GraphQLMainServer.Update;
 
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
@@ -6,14 +6,13 @@ import reverseproxy.proxy.Entity.Question;
 import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
 @Component
-public class CreateLike extends ConnectMainServer {
-    public Question createLike(String question_id, String answer_id, String nickname, String status) {
-        //region Query
+public class UpdateAdoptedAnswerId extends ConnectMainServer {
+
+    public Question updateAdoptedAnswerId(String question_id, String answer_id, String nickname){
         String query = "mutation{\n" +
-                "    createLike(question_id : \"" + question_id + "\", " +
+                "    updateAdoptedAnswerId(question_id : \"" + question_id + "\", " +
                 "answer_id : \"" + answer_id + "\", " +
-                "nickname : \"" + nickname + "\", " +
-                "status : \"" + status + "\")\n" +
+                "nickname : \"" + nickname + "\")\n " +
                 "    {\n" +
                 "        title\n" +
                 "        _id\n" +

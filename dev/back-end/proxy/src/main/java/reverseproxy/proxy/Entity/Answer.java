@@ -19,6 +19,8 @@ public class Answer {
     @Setter
     private int likesCount = 0;
     @Setter
+    private String isLiked = null;
+    @Setter
     private List<Comment> comments = new ArrayList<Comment>();
     @Setter
     private List<Like> likes = new ArrayList<Like>();

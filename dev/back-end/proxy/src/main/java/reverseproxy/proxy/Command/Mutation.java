@@ -19,6 +19,7 @@ import reverseproxy.proxy.GraphQLMainServer.Delete.DeleteAlarm;
 import reverseproxy.proxy.GraphQLMainServer.Delete.DeleteAnswer;
 import reverseproxy.proxy.GraphQLMainServer.Delete.DeleteComment;
 import reverseproxy.proxy.GraphQLMainServer.Delete.DeleteQuestion;
+import reverseproxy.proxy.GraphQLMainServer.Update.UpdateAdoptedAnswerId;
 
 import java.util.List;
 
@@ -54,6 +55,8 @@ public class Mutation implements GraphQLMutationResolver {
     private Logout logout;
     @Autowired
     private UpdateUserInfo updateUserInfo;
+    @Autowired
+    private UpdateAdoptedAnswerId updateAdoptedAnswerId;
 
     //region MainServer Create
     public Question createQuestion(String title, String author, List<String> tags, String content)  {
@@ -75,6 +78,10 @@ public class Mutation implements GraphQLMutationResolver {
     public Question createLike(String question_id, String answer_id, String nickname, String status)  {
         // token 검사
         return createLike.createLike(question_id, answer_id, nickname, status);
+    }
+
+    public Question updateAdoptedAnswerId(String question_id, String answer_id, String nickname){
+        return updateAdoptedAnswerId.updateAdoptedAnswerId(question_id, answer_id, nickname);
     }
 
     //endregion

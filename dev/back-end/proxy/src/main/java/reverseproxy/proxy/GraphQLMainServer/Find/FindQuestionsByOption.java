@@ -29,8 +29,9 @@ public class FindQuestionsByOption extends ConnectMainServer {
                 "        previews\n" +
                 "        answerCount\n" +
                 "        likesCount\n" +
+                "        isLiked\n" +
                 "        views\n" +
-                "        solved\n" +
+                "        adoptedAnswerId\n" +
                 "        likes{\n" +
                 "            nickname\n" +
                 "            status\n" +
@@ -47,6 +48,7 @@ public class FindQuestionsByOption extends ConnectMainServer {
                 "            content\n" +
                 "            date\n" +
                 "            likesCount\n" +
+                "            isLiked\n" +
                 "            comments{\n" +
                 "                _id\n" +
                 "                author\n" +

@@ -18,8 +18,6 @@ public class CreateQuestion extends Create {
         String previews = (content.length() < 100) ? content : content.substring(0, 100);
         Question question = new Question(seqNum, title, author, tags, content, previews);
         questionRepository.save(question);
-        //Test test = new Test();
-        //test.hi();
         return question;
     }
 }

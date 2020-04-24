@@ -39,6 +39,7 @@ public class CreateLike extends Create {
                 question.setLikesCount(question.getLikesCount() - 1);
 
             questionRepository.save(question);
+            question.setIsLiked(status);
             return question;
         } else {
             Boolean isAnswerExist = false;
@@ -61,6 +62,8 @@ public class CreateLike extends Create {
 
                     question.setAnswers(answers);
                     questionRepository.save(question);
+                    answer.setIsLiked(status);
+                    question.setAnswers(answers);
                     return question;
                 }
             }

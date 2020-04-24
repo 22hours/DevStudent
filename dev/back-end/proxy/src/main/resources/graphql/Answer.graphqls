@@ -4,6 +4,7 @@ type Answer{
     content : String
     date : String
     likesCount : Int
+    isLiked : String
     comments : [Comment]
     likes : [Like]
 }

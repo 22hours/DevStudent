@@ -6,6 +6,7 @@ import com.hours22.devstudent.Command.Delete.DeleteAlarm;
 import com.hours22.devstudent.Command.Delete.DeleteAnswer;
 import com.hours22.devstudent.Command.Delete.DeleteComment;
 import com.hours22.devstudent.Command.Delete.DeleteQuestion;
+import com.hours22.devstudent.Command.Update.UpdateAdoptedAnswerId;
 import com.hours22.devstudent.Entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,6 +32,8 @@ public class Mutation implements GraphQLMutationResolver {
     private DeleteComment deleteComment;
     @Autowired
     private DeleteAlarm deleteAlarm;
+    @Autowired
+    private UpdateAdoptedAnswerId updateAdoptedAnswerId;
     //endregion
 
     //region create Muation
@@ -50,6 +53,9 @@ public class Mutation implements GraphQLMutationResolver {
         return createLike.createLike(question_id, answer_id, nickname, status);
     }
 
+    public Question updateAdoptedAnswerId(String question_id, String answer_id, String nickname){
+        return updateAdoptedAnswerId.updateAdoptedAnswerId(question_id, answer_id, nickname);
+    }
     //endregion
     //region delete Mutation
     public Question deleteQuestion(String _id) {

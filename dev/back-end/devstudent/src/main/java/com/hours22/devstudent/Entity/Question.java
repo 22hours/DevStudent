@@ -29,8 +29,9 @@ public class Question {
     private String previews = "";
     private int answerCount = 0;
     private int likesCount = 0;
+    private String isLiked = "none";
     private int views = 1;
-    private Boolean solved = false;
+    private String adoptedAnswerId = null;
     private List<Comment> comments = new ArrayList<Comment>();
     private List<Answer> answers = new ArrayList<Answer>();
     private List<Like> likes = new ArrayList<Like>();
