@@ -47,8 +47,10 @@ const HowToQABox = ({ _id, isQuestion, author, date, likes, content, tags, comme
     };
     const CommentList = comments.map(({ _id, author, content, date }) => (
         <div key={_id} className="comment-box">
-            <span id="content">{content}&nbsp;</span>
-            <span id="author">{author}&nbsp;</span>
+            <span id={"author"}>{author}&nbsp;</span>
+            &nbsp;
+            <span id="content">{content}</span>
+            &nbsp; &nbsp;
             <span id="date">{date}</span>
         </div>
     ));
@@ -56,7 +58,7 @@ const HowToQABox = ({ _id, isQuestion, author, date, likes, content, tags, comme
         createComment({
             variables: {
                 question_id: question_id,
-                answer_id: _id,
+                answer_id: isQuestion === "Q" ? "Question" : _id,
                 author: window.localStorage.getItem("nickname"),
                 content: commentValue,
             },

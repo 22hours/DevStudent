@@ -175,13 +175,13 @@
 }
 
 .comment-box #author {
-    color: #4ba0b5;
-    font-size: 18px;
+    color: gray;
+    font-size: 14px;
 }
 
 .comment-box #date {
     color: gray;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .comment-box #content {
@@ -198,15 +198,5 @@
 
 .question-comment-warpper .comment-box {
     padding: 10px;
-    width: 100%;
-}
-
-.question-comment-warpper .comment-box a {
-    width: 100%;
-    color: gray;
-}
-
-.question-comment-warpper .comment-box #comment-link {
-    text-align: right;
     width: 100%;
 }

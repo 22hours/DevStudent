@@ -64,6 +64,7 @@ const HowToContentModuleTemplate = ({ match }) => {
                         isQuestion={"Q"}
                         author={data.findQuestionBy_id.author}
                         date={data.findQuestionBy_id.date}
+                        question_id={match.params.id}
                         likes={"3"}
                         content={data.findQuestionBy_id.content}
                         comments={data.findQuestionBy_id.comments}
