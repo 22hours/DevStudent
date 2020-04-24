@@ -3,15 +3,21 @@ import { gql } from "apollo-boost";
 export const findQuestionBy_id_Query = gql`
     query findQuestionBy_id($_id: String) {
         findQuestionBy_id(_id: $_id) {
-            _id
             title
+            _id
             author
             tags
             date
             content
+            previews
             answerCount
+            likesCount
             views
             solved
+            likes {
+                nickname
+                status
+            }
             comments {
                 _id
                 author
@@ -23,11 +29,16 @@ export const findQuestionBy_id_Query = gql`
                 author
                 content
                 date
+                likesCount
                 comments {
                     _id
                     author
                     content
                     date
+                }
+                likes {
+                    nickname
+                    status
                 }
             }
         }

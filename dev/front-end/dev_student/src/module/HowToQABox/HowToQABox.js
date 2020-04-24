@@ -9,24 +9,43 @@ import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import DoneIcon from "@material-ui/icons/Done"; // modules
 import RequireLoginBoxModule from "../RequireLoginBoxModule/RequireLoginBoxModule";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import DoneIcon from "@material-ui/icons/Done";
 
 // atoms
 import Tag from "atom/Tag/Tag";
 import MarkdownParser from "atom/MarkdownParser/MarkdownParser";
 
-const HowToQABox = ({ _id, isQuestion, author, date, likes, content, tags, comments, question_id, solved }) => {
+const HowToQABox = ({
+    _id,
+    isQuestion,
+    author,
+    date,
+    likes,
+    content,
+    tags,
+    comments,
+    question_id,
+    solved,
+    likesCount,
+}) => {
     const [createComment] = useMutation(CREATE_COMMENT);
     const [isOpen, setIsOpen] = useState(false);
     const toggleCollapse = () => setIsOpen(!isOpen);
     const [commentValue, setCommentValue] = useState("");
-
     const IsQorAOutter = () => {
         if (isQuestion === "Q") {
             return <div className="is-question-box-q">Q</div>;
         } else {
-            return <div className="is-question-box-a">A</div>;
+            return (
+                <div
+                    onClick={adoptThisAnswer}
+                    className={"is-question-box-a clickable " + (solved ? "adopt" : "notadopt")}
+                >
+                    A
+                </div>
+            );
         }
     };
 
@@ -34,7 +53,14 @@ const HowToQABox = ({ _id, isQuestion, author, date, likes, content, tags, comme
         if (isQuestion === "Q") {
             return <div className="header-box-is-question-box-q">Q</div>;
         } else {
-            return <div className="header-box-is-question-box-a">A</div>;
+            return (
+                <div
+                    onClick={adoptThisAnswer}
+                    className={"header-box-is-question-box-a clickable " + (solved ? "adopt" : "notadopt")}
+                >
+                    A
+                </div>
+            );
         }
     };
     const TagBox = () => {
@@ -75,15 +101,15 @@ const HowToQABox = ({ _id, isQuestion, author, date, likes, content, tags, comme
     const LikesBoxOutter = () => {
         return (
             <React.Fragment>
-                <div className="likes-outter">
-                    <div className="likes-count-up">
-                        <Link style={{ color: "gray" }}>
+                <div className={"likes-outter " + (likes === "none" ? "able" : "disable")}>
+                    <div className={"likes-count-up " + (likes === "up" ? "clicked" : "notClicked")}>
+                        <Link>
                             <ArrowDropUpIcon style={{ fontSize: 30 }} />
                         </Link>
                     </div>
-                    <div className="likes-count-box">13</div>
-                    <div className="likes-count-down">
-                        <Link style={{ color: "gray" }}>
+                    <div className="likes-count-box">{likesCount}</div>
+                    <div className={"likes-count-down " + (likes === "down" ? "clicked" : "notClicked")}>
+                        <Link>
                             <ArrowDropDownIcon style={{ fontSize: 30 }} />
                         </Link>
                     </div>
@@ -95,14 +121,14 @@ const HowToQABox = ({ _id, isQuestion, author, date, likes, content, tags, comme
     const LikesBoxInner = () => {
         return (
             <React.Fragment>
-                <div className="likes-inner">
-                    <div className="likes-count-box">50</div>
-                    <div className="likes-count-up">
+                <div className={"likes-inner " + (likes === "none" ? "able" : "disable")}>
+                    <div className="likes-count-box">{likes}</div>
+                    <div className={"likes-count-up " + (likes === "up" ? "clicked" : "notClicked")}>
                         <Link style={{ color: "gray" }}>
                             <ThumbUpIcon style={{ fontSize: 15 }} color="action" />
                         </Link>
                     </div>
-                    <div className="likes-count-down">
+                    <div className={"likes-count-down " + (likes === "down" ? "clicked" : "notClicked")}>
                         <Link style={{ color: "gray" }}>
                             <ThumbDownIcon style={{ fontSize: 15 }} color="action" />
                         </Link>
@@ -111,39 +137,22 @@ const HowToQABox = ({ _id, isQuestion, author, date, likes, content, tags, comme
             </React.Fragment>
         );
     };
-    const SolvedBoxOutter = () => {
-        if (solved === _id) {
-            return (
-                <React.Fragment>
-                    <div className="solved-outter">
-                        <Link style={{ color: "green" }}>
-                            <DoneIcon />
-                        </Link>
-                    </div>
-                </React.Fragment>
-            );
-        }
-        if (isQuestion === "Q") {
-            return <React.Fragment></React.Fragment>;
-        } else {
-            return (
-                <React.Fragment>
-                    <div className="solved-outter">
-                        <Link style={{ color: "rgb(98, 98, 98);" }}>
-                            <DoneIcon />
-                        </Link>
-                    </div>
-                </React.Fragment>
-            );
+
+    const adoptThisAnswer = () => {
+        var adoptReturn = null;
+        if (!solved) adoptReturn = window.confirm("이 댓글을 채택하시겠습니까?");
+        else {
+            window.alert("이미 채택된 답변이 있습니다");
+            return;
         }
     };
     return (
-        <React.Fragment>
-            <div>
-                <div className="qa-status-box">
+        <div>
+            {/* <div className="adopt-popup-layer">레레레</div> */}
+            <div className={"HowToQABox"}>
+                <div className={"qa-status-box"}>
                     <IsQorAOutter />
                     <LikesBoxOutter />
-                    <SolvedBoxOutter />
                 </div>
                 <div className="question-box">
                     <div className="header-box">
@@ -181,7 +190,7 @@ const HowToQABox = ({ _id, isQuestion, author, date, likes, content, tags, comme
                     </Collapse>
                 </div>
             </div>
-        </React.Fragment>
+        </div>
     );
 };
 

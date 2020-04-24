@@ -102,7 +102,23 @@
     border-radius: 5px;
     margin-bottom: 10px;
 }
-
+.how-to-content-header .not-solved-bagde {
+    vertical-align: text-bottom;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 12px;
+    margin-left: 2px;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    height: 12px;
+    font-weight: bold;
+    background-color: rgb(139, 130, 130);
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
 .how-to-content-header .mine-bagde {
     vertical-align: text-bottom;
     font-family: "Noto Sans KR", sans-serif;

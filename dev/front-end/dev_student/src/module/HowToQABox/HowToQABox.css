@@ -138,7 +138,7 @@
 
 .header-box .header-box-is-question-box-a {
     font-family: "Do Hyeon", sans-serif;
-    background-color: rgb(238, 128, 128);
+    /* background-color: rgb(238, 128, 128); */
     color: white;
     margin-top: 2px;
     width: 23px;
@@ -199,4 +199,39 @@
 .question-comment-warpper .comment-box {
     padding: 10px;
     width: 100%;
+}
+
+.HowToQABox .adopt {
+    background-color: rgb(238, 128, 128);
+}
+.HowToQABox .notadopt {
+    background-color: rgb(184, 184, 184);
+}
+.HowToQABox {
+    width: 100%;
+}
+
+.adopt-popup-layer {
+    position: absolute;
+    width: 100%;
+    /* z-index: 100; */
+    background-color: black;
+    /* top: 0px; */
+    /* left: 0px; */
+}
+
+.clicked {
+}
+.clicked a {
+    color: rgb(7, 171, 200) !important;
+}
+
+.notClicked {
+}
+.notClicked a {
+    color: rgb(187, 187, 187) !important;
+}
+
+.clickable {
+    cursor: pointer;
 }

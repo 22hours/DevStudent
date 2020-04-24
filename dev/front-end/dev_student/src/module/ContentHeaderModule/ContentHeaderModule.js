@@ -15,7 +15,7 @@ const ContentHeaderModule = (props) => {
         if (solved) {
             return <span className="solved-bagde">SOLVED</span>;
         } else {
-            return <span className="solved-bagde">SOLVED</span>;
+            return <span className="not-solved-bagde">HELP WANTED</span>;
         }
     };
     const MineBadge = () => {
