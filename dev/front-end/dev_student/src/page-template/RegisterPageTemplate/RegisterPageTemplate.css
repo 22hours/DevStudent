@@ -21,9 +21,9 @@
     text-align: center;
     font-family: "Do Hyeon", sans-serif;
     font-weight: 300;
-    font-size: 13.5px;
+    font-size: 14.5px;
     margin-top: 3%;
-    margin-bottom: 3%;
+    margin-bottom: 30px;
 }
 
 .registertemplate-info a {
@@ -61,6 +61,7 @@
 .register-label-style {
     margin: 0px auto;
     text-align: left;
+    margin-bottom: 10px;
     font-family: "Do Hyeon", sans-serif;
 }
 
@@ -95,4 +96,11 @@
     display: inline-block;
     width: calc(100% - 60px);
     height: 100%;
+}
+
+.login-logo_wrapper {
+    margin-top: 2%;
+    display: table;
+    width: 100%;
+    text-align: center;
 }

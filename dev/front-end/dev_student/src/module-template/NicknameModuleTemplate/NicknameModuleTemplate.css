@@ -1,0 +1,78 @@
+.nickname-container-top-wrapper {
+    height: 100vh;
+    padding-top: 2%;
+    background-color: #f2f2f2;
+    height: 100vh;
+    padding-top: 2%;
+}
+
+.nickname-container-wrapper {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); /* 그림자 */
+    border-radius: 7px;
+    padding-bottom: 2%;
+    background-color: white;
+}
+
+.nickname-welcome-wrapper {
+    margin-top: 5%;
+    display: table;
+    width: 100%;
+    text-align: center;
+}
+
+.nickname-welcome-span {
+    font-size: xx-large;
+    font-family: "Do Hyeon", sans-serif;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.nickname-logo_wrapper {
+    margin-top: 2%;
+    display: table;
+    width: 100%;
+    text-align: center;
+}
+
+.nickname-logo_wrapper img {
+    width: 90px;
+    height: 80px;
+}
+
+.nickname-form-wrapper {
+    margin-top: 3%;
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 100%;
+}
+
+.nickname-form-resize-wrapper {
+    text-align: center;
+}
+
+.nickname-form-wrapper div {
+    width: 100%;
+}
+
+.nickname-form-resize-wrapper button {
+    width: 100%;
+}
+
+.nickname-form-wrapper .nickname-state-form {
+    margin: 0px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.nickname-state-form b {
+    color: #4ba0b5;
+}
+
+.nicknameed-confirm-wrapper {
+    margin-top: 20px;
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 5px;
+}
