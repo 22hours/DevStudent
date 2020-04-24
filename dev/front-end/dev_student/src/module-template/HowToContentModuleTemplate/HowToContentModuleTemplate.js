@@ -40,7 +40,7 @@ const HowToContentModuleTemplate = ({ match }) => {
             comments={comments}
             question_id={match.params.id}
             solve={solve}
-            likes={"up"}
+            isLiked={"up"}
             likesCount="129"
         />
     ));
@@ -72,7 +72,7 @@ const HowToContentModuleTemplate = ({ match }) => {
                         likes={"3"}
                         content={data.findQuestionBy_id.content}
                         comments={data.findQuestionBy_id.comments}
-                        likes={"none"}
+                        isLiked={"none"}
                         likesCount="20"
                     ></HowToQABox>
                     {answers}

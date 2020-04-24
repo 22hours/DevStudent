@@ -22,7 +22,7 @@ const HowToQABox = ({
     isQuestion,
     author,
     date,
-    likes,
+    isLiked,
     content,
     tags,
     comments,
@@ -101,15 +101,15 @@ const HowToQABox = ({
     const LikesBoxOutter = () => {
         return (
             <React.Fragment>
-                <div className={"likes-outter " + (likes === "none" ? "able" : "disable")}>
-                    <div className={"likes-count-up " + (likes === "up" ? "clicked" : "notClicked")}>
-                        <Link>
+                <div className={"likes-outter " + (isLiked === "none" ? "able" : "disable")}>
+                    <div className={"likes-count-up " + (isLiked === "up" ? "liked" : "notClicked")}>
+                        <Link onClick={() => emoteThisQABox("up")}>
                             <ArrowDropUpIcon style={{ fontSize: 30 }} />
                         </Link>
                     </div>
                     <div className="likes-count-box">{likesCount}</div>
-                    <div className={"likes-count-down " + (likes === "down" ? "clicked" : "notClicked")}>
-                        <Link>
+                    <div className={"likes-count-down " + (isLiked === "down" ? "disliked" : "notClicked")}>
+                        <Link onClick={() => emoteThisQABox("down")}>
                             <ArrowDropDownIcon style={{ fontSize: 30 }} />
                         </Link>
                     </div>
@@ -121,15 +121,15 @@ const HowToQABox = ({
     const LikesBoxInner = () => {
         return (
             <React.Fragment>
-                <div className={"likes-inner " + (likes === "none" ? "able" : "disable")}>
-                    <div className="likes-count-box">{likes}</div>
-                    <div className={"likes-count-up " + (likes === "up" ? "clicked" : "notClicked")}>
-                        <Link style={{ color: "gray" }}>
+                <div className={"likes-inner " + (isLiked === "none" ? "able" : "disable")}>
+                    <div className="likes-count-box">{likesCount}</div>
+                    <div className={"likes-count-up " + (isLiked === "up" ? "liked" : "notClicked")}>
+                        <Link onClick={() => emoteThisQABox("up")}>
                             <ThumbUpIcon style={{ fontSize: 15 }} color="action" />
                         </Link>
                     </div>
-                    <div className={"likes-count-down " + (likes === "down" ? "clicked" : "notClicked")}>
-                        <Link style={{ color: "gray" }}>
+                    <div className={"likes-count-down " + (isLiked === "down" ? "disliked" : "notClicked")}>
+                        <Link onClick={() => emoteThisQABox("down")}>
                             <ThumbDownIcon style={{ fontSize: 15 }} color="action" />
                         </Link>
                     </div>
@@ -144,6 +144,15 @@ const HowToQABox = ({
         else {
             window.alert("이미 채택된 답변이 있습니다");
             return;
+        }
+    };
+
+    const emoteThisQABox = (emote) => {
+        const auth = localStorage.getItem("auth");
+        if (auth) {
+            alert("success!");
+        } else {
+            window.location.href = "/login";
         }
     };
     return (

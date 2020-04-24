@@ -222,8 +222,11 @@
 
 .clicked {
 }
-.clicked a {
+.liked a {
     color: rgb(7, 171, 200) !important;
+}
+.disliked a {
+    color: rgb(211, 11, 71) !important;
 }
 
 .notClicked {
