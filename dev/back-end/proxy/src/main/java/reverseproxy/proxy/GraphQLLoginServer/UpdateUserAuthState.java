@@ -1,33 +1,18 @@
 package reverseproxy.proxy.GraphQLLoginServer;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.User;
 
 @Component
 public class UpdateUserAuthState extends ConnectLoginServer {
     public User updateUserAuthState(String authState) {
-        //region Query
-        String query = "mutation{\n" +
-                "    updateUserAuthState(authState:\"" + authState + "\")\n" +
-                "    {\n" +
-                "        email\n" +
-                "        password\n" +
-                "        nickname\n" +
-                "        schoolName\n" +
-                "        date\n" +
-                "        authState\n" +
-                "        accessToken\n" +
-                "        gitLink\n" +
-                "        grade\n" +
-                "        point\n" +
-                "    }\n" +
-                "}";
-        //endregion
+        String url = "/update/AuthState";
+        JsonObject json = new JsonObject();
+        json.addProperty("authState",authState);
         Gson gson = new Gson();
-        String name = new Object() {
-        }.getClass().getEnclosingMethod().getName();
-        String str = getResponse(query, name);
+        String str = getResponse(url,json);
         User user = gson.fromJson(str, User.class);
         return user;
     }

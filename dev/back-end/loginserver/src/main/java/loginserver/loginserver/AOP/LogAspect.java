@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class LogAspect {
-    @Around("execution(* loginserver.loginserver.Command.*.*(..) )")
+    @Around("execution(* loginserver.loginserver.Controller.*.*(..) )")
     public Object aroundAdvice(ProceedingJoinPoint pjp) throws Throwable {
 
         System.out.println("=== " + pjp.getSignature().getName() + " ===");

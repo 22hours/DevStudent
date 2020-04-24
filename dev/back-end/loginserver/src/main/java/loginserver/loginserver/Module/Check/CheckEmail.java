@@ -1,6 +1,5 @@
 package loginserver.loginserver.Module.Check;
 
-import loginserver.loginserver.Entity.User;
 import loginserver.loginserver.Module.AuthMailSend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

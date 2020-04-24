@@ -1,5 +1,10 @@
 package loginserver.loginserver.Entity;
 
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@ToString
 public class Count {
     private String count;
 
