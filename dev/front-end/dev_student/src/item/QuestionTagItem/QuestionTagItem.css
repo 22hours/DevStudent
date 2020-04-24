@@ -6,11 +6,15 @@
 }
 .howto-list-group-item-tagname {
     background-color: rgb(133, 184, 197);
+    text-decoration: none;
+    font-size: 12px;
     border-radius: 3.5px;
-    padding: 1.5%;
-    color: white;
-    font-size: 13px;
+    padding-right: 3px;
+    padding-left: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     margin-right: 5px;
+    color: rgb(255, 255, 255);
 }
 
 .howto-list-group-wrapper #x {
