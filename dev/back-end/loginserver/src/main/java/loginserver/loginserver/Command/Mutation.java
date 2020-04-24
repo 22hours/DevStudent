@@ -64,9 +64,9 @@ public class Mutation implements GraphQLMutationResolver {
         }
         return new Count("duplicated");
     }
-    public Count checkEmail(String email, String nickname){
+    public Count checkEmail(String email){
         if(!userRepository.existsByEmail(email)){
-            String genkey = checkEmail.checkEmail(email,nickname);
+            String genkey = checkEmail.checkEmail(email);
             executorService.execute(new CreateDummyUser(email,null));
             return new Count(genkey);
         }

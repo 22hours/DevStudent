@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.*;
 import reverseproxy.proxy.GraphQLLoginServer.*;
-import reverseproxy.proxy.GraphQLLoginServer.Check.CheckDuplicateEmail;
+import reverseproxy.proxy.GraphQLLoginServer.Check.CheckEmail;
 import reverseproxy.proxy.GraphQLLoginServer.Check.CheckDuplicateNickname;
 import reverseproxy.proxy.GraphQLLoginServer.Create.CreateUser;
 import reverseproxy.proxy.GraphQLLoginServer.Login.Login;
@@ -47,7 +47,7 @@ public class Mutation implements GraphQLMutationResolver {
     @Autowired
     private UpdateUserAuthState updateUserAuthState;
     @Autowired
-    private CheckDuplicateEmail checkDuplicateEmail;
+    private CheckEmail checkEmail;
     @Autowired
     private CheckDuplicateNickname checkDuplicateNickname;
     @Autowired
@@ -124,8 +124,8 @@ public class Mutation implements GraphQLMutationResolver {
         return updateUserInfo.updateUserInfo(nickname, gitLink);
     }
     //endregion
-    public Count checkDuplicateEmail(String email) {
-        return checkDuplicateEmail.checkDuplicateEmail(email);
+    public Count checkEmail(String email) {
+        return checkEmail.checkEmail(email);
     }
 
     public Count checkDuplicateNickname(String nickname) {

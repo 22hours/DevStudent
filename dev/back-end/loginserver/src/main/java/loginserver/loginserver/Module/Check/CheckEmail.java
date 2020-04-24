@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 public class CheckEmail {
     @Autowired
     private AuthMailSend authMailSend;
-    public String checkEmail(String email,String nickname){
-        String genKey = authMailSend.authMailSend(email, nickname);
+    public String checkEmail(String email){
+        String genKey = authMailSend.authMailSend(email);
         if (genKey.equals("error")) {
             return "mail error";
         }

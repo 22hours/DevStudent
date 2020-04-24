@@ -4,5 +4,5 @@ type Count{
 
 extend type Mutation {
     checkDuplicateNickname(nickname : String) : Count
-    checkEmail(email : String, nickname : String) : Count
+    checkEmail(email : String) : Count
 }
