@@ -11,11 +11,12 @@ type User{
     point : Int
 }
 extend type Mutation{
-    createUser(email: String!, password: String!, nickname: String!, schoolName : String!) : User
+    createUser(email: String!, password: String!, schoolName : String!) : User
     updateUserAuthState(authState : String!) : User
     loginToServer(email : String, password : String) : User
     logoutFromServer(email : String) : Count
     updateUserInfo(nickname : String, gitLink : String) : User
+    createNickname(email : String, nickname : String) : User
 }
 
 extend type Query{

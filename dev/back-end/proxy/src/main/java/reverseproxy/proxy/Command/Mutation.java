@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.*;
 import reverseproxy.proxy.GraphQLLoginServer.*;
-import reverseproxy.proxy.GraphQLLoginServer.Check.CheckEmail;
-import reverseproxy.proxy.GraphQLLoginServer.Check.CheckDuplicateNickname;
+import reverseproxy.proxy.GraphQLLoginServer.Check.CheckDuplicateEmail;
+import reverseproxy.proxy.GraphQLLoginServer.Create.CreateNickname;
 import reverseproxy.proxy.GraphQLLoginServer.Create.CreateUser;
 import reverseproxy.proxy.GraphQLLoginServer.Login.Login;
 import reverseproxy.proxy.GraphQLLoginServer.Login.Logout;
@@ -48,9 +48,9 @@ public class Mutation implements GraphQLMutationResolver {
     @Autowired
     private UpdateUserAuthState updateUserAuthState;
     @Autowired
-    private CheckEmail checkEmail;
+    private CheckDuplicateEmail checkDuplicateEmail;
     @Autowired
-    private CheckDuplicateNickname checkDuplicateNickname;
+    private CreateNickname createNickname;
     @Autowired
     private Logout logout;
     @Autowired
@@ -119,8 +119,8 @@ public class Mutation implements GraphQLMutationResolver {
         return new Count("0"); // 실패했다
     }
 
-    public User createUser(String email, String password, String nickname, String schoolName) {
-        return createUser.createUser(email, password, nickname, schoolName);
+    public User createUser(String email, String password, String schoolName) {
+        return createUser.createUser(email, password, schoolName);
     }
 
     public User updateUserAuthState(String authState) {
@@ -131,12 +131,12 @@ public class Mutation implements GraphQLMutationResolver {
         return updateUserInfo.updateUserInfo(nickname, gitLink);
     }
     //endregion
-    public Count checkEmail(String email) {
+    public Count checkDuplicateEmail(String email) {
 
-        return checkEmail.checkEmail(email);
+        return checkDuplicateEmail.checkDuplicateEmail(email);
     }
 
-    public Count checkDuplicateNickname(String nickname) {
-        return checkDuplicateNickname.checkDuplicateNickname(nickname);
+    public User createNickname(String email, String nickname){
+        return createNickname.creteNickname(email,nickname);
     }
 }

@@ -2,8 +2,6 @@ package loginserver.loginserver.Controller;
 
 import loginserver.loginserver.Entity.Count;
 import loginserver.loginserver.Entity.User;
-import loginserver.loginserver.Module.Check.CheckEmail;
-import loginserver.loginserver.Module.Create.CreateDummyUser;
 import loginserver.loginserver.Module.Create.CreateUser;
 import loginserver.loginserver.Module.Find.FindUserByNickname;
 import loginserver.loginserver.Module.Login;
@@ -35,8 +33,6 @@ public class UserController {
     private UpdateUserInfo updateUserInfo;
     @Autowired
     private Login login;
-    @Autowired
-    private CheckEmail checkEmail;
 
     @RequestMapping(value="/{nickname}/data",method = RequestMethod.GET)
     public User findUserByNickname(@PathVariable("nickname") String nickname){
@@ -44,11 +40,10 @@ public class UserController {
     }
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public User createUser(@RequestBody User user) {
-        String nickname = user.getNickname();
         String email = user.getEmail();
         String password = user.getPassword();
         String schoolName = user.getSchoolName();
-        return createUser.createUser(email, password, nickname, schoolName);
+        return createUser.createUser(email, password, schoolName);
     }
     @RequestMapping(value = "/update/AuthState", method = RequestMethod.POST)
     public User updateUserAuthState(@RequestBody User user) {
@@ -68,24 +63,24 @@ public class UserController {
         String ip = map.get("ip");
         return login.login(email, password, ip);
     }
-    @RequestMapping(value = "/check/nickname",method = RequestMethod.POST)
-    public Count checkDuplicateNickname(@RequestBody User user) {// 중복은 0, 중복이 아닌 것은 1
+    @RequestMapping(value = "/create/nickname",method = RequestMethod.POST)
+    public User createNickname(@RequestBody User user) {// 중복은 0, 중복이 아닌 것은 1
+        String email = user.getEmail();
         String nickname = user.getNickname();
-        System.out.println(nickname);
         if (!userRepository.existsByNickname(nickname))
         {
-            executorService.execute(new CreateDummyUser(null,nickname));
-            return new Count("true");
+            User tempUser = userRepository.findByEmail(email);
+            tempUser.setNickname(nickname);
+            userRepository.save(tempUser);
+            return tempUser;
         }
-        return new Count("duplicated");
+        return new User();
     }
     @RequestMapping(value = "/check/email",method = RequestMethod.POST)
-    public Count checkEmail(@RequestBody User user){
+    public Count checkDuplicateEmail(@RequestBody User user){
         String email = user.getEmail();
         if(!userRepository.existsByEmail(email)){
-            String genkey = checkEmail.checkEmail(email);
-            executorService.execute(new CreateDummyUser(email,null));
-            return new Count(genkey);
+            return new Count("true");
         }
         return new Count("duplicated");
     }
