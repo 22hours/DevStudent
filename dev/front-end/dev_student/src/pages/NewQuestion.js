@@ -10,6 +10,7 @@ const NewQuestion = ({}) => {
     const sessionToken = window.localStorage.getItem("token");
     const [createQuestion] = useMutation(CREATE_QUESTION);
     const handleSubmit = async (authorParam, titleParam, contentParam, tagsParam) => {
+        const content = contentParam.replace("\n", "\\n");
         createQuestion({
             variables: {
                 author: authorParam,

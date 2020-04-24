@@ -28,7 +28,7 @@ const HowToContentModuleTemplate = ({ match }) => {
         mine = true;
     }
 
-    const answers = data.findQuestionBy_id.answers.map(({ _id, author, content, date, comments, solve }) => (
+    const answers = data.findQuestionBy_id.answers.map(({ _id, author, content, date, comments }) => (
         // likesCount, likes 추가 예쩡
         <HowToQABox
             _id={_id}
@@ -39,7 +39,8 @@ const HowToContentModuleTemplate = ({ match }) => {
             content={content}
             comments={comments}
             question_id={match.params.id}
-            solve={solve}
+            // adoptedAnswerId={data.findQuestionBy_id.adoptedAnswerId}
+            adoptedAnswerId={"7"}
             isLiked={"up"}
             likesCount="129"
         />
@@ -50,7 +51,7 @@ const HowToContentModuleTemplate = ({ match }) => {
                 <div className="left-line"></div>
                 <Container className="how-to-content-header">
                     <ContentHeaderModule
-                        solved={data.findQuestionBy_id.solved}
+                        adoptedAnswerId={data.findQuestionBy_id.adoptedAnswerId}
                         mine={mine}
                         _id={data.findQuestionBy_id._id}
                         title={data.findQuestionBy_id.title}
@@ -74,6 +75,7 @@ const HowToContentModuleTemplate = ({ match }) => {
                         comments={data.findQuestionBy_id.comments}
                         isLiked={"none"}
                         likesCount="20"
+                        adoptedAnswerId={data.findQuestionBy_id.adoptedAnswerId}
                     ></HowToQABox>
                     {answers}
                 </Container>

@@ -27,7 +27,7 @@ const HowToQABox = ({
     tags,
     comments,
     question_id,
-    solved,
+    adoptedAnswerId,
     likesCount,
 }) => {
     const [createComment] = useMutation(CREATE_COMMENT);
@@ -41,7 +41,7 @@ const HowToQABox = ({
             return (
                 <div
                     onClick={adoptThisAnswer}
-                    className={"is-question-box-a clickable " + (solved ? "adopt" : "notadopt")}
+                    className={"is-question-box-a clickable " + (adoptedAnswerId === _id ? "adopt" : "notadopt")}
                 >
                     A
                 </div>
@@ -56,7 +56,9 @@ const HowToQABox = ({
             return (
                 <div
                     onClick={adoptThisAnswer}
-                    className={"header-box-is-question-box-a clickable " + (solved ? "adopt" : "notadopt")}
+                    className={
+                        "header-box-is-question-box-a clickable " + (adoptedAnswerId === _id ? "adopt" : "notadopt")
+                    }
                 >
                     A
                 </div>
@@ -143,7 +145,7 @@ const HowToQABox = ({
         if (localStorage.getItem("nickname") !== author) {
             return;
         }
-        if (!solved) adoptReturn = window.confirm("이 댓글을 채택하시겠습니까?");
+        if (adoptedAnswerId === "null") adoptReturn = window.confirm("이 댓글을 채택하시겠습니까?");
         else {
             window.alert("이미 채택된 답변이 있습니다");
             return;

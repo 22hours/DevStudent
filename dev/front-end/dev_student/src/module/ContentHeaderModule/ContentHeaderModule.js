@@ -10,9 +10,9 @@ import avatar_test from "img/mypage/avatar_test.png";
 import debal from "img/mypage/debal.png";
 
 const ContentHeaderModule = (props) => {
-    const { _id, title, author, date, views, mine, solved } = props;
+    const { _id, title, author, date, views, mine, adoptedAnswerId } = props;
     const HeaderBadge = () => {
-        if (solved) {
+        if (adoptedAnswerId !== "null") {
             return <span className="solved-bagde">SOLVED</span>;
         } else {
             return <span className="not-solved-bagde">HELP WANTED</span>;

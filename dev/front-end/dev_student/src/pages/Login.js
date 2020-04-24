@@ -22,8 +22,18 @@ const Login = ({ logIn, location }) => {
             return;
         }
         if (data == null) return;
-        if (data?.loginToServer.accessToken) {
+
+        // if (data?.loginToServer.accessToken & data.loginToServer.nickname) {
+        //     logIn(data.loginToServer.nickname, email, data.loginToServer.accessToken, data.loginToServer.refreshToken);
+        //     return;
+        // }
+        if (data?.loginToServer.nickname) {
             logIn(data.loginToServer.nickname, email, data.loginToServer.accessToken, data.loginToServer.refreshToken);
+        } else if (data.loginToServer.accessToken) {
+            alert("nick name is null");
+            window.sessionStorage.setItem("token", data.loginToServer.accessToken);
+            window.sessionStorage.setItem("email", data.loginToServer.email);
+            // window.location.replace("/nickname/setting");
             return;
         } else {
             setPassword("");

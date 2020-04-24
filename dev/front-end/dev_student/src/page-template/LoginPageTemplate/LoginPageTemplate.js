@@ -25,7 +25,7 @@ const LoginPageTemplate = ({ email, setEmail, password, setPassword, loginToServ
                         <Col xs={2}></Col>
                         <Col xs={8} className="login-container-wrapper">
                             <div className="login-welcome-wrapper">
-                                <span className="login-welcome-span">WELCOME</span>
+                                <span className="login-welcome-span">로그인</span>
                             </div>
                             <div className="login-logo_wrapper">
                                 <img alt="" src="/img/devstu_round_logo.png"></img>
@@ -71,7 +71,7 @@ const LoginPageTemplate = ({ email, setEmail, password, setPassword, loginToServ
                                         variant="contained"
                                         style={btn_style}
                                     >
-                                        login
+                                        로그인
                                     </Button>
                                 </div>
                             </div>

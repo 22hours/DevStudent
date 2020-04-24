@@ -202,10 +202,10 @@
 }
 
 .HowToQABox .adopt {
-    background-color: rgb(238, 128, 128);
+    background-color: rgb(255, 0, 0)35);
 }
 .HowToQABox .notadopt {
-    background-color: rgb(184, 184, 184);
+    background-color: rgb(211, 211, 211);
 }
 .HowToQABox {
     width: 100%;
