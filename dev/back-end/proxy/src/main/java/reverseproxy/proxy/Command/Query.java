@@ -4,12 +4,10 @@ import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import reverseproxy.proxy.Entity.Alarm;
-import reverseproxy.proxy.Entity.Count;
-import reverseproxy.proxy.Entity.Question;
-import reverseproxy.proxy.Entity.User;
+import reverseproxy.proxy.Entity.*;
 import reverseproxy.proxy.GraphQLLoginServer.FindUserByNickname;
 import reverseproxy.proxy.GraphQLMainServer.Count.CountAllQuestions;
+import reverseproxy.proxy.GraphQLMainServer.Count.CountTags;
 import reverseproxy.proxy.GraphQLMainServer.Count.CountUnreadAlarms;
 import reverseproxy.proxy.GraphQLMainServer.Find.*;
 
@@ -33,6 +31,8 @@ public class Query implements GraphQLQueryResolver {
     private CountAllQuestions countAllQuestions;
     @Autowired
     private FindUserByNickname findUserByNickname;
+    @Autowired
+    private CountTags countTags;
 
 
     public List<Question> findAllQuestions(String param, int pageNum, int requiredCount) {
@@ -69,5 +69,7 @@ public class Query implements GraphQLQueryResolver {
         // token 검사 완료
         return findUserByNickname.findUserByNickname(nickname);
     }
-
+    public List<Tag> countTags(int requiredCount, List<String> tags){
+        return countTags.countTags(requiredCount, tags);
+    }
 }

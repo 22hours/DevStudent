@@ -3,10 +3,10 @@ package reverseproxy.proxy.GraphQLMainServer.Count;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.Count;
-import reverseproxy.proxy.GraphQLLoginServer.ConnectLoginServer;
+import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
 @Component
-public class CountAllQuestions extends ConnectLoginServer {
+public class CountAllQuestions extends ConnectMainServer {
     public Count countAllQuestions() {
         //region Query
         String query = "query{\n" +
