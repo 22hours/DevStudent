@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import "./RegisterPageTemplate.css";
 import { Container, Row, Col } from "reactstrap";
 import { Input, Button, FormText, Collapse } from "reactstrap";
 import { CREATE_USER } from "mutation/mutations";
+import { CHECK_EMAIL } from "mutation/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import { Link } from "react-router-dom";
 import { hashPassword } from "auth";
@@ -15,7 +16,6 @@ const RegisterTemplate = ({
     rePwd,
     setRePwd,
     nickName,
-    setNickName,
     schoolName,
     setSchoolName,
     checkDuplicateNickname,
@@ -24,8 +24,6 @@ const RegisterTemplate = ({
     pwdRuleCheck,
     rePwdClassName,
     pwdClassName,
-    emailRuleCheck,
-    setEmailRuleCheck,
     setEmailSelect,
     emailSelect,
     setPwdCheck,
@@ -35,7 +33,23 @@ const RegisterTemplate = ({
     emailAuthState,
     setEmailAuthState,
 }) => {
-    const [createUser, { data }] = useMutation(CREATE_USER);
+    const [createUser] = useMutation(CREATE_USER);
+    const [checkEmail, { data }] = useMutation(CHECK_EMAIL);
+    const [emailCode, setEmailCode] = useState("");
+    const [emailRuleCheck, setEmailRuleCheck] = useState("false");
+
+    useLayoutEffect(() => {
+        if (data == null) return;
+        if (data.checkEmail.count === "duplicated") {
+            alert("중복된 이메일 입니다.");
+            return;
+        } else {
+            alert("사용 가능한 이메일 입니다.");
+            setEmailCode(data.checkEmail.count);
+            toggle();
+        }
+    }, [data]);
+
     const btn_style = {
         fontSize: "12px",
         height: "100%",
@@ -44,14 +58,6 @@ const RegisterTemplate = ({
 
     const register_btn_style = {
         marginTop: "10px",
-    };
-
-    const emailRule = () => {
-        if (email === null) {
-            return;
-        } else {
-            setEmailRuleCheck("true");
-        }
     };
 
     //비밀번호 확인용
@@ -67,10 +73,28 @@ const RegisterTemplate = ({
                 return rePwdClassName;
             }
         }
+        if (pwdRuleCheck === "false") {
+            alert("비밀번호를 규칙에 맞게 입력해주세요.");
+            return;
+        }
+        if (emailRuleCheck === "false") {
+            alert("이메일 인증을 완료해주세요.");
+            return;
+        }
     };
 
     const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(true);
+    const toggle = () => setIsOpen(!isOpen);
+
+    const checkSetEmail = (value) => {
+        setEmail(value);
+        setEmailRuleCheck("false");
+    };
+
+    const checkSetEmailSelect = (value) => {
+        setEmailSelect(value);
+        setEmailRuleCheck("false");
+    };
 
     return (
         <div className="register-container-top-wrapper">
@@ -98,18 +122,17 @@ const RegisterTemplate = ({
                                         <div className="email-input">
                                             <Input
                                                 value={email}
-                                                onChange={({ target: { value } }) => setEmail(value)}
+                                                onChange={({ target: { value } }) => checkSetEmail(value)}
                                                 type="text"
                                                 name="email"
                                                 id="inputEmail"
-                                                placeholder="devstudent"
-                                                onBlur={emailRule}
+                                                placeholder="이메일을 입력해주세요."
                                             />
                                         </div>
                                         <div className="email-select-wrapper">
                                             <Input
                                                 type="select"
-                                                onChange={({ target: { value } }) => setEmailSelect(value)}
+                                                onChange={({ target: { value } }) => checkSetEmailSelect(value)}
                                             >
                                                 <option>@gmail.com</option>
                                                 <option>@naver.com</option>
@@ -118,7 +141,17 @@ const RegisterTemplate = ({
                                         </div>
                                     </div>
                                     <div className="nickName-check-button-wrapper">
-                                        <Button color="info" style={btn_style}>
+                                        <Button
+                                            color="info"
+                                            style={btn_style}
+                                            onClick={() => {
+                                                checkEmail({
+                                                    variables: {
+                                                        email: email + emailSelect,
+                                                    },
+                                                });
+                                            }}
+                                        >
                                             확인
                                         </Button>
                                     </div>
@@ -141,11 +174,14 @@ const RegisterTemplate = ({
                                                 color="info"
                                                 style={btn_style}
                                                 onClick={() => {
-                                                    if (data.authState === emailAuthState) {
-                                                        alert("회원가입이 완료되었습니다.");
+                                                    if (emailCode === emailAuthState) {
+                                                        alert("이메일 인증에 성공했습니다.");
+                                                        setEmailRuleCheck("true");
+                                                        setEmailAuthState("");
+                                                        toggle();
                                                     } else {
                                                         alert("인증번호가 일치하지 않습니다. 다시 입력해주세요.");
-                                                        console.log(data.authState);
+                                                        setEmailRuleCheck("false");
                                                         return;
                                                     }
                                                 }}
@@ -167,7 +203,7 @@ const RegisterTemplate = ({
                                         type="password"
                                         name="password"
                                         id="inputPassword"
-                                        placeholder="devstu2020!!"
+                                        placeholder="비밀번호를 규칙에 맞게 입력해주세요."
                                         onBlur={passwordRule}
                                     />
                                     <FormText>8자~15자 이내, 영문,숫자,특수문자를 혼합하여 입력해주세요. </FormText>
@@ -183,7 +219,7 @@ const RegisterTemplate = ({
                                         type="password"
                                         name="password"
                                         id="inputPassword"
-                                        placeholder="devstu2020!!"
+                                        placeholder="비밀번호를 다시 입력해주세요."
                                         onBlur={RepwInputRenderer}
                                     />
                                 </div>
@@ -197,7 +233,7 @@ const RegisterTemplate = ({
                                             onChange={({ target: { value } }) => nickNameCheck(value)}
                                             type="text"
                                             name="nickname"
-                                            placeholder="devstu"
+                                            placeholder="닉네임은 3자리 ~ 8자리로 입력해주세요."
                                         />
                                     </div>
                                     <div className="nickName-check-button-wrapper">
@@ -230,7 +266,7 @@ const RegisterTemplate = ({
                                         type="text"
                                         name="universityname"
                                         id="inputschool"
-                                        placeholder="Catholic University"
+                                        placeholder="대학교 이름을 입력해주세요."
                                     />
                                 </div>
                             </div>
@@ -263,8 +299,6 @@ const RegisterTemplate = ({
                                             alert("비밀번호를 규칙에 맞게 입력해주세요.");
                                             return;
                                         } else {
-                                            alert("이메일을 확인해주세요.");
-                                            toggle();
                                             createUser({
                                                 variables: {
                                                     password: hashPassword(password),
@@ -273,6 +307,7 @@ const RegisterTemplate = ({
                                                     schoolName: schoolName,
                                                 },
                                             });
+                                            alert("회원가입 성공!!");
                                         }
                                     }}
                                 >

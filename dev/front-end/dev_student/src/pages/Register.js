@@ -14,7 +14,6 @@ const Register = () => {
     const [pwdCheck, setPwdCheck] = useState("false");
     const [pwdRuleCheck, setPwdRuleCheck] = useState("false");
     const [rePwdClassName, setRePwdClassName] = useState("");
-    const [emailRuelCheck, setEmailRuleCheck] = useState("false");
     const [pwdClassName, setPwdClassName] = useState("");
     const [emailSelect, setEmailSelect] = useState("@gmail.com");
     const [emailAuthState, setEmailAuthState] = useState("");
@@ -86,8 +85,6 @@ const Register = () => {
             setPwdRuleCheck={setPwdRuleCheck}
             rePwdClassName={rePwdClassName}
             pwdClassName={pwdClassName}
-            emailRuelCheck={emailRuelCheck}
-            setEmailRuleCheck={setEmailRuleCheck}
             emailSelect={emailSelect}
             setEmailSelect={setEmailSelect}
             nickNameCheck={nickNameCheck}
