@@ -11,7 +11,9 @@ const QuestionTagItem = ({ count, name }) => {
     return (
         <div width="100%">
             <div className="howto-list-group-wrapper">
-                <span className="howto-list-group-item-tagname">{name}</span>
+                <a href={"/howto?tags=" + name} className="tag">
+                    <span className="howto-list-group-item-tagname">{name}</span>
+                </a>
                 <span id="x">
                     <ClearIcon style={{ fontSize: "10px" }} />
                 </span>

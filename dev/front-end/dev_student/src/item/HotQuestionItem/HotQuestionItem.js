@@ -4,7 +4,7 @@ import React from "react";
 import "./HotQuestionItem.css";
 
 //icons
-import VisibilityIcon from "@material-ui/icons/Visibility";
+//import VisibilityIcon from "@material-ui/icons/Visibility";
 import LinkIcon from "@material-ui/icons/Link";
 const HotQuestionItem = ({ id, views, title }) => {
     const list_style = {
@@ -19,25 +19,17 @@ const HotQuestionItem = ({ id, views, title }) => {
         paddingBottom: "0.40rem",
         // color:"#034390"
     };
-    const badge_style = {
-        fontWeight: "400",
-        textAlign: "center",
-        // backgroundColor:'white',
-        // color:'gray'
-    };
-
     return (
         <div width="100%">
             <div className="hot-links-list-group-item">
-                <LinkIcon style={{ fontSize: "14px", color: "gray" }} /> {title}{" "}
+                <a href={"/howto/question/" + id}>
+                    <LinkIcon style={{ fontSize: "14px", color: "gray" }} /> {title}{" "}
+                </a>
                 <span id="views">
                     {" "}
                     &nbsp;
                     {views}
                 </span>
-                {/* <Badge pill style={badge_style}>
-                    {views}
-                </Badge> */}
             </div>
         </div>
     );

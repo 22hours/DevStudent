@@ -95,8 +95,8 @@ export const REISSUANCE_ACCESS_TOKEN = gql`
 `;
 
 export const CHECK_EMAIL = gql`
-    mutation checkEmail($email: String!, $nickname: String!) {
-        checkEmail(email: $email, nickname: $nickname) {
+    mutation checkEmail($email: String!) {
+        checkEmail(email: $email) {
             count
         }
     }

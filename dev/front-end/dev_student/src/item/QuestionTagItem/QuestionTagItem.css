@@ -25,3 +25,7 @@
     color: rgb(95, 143, 158);
     font-size: 12px;
 }
+
+.howto-list-group-wrapper a:hover {
+    color: rgb(133, 184, 197) !important;
+}

@@ -22,10 +22,19 @@
     font-size: 13px;
     text-align: left;
     margin-top: 3px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .hot-question-list-items #views {
     color: rgb(95, 143, 158);
     font-size: 12px;
+}
+
+.hot-links-list-group-item a {
+    color: rgb(44, 44, 44);
+}
+
+.hot-links-list-group-item a:hover {
+    color: rgb(44, 44, 44);
+    text-decoration: none !important;
 }
