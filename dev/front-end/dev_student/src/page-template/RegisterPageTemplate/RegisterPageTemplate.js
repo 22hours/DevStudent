@@ -18,7 +18,6 @@ const RegisterTemplate = ({
     nickName,
     schoolName,
     setSchoolName,
-    checkDuplicateNickname,
     nickCheck,
     pwdCheck,
     pwdRuleCheck,
@@ -30,8 +29,6 @@ const RegisterTemplate = ({
     setRePwdClassName,
     passwordRule,
     nickNameCheck,
-    emailAuthState,
-    setEmailAuthState,
 }) => {
     const [createUser] = useMutation(CREATE_USER);
     const [checkEmail, { data }] = useMutation(CHECK_EMAIL);
@@ -79,10 +76,6 @@ const RegisterTemplate = ({
             alert("비밀번호를 규칙에 맞게 입력해주세요.");
             return;
         }
-        if (emailRuleCheck === "false") {
-            alert("이메일 인증을 완료해주세요.");
-            return;
-        }
     };
 
     const [isOpen, setIsOpen] = useState(false);
@@ -90,12 +83,10 @@ const RegisterTemplate = ({
 
     const checkSetEmail = (value) => {
         setEmail(value);
-        setEmailRuleCheck("false");
     };
 
     const checkSetEmailSelect = (value) => {
         setEmailSelect(value);
-        setEmailRuleCheck("false");
     };
 
     return (
@@ -104,9 +95,9 @@ const RegisterTemplate = ({
                 <Row>
                     <Col xs={2}></Col>
                     <Col xs={8} className="register-container-wrapper">
-                        <div className="registertemplate-header">Register</div>
+                        <div className="registertemplate-header">회원가입</div>
                         <div className="login-logo_wrapper">
-                            <img src="/img/devstu_round_logo.png"></img>
+                            <img alt="" src="/img/devstu_round_logo.png"></img>
                         </div>
                         <div className="registertemplate-info">
                             계정이 이미 있는 경우에는 <Link to="/login">로그인</Link>해주세요.
@@ -159,7 +150,7 @@ const RegisterTemplate = ({
                                     </div>
                                 </div>
                             </div>
-                            <Collapse isOpen={isOpen}>
+                            {/* <Collapse isOpen={isOpen}>
                                 <div className="input-box">
                                     <span className="register-label-style">인증번호</span>
                                     <div className="nickName-input-box">
@@ -193,7 +184,7 @@ const RegisterTemplate = ({
                                         </div>
                                     </div>
                                 </div>
-                            </Collapse>
+                            </Collapse> */}
                             <div className="input-box">
                                 <span className="register-label-style">비밀번호</span>
 
@@ -226,7 +217,7 @@ const RegisterTemplate = ({
                                     />
                                 </div>
                             </div>
-                            <div className="input-box">
+                            {/* <div className="input-box">
                                 <span className="register-label-style">닉네임</span>
                                 <div className="nickName-input-box">
                                     <div className="nickName-input">
@@ -259,7 +250,7 @@ const RegisterTemplate = ({
                                         </Button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="input-box">
                                 <span className="register-label-style">대학교</span>
                                 <div className="register-input-box">
