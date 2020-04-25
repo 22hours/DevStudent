@@ -60,8 +60,6 @@ public class Mutation implements GraphQLMutationResolver {
 
     //region MainServer Create
     public Question createQuestion(String title, String author, List<String> tags, String content)  {
-        // token 검사
-        System.out.println("Request 값 : " + title+"\t"+author+"\t"+tags+"\t"+content);
         return createQuestion.createQuestion(title, author, tags, content);
     }
 

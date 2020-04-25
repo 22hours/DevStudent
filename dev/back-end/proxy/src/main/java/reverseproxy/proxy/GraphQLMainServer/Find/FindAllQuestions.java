@@ -3,6 +3,7 @@ package reverseproxy.proxy.GraphQLMainServer.Find;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.springframework.stereotype.Component;
+import org.springframework.web.util.UriComponentsBuilder;
 import reverseproxy.proxy.Entity.Question;
 import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
@@ -11,54 +12,13 @@ import java.util.List;
 @Component
 public class FindAllQuestions extends ConnectMainServer {
     public List<Question> findAllQuestions(String param, int pageNum, int requiredCount) {
-        //region Query
-        String query = "query{\n" +
-                "    findAllQuestions( param:\"" + param + "\", pageNum:" + pageNum + ", requiredCount:" + requiredCount + "){\n" +
-                "        title\n" +
-                "        _id\n" +
-                "        author\n" +
-                "        tags\n" +
-                "        date\n" +
-                "        content\n" +
-                "        previews\n" +
-                "        answerCount\n" +
-                "        likesCount\n" +
-                "        isLiked\n" +
-                "        views\n" +
-                "        adoptedAnswerId\n" +
-                "        likes{\n" +
-                "            nickname\n" +
-                "            status\n" +
-                "        }\n" +
-                "        comments{\n" +
-                "            _id\n" +
-                "            author\n" +
-                "            content\n" +
-                "            date\n" +
-                "        }\n" +
-                "        answers{\n" +
-                "            _id\n" +
-                "            author\n" +
-                "            content\n" +
-                "            date\n" +
-                "            likesCount\n" +
-                "            isLiked\n" +
-                "            comments{\n" +
-                "                _id\n" +
-                "                author\n" +
-                "                content\n" +
-                "                date\n" +
-                "            }\n" +
-                "            likes{\n" +
-                "                nickname\n" +
-                "                status\n" +
-                "            }\n" +
-                "        }\n" +
-                "    }\n" +
-                "}";
-        //endregion
+        String url ="http://localhost:8090/main/question/all";
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
+        builder.queryParam("param",param);
+        builder.queryParam("pageNum",pageNum);
+        builder.queryParam("requiredCount",requiredCount);
         Gson gson = new Gson();
-        String str = getResponse(query);
+        String str = getResponse(builder);
         List<Question> questions = gson.fromJson(str, new TypeToken<List<Question>>() {
         }.getType());
         return questions;

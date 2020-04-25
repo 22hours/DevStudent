@@ -13,7 +13,6 @@ public class CreateQuestion extends Create {
     private QuestionRepository questionRepository;
 
     public Question createQuestion(String title, String author, List<String> tags, String content) {
-        System.out.println("Start");
         String seqNum = makeSequence("Question");
         String previews = (content.length() < 100) ? content : content.substring(0, 100);
         Question question = new Question(seqNum, title, author, tags, content, previews);

@@ -1,8 +1,0 @@
-type Count{
-    count : String
-}
-
-extend type Query {
-    countAllQuestions : Count
-    countUnreadAlarms(nickname : String) : Count
-}

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class LogAspect {
-    @Around("execution(* com.hours22.devstudent.Command.*.*(..) )")
+    @Around("execution(* com.hours22.devstudent.Controller.*.*(..) )")
     public Object aroundAdvice(ProceedingJoinPoint pjp) throws Throwable {
 
         System.out.println("=== " + pjp.getSignature().getName() + " ===");

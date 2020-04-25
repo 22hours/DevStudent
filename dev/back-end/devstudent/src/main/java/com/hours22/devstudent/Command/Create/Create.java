@@ -12,6 +12,12 @@ public abstract class Create {
     private AlarmRepository alarmRepository;
 
     public String makeSequence(String _id) {
+        if (sequenceIDRepository.countBy_id(_id) == 0) {
+            System.out.println(_id + "이 Sequence에 없습니다!");
+            SequenceID sequenceID = new SequenceID(_id, 0);
+            sequenceIDRepository.save(sequenceID);
+            System.out.println(_id + "을 Sequence에 생성 완료!");
+        }
         SequenceID sequenceID = sequenceIDRepository.findBy_id(_id);
         int seqNum = sequenceID.getSeqNum() + 1;
         sequenceID.setSeqNum(seqNum);

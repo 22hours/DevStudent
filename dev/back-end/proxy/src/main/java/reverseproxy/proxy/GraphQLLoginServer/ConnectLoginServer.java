@@ -16,15 +16,14 @@ import java.nio.charset.Charset;
 public abstract class ConnectLoginServer {
     public String getResponse(String addURL, JsonObject json) {
         String url = "http://localhost:8100/user";
-        url += addURL;
-        System.out.println(url);
+        System.out.println(url+addURL);
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
         HttpHeaders headers = new HttpHeaders();
         headers.add("content-type", "application/json");
         headers.add("EncodingType","UTF-8");
         HttpEntity<String> entity = new HttpEntity<String>(json.toString(), headers);
-        ResponseEntity<String> response = restTemplate.exchange(url,HttpMethod.POST, entity, String.class);
+        ResponseEntity<String> response = restTemplate.exchange(url+addURL,HttpMethod.POST, entity, String.class);
         return response.getBody();
     }
     public String getResponse(String nickname){

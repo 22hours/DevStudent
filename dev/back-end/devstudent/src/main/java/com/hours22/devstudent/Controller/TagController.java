@@ -15,11 +15,12 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/tag/*")
+@RequestMapping("/main/tag/*")
 @WebServlet(asyncSupported = true)
 public class TagController {
     @Autowired
     private CountTags countTags;
+
     @RequestMapping(value="/count",method = RequestMethod.POST)
     public List<Tag> countTags(@RequestBody Map<String, String> map){
         int requiredCount = Integer.parseInt(map.get("requiredCount"));

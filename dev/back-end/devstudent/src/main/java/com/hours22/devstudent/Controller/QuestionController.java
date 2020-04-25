@@ -1,13 +1,14 @@
 package com.hours22.devstudent.Controller;
 
-import com.hours22.devstudent.Command.Count.CountAllQuestions;
+import com.hours22.devstudent.Command.Create.CreateLike;
+import com.hours22.devstudent.Command.Create.CreateQuestion;
+import com.hours22.devstudent.Command.Delete.DeleteQuestion;
 import com.hours22.devstudent.Command.Find.FindAllQuestions;
 import com.hours22.devstudent.Command.Find.FindQuestionBy_id;
 import com.hours22.devstudent.Command.Find.FindQuestionsByOption;
 import com.hours22.devstudent.Command.Find.FindQuestionsByTags;
-import com.hours22.devstudent.Entity.Count;
+import com.hours22.devstudent.Command.Update.UpdateAdoptedAnswerId;
 import com.hours22.devstudent.Entity.Question;
-import com.hours22.devstudent.Entity.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,9 +19,9 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/question/*")
+@RequestMapping("/main/question/*")
 @WebServlet(asyncSupported = true)
-public class QuestionController {
+public class QuestionController{
     @Autowired
     private FindAllQuestions findAllQuestions;
     @Autowired
@@ -30,7 +31,13 @@ public class QuestionController {
     @Autowired
     private FindQuestionsByTags findQuestionsByTags;
     @Autowired
-    private CountAllQuestions countAllQuestions;
+    private CreateQuestion createQuestion;
+    @Autowired
+    private CreateLike createLike;
+    @Autowired
+    private UpdateAdoptedAnswerId updateAdoptedAnswerId;
+    @Autowired
+    private DeleteQuestion deleteQuestion;
 
     @RequestMapping(value="/all",method = RequestMethod.GET)
     public List<Question> findAllQuestions(@RequestParam("param")String param,
@@ -62,8 +69,37 @@ public class QuestionController {
         List<String> tagList = new ArrayList<String>(Arrays.asList(temp.split(",")));
         return findQuestionsByTags.findQuestionsByTags(param, pageNum, requiredCount, tagList, logical);
     }
-    @RequestMapping(value="/count",method = RequestMethod.GET)
-    public Count countAllQuestions() {
-        return countAllQuestions.countAllQuestions();
+    @RequestMapping(value="/create",method = RequestMethod.POST)
+    public Question createQuestion(@RequestBody Map<String, String> map) {
+        String title = map.get("title");
+        String author = map.get("author");
+        String tags = map.get("tags");
+        String content = map.get("content");
+        String temp = tags.substring(1,tags.length()-1);
+        List<String> tagList = new ArrayList<String>(Arrays.asList(temp.split(",")));
+        return createQuestion.createQuestion(title, author, tagList, content);
     }
+    @RequestMapping(value="/create/like",method = RequestMethod.POST)
+    public Question createLike(@RequestBody Map<String, String> map) {
+        String question_id = map.get("question_id");
+        String answer_id = map.get("answer_id");
+        String nickname = map.get("nickname");
+        String status = map.get("status");
+        return createLike.createLike(question_id, answer_id, nickname, status);
+    }
+
+    @RequestMapping(value="/update/adopt",method = RequestMethod.POST)
+    public Question updateAdoptedAnswerId(@RequestBody Map<String, String> map){
+        String question_id = map.get("question_id");
+        String answer_id = map.get("answer_id");
+        String nickname = map.get("nickname");
+        return updateAdoptedAnswerId.updateAdoptedAnswerId(question_id, answer_id, nickname);
+    }
+
+    @RequestMapping(value="/delete",method = RequestMethod.POST)
+    public Question deleteQuestion(@RequestBody Map<String, String> map) {
+        String _id = map.get("_id");
+        return deleteQuestion.deleteQuestion(_id);
+    }
+
 }

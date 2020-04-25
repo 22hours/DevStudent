@@ -52,12 +52,10 @@ public class Query implements GraphQLQueryResolver {
     }
 
     public List<Alarm> findAllAlarms(String nickname, int pageNum, int requiredCount){
-        // token 검사 완료
         return findAllAlarms.findAllAlarms(nickname, pageNum, requiredCount);
     }
 
     public Count countUnreadAlarms(String nickname) {
-        // token 검사 완료
         return countUnreadAlarms.countUnreadAlarms(nickname);
     }
 
@@ -66,7 +64,6 @@ public class Query implements GraphQLQueryResolver {
     }
 
     public User findUserByNickname(String nickname) {
-        // token 검사 완료
         return findUserByNickname.findUserByNickname(nickname);
     }
     public List<Tag> countTags(int requiredCount, List<String> tags){

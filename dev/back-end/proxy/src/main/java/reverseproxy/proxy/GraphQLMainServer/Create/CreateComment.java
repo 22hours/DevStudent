@@ -1,6 +1,7 @@
 package reverseproxy.proxy.GraphQLMainServer.Create;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.Comment;
 import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
@@ -8,27 +9,14 @@ import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 @Component
 public class CreateComment extends ConnectMainServer {
     public Comment createComment(String question_id, String answer_id, String author, String content){
-        //region Query
-        String query = "mutation{\n" +
-                "    createComment\n" +
-                "    (\n" +
-                "    question_id : \"" + question_id + "\",\n" +
-                "    answer_id : \"" + answer_id + "\",\n" +
-                "    author : \"" + author + "\",\n" +
-                "    content : \"" + content + "\",\n" +
-                "    )\n" +
-                "    {\n" +
-                "        _id\n" +
-                "        author\n" +
-                "        content\n" +
-                "        date\n" +
-                "    }\n" +
-                "}";
-        //endregion
+        String url ="/comment/create";
+        JsonObject json = new JsonObject();
+        json.addProperty("question_id",question_id);
+        json.addProperty("answer_id",answer_id);
+        json.addProperty("author",author);
+        json.addProperty("content",content);
         Gson gson = new Gson();
-        String name = new Object() {
-        }.getClass().getEnclosingMethod().getName();
-        String str = getResponse(query, name);
+        String str = getResponse(url,json);
         Comment comment = gson.fromJson(str, Comment.class);
         return comment;
     }
