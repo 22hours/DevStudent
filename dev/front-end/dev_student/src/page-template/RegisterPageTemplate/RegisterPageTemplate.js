@@ -1,9 +1,9 @@
 import React, { useState, useLayoutEffect } from "react";
 import "./RegisterPageTemplate.css";
 import { Container, Row, Col } from "reactstrap";
-import { Input, Button, FormText, Collapse } from "reactstrap";
+import { Input, Button, FormText } from "reactstrap";
 import { CREATE_USER } from "mutation/mutations";
-import { CHECK_EMAIL } from "mutation/mutations";
+import { CHECK_DUPLICATE_EMAIL } from "mutation/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import { Link } from "react-router-dom";
 import { hashPassword } from "auth";
@@ -15,10 +15,8 @@ const RegisterTemplate = ({
     setPassword,
     rePwd,
     setRePwd,
-    nickName,
     schoolName,
     setSchoolName,
-    nickCheck,
     pwdCheck,
     pwdRuleCheck,
     rePwdClassName,
@@ -28,22 +26,20 @@ const RegisterTemplate = ({
     setPwdCheck,
     setRePwdClassName,
     passwordRule,
-    nickNameCheck,
 }) => {
     const [createUser] = useMutation(CREATE_USER);
-    const [checkEmail, { data }] = useMutation(CHECK_EMAIL);
-    const [emailCode, setEmailCode] = useState("");
+    const [checkEmail, { data }] = useMutation(CHECK_DUPLICATE_EMAIL);
     const [emailRuleCheck, setEmailRuleCheck] = useState("false");
 
     useLayoutEffect(() => {
         if (data == null) return;
-        if (data.checkEmail.count === "duplicated") {
+        if (data.checkDuplicateEmail.count === "duplicated") {
             alert("중복된 이메일 입니다.");
+            setEmailRuleCheck("false");
             return;
         } else {
             alert("사용 가능한 이메일 입니다.");
-            setEmailCode(data.checkEmail.count);
-            toggle();
+            setEmailRuleCheck("true");
         }
     }, [data]);
 
@@ -78,15 +74,14 @@ const RegisterTemplate = ({
         }
     };
 
-    const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen);
-
     const checkSetEmail = (value) => {
         setEmail(value);
+        setEmailRuleCheck("false");
     };
 
     const checkSetEmailSelect = (value) => {
         setEmailSelect(value);
+        setEmailRuleCheck("false");
     };
 
     return (
@@ -150,41 +145,7 @@ const RegisterTemplate = ({
                                     </div>
                                 </div>
                             </div>
-                            {/* <Collapse isOpen={isOpen}>
-                                <div className="input-box">
-                                    <span className="register-label-style">인증번호</span>
-                                    <div className="nickName-input-box">
-                                        <div className="nickName-input">
-                                            <Input
-                                                id="inputrandnum"
-                                                type="text"
-                                                onChange={({ target: { value } }) => setEmailAuthState(value)}
-                                                placeholder="이메일의 인증번호를 입력해주세요."
-                                            />
-                                        </div>
-                                        <div className="nickName-check-button-wrapper">
-                                            <Button
-                                                color="info"
-                                                style={btn_style}
-                                                onClick={() => {
-                                                    if (emailCode === emailAuthState) {
-                                                        alert("이메일 인증에 성공했습니다.");
-                                                        setEmailRuleCheck("true");
-                                                        setEmailAuthState("");
-                                                        toggle();
-                                                    } else {
-                                                        alert("인증번호가 일치하지 않습니다. 다시 입력해주세요.");
-                                                        setEmailRuleCheck("false");
-                                                        return;
-                                                    }
-                                                }}
-                                            >
-                                                확인
-                                            </Button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Collapse> */}
+
                             <div className="input-box">
                                 <span className="register-label-style">비밀번호</span>
 
@@ -217,40 +178,6 @@ const RegisterTemplate = ({
                                     />
                                 </div>
                             </div>
-                            {/* <div className="input-box">
-                                <span className="register-label-style">닉네임</span>
-                                <div className="nickName-input-box">
-                                    <div className="nickName-input">
-                                        <Input
-                                            id="inputnickname"
-                                            onChange={({ target: { value } }) => nickNameCheck(value)}
-                                            type="text"
-                                            name="nickname"
-                                            placeholder="닉네임은 3자리 ~ 8자리로 입력해주세요."
-                                        />
-                                    </div>
-                                    <div className="nickName-check-button-wrapper">
-                                        <Button
-                                            color="info"
-                                            style={btn_style}
-                                            onClick={() => {
-                                                if (nickName == null) return;
-                                                if (nickName.length > 8 || nickName.length < 3) {
-                                                    alert("3자리~ 8자리 닉네임을 사용해주세요.");
-                                                } else {
-                                                    checkDuplicateNickname({
-                                                        variables: {
-                                                            nickname: nickName,
-                                                        },
-                                                    });
-                                                }
-                                            }}
-                                        >
-                                            확인
-                                        </Button>
-                                    </div>
-                                </div>
-                            </div> */}
                             <div className="input-box">
                                 <span className="register-label-style">대학교</span>
                                 <div className="register-input-box">
@@ -263,25 +190,15 @@ const RegisterTemplate = ({
                                     />
                                 </div>
                             </div>
-
                             <div className="input-box">
                                 <Button
                                     style={register_btn_style}
                                     color="info"
                                     onClick={() => {
-                                        if (
-                                            password.length < 1 ||
-                                            email.length < 1 ||
-                                            schoolName.length < 1 ||
-                                            nickName < 1
-                                        )
+                                        if (password.length < 1 || email.length < 1 || schoolName.length < 1)
                                             return alert("입력란을 모두 채워주세요.");
                                         if (emailRuleCheck === "false") {
-                                            alert("이메일을 다시 입력해주세요.");
-                                            return;
-                                        }
-                                        if (nickCheck === "false") {
-                                            alert("닉네임 중복 확인을 해주세요.");
+                                            alert("이메일 중복 확인을 해주세요.");
                                             return;
                                         }
                                         if (pwdCheck === "false") {
@@ -296,11 +213,10 @@ const RegisterTemplate = ({
                                                 variables: {
                                                     password: hashPassword(password),
                                                     email: email + emailSelect,
-                                                    nickname: nickName,
                                                     schoolName: schoolName,
                                                 },
                                             });
-                                            alert("회원가입 성공!!");
+                                            alert("해당 이메일의 수신함을 확인해주세요.");
                                         }
                                     }}
                                 >

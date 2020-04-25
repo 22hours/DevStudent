@@ -1,6 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Button } from "reactstrap";
-import { Redirect } from "react-router-dom";
+import { Container, Row, Button } from "reactstrap";
 import "./EmailCheckPageTemplate.css";
 import { UPDATE_USER_AUTH_STATE } from "mutation/mutations";
 import { useMutation } from "react-apollo";
@@ -28,7 +27,7 @@ const EmailCheckPageTemplate = ({ rand }) => {
                     <h1>이메일 인증은 아래 버튼을 클릭해주세요</h1>
                 </Row>
                 <Row>
-                    <Button onClick={handleUpdateAuthState} color="primary">
+                    <Button onClick={handleUpdateAuthState} color="info">
                         이메일 인증
                     </Button>
                 </Row>

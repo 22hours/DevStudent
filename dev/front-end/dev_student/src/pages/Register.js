@@ -1,7 +1,5 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState } from "react";
 import RegisterPageTemplate from "page-template/RegisterPageTemplate/RegisterPageTemplate";
-import { CHECK_DUPLICATE_NICKNAME } from "mutation/mutations";
-import { useMutation } from "react-apollo";
 
 const Register = () => {
     const [userEmail, setUserEmail] = useState("");
@@ -9,32 +7,12 @@ const Register = () => {
     const [rePwd, setRePwd] = useState("");
     const [schoolName, setSchoolName] = useState("");
     const [nickName, setNickName] = useState("");
-    const [checkDuplicateNickname, { data }] = useMutation(CHECK_DUPLICATE_NICKNAME);
-    const [nickCheck, setNickCheck] = useState("false");
     const [pwdCheck, setPwdCheck] = useState("false");
     const [pwdRuleCheck, setPwdRuleCheck] = useState("false");
     const [rePwdClassName, setRePwdClassName] = useState("");
     const [pwdClassName, setPwdClassName] = useState("");
     const [emailSelect, setEmailSelect] = useState("@gmail.com");
     const [emailAuthState, setEmailAuthState] = useState("");
-
-    //닉네임 중복체크
-    useLayoutEffect(() => {
-        if (data == null) return;
-        if (data.checkDuplicateNickname.count === 0) {
-            alert("중복된 닉네임 입니다.");
-            setNickCheck("false");
-            return;
-        } else {
-            alert("사용 가능한 닉네임 입니다.");
-            setNickCheck("true");
-        }
-    }, [data]);
-
-    const nickNameCheck = (value) => {
-        setNickName(value);
-        setNickCheck("false");
-    };
 
     const passwordRule = () => {
         if (password.length < 1) return;
@@ -77,8 +55,6 @@ const Register = () => {
             schoolName={schoolName}
             setSchoolName={setSchoolName}
             passwordRule={passwordRule}
-            checkDuplicateNickname={checkDuplicateNickname}
-            nickCheck={nickCheck}
             pwdCheck={pwdCheck}
             setRePwdClassName={setRePwdClassName}
             setPwdCheck={setPwdCheck}
@@ -88,7 +64,6 @@ const Register = () => {
             pwdClassName={pwdClassName}
             emailSelect={emailSelect}
             setEmailSelect={setEmailSelect}
-            nickNameCheck={nickNameCheck}
             emailAuthState={emailAuthState}
             setEmailAuthState={setEmailAuthState}
         ></RegisterPageTemplate>

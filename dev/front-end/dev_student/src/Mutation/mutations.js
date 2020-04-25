@@ -43,10 +43,9 @@ export const CREATE_ANSWER = gql`
 `;
 
 export const CREATE_USER = gql`
-    mutation createUser($email: String!, $password: String!, $nickname: String!, $schoolName: String!) {
-        createUser(email: $email, password: $password, nickname: $nickname, schoolName: $schoolName) {
+    mutation createUser($email: String!, $password: String!, $schoolName: String!) {
+        createUser(email: $email, password: $password, schoolName: $schoolName) {
             email
-            nickname
             authState
         }
     }
@@ -90,14 +89,6 @@ export const REISSUANCE_ACCESS_TOKEN = gql`
             authState
             accessToken
             refreshToken
-        }
-    }
-`;
-
-export const CHECK_EMAIL = gql`
-    mutation checkEmail($email: String!) {
-        checkEmail(email: $email) {
-            count
         }
     }
 `;
