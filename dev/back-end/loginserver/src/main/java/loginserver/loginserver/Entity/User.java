@@ -30,6 +30,9 @@ public class User {
     private String grade = "bean";
     @Setter
     private int point = 0;
+    @Setter
+    @Getter
+    private boolean attendance = false;
 //    @Setter
 //    private String refreshToken;
 
