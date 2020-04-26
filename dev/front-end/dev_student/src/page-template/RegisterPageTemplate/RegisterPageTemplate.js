@@ -1,6 +1,6 @@
 import React, { useState, useLayoutEffect } from "react";
 import "./RegisterPageTemplate.css";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { Input, Button, FormText } from "reactstrap";
 import { CREATE_USER } from "mutation/mutations";
 import { CHECK_DUPLICATE_EMAIL } from "mutation/mutations";
@@ -30,6 +30,8 @@ const RegisterTemplate = ({
     const [createUser] = useMutation(CREATE_USER);
     const [checkEmail, { data }] = useMutation(CHECK_DUPLICATE_EMAIL);
     const [emailRuleCheck, setEmailRuleCheck] = useState("false");
+    const [modal, setModal] = useState(false);
+    const toggle = () => setModal(!modal);
 
     useLayoutEffect(() => {
         if (data == null) return;
@@ -51,6 +53,21 @@ const RegisterTemplate = ({
 
     const register_btn_style = {
         marginTop: "10px",
+    };
+
+    const modal_style = {
+        padding: "10px",
+        paddingLeft: "15px",
+    };
+
+    const modal_header_style = {
+        fontWeight: "bold",
+        paddingTop: "10px",
+        paddingBottom: "10px",
+    };
+
+    const modal_btn_style = {
+        padding: "3px",
     };
 
     //비밀번호 확인용
@@ -82,6 +99,25 @@ const RegisterTemplate = ({
     const checkSetEmailSelect = (value) => {
         setEmailSelect(value);
         setEmailRuleCheck("false");
+    };
+
+    const AlertModal = () => {
+        return (
+            <Modal isOpen={modal}>
+                <ModalHeader style={modal_header_style}>회원가입 성공</ModalHeader>
+                <ModalBody style={modal_style}>
+                    회원가입에 성공했습니다. <br />
+                    입력한 이메일의 <b>수신함</b>을 확인해주세요.
+                    <br />
+                    확인 버튼을 누르면 <b>로그인화면</b>으로 이동합니다.
+                </ModalBody>
+                <ModalFooter style={modal_btn_style}>
+                    <Link to="/login">
+                        <Button color="info">확인</Button>
+                    </Link>
+                </ModalFooter>
+            </Modal>
+        );
     };
 
     return (
@@ -125,6 +161,7 @@ const RegisterTemplate = ({
                                                 <option>@gmail.com</option>
                                                 <option>@naver.com</option>
                                                 <option>@daum.net</option>
+                                                <option>@nate.com</option>
                                             </Input>
                                         </div>
                                     </div>
@@ -216,7 +253,7 @@ const RegisterTemplate = ({
                                                     schoolName: schoolName,
                                                 },
                                             });
-                                            alert("해당 이메일의 수신함을 확인해주세요.");
+                                            toggle();
                                         }
                                     }}
                                 >
@@ -228,6 +265,7 @@ const RegisterTemplate = ({
                     <Col xs={2}></Col>
                 </Row>
             </Container>
+            <AlertModal />
         </div>
     );
 };
