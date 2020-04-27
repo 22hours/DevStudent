@@ -18,6 +18,7 @@ import {
     Todo,
     NotFound,
     SitesInfo,
+    Nickname,
 } from "./pages";
 import FooterModule from "module/FooterModule/FooterModule";
 import HeaderComponent from "component/HeaderComponent/HeaderComponent";
@@ -42,6 +43,7 @@ const MyRouter = (props) => {
                             <Route path="/register" component={Register} />
                             <Route path="/login" render={(props) => <Login logIn={logIn} {...props} />} />
                             <Route path="/logout" component={Logout} />
+                            <Route path="/nickname" component={Nickname} />
 
                             <AuthRoute path="/alarm" render={(props) => <Alarm {...props} />} />
                             <AuthRoute path="/newquestion" render={(props) => <NewQuestion {...props} />} />

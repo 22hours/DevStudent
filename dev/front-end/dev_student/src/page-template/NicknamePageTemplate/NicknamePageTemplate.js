@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import { TextField } from "@material-ui/core";
-import "./NicknameModuleTemplate.css";
+import "./NicknamePageTemplate.css";
 
-const NicknameModuleTemplate = () => {
+const NicknamePageTemplate = () => {
     const [nickName, setNickname] = useState("");
 
     return (
@@ -21,10 +21,9 @@ const NicknameModuleTemplate = () => {
                             </div>
                             <div className="nickname-form-wrapper">
                                 <div className="nickname-state-form">
-                                    인증된 이메일은 <b>sg05138@naver.com</b> 입니다.
-                                    <br />
+                                    <div className="nickname-margin"></div>
                                     "대학생 개발자 닷컴" 에서 사용할 닉네임을 설정해주세요.
-                                    <br />
+                                    <div className="nickname-margin"></div>
                                     닉네임을 입력하지 않으면 다시 로그인 페이지로 이동됩니다.
                                 </div>
                                 <div className="login-page-margin"></div>
@@ -38,7 +37,7 @@ const NicknameModuleTemplate = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="nicknameed-confirm-wrapper">
+                            <div className="nickname-confirm-wrapper">
                                 <div className="nickname-form-resize-wrapper">
                                     <Button color="info">확인</Button>
                                 </div>
@@ -51,4 +50,4 @@ const NicknameModuleTemplate = () => {
         </React.Fragment>
     );
 };
-export default NicknameModuleTemplate;
+export default NicknamePageTemplate;

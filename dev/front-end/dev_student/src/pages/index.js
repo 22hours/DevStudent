@@ -16,6 +16,7 @@ import DevNote from "./DevNote";
 import Logout from "./Logout";
 import SitesInfo from "./SitesInfo";
 import Rule from "./Rule";
+import Nickname from "./Nickname";
 export {
     Alarm,
     EmailCheck,
@@ -35,4 +36,5 @@ export {
     Logout,
     SitesInfo,
     Rule,
+    Nickname,
 };

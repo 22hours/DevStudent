@@ -4,6 +4,10 @@ import { useMutation } from "@apollo/react-hooks";
 import { LOGIN } from "mutation/mutations";
 import { setAuthInfo, getAuthInfo } from "auth";
 import LoginPageTemplate from "page-template/LoginPageTemplate/LoginPageTemplate";
+import NicknamePageTemplate from "page-template/NicknamePageTemplate/NicknamePageTemplate";
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
+import { Link } from "react-router-dom";
+
 const Login = ({ logIn, location }) => {
     const [loginToServer, { data }] = useMutation(LOGIN);
     const [email, setEmail] = useState("");
@@ -13,8 +17,39 @@ const Login = ({ logIn, location }) => {
         color: "white",
         fontSize: "16px",
     };
+    const modal_style = {
+        padding: "10px",
+        paddingLeft: "15px",
+    };
 
+    const modal_header_style = {
+        paddingTop: "10px",
+        paddingBottom: "10px",
+        fontSize: "16px",
+    };
+
+    const modal_btn_style = {
+        padding: "3px",
+    };
     const { auth } = getAuthInfo();
+    const [modal, setModal] = useState(false);
+    const toggle = () => setModal(!modal);
+
+    const AlertModal = () => {
+        return (
+            <Modal isOpen={modal}>
+                <ModalHeader style={modal_header_style}>
+                    <b>닉네임 설정</b>
+                </ModalHeader>
+                <ModalBody style={modal_style}>닉네임을 설정해주세요.</ModalBody>
+                <ModalFooter style={modal_btn_style}>
+                    <Link to="/nickname">
+                        <Button color="info">확인</Button>
+                    </Link>
+                </ModalFooter>
+            </Modal>
+        );
+    };
 
     const firstUpdate = useRef(true);
     useLayoutEffect(() => {
@@ -31,11 +66,10 @@ const Login = ({ logIn, location }) => {
         if (data?.loginToServer.nickname) {
             logIn(data.loginToServer.nickname, email, data.loginToServer.accessToken, data.loginToServer.refreshToken);
         } else if (data.loginToServer.accessToken) {
-            alert("nick name is null");
             window.sessionStorage.setItem("token", data.loginToServer.accessToken);
             window.sessionStorage.setItem("email", data.loginToServer.email);
             // window.location.replace("/nickname/setting");
-            return;
+            toggle();
         } else {
             setPassword("");
             alert("로그인 시스템의 정보와 다릅니다!");
@@ -58,6 +92,7 @@ const Login = ({ logIn, location }) => {
                 loginToServer={loginToServer}
                 btn_style={btn_style}
             />
+            <AlertModal />
         </React.Fragment>
     );
 };
