@@ -11,6 +11,7 @@ const Login = ({ logIn, location }) => {
     const btn_style = {
         backgroundColor: "#4BA0B5",
         color: "white",
+        fontSize: "16px",
     };
 
     const { auth } = getAuthInfo();

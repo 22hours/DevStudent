@@ -1,63 +1,60 @@
-.login-container-top-wrapper{
+.login-container-top-wrapper {
     height: 100vh;
-    padding-top: 2%;
+    padding-top: 60px;
     background-color: #f2f2f2;
     height: 100vh;
-    padding-top: 2%;
 }
 
-.login-container-wrapper{
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); /* 그림자 */ 
+.login-container-wrapper {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); /* 그림자 */
     border-radius: 7px;
     padding-bottom: 2%;
     background-color: white;
 }
 
-.login-welcome-wrapper{
+.login-welcome-wrapper {
     margin-top: 5%;
-    display:table;
-    width:100%;
+    display: table;
+    width: 100%;
     text-align: center;
 }
 
-.login-welcome-span{
+.login-welcome-span {
     font-size: xx-large;
-    font-family: 'Do Hyeon', sans-serif;
+    font-family: "Do Hyeon", sans-serif;
     display: table-cell;
     vertical-align: middle;
 }
 
-.login-logo_wrapper{
-    margin-top: 2%;
-    display:table;
-    width:100%;
+.login-logo_wrapper {
+    margin-top: 10px;
+    display: table;
+    width: 100%;
     text-align: center;
+    margin-bottom: 15px;
 }
 
-.login-logo_wrapper img{
+.login-logo_wrapper img {
     width: 90px;
     height: 80px;
 }
 
-.login-form-wrapper{
+.login-form-wrapper {
     margin-top: 7%;
     padding-left: 10%;
     padding-right: 10%;
-    width:100%;
+    width: 100%;
 }
 
-.login-form-resize-wrapper{
-    display:table;
+.login-form-resize-wrapper {
+    display: table;
     text-align: center;
 }
 
-.login-form-wrapper div{
+.login-form-wrapper div {
     width: 100%;
-
 }
 
-.login-form-resize-wrapper button{
+.login-form-resize-wrapper button {
     width: 100%;
-
 }
-

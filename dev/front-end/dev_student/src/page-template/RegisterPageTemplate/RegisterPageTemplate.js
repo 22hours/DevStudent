@@ -7,6 +7,7 @@ import { CHECK_DUPLICATE_EMAIL } from "mutation/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import { Link } from "react-router-dom";
 import { hashPassword } from "auth";
+import debal from "img/mypage/debal.png";
 
 const RegisterTemplate = ({
     email,
@@ -53,6 +54,8 @@ const RegisterTemplate = ({
 
     const register_btn_style = {
         marginTop: "10px",
+        color: "white",
+        fontSize: "16px",
     };
 
     const modal_style = {
@@ -61,9 +64,9 @@ const RegisterTemplate = ({
     };
 
     const modal_header_style = {
-        fontWeight: "bold",
         paddingTop: "10px",
         paddingBottom: "10px",
+        fontSize: "16px",
     };
 
     const modal_btn_style = {
@@ -104,11 +107,14 @@ const RegisterTemplate = ({
     const AlertModal = () => {
         return (
             <Modal isOpen={modal}>
-                <ModalHeader style={modal_header_style}>회원가입 성공</ModalHeader>
+                <ModalHeader style={modal_header_style}>
+                    <b>회원가입 성공</b>
+                </ModalHeader>
                 <ModalBody style={modal_style}>
-                    회원가입에 성공했습니다. <br />
-                    입력한 이메일의 <b>수신함</b>을 확인해주세요.
-                    <br />
+                    <b>{email + emailSelect}</b>으로 인증메일을 보냈습니다.
+                    <div className="register-margin"></div>
+                    메일에 있는 인증 버튼을 눌러 <b>인증을 완료해주세요. </b>
+                    <div className="register-margin"></div>
                     확인 버튼을 누르면 <b>로그인화면</b>으로 이동합니다.
                 </ModalBody>
                 <ModalFooter style={modal_btn_style}>
@@ -131,11 +137,22 @@ const RegisterTemplate = ({
                             <img alt="" src="/img/devstu_round_logo.png"></img>
                         </div>
                         <div className="registertemplate-info">
-                            계정이 이미 있는 경우에는 <Link to="/login">로그인</Link>해주세요.
-                            <br />
-                            가입을 하면 DEVSTU의 <Link to="/terms">이용약관</Link>,{" "}
-                            <Link to="privacy">개인정보취급방침 및 개인정보3자제공</Link>에 동의하게 됩니다.
-                            <br />
+                            계정이 이미 있는 경우에는{" "}
+                            <Link to="/login">
+                                <b>로그인</b>
+                            </Link>
+                            해주세요.
+                            <div className="register-margin"></div>
+                            가입을 하면 DEVSTU의{" "}
+                            <Link to="/terms">
+                                <b>대발자 사이트의 이용약관</b>
+                            </Link>
+                            , <div className="register-margin"></div>
+                            <Link to="privacy">
+                                <b>개인정보취급방침 및 개인정보3자제공</b>
+                            </Link>
+                            에 동의하게 됩니다.
+                            <div className="register-margin"></div>
                             가입 후 아이디는 변경할 수 없습니다.
                         </div>
                         <div className="main-content-wrapper">
@@ -150,7 +167,6 @@ const RegisterTemplate = ({
                                                 type="text"
                                                 name="email"
                                                 id="inputEmail"
-                                                placeholder="이메일을 입력해주세요."
                                             />
                                         </div>
                                         <div className="email-select-wrapper">
@@ -194,7 +210,6 @@ const RegisterTemplate = ({
                                         type="password"
                                         name="password"
                                         id="inputPassword"
-                                        placeholder="비밀번호를 규칙에 맞게 입력해주세요."
                                         onBlur={passwordRule}
                                     />
                                     <FormText>8자~15자 이내, 영문,숫자,특수문자를 혼합하여 입력해주세요. </FormText>
@@ -210,7 +225,6 @@ const RegisterTemplate = ({
                                         type="password"
                                         name="password"
                                         id="inputPassword"
-                                        placeholder="비밀번호를 다시 입력해주세요."
                                         onBlur={RepwInputRenderer}
                                     />
                                 </div>
@@ -223,7 +237,6 @@ const RegisterTemplate = ({
                                         type="text"
                                         name="universityname"
                                         id="inputschool"
-                                        placeholder="대학교 이름을 입력해주세요."
                                     />
                                 </div>
                             </div>

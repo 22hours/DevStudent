@@ -1,5 +1,6 @@
 .navbar {
     background-color: rgba(245, 245, 245, 0.8);
+    /* background-color: rgb(255, 255, 255, 0.8); */
     border: gray;
     border-bottom: 2px solid rgb(233, 233, 233);
 }
