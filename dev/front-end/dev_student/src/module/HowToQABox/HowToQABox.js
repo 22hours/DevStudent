@@ -70,7 +70,7 @@ const HowToQABox = ({
     };
     const TagBox = () => {
         if (isQuestion === "Q") {
-            const TagList = tags.map((tagItem) => <Tag key={tagItem} tagItem={tagItem}></Tag>);
+            const TagList = tags?.map((tagItem) => <Tag key={tagItem} tagItem={tagItem}></Tag>);
             return <div className="tag-box">{TagList}</div>;
         } else {
             return <React.Fragment></React.Fragment>;
