@@ -117,3 +117,50 @@ export const CREATE_NICKNAME = gql`
         }
     }
 `;
+
+export const UPDATE_ADOPTED_ANSWER_ID = gql`
+    mutation updateAdoptedAnswerId($question_id: String!, $answer_id: String!, $nickname: String!) {
+        updateAdoptedAnswerId(question_id: $question_id, answer_id: $answer_id, nickname: $nickname) {
+            title
+            _id
+            author
+            tags
+            date
+            content
+            previews
+            answerCount
+            likesCount
+            isLiked
+            views
+            adoptedAnswerId
+            likes {
+                nickname
+                status
+            }
+            comments {
+                _id
+                author
+                content
+                date
+            }
+            answers {
+                _id
+                author
+                content
+                date
+                likesCount
+                isLiked
+                comments {
+                    _id
+                    author
+                    content
+                    date
+                }
+                likes {
+                    nickname
+                    status
+                }
+            }
+        }
+    }
+`;

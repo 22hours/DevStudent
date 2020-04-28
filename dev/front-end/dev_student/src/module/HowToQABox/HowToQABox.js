@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Collapse, Input } from "reactstrap";
 import { useMutation } from "@apollo/react-hooks";
-import { CREATE_COMMENT } from "mutation/mutations";
 import "./HowToQABox.css";
 import { Link } from "react-router-dom";
 
@@ -10,12 +9,13 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import RequireLoginBoxModule from "../RequireLoginBoxModule/RequireLoginBoxModule";
-import { confirmAlert } from "react-confirm-alert"; // Import
-import DoneIcon from "@material-ui/icons/Done";
 
 // atoms
 import Tag from "atom/Tag/Tag";
 import MarkdownParser from "atom/MarkdownParser/MarkdownParser";
+
+// apollo
+import { CREATE_COMMENT, UPDATE_ADOPTED_ANSWER_ID } from "mutation/mutations";
 
 const HowToQABox = ({
     _id,
@@ -30,7 +30,10 @@ const HowToQABox = ({
     adoptedAnswerId,
     likesCount,
 }) => {
-    const [createComment] = useMutation(CREATE_COMMENT);
+    const nickname = JSON.parse(localStorage.getItem("user"))?.nickname;
+    const [createComment, { loading: loadingComment, error: errorComment }] = useMutation(CREATE_COMMENT);
+    const [updateAdoptedAnswerId, { loading: loadingAdopt, error: errorAdopt }] = useMutation(UPDATE_ADOPTED_ANSWER_ID);
+
     const [isOpen, setIsOpen] = useState(false);
     const toggleCollapse = () => setIsOpen(!isOpen);
     const [commentValue, setCommentValue] = useState("");
@@ -40,7 +43,7 @@ const HowToQABox = ({
         } else {
             return (
                 <div
-                    onClick={adoptThisAnswer}
+                    onClick={handleAdopt}
                     className={"is-question-box-a clickable " + (adoptedAnswerId === _id ? "adopt" : "notadopt")}
                 >
                     A
@@ -55,7 +58,7 @@ const HowToQABox = ({
         } else {
             return (
                 <div
-                    onClick={adoptThisAnswer}
+                    onClick={handleAdopt}
                     className={
                         "header-box-is-question-box-a clickable " + (adoptedAnswerId === _id ? "adopt" : "notadopt")
                     }
@@ -87,7 +90,7 @@ const HowToQABox = ({
             variables: {
                 question_id: question_id,
                 answer_id: isQuestion === "Q" ? "Question" : _id,
-                author: window.localStorage.getItem("nickname"),
+                author: nickname,
                 content: commentValue,
             },
         })
@@ -99,7 +102,42 @@ const HowToQABox = ({
                 alert(err.messeage);
             });
     };
+    const handleAdopt = async () => {
+        var adoptReturn = null;
+        if (nickname !== author) {
+            return;
+        }
+        if (adoptedAnswerId === null) adoptReturn = window.confirm("이 댓글을 채택하시겠습니까?");
+        else {
+            window.alert("이미 채택된 답변이 있습니다");
+            return;
+        }
+        if (adoptReturn) {
+            updateAdoptedAnswerId({
+                variables: {
+                    question_id: question_id,
+                    answer_id: _id,
+                    nickname: nickname,
+                },
+            })
+                .then((response) => {
+                    alert("해당 답변을 채택하였습니다!");
+                    window.location.href = "/howto/question/" + question_id;
+                })
+                .catch((err) => {
+                    alert(err.messeage);
+                });
+        }
+    };
 
+    const emoteThisQABox = (emote) => {
+        const auth = localStorage.getItem("auth");
+        if (auth) {
+            alert("success!");
+        } else {
+            window.location.href = "/login";
+        }
+    };
     const LikesBoxOutter = () => {
         return (
             <React.Fragment>
@@ -140,26 +178,6 @@ const HowToQABox = ({
         );
     };
 
-    const adoptThisAnswer = () => {
-        var adoptReturn = null;
-        if (localStorage.getItem("nickname") !== author) {
-            return;
-        }
-        if (adoptedAnswerId === "null") adoptReturn = window.confirm("이 댓글을 채택하시겠습니까?");
-        else {
-            window.alert("이미 채택된 답변이 있습니다");
-            return;
-        }
-    };
-
-    const emoteThisQABox = (emote) => {
-        const auth = localStorage.getItem("auth");
-        if (auth) {
-            alert("success!");
-        } else {
-            window.location.href = "/login";
-        }
-    };
     return (
         <div>
             {/* <div className="adopt-popup-layer">레레레</div> */}
