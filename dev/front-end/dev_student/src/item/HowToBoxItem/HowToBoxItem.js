@@ -22,7 +22,7 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 const HowToBoxItem = (props) => {
     const { id, author, title, date, previews, answers, views, solved, tags } = props; //likes 도 추가해야함
     console.log(tags);
-    const nickname = localStorage.getItem("nickname");
+    const nickname = JSON.parse(localStorage.getItem("user"))?.nickname;
     const TagListRenderer = () => {
         var TagList = null;
         if (tags[0] !== "") {
