@@ -17,7 +17,7 @@ import HowToQABox from "module/HowToQABox/HowToQABox";
 import RequireLoginBoxModule from "module/RequireLoginBoxModule/RequireLoginBoxModule";
 
 const HowToContentModuleTemplate = ({ match }) => {
-    const nickname = JSON.parse(localStorage.getItem("user")).nickname;
+    const nickname = JSON.parse(localStorage.getItem("user"))?.nickname;
     const { loading, error, data } = useQuery(findQuestionBy_id_Query, {
         variables: { _id: match.params.id },
     });
