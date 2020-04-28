@@ -12,12 +12,15 @@ export const LOGIN = gql`
     mutation loginToServer($email: String!, $password: String!) {
         loginToServer(email: $email, password: $password) {
             email
+            password
             nickname
             schoolName
-            gitLink
             date
             authState
             accessToken
+            gitLink
+            grade
+            point
         }
     }
 `;
