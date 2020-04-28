@@ -24,7 +24,7 @@ public class GetNicknameInToken {
     public String getNicknameInToken(DataFetchingEnvironment env) {
         GraphQLContext context =  env.getContext();
         HttpServletRequest request = context.getHttpServletRequest().get();
-        if(request.getHeader("Authorization").equals(null)){
+        if(request.getHeader("Authorization") == null || request.getHeader("Authorization").equals("")){
             return null;
         }
         String jwt = request.getHeader("Authorization");
