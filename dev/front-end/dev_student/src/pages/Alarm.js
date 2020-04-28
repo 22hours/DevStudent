@@ -4,7 +4,7 @@ import { FIND_ALL_ALARMS } from "../query/queries";
 import UserContext from "context/UserContext";
 import { useQuery } from "react-apollo";
 const Alarm = () => {
-    const nickname = window.localStorage.getItem("nickname");
+    const nickname = JSON.parse(localStorage.getItem("user"))?.nickname;
     const { loading, error, data } = useQuery(FIND_ALL_ALARMS, {
         variables: { nickname: nickname, pageNum: 1, requiredCount: 10 },
     });
