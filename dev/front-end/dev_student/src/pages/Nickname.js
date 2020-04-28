@@ -16,8 +16,12 @@ const Nickname = () => {
             .then((response) => {
                 console.log(response);
                 if (response.data.createNickname.nickname) {
+                    var data = response.data.createNickname;
+                    sessionStorage.clear();
+                    localStorage.setItem("user", JSON.stringify(data));
                 } else {
                     alert("Duplicated Nickname!");
+                    setNickname("");
                 }
             })
             .catch((err) => {

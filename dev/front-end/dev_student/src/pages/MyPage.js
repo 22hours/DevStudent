@@ -3,8 +3,10 @@ import { useQuery } from "react-apollo";
 import MypageTemplate from "page-template/MypageTemplate/MypageTemplate";
 import { FIND_ALL_ALARMS, FIND_QUESTIONS_BY_OPTION } from "query/queries";
 import { Link } from "react-router-dom";
+const localData = JSON.parse(localStorage.getItem("user"));
+
 const AlarmPovider = () => {
-    const user = window.localStorage.getItem("nickname");
+    const user = localData?.nickname;
     const { loading, error, data } = useQuery(FIND_ALL_ALARMS, {
         variables: { nickname: user, pageNum: 1, requiredCount: 10 },
     });
@@ -22,7 +24,7 @@ const AlarmPovider = () => {
     ));
 };
 const MyContentProvider = () => {
-    const user = window.localStorage.getItem("nickname");
+    const user = localData?.nickname;
     const { loading, error, data } = useQuery(FIND_QUESTIONS_BY_OPTION, {
         variables: { param: "date", option: "author", searchContent: user, pageNum: 1, requiredCount: 10 },
     });
@@ -42,6 +44,13 @@ const MyContentProvider = () => {
 const MyPage = () => {
     const alramData = <AlarmPovider />;
     const myContent = <MyContentProvider />;
-    return <MypageTemplate alarmData={alramData} myContent={myContent} />;
+    return (
+        <MypageTemplate
+            nickname={localData.nickname}
+            email={localData.email}
+            alarmData={alramData}
+            myContent={myContent}
+        />
+    );
 };
 export default MyPage;

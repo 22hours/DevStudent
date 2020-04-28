@@ -9,9 +9,7 @@ import avatar_test from "img/mypage/avatar_test.png";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
-const MypageTemplate = ({ alarmData, myContent }) => {
-    const email = window.localStorage.getItem("email");
-    const nickname = window.localStorage.getItem("nickname");
+const MypageTemplate = ({ email, nickname, alarmData, myContent }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [alertOpen, setAlertOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);

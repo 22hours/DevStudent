@@ -10,8 +10,10 @@ import { Link } from "react-router-dom";
 
 const Login = ({ logIn, location }) => {
     const [loginToServer, { data }] = useMutation(LOGIN);
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
     const btn_style = {
         backgroundColor: "#4BA0B5",
         color: "white",
@@ -31,7 +33,8 @@ const Login = ({ logIn, location }) => {
     const modal_btn_style = {
         padding: "3px",
     };
-    const { auth } = getAuthInfo();
+
+    const auth = localStorage.getItem("auth");
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
 
@@ -64,7 +67,8 @@ const Login = ({ logIn, location }) => {
         //     return;
         // }
         if (data?.loginToServer.nickname) {
-            logIn(data.loginToServer.nickname, email, data.loginToServer.accessToken, data.loginToServer.refreshToken);
+            // logIn(data.loginToServer.nickname, email, data.loginToServer.accessToken, data.loginToServer.refreshToken);
+            logIn(data.loginToServer);
         } else if (data.loginToServer.accessToken) {
             window.sessionStorage.setItem("token", data.loginToServer.accessToken);
             window.sessionStorage.setItem("email", data.loginToServer.email);

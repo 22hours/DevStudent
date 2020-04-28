@@ -12,7 +12,6 @@ export const LOGIN = gql`
     mutation loginToServer($email: String!, $password: String!) {
         loginToServer(email: $email, password: $password) {
             email
-            password
             nickname
             schoolName
             gitLink
@@ -82,7 +81,6 @@ export const REISSUANCE_ACCESS_TOKEN = gql`
     mutation reissuanceAccessToken($nickname: String!) {
         reissuanceAccessToken(nickname: $nickname) {
             email
-            password
             nickname
             schoolName
             date
@@ -105,7 +103,6 @@ export const CREATE_NICKNAME = gql`
     mutation createNickname($email: String!, $nickname: String!) {
         createNickname(email: $email, nickname: $nickname) {
             email
-            password
             nickname
             schoolName
             date

@@ -12,8 +12,9 @@ export const findQuestionBy_id_Query = gql`
             previews
             answerCount
             likesCount
+            isLiked
             views
-            solved
+            adoptedAnswerId
             likes {
                 nickname
                 status
@@ -30,6 +31,7 @@ export const findQuestionBy_id_Query = gql`
                 content
                 date
                 likesCount
+                isLiked
                 comments {
                     _id
                     author
@@ -136,7 +138,7 @@ export const FIND_QUESTIONS_BY_TAG = gql`
             previews
             answerCount
             views
-            solved
+            adoptedAnswerId
             comments {
                 _id
                 author
@@ -184,7 +186,7 @@ export const FIND_QUESTIONS_BY_OPTION = gql`
             answerCount
             likesCount
             views
-            solved
+            adoptedAnswerId
             likes {
                 nickname
                 status

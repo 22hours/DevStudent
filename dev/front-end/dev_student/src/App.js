@@ -18,30 +18,35 @@ class App extends Component {
 
     componentDidMount() {
         PublicIpGetter();
-        const nickname = window.localStorage.getItem("nickname");
-        const email = window.localStorage.getItem("email");
-        const auth = window.localStorage.getItem("auth");
-        if (auth) {
-            this.setState({
-                nickname: nickname,
-                email: email,
-                auth: auth,
-            });
+        const localData = JSON.parse(localStorage.getItem("user"));
+        if (localData !== null) {
+            console.log(localData.nickname);
+            const localAuth = localStorage.getItem("auth");
+            if (localAuth) {
+                this.setState({
+                    nickname: localData.nickname,
+                    email: localData.email,
+                    auth: localAuth,
+                });
+            }
         }
     }
 
     render() {
-        const logIn = (nickname, email, accessToken, refreshToken) => {
+        const logIn = (data) => {
             this.setState({
-                nickname: nickname,
-                email: email,
+                nickname: data.nickname,
+                email: data.email,
                 auth: true,
             });
-            window.localStorage.setItem("nickname", nickname);
+            window.localStorage.setItem("user", JSON.stringify(data));
             window.localStorage.setItem("auth", true);
-            window.localStorage.setItem("email", email);
-            window.localStorage.setItem("token", accessToken);
-            window.localStorage.setItem("refreshToken", refreshToken);
+            window.location.replace("/");
+            // window.localStorage.setItem("nickname", nickname);
+            // window.localStorage.setItem("auth", true);
+            // window.localStorage.setItem("email", email);
+            // window.localStorage.setItem("token", accessToken);
+            // window.localStorage.setItem("refreshToken", refreshToken);
         };
 
         const logout = () => {

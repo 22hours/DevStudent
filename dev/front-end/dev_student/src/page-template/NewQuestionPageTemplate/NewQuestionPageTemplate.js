@@ -9,7 +9,8 @@ import NewQuestionMainComponent from "component/NewQuestionMainComponent/NewQues
 import NewQuestionSideBarComponent from "component/NewQuestionSideBarComponent/NewQuestionSideBarComponent";
 
 const NewQuestionPageTemplate = ({ handleSubmit }) => {
-    const nickname = window.localStorage.getItem("nickname");
+    const localData = JSON.parse(localStorage.getItem("user"));
+    const nickname = localData?.nickname;
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     const [tags, setTags] = useState([]);
