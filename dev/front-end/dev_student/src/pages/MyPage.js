@@ -44,13 +44,6 @@ const MyContentProvider = () => {
 const MyPage = () => {
     const alramData = <AlarmPovider />;
     const myContent = <MyContentProvider />;
-    return (
-        <MypageTemplate
-            nickname={localData.nickname}
-            email={localData.email}
-            alarmData={alramData}
-            myContent={myContent}
-        />
-    );
+    return <MypageTemplate localData={localData} alarmData={alramData} myContent={myContent} />;
 };
 export default MyPage;

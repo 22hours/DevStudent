@@ -9,7 +9,9 @@ import "./MarkdownAnswerModule.css";
 import MarkdownParser from "atom/MarkdownParser/MarkdownParser";
 
 const MarkdownAnswerModule = ({ id }) => {
-    const nickname = window.localStorage.getItem("nickname");
+    const localData = JSON.parse(localStorage.getItem("user"));
+
+    const nickname = localData.nickname;
     const [activeTab, setActiveTab] = useState("1");
     const [comment, setComment] = useState();
     const [createAnswer] = useMutation(CREATE_ANSWER);

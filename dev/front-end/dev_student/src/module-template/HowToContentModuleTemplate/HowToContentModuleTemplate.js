@@ -28,23 +28,24 @@ const HowToContentModuleTemplate = ({ match }) => {
         mine = true;
     }
 
-    const answers = data.findQuestionBy_id.answers.map(({ _id, author, content, date, comments }) => (
-        // likesCount, likes 추가 예쩡
-        <HowToQABox
-            _id={_id}
-            key={_id}
-            author={author}
-            date={date}
-            isQuestion={"A"}
-            content={content}
-            comments={comments}
-            question_id={match.params.id}
-            // adoptedAnswerId={data.findQuestionBy_id.adoptedAnswerId}
-            adoptedAnswerId={"7"}
-            isLiked={"up"}
-            likesCount="129"
-        />
-    ));
+    const answers = data.findQuestionBy_id.answers.map(
+        ({ _id, author, content, date, comments, isLiked, likesCount }) => (
+            // likesCount, likes 추가 예쩡
+            <HowToQABox
+                _id={_id}
+                key={_id}
+                author={author}
+                date={date}
+                isQuestion={"A"}
+                content={content}
+                comments={comments}
+                question_id={match.params.id}
+                adoptedAnswerId={data.findQuestionBy_id.adoptedAnswerId}
+                isLiked={isLiked}
+                likesCount={likesCount}
+            />
+        )
+    );
     return (
         <React.Fragment>
             <div className="HowToContentModuleTemplate">
@@ -58,6 +59,8 @@ const HowToContentModuleTemplate = ({ match }) => {
                         author={data.findQuestionBy_id.author}
                         date={data.findQuestionBy_id.date}
                         views={data.findQuestionBy_id.views}
+                        isLiked={data.findQuestionBy_id.isLiked}
+                        likesCount={data.findQuestionBy_id.likesCount}
                     ></ContentHeaderModule>
                 </Container>
 

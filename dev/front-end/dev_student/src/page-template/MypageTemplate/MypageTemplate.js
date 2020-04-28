@@ -9,7 +9,10 @@ import avatar_test from "img/mypage/avatar_test.png";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
-const MypageTemplate = ({ email, nickname, alarmData, myContent }) => {
+//atoms
+import GradeAvatar from "atom/GradeAvatar/GradeAvatar";
+
+const MypageTemplate = ({ localData, alarmData, myContent }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [alertOpen, setAlertOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
@@ -45,12 +48,12 @@ const MypageTemplate = ({ email, nickname, alarmData, myContent }) => {
                 <Container>
                     <div className="mypage-user-header-row">
                         <div className="avatar-col">
-                            <img src={avatar_test}></img>
+                            <img src={GradeAvatar(localData.grade)}></img>
                         </div>
                         <div className="info-col">
-                            <div className="badge-row">뱃지가 들어갈 공간</div>
+                            <div className={"badge-row " + localData.grade}>{localData.grade}</div>
                             <div className="nickname-row">
-                                {nickname}
+                                {localData.nickname}
                                 &nbsp; &nbsp;
                                 <div className="mypage-githubicon" onClick={moveGithubLink}>
                                     <GitHubIcon style={{ fontSize: "18px" }} />
@@ -75,11 +78,11 @@ const MypageTemplate = ({ email, nickname, alarmData, myContent }) => {
                             <div className="item-preview">
                                 <div className="item-box">
                                     <span id="item-label">이메일</span>
-                                    <p id="item-value">{email}</p>
+                                    <p id="item-value">{localData.email}</p>
                                 </div>
                                 <div className="item-box">
                                     <span id="item-label">닉네임</span>
-                                    <p id="item-value">{nickname}</p>
+                                    <p id="item-value">{localData.nickname}</p>
                                 </div>
                                 <Collapse isOpen={isOpen}>
                                     <div className="item-box">

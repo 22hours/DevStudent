@@ -50,7 +50,27 @@
     height: 100px;
     margin-left: 100px;
 }
-
+.mypage-user-header-row .info-col .bean {
+    color: gray;
+}
+.mypage-user-header-row .info-col .short {
+    color: rgb(86, 130, 53);
+}
+.mypage-user-header-row .info-col .tall {
+    color: rgb(46, 117, 182);
+}
+.mypage-user-header-row .info-col .grande {
+    color: rgb(112, 48, 160);
+}
+.mypage-user-header-row .info-col .venti {
+    color: rgb(237, 125, 49);
+}
+.mypage-user-header-row .info-col .trenta {
+    color: rgb(255, 80, 80);
+}
+.mypage-user-header-row .info-col .dev {
+    color: rgb(0, 0, 0);
+}
 .info-col .bage-row {
     font-size: 14px;
 }
