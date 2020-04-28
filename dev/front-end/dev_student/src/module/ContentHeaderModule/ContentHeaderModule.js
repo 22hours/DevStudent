@@ -12,7 +12,7 @@ import debal from "img/mypage/debal.png";
 const ContentHeaderModule = (props) => {
     const { _id, title, author, date, views, mine, adoptedAnswerId } = props;
     const HeaderBadge = () => {
-        if (adoptedAnswerId !== "null") {
+        if (adoptedAnswerId !== null) {
             return <span className="solved-bagde">SOLVED</span>;
         } else {
             return <span className="not-solved-bagde">HELP WANTED</span>;

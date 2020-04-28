@@ -51,13 +51,17 @@ export const findAllQuestionsPage = gql`
     query findAllQuestion($param: String, $pageNum: Int, $requiredCount: Int) {
         findAllQuestions(param: $param, pageNum: $pageNum, requiredCount: $requiredCount) {
             title
-            views
-            answerCount
             _id
             author
-            date
-            previews
             tags
+            date
+            content
+            previews
+            answerCount
+            likesCount
+            isLiked
+            views
+            adoptedAnswerId
         }
     }
 `;
@@ -66,13 +70,17 @@ export const findAllQuestions = gql`
     query findAllQuestion($param: String) {
         findAllQuestions(param: $param) {
             title
-            views
-            answerCount
-            date
             _id
             author
-            previews
             tags
+            date
+            content
+            previews
+            answerCount
+            likesCount
+            isLiked
+            views
+            adoptedAnswerId
         }
     }
 `;
@@ -81,13 +89,17 @@ export const findAllQuestionsByViews = gql`
     query findAllQuestion($param: String, $requiredCount: Int) {
         findAllQuestions(param: $param, requiredCount: $requiredCount) {
             title
-            views
-            answerCount
             _id
             author
-            date
-            previews
             tags
+            date
+            content
+            previews
+            answerCount
+            likesCount
+            isLiked
+            views
+            adoptedAnswerId
         }
     }
 `;
@@ -137,6 +149,8 @@ export const FIND_QUESTIONS_BY_TAG = gql`
             content
             previews
             answerCount
+            likesCount
+            isLiked
             views
             adoptedAnswerId
             comments {

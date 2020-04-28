@@ -113,6 +113,14 @@
     border-radius: 3px;
     border: 1px solid rgb(60, 144, 165);
 }
+.howto-item-stats-col .solved {
+    border-radius: 3px;
+    background-color: rgb(60, 144, 165);
+    color: white;
+}
+.howto-item-stats-col .solved #stats-label {
+    color: white;
+}
 .howto-item-stats-col .hot #stats-label {
     color: rgb(60, 144, 165);
 }

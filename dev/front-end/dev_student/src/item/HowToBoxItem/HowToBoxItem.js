@@ -20,7 +20,7 @@ import Avatar from "atom/Avatar/Avatar";
 //icons
 import VisibilityIcon from "@material-ui/icons/Visibility";
 const HowToBoxItem = (props) => {
-    const { id, author, title, date, previews, answers, views, solved, tags } = props; //likes 도 추가해야함
+    const { id, author, title, date, previews, answers, views, adoptedAnswerId, tags } = props; //likes 도 추가해야함
     console.log(tags);
     const nickname = JSON.parse(localStorage.getItem("user"))?.nickname;
     const TagListRenderer = () => {
@@ -36,7 +36,7 @@ const HowToBoxItem = (props) => {
         <div className={"HowToBoxItem " + (author === nickname ? "myItem" : "none")}>
             <div className="howto-item-stats-col">
                 <div className={"stats-row "}>
-                    <div className={solved === true ? "solved" : answers === 0 ? "default" : "hot"}>
+                    <div className={adoptedAnswerId !== null ? "solved" : answers === 0 ? "default" : "hot"}>
                         <div id="stats-value">{answers}</div>
                         <div id="stats-br">&nbsp;</div>
                         <div id="stats-label">답변</div>

@@ -19,19 +19,22 @@ const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
 
     setQuestionCount(Object.keys(data.findQuestionsByTags).length);
 
-    return data.findQuestionsByTags.map(({ _id, title, author, tags, date, content, answerCount, views, previews }) => (
-        <HowToBoxItem
-            id={_id}
-            key={_id}
-            author={author}
-            title={title}
-            answers={answerCount}
-            views={views}
-            date={date}
-            previews={previews}
-            tags={tags}
-        ></HowToBoxItem>
-    ));
+    return data.findQuestionsByTags.map(
+        ({ _id, title, author, tags, date, content, answerCount, views, previews, adoptedAnswerId }) => (
+            <HowToBoxItem
+                id={_id}
+                key={_id}
+                author={author}
+                title={title}
+                answers={answerCount}
+                views={views}
+                date={date}
+                previews={previews}
+                tags={tags}
+                adoptedAnswerId={adoptedAnswerId}
+            ></HowToBoxItem>
+        )
+    );
 };
 
 const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount, questionAll }) => {
@@ -48,20 +51,22 @@ const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount, questionAll 
         alert("Error!");
         return <p>Error!</p>;
     }
-    return data.findAllQuestions.map(({ _id, title, author, tags, date, content, answerCount, views, previews }) => (
-        <HowToBoxItem
-            id={_id}
-            key={_id}
-            author={author}
-            title={title}
-            answers={answerCount}
-            views={views}
-            date={date}
-            previews={previews}
-            tags={tags}
-            date={date}
-        ></HowToBoxItem>
-    ));
+    return data.findAllQuestions.map(
+        ({ _id, title, author, tags, date, content, answerCount, views, previews, adoptedAnswerId }) => (
+            <HowToBoxItem
+                id={_id}
+                key={_id}
+                author={author}
+                title={title}
+                answers={answerCount}
+                views={views}
+                date={date}
+                previews={previews}
+                tags={tags}
+                adoptedAnswerId={adoptedAnswerId}
+            ></HowToBoxItem>
+        )
+    );
 };
 
 const DataProvider = ({ param, nowTag, pageNum, setQuestionCount, questionCount, questionAll }) => {
