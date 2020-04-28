@@ -30,7 +30,9 @@ const MyRouter = (props) => {
     return (
         <Router>
             <div id="rt">
-                <HeaderComponent nickname={nickname} />
+                <Switch>
+                    <HeaderComponent nickname={nickname} />
+                </Switch>
                 <div className="Article">
                     <ScrollToTop>
                         <Switch>

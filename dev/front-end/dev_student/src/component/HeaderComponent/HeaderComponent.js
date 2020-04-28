@@ -11,7 +11,7 @@ import MypageDropdownButtonModule from "module/MypageDropdownButtonModule/Mypage
 // icons
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-const HeaderComponent = ({ nickname }) => {
+const HeaderComponent = ({ nickname, location }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [clicked, setClicked] = useState("home");
     const toggle = () => setIsOpen(!isOpen);
@@ -26,7 +26,10 @@ const HeaderComponent = ({ nickname }) => {
         toggle();
         setLinkClick(true);
     };
-
+    useEffect(() => {
+        console.log(location.pathname);
+        setClicked(location.pathname.split("/")[1]);
+    }, [location.pathname]);
     const GuestMenu = () => {
         return (
             <div className="nav-item-wrapper" style={sign_style}>
@@ -68,11 +71,7 @@ const HeaderComponent = ({ nickname }) => {
                     <Nav className="mr-auto" navbar>
                         <NavItem>
                             <div className="nav-item-wrapper">
-                                <Link
-                                    to="/"
-                                    className={"nav-link " + (clicked === "home" ? "selected " : "unselected")}
-                                    onClick={() => setClicked("home")}
-                                >
+                                <Link to="/" className={"nav-link " + (clicked === "" ? "selected " : "unselected")}>
                                     Home
                                 </Link>
                             </div>
@@ -82,7 +81,6 @@ const HeaderComponent = ({ nickname }) => {
                                 <Link
                                     to="/howto"
                                     className={"nav-link " + (clicked === "howto" ? "selected " : "unselected")}
-                                    onClick={() => setClicked("howto")}
                                 >
                                     Howto
                                 </Link>
@@ -93,7 +91,6 @@ const HeaderComponent = ({ nickname }) => {
                                 <Link
                                     to="/rule"
                                     className={"nav-link " + (clicked === "crew" ? "selected " : "unselected")}
-                                    onClick={() => setClicked("crew")}
                                 >
                                     Rule
                                 </Link>
@@ -104,7 +101,6 @@ const HeaderComponent = ({ nickname }) => {
                                 <Link
                                     to="/posts"
                                     className={"nav-link " + (clicked === "posts" ? "selected " : "unselected")}
-                                    onClick={() => setClicked("posts")}
                                 >
                                     Museum
                                 </Link>
@@ -114,8 +110,7 @@ const HeaderComponent = ({ nickname }) => {
                             <div className="nav-item-wrapper">
                                 <Link
                                     to="/mypage"
-                                    className={"nav-link " + (clicked === "mypage" ? "selected " : "unselected")}
-                                    onClick={() => setClicked("mypage")}
+                                    className={"nav-link " + (clicked === "outside" ? "selected " : "unselected")}
                                 >
                                     Outside
                                 </Link>
@@ -126,7 +121,6 @@ const HeaderComponent = ({ nickname }) => {
                                 <Link
                                     to="/devnote"
                                     className={"nav-link " + (clicked === "devnote" ? "selected " : "unselected")}
-                                    onClick={() => setClicked("devnote")}
                                 >
                                     DevNote
                                 </Link>
