@@ -68,6 +68,7 @@ const Login = ({ logIn, location }) => {
         } else if (data.loginToServer.accessToken) {
             window.sessionStorage.setItem("token", data.loginToServer.accessToken);
             window.sessionStorage.setItem("email", data.loginToServer.email);
+            setPassword("");
             // window.location.replace("/nickname/setting");
             toggle();
         } else {

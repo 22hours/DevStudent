@@ -100,3 +100,20 @@ export const UPDATE_USER_INFO = gql`
         }
     }
 `;
+
+export const CREATE_NICKNAME = gql`
+    mutation createNickname($email: String!, $nickname: String!) {
+        createNickname(email: $email, nickname: $nickname) {
+            email
+            password
+            nickname
+            schoolName
+            date
+            authState
+            accessToken
+            gitLink
+            grade
+            point
+        }
+    }
+`;

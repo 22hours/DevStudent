@@ -3,9 +3,7 @@ import { Container, Row, Col, Button } from "reactstrap";
 import { TextField } from "@material-ui/core";
 import "./NicknamePageTemplate.css";
 
-const NicknamePageTemplate = () => {
-    const [nickName, setNickname] = useState("");
-
+const NicknamePageTemplate = ({ handleSubmitNickname, nickName, setNickname }) => {
     return (
         <React.Fragment>
             <div className="nickname-container-top-wrapper">
@@ -39,7 +37,9 @@ const NicknamePageTemplate = () => {
                             </div>
                             <div className="nickname-confirm-wrapper">
                                 <div className="nickname-form-resize-wrapper">
-                                    <Button color="info">확인</Button>
+                                    <Button onClick={() => handleSubmitNickname()} color="info">
+                                        확인
+                                    </Button>
                                 </div>
                             </div>
                         </Col>
