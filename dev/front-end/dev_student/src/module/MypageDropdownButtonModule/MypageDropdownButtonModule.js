@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "react-apollo";
 import { COUNT_UNREAD_ALARMS } from "../../query/queries";
 const MyPageDropdownButtonModule = (props) => {
+    const localData = JSON.parse(localStorage.getItem("user"));
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const toggle = () => setDropdownOpen((prevState) => !prevState);
     const { user } = props;
@@ -25,7 +26,7 @@ const MyPageDropdownButtonModule = (props) => {
                 <DropdownItem header>
                     <div style={{ fontSize: "16px" }}>{user}님</div>
                     <br></br>
-                    <div>hbin12212@gmail.com</div>
+                    <div>{localData?.email}</div>
                 </DropdownItem>
                 <DropdownItem style={{ fontFamily: "Do Hyeon" }}>
                     <Link to="/alarm"> 알림 {data.countUnreadAlarms.count}</Link>
