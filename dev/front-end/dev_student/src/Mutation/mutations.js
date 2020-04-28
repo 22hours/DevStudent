@@ -164,3 +164,11 @@ export const UPDATE_ADOPTED_ANSWER_ID = gql`
         }
     }
 `;
+
+export const CREATE_LIKE = gql`
+    mutation createLike($question_id: String!, $answer_id: String!, $nickname: String!, $status: String!) {
+        createLike(question_id: $question_id, answer_id: $answer_id, nickname: $nickname, status: $status) {
+            likesCount
+        }
+    }
+`;

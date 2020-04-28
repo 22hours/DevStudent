@@ -15,7 +15,7 @@ import Tag from "atom/Tag/Tag";
 import MarkdownParser from "atom/MarkdownParser/MarkdownParser";
 
 // apollo
-import { CREATE_COMMENT, UPDATE_ADOPTED_ANSWER_ID } from "mutation/mutations";
+import { CREATE_LIKE, CREATE_COMMENT, UPDATE_ADOPTED_ANSWER_ID } from "mutation/mutations";
 
 const HowToQABox = ({
     _id,
@@ -33,7 +33,7 @@ const HowToQABox = ({
     const nickname = JSON.parse(localStorage.getItem("user"))?.nickname;
     const [createComment, { loading: loadingComment, error: errorComment }] = useMutation(CREATE_COMMENT);
     const [updateAdoptedAnswerId, { loading: loadingAdopt, error: errorAdopt }] = useMutation(UPDATE_ADOPTED_ANSWER_ID);
-
+    const [createLike, { loading: loadingLike, error: errorLike }] = useMutation(CREATE_LIKE);
     const [isOpen, setIsOpen] = useState(false);
     const toggleCollapse = () => setIsOpen(!isOpen);
     const [commentValue, setCommentValue] = useState("");
@@ -129,27 +129,38 @@ const HowToQABox = ({
                 });
         }
     };
-
-    const emoteThisQABox = (emote) => {
+    const handleEmote = (status) => {
         const auth = localStorage.getItem("auth");
         if (auth) {
-            alert("success!");
+            createLike({
+                variables: {
+                    question_id: question_id,
+                    answer_id: isQuestion === "Q" ? "Question" : _id,
+                    nickname: nickname,
+                    status: status,
+                },
+            })
+                .then((response) => {
+                    window.location.href = "/howto/question/" + question_id;
+                })
+                .catch((error) => alert(error.messeage));
         } else {
             window.location.href = "/login";
         }
     };
+
     const LikesBoxOutter = () => {
         return (
             <React.Fragment>
                 <div className={"likes-outter " + (isLiked === "none" ? "able" : "disable")}>
                     <div className={"likes-count-up " + (isLiked === "up" ? "liked" : "notClicked")}>
-                        <Link onClick={() => emoteThisQABox("up")}>
+                        <Link onClick={() => handleEmote("up")}>
                             <ArrowDropUpIcon style={{ fontSize: 30 }} />
                         </Link>
                     </div>
                     <div className="likes-count-box">{likesCount}</div>
                     <div className={"likes-count-down " + (isLiked === "down" ? "disliked" : "notClicked")}>
-                        <Link onClick={() => emoteThisQABox("down")}>
+                        <Link onClick={() => handleEmote("down")}>
                             <ArrowDropDownIcon style={{ fontSize: 30 }} />
                         </Link>
                     </div>
@@ -164,12 +175,12 @@ const HowToQABox = ({
                 <div className={"likes-inner " + (isLiked === "none" ? "able" : "disable")}>
                     <div className="likes-count-box">{likesCount}</div>
                     <div className={"likes-count-up " + (isLiked === "up" ? "liked" : "notClicked")}>
-                        <Link onClick={() => emoteThisQABox("up")}>
+                        <Link onClick={() => handleEmote("up")}>
                             <ThumbUpIcon style={{ fontSize: 15 }} color="action" />
                         </Link>
                     </div>
                     <div className={"likes-count-down " + (isLiked === "down" ? "disliked" : "notClicked")}>
-                        <Link onClick={() => emoteThisQABox("down")}>
+                        <Link onClick={() => handleEmote("down")}>
                             <ThumbDownIcon style={{ fontSize: 15 }} color="action" />
                         </Link>
                     </div>
