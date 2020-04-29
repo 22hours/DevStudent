@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import "./MarkdownEditorModule.css";
 import { Alert, Collapse, Input, TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from "reactstrap";
@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 
 //atom
 import MarkdownParser from "atom/MarkdownParser/MarkdownParser";
+
+// module
+import DropZoneModule from "module/DropZoneModule/DropZoneModule";
 
 //icons
 import FormatBoldIcon from "@material-ui/icons/FormatBold";
@@ -16,11 +19,15 @@ import FormatQuoteIcon from "@material-ui/icons/FormatQuote";
 const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
     // const [comment, setComment] = useState("");
     const [activeTab, setActiveTab] = useState("1");
+    const [imgs, setImgs] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const toggleCollapse = () => setIsOpen(!isOpen);
     const toggle = (tab) => {
         if (activeTab !== tab) setActiveTab(tab);
     };
+    useEffect(() => {
+        console.log(imgs);
+    }, [imgs]);
     const handleH1 = () => {
         console.log(comment);
         setComment(comment + "# ");
@@ -36,6 +43,9 @@ const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
     };
     const handleItalic = () => {
         setComment(comment + "*italic text*");
+    };
+    const handleImg = (name) => {
+        setComment(comment + "![](" + name + ")");
     };
     return (
         <React.Fragment>
@@ -111,7 +121,8 @@ const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
                         </Row>
                     </TabPane>
                     {children}
-                </TabContent>{" "}
+                </TabContent>
+                <DropZoneModule imgs={imgs} setImgs={setImgs} handleImg={handleImg} />
             </div>
         </React.Fragment>
     );

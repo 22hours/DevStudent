@@ -38,6 +38,7 @@ const MyRouter = (props) => {
                         <Switch>
                             <Route exact path="/" component={Home} />
                             <Route path="/about/:user" component={About} />
+                            <Route path="/userinfo/:user" component={About} />
                             <Route path="/posts" component={Posts} />
                             <Route path="/todolist" component={Todo} />
                             <Route path="/howto" component={HowTo} />

@@ -92,7 +92,7 @@ const MarkdownEditor = ({ comment, setComment, children }) => {
                         </Row>
                     </TabPane>
                     {children}
-                </TabContent>{" "}
+                </TabContent>
             </div>
         </React.Fragment>
     );

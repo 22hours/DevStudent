@@ -127,3 +127,8 @@
 .howto-item-stats-col .hot #stats-value {
     color: rgb(60, 144, 165);
 }
+
+#user-nickname a {
+    color: black !important;
+    text-decoration: none !important;
+}

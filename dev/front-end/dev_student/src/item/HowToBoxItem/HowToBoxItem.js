@@ -20,7 +20,7 @@ import Avatar from "atom/Avatar/Avatar";
 //icons
 import VisibilityIcon from "@material-ui/icons/Visibility";
 const HowToBoxItem = (props) => {
-    const { id, author, title, date, dateToText, previews, answers, views, adoptedAnswerId, tags } = props; //likes 도 추가해야함
+    const { id, author, title, date, dateToText, previews, answers, views, likesCount, adoptedAnswerId, tags } = props; //likes 도 추가해야함
     console.log(tags);
     const nickname = JSON.parse(localStorage.getItem("user"))?.nickname;
     const TagListRenderer = () => {
@@ -44,7 +44,7 @@ const HowToBoxItem = (props) => {
                 </div>
                 <div style={{ lineHeight: "0.5rem" }}>&nbsp;</div>
                 <div className="stats-row">
-                    <div id="stats-value">0</div>
+                    <div id="stats-value">{likesCount}</div>
                     <div id="stats-br">&nbsp;</div>
                     <div id="stats-label">좋아요</div>
                 </div>
@@ -71,7 +71,11 @@ const HowToBoxItem = (props) => {
                             <Avatar img={debal} />
                         </div>
                         <div className="person-info-col">
-                            <div id="user-nickname">{author}</div>
+                            <div id="user-nickname">
+                                <a id="nickname" href={"/userinfo/" + author}>
+                                    {author}
+                                </a>
+                            </div>
                             <div id="user-stat">120 point</div>
                         </div>
                     </div>
