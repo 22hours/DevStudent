@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container } from "reactstrap";
 import { useQuery } from "@apollo/react-hooks";
 import { FIND_QUESTIONS_BY_TAG, findAllQuestionsPage } from "query/queries";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 // modules
 import PageHeaderModule from "module/PageHeaderModule/PageHeaderModule";
@@ -17,7 +18,12 @@ const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
     const { loading, error, data } = useQuery(FIND_QUESTIONS_BY_TAG, {
         variables: { param: param, requiredCount: 10, pageNum: pageNum, tags: nowTag, logical: "or" },
     });
-    if (loading) return <p>Loading ...</p>;
+    if (loading)
+        return (
+            <div>
+                <CircularProgress />
+            </div>
+        );
     if (error) return <p>Error!</p>;
 
     setQuestionCount(Object.keys(data.findQuestionsByTags).length);

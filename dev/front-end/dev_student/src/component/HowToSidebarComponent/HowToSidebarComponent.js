@@ -3,6 +3,7 @@ import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { findAllQuestionsByViews } from "query/queries";
 import { useQuery } from "@apollo/react-hooks";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 // css
 import "./HowToSidebarComponent.css";
@@ -27,7 +28,12 @@ const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
         variables: { param: param, requiredCount: requiredCount },
     });
 
-    if (loading) return <p>Loading ...</p>;
+    if (loading)
+        return (
+            <div>
+                <CircularProgress />
+            </div>
+        );
     if (error) return <p>Error!</p>;
 
     const hotquestionList = (

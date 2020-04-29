@@ -2,26 +2,35 @@ import React, { useState } from "react";
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-apollo";
-import { COUNT_UNREAD_ALARMS } from "../../query/queries";
+import { COUNT_UNREAD_ALARMS } from "query/queries";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 const MyPageDropdownButtonModule = (props) => {
     const localData = JSON.parse(localStorage.getItem("user"));
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const toggle = () => setDropdownOpen((prevState) => !prevState);
     const { user } = props;
-    const img_style = {
-        marginRight: "4px",
-    };
     const { loading, error, data } = useQuery(COUNT_UNREAD_ALARMS, {
         variables: { nickname: user },
     });
-    if (loading) return <p>Loading ...</p>;
+    const btn_style = {
+        background: "url('/img/mypage.png')no-repeat",
+        width: "20px",
+        height: "20px",
+        border: "rgba(245, 245, 245, 0.8)",
+        verticalAlign: "middle",
+    };
+    if (loading)
+        return (
+            <div>
+                <CircularProgress />
+            </div>
+        );
     if (error) return <p>Error!</p>;
     console.log(data);
     return (
         <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-            <DropdownToggle style={{ backgroundColor: "#F8F9FA", borderColor: "#F8F9FA" }}>
-                <img width="18px" height="20px" style={img_style} src="/img/user_area_button_black.png"></img>
-            </DropdownToggle>
+            <DropdownToggle style={btn_style}></DropdownToggle>
             <DropdownMenu right className="nav-smypage-dropdown-btn">
                 <DropdownItem header>
                     <div style={{ fontSize: "16px" }}>{user}님</div>

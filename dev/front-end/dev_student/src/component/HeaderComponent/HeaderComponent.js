@@ -34,7 +34,10 @@ const HeaderComponent = ({ nickname, location }) => {
         return (
             <div className="nav-item-wrapper" style={sign_style}>
                 <Link to="/login">
-                    <ExitToAppIcon style={{ verticalAlign: "middle", fontSize: "18px", color: "gray" }} />
+                    <img
+                        src="/img/login_logo.png"
+                        style={{ verticalAlign: "middle", fontSize: "20px", color: "gray" }}
+                    ></img>
                 </Link>
             </div>
         );
