@@ -19,15 +19,14 @@ import FormatQuoteIcon from "@material-ui/icons/FormatQuote";
 const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
     // const [comment, setComment] = useState("");
     const [activeTab, setActiveTab] = useState("1");
-    const [imgs, setImgs] = useState([]);
+    const [imgLink, setImgLink] = useState("");
     const [isOpen, setIsOpen] = useState(false);
+    const [imgCount, setImgCount] = useState(0);
     const toggleCollapse = () => setIsOpen(!isOpen);
     const toggle = (tab) => {
         if (activeTab !== tab) setActiveTab(tab);
     };
-    useEffect(() => {
-        console.log(imgs);
-    }, [imgs]);
+
     const handleH1 = () => {
         console.log(comment);
         setComment(comment + "# ");
@@ -45,7 +44,31 @@ const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
         setComment(comment + "*italic text*");
     };
     const handleImg = (name) => {
-        setComment(comment + "![](" + name + ")");
+        setImgLink("![](" + name + ")");
+    };
+
+    useEffect(() => {
+        if (imgLink === "") return;
+        setComment(comment + "\n" + imgLink);
+    }, [imgLink]);
+
+    const handleCopyLink = () => {
+        var newElement = document.createElement("textarea");
+        newElement.value = imgLink;
+        document.body.appendChild(newElement);
+        newElement.select();
+        document.execCommand("copy");
+    };
+    const CopyImgLinkDiv = () => {
+        if (imgLink === "") {
+            return <React.Fragment></React.Fragment>;
+        } else {
+            return (
+                <Alert color="info" id="imgCopyButton" onClick={handleCopyLink}>
+                    <p>이미지가 추가되었습니다 : {imgLink} 다시 복사하려면 여기를 클릭하세요</p>
+                </Alert>
+            );
+        }
     };
     return (
         <React.Fragment>
@@ -110,8 +133,19 @@ const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
                             size="large"
                             type="textarea"
                         ></Input>
+
+                        <CopyImgLinkDiv />
+                        <DropZoneModule
+                            imgCount={imgCount}
+                            setImgCount={setImgCount}
+                            comment={comment}
+                            imgLink={imgLink}
+                            setImgLink={setImgLink}
+                            handleImg={handleImg}
+                        />
                     </TabPane>
                     <TabPane tabId="2">
+                        <img src="http://172.30.1.48:8090/userContent/dZpQEJGXY1nsM282S0Tv.png"></img>
                         <Row>
                             <Col sm="12">
                                 <div className="reply-wrapper">
@@ -122,7 +156,6 @@ const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
                     </TabPane>
                     {children}
                 </TabContent>
-                <DropZoneModule imgs={imgs} setImgs={setImgs} handleImg={handleImg} />
             </div>
         </React.Fragment>
     );

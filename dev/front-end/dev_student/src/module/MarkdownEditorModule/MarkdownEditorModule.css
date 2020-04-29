@@ -68,3 +68,15 @@ button {
     font-size: 14px;
     color: gray;
 }
+#imgCopyButton {
+    cursor: pointer;
+}
+#imgLink {
+    font-size: 1px;
+    max-height: 0px !important;
+    /* display: none !important; */
+    width: 100% !important;
+    background: none;
+    resize: none !important;
+    min-height: auto !important;
+}
