@@ -1,5 +1,6 @@
 package com.hours22.devstudent.Command.Update;
 
+import com.hours22.devstudent.Command.Module.AddIsLiked;
 import com.hours22.devstudent.Entity.Answer;
 import com.hours22.devstudent.Entity.Question;
 import com.hours22.devstudent.Repository.QuestionRepository;
@@ -13,7 +14,8 @@ public class UpdateAdoptedAnswerId {
 
     @Autowired
     QuestionRepository questionRepository;
-
+    @Autowired
+    AddIsLiked addIsLiked;
     public Question updateAdoptedAnswerId(String question_id, String answer_id, String nickname){
         Boolean isExistAnswer = false;
         if(questionRepository.countBy_id(question_id) == 0)
@@ -35,6 +37,7 @@ public class UpdateAdoptedAnswerId {
         if(!isExistAnswer)
             return new Question(null, "Exception", "Answer not Exist", null, null, null);
         questionRepository.save(question);
+        question = addIsLiked.addIsLiked(question, nickname);
         return question;
     }
 }
