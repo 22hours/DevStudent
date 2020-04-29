@@ -2,35 +2,33 @@ package loginserver.loginserver.Controller;
 
 import loginserver.loginserver.Entity.Count;
 import loginserver.loginserver.Entity.User;
+import loginserver.loginserver.Entity.UserInfo;
 import loginserver.loginserver.Module.Create.CreateUser;
 import loginserver.loginserver.Module.Find.FindUserByNickname;
 import loginserver.loginserver.Module.Login;
 import loginserver.loginserver.Module.Update.UpdateUserAuthState;
-import loginserver.loginserver.Module.Update.UpdateUserInfo;
+import loginserver.loginserver.Repository.UserInfoRepository;
 import loginserver.loginserver.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.annotation.WebServlet;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 @RestController
 @RequestMapping("/user/*")
 @WebServlet(asyncSupported = true)
 public class UserController {
-    ExecutorService executorService = Executors.newFixedThreadPool(10);
-    @Autowired
-    private FindUserByNickname findUserByNickname;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserInfoRepository userInfoRepository;
+    @Autowired
+    private FindUserByNickname findUserByNickname;
     @Autowired
     private CreateUser createUser;
     @Autowired
     private UpdateUserAuthState updateUserAuthState;
-    @Autowired
-    private UpdateUserInfo updateUserInfo;
     @Autowired
     private Login login;
 
@@ -50,12 +48,6 @@ public class UserController {
         String authState = user.getAuthState();
         return updateUserAuthState.updateUserAuthState(authState);
     }
-    @RequestMapping(value = "/update/UserInfo", method = RequestMethod.POST)
-    public User updateUserInfo(@RequestBody User user){
-        String nickname = user.getNickname();
-        String gitLink = user.getGitLink();
-        return updateUserInfo.updateUserInfo(nickname, gitLink);
-    }
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public User loginToServer(@RequestBody Map<String, String> map) {
         String email = map.get("email");
@@ -72,6 +64,8 @@ public class UserController {
             User tempUser = userRepository.findByEmail(email);
             tempUser.setNickname(nickname);
             userRepository.save(tempUser);
+            UserInfo userInfo = new UserInfo(email,nickname);
+            userInfoRepository.save(userInfo);
             return tempUser;
         }
         return new User();
