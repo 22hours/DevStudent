@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,7 +16,10 @@ import java.util.List;
 public class Answer {
     @Id
     private String _id; // 고유 number
-    private String author;
+
+    @DBRef
+    private UserInfo author;
+
     private String content;
     private String date;
     @Setter
@@ -27,7 +31,7 @@ public class Answer {
     @Setter
     private List<Like> likes = new ArrayList<Like>();
 
-    public Answer(String _id, String author, String content) {
+    public Answer(String _id, UserInfo author, String content) {
         this._id = _id;
         this.author = author;
         this.content = content;

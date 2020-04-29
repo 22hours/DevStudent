@@ -14,7 +14,7 @@ public class DeleteQuestion {
 
     public Question deleteQuestion(String _id) {
         if (questionRepository.countBy_id(_id) == 0)
-            return new Question("null", "Exception", "hours22", new ArrayList<String>(), "Not Exist Question", "Not Exist Question");
+            return new Question("null", "Exception", null, new ArrayList<String>(), "Not Exist Question", "Not Exist Question");
         Question question = questionRepository.findQuestionBy_id(_id);
         questionRepository.delete(question);
         return question;

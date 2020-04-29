@@ -19,13 +19,13 @@ public class UpdateAdoptedAnswerId {
     public Question updateAdoptedAnswerId(String question_id, String answer_id, String nickname){
         Boolean isExistAnswer = false;
         if(questionRepository.countBy_id(question_id) == 0)
-            return new Question(null, "Exception", "Not Exist Question", null, null, null);
+            return new Question(null, "Exception, Not Exist Question", null, null, null, null);
         Question question = questionRepository.findQuestionBy_id(question_id);
-        if(!nickname.equals(question.getAuthor())){
-            return new Question(null, "Exception", "Author does not match", null, null, null);
+        if(!nickname.equals(question.getAuthor().getNickname())){
+            return new Question(null, "Exception, Author does not match", null, null, null, null);
         }
         if(answer_id.equals(question.getAdoptedAnswerId()))
-            return new Question(null, "Exception", "Already adopted", null, null, null);
+            return new Question(null, "Exception, Already adopted", null, null, null, null);
         List<Answer> answers = question.getAnswers();
         for(Answer answer : answers){
             if(answer_id.equals(answer.get_id())){
@@ -35,7 +35,7 @@ public class UpdateAdoptedAnswerId {
             }
         }
         if(!isExistAnswer)
-            return new Question(null, "Exception", "Answer not Exist", null, null, null);
+            return new Question(null, "Exception, Answer not Exist", null, null, null, null);
         questionRepository.save(question);
         question = addIsLiked.addIsLiked(question, nickname);
         return question;
