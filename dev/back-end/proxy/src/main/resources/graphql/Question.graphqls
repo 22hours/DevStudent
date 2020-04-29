@@ -1,7 +1,7 @@
 type Question{
     _id : String
     title : String
-    author : String
+    author : UserInfo
     tags : [String]
     date : String
     content : String

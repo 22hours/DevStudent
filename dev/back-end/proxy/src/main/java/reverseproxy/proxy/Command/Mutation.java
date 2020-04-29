@@ -20,6 +20,7 @@ import reverseproxy.proxy.GraphQLMainServer.Delete.DeleteAnswer;
 import reverseproxy.proxy.GraphQLMainServer.Delete.DeleteComment;
 import reverseproxy.proxy.GraphQLMainServer.Delete.DeleteQuestion;
 import reverseproxy.proxy.GraphQLMainServer.Update.UpdateAdoptedAnswerId;
+import reverseproxy.proxy.GraphQLMainServer.Update.UpdateUserInfo;
 
 import java.util.List;
 

@@ -64,7 +64,7 @@ public class UserController {
             User tempUser = userRepository.findByEmail(email);
             tempUser.setNickname(nickname);
             userRepository.save(tempUser);
-            UserInfo userInfo = new UserInfo(email,nickname);
+            UserInfo userInfo = new UserInfo(email,nickname,tempUser.getSchoolName());
             userInfoRepository.save(userInfo);
             return tempUser;
         }

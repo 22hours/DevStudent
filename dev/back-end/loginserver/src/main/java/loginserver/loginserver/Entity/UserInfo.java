@@ -16,9 +16,13 @@ public class UserInfo {
     private String nickname = null;
     private int point = 0;
     private String grade = "bean";
+    private String gitLink = null;
+    private String schoolName = null;
+    private boolean attendance = false;
 
-    public UserInfo(String email, String nickname){
+    public UserInfo(String email, String nickname, String schoolName){
         this.email = email;
         this.nickname = nickname;
+        this.schoolName = schoolName;
     }
 }

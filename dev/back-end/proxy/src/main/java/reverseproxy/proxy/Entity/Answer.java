@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 public class Answer {
     private String _id = null; // 고유 number
-    private String author = null;
+    private UserInfo author = null;
     private String content = null;
     private String date = null;
     @Setter

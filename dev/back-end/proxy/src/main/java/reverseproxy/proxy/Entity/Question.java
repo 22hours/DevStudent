@@ -15,7 +15,7 @@ import java.util.List;
 public class Question {
     private String _id = null; // 고유 number
     private String title = null;
-    private String author = null;
+    private UserInfo author = null;
     private List<String> tags= new ArrayList<String>();
     private String date = null;
     private String content = null;
