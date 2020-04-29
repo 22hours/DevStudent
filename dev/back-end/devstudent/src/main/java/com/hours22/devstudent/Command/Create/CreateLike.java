@@ -1,5 +1,6 @@
 package com.hours22.devstudent.Command.Create;
 
+import com.hours22.devstudent.Command.Module.AddIsLiked;
 import com.hours22.devstudent.Entity.Answer;
 import com.hours22.devstudent.Entity.Comment;
 import com.hours22.devstudent.Entity.Like;
@@ -15,6 +16,8 @@ import java.util.List;
 public class CreateLike extends Create {
     @Autowired
     private QuestionRepository questionRepository;
+    @Autowired
+    private AddIsLiked addIsLiked;
 
     public Question createLike(String question_id, String answer_id, String nickname, String status) {
         if (questionRepository.countBy_id(question_id) == 0)
@@ -39,7 +42,7 @@ public class CreateLike extends Create {
                 question.setLikesCount(question.getLikesCount() - 1);
 
             questionRepository.save(question);
-            question.setIsLiked(status);
+            question = addIsLiked.addIsLiked(question, nickname);
             return question;
         } else {
             Boolean isAnswerExist = false;
@@ -62,8 +65,7 @@ public class CreateLike extends Create {
 
                     question.setAnswers(answers);
                     questionRepository.save(question);
-                    answer.setIsLiked(status);
-                    question.setAnswers(answers);
+                    question = addIsLiked.addIsLiked(question, nickname);
                     return question;
                 }
             }

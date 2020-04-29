@@ -1,5 +1,6 @@
 package com.hours22.devstudent.Command.Find;
 
+import com.hours22.devstudent.Command.Module.AddIsLiked;
 import com.hours22.devstudent.Entity.Answer;
 import com.hours22.devstudent.Entity.Like;
 import com.hours22.devstudent.Entity.Question;
@@ -13,6 +14,8 @@ import java.util.List;
 public class FindQuestionBy_id {
     @Autowired
     private QuestionRepository questionRepository;
+    @Autowired
+    private AddIsLiked addIsLiked;
 
     public Question findQuestionBy_id(String _id, String nickname) {
         if (questionRepository.countBy_id(_id) == 0)
@@ -23,25 +26,7 @@ public class FindQuestionBy_id {
         questionRepository.save(question);
         if(nickname == null)
             return question;
-        List<Like> likes = question.getLikes();
-        for(Like like : likes){
-            if(nickname.equals(like.getNickname())){
-                question.setIsLiked(like.getStatus());
-                break;
-            }
-        }
-
-        List<Answer> answers = question.getAnswers();
-        for(Answer answer : answers){
-            likes = answer.getLikes();
-            for(Like like : likes){
-                if(nickname.equals(like.getNickname())){
-                    answer.setIsLiked(like.getStatus());
-                    break;
-                }
-            }
-        }
-        question.setAnswers(answers);
+        question = addIsLiked.addIsLiked(question, nickname);
         return question;
     }
 }

@@ -22,6 +22,7 @@ public class CountTags {
         Criteria criteria = new Criteria("tags");
         for(int i=0;i<tags.size();i++){
             String name = tags.get(i);
+            name = name.replaceAll(" ", "");
             criteria.all(name);
             Query query = new Query(criteria);
             int count = (int)this.mongoTemplate.count(query, Question.class);
