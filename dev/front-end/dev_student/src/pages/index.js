@@ -17,6 +17,7 @@ import Logout from "./Logout";
 import SitesInfo from "./SitesInfo";
 import Rule from "./Rule";
 import Nickname from "./Nickname";
+import UserInfo from "./UserInfo";
 export {
     Alarm,
     EmailCheck,
@@ -37,4 +38,5 @@ export {
     SitesInfo,
     Rule,
     Nickname,
+    UserInfo,
 };
