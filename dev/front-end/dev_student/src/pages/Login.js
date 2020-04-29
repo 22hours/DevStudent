@@ -13,6 +13,7 @@ const Login = ({ logIn, location }) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [btnClick, setBtnClick] = useState(false);
 
     const btn_style = {
         backgroundColor: "#4BA0B5",
@@ -78,10 +79,12 @@ const Login = ({ logIn, location }) => {
                 toggle();
             } else {
                 alert("이메일 인증 후 사용해주세요.");
+                setBtnClick(false);
             }
         } else {
             setPassword("");
             alert("로그인 시스템의 정보와 다릅니다!");
+            setBtnClick(false);
             return;
         }
     }, [data]);
@@ -100,6 +103,8 @@ const Login = ({ logIn, location }) => {
                 email={email}
                 loginToServer={loginToServer}
                 btn_style={btn_style}
+                btnClick={btnClick}
+                setBtnClick={setBtnClick}
             />
             <AlertModal />
         </React.Fragment>

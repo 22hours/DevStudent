@@ -1,14 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LoginPageTemplate.css";
 import { Container, Col, Row } from "reactstrap";
 import { TextField, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { hashPassword } from "auth";
-const LoginPageTemplate = ({ email, setEmail, password, setPassword, loginToServer, btn_style }) => {
+import CircularProgress from "@material-ui/core/CircularProgress";
+
+const LoginPageTemplate = ({
+    email,
+    setEmail,
+    password,
+    setPassword,
+    loginToServer,
+    btn_style,
+    btnClick,
+    setBtnClick,
+}) => {
+    const LoginButton = () => {
+        if (btnClick === true) {
+            return (
+                <div>
+                    <CircularProgress disableShrink size={24} />
+                </div>
+            );
+        } else {
+            return <div>로그인</div>;
+        }
+    };
+
     const EnterKey = (e) => {
         if (e.key === "Enter") {
             if (email.length < 1) return;
             if (password.length < 1) return;
+            setBtnClick(true);
             loginToServer({
                 variables: {
                     email: email,
@@ -17,6 +41,7 @@ const LoginPageTemplate = ({ email, setEmail, password, setPassword, loginToServ
             });
         }
     };
+
     return (
         <React.Fragment>
             <div className="login-container-top-wrapper">
@@ -61,6 +86,7 @@ const LoginPageTemplate = ({ email, setEmail, password, setPassword, loginToServ
                                         onClick={() => {
                                             if (email.length < 1) return;
                                             if (password.length < 1) return;
+                                            setBtnClick(true);
                                             loginToServer({
                                                 variables: {
                                                     email: email,
@@ -71,7 +97,7 @@ const LoginPageTemplate = ({ email, setEmail, password, setPassword, loginToServ
                                         variant="contained"
                                         style={btn_style}
                                     >
-                                        로그인
+                                        <LoginButton />
                                     </Button>
                                 </div>
                             </div>

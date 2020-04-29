@@ -2,10 +2,24 @@ import React, { useState } from "react";
 import NicknamePageTemplate from "page-template/NicknamePageTemplate/NicknamePageTemplate";
 import { useMutation } from "@apollo/react-hooks";
 import { CREATE_NICKNAME } from "mutation/mutations";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Nickname = () => {
     const [nickName, setNickname] = useState("");
     const [createNickname] = useMutation(CREATE_NICKNAME);
+    const [nicknameClick, setNicknameClick] = useState(false);
+
+    const NicknameButton = () => {
+        if (nicknameClick === true) {
+            return (
+                <div>
+                    <CircularProgress disableShrink size={24} />
+                </div>
+            );
+        } else {
+            return <div>확인</div>;
+        }
+    };
 
     const handleSubmitNickname = () => {
         const email = sessionStorage.getItem("email");
@@ -13,6 +27,7 @@ const Nickname = () => {
             alert("닉네임은 3자리 ~ 8자리로 입력해주세요.");
             return;
         } else {
+            setNicknameClick(true);
             createNickname({
                 variables: {
                     email: email,
@@ -30,10 +45,12 @@ const Nickname = () => {
                     } else {
                         alert("중복된 닉네임입니다.");
                         setNickname("");
+                        setNicknameClick(false);
                     }
                 })
                 .catch((err) => {
                     alert(err.messeage);
+                    setNicknameClick(false);
                 });
         }
     };
@@ -42,6 +59,7 @@ const Nickname = () => {
             nickName={nickName}
             setNickname={setNickname}
             handleSubmitNickname={handleSubmitNickname}
+            NicknameButton={NicknameButton}
         />
     );
 };

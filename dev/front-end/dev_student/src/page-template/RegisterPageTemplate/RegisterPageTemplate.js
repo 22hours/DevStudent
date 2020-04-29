@@ -7,7 +7,7 @@ import { CHECK_DUPLICATE_EMAIL } from "mutation/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import { Link } from "react-router-dom";
 import { hashPassword } from "auth";
-import debal from "img/mypage/debal.png";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const RegisterTemplate = ({
     email,
@@ -32,6 +32,9 @@ const RegisterTemplate = ({
     const [checkEmail, { data }] = useMutation(CHECK_DUPLICATE_EMAIL);
     const [emailRuleCheck, setEmailRuleCheck] = useState("false");
     const [modal, setModal] = useState(false);
+    const [emailClick, setEmailClick] = useState(false);
+    const [registerClick, setRegisterClick] = useState(false);
+
     const toggle = () => setModal(!modal);
 
     useLayoutEffect(() => {
@@ -39,10 +42,12 @@ const RegisterTemplate = ({
         if (data.checkDuplicateEmail.count === "duplicated") {
             alert("중복된 이메일 입니다.");
             setEmailRuleCheck("false");
+            setEmailClick(false);
             return;
         } else {
             alert("사용 가능한 이메일 입니다.");
             setEmailRuleCheck("true");
+            setEmailClick(false);
         }
     }, [data]);
 
@@ -77,7 +82,7 @@ const RegisterTemplate = ({
     const RepwInputRenderer = () => {
         if (password < 1 || rePwd < 1) return;
         if (pwdRuleCheck === "false") return;
-        if (pwdRuleCheck === "true" && emailRuleCheck === "true") {
+        if (pwdRuleCheck === "true") {
             if (password !== rePwd) {
                 setRePwdClassName("is-invalid");
                 alert("비밀번호가 일치하지 않습니다.");
@@ -102,6 +107,30 @@ const RegisterTemplate = ({
     const checkSetEmailSelect = (value) => {
         setEmailSelect(value);
         setEmailRuleCheck("false");
+    };
+
+    const EmailButton = () => {
+        if (emailClick === true) {
+            return (
+                <div>
+                    <CircularProgress disableShrink size={24} />
+                </div>
+            );
+        } else {
+            return <div>확인</div>;
+        }
+    };
+
+    const RegisterButton = () => {
+        if (registerClick === true) {
+            return (
+                <div>
+                    <CircularProgress disableShrink size={25} />
+                </div>
+            );
+        } else {
+            return <div>가입하기</div>;
+        }
     };
 
     const AlertModal = () => {
@@ -186,6 +215,7 @@ const RegisterTemplate = ({
                                             color="info"
                                             style={btn_style}
                                             onClick={() => {
+                                                setEmailClick(true);
                                                 checkEmail({
                                                     variables: {
                                                         email: email + emailSelect,
@@ -193,7 +223,7 @@ const RegisterTemplate = ({
                                                 });
                                             }}
                                         >
-                                            확인
+                                            <EmailButton />
                                         </Button>
                                     </div>
                                 </div>
@@ -259,6 +289,7 @@ const RegisterTemplate = ({
                                             alert("비밀번호를 규칙에 맞게 입력해주세요.");
                                             return;
                                         } else {
+                                            setRegisterClick(true);
                                             createUser({
                                                 variables: {
                                                     password: hashPassword(password),
@@ -270,7 +301,7 @@ const RegisterTemplate = ({
                                         }
                                     }}
                                 >
-                                    가입하기
+                                    <RegisterButton />
                                 </Button>
                             </div>
                         </div>
