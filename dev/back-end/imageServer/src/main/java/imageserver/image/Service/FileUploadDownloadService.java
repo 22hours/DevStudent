@@ -19,6 +19,8 @@ import java.nio.file.StandardCopyOption;
 @Service
 public class FileUploadDownloadService {
     private final Path fileLocation;
+    @Autowired
+    private RandMaker randMaker;
 
     @Autowired
     public FileUploadDownloadService(FileUploadProperties prop) {
@@ -27,42 +29,44 @@ public class FileUploadDownloadService {
 
         try {
             Files.createDirectories(this.fileLocation);
-        }catch(Exception e) {
+        } catch (Exception e) {
             throw new FileUploadException("파일을 업로드할 디렉토리를 생성하지 못했습니다.", e);
         }
     }
+
     public String storeFile(MultipartFile file) {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
         try {
             // 파일명에 부적합 문자가 있는지 확인한다.
-            if(fileName.contains(".."))
+            if (fileName.contains(".."))
                 throw new FileUploadException("파일명에 부적합 문자가 포함되어 있습니다. " + fileName);
-            //fileName = "aaa.png";
-            /*String str =fileName;
-            str = str.substring(str.lastIndexOf('.'));
-            fileName="sdafmasidfmsadii"+str;*/
-            // 해시값 넣으면 될 듯.
-            Path targetLocation = this.fileLocation.resolve(fileName);
+
+            String str = fileName.substring(fileName.lastIndexOf('.'));
+            String rand = randMaker.getKey(false,20);
+            rand = rand+str;
+            Path targetLocation = this.fileLocation.resolve(rand);
 
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
-            return fileName;
-        }catch(Exception e) {
-            throw new FileUploadException("["+fileName+"] 파일 업로드에 실패하였습니다. 다시 시도하십시오.",e);
+            return rand;
+
+        } catch (Exception e) {
+            throw new FileUploadException("[" + fileName + "] 파일 업로드에 실패하였습니다. 다시 시도하십시오.", e);
         }
     }
+
     public Resource loadFileAsResource(String fileName) {
         try {
             Path filePath = this.fileLocation.resolve(fileName).normalize();
             Resource resource = new UrlResource(filePath.toUri());
 
-            if(resource.exists()) {
+            if (resource.exists()) {
                 return resource;
-            }else {
+            } else {
                 throw new FileDownloadException(fileName + " 파일을 찾을 수 없습니다.");
             }
-        }catch(MalformedURLException e) {
+        } catch (MalformedURLException e) {
             throw new FileDownloadException(fileName + " 파일을 찾을 수 없습니다.", e);
         }
     }

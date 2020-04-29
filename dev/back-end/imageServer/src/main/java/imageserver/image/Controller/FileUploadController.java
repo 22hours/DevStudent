@@ -18,8 +18,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class FileUploadController {
+
     @Autowired
     private FileUploadDownloadService service;
 
@@ -28,28 +30,31 @@ public class FileUploadController {
         return "Hello~ File Upload Test.";
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/uploadFile")
     public FileUploadResponse uploadFile(@RequestParam("file") MultipartFile file) {
-        System.out.println(file.toString());
+        System.out.println("UploadFile In!!");
         String fileName = service.storeFile(file);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/downloadFile/")
+                .path("/userContent/")
                 .path(fileName)
                 .toUriString();
         return new FileUploadResponse(fileName, fileDownloadUri, file.getContentType(), file.getSize());
     }
 
     @PostMapping("/uploadMultipleFiles")
-    public List<FileUploadResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files){
+    public List<FileUploadResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
         return Arrays.asList(files)
                 .stream()
                 .map(file -> uploadFile(file))
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/downloadFile/{fileName:.+}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request){
+    @CrossOrigin(origins = "*")
+    @GetMapping("/userContent/{fileName:.+}")
+    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
         // Load file as Resource
+        System.out.println("DownloadFile In!!");
         Resource resource = service.loadFileAsResource(fileName);
 
         // Try to determine file's content type
@@ -60,7 +65,7 @@ public class FileUploadController {
         }
 
         // Fallback to the default content type if type could not be determined
-        if(contentType == null) {
+        if (contentType == null) {
             contentType = "application/octet-stream";
         }
 
