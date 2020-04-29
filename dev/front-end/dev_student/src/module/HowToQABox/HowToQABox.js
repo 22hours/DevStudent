@@ -17,11 +17,15 @@ import MarkdownParser from "atom/MarkdownParser/MarkdownParser";
 // apollo
 import { CREATE_LIKE, CREATE_COMMENT, UPDATE_ADOPTED_ANSWER_ID } from "mutation/mutations";
 
+// utils
+import time from "util/time";
+
 const HowToQABox = ({
     _id,
     isQuestion,
     author,
     date,
+    dateToText,
     isLiked,
     content,
     tags,
@@ -82,7 +86,7 @@ const HowToQABox = ({
             &nbsp;
             <span id="content">{content}</span>
             &nbsp; &nbsp;
-            <span id="date">{date}</span>
+            <span id="date">{time(date)}</span>
         </div>
     ));
     const handleSubmit = async () => {

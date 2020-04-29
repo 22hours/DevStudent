@@ -6,7 +6,7 @@ import Tag from "atom/Tag/Tag";
 
 class HowToItem extends Component {
     render() {
-        const { id, author, title, date, previews, answers, views, solved, tags } = this.props;
+        const { id, author, title, date, dateToText, previews, answers, views, solved, tags } = this.props;
         const TagList = tags.map((tagItem) => <Tag key={tagItem} tagItem={tagItem}></Tag>);
         const StatsArea = ({ children }) => {
             if (solved) {
@@ -68,6 +68,7 @@ class HowToItem extends Component {
                                 </span>
                                 &nbsp;&nbsp;
                                 <span className="asked-span">{date}</span>
+                                <span className="asked-span">{dateToText}</span>
                             </div>
                             <div className="previews-box">
                                 <p className="previews-span">{previews}</p>

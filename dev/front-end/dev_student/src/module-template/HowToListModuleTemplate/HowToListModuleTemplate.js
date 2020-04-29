@@ -10,6 +10,9 @@ import PageNavigation from "module/PageNavigtion/PageNavigation";
 // items
 import HowToBoxItem from "item/HowToBoxItem/HowToBoxItem";
 
+// utils
+import time from "util/time";
+
 const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
     const { loading, error, data } = useQuery(FIND_QUESTIONS_BY_TAG, {
         variables: { param: param, requiredCount: 10, pageNum: pageNum, tags: nowTag, logical: "or" },
@@ -29,6 +32,7 @@ const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
                 answers={answerCount}
                 views={views}
                 date={date}
+                dateToText={time(date)}
                 previews={previews}
                 tags={tags}
                 adoptedAnswerId={adoptedAnswerId}
@@ -61,6 +65,7 @@ const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount, questionAll 
                 answers={answerCount}
                 views={views}
                 date={date}
+                dateToText={time(date)}
                 previews={previews}
                 tags={tags}
                 adoptedAnswerId={adoptedAnswerId}

@@ -15,7 +15,8 @@ import ContentHeaderModule from "module/ContentHeaderModule/ContentHeaderModule"
 import MarkdownAnswerModule from "module/MarkdownAnswerModule/MarkdownAnswerModule";
 import HowToQABox from "module/HowToQABox/HowToQABox";
 import RequireLoginBoxModule from "module/RequireLoginBoxModule/RequireLoginBoxModule";
-
+// utils
+import time from "util/time";
 const HowToContentModuleTemplate = ({ match }) => {
     const nickname = JSON.parse(localStorage.getItem("user"))?.nickname;
     const { loading, error, data } = useQuery(findQuestionBy_id_Query, {
@@ -36,6 +37,7 @@ const HowToContentModuleTemplate = ({ match }) => {
                 key={_id}
                 author={author}
                 date={date}
+                dateToText={time(date)}
                 isQuestion={"A"}
                 content={content}
                 comments={comments}
@@ -58,6 +60,7 @@ const HowToContentModuleTemplate = ({ match }) => {
                         title={data.findQuestionBy_id.title}
                         author={data.findQuestionBy_id.author}
                         date={data.findQuestionBy_id.date}
+                        dateToText={time(data.findQuestionBy_id.date)}
                         views={data.findQuestionBy_id.views}
                         isLiked={data.findQuestionBy_id.isLiked}
                         likesCount={data.findQuestionBy_id.likesCount}
