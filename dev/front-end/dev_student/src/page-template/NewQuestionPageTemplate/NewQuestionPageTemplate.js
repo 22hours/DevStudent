@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./NewQuestionPageTemplate.css";
 import { Container } from "reactstrap";
 
@@ -11,9 +11,11 @@ import NewQuestionSideBarComponent from "component/NewQuestionSideBarComponent/N
 const NewQuestionPageTemplate = ({ handleSubmit }) => {
     const localData = JSON.parse(localStorage.getItem("user"));
     const nickname = localData?.nickname;
+
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     const [tags, setTags] = useState([]);
+
     return (
         <div className="new-question-wrapper">
             <Container>

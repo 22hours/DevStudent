@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { FormGroup, Input, Button, Row, Collapse, Alert } from "reactstrap";
 import "./PageHeaderModule.css";
+
 //icons
 import SearchIcon from "@material-ui/icons/Search";
 import BrightnessLowIcon from "@material-ui/icons/BrightnessLow";
 import HelpIcon from "@material-ui/icons/Help";
+import WhatshotIcon from "@material-ui/icons/Whatshot";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
+
 const PageHeaderModule = ({ question_count, param, setParam }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [serachBarIsOpen, setSearchBarIsOpen] = useState(false);
@@ -33,12 +38,24 @@ const PageHeaderModule = ({ question_count, param, setParam }) => {
             );
         }
     };
+    const FilterIcon = () => {
+        switch (param) {
+            case "date":
+                return <AccessTimeIcon />;
+            case "views":
+                return <VisibilityIcon />;
+            case "answerCount":
+                return <WhatshotIcon />;
+            default:
+                return <HelpIcon />;
+        }
+    };
 
     return (
         <div className="PageHeaderModule">
             <div className="howto-list-header-header">
                 <span className="content-header">
-                    HOW TO <HelpIcon />
+                    HOW TO <FilterIcon />
                 </span>
             </div>
 
@@ -68,7 +85,7 @@ const PageHeaderModule = ({ question_count, param, setParam }) => {
                             </div>
                             <FilterItem content="최신순" type="date" />
                             <FilterItem content="조회순" type="views" />
-                            <FilterItem content="화제순" type="answers" />
+                            <FilterItem content="화제순" type="answerCount" />
                         </div>
                     </div>
                 </Collapse>

@@ -1,6 +1,6 @@
 import React from "react";
-import { Container, Alert } from "reactstrap";
-
+import { Container } from "reactstrap";
+import { Alert, AlertTitle } from "@material-ui/lab";
 // css
 import "./AlarmTemplate.css";
 
@@ -26,7 +26,9 @@ const AlarmTemplate = ({ alarms }) => {
                     <span className="content-header">알림</span>
                 </div>
                 <div>
-                    <Alert color="info">{alarmCount}건의 알림이 있어요</Alert>
+                    <Alert style={{ marginBottom: "10px" }} severity="info">
+                        {alarmCount}건의 알림이 있어요
+                    </Alert>
                     <div className="alarm-list-wrapper">
                         {alramlist}
                         {/* <AlarmItem url={"1239"} content={"아 배고파"}/>

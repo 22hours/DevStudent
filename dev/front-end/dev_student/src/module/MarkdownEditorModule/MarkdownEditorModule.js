@@ -13,7 +13,7 @@ import FormatItalicIcon from "@material-ui/icons/FormatItalic";
 import FormatUnderlinedIcon from "@material-ui/icons/FormatUnderlined";
 import CodeIcon from "@material-ui/icons/Code";
 import FormatQuoteIcon from "@material-ui/icons/FormatQuote";
-const MarkdownEditorModule = ({ comment, setComment, children }) => {
+const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
     // const [comment, setComment] = useState("");
     const [activeTab, setActiveTab] = useState("1");
     const [isOpen, setIsOpen] = useState(false);
@@ -91,9 +91,12 @@ const MarkdownEditorModule = ({ comment, setComment, children }) => {
                             </Alert>
                         </Collapse>
                         <Input
+                            maxLength={limit}
                             placeholder="Write.."
                             value={comment}
-                            onChange={({ target: { value } }) => setComment(value)}
+                            onChange={({ target: { value } }) => {
+                                setComment(value);
+                            }}
                             size="large"
                             type="textarea"
                         ></Input>

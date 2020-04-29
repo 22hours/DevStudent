@@ -48,3 +48,9 @@
 #question-body-input {
     min-height: 200px;
 }
+
+.new-question-main-element-box #textLimit {
+    color: gray;
+    font-size: 13px;
+    float: right;
+}
