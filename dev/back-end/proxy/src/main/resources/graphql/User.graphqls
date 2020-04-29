@@ -15,7 +15,6 @@ extend type Mutation{
     updateUserAuthState(authState : String!) : User
     loginToServer(email : String, password : String) : User
     logoutFromServer(email : String) : Count
-    updateUserInfo(nickname : String, gitLink : String) : User
     createNickname(email : String, nickname : String) : User
 }
 

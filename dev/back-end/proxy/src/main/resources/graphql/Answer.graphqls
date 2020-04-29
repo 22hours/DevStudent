@@ -1,6 +1,6 @@
 type Answer{
     _id : String
-    authorInfo : UserInfo
+    author : UserInfo
     content : String
     date : String
     likesCount : Int

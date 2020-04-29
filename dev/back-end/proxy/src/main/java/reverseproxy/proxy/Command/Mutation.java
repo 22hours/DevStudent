@@ -126,8 +126,8 @@ public class Mutation implements GraphQLMutationResolver {
         return updateUserAuthState.updateUserAuthState(authState);
     }
 
-    public User updateUserInfo(String nickname, String gitLink){
-        return updateUserInfo.updateUserInfo(nickname, gitLink);
+    public UserInfo updateUserInfo(String nickname, String gitLink){
+        return null;
     }
     //endregion
     public Count checkDuplicateEmail(String email) {
