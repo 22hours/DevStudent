@@ -14,13 +14,19 @@ const DropZoneModule = ({ imgLink, setImgLink, handleImg, comment, imgCount, set
     const onDrop = useCallback((acceptedFiles) => {
         //, Accept: "multipart/form-data"
         console.log(acceptedFiles);
-        const formData = new FormData();
-        formData.append("file", acceptedFiles[0]);
+        var reg = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
+        if (acceptedFiles[0].name.match(reg)) {
+            const formData = new FormData();
+            formData.append("file", acceptedFiles[0]);
 
-        axios
-            .post("http://172.30.1.48:8090/upload", formData)
-            .then((response) => {})
-            .catch((error) => {});
+            axios
+                .post("http://172.30.1.48:8090/uploadFile", formData)
+                .then((response) => {})
+                .catch((error) => {});
+        } else {
+            alert("해당 파일은 이미지 파일이 아닙니다.");
+            return;
+        }
 
         // axios
         //     .post(
@@ -37,14 +43,7 @@ const DropZoneModule = ({ imgLink, setImgLink, handleImg, comment, imgCount, set
         // if (limitCheck) {
 
         //     console.log(acceptedFiles[0]);
-        //     var reg = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
-        //     if (acceptedFiles[0].name.match(reg)) {
-        //         console.log(acceptedFiles[0].name);
-        //         handleImg(acceptedFiles[0].name);
-        //     } else {
-        //         alert("해당 파일은 이미지 파일이 아닙니다.");
-        //         return;
-        //     }
+
         // }
     }, []);
 
