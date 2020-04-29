@@ -13,7 +13,11 @@ const EmailCheckPageTemplate = ({ rand }) => {
             },
         })
             .then((response) => {
-                alert("이메일 인증에 성공하셨습니다");
+                if (response.data.updateUserAuthState.authState === "Certificated") {
+                    alert("이메일 인증에 성공하셨습니다");
+                } else {
+                    alert("이메일을 다시 인증해주세요.");
+                }
             })
             .catch((err) => {
                 alert(err.messeage);

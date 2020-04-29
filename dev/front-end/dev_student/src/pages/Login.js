@@ -70,11 +70,15 @@ const Login = ({ logIn, location }) => {
             // logIn(data.loginToServer.nickname, email, data.loginToServer.accessToken, data.loginToServer.refreshToken);
             logIn(data.loginToServer);
         } else if (data.loginToServer.accessToken) {
-            window.sessionStorage.setItem("token", data.loginToServer.accessToken);
-            window.sessionStorage.setItem("email", data.loginToServer.email);
-            setPassword("");
-            // window.location.replace("/nickname/setting");
-            toggle();
+            if (data.loginToServer.authState === "Certificated") {
+                window.sessionStorage.setItem("token", data.loginToServer.accessToken);
+                window.sessionStorage.setItem("email", data.loginToServer.email);
+                setPassword("");
+                // window.location.replace("/nickname/setting");
+                toggle();
+            } else {
+                alert("이메일 인증 후 사용해주세요.");
+            }
         } else {
             setPassword("");
             alert("로그인 시스템의 정보와 다릅니다!");

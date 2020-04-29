@@ -61,14 +61,6 @@ export const CHECK_DUPLICATE_EMAIL = gql`
     }
 `;
 
-export const CHECK_DUPLICATE_NICKNAME = gql`
-    mutation checkDuplicateNickname($nickname: String!) {
-        checkDuplicateNickname(nickname: $nickname) {
-            count
-        }
-    }
-`;
-
 export const CREATE_COMMENT = gql`
     mutation createComment($question_id: String!, $answer_id: String!, $author: String!, $content: String!) {
         createComment(question_id: $question_id, answer_id: $answer_id, author: $author, content: $content) {
