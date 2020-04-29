@@ -5,7 +5,8 @@ const client1 = new ApolloClient({
     // uri : "https://countries.trevorblades.com/"
     uri: "http://15.164.164.141:8080/graphql",
 });
-const token = localStorage.getItem("token");
+const localData = JSON.parse(localStorage.getItem("user"));
+const token = localData?.accessToken;
 
 const getMyHeader = () => {
     PublicIpGetter();
