@@ -9,7 +9,7 @@ import reverseproxy.proxy.GraphQLLoginServer.ConnectLoginServer;
 @Component
 public class UpdateUserInfo extends ConnectLoginServer {
     public User updateUserInfo(String nickname, String gitLink) {
-        String url = "/update/UserInfo";
+        String url = "/userInfo/update";
         JsonObject json = new JsonObject();
         json.addProperty("nickname",nickname);
         json.addProperty("gitLink",gitLink);
