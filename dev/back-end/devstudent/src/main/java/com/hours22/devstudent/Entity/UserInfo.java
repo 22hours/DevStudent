@@ -2,8 +2,15 @@ package com.hours22.devstudent.Entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Component;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Setter
 @Getter
@@ -23,3 +30,4 @@ public class UserInfo {
     @Getter
     private boolean attendance = false;
 }
+

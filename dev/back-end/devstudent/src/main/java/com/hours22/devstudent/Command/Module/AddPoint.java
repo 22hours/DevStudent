@@ -25,7 +25,7 @@ public class AddPoint {
             put("hated", -2);
         }
     };
-    public void addPoint(String method,String nickname){
+    public UserInfo addPoint(String method,String nickname){
         int point = points.get(method);
         UserInfo userInfo = userInfoRepository.findByNickname(nickname);
         int nowPoint = userInfo.getPoint();
@@ -36,6 +36,7 @@ public class AddPoint {
         userInfoRepository.save(userInfo);
         System.out.println(nickname + "님의 현재 포인트 : " + nowPoint);
         System.out.println(nickname + "님의 현재 단계 : " + grade);
+        return userInfo;
     }
 
     private String checkGrade(int point){

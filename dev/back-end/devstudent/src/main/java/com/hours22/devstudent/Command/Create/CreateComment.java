@@ -27,7 +27,7 @@ public class CreateComment extends Create {
             question.setComments(comments);
             questionRepository.save(question);
             // 알람 생성 기능
-            String questionAuthor = question.getAuthor(); // 게시물 작성자 알아오기
+            String questionAuthor = question.getAuthor().getNickname(); // 게시물 작성자 알아오기
             createAlarm(question_id, questionAuthor, author, "님이 답변을 달았습니다.");
             return comment;
         }
@@ -42,7 +42,7 @@ public class CreateComment extends Create {
                 question.setAnswers(answers);
                 questionRepository.save(question);
                 // 알람 생성 기능
-                String answerAuthor = answer.getAuthor();
+                String answerAuthor = answer.getAuthor().getNickname();
                 createAlarm(question_id, answerAuthor, author, "님이 댓글을 달았습니다.");
                 return comment;
             }

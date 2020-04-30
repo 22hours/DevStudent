@@ -17,7 +17,7 @@ public class DeleteAnswer extends Delete {
 
     public Answer deleteAnswer(String question_id, String answer_id) {
         if (questionRepository.countBy_id(question_id) == 0)
-            return new Answer("null", "dev student", "Not Exist Question");
+            return new Answer("null", null, "Not Exist Question");
         Question Question = questionRepository.findQuestionBy_id(question_id);
         List<Answer> answers = Question.getAnswers();
         for (Answer answer : answers) {
@@ -30,6 +30,6 @@ public class DeleteAnswer extends Delete {
             }
         }
         //for문을 빠져나왔다는 것은 해당 답변이 없다는 뜻
-        return new Answer("null", "dev student", "Not Exist Question");
+        return new Answer("null", null, "Not Exist Question");
     }
 }

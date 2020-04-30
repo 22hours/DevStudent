@@ -1,6 +1,7 @@
 package com.hours22.devstudent.Command.Create;
 
 import com.hours22.devstudent.Command.Module.AddIsLiked;
+import com.hours22.devstudent.Command.Module.AddPoint;
 import com.hours22.devstudent.Entity.Answer;
 import com.hours22.devstudent.Entity.Comment;
 import com.hours22.devstudent.Entity.Like;
@@ -18,6 +19,8 @@ public class CreateLike extends Create {
     private QuestionRepository questionRepository;
     @Autowired
     private AddIsLiked addIsLiked;
+    @Autowired
+    private AddPoint addPoint;
 
     public Question createLike(String question_id, String answer_id, String nickname, String status) {
         if (questionRepository.countBy_id(question_id) == 0)
@@ -36,12 +39,17 @@ public class CreateLike extends Create {
             Like like = new Like(nickname, status);
             likes.add(like);
             question.setLikes(likes);
-            if (status.equals("up"))
+            if (status.equals("up")) {
                 question.setLikesCount(question.getLikesCount() + 1);
-            else
+                addPoint.addPoint("like", nickname);
+                addPoint.addPoint("liked", question.getAuthor().getNickname());
+            } else {
                 question.setLikesCount(question.getLikesCount() - 1);
-
+                addPoint.addPoint("hate", nickname);
+                addPoint.addPoint("hated", question.getAuthor().getNickname());
+            }
             questionRepository.save(question);
+            question = questionRepository.findQuestionBy_id(question_id);
             question = addIsLiked.addIsLiked(question, nickname);
             return question;
         } else {
@@ -58,13 +66,19 @@ public class CreateLike extends Create {
                     Like like = new Like(nickname, status);
                     likes.add(like);
                     answer.setLikes(likes);
-                    if (status.equals("up"))
+                    if (status.equals("up")) {
                         answer.setLikesCount(answer.getLikesCount() + 1);
-                    else
+                        question.setAnswers(answers);
+                        addPoint.addPoint("like", nickname);
+                        addPoint.addPoint("liked", answer.getAuthor().getNickname());
+                    } else {
                         answer.setLikesCount(answer.getLikesCount() - 1);
-
-                    question.setAnswers(answers);
+                        question.setAnswers(answers);
+                        addPoint.addPoint("hate", nickname);
+                        addPoint.addPoint("hated", answer.getAuthor().getNickname());
+                    }
                     questionRepository.save(question);
+                    question = questionRepository.findQuestionBy_id(question_id);
                     question = addIsLiked.addIsLiked(question, nickname);
                     return question;
                 }
