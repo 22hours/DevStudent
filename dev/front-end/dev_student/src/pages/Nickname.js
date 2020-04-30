@@ -38,9 +38,10 @@ const Nickname = () => {
                     if (response.data.createNickname.nickname) {
                         var data = response.data.createNickname;
                         sessionStorage.clear();
-                        localStorage.setItem("user", JSON.stringify(data));
                         alert("닉네임 설정을 완료했습니다.");
-                        window.location.replace("/login");
+                        window.localStorage.setItem("user", JSON.stringify(data));
+                        window.localStorage.setItem("auth", true);
+                        window.location.replace("/");
                     } else {
                         alert("중복된 닉네임입니다.");
                         setNickname("");
