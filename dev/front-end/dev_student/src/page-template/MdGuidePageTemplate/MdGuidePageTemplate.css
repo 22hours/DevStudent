@@ -3,20 +3,20 @@
     background-color: rgb(245, 245, 245);
     overflow: hidden;
     min-height: 100vh;
+    height: auto;
     padding-bottom: 120px;
 }
 .MdGuidePageTemplate .editor-col {
     height: 100vh;
     padding: 0px !important;
-    overflow: hidden;
 
     /* border-radius: 3px; */
     float: left;
 }
 .MdGuidePageTemplate .preview-col {
     height: 100vh;
+
     padding: 0px !important;
-    overflow: hidden;
     /* border-radius: 3px; */
 
     float: left;
@@ -35,6 +35,7 @@
 }
 
 .MdGuidePageTemplate .preview {
+    overflow: scroll;
     padding-left: 10px;
     padding-right: 10px;
     background-color: white;
