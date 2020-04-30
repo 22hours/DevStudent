@@ -1,0 +1,41 @@
+# DEVSTUDENT
+DEVSTU는 여러분의 원활한 질문과 답변 활동을 위하여 **마크다운** 을 제공하고 있습니다.
+
+## 목차
+- 목차는 이렇게 작성하실 수 있습니다.
+
+## New line
+스페이스바  
+두번을 누르시고  
+엔터를 치시면  
+자동으로 새로운 줄에 작성됩니다.  
+또는 <BR/>
+<br\>태그를 통하여 줄바꿈 할 수 있습니다.
+
+## Quote
+
+> 이렇게 인용구를 작성하실 수 있습니다.
+
+## Code 
+```
+var React = require('react');
+var devstu= require('react-devstu');
+
+React.render(
+  <DEVSTU source="Your knowledge here" />,
+  document.getElementById('content')
+);
+```
+
+## Tables
+| DEVSTU 기능| 지원 여부 |
+| --------- | ------- |
+| 자유로운 질문   | ✔ |
+| 질문에 대한 해답 제시 | ✔ |
+| 답변에 대한 채택     | ✔ |
+| 활동에 대한 보상     | ✔ |
+
+## More Info?
+Read usage information and more on  
+ [DEVSTU GitHub](https://github.com/22hours/DevStudent)
+

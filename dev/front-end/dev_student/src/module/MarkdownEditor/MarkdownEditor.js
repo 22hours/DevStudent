@@ -20,7 +20,7 @@ const MarkdownEditor = ({ comment, setComment, children }) => {
         setComment(comment + "# ");
     };
     const handleCode = () => {
-        setComment(comment + "```\nyour code is here\n```");
+        setComment(comment + "```여기에 코드를 입력하세요```");
     };
     const handleQuote = () => {
         setComment(comment + "> ");

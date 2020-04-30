@@ -18,6 +18,7 @@ import SitesInfo from "./SitesInfo";
 import Rule from "./Rule";
 import Nickname from "./Nickname";
 import UserInfo from "./UserInfo";
+import MdGuide from "./MdGuide";
 export {
     Alarm,
     EmailCheck,
@@ -39,4 +40,5 @@ export {
     Rule,
     Nickname,
     UserInfo,
+    MdGuide,
 };

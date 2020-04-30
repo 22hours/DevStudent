@@ -10,12 +10,11 @@ const NewQuestion = () => {
     const [createQuestion] = useMutation(CREATE_QUESTION);
     const handleSubmit = async (authorParam, titleParam, contentParam, tagsParam) => {
         console.log(contentParam);
-        var content = contentParam.replace(/\n/g, "<br />");
         createQuestion({
             variables: {
                 author: authorParam,
                 title: titleParam,
-                content: content,
+                content: contentParam,
                 tags: tagsParam,
             },
         })

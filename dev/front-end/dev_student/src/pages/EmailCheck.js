@@ -39,7 +39,7 @@ const EmailCheck = ({ match }) => {
         case "success":
             return <EmailCheckPageTemplate>인증 완료</EmailCheckPageTemplate>;
         case "error":
-            return <NotFoundPageTemplate />;
+            return <EmailCheckPageTemplate />;
         default:
             return <p>인증 진행중 ...</p>;
     }

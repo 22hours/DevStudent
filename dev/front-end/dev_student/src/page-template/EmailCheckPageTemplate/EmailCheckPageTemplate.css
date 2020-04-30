@@ -1,4 +1,40 @@
-.email-check-wrapper{
+.EmailCheckPageTemplate {
     height: 100vh;
-    background-image: url('/public/img/banner3.png');
+    padding-top: 60px;
+    background-color: rgb(245, 245, 245);
+}
+
+.EmailCheckPageTemplate .email-check-wrapper {
+    border-radius: 7px;
+    padding-bottom: 2%;
+    border-color: lightgray;
+    border-width: 0.5px;
+    border-style: solid;
+    background-color: white;
+    padding: 20px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center;
+}
+
+.EmailCheckPageTemplate .header-row {
+    margin-bottom: 40px;
+}
+
+.EmailCheckPageTemplate .item-row {
+    margin-bottom: 40px;
+}
+
+.EmailCheckPageTemplate .email-check-wrapper .header-row #header-label {
+    font-size: 20px;
+}
+.EmailCheckPageTemplate #email-label {
+    color: rgb(146, 145, 145);
+}
+.EmailCheckPageTemplate #email {
+    color: rgb(51, 152, 170);
+    font-weight: bold;
+}
+.EmailCheckPageTemplate #descript {
+    color: rgb(71, 71, 71);
 }

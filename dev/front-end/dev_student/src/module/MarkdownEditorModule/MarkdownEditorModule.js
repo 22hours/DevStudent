@@ -32,7 +32,7 @@ const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
         setComment(comment + "# ");
     };
     const handleCode = () => {
-        setComment(comment + "```\nyour code is here\n```");
+        setComment(comment + "```\n your code is here \n ```");
     };
     const handleQuote = () => {
         setComment(comment + "> ");
