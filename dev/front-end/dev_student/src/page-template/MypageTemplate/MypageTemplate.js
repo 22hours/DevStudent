@@ -10,6 +10,7 @@ import avatar_test from "img/mypage/avatar_test.png";
 //icons
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import LaptopChromebookIcon from "@material-ui/icons/LaptopChromebook";
 
 //atoms
 import GradeAvatar from "atom/GradeAvatar/GradeAvatar";
@@ -24,7 +25,7 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
 
     //items
     const [gitAddress, setGitAddress] = useState(localData.gitLink);
-    const [linkedInAddress, setLinkedInAddress] = useState("king199777@gmail.com");
+    const [linkedInAddress, setLinkedInAddress] = useState("winterlood.github.io");
 
     const handleSubmit = () => {
         updateUserInfo({
@@ -95,13 +96,13 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
                                 {localData.nickname}
                                 &nbsp; &nbsp;
                                 <div className="mypage-githubicon" onClick={moveGithubLink}>
-                                    <GitHubIcon style={{ fontSize: "18px" }} />
+                                    <GitHubIcon style={{ fontSize: "20px" }} />
                                 </div>
                                 &nbsp;
-                                <LinkedInIcon style={{ fontSize: "18px" }} />
+                                <LaptopChromebookIcon style={{ fontSize: "20px" }} />
                             </div>
                             <div className="sub-row">
-                                <span id="edit-myinfo"> 회원 정보수정 </span>
+                                <span id="edit-myinfo"> point </span>
                                 &nbsp; &nbsp; &nbsp; &nbsp;
                             </div>
                         </div>
@@ -137,7 +138,7 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
                                         </div>
                                     </div>
                                     <div className="item-box">
-                                        <span id="item-label">LinkedIn</span>
+                                        <span id="item-label">Homepage</span>
                                         <div clsassName="link-input-box-wrapper">
                                             <Input
                                                 id="item-value"

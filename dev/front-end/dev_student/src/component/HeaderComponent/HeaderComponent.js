@@ -15,17 +15,11 @@ const HeaderComponent = ({ nickname, location }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [clicked, setClicked] = useState("home");
     const toggle = () => setIsOpen(!isOpen);
-    const [linkClick, setLinkClick] = useState(false);
     const sign_style = {
         justifyContent: "flex-end",
         padding: "10px",
     };
 
-    const LinkClick = () => {
-        console.log("nav bar toggle");
-        toggle();
-        setLinkClick(true);
-    };
     useEffect(() => {
         console.log(location.pathname);
         setClicked(location.pathname.split("/")[1]);
