@@ -41,6 +41,9 @@ const HowToBoxItem = (props) => {
     const nickname = JSON.parse(localStorage.getItem("user"))?.nickname;
     const TagListRenderer = () => {
         var TagList = null;
+        if (!tags) {
+            return <span>&nbsp;</span>;
+        }
         if (tags[0] !== "") {
             TagList = tags.map((tagItem) => <Tag key={tagItem} tagItem={tagItem}></Tag>);
             return <div className="tags-row">{TagList}</div>;

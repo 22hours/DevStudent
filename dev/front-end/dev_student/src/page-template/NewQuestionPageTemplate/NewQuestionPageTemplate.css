@@ -10,7 +10,8 @@
 }
 .new-question-wrapper {
     background-color: #f2f2f2;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     padding-top: 2%;
 }
 
@@ -40,4 +41,12 @@
     float: right;
     margin-left: 10px;
     width: 320px;
+}
+
+.new-question-main-component {
+    margin-bottom: 20px;
+}
+
+.new-question-main-col .new-question-preview-box {
+    pointer-events: none;
 }

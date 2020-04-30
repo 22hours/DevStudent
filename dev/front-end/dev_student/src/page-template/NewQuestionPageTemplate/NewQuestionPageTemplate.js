@@ -8,6 +8,9 @@ import { Container } from "reactstrap";
 import NewQuestionMainComponent from "component/NewQuestionMainComponent/NewQuestionMainComponent";
 import NewQuestionSideBarComponent from "component/NewQuestionSideBarComponent/NewQuestionSideBarComponent";
 
+// items
+import HowToBoxItem from "item/HowToBoxItem/HowToBoxItem";
+
 const NewQuestionPageTemplate = ({ handleSubmit }) => {
     const localData = JSON.parse(localStorage.getItem("user"));
     const nickname = localData?.nickname;
@@ -25,16 +28,29 @@ const NewQuestionPageTemplate = ({ handleSubmit }) => {
                 </div>
                 <div className="new-question-body-warpper">
                     <div className="new-question-main-col">
-                        <NewQuestionMainComponent
-                            nickname={nickname}
-                            title={title}
-                            setTitle={setTitle}
-                            body={body}
-                            setBody={setBody}
-                            tags={tags}
-                            setTags={setTags}
-                            handleSubmit={handleSubmit}
-                        />
+                        <div className="new-question-preview-box">
+                            <HowToBoxItem
+                                authorNickname={nickname}
+                                title={title}
+                                previews={body.substr(0, 100)}
+                                views={0}
+                                likesCount={0}
+                                answers={0}
+                                adoptedAnswerId={null}
+                            />
+                        </div>
+                        <div className="new-question-main-component">
+                            <NewQuestionMainComponent
+                                nickname={nickname}
+                                title={title}
+                                setTitle={setTitle}
+                                body={body}
+                                setBody={setBody}
+                                tags={tags}
+                                setTags={setTags}
+                                handleSubmit={handleSubmit}
+                            />
+                        </div>
                     </div>
                     <div className="new-question-sidebar-col">
                         <NewQuestionSideBarComponent />
