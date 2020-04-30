@@ -35,7 +35,6 @@ const Nickname = () => {
                 },
             })
                 .then((response) => {
-                    console.log(response);
                     if (response.data.createNickname.nickname) {
                         var data = response.data.createNickname;
                         sessionStorage.clear();

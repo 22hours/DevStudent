@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Container, Input, Collapse, Button, Alert } from "reactstrap";
+import { useMutation } from "@apollo/react-hooks";
+import { UPDATE_USER_INFO } from "mutation/mutations";
 import "./MypageTemplate.css";
 
 //imgs
@@ -15,26 +17,63 @@ import GradeAvatar from "atom/GradeAvatar/GradeAvatar";
 const MypageTemplate = ({ localData, alarmData, myContent }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [alertOpen, setAlertOpen] = useState(false);
+    const [btnClick, setBtnClick] = useState(false);
+    const [updateUserInfo] = useMutation(UPDATE_USER_INFO);
+    const nickname = localData.nickname;
     const toggle = () => setIsOpen(!isOpen);
-    const showAlert = () => setAlertOpen(!alertOpen);
-    //example
-    const [gitAddress, setGitAddress] = useState("github.com/sg05138");
+
+    //items
+    const [gitAddress, setGitAddress] = useState(localData.gitLink);
     const [linkedInAddress, setLinkedInAddress] = useState("king199777@gmail.com");
+
+    const handleSubmit = () => {
+        updateUserInfo({
+            variables: {
+                nickname: nickname,
+                gitLink: gitAddress,
+            },
+        })
+            .then((response) => {
+                var data = response.data.updateUserInfo;
+                var localData = JSON.parse(localStorage.getItem("user"));
+                localData.gitLink = data.gitLink;
+                localStorage.setItem("user", JSON.stringify(localData));
+                setAlertOpen(!alertOpen);
+                setBtnClick(true);
+            })
+            .catch((err) => {
+                alert(err.message);
+            });
+    };
+
+    const SubmitButton = () => {
+        if (btnClick === true) {
+            return <div></div>;
+        } else {
+            return (
+                <Button style={btn_style} onClick={handleSubmit}>
+                    저장
+                </Button>
+            );
+        }
+    };
 
     const btn_style = {
         backgroundColor: "lightgray",
-        fontSize: "17px",
+        fontSize: "16px",
         color: "black",
         borderColor: "lightgray",
+        borderWeight: "0.1px",
         float: "right",
         marginBottom: "10px",
         marginTop: "2px",
         width: "60px",
+        marginRight: "10px",
     };
     const alert_style = {
-        width: "calc(100% - 80px)",
-        fontSize: "15px",
-        height: "40px",
+        width: "100%",
+        fontSize: "18px",
+        height: "50px",
         paddingBottom: "32px",
     };
 
@@ -110,9 +149,9 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
                                     </div>
                                     <div></div>
                                     <div>
-                                        <Button style={btn_style} onClick={showAlert}>
-                                            저장
-                                        </Button>
+                                        <div>
+                                            <SubmitButton />
+                                        </div>
                                         <Alert color="info" isOpen={alertOpen} style={alert_style}>
                                             회원정보가 수정되었습니다.
                                         </Alert>
