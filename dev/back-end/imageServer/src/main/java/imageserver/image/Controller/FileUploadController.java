@@ -26,6 +26,7 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = "*")
 @RestController
 public class FileUploadController {
+
     private final String temp = "linmemhnebggaijoinhajeoyndohsgauhenkwin";
     private final String real = "linjiewhngguyeamjhghoaonknmnioeebdnihgjloenewason";
 
@@ -51,12 +52,14 @@ public class FileUploadController {
     @CrossOrigin(origins = "*")
     @PostMapping("/uploadDummyFile")
     public FileUploadResponse uploadDummyFile(@RequestParam("file") MultipartFile file) {
+        System.out.println("In");
         service.setFileLocation("temp");
         String fileName = service.storeFile(file, true);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/" + temp + "/")
                 .path(fileName)
                 .toUriString();
+        System.out.println(fileDownloadUri);
         return new FileUploadResponse(fileName, fileDownloadUri, file.getContentType(), file.getSize());
     }
 
@@ -64,8 +67,7 @@ public class FileUploadController {
     //@GetMapping("/uploadRealFile/{date}/{fileName:.+}")
     @PostMapping("/uploadRealFile/{date}")
     public void uploadRealFile(@PathVariable String date, @RequestBody String[] fileNames) throws IOException, ParseException {
-        System.out.println(date);
-        System.out.println(fileNames.toString());
+
         for (String fileName : fileNames) {
             service.setFileLocation("temp");
             Resource resource = service.loadFileAsResource(fileName);
