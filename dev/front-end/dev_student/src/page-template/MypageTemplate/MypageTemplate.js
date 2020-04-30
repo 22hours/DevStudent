@@ -9,7 +9,6 @@ import avatar_test from "img/mypage/avatar_test.png";
 
 //icons
 import GitHubIcon from "@material-ui/icons/GitHub";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import LaptopChromebookIcon from "@material-ui/icons/LaptopChromebook";
 
 //atoms
@@ -102,7 +101,7 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
                                 <LaptopChromebookIcon style={{ fontSize: "20px" }} />
                             </div>
                             <div className="sub-row">
-                                <span id="edit-myinfo"> point </span>
+                                <span id="edit-myinfo"> {localData.point}point </span>
                                 &nbsp; &nbsp; &nbsp; &nbsp;
                             </div>
                         </div>
@@ -177,13 +176,6 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
                             <div className="item-collapse"></div>
                         </div>
                     </div>
-                    {/* <div className="mypage-nav-row">
-                        <div className="mypage-nav-item">회원 정보</div>
-                        <div className="mypage-nav-item">내 질문</div>
-                        <div className="mypage-nav-item">내가 해결한 질문</div>
-                        <div className="mypage-nav-item">알람</div>
-                        <div className="mypage-nav-item">회원 탈퇴</div>
-                    </div> */}
                 </Container>
             </div>
         </React.Fragment>

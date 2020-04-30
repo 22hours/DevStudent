@@ -10,7 +10,6 @@ import {
     HowTo,
     Home,
     Posts,
-    About,
     Login,
     Rule,
     MyPage,
@@ -20,6 +19,7 @@ import {
     SitesInfo,
     Nickname,
     MdGuide,
+    UserInfo,
 } from "./pages";
 import FooterModule from "module/FooterModule/FooterModule";
 import HeaderComponent from "component/HeaderComponent/HeaderComponent";
@@ -38,8 +38,6 @@ const MyRouter = (props) => {
                     <ScrollToTop>
                         <Switch>
                             <Route exact path="/" component={Home} />
-                            <Route path="/about/:user" component={About} />
-                            <Route path="/userinfo/:user" component={About} />
                             <Route path="/posts" component={Posts} />
                             <Route path="/todolist" component={Todo} />
                             <Route path="/howto" component={HowTo} />
@@ -49,7 +47,7 @@ const MyRouter = (props) => {
                             <Route path="/logout" component={Logout} />
                             <Route path="/nickname" component={Nickname} />
                             <Route path="/mdguide/:nickname" component={MdGuide} />
-
+                            <Route path="/userinfo/:username" component={UserInfo} />
                             <AuthRoute path="/alarm" render={(props) => <Alarm {...props} />} />
                             <AuthRoute path="/newquestion" render={(props) => <NewQuestion {...props} />} />
                             <AuthRoute path="/mypage" render={(props) => <MyPage {...props} />} />
