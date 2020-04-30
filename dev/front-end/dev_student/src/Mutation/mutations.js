@@ -29,6 +29,9 @@ export const UPDATE_USER_AUTH_STATE = gql`
     mutation updateUserAuthState($authState: String!) {
         updateUserAuthState(authState: $authState) {
             email
+            nickname
+            schoolName
+            date
         }
     }
 `;

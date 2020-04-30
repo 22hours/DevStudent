@@ -129,6 +129,16 @@ const HeaderComponent = ({ nickname, location }) => {
                                 </Link>
                             </div>
                         </NavItem>
+                        <NavItem>
+                            <div className="nav-item-wrapper">
+                                <Link
+                                    to="/emailCheck/123456"
+                                    className={"nav-link " + (clicked === "devnote" ? "selected " : "unselected")}
+                                >
+                                    email
+                                </Link>
+                            </div>
+                        </NavItem>
                     </Nav>
                 </Collapse>
                 <PrivateMenu nickname={nickname}></PrivateMenu>
