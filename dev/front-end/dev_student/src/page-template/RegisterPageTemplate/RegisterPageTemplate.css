@@ -3,9 +3,11 @@
 }
 
 .register-container-top-wrapper {
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     padding-top: 60px;
     background-color: #f2f2f2;
+    padding-bottom: 20px;
 }
 
 .registertemplate-header {
