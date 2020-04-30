@@ -18,7 +18,7 @@ import MarkdownParser from "atom/MarkdownParser/MarkdownParser";
 import { CREATE_LIKE, CREATE_COMMENT, UPDATE_ADOPTED_ANSWER_ID } from "mutation/mutations";
 
 // utils
-import time from "util/time";
+import { timeForToday } from "util/time";
 
 const HowToQABox = ({
     _id,
@@ -86,7 +86,7 @@ const HowToQABox = ({
             &nbsp;
             <span id="content">{content}</span>
             &nbsp; &nbsp;
-            <span id="date">{time(date)}</span>
+            <span id="date">{timeForToday(date)}</span>
         </div>
     ));
     const handleSubmit = async () => {

@@ -12,7 +12,7 @@ import PageNavigation from "module/PageNavigtion/PageNavigation";
 import HowToBoxItem from "item/HowToBoxItem/HowToBoxItem";
 
 // utils
-import time from "util/time";
+import { timeForToday } from "util/time";
 
 const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
     const { loading, error, data } = useQuery(FIND_QUESTIONS_BY_TAG, {
@@ -39,7 +39,7 @@ const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
                 answers={answerCount}
                 views={views}
                 date={date}
-                dateToText={time(date)}
+                dateToText={timeForToday(date)}
                 previews={previews}
                 tags={tags}
                 likesCount={likesCount}
@@ -74,7 +74,7 @@ const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount, questionAll 
                 answers={answerCount}
                 views={views}
                 date={date}
-                dateToText={time(date)}
+                dateToText={timeForToday(date)}
                 likesCount={likesCount}
                 previews={previews}
                 tags={tags}

@@ -145,7 +145,6 @@ const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
                         />
                     </TabPane>
                     <TabPane tabId="2">
-                        <img src="http://172.30.1.48:8090/userContent/dZpQEJGXY1nsM282S0Tv.png"></img>
                         <Row>
                             <Col sm="12">
                                 <div className="reply-wrapper">

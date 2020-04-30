@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { Spinner } from "reactstrap";
 import axios from "axios";
@@ -11,6 +11,7 @@ const DropZoneModule = ({ imgLink, setImgLink, handleImg, comment, imgCount, set
         setImgCount(imgCount + 1);
         return true;
     };
+
     const onDrop = useCallback((acceptedFiles) => {
         //, Accept: "multipart/form-data"
         console.log(acceptedFiles);
@@ -18,10 +19,26 @@ const DropZoneModule = ({ imgLink, setImgLink, handleImg, comment, imgCount, set
         if (acceptedFiles[0].name.match(reg)) {
             const formData = new FormData();
             formData.append("file", acceptedFiles[0]);
-
             axios
-                .post("http://172.30.1.48:8090/uploadFile", formData)
-                .then((response) => {})
+                .post("http://172.30.1.50:8110/uploadDummyFile", formData)
+                .then((response) => {
+                    console.log(response);
+                    var sessionImgList = JSON.parse(sessionStorage.getItem("devstu_imgs"));
+                    if (sessionImgList) {
+                        if (sessionImgList.length >= 3) {
+                            alert("3개 이상의 이미지는 넣을 수 없습니다");
+                            return;
+                        }
+                        sessionImgList.push(response.data.fileName);
+                        sessionStorage.setItem("devstu_imgs", JSON.stringify(sessionImgList));
+                    } else {
+                        console.log("저장된 이미지 없으므로 생성");
+                        sessionImgList = new Array();
+                        sessionImgList.push(response.data.fileName);
+                        sessionStorage.setItem("devstu_imgs", JSON.stringify(sessionImgList));
+                    }
+                    handleImg(response.data.fileDownloadUri);
+                })
                 .catch((error) => {});
         } else {
             alert("해당 파일은 이미지 파일이 아닙니다.");
