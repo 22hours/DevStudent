@@ -20,10 +20,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*")
@@ -55,7 +52,7 @@ public class FileUploadController {
     @PostMapping("/uploadDummyFile")
     public FileUploadResponse uploadDummyFile(@RequestParam("file") MultipartFile file) {
         service.setFileLocation("temp");
-        String fileName = service.storeFile(file,true);
+        String fileName = service.storeFile(file, true);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/" + temp + "/")
                 .path(fileName)
@@ -64,39 +61,43 @@ public class FileUploadController {
     }
 
     @CrossOrigin(origins = "*")
-    @GetMapping("/uploadRealFile/{date}/{fileName:.+}")
-    public FileUploadResponse uploadRealFile(@PathVariable String date,@PathVariable String fileName) throws IOException, ParseException {
+    //@GetMapping("/uploadRealFile/{date}/{fileName:.+}")
+    @PostMapping("/uploadRealFile/{data}")
+    public void uploadRealFile(@PathVariable String date, @RequestBody String[] fileNames) throws IOException, ParseException {
         SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date originalDate = dayTime.parse(date);
         long originalTime = originalDate.getTime();
         dayTime = new SimpleDateFormat("yyyy-MM-dd");
         date = dayTime.format(new Date(originalTime));
-        service.setFileLocation("temp");
-        Resource resource = service.loadFileAsResource(fileName);
-        File originalFile = resource.getFile();
-        service.setFileLocation("real/" + date);
+        for (String fileName : fileNames) {
+            service.setFileLocation("temp");
+            Resource resource = service.loadFileAsResource(fileName);
+            File originalFile = resource.getFile();
+            service.setFileLocation("real/" + date);
 
-        FileItem fileItem = new DiskFileItem("mainFile", Files.probeContentType(originalFile.toPath()), false, originalFile.getName(), (int) originalFile.length(), originalFile.getParentFile());
-        try {
-            InputStream input = new FileInputStream(originalFile);
-            OutputStream os = fileItem.getOutputStream();
-            IOUtils.copy(input, os);
-            // Or faster..
-            // IOUtils.copy(new FileInputStream(file), fileItem.getOutputStream());
-        } catch (IOException ex) {
-            System.out.println("File -> MultipartFile 전환 오류!");
-            ex.printStackTrace();
+            FileItem fileItem = new DiskFileItem("mainFile", Files.probeContentType(originalFile.toPath()), false, originalFile.getName(), (int) originalFile.length(), originalFile.getParentFile());
+            try {
+                InputStream input = new FileInputStream(originalFile);
+                OutputStream os = fileItem.getOutputStream();
+                IOUtils.copy(input, os);
+                // Or faster..
+                // IOUtils.copy(new FileInputStream(file), fileItem.getOutputStream());
+            } catch (IOException ex) {
+                System.out.println("File -> MultipartFile 전환 오류!");
+                ex.printStackTrace();
+            }
+
+            MultipartFile multipartFile = new CommonsMultipartFile(fileItem);
+
+            String tempfileName = service.storeFile(multipartFile, false);
+
         }
 
-        MultipartFile multipartFile = new CommonsMultipartFile(fileItem);
-
-        String tempfileName = service.storeFile(multipartFile,false);
-
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+        /*String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/" + real + "/" + date + "/")
                 .path(tempfileName)
                 .toUriString();
-        return new FileUploadResponse(tempfileName, fileDownloadUri, multipartFile.getContentType(), multipartFile.getSize());
+        return new FileUploadResponse(tempfileName, fileDownloadUri, multipartFile.getContentType(), multipartFile.getSize());*/
     }
 
     @PostMapping("/uploadMultipleFiles")
@@ -108,7 +109,7 @@ public class FileUploadController {
     }
 
     @CrossOrigin(origins = "*")
-    @GetMapping("/"+temp+"/{fileName:.+}")
+    @GetMapping("/" + temp + "/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
         service.setFileLocation("temp");
         // Load file as Resource
