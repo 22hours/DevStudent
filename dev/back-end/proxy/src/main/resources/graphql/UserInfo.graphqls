@@ -1,0 +1,17 @@
+type UserInfo{
+    email : String
+    nickname : String
+    gitLink : String
+    grade : String
+    point : Int
+    schoolName : String
+    attendance : Boolean
+}
+
+extend type Mutation {
+    updateUserInfo(nickname : String, gitLink : String) : UserInfo
+}
+
+extend type Query{
+    findUserByNickname(nickname : String) : UserInfo
+}

@@ -1,24 +1,19 @@
 package reverseproxy.proxy.GraphQLMainServer.Count;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.springframework.stereotype.Component;
+import org.springframework.web.util.UriComponentsBuilder;
 import reverseproxy.proxy.Entity.Count;
-import reverseproxy.proxy.GraphQLLoginServer.ConnectLoginServer;
+import reverseproxy.proxy.GraphQLMainServer.ConnectMainServer;
 
 @Component
-public class CountAllQuestions extends ConnectLoginServer {
+public class CountAllQuestions extends ConnectMainServer {
     public Count countAllQuestions() {
-        //region Query
-        String query = "query{\n" +
-                "    countAllQuestions{\n" +
-                "        count\n" +
-                "    }\n" +
-                "}";
-        //endregion
+        String url ="http://localhost:8090/main/count/questions";
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
         Gson gson = new Gson();
-        String name = new Object() {
-        }.getClass().getEnclosingMethod().getName();
-        String str = getResponse(query, name);
+        String str = getResponse(builder);
         Count count = gson.fromJson(str, Count.class);
         return count;
     }

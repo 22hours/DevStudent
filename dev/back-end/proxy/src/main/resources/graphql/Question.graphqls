@@ -1,15 +1,16 @@
 type Question{
     _id : String
     title : String
-    author : String
+    author : UserInfo
     tags : [String]
     date : String
     content : String
     previews : String
     answerCount : Int
     likesCount : Int
+    isLiked : String
     views : Int
-    solved : Boolean
+    adoptedAnswerId : String
     comments : [Comment]
     answers : [Answer]
     likes : [Like]
@@ -22,11 +23,11 @@ type Query{
     findQuestionBy_id(_id:String) : Question
     findQuestionsByTags(param : String, pageNum : Int, requiredCount: Int, tags: [String], logical: String): [Question]
     findQuestionsByOption(param : String, option : String! , searchContent : String!, pageNum : Int, requiredCount: Int) : [Question]
-    countAllQuestions : Count
 }
 
 # Root
 type Mutation{
     createQuestion(title : String!, author : String!, tags : [String]!, content : String!) : Question
     deleteQuestion(_id : String) : Question
+    updateAdoptedAnswerId(question_id : String, answer_id : String, nickname : String) : Question
 }

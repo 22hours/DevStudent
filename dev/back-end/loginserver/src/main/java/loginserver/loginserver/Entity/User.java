@@ -30,15 +30,17 @@ public class User {
     private String grade = "bean";
     @Setter
     private int point = 0;
+    @Setter
+    @Getter
+    private boolean attendance = false;
 //    @Setter
 //    private String refreshToken;
 
-    public User(String email, String password, String nickname, String schoolName) {
+    public User(String email, String password, String schoolName) {
         long time = System.currentTimeMillis();
         SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.date = dayTime.format(new Date(time));
         this.password = password;
-        this.nickname = nickname;
         this.email = email;
         this.schoolName = schoolName;
         this.accessToken = null;

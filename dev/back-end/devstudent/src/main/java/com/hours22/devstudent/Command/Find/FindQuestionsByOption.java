@@ -14,6 +14,9 @@ public class FindQuestionsByOption extends Find {
     private QuestionRepository questionRepository;
 
     public List<Question> findQuestionsByOption(String param, String option, String searchContent, int pageNum, int requiredCount) {
+        if(option.equals("author")){
+            option = "author.$id";
+        }
         Criteria criteria = new Criteria(option);
         criteria.regex(searchContent, "i");
         return getQuestions(param, pageNum, requiredCount, criteria);

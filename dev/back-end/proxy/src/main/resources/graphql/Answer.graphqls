@@ -1,9 +1,10 @@
 type Answer{
     _id : String
-    author : String
+    author : UserInfo
     content : String
     date : String
     likesCount : Int
+    isLiked : String
     comments : [Comment]
     likes : [Like]
 }

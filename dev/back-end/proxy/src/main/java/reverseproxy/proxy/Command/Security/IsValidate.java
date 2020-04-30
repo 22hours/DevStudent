@@ -25,7 +25,7 @@ public class IsValidate {
         GraphQLContext context =  env.getContext();
         HttpServletRequest request = context.getHttpServletRequest().get();
         if(request.getHeader("Authorization").equals(null)){
-            return new Count(-1); // invalidate
+            return new Count("-1"); // invalidate
         }
         String jwt = request.getHeader("Authorization");
         hashSecretKey = sha256K.hashValueForSecret(secretKey + nickname);
@@ -34,15 +34,15 @@ public class IsValidate {
                     .parseClaimsJws(jwt).getBody(); // 정상 수행된다면 해당 토큰은 정상토큰
             String tempNickname = claims.get("nickname").toString();
             String tokenState = claims.get("tokenState").toString();
-            if(!tokenState.equals("access") || !tempNickname.equals(nickname)) return new Count(-1); // invalidate
+            if(!tokenState.equals("access") || !tempNickname.equals(nickname)) return new Count("-1"); // invalidate
 
-            return new Count(0); // true
+            return new Count("0"); // true
         } catch (ExpiredJwtException exception) {
             System.out.println("토큰 만료");
-            return new Count(-2); // expired
+            return new Count("-2"); // expired
         } catch (JwtException exception) {
             System.out.println("토큰 변조");
-            return new Count(-1); // invalidate
+            return new Count("-1"); // invalidate
         }
     }
 }

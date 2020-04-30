@@ -13,11 +13,8 @@ public class Login {
     private RandMaker randMaker;
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private CreateNewAccessToken createNewAccessToken;
-//    @Autowired
-//    private CreateNewRefreshToken createNewRefreshToken;
 
 
     public User login(String email, String password, String ip) {
@@ -25,12 +22,9 @@ public class Login {
             return new User();
         }
         User user = userRepository.findByEmail(email);
-        if (!user.getPassword().equals(password) || !user.getAuthState().equals("Certificated")) {
+        if (!user.getPassword().equals(password)) {
             return new User();
         }
-        //String key = randMaker.getKey(false, 20);
-        //user.setRefreshToken(createNewRefreshToken.create(user.getNickname(), email));
-        userRepository.save(user);
         user.setPassword(null);
         user.setAccessToken(createNewAccessToken.create(user.getNickname(), email, ip));
         return user;

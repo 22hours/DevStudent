@@ -1,39 +1,46 @@
 package reverseproxy.proxy.GraphQLLoginServer;
 
-import graphql.schema.DataFetchingEnvironment;
-import graphql.servlet.GraphQLContext;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.JwtException;
-import io.jsonwebtoken.Jwts;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.google.gson.JsonObject;
+
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
-import reverseproxy.proxy.Command.Security.SHA256K;
+import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.xml.bind.DatatypeConverter;
 import java.nio.charset.Charset;
 
 
 public abstract class ConnectLoginServer {
-
-
-    public String getResponse(String query, String name) {
+    public String getResponse(String addURL, JsonObject json) {
+        String url = "http://localhost:8100/user";
+        System.out.println(url+addURL);
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://localhost:8100/graphql";
         restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
         HttpHeaders headers = new HttpHeaders();
-        headers.add("content-type", "application/graphql");
-        headers.add("EncodingType","utf-8");
-        ResponseEntity<String> response = restTemplate.postForEntity(url, new HttpEntity<>(query, headers), String.class);
-        int size = name.length() + 2;
-        String str = response.getBody();
-        return str.substring(str.indexOf(name) + size, str.lastIndexOf('}') - 1);
+        headers.add("content-type", "application/json");
+        headers.add("EncodingType","UTF-8");
+        HttpEntity<String> entity = new HttpEntity<String>(json.toString(), headers);
+        ResponseEntity<String> response = restTemplate.exchange(url+addURL,HttpMethod.POST, entity, String.class);
+        return response.getBody();
     }
-
-
+    public String getResponse(String nickname){
+        String url = "http://localhost:8100/user/"+nickname+"/data";
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
+        System.out.println(builder.toUriString());
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("content-type", "application/json");
+        headers.add("EncodingType","UTF-8");
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        HttpEntity<String> response = restTemplate.exchange(
+                builder.toUriString(),
+                HttpMethod.GET,
+                entity,
+                String.class);
+        return response.getBody();
+    }
 }

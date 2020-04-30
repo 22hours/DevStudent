@@ -1,5 +1,10 @@
 package com.hours22.devstudent.Entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Count {
     private String count;
 

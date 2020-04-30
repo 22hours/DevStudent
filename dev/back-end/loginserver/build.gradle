@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'loginserver'
-version = '0.0.2'
+version = '0.1.4'
 sourceCompatibility = '1.8'
 
 configurations {
@@ -35,6 +35,7 @@ dependencies {
     implementation 'com.graphql-java:graphql-java:11.0'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     compile 'io.jsonwebtoken:jjwt:0.9.0'
+
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'

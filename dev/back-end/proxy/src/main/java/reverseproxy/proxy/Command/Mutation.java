@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.*;
 import reverseproxy.proxy.GraphQLLoginServer.*;
 import reverseproxy.proxy.GraphQLLoginServer.Check.CheckDuplicateEmail;
-import reverseproxy.proxy.GraphQLLoginServer.Check.CheckDuplicateNickname;
+import reverseproxy.proxy.GraphQLLoginServer.Create.CreateNickname;
 import reverseproxy.proxy.GraphQLLoginServer.Create.CreateUser;
 import reverseproxy.proxy.GraphQLLoginServer.Login.Login;
 import reverseproxy.proxy.GraphQLLoginServer.Login.Logout;
@@ -19,6 +19,8 @@ import reverseproxy.proxy.GraphQLMainServer.Delete.DeleteAlarm;
 import reverseproxy.proxy.GraphQLMainServer.Delete.DeleteAnswer;
 import reverseproxy.proxy.GraphQLMainServer.Delete.DeleteComment;
 import reverseproxy.proxy.GraphQLMainServer.Delete.DeleteQuestion;
+import reverseproxy.proxy.GraphQLMainServer.Update.UpdateAdoptedAnswerId;
+import reverseproxy.proxy.GraphQLMainServer.Update.UpdateUserInfo;
 
 import java.util.List;
 
@@ -49,16 +51,16 @@ public class Mutation implements GraphQLMutationResolver {
     @Autowired
     private CheckDuplicateEmail checkDuplicateEmail;
     @Autowired
-    private CheckDuplicateNickname checkDuplicateNickname;
+    private CreateNickname createNickname;
     @Autowired
     private Logout logout;
     @Autowired
     private UpdateUserInfo updateUserInfo;
+    @Autowired
+    private UpdateAdoptedAnswerId updateAdoptedAnswerId;
 
     //region MainServer Create
     public Question createQuestion(String title, String author, List<String> tags, String content)  {
-        // token 검사
-        System.out.println("Request 값 : " + title+"\t"+author+"\t"+tags+"\t"+content);
         return createQuestion.createQuestion(title, author, tags, content);
     }
 
@@ -75,6 +77,10 @@ public class Mutation implements GraphQLMutationResolver {
     public Question createLike(String question_id, String answer_id, String nickname, String status)  {
         // token 검사
         return createLike.createLike(question_id, answer_id, nickname, status);
+    }
+
+    public Question updateAdoptedAnswerId(String question_id, String answer_id, String nickname){
+        return updateAdoptedAnswerId.updateAdoptedAnswerId(question_id, answer_id, nickname);
     }
 
     //endregion
@@ -107,28 +113,29 @@ public class Mutation implements GraphQLMutationResolver {
 
     public Count logoutFromServer(String email) { // 토큰 만료 시키기
         if (logout.logoutFromServer(email)) {
-            return new Count(1); // 성공했다
+            return new Count("1"); // 성공했다
         }
-        return new Count(0); // 실패했다
+        return new Count("0"); // 실패했다
     }
 
-    public User createUser(String email, String password, String nickname, String schoolName) {
-        return createUser.createUser(email, password, nickname, schoolName);
+    public User createUser(String email, String password, String schoolName) {
+        return createUser.createUser(email, password, schoolName);
     }
 
     public User updateUserAuthState(String authState) {
         return updateUserAuthState.updateUserAuthState(authState);
     }
 
-    public User updateUserInfo(String nickname, String gitLink){
+    public UserInfo updateUserInfo(String nickname, String gitLink){
         return updateUserInfo.updateUserInfo(nickname, gitLink);
     }
     //endregion
     public Count checkDuplicateEmail(String email) {
+
         return checkDuplicateEmail.checkDuplicateEmail(email);
     }
 
-    public Count checkDuplicateNickname(String nickname) {
-        return checkDuplicateNickname.checkDuplicateNickname(nickname);
+    public User createNickname(String email, String nickname, DataFetchingEnvironment env){
+        return createNickname.creteNickname(email,nickname,env);
     }
 }

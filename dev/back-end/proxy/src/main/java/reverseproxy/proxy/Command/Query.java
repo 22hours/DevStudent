@@ -4,12 +4,10 @@ import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import reverseproxy.proxy.Entity.Alarm;
-import reverseproxy.proxy.Entity.Count;
-import reverseproxy.proxy.Entity.Question;
-import reverseproxy.proxy.Entity.User;
-import reverseproxy.proxy.GraphQLLoginServer.FindUserByNickname;
+import reverseproxy.proxy.Entity.*;
+import reverseproxy.proxy.GraphQLMainServer.Find.FindUserByNickname;
 import reverseproxy.proxy.GraphQLMainServer.Count.CountAllQuestions;
+import reverseproxy.proxy.GraphQLMainServer.Count.CountTags;
 import reverseproxy.proxy.GraphQLMainServer.Count.CountUnreadAlarms;
 import reverseproxy.proxy.GraphQLMainServer.Find.*;
 
@@ -33,6 +31,8 @@ public class Query implements GraphQLQueryResolver {
     private CountAllQuestions countAllQuestions;
     @Autowired
     private FindUserByNickname findUserByNickname;
+    @Autowired
+    private CountTags countTags;
 
 
     public List<Question> findAllQuestions(String param, int pageNum, int requiredCount) {
@@ -43,8 +43,8 @@ public class Query implements GraphQLQueryResolver {
         return findQuestionsByOption.findQuestionsByOption(param, option, searchContent, pageNum, requiredCount);
     }
 
-    public Question findQuestionBy_id(String _id) {
-        return findQuestionBy_id.findQuestionBy_id(_id);
+    public Question findQuestionBy_id(String _id, DataFetchingEnvironment env) {
+        return findQuestionBy_id.findQuestionBy_id(_id, env);
     }
 
     public List<Question> findQuestionsByTags(String param, int pageNum, int requiredCount, List<String> tags, String logical) {
@@ -52,12 +52,10 @@ public class Query implements GraphQLQueryResolver {
     }
 
     public List<Alarm> findAllAlarms(String nickname, int pageNum, int requiredCount){
-        // token 검사 완료
         return findAllAlarms.findAllAlarms(nickname, pageNum, requiredCount);
     }
 
     public Count countUnreadAlarms(String nickname) {
-        // token 검사 완료
         return countUnreadAlarms.countUnreadAlarms(nickname);
     }
 
@@ -65,9 +63,10 @@ public class Query implements GraphQLQueryResolver {
         return countAllQuestions.countAllQuestions();
     }
 
-    public User findUserByNickname(String nickname) {
-        // token 검사 완료
+    public UserInfo findUserByNickname(String nickname) {
         return findUserByNickname.findUserByNickname(nickname);
     }
-
+    public List<Tag> countTags(int requiredCount, List<String> tags){
+        return countTags.countTags(requiredCount, tags);
+    }
 }

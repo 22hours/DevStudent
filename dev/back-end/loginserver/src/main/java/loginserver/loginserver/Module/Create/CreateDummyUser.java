@@ -6,7 +6,6 @@ import loginserver.loginserver.Module.RandMaker;
 import loginserver.loginserver.Repository.UserRepository;
 
 public class CreateDummyUser implements Runnable{
-
     private UserRepository userRepository;
     private RandMaker randMaker;
     private String email = null;
