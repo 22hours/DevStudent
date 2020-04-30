@@ -13,6 +13,7 @@
     min-height: 100vh;
     height: auto;
     padding-top: 2%;
+    padding-bottom: 120px;
 }
 
 .new-question-wrapper .new-question-header-row {
