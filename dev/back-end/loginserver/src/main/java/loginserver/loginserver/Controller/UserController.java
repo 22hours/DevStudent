@@ -5,7 +5,6 @@ import loginserver.loginserver.Entity.User;
 import loginserver.loginserver.Entity.UserInfo;
 import loginserver.loginserver.Module.Create.CreateNewAccessToken;
 import loginserver.loginserver.Module.Create.CreateUser;
-import loginserver.loginserver.Module.Find.FindUserByNickname;
 import loginserver.loginserver.Module.Login;
 import loginserver.loginserver.Module.Update.UpdateUserAuthState;
 import loginserver.loginserver.Repository.UserInfoRepository;
@@ -25,8 +24,6 @@ public class UserController {
     @Autowired
     private UserInfoRepository userInfoRepository;
     @Autowired
-    private FindUserByNickname findUserByNickname;
-    @Autowired
     private CreateUser createUser;
     @Autowired
     private UpdateUserAuthState updateUserAuthState;
@@ -35,10 +32,6 @@ public class UserController {
     @Autowired
     private CreateNewAccessToken createNewAccessToken;
 
-    @RequestMapping(value="/{nickname}/data",method = RequestMethod.GET)
-    public User findUserByNickname(@PathVariable("nickname") String nickname){
-        return findUserByNickname.findUserByNickname(nickname);
-    }
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public User createUser(@RequestBody User user) {
         String email = user.getEmail();

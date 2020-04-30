@@ -1,14 +1,13 @@
 package com.hours22.devstudent.Controller;
 
+import com.hours22.devstudent.Command.Find.FindUserInfo;
 import com.hours22.devstudent.Command.Update.UpdateUserInfo;
 import com.hours22.devstudent.Entity.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.annotation.WebServlet;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/main/userInfo/*")
@@ -16,11 +15,19 @@ import javax.servlet.annotation.WebServlet;
 public class UserInfoController {
     @Autowired
     private UpdateUserInfo updateUserInfo;
+    @Autowired
+    private FindUserInfo findUserInfo;
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public UserInfo updateUserInfo(@RequestBody UserInfo userInfo){
         String nickname = userInfo.getNickname();
         String gitLink = userInfo.getGitLink();
         return updateUserInfo.updateUserInfo(nickname, gitLink);
+    }
+
+    @RequestMapping(value="/find", method = RequestMethod.POST)
+    public UserInfo findUserByNickname(@RequestBody Map<String, String> map){
+        String nickname = map.get("nickname");
+        return findUserInfo.findUserInfo(nickname);
     }
 }

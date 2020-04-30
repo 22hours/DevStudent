@@ -14,10 +14,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http
                 .authorizeRequests()
-                .anyRequest().permitAll();
-    //.anyRequest().access("hasIpAddress('0:0:0:0:0:0:0:1') or hasIpAddress('172.30.1.26') or hasIpAddress('127.0.0.1')"); //로컬 호스트, 정구 ip : 나중에 수정 요망
+                .anyRequest().access("hasIpAddress('0:0:0:0:0:0:0:1') or hasIpAddress('127.0.0.1')"); //로컬 호스트, 정구 ip : 나중에 수정 요망
     }
-
-
-
 }

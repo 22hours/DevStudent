@@ -127,7 +127,7 @@ public class Mutation implements GraphQLMutationResolver {
     }
 
     public UserInfo updateUserInfo(String nickname, String gitLink){
-        return null;
+        return updateUserInfo.updateUserInfo(nickname, gitLink);
     }
     //endregion
     public Count checkDuplicateEmail(String email) {

@@ -11,7 +11,9 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -23,6 +25,7 @@ public class CreateQuestion extends Create {
     @Autowired
     private AddPoint addPoint;
 
+
     public Question createQuestion(String title, String author, List<String> tags, String content) {
         List<String> tagList = new ArrayList<>();
         for(int i=0;i<tags.size();i++){
@@ -30,6 +33,12 @@ public class CreateQuestion extends Create {
             name = name.replaceAll(" ", "");
             tagList.add(name);
         }
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        content = content.replaceAll("linmemhnebggaijoinhajeoyndohsgauhenkwin", "linjiewhngguyeamjhghoaonknmnioeebdnihgjloenewason/" + simpleDateFormat.format(date));
+        System.out.println("test1");
+        System.out.println(content);
+        System.out.println("test END");
         UserInfo userInfo = findUserInfo.findUserInfo(author);
         String seqNum = makeSequence("Question");
         String previews = (content.length() < 100) ? content : content.substring(0, 100);

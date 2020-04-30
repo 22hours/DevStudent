@@ -11,3 +11,7 @@ type UserInfo{
 extend type Mutation {
     updateUserInfo(nickname : String, gitLink : String) : UserInfo
 }
+
+extend type Query{
+    findUserByNickname(nickname : String) : UserInfo
+}

@@ -29,5 +29,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new JwtAuthenticationFilter(checkJwt), UsernamePasswordAuthenticationFilter.class);
         System.out.println("와우!");
     }
-
 }

@@ -5,7 +5,7 @@ import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import reverseproxy.proxy.Entity.*;
-import reverseproxy.proxy.GraphQLLoginServer.FindUserByNickname;
+import reverseproxy.proxy.GraphQLMainServer.Find.FindUserByNickname;
 import reverseproxy.proxy.GraphQLMainServer.Count.CountAllQuestions;
 import reverseproxy.proxy.GraphQLMainServer.Count.CountTags;
 import reverseproxy.proxy.GraphQLMainServer.Count.CountUnreadAlarms;
@@ -63,7 +63,7 @@ public class Query implements GraphQLQueryResolver {
         return countAllQuestions.countAllQuestions();
     }
 
-    public User findUserByNickname(String nickname) {
+    public UserInfo findUserByNickname(String nickname) {
         return findUserByNickname.findUserByNickname(nickname);
     }
     public List<Tag> countTags(int requiredCount, List<String> tags){

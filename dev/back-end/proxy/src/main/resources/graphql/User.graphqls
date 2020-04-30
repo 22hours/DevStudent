@@ -17,7 +17,3 @@ extend type Mutation{
     logoutFromServer(email : String) : Count
     createNickname(email : String, nickname : String) : User
 }
-
-extend type Query{
-    findUserByNickname(nickname : String) : User
-}
