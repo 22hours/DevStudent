@@ -18,9 +18,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.nio.file.Files;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,19 +34,26 @@ public class FileUploadController {
     private FileUploadDownloadService service;
 
     @GetMapping("/")
-    public String controllerMain() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar cal = Calendar.getInstance();
+    public String controllerMain() throws ParseException {
+        long time = System.currentTimeMillis();
+        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String now = dayTime.format(new Date(time));
+        System.out.println(now);
+        Date originalDate = dayTime.parse(now);
+        long originalTime = originalDate.getTime();
+        dayTime = new SimpleDateFormat("yyyy-MM-dd");
+        return dayTime.format(new Date(originalTime));
+        /*Calendar cal = Calendar.getInstance();
         System.out.println("오늘 날짜 : " + dateFormat.format(cal.getTime()));
         cal.add(Calendar.DAY_OF_MONTH, 1);
-        return "오늘 날짜 : " + dateFormat.format(cal.getTime());
+        return "오늘 날짜 : " + dateFormat.format(cal.getTime());*/
     }
 
     @CrossOrigin(origins = "*")
     @PostMapping("/uploadDummyFile")
     public FileUploadResponse uploadDummyFile(@RequestParam("file") MultipartFile file) {
         service.setFileLocation("userContent");
-        String fileName = service.storeFile(file);
+        String fileName = service.storeFile(file,true);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/userContent/")
                 .path(fileName)
@@ -53,18 +62,19 @@ public class FileUploadController {
     }
 
     @CrossOrigin(origins = "*")
-    @GetMapping("/uploadFile/{fileName:.+}")
-    public FileUploadResponse uploadRealFile(@PathVariable String fileName) throws IOException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DAY_OF_MONTH, 1);
-        String today = dateFormat.format(cal.getTime());
+    @GetMapping("/uploadFile/{date}/{fileName:.+}")
+    public FileUploadResponse uploadRealFile(@PathVariable String date,@PathVariable String fileName) throws IOException, ParseException {
+        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date originalDate = dayTime.parse(date);
+        long originalTime = originalDate.getTime();
+        dayTime = new SimpleDateFormat("yyyy-MM-dd");
+        date = dayTime.format(new Date(originalTime));
         service.setFileLocation("userContent");
         Resource resource = service.loadFileAsResource(fileName);
         File originalFile = resource.getFile();
-        service.setFileLocation("userRealContent/" + today);
-        FileItem fileItem = new DiskFileItem("mainFile", Files.probeContentType(originalFile.toPath()), false, originalFile.getName(), (int) originalFile.length(), originalFile.getParentFile());
+        service.setFileLocation("userRealContent/" + date);
 
+        FileItem fileItem = new DiskFileItem("mainFile", Files.probeContentType(originalFile.toPath()), false, originalFile.getName(), (int) originalFile.length(), originalFile.getParentFile());
         try {
             InputStream input = new FileInputStream(originalFile);
             OutputStream os = fileItem.getOutputStream();
@@ -78,10 +88,10 @@ public class FileUploadController {
 
         MultipartFile multipartFile = new CommonsMultipartFile(fileItem);
 
-        String tempfileName = service.storeFile(multipartFile);
+        String tempfileName = service.storeFile(multipartFile,false);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/userRealContent/" + today + "/")
+                .path("/userRealContent/" + date + "/")
                 .path(tempfileName)
                 .toUriString();
         return new FileUploadResponse(tempfileName, fileDownloadUri, multipartFile.getContentType(), multipartFile.getSize());
@@ -122,8 +132,13 @@ public class FileUploadController {
 
     @CrossOrigin(origins = "*")
     @GetMapping("/userRealContent/{date}/{fileName:.+}")
-    public ResponseEntity<Resource> downloadRealFile(@PathVariable String date, @PathVariable String fileName, HttpServletRequest request) {
+    public ResponseEntity<Resource> downloadRealFile(@PathVariable String date, @PathVariable String fileName, HttpServletRequest request) throws ParseException {
         // Load file as Resource
+        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date originalDate = dayTime.parse(date);
+        long originalTime = originalDate.getTime();
+        dayTime = new SimpleDateFormat("yyyy-MM-dd");
+        date = dayTime.format(new Date(originalTime));
         service.setFileLocation("userRealContent/" + date);
         Resource resource = service.loadFileAsResource(fileName);
 

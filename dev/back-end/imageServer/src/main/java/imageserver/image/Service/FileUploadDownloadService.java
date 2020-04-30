@@ -47,18 +47,24 @@ public class FileUploadDownloadService {
         }
     }
 
-    public String storeFile(MultipartFile file) {
+    public String storeFile(MultipartFile file,boolean isit) {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-
+        Path targetLocation = null;
+        String rand = randMaker.getKey(false, 20);
         try {
             // 파일명에 부적합 문자가 있는지 확인한다.
             if (fileName.contains(".."))
                 throw new FileUploadException("파일명에 부적합 문자가 포함되어 있습니다. " + fileName);
-
-            String str = fileName.substring(fileName.lastIndexOf('.'));
-            String rand = randMaker.getKey(false,20);
-            rand = rand+str;
-            Path targetLocation = this.fileLocation.resolve(rand);
+            if(isit) {
+                String str = fileName.substring(fileName.lastIndexOf('.'));
+                rand = rand + str;
+                targetLocation = this.fileLocation.resolve(rand);
+            }
+            else{
+                targetLocation = this.fileLocation.resolve(fileName);
+                Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
+                return fileName;
+            }
 
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
@@ -85,18 +91,4 @@ public class FileUploadDownloadService {
         }
     }
 
-    public Resource loadFileAsResource(String fileName, String path) {
-        try {
-            Path filePath = this.fileLocation.resolve(fileName).normalize();
-            Resource resource = new UrlResource(filePath.toUri());
-
-            if (resource.exists()) {
-                return resource;
-            } else {
-                throw new FileDownloadException(fileName + " 파일을 찾을 수 없습니다.");
-            }
-        } catch (MalformedURLException e) {
-            throw new FileDownloadException(fileName + " 파일을 찾을 수 없습니다.", e);
-        }
-    }
 }
