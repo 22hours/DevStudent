@@ -1,6 +1,7 @@
 package com.hours22.devstudent.Command.Create;
 
 import com.hours22.devstudent.Command.Find.FindUserInfo;
+import com.hours22.devstudent.Command.Module.AddPoint;
 import com.hours22.devstudent.Entity.Question;
 import com.hours22.devstudent.Entity.UserInfo;
 import com.hours22.devstudent.Repository.QuestionRepository;
@@ -19,6 +20,8 @@ public class CreateQuestion extends Create {
     private QuestionRepository questionRepository;
     @Autowired
     private FindUserInfo findUserInfo;
+    @Autowired
+    private AddPoint addPoint;
 
     public Question createQuestion(String title, String author, List<String> tags, String content) {
         List<String> tagList = new ArrayList<>();
@@ -34,6 +37,8 @@ public class CreateQuestion extends Create {
 
         Question question = new Question(seqNum, title, userInfo, tagList, content, previews);
         questionRepository.save(question);
+        userInfo = addPoint.addPoint("createQuestion", author);
+        question.setAuthor(userInfo);
         return question;
     }
 }

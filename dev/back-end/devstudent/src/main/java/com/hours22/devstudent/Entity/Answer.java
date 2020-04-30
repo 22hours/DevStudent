@@ -18,6 +18,7 @@ public class Answer {
     private String _id; // 고유 number
 
     @DBRef
+    @Setter
     private UserInfo author;
 
     private String content;

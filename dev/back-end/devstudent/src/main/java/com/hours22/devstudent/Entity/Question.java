@@ -24,6 +24,7 @@ public class Question {
     @Id
     private String _id; // 고유 number
     private String title;
+    @Setter
     @DBRef
     private UserInfo author;
 

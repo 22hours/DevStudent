@@ -1,6 +1,7 @@
 package com.hours22.devstudent.Command.Create;
 
 import com.hours22.devstudent.Command.Find.FindUserInfo;
+import com.hours22.devstudent.Command.Module.AddPoint;
 import com.hours22.devstudent.Entity.Alarm;
 import com.hours22.devstudent.Entity.Answer;
 import com.hours22.devstudent.Entity.Question;
@@ -17,6 +18,8 @@ public class CreateAnswer extends Create {
     private QuestionRepository questionRepository;
     @Autowired
     private FindUserInfo findUserInfo;
+    @Autowired
+    private AddPoint addPoint;
     public Answer createAnswer(String question_id, String author, String content) {
         if (questionRepository.countBy_id(question_id) == 0)
             return new Answer(null, null, "Not Exist Question");
@@ -30,6 +33,8 @@ public class CreateAnswer extends Create {
         question.setAnswers(answers);
         question.setAnswerCount(question.getAnswerCount() + 1);
         questionRepository.save(question);
+        userInfo = addPoint.addPoint("createAnswer", author);
+        answer.setAuthor(userInfo);
         // 알람 생성 기능
         String questionAuthor = question.getAuthor().getNickname(); // 게시물 작성자 알아오기
         createAlarm(question_id, questionAuthor, author, "님이 답변을 달았습니다.");
