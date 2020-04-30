@@ -2,7 +2,9 @@ package imageserver.image.Controller;
 
 import imageserver.image.Response.FileUploadResponse;
 import imageserver.image.Service.FileUploadDownloadService;
-import org.slf4j.ILoggerFactory;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItem;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -10,11 +12,15 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,13 +33,17 @@ public class FileUploadController {
 
     @GetMapping("/")
     public String controllerMain() {
-        return "Hello~ File Upload Test.";
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        System.out.println("오늘 날짜 : " + dateFormat.format(cal.getTime()));
+        cal.add(Calendar.DAY_OF_MONTH, 1);
+        return "오늘 날짜 : " + dateFormat.format(cal.getTime());
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/uploadFile")
-    public FileUploadResponse uploadFile(@RequestParam("file") MultipartFile file) {
-        System.out.println("UploadFile In!!");
+    @PostMapping("/uploadDummyFile")
+    public FileUploadResponse uploadDummyFile(@RequestParam("file") MultipartFile file) {
+        service.setFileLocation("userContent");
         String fileName = service.storeFile(file);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/userContent/")
@@ -42,11 +52,46 @@ public class FileUploadController {
         return new FileUploadResponse(fileName, fileDownloadUri, file.getContentType(), file.getSize());
     }
 
+    @CrossOrigin(origins = "*")
+    @GetMapping("/uploadFile/{fileName:.+}")
+    public FileUploadResponse uploadRealFile(@PathVariable String fileName) throws IOException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_MONTH, 1);
+        String today = dateFormat.format(cal.getTime());
+        service.setFileLocation("userContent");
+        Resource resource = service.loadFileAsResource(fileName);
+        File originalFile = resource.getFile();
+        service.setFileLocation("userRealContent/" + today);
+        FileItem fileItem = new DiskFileItem("mainFile", Files.probeContentType(originalFile.toPath()), false, originalFile.getName(), (int) originalFile.length(), originalFile.getParentFile());
+
+        try {
+            InputStream input = new FileInputStream(originalFile);
+            OutputStream os = fileItem.getOutputStream();
+            IOUtils.copy(input, os);
+            // Or faster..
+            // IOUtils.copy(new FileInputStream(file), fileItem.getOutputStream());
+        } catch (IOException ex) {
+            System.out.println("File -> MultipartFile 전환 오류!");
+            ex.printStackTrace();
+        }
+
+        MultipartFile multipartFile = new CommonsMultipartFile(fileItem);
+
+        String tempfileName = service.storeFile(multipartFile);
+
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/userRealContent/" + today + "/")
+                .path(tempfileName)
+                .toUriString();
+        return new FileUploadResponse(tempfileName, fileDownloadUri, multipartFile.getContentType(), multipartFile.getSize());
+    }
+
     @PostMapping("/uploadMultipleFiles")
     public List<FileUploadResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
         return Arrays.asList(files)
                 .stream()
-                .map(file -> uploadFile(file))
+                .map(file -> uploadDummyFile(file))
                 .collect(Collectors.toList());
     }
 
@@ -54,7 +99,6 @@ public class FileUploadController {
     @GetMapping("/userContent/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
         // Load file as Resource
-        System.out.println("DownloadFile In!!");
         Resource resource = service.loadFileAsResource(fileName);
 
         // Try to determine file's content type
@@ -62,6 +106,33 @@ public class FileUploadController {
         try {
             contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
         } catch (IOException ex) {
+
+        }
+
+        // Fallback to the default content type if type could not be determined
+        if (contentType == null) {
+            contentType = "application/octet-stream";
+        }
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(contentType))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+                .body(resource);
+    }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/userRealContent/{date}/{fileName:.+}")
+    public ResponseEntity<Resource> downloadRealFile(@PathVariable String date, @PathVariable String fileName, HttpServletRequest request) {
+        // Load file as Resource
+        service.setFileLocation("userRealContent/" + date);
+        Resource resource = service.loadFileAsResource(fileName);
+
+        // Try to determine file's content type
+        String contentType = null;
+        try {
+            contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
+        } catch (IOException ex) {
+
         }
 
         // Fallback to the default content type if type could not be determined

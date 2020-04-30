@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,13 +19,25 @@ import java.nio.file.StandardCopyOption;
 
 @Service
 public class FileUploadDownloadService {
-    private final Path fileLocation;
+    private Path fileLocation;
+
     @Autowired
     private RandMaker randMaker;
 
     @Autowired
     public FileUploadDownloadService(FileUploadProperties prop) {
         this.fileLocation = Paths.get(prop.getUploadDir())
+                .toAbsolutePath().normalize();
+
+        try {
+            Files.createDirectories(this.fileLocation);
+        } catch (Exception e) {
+            throw new FileUploadException("파일을 업로드할 디렉토리를 생성하지 못했습니다.", e);
+        }
+    }
+
+    public void setFileLocation(String date){
+        this.fileLocation = Paths.get(date)
                 .toAbsolutePath().normalize();
 
         try {
@@ -56,6 +69,7 @@ public class FileUploadDownloadService {
         }
     }
 
+
     public Resource loadFileAsResource(String fileName) {
         try {
             Path filePath = this.fileLocation.resolve(fileName).normalize();
@@ -71,5 +85,18 @@ public class FileUploadDownloadService {
         }
     }
 
+    public Resource loadFileAsResource(String fileName, String path) {
+        try {
+            Path filePath = this.fileLocation.resolve(fileName).normalize();
+            Resource resource = new UrlResource(filePath.toUri());
 
+            if (resource.exists()) {
+                return resource;
+            } else {
+                throw new FileDownloadException(fileName + " 파일을 찾을 수 없습니다.");
+            }
+        } catch (MalformedURLException e) {
+            throw new FileDownloadException(fileName + " 파일을 찾을 수 없습니다.", e);
+        }
+    }
 }
