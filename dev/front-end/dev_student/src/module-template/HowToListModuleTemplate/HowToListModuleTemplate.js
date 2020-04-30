@@ -34,6 +34,7 @@ const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
                 id={_id}
                 key={_id}
                 authorNickname={author.nickname}
+                authorPoint={author.point}
                 authorGrade={author.grade}
                 title={title}
                 answers={answerCount}
@@ -69,6 +70,7 @@ const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount, questionAll 
                 id={_id}
                 key={_id}
                 authorNickname={author.nickname}
+                authorPoint={author.point}
                 authorGrade={author.grade}
                 title={title}
                 answers={answerCount}

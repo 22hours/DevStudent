@@ -23,8 +23,8 @@ const Nickname = () => {
 
     const handleSubmitNickname = () => {
         const email = sessionStorage.getItem("email");
-        if (nickName.length > 8 || nickName.length < 3) {
-            alert("닉네임은 3자리 ~ 8자리로 입력해주세요.");
+        if (nickName.length > 10 || nickName.length < 3) {
+            alert("닉네임은 3자리 ~ 10자리로 입력해주세요.");
             return;
         } else {
             setNicknameClick(true);

@@ -26,6 +26,7 @@ const HowToBoxItem = (props) => {
         id,
         authorNickname,
         authorGrade,
+        authorPoint,
         title,
         date,
         dateToText,
@@ -91,7 +92,7 @@ const HowToBoxItem = (props) => {
                                     {authorNickname}
                                 </a>
                             </div>
-                            <div id="user-stat">120 point</div>
+                            <div id="user-stat">{authorPoint} point</div>
                         </div>
                     </div>
                 </div>
