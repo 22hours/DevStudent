@@ -9,11 +9,13 @@ import NewQuestionPageTemplate from "page-template/NewQuestionPageTemplate/NewQu
 const NewQuestion = () => {
     const [createQuestion] = useMutation(CREATE_QUESTION);
     const handleSubmit = async (authorParam, titleParam, contentParam, tagsParam) => {
+        console.log(contentParam);
+        var content = contentParam.replace(/\n/g, "<br />");
         createQuestion({
             variables: {
                 author: authorParam,
                 title: titleParam,
-                content: contentParam,
+                content: content,
                 tags: tagsParam,
             },
         })

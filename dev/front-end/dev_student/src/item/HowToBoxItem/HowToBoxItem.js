@@ -16,11 +16,26 @@ import trenta from "img/rate/trenta.png";
 // atoms
 import Tag from "atom/Tag/Tag";
 import Avatar from "atom/Avatar/Avatar";
+import GradeAvatar from "atom/GradeAvatar/GradeAvatar";
 
 //icons
 import VisibilityIcon from "@material-ui/icons/Visibility";
+
 const HowToBoxItem = (props) => {
-    const { id, author, title, date, dateToText, previews, answers, views, likesCount, adoptedAnswerId, tags } = props; //likes 도 추가해야함
+    const {
+        id,
+        authorNickname,
+        authorGrade,
+        title,
+        date,
+        dateToText,
+        previews,
+        answers,
+        views,
+        likesCount,
+        adoptedAnswerId,
+        tags,
+    } = props; //likes 도 추가해야함
     console.log(tags);
     const nickname = JSON.parse(localStorage.getItem("user"))?.nickname;
     const TagListRenderer = () => {
@@ -33,7 +48,7 @@ const HowToBoxItem = (props) => {
         }
     };
     return (
-        <div className={"HowToBoxItem " + (author === nickname ? "myItem" : "none")}>
+        <div className={"HowToBoxItem " + (authorNickname === nickname ? "myItem" : "none")}>
             <div className="howto-item-stats-col">
                 <div className={"stats-row "}>
                     <div className={adoptedAnswerId !== null ? "solved" : answers === 0 ? "default" : "hot"}>
@@ -68,12 +83,12 @@ const HowToBoxItem = (props) => {
                     </div>
                     <div className="item-info-person-col">
                         <div className="person-avatar-col">
-                            <Avatar img={debal} />
+                            <Avatar img={GradeAvatar(authorGrade)} />
                         </div>
                         <div className="person-info-col">
                             <div id="user-nickname">
-                                <a id="nickname" href={"/userinfo/" + author}>
-                                    {author}
+                                <a id="nickname" href={"/userinfo/" + authorNickname}>
+                                    {authorNickname}
                                 </a>
                             </div>
                             <div id="user-stat">120 point</div>

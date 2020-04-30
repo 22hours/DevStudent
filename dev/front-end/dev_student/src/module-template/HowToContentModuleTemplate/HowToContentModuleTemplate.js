@@ -28,14 +28,14 @@ const HowToContentModuleTemplate = ({ match }) => {
     if (data.findQuestionBy_id.author === nickname) {
         mine = true;
     }
-
+    console.log(data.findQuestionBy_id.content);
     const answers = data.findQuestionBy_id.answers.map(
         ({ _id, author, content, date, comments, isLiked, likesCount }) => (
             // likesCount, likes 추가 예쩡
             <HowToQABox
                 _id={_id}
                 key={_id}
-                author={author}
+                authorNickname={author.nickname}
                 date={date}
                 dateToText={time(date)}
                 isQuestion={"A"}
@@ -58,7 +58,7 @@ const HowToContentModuleTemplate = ({ match }) => {
                         mine={mine}
                         _id={data.findQuestionBy_id._id}
                         title={data.findQuestionBy_id.title}
-                        author={data.findQuestionBy_id.author}
+                        authorNickname={data.findQuestionBy_id.author.nickname}
                         date={data.findQuestionBy_id.date}
                         dateToText={time(data.findQuestionBy_id.date)}
                         views={data.findQuestionBy_id.views}
@@ -73,7 +73,7 @@ const HowToContentModuleTemplate = ({ match }) => {
                         tags={data.findQuestionBy_id.tags}
                         _id={match.params.id}
                         isQuestion={"Q"}
-                        author={data.findQuestionBy_id.author}
+                        authorNickname={data.findQuestionBy_id.author.nickname}
                         date={data.findQuestionBy_id.date}
                         question_id={match.params.id}
                         likesCount={data.findQuestionBy_id.likesCount}

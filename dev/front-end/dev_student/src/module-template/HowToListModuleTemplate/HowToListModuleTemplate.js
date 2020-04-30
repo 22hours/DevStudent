@@ -29,11 +29,12 @@ const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
     setQuestionCount(Object.keys(data.findQuestionsByTags).length);
 
     return data.findQuestionsByTags.map(
-        ({ _id, title, author, tags, date, content, answerCount, views, previews, adoptedAnswerId }) => (
+        ({ _id, title, author, tags, date, content, answerCount, views, previews, adoptedAnswerId, likesCount }) => (
             <HowToBoxItem
                 id={_id}
                 key={_id}
-                author={author}
+                authorNickname={author.nickname}
+                authorGrade={author.grade}
                 title={title}
                 answers={answerCount}
                 views={views}
@@ -41,6 +42,7 @@ const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
                 dateToText={time(date)}
                 previews={previews}
                 tags={tags}
+                likesCount={likesCount}
                 adoptedAnswerId={adoptedAnswerId}
             ></HowToBoxItem>
         )
@@ -62,16 +64,18 @@ const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount, questionAll 
         return <p>Error!</p>;
     }
     return data.findAllQuestions.map(
-        ({ _id, title, author, tags, date, content, answerCount, views, previews, adoptedAnswerId }) => (
+        ({ _id, title, author, tags, date, content, answerCount, views, previews, adoptedAnswerId, likesCount }) => (
             <HowToBoxItem
                 id={_id}
                 key={_id}
-                author={author}
+                authorNickname={author.nickname}
+                authorGrade={author.grade}
                 title={title}
                 answers={answerCount}
                 views={views}
                 date={date}
                 dateToText={time(date)}
+                likesCount={likesCount}
                 previews={previews}
                 tags={tags}
                 adoptedAnswerId={adoptedAnswerId}

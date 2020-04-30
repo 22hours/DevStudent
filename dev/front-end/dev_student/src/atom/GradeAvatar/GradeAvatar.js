@@ -1,6 +1,7 @@
 import { bean, short, tall, grande, venti, trenta, debal } from "img/rate/ImageIndex";
 const grade = JSON.parse(localStorage.getItem("user"))?.grade;
-const GradeAvatar = () => {
+const GradeAvatar = (grade) => {
+    if (grade === null) grade = JSON.parse(localStorage.getItem("user"))?.grade;
     switch (grade) {
         case "bean":
             return bean;

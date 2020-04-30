@@ -40,7 +40,15 @@ export const CREATE_ANSWER = gql`
     mutation createAnswer($question_id: String!, $author: String!, $content: String!) {
         createAnswer(question_id: $question_id, author: $author, content: $content) {
             _id
-            author
+            author {
+                email
+                nickname
+                point
+                grade
+                gitLink
+                schoolName
+                attendance
+            }
             content
             date
         }
@@ -68,7 +76,15 @@ export const CREATE_COMMENT = gql`
     mutation createComment($question_id: String!, $answer_id: String!, $author: String!, $content: String!) {
         createComment(question_id: $question_id, answer_id: $answer_id, author: $author, content: $content) {
             _id
-            author
+            author {
+                email
+                nickname
+                point
+                grade
+                gitLink
+                schoolName
+                attendance
+            }
             content
             date
         }
@@ -127,7 +143,15 @@ export const UPDATE_ADOPTED_ANSWER_ID = gql`
         updateAdoptedAnswerId(question_id: $question_id, answer_id: $answer_id, nickname: $nickname) {
             title
             _id
-            author
+            author {
+                email
+                nickname
+                point
+                grade
+                gitLink
+                schoolName
+                attendance
+            }
             tags
             date
             content
@@ -149,7 +173,15 @@ export const UPDATE_ADOPTED_ANSWER_ID = gql`
             }
             answers {
                 _id
-                author
+                author {
+                    email
+                    nickname
+                    point
+                    grade
+                    gitLink
+                    schoolName
+                    attendance
+                }
                 content
                 date
                 likesCount

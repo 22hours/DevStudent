@@ -3,6 +3,7 @@ import { useMutation } from "react-apollo";
 import { UPDATE_USER_AUTH_STATE } from "mutation/mutations";
 
 import EmailCheckPageTemplate from "page-template/EmailCheckPageTemplate/EmailCheckPageTemplate";
+import NotFoundPageTemplate from "page-template/NotFoundPageTemplate/NotFoundPageTemplate";
 
 const EmailCheck = ({ match }) => {
     const rand = match.params.rand;
@@ -38,7 +39,7 @@ const EmailCheck = ({ match }) => {
         case "success":
             return <EmailCheckPageTemplate>인증 완료</EmailCheckPageTemplate>;
         case "error":
-            return <p>인증 실패</p>;
+            return <NotFoundPageTemplate />;
         default:
             return <p>인증 진행중 ...</p>;
     }

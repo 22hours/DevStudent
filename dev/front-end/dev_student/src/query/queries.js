@@ -5,7 +5,15 @@ export const findQuestionBy_id_Query = gql`
         findQuestionBy_id(_id: $_id) {
             title
             _id
-            author
+            author {
+                email
+                nickname
+                point
+                grade
+                gitLink
+                schoolName
+                attendance
+            }
             tags
             date
             content
@@ -27,7 +35,15 @@ export const findQuestionBy_id_Query = gql`
             }
             answers {
                 _id
-                author
+                author {
+                    email
+                    nickname
+                    point
+                    grade
+                    gitLink
+                    schoolName
+                    attendance
+                }
                 content
                 date
                 likesCount
@@ -52,7 +68,15 @@ export const findAllQuestionsPage = gql`
         findAllQuestions(param: $param, pageNum: $pageNum, requiredCount: $requiredCount) {
             title
             _id
-            author
+            author {
+                email
+                nickname
+                point
+                grade
+                gitLink
+                schoolName
+                attendance
+            }
             tags
             date
             content
@@ -71,7 +95,15 @@ export const findAllQuestions = gql`
         findAllQuestions(param: $param) {
             title
             _id
-            author
+            author {
+                email
+                nickname
+                point
+                grade
+                gitLink
+                schoolName
+                attendance
+            }
             tags
             date
             content
@@ -90,7 +122,15 @@ export const findAllQuestionsByViews = gql`
         findAllQuestions(param: $param, requiredCount: $requiredCount) {
             title
             _id
-            author
+            author {
+                email
+                nickname
+                point
+                grade
+                gitLink
+                schoolName
+                attendance
+            }
             tags
             date
             content
@@ -143,7 +183,15 @@ export const FIND_QUESTIONS_BY_TAG = gql`
         ) {
             title
             _id
-            author
+            author {
+                email
+                nickname
+                point
+                grade
+                gitLink
+                schoolName
+                attendance
+            }
             tags
             date
             content
@@ -161,7 +209,15 @@ export const FIND_QUESTIONS_BY_TAG = gql`
             }
             answers {
                 _id
-                author
+                author {
+                    email
+                    nickname
+                    point
+                    grade
+                    gitLink
+                    schoolName
+                    attendance
+                }
                 content
                 date
                 comments {
@@ -192,7 +248,15 @@ export const FIND_QUESTIONS_BY_OPTION = gql`
         ) {
             title
             _id
-            author
+            author {
+                email
+                nickname
+                point
+                grade
+                gitLink
+                schoolName
+                attendance
+            }
             tags
             date
             content
@@ -213,7 +277,15 @@ export const FIND_QUESTIONS_BY_OPTION = gql`
             }
             answers {
                 _id
-                author
+                author {
+                    email
+                    nickname
+                    point
+                    grade
+                    gitLink
+                    schoolName
+                    attendance
+                }
                 content
                 date
                 likesCount

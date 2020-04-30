@@ -23,7 +23,7 @@ import time from "util/time";
 const HowToQABox = ({
     _id,
     isQuestion,
-    author,
+    authorNickname,
     date,
     dateToText,
     isLiked,
@@ -80,9 +80,9 @@ const HowToQABox = ({
             return <React.Fragment></React.Fragment>;
         }
     };
-    const CommentList = comments.map(({ _id, author, content, date }) => (
+    const CommentList = comments.map(({ _id, authorNickname, content, date }) => (
         <div key={_id} className="comment-box">
-            <span id={"author"}>{author}&nbsp;</span>
+            <span id={"author"}>{authorNickname}&nbsp;</span>
             &nbsp;
             <span id="content">{content}</span>
             &nbsp; &nbsp;
@@ -108,7 +108,7 @@ const HowToQABox = ({
     };
     const handleAdopt = async () => {
         var adoptReturn = null;
-        if (nickname !== author) {
+        if (nickname !== authorNickname) {
             return;
         }
         if (adoptedAnswerId === null) adoptReturn = window.confirm("이 댓글을 채택하시겠습니까?");
@@ -204,7 +204,7 @@ const HowToQABox = ({
                 <div className="question-box">
                     <div className="header-box">
                         <IsQorAInner />
-                        <span>{author}</span>
+                        <span>{authorNickname}</span>
                         <LikesBoxInner />
                     </div>
                     <div className="main-box">
