@@ -135,7 +135,7 @@ public class Mutation implements GraphQLMutationResolver {
         return checkDuplicateEmail.checkDuplicateEmail(email);
     }
 
-    public User createNickname(String email, String nickname){
-        return createNickname.creteNickname(email,nickname);
+    public User createNickname(String email, String nickname, DataFetchingEnvironment env){
+        return createNickname.creteNickname(email,nickname,env);
     }
 }
