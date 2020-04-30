@@ -31,7 +31,7 @@ public class DeleteUncertifiedAuth {
         String createdUserDate;
         String currentDate;
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy년MM월dd일 HH시mm분ss초");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -1);
         Date date = cal.getTime();

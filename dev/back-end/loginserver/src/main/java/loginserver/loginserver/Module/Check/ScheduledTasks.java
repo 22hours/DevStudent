@@ -23,9 +23,9 @@ public class ScheduledTasks {
 //    public void EventTimerEveryTwentyFourHoursForAttendance() {
 //        resetAttendance.resetAttendance();
 //    }
-//    @Scheduled(cron = "0 3 0 * * *")
-//    public void EventTimerEveryTwentyFourHours() {
-//        deleteUncertifiedAuth.deleteUncertifiedAuth();
-//    }
+    @Scheduled(cron = "0 3 0 * * *")
+    public void EventTimerEveryTwentyFourHours() {
+        deleteUncertifiedAuth.deleteUncertifiedAuth();
+    }
 
 }

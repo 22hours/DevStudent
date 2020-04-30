@@ -38,7 +38,7 @@ public class User {
 
     public User(String email, String password, String schoolName) {
         long time = System.currentTimeMillis();
-        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy년MM월dd일 HH시mm분ss초");
+        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.date = dayTime.format(new Date(time));
         this.password = password;
         this.email = email;

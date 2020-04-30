@@ -3,6 +3,7 @@ package loginserver.loginserver.Controller;
 import loginserver.loginserver.Entity.Count;
 import loginserver.loginserver.Entity.User;
 import loginserver.loginserver.Entity.UserInfo;
+import loginserver.loginserver.Module.Create.CreateNewAccessToken;
 import loginserver.loginserver.Module.Create.CreateUser;
 import loginserver.loginserver.Module.Find.FindUserByNickname;
 import loginserver.loginserver.Module.Login;
@@ -31,6 +32,8 @@ public class UserController {
     private UpdateUserAuthState updateUserAuthState;
     @Autowired
     private Login login;
+    @Autowired
+    private CreateNewAccessToken createNewAccessToken;
 
     @RequestMapping(value="/{nickname}/data",method = RequestMethod.GET)
     public User findUserByNickname(@PathVariable("nickname") String nickname){
@@ -56,12 +59,17 @@ public class UserController {
         return login.login(email, password, ip);
     }
     @RequestMapping(value = "/create/nickname",method = RequestMethod.POST)
-    public User createNickname(@RequestBody User user) {// 중복은 0, 중복이 아닌 것은 1
-        String email = user.getEmail();
-        String nickname = user.getNickname();
+    //public User createNickname(@RequestBody User user) {// 중복은 0, 중복이 아닌 것은 1
+    public User createNickname(@RequestBody Map<String, String> map) {// 중복은 0, 중복이 아닌 것은 1
+        String email = map.get("email");//user.getEmail();
+        String nickname = map.get("nickname");//user.getNickname();
+        String ip = map.get("ip");
         if (!userRepository.existsByNickname(nickname))
         {
             User tempUser = userRepository.findByEmail(email);
+            if(!(tempUser.getAuthState().equals("Certificated")))
+                return new User();
+            tempUser.setAccessToken(createNewAccessToken.create(nickname, email, ip));
             tempUser.setNickname(nickname);
             userRepository.save(tempUser);
             UserInfo userInfo = new UserInfo(email,nickname,tempUser.getSchoolName());
