@@ -62,13 +62,10 @@ public class FileUploadController {
 
     @CrossOrigin(origins = "*")
     //@GetMapping("/uploadRealFile/{date}/{fileName:.+}")
-    @PostMapping("/uploadRealFile/{data}")
+    @PostMapping("/uploadRealFile/{date}")
     public void uploadRealFile(@PathVariable String date, @RequestBody String[] fileNames) throws IOException, ParseException {
-        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date originalDate = dayTime.parse(date);
-        long originalTime = originalDate.getTime();
-        dayTime = new SimpleDateFormat("yyyy-MM-dd");
-        date = dayTime.format(new Date(originalTime));
+        System.out.println(date);
+        System.out.println(fileNames.toString());
         for (String fileName : fileNames) {
             service.setFileLocation("temp");
             Resource resource = service.loadFileAsResource(fileName);
@@ -138,11 +135,6 @@ public class FileUploadController {
     @GetMapping("/" + real + "/{date}/{fileName:.+}")
     public ResponseEntity<Resource> downloadRealFile(@PathVariable String date, @PathVariable String fileName, HttpServletRequest request) throws ParseException {
         // Load file as Resource
-        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date originalDate = dayTime.parse(date);
-        long originalTime = originalDate.getTime();
-        dayTime = new SimpleDateFormat("yyyy-MM-dd");
-        date = dayTime.format(new Date(originalTime));
         service.setFileLocation("real/" + date);
         Resource resource = service.loadFileAsResource(fileName);
 
