@@ -1,4 +1,4 @@
-# DevStudent
+![](./img/devstu_text_logo_empty.png)
 
 ## members
 <center><img src="/img/contributors.png" width="100%" height="70"></center>
