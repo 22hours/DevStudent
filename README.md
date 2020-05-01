@@ -5,6 +5,12 @@
 <a href="https://github.com/22hours">
   <img alt="GitHub forks" src="https://img.shields.io/badge/license-22hours-blue"></a>
 
+#### DEVSTU란?
+
+DEVSTU란 한국 대학생 또는 주니어 개발자들의 자유로운 질문 교환 소통공간을 꿈꾸는 커뮤니티입니다.
+
+
+
 ## members
 <center><img src="/img/contributors.png" width="100%" height="70"></center>
 
