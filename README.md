@@ -1,6 +1,4 @@
 ## <img src="/img/devstu_text_logo_empty.png" width="130px" height="40px">
-> 한국 대학생들의 Stack Overflow
-
 <a href="https://github.com/22hours/DevStudent/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/22hours/DevStudent?style=for-the-badge"></a>
 <a href="https://github.com/22hours/DevStudent/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/22hours/DevStudent?style=for-the-badge"></a>
 ## members
