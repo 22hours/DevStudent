@@ -11,7 +11,6 @@
 <img alt="Bitbucket open pull requests" src="https://img.shields.io/bitbucket/pr-raw/22hours/devstudent?style=flat-square">
 <img alt="GitHub milestones" src="https://img.shields.io/github/milestones/all/22hours/devstudent?style=flat-square">
   <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/22hours/devstudent?style=flat-square">
-  <img alt="GitHub watchers" src="https://img.shields.io/github/watchers/22hours/devstudent?style=flat-square">
 </p>
 
 
