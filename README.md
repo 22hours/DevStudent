@@ -1,4 +1,7 @@
-# <p align="center"><img src="/img/devstu_text_logo_empty.png" width="130px" height="40px"></p>
+# <p align="center"><img src="/img/title_logo.png" width="300px" height="100px"></p>
+
+**<p align="center">한국 대학생 개발자 커뮤니티</p>**
+
 <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/22hours/devstudent">
 <a href="https://github.com/22hours/DevStudent/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/22hours/DevStudent"></a>
 <a href="https://github.com/22hours/DevStudent/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/22hours/DevStudent"></a>
