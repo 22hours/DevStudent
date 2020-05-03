@@ -11,7 +11,12 @@ const AlarmPovider = () => {
     const { loading, error, data } = useQuery(FIND_ALL_ALARMS, {
         variables: { nickname: user, pageNum: 1, requiredCount: 10 },
     });
-    if (loading) return <p>Loading ...</p>;
+    if (loading)
+        return (
+            <div>
+                <CircularProgress />
+            </div>
+        );
     if (error) return <p>Error!</p>;
     return data.findAllAlarms.map(({ _id, question_id, content, date, respondent }) => (
         <Link to={"/howto/question/" + question_id}>
