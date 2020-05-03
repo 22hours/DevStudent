@@ -2,11 +2,9 @@
 
 **<p align="center">한국 대학생 개발자 커뮤니티</p>**
 
-<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/22hours/devstudent">
-<a href="https://github.com/22hours/DevStudent/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/22hours/DevStudent"></a>
-<a href="https://github.com/22hours/DevStudent/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/22hours/DevStudent"></a>
-<a href="https://github.com/22hours">
-  <img alt="GitHub forks" src="https://img.shields.io/badge/license-22hours-blue"></a>
+<p align="center> <img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/22hours/devstudent?style=flat-square"> </p>
+
+
 
 DEVSTU란 한국 대학생 또는 주니어 개발자들의 자유로운 질문 교환 소통공간을 꿈꾸는 커뮤니티입니다.
 
