@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Container, Input, Collapse, Button, Alert } from "reactstrap";
 import { useMutation } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/react-hooks";
 import { UPDATE_USER_INFO } from "mutation/mutations";
+import { FIND_USER_BY_NICKNAME } from "query/queries";
 import "./MypageTemplate.css";
 
 //imgs
@@ -13,6 +15,7 @@ import LaptopChromebookIcon from "@material-ui/icons/LaptopChromebook";
 
 //atoms
 import GradeAvatar from "atom/GradeAvatar/GradeAvatar";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const MypageTemplate = ({ localData, alarmData, myContent }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -81,18 +84,32 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
         window.open("http://" + gitAddress, "_blank");
     };
 
+    const { loading, error, data } = useQuery(FIND_USER_BY_NICKNAME, {
+        variables: { nickname: localData.nickname },
+    });
+
+    if (loading)
+        return (
+            <div>
+                <CircularProgress />
+            </div>
+        );
+    if (error) return <p>Error!</p>;
+
+    const mydata = data.findUserByNickname;
+
     return (
         <React.Fragment>
             <div className="MypageTemplate">
                 <Container>
                     <div className="mypage-user-header-row">
                         <div className="avatar-col">
-                            <img src={GradeAvatar(localData.grade)}></img>
+                            <img src={GradeAvatar(mydata.grade)}></img>
                         </div>
                         <div className="info-col">
-                            <div className={"badge-row " + localData.grade}>{localData.grade}</div>
+                            <div className={"badge-row " + mydata.grade}>{mydata.grade}</div>
                             <div className="nickname-row">
-                                {localData.nickname}
+                                {mydata.nickname}
                                 &nbsp; &nbsp;
                                 <div className="mypage-githubicon" onClick={moveGithubLink}>
                                     <GitHubIcon style={{ fontSize: "20px" }} />
@@ -101,7 +118,7 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
                                 <LaptopChromebookIcon style={{ fontSize: "20px" }} />
                             </div>
                             <div className="sub-row">
-                                <span id="edit-myinfo"> {localData.point}point </span>
+                                <span id="edit-myinfo"> {mydata.point} point </span>
                                 &nbsp; &nbsp; &nbsp; &nbsp;
                             </div>
                         </div>
@@ -117,11 +134,11 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
                             <div className="item-preview">
                                 <div className="item-box">
                                     <span id="item-label">이메일</span>
-                                    <p id="item-value">{localData.email}</p>
+                                    <p id="item-value">{mydata.email}</p>
                                 </div>
                                 <div className="item-box">
                                     <span id="item-label">닉네임</span>
-                                    <p id="item-value">{localData.nickname}</p>
+                                    <p id="item-value">{mydata.nickname}</p>
                                 </div>
                                 <Collapse isOpen={isOpen}>
                                     <div className="item-box">
