@@ -1,6 +1,5 @@
 const timeForToday = (value) => {
     const today = new Date();
-    console.log(today);
     const timeValue = new Date(value);
 
     const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);

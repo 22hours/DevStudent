@@ -6,10 +6,22 @@ import BugReportIcon from "@material-ui/icons/BugReport";
 // items
 import IssueItem from "item/IssueItem/IssueItem";
 
+//icons
+import AddIcon from "@material-ui/icons/Add";
+
 const IssuePageTemplate = ({ issue }) => {
     console.log(issue);
-    const issueList = issue?.map(({ html_url, title, created_at, state, labels, user }) => (
-        <IssueItem key={html_url} title={title} state={state} user={user} html_url={html_url} created_at={created_at} />
+    const issueList = issue?.map(({ html_url, title, created_at, state, labels, user, comments }) => (
+        <IssueItem
+            key={html_url}
+            title={title}
+            state={state}
+            user={user}
+            html_url={html_url}
+            created_at={created_at}
+            labels={labels}
+            comments={comments}
+        />
     ));
 
     return (
@@ -19,6 +31,9 @@ const IssuePageTemplate = ({ issue }) => {
                     <span className="content-header">
                         ISSUES <BugReportIcon />
                     </span>
+                    <div className="make-new-issue">
+                        <a href="https://github.com/22hours/DevStudent/issues/new">ADD NEW ISSUE</a>
+                    </div>
                 </div>
                 <div>{issueList}</div>
             </Container>

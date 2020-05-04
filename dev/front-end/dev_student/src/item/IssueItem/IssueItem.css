@@ -1,7 +1,7 @@
 .IssueItem {
     background: white;
     padding: 10px;
-    height: 80px;
+    height: auto;
     border-radius: 5px;
     border: 1px solid rgb(238, 238, 238);
     margin-bottom: 10px;
@@ -14,14 +14,27 @@
     float: left;
     vertical-align: middle;
     margin-right: 10px;
+    width: 23px;
 }
 
 .IssueItem .main-col {
     height: 100%;
+    /* 23 + 5 + 23 + 5  = 56 */
+    width: calc(100% - 96px);
     float: left;
 }
+
+.IssueItem .comment-col {
+    float: left;
+    width: 53px;
+    height: 100%;
+    margin-left: 5px;
+}
+
 .IssueItem .main-col .title-row {
     margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .IssueItem .main-col .title-row a {
     color: rgb(56, 56, 56);
@@ -38,4 +51,11 @@
     width: 20px;
     height: 20px;
     border-radius: 3px;
+}
+
+.IssueItem .LabelItem {
+    font-size: 12px;
+    padding: 3px;
+    border-radius: 3px;
+    margin-left: 5px;
 }
