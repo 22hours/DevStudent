@@ -17,7 +17,9 @@ import Rule from "./Rule";
 import Nickname from "./Nickname";
 import UserInfo from "./UserInfo";
 import MdGuide from "./MdGuide";
+import Issue from "./Issue";
 export {
+    Issue,
     Alarm,
     EmailCheck,
     AuthRoute,
