@@ -5,7 +5,6 @@ import Login from "./Login";
 import MyPage from "./MyPage";
 import Search from "./Search";
 import NotFound from "./NotFound";
-import Todo from "./Todo";
 import HowTo from "./HowTo";
 import NewQuestion from "./NewQuestion";
 import AuthRoute from "./AuthRoute";
@@ -32,7 +31,6 @@ export {
     MyPage,
     Register,
     Search,
-    Todo,
     NotFound,
     DevNote,
     Logout,
