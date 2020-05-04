@@ -3,14 +3,23 @@
     z-index: 100;
     background-color: rgba(255, 255, 255, 0.9);
     width: 100%;
-    height: 50px;
+    height: auto;
     min-height: 50px;
     position: relative;
     position: fixed;
+    font-family: "Noto Sans KR", sans-serif;
 }
 
 .NewHeaderComponent .header-wrapper {
     height: 100%;
+}
+
+.NewHeaderComponent .header-wrapper-mobile {
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 50px;
+    overflow: hidden;
 }
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@ */
@@ -23,9 +32,9 @@
     height: 100%;
 }
 
-/* @@@@ 피씨 버전 LOGO  css @@@@ */
+/* @@@@ 통합 버전 LOGO  css @@@@ */
 
-.pc-only .header-logo-col .img-box {
+.header-logo-col .img-box {
     line-height: 50px;
 }
 
@@ -71,17 +80,17 @@
     text-align: center;
     line-height: 50px;
 }
-.pc-only .header-user-col a {
+.header-user-col a {
     font-size: 13px !important;
     text-decoration: none !important;
     color: gray !important;
 }
-.pc-only .header-user-col span {
+.header-user-col span {
     font-size: 13px;
     color: gray;
 }
 
-.pc-only .header-user-col #nickname-span {
+.header-user-col #nickname-span {
     cursor: pointer;
 }
 
@@ -89,17 +98,69 @@
 /* @@@@ 모바일 버전 css @@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@ */
 
-.mobile-only .header-logo-col {
-    border: 1px solid rebeccapurple;
-    display: inline-block;
-    width: 20%;
+.mobile-only .header-menu-col {
+    width: 30px;
+    float: left;
     height: 100%;
+    cursor: pointer;
+}
+
+.mobile-only .header-logo-col {
+    position: fixed;
+    /* left 30, right 100 */
+    width: 100%;
+    z-index: -1;
+    padding-right: 10px;
+    text-align: center;
 }
 
 .mobile-only .header-user-col {
-    background-color: green;
-    display: inline-block;
     float: right;
-    width: 15%;
+    text-align: right;
+    width: 100px;
     height: 100%;
+}
+
+.mobile-only .header-logo-col #mobile-logo {
+    width: 110px;
+    height: 30px;
+}
+
+.NewHeaderComponent .collapse-wrapper {
+    height: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.NewHeaderComponent .collapse-wrapper .collapse-item-outter {
+    text-align: center;
+
+    width: 100%;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.NewHeaderComponent .collapse-wrapper .collapse-item-inner {
+    width: 100%;
+}
+
+.NewHeaderComponent .collapse-wrapper .collapse-item-outter a {
+    width: 100%;
+    color: rgb(95, 95, 95);
+    text-decoration: none !important;
+    font-size: 15px;
+}
+.NewHeaderComponent .collapse-wrapper .mobile-on {
+    background-color: rgb(255, 255, 255);
+}
+.NewHeaderComponent .collapse-wrapper .mobile-on a {
+    color: black;
+}
+
+.NewHeaderComponent .collapse-wrapper .collapse-item-outter:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: black !important;
 }
