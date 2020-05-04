@@ -1,5 +1,4 @@
-.nav-mypage-dropdown-btn {
-    border: 2px;
-    border-color: lightsalmon;
-    border-style: solid;
+.user-nickname-btn {
+    text-align: center !important;
+    line-height: 50px !important;
 }

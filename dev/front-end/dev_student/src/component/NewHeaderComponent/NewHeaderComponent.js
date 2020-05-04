@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./NewHeaderComponent.css";
 import { Container, Collapse } from "reactstrap";
 import { Link } from "react-router-dom";
+import MypageDropdownButtonModule from "module/MypageDropdownButtonModule/MypageDropdownButtonModule";
 
 // icon
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
@@ -44,10 +45,6 @@ const NewHeaderComponent = ({ nickname, location }) => {
         setIsOpen(false);
     }, [location.pathname]);
 
-    const handleNicknameClick = () => {
-        alert("show!");
-    };
-
     const UserArea = () => {
         // if (nickname) {
         // } else {
@@ -57,11 +54,7 @@ const NewHeaderComponent = ({ nickname, location }) => {
         //         <GuestArea nickname={"winterlood"} handleNicknameClick={handleNicknameClick} />
         //     </div>
         // );
-        return (
-            <div className="user-outter">
-                <MemberArea nickname={"winterlood"} handleNicknameClick={handleNicknameClick} />
-            </div>
-        );
+        return <MypageDropdownButtonModule />;
     };
     return (
         <div className="NewHeaderComponent">
