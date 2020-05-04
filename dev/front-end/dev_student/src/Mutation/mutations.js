@@ -109,12 +109,8 @@ export const UPDATE_USER_INFO = gql`
     mutation updateUserInfo($nickname: String!, $gitLink: String!) {
         updateUserInfo(nickname: $nickname, gitLink: $gitLink) {
             email
-            password
             nickname
             schoolName
-            date
-            authState
-            accessToken
             gitLink
             grade
             point

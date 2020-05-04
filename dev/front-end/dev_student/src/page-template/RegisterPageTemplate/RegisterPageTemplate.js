@@ -222,12 +222,21 @@ const RegisterTemplate = ({
                                             color="info"
                                             style={btn_style}
                                             onClick={() => {
-                                                setEmailClick(true);
-                                                checkEmail({
-                                                    variables: {
-                                                        email: email + emailSelect,
-                                                    },
-                                                });
+                                                if (email === "null") {
+                                                    alert("이메일을 입력해주세요.");
+                                                    return;
+                                                }
+                                                if (email === "") {
+                                                    alert("이메일을 입력해주세요.");
+                                                    return;
+                                                } else {
+                                                    setEmailClick(true);
+                                                    checkEmail({
+                                                        variables: {
+                                                            email: email + emailSelect,
+                                                        },
+                                                    });
+                                                }
                                             }}
                                         >
                                             <EmailButton />
