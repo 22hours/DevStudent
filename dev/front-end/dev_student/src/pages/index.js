@@ -1,6 +1,5 @@
 import Home from "./Home";
 import About from "./About";
-import Posts from "./Posts";
 import Login from "./Login";
 import MyPage from "./MyPage";
 import Search from "./Search";
@@ -26,7 +25,6 @@ export {
     HowTo,
     Home,
     About,
-    Posts,
     Login,
     MyPage,
     Register,
