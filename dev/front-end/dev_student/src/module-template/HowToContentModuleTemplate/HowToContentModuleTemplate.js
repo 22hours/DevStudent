@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "reactstrap";
 import { useQuery } from "@apollo/react-hooks";
 
@@ -10,6 +10,9 @@ import { findQuestionBy_id_Query } from "query/queries";
 
 // context
 
+// module templates
+import AnswersModuleTemplate from "module-template/AnswersModuleTemplate/AnswersModuleTemplate";
+
 // module
 import ContentHeaderModule from "module/ContentHeaderModule/ContentHeaderModule";
 import MarkdownAnswerModule from "module/MarkdownAnswerModule/MarkdownAnswerModule";
@@ -17,6 +20,7 @@ import HowToQABox from "module/HowToQABox/HowToQABox";
 import RequireLoginBoxModule from "module/RequireLoginBoxModule/RequireLoginBoxModule";
 // utils
 import { timeForToday } from "util/time";
+
 const HowToContentModuleTemplate = ({ match }) => {
     const nickname = JSON.parse(localStorage.getItem("user"))?.nickname;
     const { loading, error, data } = useQuery(findQuestionBy_id_Query, {
@@ -28,26 +32,6 @@ const HowToContentModuleTemplate = ({ match }) => {
     if (data.findQuestionBy_id.author === nickname) {
         mine = true;
     }
-    console.log(data.findQuestionBy_id.content);
-    const answers = data.findQuestionBy_id.answers.map(
-        ({ _id, author, content, date, comments, isLiked, likesCount }) => (
-            // likesCount, likes 추가 예쩡
-            <HowToQABox
-                _id={_id}
-                key={_id}
-                authorNickname={author.nickname}
-                date={date}
-                dateToText={timeForToday(date)}
-                isQuestion={"A"}
-                content={content}
-                comments={comments}
-                question_id={match.params.id}
-                adoptedAnswerId={data.findQuestionBy_id.adoptedAnswerId}
-                isLiked={isLiked}
-                likesCount={likesCount}
-            />
-        )
-    );
     return (
         <React.Fragment>
             <div className="HowToContentModuleTemplate">
@@ -66,7 +50,6 @@ const HowToContentModuleTemplate = ({ match }) => {
                         likesCount={data.findQuestionBy_id.likesCount}
                     ></ContentHeaderModule>
                 </Container>
-
                 <Container className="how-to-content margin-top-3">
                     <HowToQABox
                         key={"0"}
@@ -82,7 +65,11 @@ const HowToContentModuleTemplate = ({ match }) => {
                         isLiked={data.findQuestionBy_id.isLiked}
                         adoptedAnswerId={data.findQuestionBy_id.adoptedAnswerId}
                     ></HowToQABox>
-                    {answers}
+                    <AnswersModuleTemplate
+                        id={match.params.id}
+                        data={data.findQuestionBy_id.answers}
+                        adoptedAnswerId={data.findQuestionBy_id.adoptedAnswerId}
+                    />
                 </Container>
                 <Container className="how-to-reply-answer-wrapper">
                     <RequireLoginBoxModule>

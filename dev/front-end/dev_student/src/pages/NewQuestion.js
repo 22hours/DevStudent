@@ -17,27 +17,41 @@ const NewQuestion = () => {
     const [createQuestion] = useMutation(CREATE_QUESTION);
     const handleSubmit = async (authorParam, titleParam, contentParam, tagsParam) => {
         console.log(contentParam);
-
-        axios
-            .post(url, JSON.parse(sessionStorage.getItem("devstu_imgs")))
+        createQuestion({
+            variables: {
+                author: authorParam,
+                title: titleParam,
+                content: contentParam,
+                tags: tagsParam,
+            },
+        })
             .then((response) => {
-                createQuestion({
-                    variables: {
-                        author: authorParam,
-                        title: titleParam,
-                        content: contentParam,
-                        tags: tagsParam,
-                    },
-                })
-                    .then((response) => {
-                        alert("질문을 저장했습니다.");
-                        window.location.href = "http://localhost:3000/howto";
-                    })
-                    .catch((err) => {
-                        alert(err.messeage);
-                    });
+                alert("질문을 저장했습니다.");
+                window.location.href = "http://localhost:3000/howto";
             })
-            .catch((error) => {});
+            .catch((err) => {
+                alert(err.messeage);
+            });
+        // axios
+        //     .post(url, JSON.parse(sessionStorage.getItem("devstu_imgs")))
+        //     .then((response) => {
+        //         createQuestion({
+        //             variables: {
+        //                 author: authorParam,
+        //                 title: titleParam,
+        //                 content: contentParam,
+        //                 tags: tagsParam,
+        //             },
+        //         })
+        //             .then((response) => {
+        //                 alert("질문을 저장했습니다.");
+        //                 window.location.href = "http://localhost:3000/howto";
+        //             })
+        //             .catch((err) => {
+        //                 alert(err.messeage);
+        //             });
+        //     })
+        //     .catch((error) => {});
     };
 
     useEffect(() => {

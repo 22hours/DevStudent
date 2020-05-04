@@ -158,15 +158,15 @@ const HowToQABox = ({
             <React.Fragment>
                 <div className={"likes-outter " + (isLiked === "none" ? "able" : "disable")}>
                     <div className={"likes-count-up " + (isLiked === "up" ? "liked" : "notClicked")}>
-                        <Link onClick={() => handleEmote("up")}>
+                        <p onClick={() => handleEmote("up")}>
                             <ArrowDropUpIcon style={{ fontSize: 30 }} />
-                        </Link>
+                        </p>
                     </div>
                     <div className="likes-count-box">{likesCount}</div>
                     <div className={"likes-count-down " + (isLiked === "down" ? "disliked" : "notClicked")}>
-                        <Link onClick={() => handleEmote("down")}>
+                        <p onClick={() => handleEmote("down")}>
                             <ArrowDropDownIcon style={{ fontSize: 30 }} />
-                        </Link>
+                        </p>
                     </div>
                 </div>
             </React.Fragment>
@@ -179,14 +179,14 @@ const HowToQABox = ({
                 <div className={"likes-inner " + (isLiked === "none" ? "able" : "disable")}>
                     <div className="likes-count-box">{likesCount}</div>
                     <div className={"likes-count-up " + (isLiked === "up" ? "liked" : "notClicked")}>
-                        <Link onClick={() => handleEmote("up")}>
+                        <p onClick={() => handleEmote("up")}>
                             <ThumbUpIcon style={{ fontSize: 15 }} color="action" />
-                        </Link>
+                        </p>
                     </div>
                     <div className={"likes-count-down " + (isLiked === "down" ? "disliked" : "notClicked")}>
-                        <Link onClick={() => handleEmote("down")}>
+                        <p onClick={() => handleEmote("down")}>
                             <ThumbDownIcon style={{ fontSize: 15 }} color="action" />
-                        </Link>
+                        </p>
                     </div>
                 </div>
             </React.Fragment>
@@ -196,8 +196,8 @@ const HowToQABox = ({
     return (
         <div>
             {/* <div className="adopt-popup-layer">레레레</div> */}
-            <div className={"HowToQABox"}>
-                <div className={"qa-status-box"}>
+            <div className="HowToQABox">
+                <div className="qa-status-box">
                     <IsQorAOutter />
                     <LikesBoxOutter />
                 </div>
@@ -215,7 +215,7 @@ const HowToQABox = ({
                             <TagBox />
                         </div>
                         <div className="add-comment-box">
-                            <Link onClick={toggleCollapse}>Add Comment...</Link>
+                            <span onClick={toggleCollapse}>Add Comment...</span>
                         </div>
                     </div>
                     {CommentList}
@@ -226,11 +226,10 @@ const HowToQABox = ({
                                     placeholder="Write.."
                                     value={commentValue}
                                     onChange={({ target: { value } }) => setCommentValue(value)}
-                                    size="large"
                                     type="textarea"
                                 ></Input>
                                 <div id="comment-link">
-                                    <Link onClick={handleSubmit}> > comment here</Link>
+                                    <span onClick={handleSubmit}> > comment here</span>
                                 </div>
                             </div>
                         </RequireLoginBoxModule>
