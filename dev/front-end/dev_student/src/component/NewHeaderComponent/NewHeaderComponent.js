@@ -66,11 +66,13 @@ const NewHeaderComponent = ({ nickname, location }) => {
     return (
         <div className="NewHeaderComponent">
             <Container className="header-wrapper pc-only">
-                <div className="header-logo-col">
-                    <div className="img-box">
-                        <img id="brand-img" src="/img/devstu_text_logo_empty.png"></img>
+                <Link to="/">
+                    <div className="header-logo-col">
+                        <div className="img-box">
+                            <img id="brand-img" src="/img/devstu_text_logo_empty.png"></img>
+                        </div>
                     </div>
-                </div>
+                </Link>
                 <div className="header-menu-col">
                     <div className="menu-outter">
                         <div className="menu-box">
