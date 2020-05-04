@@ -27,7 +27,7 @@ public class JwtAuthenticationFilter extends GenericFilterBean {
         String token = ((HttpServletRequest) request).getHeader("Authorization");
         String ip = httpServletRequest.getHeader("ip");
         System.out.println(ip);
-        if(token != null && token != ""){
+        if(token != null && token.equals("")){
             System.out.println("굿");
             if(!checkJwt.checkJwt(token, ip)){
                 System.out.println("야 시발 이거 문제있다");
