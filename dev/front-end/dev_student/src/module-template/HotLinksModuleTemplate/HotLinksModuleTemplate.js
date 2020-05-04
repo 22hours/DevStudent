@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, Row } from "reactstrap";
 import "./HotLinksModuleTemplate.css";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
 

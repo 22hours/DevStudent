@@ -2,14 +2,10 @@ import "./HeaderComponent.css";
 import { Container } from "reactstrap";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { setAuthInfo, getAuthInfo } from "auth";
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from "reactstrap";
 
 // module
 import MypageDropdownButtonModule from "module/MypageDropdownButtonModule/MypageDropdownButtonModule";
-
-// icons
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const HeaderComponent = ({ nickname, location }) => {
     const [isOpen, setIsOpen] = useState(false);

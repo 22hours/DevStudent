@@ -34,6 +34,8 @@ const RegisterTemplate = ({
     const [modal, setModal] = useState(false);
     const [emailClick, setEmailClick] = useState(false);
     const [registerClick, setRegisterClick] = useState(false);
+    const [btnDisabled, setBtnDisabled] = useState("");
+    const [emailDisabled, setEmailDisabled] = useState("");
 
     const toggle = () => setModal(!modal);
 
@@ -111,24 +113,28 @@ const RegisterTemplate = ({
 
     const EmailButton = () => {
         if (emailClick === true) {
+            setEmailDisabled("disabled");
             return (
                 <div>
                     <CircularProgress disableShrink size={24} />
                 </div>
             );
         } else {
+            setEmailDisabled("");
             return <div>확인</div>;
         }
     };
 
     const RegisterButton = () => {
         if (registerClick === true) {
+            setBtnDisabled("disabled");
             return (
                 <div>
                     <CircularProgress disableShrink size={25} />
                 </div>
             );
         } else {
+            setBtnDisabled("");
             return <div>가입하기</div>;
         }
     };
@@ -212,6 +218,7 @@ const RegisterTemplate = ({
                                     </div>
                                     <div className="nickName-check-button-wrapper">
                                         <Button
+                                            disabled={emailDisabled}
                                             color="info"
                                             style={btn_style}
                                             onClick={() => {
@@ -272,6 +279,7 @@ const RegisterTemplate = ({
                             </div>
                             <div className="input-box">
                                 <Button
+                                    disabled={btnDisabled}
                                     style={register_btn_style}
                                     color="info"
                                     onClick={() => {
