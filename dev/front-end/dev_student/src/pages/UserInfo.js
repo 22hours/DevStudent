@@ -30,6 +30,7 @@ const UserContentProvider = ({ nickname }) => {
 
 const UserInfo = ({ match }) => {
     const username = match.params.username;
+    console.log(username);
     const userContent = <UserContentProvider nickname={username}></UserContentProvider>;
     const { loading, error, data } = useQuery(FIND_USER_BY_NICKNAME, {
         variables: { nickname: username },
@@ -41,6 +42,7 @@ const UserInfo = ({ match }) => {
             </div>
         );
     if (error) return <p>Error!</p>;
+    console.log(data.findUserByNickname);
     const Response = data.findUserByNickname;
     return (
         <UserInfoPageTemplate

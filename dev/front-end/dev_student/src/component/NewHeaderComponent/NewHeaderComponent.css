@@ -1,0 +1,105 @@
+.NewHeaderComponent {
+    top: 0px;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    position: relative;
+    position: fixed;
+}
+
+.NewHeaderComponent .header-wrapper {
+    height: 100%;
+}
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@ 피씨 버전 css @@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@ */
+
+.pc-only .header-logo-col {
+    float: left;
+    width: 110px;
+    height: 100%;
+}
+
+/* @@@@ 피씨 버전 LOGO  css @@@@ */
+
+.pc-only .header-logo-col .img-box {
+    line-height: 50px;
+}
+
+/* @@@@ 피씨 버전 MENU  css @@@@ */
+
+.pc-only .header-menu-col {
+    float: left;
+    width: calc(100% - 270px);
+    height: 100%;
+}
+
+.pc-only .header-menu-col .menu-outter {
+    text-align: center;
+    line-height: 50px;
+}
+
+.pc-only .header-menu-col .menu-box {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.pc-only .header-menu-col .menu-item {
+    font-family: "Noto Sans KR", sans-serif;
+    color: rgb(150, 150, 150);
+    font-size: 14px;
+}
+
+.pc-only .header-menu-col .on {
+    color: black;
+}
+
+/* @@@@ 피씨 버전 USER  css @@@@ */
+
+.pc-only .header-user-col {
+    float: left;
+    width: 150px;
+    height: 100%;
+    float: right;
+}
+
+.pc-only .header-user-col .user-outter {
+    text-align: center;
+    line-height: 50px;
+}
+.pc-only .header-user-col a {
+    font-size: 13px !important;
+    text-decoration: none !important;
+    color: gray !important;
+}
+.pc-only .header-user-col span {
+    font-size: 13px;
+    color: gray;
+}
+
+.pc-only .header-user-col #nickname-span {
+    cursor: pointer;
+}
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@ 모바일 버전 css @@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+.mobile-only .header-logo-col {
+    border: 1px solid rebeccapurple;
+    display: inline-block;
+    width: 20%;
+    height: 100%;
+}
+
+.mobile-only .header-user-col {
+    background-color: green;
+    display: inline-block;
+    float: right;
+    width: 15%;
+    height: 100%;
+}

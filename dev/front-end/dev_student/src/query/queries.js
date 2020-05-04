@@ -316,8 +316,12 @@ export const FIND_USER_BY_NICKNAME = gql`
     query findUserByNickname($nickname: String) {
         findUserByNickname(nickname: $nickname) {
             email
+            password
             nickname
             schoolName
+            date
+            authState
+            accessToken
             gitLink
             grade
             point

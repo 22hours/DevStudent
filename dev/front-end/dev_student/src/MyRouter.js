@@ -22,6 +22,8 @@ import {
     UserInfo,
 } from "./pages";
 import FooterModule from "module/FooterModule/FooterModule";
+import NewHeaderComponent from "component/NewHeaderComponent/NewHeaderComponent";
+
 import HeaderComponent from "component/HeaderComponent/HeaderComponent";
 import ScrollToTop from "module/ScrollToTop/ScrollToTop";
 // import HeaderModule from "module/HeaderModule/HeaderModule";
@@ -32,7 +34,7 @@ const MyRouter = (props) => {
         <Router>
             <div id="rt">
                 <Switch>
-                    <HeaderComponent nickname={nickname} />
+                    <NewHeaderComponent nickname={nickname} />
                 </Switch>
                 <div className="Article">
                     <ScrollToTop>
@@ -54,7 +56,6 @@ const MyRouter = (props) => {
                             <Route path="/devnote" component={DevNote} />
                             <Route path="/sitesinfo/:infotype" component={SitesInfo} />
                             <Route path="/rule" component={Rule} />
-
                             <Route component={NotFound} />
                         </Switch>
                     </ScrollToTop>
