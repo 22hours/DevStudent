@@ -1,0 +1,26 @@
+.ServerError {
+    height: 100vh;
+    text-align: center;
+    padding-top: 20px;
+    background-color: rgb(243, 243, 243);
+}
+
+.ServerError #server-error {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 50px;
+}
+
+.ServerError #server-error-notice {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 25px;
+}
+
+.ServerError .image-row {
+    width: 100%;
+}
+
+.ServerError .image-row img {
+    text-align: center;
+    width: 60%;
+    height: 30%;
+}

@@ -20,6 +20,7 @@ import {
     MdGuide,
     Issue,
     UserInfo,
+    ServerError,
 } from "./pages";
 import FooterModule from "module/FooterModule/FooterModule";
 import NewHeaderComponent from "component/NewHeaderComponent/NewHeaderComponent";
@@ -56,6 +57,7 @@ const MyRouter = (props) => {
                             <Route path="/sitesinfo/:infotype" component={SitesInfo} />
                             <Route path="/rule" component={Rule} />
                             <Route component={NotFound} />
+                            <Route component={ServerError} />
                         </Switch>
                     </ScrollToTop>
                 </div>

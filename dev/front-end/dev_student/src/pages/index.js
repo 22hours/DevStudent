@@ -18,6 +18,7 @@ import Nickname from "./Nickname";
 import UserInfo from "./UserInfo";
 import MdGuide from "./MdGuide";
 import Issue from "./Issue";
+import ServerError from "./ServerError";
 export {
     Issue,
     Alarm,
@@ -39,4 +40,5 @@ export {
     Nickname,
     UserInfo,
     MdGuide,
+    ServerError,
 };
