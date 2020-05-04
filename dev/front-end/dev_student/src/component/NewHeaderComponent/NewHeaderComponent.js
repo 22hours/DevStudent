@@ -49,11 +49,7 @@ const NewHeaderComponent = ({ nickname, location }) => {
         //         <GuestArea nickname={"winterlood"} handleNicknameClick={handleNicknameClick} />
         //     </div>
         // );
-        return (
-            <div className="user-outter">
-                <MemberArea nickname={"winterlood"} />
-            </div>
-        );
+        return <MemberArea />;
     };
     return (
         <div className="NewHeaderComponent">
