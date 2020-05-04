@@ -21,7 +21,7 @@ const DevNote = () => {
                 <MarkdownParser content={text} />
             </Container> */}
             {/* <AboutUsPageTemplate /> */}
-            <Container>
+            <Container style={{ paddingTop: "20px" }}>
                 <MarkdownParser content={readme} />
             </Container>
         </React.Fragment>
