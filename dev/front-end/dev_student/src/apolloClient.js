@@ -42,7 +42,7 @@ const client = new ApolloClient({
         });
     },
     // uri: "http://15.164.164.141:8080/graphql",
-    uri: "",
+    uri: "https://devstu.fdsafdsa.shop:443/graphql",
     onError: (error) => {
         // const nickname = localStorage.getItem("nickname");
         // if (nickname) {

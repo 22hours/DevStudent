@@ -8,6 +8,7 @@
 .HowToTemplate {
     width: 100%;
     padding-bottom: 10px;
+    padding-top: 10px;
     min-height: 100vh;
     height: auto;
     overflow: hidden;
