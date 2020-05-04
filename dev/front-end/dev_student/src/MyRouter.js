@@ -39,7 +39,6 @@ const MyRouter = (props) => {
                     <ScrollToTop>
                         <Switch>
                             <Route exact path="/" component={Home} />
-                            <Route path="/posts" component={Posts} />
                             <Route path="/howto" component={HowTo} />
                             <Route path="/emailCheck/:rand" component={EmailCheck} />
                             <Route path="/register" component={Register} />

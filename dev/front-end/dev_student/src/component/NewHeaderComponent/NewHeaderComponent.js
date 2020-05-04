@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./NewHeaderComponent.css";
 import { Container, Collapse } from "reactstrap";
 import { Link } from "react-router-dom";
+
 import MypageDropdownButtonModule from "module/MypageDropdownButtonModule/MypageDropdownButtonModule";
 
 // icon
@@ -14,10 +15,11 @@ import mobile_text_logo from "img/header/mobile-text-logo.png";
 
 const MemberArea = ({ nickname, handleNicknameClick }) => {
     return (
-        <span id="nickname-span" onClick={handleNicknameClick}>
-            {nickname}
-            <ArrowDropDownIcon />
-        </span>
+        // <span id="nickname-span" onClick={handleNicknameClick}>
+        //     {nickname}
+        //     <ArrowDropDownIcon />
+        // </span>
+        <MypageDropdownButtonModule />
     );
 };
 
@@ -54,7 +56,11 @@ const NewHeaderComponent = ({ nickname, location }) => {
         //         <GuestArea nickname={"winterlood"} handleNicknameClick={handleNicknameClick} />
         //     </div>
         // );
-        return <MypageDropdownButtonModule />;
+        return (
+            <div className="user-outter">
+                <MemberArea nickname={"winterlood"} />
+            </div>
+        );
     };
     return (
         <div className="NewHeaderComponent">
@@ -68,29 +74,29 @@ const NewHeaderComponent = ({ nickname, location }) => {
                 </Link>
                 <div className="header-menu-col">
                     <div className="menu-outter">
-                        <div className="menu-box">
-                            <Link to="/" className={"menu-item " + (clicked === "" ? "on" : "off")}>
+                        <div className={"menu-box " + (clicked === "" ? "on" : "off")}>
+                            <Link to="/" className="menu-item">
                                 Home
                             </Link>
                         </div>
-                        <div className="menu-box">
-                            <Link to="/howto" className={"menu-item " + (clicked === "howto" ? "on" : "off")}>
+                        <div className={"menu-box " + (clicked === "howto" ? "on" : "off")}>
+                            <Link to="/howto" className="menu-item">
                                 HowTo
                             </Link>
                         </div>
-                        <div className="menu-box">
-                            <Link to="/devnote" className={"menu-item " + (clicked === "devnote" ? "on" : "off")}>
+                        <div className={"menu-box " + (clicked === "rule" ? "on" : "off")}>
+                            <Link to="/rule" className="menu-item">
+                                Rule
+                            </Link>
+                        </div>
+                        <div className={"menu-box " + (clicked === "devnote" ? "on" : "off")}>
+                            <Link to="/devnote" className="menu-item">
                                 DevNote
                             </Link>
                         </div>
-                        <div className="menu-box">
-                            <Link to="/devnote" className={"menu-item " + (clicked === "devnote" ? "on" : "off")}>
-                                DevNote
-                            </Link>
-                        </div>
-                        <div className="menu-box">
-                            <Link to="/devnote" className={"menu-item " + (clicked === "devnote" ? "on" : "off")}>
-                                DevNote
+                        <div className={"menu-box " + (clicked === "issue" ? "on" : "off")}>
+                            <Link to="/issue" className="menu-item">
+                                Issues
                             </Link>
                         </div>
                     </div>

@@ -8,6 +8,7 @@
     position: relative;
     position: fixed;
     font-family: "Noto Sans KR", sans-serif;
+    border-bottom: 1px solid rgb(238, 238, 238);
 }
 
 .NewHeaderComponent .header-wrapper {
@@ -62,9 +63,23 @@
     color: rgb(150, 150, 150);
     font-size: 14px;
 }
+.pc-only .header-menu-col .menu-item {
+    text-decoration: none !important;
+}
+
+.pc-only .header-menu-col .menu-box:hover {
+    border-bottom: 3px solid rgb(66, 141, 151);
+}
+.pc-only .header-menu-col .menu-box:hover .menu-item {
+    color: rgb(66, 141, 151);
+}
 
 .pc-only .header-menu-col .on {
-    color: black;
+    border-bottom: 3px solid rgb(66, 141, 151);
+}
+.pc-only .header-menu-col .on a {
+    color: rgb(66, 141, 151);
+    text-decoration: none !important;
 }
 
 /* @@@@ 피씨 버전 USER  css @@@@ */
