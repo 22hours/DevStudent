@@ -169,7 +169,7 @@ const RegisterTemplate = ({
                     <Col xs={8} className="register-container-wrapper">
                         <div className="registertemplate-header">회원가입</div>
                         <div className="login-logo_wrapper">
-                            <img alt="" src="/img/devstu_round_logo.png"></img>
+                            <img alt="" src="/img/devstu_debal_logo.png"></img>
                         </div>
                         <div className="registertemplate-info">
                             계정이 이미 있는 경우에는{" "}

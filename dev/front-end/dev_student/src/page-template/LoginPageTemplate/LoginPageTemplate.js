@@ -57,7 +57,7 @@ const LoginPageTemplate = ({
                                 <span className="login-welcome-span">로그인</span>
                             </div>
                             <div className="login-logo_wrapper">
-                                <img alt="" src="/img/devstu_round_logo.png"></img>
+                                <img alt="" src="/img/devstu_debal_logo.png"></img>
                             </div>
                             <div className="login-form-wrapper">
                                 <div className="login-form-resize-wrapper">

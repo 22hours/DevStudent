@@ -2,9 +2,7 @@ import React, { useState, useRef, useLayoutEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN } from "mutation/mutations";
-import { setAuthInfo, getAuthInfo } from "auth";
 import LoginPageTemplate from "page-template/LoginPageTemplate/LoginPageTemplate";
-import NicknamePageTemplate from "page-template/NicknamePageTemplate/NicknamePageTemplate";
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 
