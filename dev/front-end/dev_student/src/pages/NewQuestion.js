@@ -15,6 +15,12 @@ const NewQuestion = () => {
     const url = "https://devstu.koreaelection.shop/uploadRealFile/" + getTimeStamp() + "";
     console.log(url);
     const [createQuestion] = useMutation(CREATE_QUESTION);
+    useEffect(() => {
+        return () => {
+            console.log("cleaned up");
+            sessionStorage.clear();
+        };
+    }, []);
     const handleSubmit = async (authorParam, titleParam, contentParam, tagsParam) => {
         console.log(contentParam);
         axios
@@ -30,7 +36,7 @@ const NewQuestion = () => {
                 })
                     .then((response) => {
                         alert("질문을 저장했습니다.");
-                        window.location.href = "http://devstudent.wep.app/howto";
+                        window.location.href = "https://devstudent.web.app/howto";
                     })
                     .catch((err) => {
                         alert(err.messeage);
@@ -39,12 +45,6 @@ const NewQuestion = () => {
             .catch((error) => {});
     };
 
-    useEffect(() => {
-        return () => {
-            console.log("cleaned up");
-            sessionStorage.clear();
-        };
-    }, []);
     return (
         <React.Fragment>
             <NewQuestionPageTemplate handleSubmit={handleSubmit}></NewQuestionPageTemplate>

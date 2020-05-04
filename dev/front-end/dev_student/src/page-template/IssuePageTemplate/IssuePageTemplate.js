@@ -31,6 +31,10 @@ const IssuePageTemplate = ({ issue }) => {
                     <span className="content-header">
                         ISSUES <BugReportIcon />
                     </span>
+                    &nbsp; &nbsp;
+                    <span id="descript">
+                        <a href="https://github.com/22hours/DevStudent">https://github.com/22hours/DevStudent</a>
+                    </span>
                     <div className="make-new-issue">
                         <a href="https://github.com/22hours/DevStudent/issues/new">ADD NEW ISSUE</a>
                     </div>

@@ -112,3 +112,24 @@
 .rule-item-row th {
     font-size: 18px;
 }
+
+.RuleItem {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid rgb(233, 233, 233);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.RuleItem #rule-header {
+    font-size: 19px;
+}
+
+.RuleItem #created_at {
+    color: gray;
+    font-size: 13px;
+}
+
+.RuleItem #toggle-button {
+    float: right;
+}
