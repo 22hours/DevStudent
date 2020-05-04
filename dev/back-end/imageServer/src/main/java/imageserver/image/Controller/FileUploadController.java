@@ -132,7 +132,6 @@ public class FileUploadController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);
     }
-
     @CrossOrigin(origins = "*")
     @GetMapping("/" + real + "/{date}/{fileName:.+}")
     public ResponseEntity<Resource> downloadRealFile(@PathVariable String date, @PathVariable String fileName, HttpServletRequest request) throws ParseException {
@@ -158,5 +157,4 @@ public class FileUploadController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);
     }
-
 }
