@@ -18,6 +18,7 @@ import {
     SitesInfo,
     Nickname,
     MdGuide,
+    Issue,
     UserInfo,
 } from "./pages";
 import FooterModule from "module/FooterModule/FooterModule";
@@ -45,6 +46,7 @@ const MyRouter = (props) => {
                             <Route path="/login" render={(props) => <Login logIn={logIn} {...props} />} />
                             <Route path="/logout" component={Logout} />
                             <Route path="/nickname" component={Nickname} />
+                            <Route path="/issue" component={Issue} />
                             <Route path="/mdguide/:nickname" component={MdGuide} />
                             <Route path="/userinfo/:username" component={UserInfo} />
                             <AuthRoute path="/alarm" render={(props) => <Alarm {...props} />} />

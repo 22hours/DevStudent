@@ -1,0 +1,41 @@
+.IssueItem {
+    background: white;
+    padding: 10px;
+    height: 80px;
+    border-radius: 5px;
+    border: 1px solid rgb(238, 238, 238);
+    margin-bottom: 10px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.IssueItem .icon-col {
+    line-height: 40px;
+    float: left;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.IssueItem .main-col {
+    height: 100%;
+    float: left;
+}
+.IssueItem .main-col .title-row {
+    margin-bottom: 5px;
+}
+.IssueItem .main-col .title-row a {
+    color: rgb(56, 56, 56);
+}
+.IssueItem .main-col .author-row {
+    color: gray;
+    font-size: 12px;
+}
+.IssueItem .main-col .author-row a {
+    color: gray;
+    font-size: 14px;
+}
+.IssueItem .main-col .author-row img {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}
