@@ -5,7 +5,6 @@ const Issue = () => {
     const [issue, setIssue] = useState();
     useEffect(() => {
         axios.get("https://api.github.com/repos/22hours/devstudent/issues").then((response) => {
-            console.log(response.data);
             setIssue(response.data);
         });
     }, [1]);

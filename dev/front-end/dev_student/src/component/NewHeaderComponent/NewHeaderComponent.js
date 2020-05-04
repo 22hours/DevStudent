@@ -41,15 +41,15 @@ const NewHeaderComponent = ({ nickname, location }) => {
     }, [location.pathname]);
 
     const UserArea = () => {
-        // if (nickname) {
-        // } else {
-        // }
-        // return (
-        //     <div className="user-outter">
-        //         <GuestArea nickname={"winterlood"} handleNicknameClick={handleNicknameClick} />
-        //     </div>
-        // );
-        return <MemberArea />;
+        if (nickname) {
+            return <MemberArea />;
+        } else {
+        }
+        return (
+            <div className="user-outter">
+                <GuestArea />
+            </div>
+        );
     };
     return (
         <div className="NewHeaderComponent">
@@ -129,6 +129,11 @@ const NewHeaderComponent = ({ nickname, location }) => {
                     <div className={"collapse-item-outter " + (clicked === "devnote" ? "mobile-on" : "mobile-off")}>
                         <Link to="/devnote">
                             <div className="collapse-item-inner">DevNote</div>
+                        </Link>
+                    </div>
+                    <div className={"collapse-item-outter " + (clicked === "issue" ? "mobile-on" : "mobile-off")}>
+                        <Link to="/issue">
+                            <div className="collapse-item-inner">Issues</div>
                         </Link>
                     </div>
                 </div>

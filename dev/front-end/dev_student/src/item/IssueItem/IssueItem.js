@@ -16,7 +16,6 @@ const IssueItem = ({ html_url, title, created_at, state, labels, user, comments 
     };
 
     const LabelItem = ({ name, color }) => {
-        console.log(color);
         const style = {
             backgroundColor: "#" + color,
         };
@@ -44,7 +43,7 @@ const IssueItem = ({ html_url, title, created_at, state, labels, user, comments 
                     &nbsp;&nbsp;{timeForToday(created_at)}
                 </div>
             </div>
-            <div className="comment-col">
+            <div className={"comment-col " + (comments !== 0 ? "" : "null")}>
                 <ChatBubbleOutlineIcon style={{ color: "gray", fontSize: "18px" }} /> &nbsp;
                 {comments}
             </div>

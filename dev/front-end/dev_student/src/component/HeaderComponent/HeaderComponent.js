@@ -46,11 +46,12 @@ const HeaderComponent = ({ nickname, location }) => {
     };
 
     const PrivateMenu = ({ nickname }) => {
-        if (nickname) {
-            return <MemberMenu />;
-        } else {
-            return <GuestMenu />;
-        }
+        // if (nickname) {
+        //     return <MemberMenu />;
+        // } else {
+        //     return <GuestMenu />;
+        // }
+        return <GuestMenu />;
     };
 
     return (
