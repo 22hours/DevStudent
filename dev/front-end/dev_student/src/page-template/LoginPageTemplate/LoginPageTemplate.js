@@ -16,14 +16,18 @@ const LoginPageTemplate = ({
     btnClick,
     setBtnClick,
 }) => {
+    const [btnDisabled, setBtnDisabled] = useState("");
+
     const LoginButton = () => {
         if (btnClick === true) {
+            setBtnDisabled("disabled");
             return (
                 <div>
                     <CircularProgress disableShrink size={24} />
                 </div>
             );
         } else {
+            setBtnDisabled("");
             return <div>로그인</div>;
         }
     };
@@ -83,6 +87,7 @@ const LoginPageTemplate = ({
                             <div className="login-form-wrapper">
                                 <div className="login-form-resize-wrapper">
                                     <Button
+                                        disabled={btnDisabled}
                                         onClick={() => {
                                             if (email.length < 1) return;
                                             if (password.length < 1) return;

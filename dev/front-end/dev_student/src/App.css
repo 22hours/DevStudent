@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap");
 
 .Article {
+    margin-top: 50px;
     min-height: 100vh;
     font-family: "Noto Sans KR", sans-serif;
 }

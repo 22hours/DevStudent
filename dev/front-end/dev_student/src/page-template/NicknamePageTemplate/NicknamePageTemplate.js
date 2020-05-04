@@ -2,8 +2,24 @@ import React, { useState } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import { TextField } from "@material-ui/core";
 import "./NicknamePageTemplate.css";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-const NicknamePageTemplate = ({ NicknameButton, handleSubmitNickname, nickName, setNickname }) => {
+const NicknamePageTemplate = ({ nicknameClick, setNicknameClick, handleSubmitNickname, nickName, setNickname }) => {
+    const [btnDisabled, setBtnDisabled] = useState("");
+
+    const NicknameButton = () => {
+        if (nicknameClick === true) {
+            setBtnDisabled("disabled");
+            return (
+                <div>
+                    <CircularProgress disableShrink size={24} />
+                </div>
+            );
+        } else {
+            setBtnDisabled("");
+            return <div>확인</div>;
+        }
+    };
     return (
         <React.Fragment>
             <div className="nickname-container-top-wrapper">
@@ -37,7 +53,7 @@ const NicknamePageTemplate = ({ NicknameButton, handleSubmitNickname, nickName, 
                             </div>
                             <div className="nickname-confirm-wrapper">
                                 <div className="nickname-form-resize-wrapper">
-                                    <Button onClick={() => handleSubmitNickname()} color="info">
+                                    <Button disabled={btnDisabled} onClick={() => handleSubmitNickname()} color="info">
                                         <NicknameButton />
                                     </Button>
                                 </div>

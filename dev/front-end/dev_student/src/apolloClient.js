@@ -41,7 +41,8 @@ const client = new ApolloClient({
             headers: getMyHeader(),
         });
     },
-    uri: "http://15.164.164.141:8080/graphql",
+    // uri: "http://15.164.164.141:8080/graphql",
+    uri: "",
     onError: (error) => {
         // const nickname = localStorage.getItem("nickname");
         // if (nickname) {
