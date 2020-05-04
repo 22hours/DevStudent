@@ -12,46 +12,31 @@ import { timeForToday, getTimeStamp } from "util/time";
 import NewQuestionPageTemplate from "page-template/NewQuestionPageTemplate/NewQuestionPageTemplate";
 const NewQuestion = () => {
     console.log(getTimeStamp());
-    const url = "http://172.30.1.50:8110/uploadRealFile/" + getTimeStamp() + "";
+    const url = "https://devstu.koreaelection.shop/uploadRealFile/" + getTimeStamp() + "";
     console.log(url);
     const [createQuestion] = useMutation(CREATE_QUESTION);
     const handleSubmit = async (authorParam, titleParam, contentParam, tagsParam) => {
         console.log(contentParam);
-        createQuestion({
-            variables: {
-                author: authorParam,
-                title: titleParam,
-                content: contentParam,
-                tags: tagsParam,
-            },
-        })
+        axios
+            .post(url, JSON.parse(sessionStorage.getItem("devstu_imgs")))
             .then((response) => {
-                alert("질문을 저장했습니다.");
-                window.location.href = "http://localhost:3000/howto";
+                createQuestion({
+                    variables: {
+                        author: authorParam,
+                        title: titleParam,
+                        content: contentParam,
+                        tags: tagsParam,
+                    },
+                })
+                    .then((response) => {
+                        alert("질문을 저장했습니다.");
+                        window.location.href = "http://devstudent.wep.app/howto";
+                    })
+                    .catch((err) => {
+                        alert(err.messeage);
+                    });
             })
-            .catch((err) => {
-                alert(err.messeage);
-            });
-        // axios
-        //     .post(url, JSON.parse(sessionStorage.getItem("devstu_imgs")))
-        //     .then((response) => {
-        //         createQuestion({
-        //             variables: {
-        //                 author: authorParam,
-        //                 title: titleParam,
-        //                 content: contentParam,
-        //                 tags: tagsParam,
-        //             },
-        //         })
-        //             .then((response) => {
-        //                 alert("질문을 저장했습니다.");
-        //                 window.location.href = "http://localhost:3000/howto";
-        //             })
-        //             .catch((err) => {
-        //                 alert(err.messeage);
-        //             });
-        //     })
-        //     .catch((error) => {});
+            .catch((error) => {});
     };
 
     useEffect(() => {

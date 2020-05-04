@@ -20,7 +20,7 @@ const DropZoneModule = ({ imgLink, setImgLink, handleImg, comment, imgCount, set
             const formData = new FormData();
             formData.append("file", acceptedFiles[0]);
             axios
-                .post("https://devstu.fdsafdsa.shop:8110/uploadDummyFile", formData)
+                .post("https://devstu.koreaelection.shop/uploadDummyFile", formData)
                 .then((response) => {
                     console.log(response);
                     var sessionImgList = JSON.parse(sessionStorage.getItem("devstu_imgs"));
