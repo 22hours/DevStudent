@@ -6,21 +6,14 @@ import { Link } from "react-router-dom";
 import MypageDropdownButtonModule from "module/MypageDropdownButtonModule/MypageDropdownButtonModule";
 
 // icon
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import MenuIcon from "@material-ui/icons/Menu";
 
 //imgs
 import mobile_logo from "img/header/mobile-logo.png";
 import mobile_text_logo from "img/header/mobile-text-logo.png";
 
-const MemberArea = ({ nickname, handleNicknameClick }) => {
-    return (
-        // <span id="nickname-span" onClick={handleNicknameClick}>
-        //     {nickname}
-        //     <ArrowDropDownIcon />
-        // </span>
-        <MypageDropdownButtonModule />
-    );
+const MemberArea = () => {
+    return <MypageDropdownButtonModule />;
 };
 
 const GuestArea = () => {
