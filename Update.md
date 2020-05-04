@@ -18,3 +18,11 @@ Devstudent Update log
 
 **SERVER**
 - Https 적용
+
+# 2020-05-03
+
+**WEB**
+- Sites Header 변경
+
+**SERVER**
+- Https 적용
