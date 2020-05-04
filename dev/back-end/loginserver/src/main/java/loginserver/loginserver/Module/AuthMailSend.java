@@ -30,7 +30,7 @@ public class AuthMailSend {
             javaMailSender.send(mail);
         } catch (MessagingException e) {
             e.printStackTrace();
-            return "error";
+            return "Mail key Generate error";
         }
         return key;
     }
