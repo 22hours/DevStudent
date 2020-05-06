@@ -1,58 +1,41 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import NicknamePageTemplate from "page-template/NicknamePageTemplate/NicknamePageTemplate";
 import { useMutation } from "@apollo/react-hooks";
 import { CREATE_NICKNAME } from "mutation/mutations";
+import { useEffect } from "react";
 
-const Nickname = () => {
+const Nickname = ({ location }) => {
     const [nickName, setNickname] = useState("");
-    const [createNickname] = useMutation(CREATE_NICKNAME);
-    const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    const [createNickname, { data }] = useMutation(CREATE_NICKNAME);
     const [nicknameClick, setNicknameClick] = useState(false);
 
-    const handleSubmitNickname = () => {
-        const email = sessionStorage.getItem("email");
-        if (korean.test(nickName)) {
-            alert("닉네임은 영문으로 입력해주세요.");
-            return;
-        }
-        if (nickName.length > 10 || nickName.length < 3) {
-            alert("닉네임은 3자리 ~ 10자리로 입력해주세요.");
-            return;
+    useEffect(() => {
+        if (data == null) return;
+        if (data.createNickname.nickname) {
+            sessionStorage.clear();
+            alert("닉네임 설정을 완료했습니다.");
+            window.localStorage.setItem("user", JSON.stringify(data));
+            window.localStorage.setItem("auth", true);
+            window.location.replace("/");
         } else {
-            setNicknameClick(true);
-            createNickname({
-                variables: {
-                    email: email,
-                    nickname: nickName,
-                },
-            })
-                .then((response) => {
-                    if (response.data.createNickname.nickname) {
-                        var data = response.data.createNickname;
-                        sessionStorage.clear();
-                        alert("닉네임 설정을 완료했습니다.");
-                        window.localStorage.setItem("user", JSON.stringify(data));
-                        window.localStorage.setItem("auth", true);
-                        window.location.replace("/");
-                    } else {
-                        alert("중복된 닉네임입니다.");
-                        setNickname("");
-                        setNicknameClick(false);
-                    }
-                })
-                .catch((err) => {
-                    alert(err.messeage);
-                    setNicknameClick(false);
-                });
+            alert("중복된 닉네임입니다.");
+            setNickname("");
+            setNicknameClick(false);
         }
-    };
+    }, [data]);
+
+    //이미 닉네임이 있는 사람은 들어오지 못하게 막아야함
+    const { from } = location.state || { from: { pathname: "/" } };
+    if (window.localStorage.length > 1) return <Redirect to={from} />;
+
     return (
         <NicknamePageTemplate
             nickName={nickName}
             setNickname={setNickname}
-            handleSubmitNickname={handleSubmitNickname}
             nicknameClick={nicknameClick}
             setNicknameClick={setNicknameClick}
+            createNickname={createNickname}
         />
     );
 };

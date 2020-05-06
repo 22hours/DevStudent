@@ -4,8 +4,10 @@ import { TextField } from "@material-ui/core";
 import "./NicknamePageTemplate.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-const NicknamePageTemplate = ({ nicknameClick, setNicknameClick, handleSubmitNickname, nickName, setNickname }) => {
+const NicknamePageTemplate = ({ nicknameClick, setNicknameClick, createNickname, nickName, setNickname }) => {
     const [btnDisabled, setBtnDisabled] = useState("");
+    const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    const email = sessionStorage.getItem("email");
 
     const NicknameButton = () => {
         if (nicknameClick === true) {
@@ -53,7 +55,28 @@ const NicknamePageTemplate = ({ nicknameClick, setNicknameClick, handleSubmitNic
                             </div>
                             <div className="nickname-confirm-wrapper">
                                 <div className="nickname-form-resize-wrapper">
-                                    <Button disabled={btnDisabled} onClick={() => handleSubmitNickname()} color="info">
+                                    <Button
+                                        disabled={btnDisabled}
+                                        onClick={() => {
+                                            if (korean.test(nickName)) {
+                                                alert("닉네임은 영문으로 입력해주세요.");
+                                                return;
+                                            }
+                                            if (nickName.length > 10 || nickName.length < 3) {
+                                                alert("닉네임은 3자리 ~ 10자리로 입력해주세요.");
+                                                return;
+                                            } else {
+                                                setNicknameClick(true);
+                                                createNickname({
+                                                    variables: {
+                                                        email: email,
+                                                        nickname: nickName,
+                                                    },
+                                                });
+                                            }
+                                        }}
+                                        color="info"
+                                    >
                                         <NicknameButton />
                                     </Button>
                                 </div>
