@@ -33,15 +33,15 @@ const MyPageDropdownButtonModule = (props) => {
     return (
         <Dropdown isOpen={dropdownOpen} toggle={toggle}>
             <DropdownToggle className="user-nickname-btn" style={btn_style}>
-                <MemberArea nickname={"winterlood"} />
+                <MemberArea nickname={localData?.nickname} />
             </DropdownToggle>
             <DropdownMenu>
                 <DropdownItem header>
-                    <div style={{ fontSize: "16px" }}>{localData?.nickname}님</div>
+                    <div style={{ fontSize: "15px" }}>{localData?.nickname}님</div>
                     <br></br>
                     <div>{localData?.email}</div>
                 </DropdownItem>
-                <DropdownItem style={{ fontSize: "14px" }}>
+                <DropdownItem style={{ fontSize: "15px" }}>
                     <CountAlarmModule user={localData?.nickname} />
                 </DropdownItem>
                 <Link to="/mypage">

@@ -21,7 +21,7 @@ const CountAlarmModule = (props) => {
 
     return (
         <Link to="/alarm">
-            <div>알림 {data.countUnreadAlarms.count}</div>
+            <div style={{ fontSize: "15px" }}>알림 {data.countUnreadAlarms.count}</div>
         </Link>
     );
 };
