@@ -11,7 +11,11 @@ import GradeAvatar from "atom/GradeAvatar/GradeAvatar";
 
 const UserInfoPageTemplate = ({ email, nickname, gitLink, grade, point, userContent }) => {
     const moveGithubLink = () => {
-        window.open(gitLink, "_blank");
+        if (gitLink === null) {
+            alert("Github 주소를 등록하지 않은 사용자입니다!");
+        } else {
+            window.open("http://" + gitLink, "_blank");
+        }
     };
     return (
         <React.Fragment>

@@ -81,7 +81,11 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
     };
 
     const moveGithubLink = () => {
-        window.open("http://" + gitAddress, "_blank");
+        if (gitAddress === null) {
+            alert("Github 주소를 등록해주세요.");
+        } else {
+            window.open("http://" + gitAddress, "_blank");
+        }
     };
 
     const { loading, error, data } = useQuery(FIND_USER_BY_NICKNAME, {
