@@ -42,7 +42,7 @@ const MyContentProvider = () => {
                 <CircularProgress disableShrink size={24} />
             </div>
         );
-    if (error) return <p>Error!</p>;
+    if (error) return <ServerError />;
     return data.findQuestionsByOption.map(({ _id, title, content, date, answerCount, likesCount, views }) => (
         <Link to={"/howto/question/" + _id}>
             <div key={_id} className="item-box">
