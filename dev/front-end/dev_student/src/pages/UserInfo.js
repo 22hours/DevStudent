@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { FIND_USER_BY_NICKNAME, FIND_QUESTIONS_BY_OPTION } from "query/queries";
 import { Link } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import ServerError from "pages/ServerError";
 
 const UserContentProvider = ({ nickname }) => {
     const { loading, error, data } = useQuery(FIND_QUESTIONS_BY_OPTION, {
@@ -15,7 +16,7 @@ const UserContentProvider = ({ nickname }) => {
                 <CircularProgress disableShrink size={24} />
             </div>
         );
-    if (error) return <p>Error!</p>;
+    if (error) return <ServerError />;
     return data.findQuestionsByOption.map(({ _id, title, content, date, answerCount, likesCount, views }) => (
         <Link to={"/howto/question/" + _id}>
             <div key={_id} className="item-box">
@@ -40,7 +41,7 @@ const UserInfo = ({ match }) => {
                 <CircularProgress />
             </div>
         );
-    if (error) return <p>Error!</p>;
+    if (error) return <ServerError />;
     const Response = data.findUserByNickname;
     return (
         <UserInfoPageTemplate

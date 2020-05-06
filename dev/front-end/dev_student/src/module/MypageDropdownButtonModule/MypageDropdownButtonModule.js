@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import { Link } from "react-router-dom";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import CountAlarmModule from "module/CountAlarmModule/CountAlarmModule";
 import "./MypageDropdownButtonModule.css";
 // icon
@@ -12,7 +11,6 @@ const MyPageDropdownButtonModule = (props) => {
     const toggle = () => {
         setDropdownOpen(!dropdownOpen);
     };
-    const { user } = props;
 
     const btn_style = {
         backgroundColor: "transparent",

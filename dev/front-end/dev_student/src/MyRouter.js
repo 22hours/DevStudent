@@ -24,8 +24,6 @@ import {
 } from "./pages";
 import FooterModule from "module/FooterModule/FooterModule";
 import NewHeaderComponent from "component/NewHeaderComponent/NewHeaderComponent";
-
-import HeaderComponent from "component/HeaderComponent/HeaderComponent";
 import ScrollToTop from "module/ScrollToTop/ScrollToTop";
 // import HeaderModule from "module/HeaderModule/HeaderModule";
 

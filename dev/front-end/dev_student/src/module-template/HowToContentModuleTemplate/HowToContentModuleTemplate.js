@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "reactstrap";
 import { useQuery } from "@apollo/react-hooks";
+import ServerError from "pages/ServerError";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 // css
 import "./HowToContentModuleTemplate.css";
@@ -26,8 +28,13 @@ const HowToContentModuleTemplate = ({ match }) => {
     const { loading, error, data } = useQuery(findQuestionBy_id_Query, {
         variables: { _id: match.params.id },
     });
-    if (loading) return <p>Loading ...</p>;
-    if (error) return <p>error!</p>;
+    if (loading)
+        return (
+            <div>
+                <CircularProgress />
+            </div>
+        );
+    if (error) return <ServerError />;
     var mine = false;
     if (data.findQuestionBy_id.author === nickname) {
         mine = true;

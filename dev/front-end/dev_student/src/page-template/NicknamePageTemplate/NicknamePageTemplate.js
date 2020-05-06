@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from "reactstrap";
 import { TextField } from "@material-ui/core";
 import "./NicknamePageTemplate.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import ServerError from "pages/ServerError";
 
 const NicknamePageTemplate = ({ nicknameClick, setNicknameClick, createNickname, nickName, setNickname }) => {
     const [btnDisabled, setBtnDisabled] = useState("");
@@ -19,7 +20,7 @@ const NicknamePageTemplate = ({ nicknameClick, setNicknameClick, createNickname,
             );
         } else {
             setBtnDisabled("");
-            return <div>확인</div>;
+            return <ServerError />;
         }
     };
     return (

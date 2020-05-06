@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/react-hooks";
 import { useQuery } from "@apollo/react-hooks";
 import { UPDATE_USER_INFO } from "mutation/mutations";
 import { FIND_USER_BY_NICKNAME } from "query/queries";
+import ServerError from "pages/ServerError";
 import "./MypageTemplate.css";
 
 //imgs
@@ -98,7 +99,7 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
                 <CircularProgress />
             </div>
         );
-    if (error) return <p>Error!</p>;
+    if (error) return <ServerError />;
 
     const mydata = data.findUserByNickname;
 

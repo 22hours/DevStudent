@@ -4,6 +4,7 @@ import MypageTemplate from "page-template/MypageTemplate/MypageTemplate";
 import { FIND_ALL_ALARMS, FIND_QUESTIONS_BY_OPTION } from "query/queries";
 import { Link } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import ServerError from "pages/ServerError";
 
 const AlarmPovider = () => {
     const localData = JSON.parse(localStorage.getItem("user"));
@@ -17,7 +18,7 @@ const AlarmPovider = () => {
                 <CircularProgress />
             </div>
         );
-    if (error) return <p>Error!</p>;
+    if (error) return <ServerError />;
     return data.findAllAlarms.map(({ _id, question_id, content, date, respondent }) => (
         <Link to={"/howto/question/" + question_id}>
             <div key={question_id} className="item-box">
