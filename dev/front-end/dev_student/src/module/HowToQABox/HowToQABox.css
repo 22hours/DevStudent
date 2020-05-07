@@ -25,7 +25,6 @@
     float: left;
     width: 30px;
     margin-right: 13px;
-    cursor: pointer;
 }
 
 .HowToTemplate .likes-outter .likes-count-box {
@@ -230,13 +229,17 @@
 }
 
 .liked p {
+    cursor: none;
     color: rgb(7, 171, 200) !important;
 }
 .disliked p {
+    cursor: none;
+
     color: rgb(211, 11, 71) !important;
 }
 
 .disable .notClicked p {
+    pointer-events: none;
     color: rgb(187, 187, 187) !important;
 }
 
