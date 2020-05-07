@@ -20,7 +20,6 @@ const NicknamePageTemplate = ({ nicknameClick, setNicknameClick, createNickname,
             );
         } else {
             setBtnDisabled("");
-            return <ServerError />;
         }
     };
     return (
