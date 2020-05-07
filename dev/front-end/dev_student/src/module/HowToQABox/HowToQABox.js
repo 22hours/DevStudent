@@ -54,6 +54,7 @@ const HowToQABox = ({
     question_id,
     adoptedAnswerId,
     likesCount,
+    authorGrade,
 }) => {
     const nickname = JSON.parse(localStorage.getItem("user"))?.nickname;
     const [createComment, { loading: loadingComment, error: errorComment }] = useMutation(CREATE_COMMENT);
@@ -62,6 +63,8 @@ const HowToQABox = ({
     const [isOpen, setIsOpen] = useState(false);
     const toggleCollapse = () => setIsOpen(!isOpen);
     const [commentValue, setCommentValue] = useState("");
+    const [gradeColor, setGradeColor] = useState("");
+
     const IsQorAOutter = () => {
         if (isQuestion === "Q") {
             return <div className="is-question-box-q">Q</div>;
@@ -206,6 +209,17 @@ const HowToQABox = ({
         );
     };
 
+    const AuthorGradeColor = () => {
+        if (authorGrade === "bean") setGradeColor("");
+        if (authorGrade === "short") setGradeColor("green");
+        if (authorGrade === "tall") setGradeColor("blue");
+        if (authorGrade === "grande") setGradeColor("purple");
+        if (authorGrade === "venti") setGradeColor("orange");
+        if (authorGrade === "trenta") setGradeColor("red");
+        if (authorGrade === "dev") setGradeColor("black");
+        return <div className={"gradecolor" + gradeColor}>{authorNickname}</div>;
+    };
+
     return (
         <div>
             {/* <div className="adopt-popup-layer">레레레</div> */}
@@ -218,7 +232,9 @@ const HowToQABox = ({
                     <div className="header-box">
                         <IsQorAInner />
                         <a href={"/userinfo/" + authorNickname}>
-                            <span>{authorNickname}</span>
+                            <span>
+                                <AuthorGradeColor />
+                            </span>
                         </a>
                         <LikesBoxInner />
                     </div>

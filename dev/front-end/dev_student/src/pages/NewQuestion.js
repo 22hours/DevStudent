@@ -16,7 +16,6 @@ const NewQuestion = () => {
 
     useEffect(() => {
         return () => {
-            console.log("cleaned up");
             sessionStorage.removeItem("devstu_imgs");
         };
     }, []);
@@ -39,7 +38,6 @@ const NewQuestion = () => {
             });
     };
     const handleSubmit = async (authorParam, titleParam, contentParam, tagsParam) => {
-        console.log(contentParam);
         if (JSON.parse(sessionStorage.getItem("devstu_imgs"))) {
             axios
                 .post(url, JSON.parse(sessionStorage.getItem("devstu_imgs")))

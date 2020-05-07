@@ -79,6 +79,7 @@ const HowToContentModuleTemplate = ({ match }) => {
                         comments={data.findQuestionBy_id.comments}
                         isLiked={data.findQuestionBy_id.isLiked}
                         adoptedAnswerId={data.findQuestionBy_id.adoptedAnswerId}
+                        authorGrade={data.findQuestionBy_id.author.grade}
                     ></HowToQABox>
                     <AnswersModuleTemplate
                         id={match.params.id}
