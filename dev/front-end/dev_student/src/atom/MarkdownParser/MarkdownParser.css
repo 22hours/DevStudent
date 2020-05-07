@@ -1,38 +1,38 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic);
+@import url(https://fonts.googleapis.com/css?family=Open + Sans:400italic);
 
-.reply-wrapper{
+.reply-wrapper {
     padding: 10px;
     border: 0.5px solid rgb(224, 224, 224);
     border-radius: 5px;
     margin-bottom: 10px;
 }
 
-.mark-down-wrapper pre{
+.mark-down-wrapper pre {
     padding: 5px;
-    background-color: #F9F9F9;
+    background-color: #f9f9f9;
     border-radius: 5px;
     border: 0.5px solid rgb(224, 224, 224);
 }
 
-.mark-down-wrapper blockquote{
- font-size: 13px;
-  font-family:Open Sans;
-  font-style:italic;
-  color: #555555;
-  padding:2px 3px 3px 8px;
-  border-left:4px solid #4BA0B5 ;
-  line-height:1.6;
-  position: relative;
-  background:#EDEDED;
+.mark-down-wrapper blockquote {
+    font-size: 13px;
+    font-family: Open Sans;
+    font-style: italic;
+    color: #555555;
+    padding: 2px 3px 3px 8px;
+    border-left: 4px solid #4ba0b5;
+    line-height: 1.6;
+    position: relative;
+    background: #ededed;
 }
 
-.mark-down-wrapper h1{
+.mark-down-wrapper h1 {
     font-size: 28px;
     padding-bottom: 5px;
-    border-bottom:1px solid rgb(224, 224, 224) ;
+    border-bottom: 1px solid rgb(224, 224, 224);
 }
 
-.mark-down-wrapper h2{
+.mark-down-wrapper h2 {
     font-size: 21px;
 }
 
@@ -40,7 +40,7 @@
     border-collapse: collapse;
     text-align: left;
     line-height: 1.5;
-    margin : 20px 10px;
+    margin: 20px 10px;
 }
 .mark-down-wrapper table th {
     padding: 5px;
@@ -52,4 +52,9 @@
     padding: 5px;
     vertical-align: top;
     border: 1px solid #ccc;
+}
+
+.mark-down-wrapper img {
+    max-width: 300px;
+    max-height: 1000px;
 }
