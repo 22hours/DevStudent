@@ -76,15 +76,7 @@ export const CREATE_COMMENT = gql`
     mutation createComment($question_id: String!, $answer_id: String!, $author: String!, $content: String!) {
         createComment(question_id: $question_id, answer_id: $answer_id, author: $author, content: $content) {
             _id
-            author {
-                email
-                nickname
-                point
-                grade
-                gitLink
-                schoolName
-                attendance
-            }
+            author
             content
             date
         }
