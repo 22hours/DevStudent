@@ -25,6 +25,7 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
     const [updateUserInfo] = useMutation(UPDATE_USER_INFO);
     const nickname = localData.nickname;
     const toggle = () => setIsOpen(!isOpen);
+    const githubTest = /^[^((http(s?))\:\/\/)]([0-9a-zA-Z\-]+\.)+[a-zA-Z]{2,6}(\:[0-9]+)?(\/\S*)?$/;
 
     //items
     const [gitAddress, setGitAddress] = useState(localData.gitLink);
@@ -81,11 +82,17 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
         paddingBottom: "32px",
     };
 
+    const gitCheck = () => {
+        if (githubTest.test(gitAddress)) {
+            setGitAddress("https://" + gitAddress);
+        }
+    };
+
     const moveGithubLink = () => {
         if (gitAddress === null) {
             alert("Github 주소를 등록해주세요.");
         } else {
-            window.open("http://" + gitAddress, "_blank");
+            window.open(gitAddress, "_blank");
         }
     };
 
@@ -154,6 +161,7 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
                                                 className="link-input-box"
                                                 value={gitAddress}
                                                 onChange={({ target: { value } }) => setGitAddress(value)}
+                                                onBlur={gitCheck}
                                                 placeholder="github.com/devstu"
                                             ></Input>
                                         </div>

@@ -3,7 +3,7 @@ export const tagArray = [
     "Javascript",
     "React.js",
     "Spring",
-    "C\\#",
+    "C_Sharp",
     "C++",
     "WPF",
     "WinForm",
