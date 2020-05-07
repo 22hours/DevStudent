@@ -91,7 +91,7 @@ const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
         } else {
             return (
                 <Alert color="info" id="imgCopyButton" onClick={handleCopyLink}>
-                    <p>이미지가 추가되었습니다 : {imgLink} 다시 복사하려면 여기를 클릭하세요</p>
+                    <p>이미지 링크 재 복사는 해당 이미지 클릭</p>
                 </Alert>
             );
         }

@@ -16,6 +16,11 @@ const DropZoneModule = ({ handleInputImg, handleImg, imgCount, setImgCount }) =>
     const onDrop = useCallback((acceptedFiles) => {
         //, Accept: "multipart/form-data"
         console.log(acceptedFiles);
+        console.log(acceptedFiles[0]?.size);
+        if (acceptedFiles[0]?.size > 250000) {
+            alert("25KB 이상의 이미지는 넣을 수 없습니다");
+            return;
+        }
         var reg = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
         if (acceptedFiles[0].name.match(reg)) {
             const formData = new FormData();

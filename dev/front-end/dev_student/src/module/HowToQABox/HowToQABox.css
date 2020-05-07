@@ -25,6 +25,7 @@
     float: left;
     width: 30px;
     margin-right: 13px;
+    cursor: pointer;
 }
 
 .HowToTemplate .likes-outter .likes-count-box {

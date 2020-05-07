@@ -2,15 +2,20 @@ import React, { useState, useEffect } from "react";
 
 const ImgPreviewModule = ({ img }) => {
     const [preview, setPreview] = useState();
-
-    // const imgList = img;
-    // console.log(imgList);
-    // console.log(imgList?.length);
+    const handleCopyImgLink = (src) => {
+        var copyvalue = "![](" + src + ")";
+        var newElement = document.createElement("textarea");
+        newElement.value = copyvalue;
+        document.body.appendChild(newElement);
+        newElement.select();
+        document.execCommand("copy");
+    };
     useEffect(() => {
         var imgList = img.split("^-^");
-        console.log(imgList);
         if (imgList[0] !== "") {
-            const renderPreiew = imgList.map((it) => <img src={it} />);
+            const renderPreiew = imgList.map((it) => (
+                <img onClick={() => handleCopyImgLink(it)} id="preview-img" key={it} src={it} />
+            ));
             setPreview(renderPreiew);
         } else {
             setPreview("");
