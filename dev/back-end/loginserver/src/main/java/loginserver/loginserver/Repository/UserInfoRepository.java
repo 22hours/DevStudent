@@ -7,4 +7,5 @@ public interface UserInfoRepository extends MongoRepository<UserInfo,String> {
 
     UserInfo findByNickname(String nickname);
 
+    UserInfo findByEmail(String email);
 }
