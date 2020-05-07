@@ -69,9 +69,9 @@ const NewHeaderComponent = ({ nickname, location }) => {
                             </Link>
                         </div>
                         <div className={"menu-box " + (clicked === "howto" ? "on" : "off")}>
-                            <Link to="/howto" className="menu-item">
+                            <a href="/howto" className="menu-item">
                                 HowTo
-                            </Link>
+                            </a>
                         </div>
                         <div className={"menu-box " + (clicked === "rule" ? "on" : "off")}>
                             <Link to="/rule" className="menu-item">

@@ -72,12 +72,12 @@ const HeaderComponent = ({ nickname, location }) => {
                         </NavItem>
                         <NavItem>
                             <div className="nav-item-wrapper">
-                                <Link
-                                    to="/howto"
+                                <a
+                                    href="/howto"
                                     className={"nav-link " + (clicked === "howto" ? "selected " : "unselected")}
                                 >
                                     Howto
-                                </Link>
+                                </a>
                             </div>
                         </NavItem>
                         <NavItem>
