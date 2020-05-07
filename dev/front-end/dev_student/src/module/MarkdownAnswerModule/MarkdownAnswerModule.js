@@ -75,7 +75,6 @@ const MarkdownAnswerModule = ({ id }) => {
                                     placeholder="write your opinion.."
                                     value={comment}
                                     onChange={({ target: { value } }) => setComment(value)}
-                                    size="large"
                                     type="textarea"
                                 ></Input>
                             </Col>
