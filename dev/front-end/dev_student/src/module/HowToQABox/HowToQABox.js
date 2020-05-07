@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Collapse, Input } from "reactstrap";
 import { useMutation } from "@apollo/react-hooks";
 import "./HowToQABox.css";
@@ -20,10 +20,29 @@ import { CREATE_LIKE, CREATE_COMMENT, UPDATE_ADOPTED_ANSWER_ID } from "mutation/
 // utils
 import { timeForToday } from "util/time";
 
+const QABoxComment = ({ comments }) => {
+    const [commentList, setCommentList] = useState();
+    useEffect(() => {
+        setCommentList(
+            comments.map(({ _id, authorNickname, content, date }) => (
+                <div key={_id} className="comment-box">
+                    <span id={"author"}>{authorNickname}&nbsp;</span>
+                    &nbsp;
+                    <span id="content">{content}</span>
+                    &nbsp; &nbsp;
+                    <span id="date">{timeForToday(date)}</span>
+                </div>
+            ))
+        );
+    }, [1]);
+    return <React.Fragment>{commentList}</React.Fragment>;
+};
+
 const HowToQABox = ({
     _id,
     isQuestion,
     authorNickname,
+    questionAuthorNickname,
     date,
     dateToText,
     isLiked,
@@ -80,15 +99,7 @@ const HowToQABox = ({
             return <React.Fragment></React.Fragment>;
         }
     };
-    const CommentList = comments.map(({ _id, authorNickname, content, date }) => (
-        <div key={_id} className="comment-box">
-            <span id={"author"}>{authorNickname}&nbsp;</span>
-            &nbsp;
-            <span id="content">{content}</span>
-            &nbsp; &nbsp;
-            <span id="date">{timeForToday(date)}</span>
-        </div>
-    ));
+
     const handleSubmit = async () => {
         createComment({
             variables: {
@@ -108,7 +119,9 @@ const HowToQABox = ({
     };
     const handleAdopt = async () => {
         var adoptReturn = null;
-
+        if (nickname !== questionAuthorNickname) {
+            return;
+        }
         if (adoptedAnswerId === null) adoptReturn = window.confirm("이 댓글을 채택하시겠습니까?");
         else {
             window.alert("이미 채택된 답변이 있습니다");
@@ -218,7 +231,7 @@ const HowToQABox = ({
                             <span onClick={toggleCollapse}>Add Comment...</span>
                         </div>
                     </div>
-                    {CommentList}
+                    <QABoxComment comments={comments} />
                     <Collapse className="question-comment-warpper" isOpen={isOpen}>
                         <RequireLoginBoxModule color="info">
                             <div className="comment-box">

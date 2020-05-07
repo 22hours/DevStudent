@@ -27,7 +27,13 @@ const HowToContentModuleTemplate = ({ match }) => {
     const nickname = JSON.parse(localStorage.getItem("user"))?.nickname;
     const { loading, error, data } = useQuery(findQuestionBy_id_Query, {
         variables: { _id: match.params.id },
+        fetchPolicy: "no-cache",
     });
+
+    useEffect(() => {
+        console.log(data?.findQuestionBy_id);
+        console.log(data?.findQuestionBy_id?.isLiked);
+    }, [data]);
     if (loading)
         return (
             <div>
@@ -39,6 +45,7 @@ const HowToContentModuleTemplate = ({ match }) => {
     if (data.findQuestionBy_id.author === nickname) {
         mine = true;
     }
+
     return (
         <React.Fragment>
             <div className="HowToContentModuleTemplate">
@@ -77,6 +84,7 @@ const HowToContentModuleTemplate = ({ match }) => {
                         id={match.params.id}
                         data={data.findQuestionBy_id.answers}
                         adoptedAnswerId={data.findQuestionBy_id.adoptedAnswerId}
+                        questionAuthorNickname={data.findQuestionBy_id.author.nickname}
                     />
                 </Container>
                 <Container className="how-to-reply-answer-wrapper">
