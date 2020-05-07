@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import axios from "axios";
 
@@ -11,16 +11,16 @@ import { timeForToday, getTimeStamp } from "util/time";
 // page-template
 import NewQuestionPageTemplate from "page-template/NewQuestionPageTemplate/NewQuestionPageTemplate";
 const NewQuestion = () => {
-    console.log(getTimeStamp());
     const url = "https://devstu.koreaelection.shop/uploadRealFile/" + getTimeStamp() + "";
-    console.log(url);
     const [createQuestion] = useMutation(CREATE_QUESTION);
+
     useEffect(() => {
         return () => {
             console.log("cleaned up");
             sessionStorage.removeItem("devstu_imgs");
         };
     }, []);
+
     const sendDataToMainServer = (authorParam, titleParam, contentParam, tagsParam) => {
         createQuestion({
             variables: {

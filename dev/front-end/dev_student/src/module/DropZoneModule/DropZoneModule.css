@@ -1,0 +1,7 @@
+.DropZoneModule {
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px dashed rgb(175, 175, 175);
+    text-align: center;
+}

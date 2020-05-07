@@ -2,7 +2,8 @@ import React, { useCallback, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { Spinner } from "reactstrap";
 import axios from "axios";
-const DropZoneModule = ({ imgLink, setImgLink, handleImg, comment, imgCount, setImgCount }) => {
+import "./DropZoneModule.css";
+const DropZoneModule = ({ handleInputImg, handleImg, imgCount, setImgCount }) => {
     const limitCheck = () => {
         if (imgCount > 1) {
             alert("이미지는 2장만 넣을 수 있습니다");
@@ -38,38 +39,37 @@ const DropZoneModule = ({ imgLink, setImgLink, handleImg, comment, imgCount, set
                         sessionStorage.setItem("devstu_imgs", JSON.stringify(sessionImgList));
                     }
                     handleImg(response.data.fileDownloadUri);
+                    handleInputImg(response.data.fileDownloadUri);
                 })
                 .catch((error) => {});
         } else {
             alert("해당 파일은 이미지 파일이 아닙니다.");
             return;
         }
-
-        // axios
-        //     .post(
-        //         "http://172.30.1.48:8090/upload",
-        //         { formData },
-        //         {
-        //             headers: { "Content-Type": "multipart/form-data", Accept: "multipart/form-data" },
-        //         }
-        //     )
-        //     .then((response) => {
-        //         console.log(response);
-        //     })
-        //     .catch((error) => {});
-        // if (limitCheck) {
-
-        //     console.log(acceptedFiles[0]);
-
-        // }
     }, []);
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
+    const InActive = () => {
+        return (
+            <div className="DropZoneModule">
+                <p>이미지를 드래그 or 여기를 클릭</p>
+            </div>
+        );
+    };
+
+    const Active = () => {
+        return (
+            <div className="DropZoneModule">
+                <p>여기로 떨어뜨려 주세요!</p>
+            </div>
+        );
+    };
+
     return (
         <div {...getRootProps()}>
             <input {...getInputProps()} />
-            {isDragActive ? <p>여기로 떨어뜨려 주세요!</p> : <p>이미지를 드래그하거나, 클릭해서 추가하기</p>}
+            {isDragActive ? <Active /> : <InActive />}
         </div>
     );
 };
