@@ -4,6 +4,11 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+application.properties
+build.gradle
+WebSecurityConfig.java
+FileUploadController.java
+RandMaker.java
 
 ### STS ###
 .apt_generated
