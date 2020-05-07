@@ -22,7 +22,7 @@ const AlarmTemplate = ({ alarms }) => {
     return (
         <Container>
             <div className="margin-top-3">
-                <div>
+                <div className="alarm-wrapper">
                     <span className="content-header">알림</span>
                 </div>
                 <div>
