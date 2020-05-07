@@ -20,6 +20,7 @@ const NicknamePageTemplate = ({ nicknameClick, setNicknameClick, createNickname,
             );
         } else {
             setBtnDisabled("");
+            return <div>확인</div>;
         }
     };
     return (

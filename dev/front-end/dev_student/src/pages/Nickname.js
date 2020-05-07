@@ -15,7 +15,7 @@ const Nickname = ({ location }) => {
         if (data.createNickname.nickname) {
             sessionStorage.clear();
             alert("닉네임 설정을 완료했습니다.");
-            window.localStorage.setItem("user", JSON.stringify(data));
+            window.localStorage.setItem("user", JSON.stringify(data.createNickname));
             window.localStorage.setItem("auth", true);
             window.location.replace("/");
         } else {
@@ -28,6 +28,7 @@ const Nickname = ({ location }) => {
     //이미 닉네임이 있는 사람은 들어오지 못하게 막아야함
     const { from } = location.state || { from: { pathname: "/" } };
     if (window.localStorage.length > 1) return <Redirect to={from} />;
+    if (window.localStorage.length === 1 && window.sessionStorage.length === 0) return <Redirect to={from} />;
 
     return (
         <NicknamePageTemplate
