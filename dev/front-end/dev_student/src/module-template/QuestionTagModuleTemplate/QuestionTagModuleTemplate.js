@@ -24,7 +24,7 @@ const QuestionTagModuleTemplate = () => {
         );
     if (error) return <ServerError />;
     const taglist = data.countTags.map(({ name, count }) => (
-        <QuestionTagItem name={name} count={count}></QuestionTagItem>
+        <QuestionTagItem key={name} name={name} count={count}></QuestionTagItem>
     ));
     return (
         <div className="question-tag-wrapper">
