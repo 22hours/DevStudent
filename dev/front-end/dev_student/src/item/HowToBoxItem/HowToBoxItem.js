@@ -37,7 +37,6 @@ const HowToBoxItem = (props) => {
         adoptedAnswerId,
         tags,
     } = props; //likes 도 추가해야함
-    console.log(tags);
     const nickname = JSON.parse(localStorage.getItem("user"))?.nickname;
     const TagListRenderer = () => {
         var TagList = null;
