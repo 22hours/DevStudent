@@ -16,7 +16,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        //http.httpBasic().disable();
+        //http.httpBasic().disable(); // 나중에 ip 바꾸기
         http
                 .authorizeRequests()
                 .anyRequest().access("hasIpAddress('0:0:0:0:0:0:0:1') or hasIpAddress('127.0.0.1')");
