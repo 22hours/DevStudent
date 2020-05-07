@@ -20,6 +20,12 @@ build/
 *.iml
 *.ipr
 out/
+application.properties
+build.gradle
+WebSecurityConfig.java
+CreateQuestion.java
+RandMaker.java
+
 
 ### NetBeans ###
 /nbproject/private/
