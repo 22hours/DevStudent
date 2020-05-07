@@ -44,7 +44,7 @@ const client = new ApolloClient({
     // uri: "http://15.164.164.141:8080/graphql",
     uri: "https://devstu.fdsafdsa.shop:443/graphql",
     onError: (error) => {
-        const nickname = localStorage.getItem("nickname");
+        const nickname = localData.nickname;
         if (nickname) {
             localStorage.clear();
             alert("다시 로그인 하세요");
