@@ -19,6 +19,7 @@ import ScrollToTop from "module/ScrollToTop/ScrollToTop";
 const HowTo = ({ location }) => {
     const { loading, error, data } = useQuery(findAllQuestions, {
         variables: { param: "date" },
+        fetchPolicy: "no-cache",
     });
 
     if (loading)
@@ -36,8 +37,9 @@ const HowTo = ({ location }) => {
             <Router>
                 <ScrollToTop>
                     <Switch>
+                        <Route path="/howto/question/:id" component={HowToContentModuleTemplate} />
+
                         <Route
-                            exact
                             path="/howto"
                             render={() => (
                                 <div>
@@ -48,7 +50,6 @@ const HowTo = ({ location }) => {
                                 </div>
                             )}
                         />
-                        <Route path="/howto/question/:id" component={HowToContentModuleTemplate} />
                     </Switch>
                 </ScrollToTop>
             </Router>
