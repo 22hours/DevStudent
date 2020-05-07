@@ -20,7 +20,6 @@ class App extends Component {
         PublicIpGetter();
         const localData = JSON.parse(localStorage.getItem("user"));
         if (localData !== null) {
-            console.log(localData.nickname);
             const localAuth = localStorage.getItem("auth");
             if (localAuth) {
                 this.setState({

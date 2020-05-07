@@ -3,11 +3,25 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap
 import { Link } from "react-router-dom";
 import CountAlarmModule from "module/CountAlarmModule/CountAlarmModule";
 import "./MypageDropdownButtonModule.css";
+
 // icon
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+
+const RenderCountAlarmModule = ({ dropdownOpen }) => {
+    const localData = JSON.parse(localStorage.getItem("user"));
+
+    if (dropdownOpen) {
+        return <CountAlarmModule user={localData?.nickname} />;
+    } else {
+        return <div>Error!</div>;
+    }
+};
+
 const MyPageDropdownButtonModule = (props) => {
     const localData = JSON.parse(localStorage.getItem("user"));
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const { user } = props;
+
     const toggle = () => {
         setDropdownOpen(!dropdownOpen);
     };
@@ -40,7 +54,7 @@ const MyPageDropdownButtonModule = (props) => {
                     <div>{localData?.email}</div>
                 </DropdownItem>
                 <DropdownItem style={{ fontSize: "15px" }}>
-                    <CountAlarmModule user={localData?.nickname} />
+                    <RenderCountAlarmModule dropdownOpen={dropdownOpen} />
                 </DropdownItem>
                 <Link to="/mypage">
                     <DropdownItem style={{ fontSize: "14px" }}>마이페이지</DropdownItem>

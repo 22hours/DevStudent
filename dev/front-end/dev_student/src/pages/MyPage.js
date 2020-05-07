@@ -48,7 +48,7 @@ const MyContentProvider = () => {
             <div key={_id} className="item-box">
                 <span id="item-label">{date}</span>
                 <p id="item-value">
-                    {title} {views}
+                    {title} <span>{views}</span>
                 </p>
             </div>
         </Link>
