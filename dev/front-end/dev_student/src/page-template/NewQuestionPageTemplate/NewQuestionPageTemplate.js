@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import "./NewQuestionPageTemplate.css";
 import { Container } from "reactstrap";
 
@@ -31,6 +31,8 @@ const NewQuestionPageTemplate = ({ handleSubmit }) => {
                         <div className="new-question-preview-box">
                             <HowToBoxItem
                                 authorNickname={nickname}
+                                authorGrade="dev"
+                                authorPoint="5000"
                                 title={title}
                                 previews={body.substr(0, 100)}
                                 views={0}
