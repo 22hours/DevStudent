@@ -47,6 +47,7 @@ const HowToContentModuleTemplate = ({ match }) => {
                     <ContentHeaderModule
                         adoptedAnswerId={data.findQuestionBy_id.adoptedAnswerId}
                         mine={mine}
+                        authorGrade={data.findQuestionBy_id.author.grade}
                         _id={data.findQuestionBy_id._id}
                         title={data.findQuestionBy_id.title}
                         authorNickname={data.findQuestionBy_id.author.nickname}

@@ -204,7 +204,9 @@ const HowToQABox = ({
                 <div className="question-box">
                     <div className="header-box">
                         <IsQorAInner />
-                        <span>{authorNickname}</span>
+                        <a href={"/userinfo/" + authorNickname}>
+                            <span>{authorNickname}</span>
+                        </a>
                         <LikesBoxInner />
                     </div>
                     <div className="main-box">

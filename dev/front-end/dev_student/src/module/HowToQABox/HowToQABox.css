@@ -228,21 +228,23 @@
     /* left: 0px; */
 }
 
-.clicked {
-}
-.liked a {
+.liked p {
     color: rgb(7, 171, 200) !important;
 }
-.disliked a {
+.disliked p {
     color: rgb(211, 11, 71) !important;
 }
 
-.notClicked {
-}
-.notClicked a {
+.disable .notClicked p {
     color: rgb(187, 187, 187) !important;
 }
 
-.clickable {
-    cursor: pointer;
+.question-box .header-box a {
+    color: rgb(54, 53, 53);
+    text-decoration: none;
+}
+
+.question-box .header-box a:hover {
+    color: black;
+    font-weight: bold;
 }

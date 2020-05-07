@@ -80,9 +80,9 @@ const MarkdownAnswerModule = ({ id }) => {
                                 ></Input>
                             </Col>
                         </Row>
-                        <Row>
+                        <Row style={{ marginTop: "14px" }}>
                             <Col sm="12">
-                                <Button onClick={handleCreateAnswer} color="info">
+                                <Button onClick={handleCreateAnswer} style={{ fontSize: "14px" }} color="info">
                                     Comment
                                 </Button>
                             </Col>

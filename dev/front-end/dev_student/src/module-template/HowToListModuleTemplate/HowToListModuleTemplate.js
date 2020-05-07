@@ -55,15 +55,19 @@ const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount, questionAll 
     const { loading, error, data } = useQuery(findAllQuestionsPage, {
         variables: { param: param, requiredCount: 10, pageNum: pageNum },
     });
-    if (loading) return <p>Loading ...</p>;
-    if (error) return <p>Error!</p>;
-    console.log(data);
+    if (loading)
+        return (
+            <div>
+                <CircularProgress />
+            </div>
+        );
+    if (error) return <ServerError />;
 
     setQuestionCount(questionAll);
 
     if (data === null) {
         alert("Error!");
-        return <p>Error!</p>;
+        if (error) return <ServerError />;
     }
     return data.findAllQuestions.map(
         ({ _id, title, author, tags, date, content, answerCount, views, previews, adoptedAnswerId, likesCount }) => (

@@ -6,11 +6,10 @@ import "./ContentHeaderModule.css";
 import Avatar from "atom/Avatar/Avatar";
 
 // img
-import avatar_test from "img/mypage/avatar_test.png";
-import debal from "img/mypage/debal.png";
+import GradeAvatar from "atom/GradeAvatar/GradeAvatar";
 
 const ContentHeaderModule = (props) => {
-    const { _id, title, authorNickname, date, dateToText, views, mine, adoptedAnswerId } = props;
+    const { _id, title, authorNickname, authorGrade, date, dateToText, views, mine, adoptedAnswerId } = props;
     const HeaderBadge = () => {
         if (adoptedAnswerId !== null) {
             return <span className="solved-bagde">SOLVED</span>;
@@ -35,7 +34,7 @@ const ContentHeaderModule = (props) => {
             </div>
             <div className="content-intro-wrapper-div">
                 <div className="avatar-box">
-                    <Avatar img={debal} />
+                    <Avatar img={GradeAvatar(authorGrade)} />
                 </div>
                 <div className="author-date-wrapper">
                     <div className="author-box">{authorNickname}</div>
