@@ -2,10 +2,11 @@ package com.hours22.devstudent.Entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+@ToString
 @Getter
 @Setter
 public class Like {

@@ -2,7 +2,9 @@ package com.hours22.devstudent.Entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 @Getter
 @Setter
 public class Count {
