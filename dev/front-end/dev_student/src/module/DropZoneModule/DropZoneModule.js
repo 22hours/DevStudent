@@ -38,8 +38,9 @@ const DropZoneModule = ({ handleInputImg, handleImg, imgCount, setImgCount }) =>
                         sessionImgList.push(response.data.fileName);
                         sessionStorage.setItem("devstu_imgs", JSON.stringify(sessionImgList));
                     }
+                    console.log("왜안돼?");
                     handleImg(response.data.fileDownloadUri);
-                    handleInputImg(response.data.fileDownloadUri);
+                    // handleInputImg(response.data.fileDownloadUri);
                 })
                 .catch((error) => {});
         } else {

@@ -9,6 +9,7 @@ import MarkdownParser from "atom/MarkdownParser/MarkdownParser";
 
 // module
 import DropZoneModule from "module/DropZoneModule/DropZoneModule";
+import ImgPreviewModule from "module/ImgPreviewModule/ImgPreviewModule";
 
 //icons
 import FormatBoldIcon from "@material-ui/icons/FormatBold";
@@ -16,26 +17,15 @@ import FormatItalicIcon from "@material-ui/icons/FormatItalic";
 import FormatUnderlinedIcon from "@material-ui/icons/FormatUnderlined";
 import CodeIcon from "@material-ui/icons/Code";
 import FormatQuoteIcon from "@material-ui/icons/FormatQuote";
-const PreviewImg = ({ img }) => {
-    var imgList = img;
-    console.log("preview imgList");
-    console.log(img);
-    var renderedPreview = imgList?.map((it) => (
-        <div>
-            <img src={it} />
-        </div>
-    ));
-    console.log("preview " + renderedPreview);
-    return <React.Fragment>{renderedPreview}</React.Fragment>;
-};
+
 const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
     // const [comment, setComment] = useState("");
     const [activeTab, setActiveTab] = useState("1");
     const [imgLink, setImgLink] = useState("");
     const [isOpen, setIsOpen] = useState(false);
+    const [img, setImg] = useState("");
 
     const [imgCount, setImgCount] = useState(0);
-    const [img, setImg] = useState([]);
     const handleInputImg = (acceptedFile) => {
         var imgList = img;
         imgList.push(acceptedFile);
@@ -68,11 +58,22 @@ const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
     };
 
     useEffect(() => {
+        console.log("img change!");
+    }, [img]);
+
+    useEffect(() => {
         sessionStorage.removeItem("devstu_imgs");
     }, [1]);
 
     useEffect(() => {
         if (imgLink === "") return;
+
+        var linkTemp = imgLink?.split("(")[1];
+        var link = linkTemp?.split(")")[0];
+        // var link = linkTemp.split("]")[0];
+        if (img === "") setImg(link);
+        else setImg(img + "^-^" + link);
+
         setComment(comment + "\n" + imgLink);
     }, [imgLink]);
 
@@ -166,7 +167,8 @@ const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
                             handleImg={handleImg}
                             handleInputImg={handleInputImg}
                         />
-                        <PreviewImg img={img} />
+                        <ImgPreviewModule img={img} />
+                        {/* {img} */}
                     </TabPane>
                     <TabPane tabId="2">
                         <Row>
