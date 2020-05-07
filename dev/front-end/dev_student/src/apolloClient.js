@@ -1,5 +1,4 @@
 import ApolloClient from "apollo-boost";
-
 import PublicIpGetter from "module/PublicIpGetter/PublicIpGetter";
 const client1 = new ApolloClient({
     // uri : "https://countries.trevorblades.com/"
@@ -44,7 +43,7 @@ const client = new ApolloClient({
     // uri: "http://15.164.164.141:8080/graphql",
     uri: "https://devstu.fdsafdsa.shop:443/graphql",
     onError: (error) => {
-        const nickname = localData.nickname;
+        const nickname = localData?.nickname;
         if (nickname) {
             localStorage.clear();
             alert("다시 로그인 하세요");

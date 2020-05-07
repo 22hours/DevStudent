@@ -252,3 +252,7 @@
     color: black;
     font-weight: bold;
 }
+
+.comment-box a span {
+    text-decoration: none;
+}

@@ -24,9 +24,11 @@ const QABoxComment = ({ comments }) => {
     const [commentList, setCommentList] = useState();
     useEffect(() => {
         setCommentList(
-            comments.map(({ _id, authorNickname, content, date }) => (
+            comments.map(({ _id, author, content, date }) => (
                 <div key={_id} className="comment-box">
-                    <span id={"author"}>{authorNickname}&nbsp;</span>
+                    <a href={"/userinfo/" + author}>
+                        <span id={"author"}>{author}&nbsp;</span>
+                    </a>
                     &nbsp;
                     <span id="content">{content}</span>
                     &nbsp; &nbsp;
@@ -228,7 +230,7 @@ const HowToQABox = ({
                             <TagBox />
                         </div>
                         <div className="add-comment-box">
-                            <span onClick={toggleCollapse}>Add Comment...</span>
+                            <span onClick={toggleCollapse}> Add Comment</span>
                         </div>
                     </div>
                     <QABoxComment comments={comments} />
@@ -242,7 +244,19 @@ const HowToQABox = ({
                                     type="textarea"
                                 ></Input>
                                 <div id="comment-link">
-                                    <span onClick={handleSubmit}> > comment here</span>
+                                    <span
+                                        style={{
+                                            float: "right",
+                                            fontSize: "12px",
+                                            paddingTop: "4px",
+                                            paddingBottom: "4px",
+                                            cursor: "pointer",
+                                        }}
+                                        onClick={handleSubmit}
+                                    >
+                                        {" "}
+                                        > Submit
+                                    </span>
                                 </div>
                             </div>
                         </RequireLoginBoxModule>
