@@ -18,31 +18,35 @@ const NewQuestion = () => {
     useEffect(() => {
         return () => {
             console.log("cleaned up");
-            sessionStorage.clear();
+            sessionStorage.removeItem("devstu_imgs");
         };
     }, []);
+    const sendDataToMainServer = (authorParam, titleParam, contentParam, tagsParam) => {
+        createQuestion({
+            variables: {
+                author: authorParam,
+                title: titleParam,
+                content: contentParam,
+                tags: tagsParam,
+            },
+        })
+            .then((response) => {
+                alert("질문을 저장했습니다.");
+                window.location.href = "/howto";
+            })
+            .catch((err) => {
+                alert(err.messeage);
+            });
+    };
     const handleSubmit = async (authorParam, titleParam, contentParam, tagsParam) => {
         console.log(contentParam);
-        axios
-            .post(url, JSON.parse(sessionStorage.getItem("devstu_imgs")))
-            .then((response) => {
-                createQuestion({
-                    variables: {
-                        author: authorParam,
-                        title: titleParam,
-                        content: contentParam,
-                        tags: tagsParam,
-                    },
-                })
-                    .then((response) => {
-                        alert("질문을 저장했습니다.");
-                        window.location.href = "https://devstudent.web.app/howto";
-                    })
-                    .catch((err) => {
-                        alert(err.messeage);
-                    });
-            })
-            .catch((error) => {});
+        if (JSON.parse(sessionStorage.getItem("devstu_imgs"))) {
+            axios
+                .post(url, JSON.parse(sessionStorage.getItem("devstu_imgs")))
+                .then((response) => {})
+                .catch((error) => {});
+        }
+        sendDataToMainServer(authorParam, titleParam, contentParam, tagsParam);
     };
 
     return (
