@@ -32,8 +32,8 @@ public class Login {
         if(!user.getAuthState().equals("Certificated"))
             return new User();
         UserInfo userInfo = userInfoRepository.findByEmail(email);
-        String gitLink = userInfo.getGitLink();
-        user.setGitLink(gitLink);
+        if(userInfo != null)
+            user.setGitLink(userInfo.getGitLink());
         user.setPassword(null);
         user.setAccessToken(createNewAccessToken.create(user.getNickname(), email, ip));
         return user;
