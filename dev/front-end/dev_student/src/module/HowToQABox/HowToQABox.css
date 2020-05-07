@@ -39,6 +39,11 @@
     text-align: center;
     font-size: 14px;
     color: gray;
+    cursor: pointer;
+}
+
+.likes-count-up p {
+    margin-bottom: 0px;
 }
 
 .HowToTemplate .likes-inner {
@@ -52,6 +57,7 @@
     color: gray;
     float: left;
     margin-right: 8px;
+    cursor: pointer;
 }
 .HowToTemplate .likes-inner .likes-count-box {
     font-family: "Do Hyeon", sans-serif;
@@ -156,6 +162,8 @@
 
 .question-box .add-comment-box {
     float: right;
+    cursor: pointer;
+    font-size: 12px;
 }
 
 .question-box .add-comment-box a {
@@ -202,7 +210,7 @@
 }
 
 .HowToQABox .adopt {
-    background-color: rgb(255, 0, 0)35);
+    background-color: rgb(238, 128, 128);
 }
 .HowToQABox .notadopt {
     background-color: rgb(211, 211, 211);

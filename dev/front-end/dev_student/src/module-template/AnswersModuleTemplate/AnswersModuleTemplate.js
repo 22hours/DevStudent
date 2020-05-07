@@ -5,9 +5,6 @@ import { timeForToday } from "util/time";
 const AnswersModuleTemplate = ({ data, id, adoptedAnswerId }) => {
     const [items, setItems] = useState();
     useEffect(() => {
-        console.log("Change! " + items);
-    }, [items]);
-    useEffect(() => {
         const resItems = data.map(({ _id, author, content, date, comments, isLiked, likesCount }) => (
             <HowToQABox
                 _id={_id}
@@ -25,7 +22,6 @@ const AnswersModuleTemplate = ({ data, id, adoptedAnswerId }) => {
             />
         ));
         setItems(resItems);
-        console.log(resItems);
     }, [1]);
     return <React.Fragment>{items}</React.Fragment>;
 };
