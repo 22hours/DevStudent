@@ -29,6 +29,8 @@ public class Login {
         if (!user.getPassword().equals(password)) {
             return new User();
         }
+        if(!user.getAuthState().equals("Certificated"))
+            return new User();
         UserInfo userInfo = userInfoRepository.findByEmail(email);
         String gitLink = userInfo.getGitLink();
         user.setGitLink(gitLink);
