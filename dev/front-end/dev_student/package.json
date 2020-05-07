@@ -31,10 +31,10 @@
     },
     "scripts": {
         "start": "cross-env NODE_PATH=src react-scripts start",
-        "build": "cross-env NODE_PATH=src react-scripts build",
+        "build": "GENERATE_SOURCEMAP=false cross-env NODE_PATH=src react-scripts build && rm build/static/**/*.map",
         "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject",
-        "deploy": "cross-env NODE_PATH=src react-scripts build && firebase deploy"
+        "deploy": "cross-env NODE_PATH=src GENERATE_SOURCEMAP=false react-scripts build && firebase deploy"
     },
     "eslintConfig": {
         "extends": "react-app"
