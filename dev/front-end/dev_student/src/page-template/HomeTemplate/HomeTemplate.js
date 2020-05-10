@@ -9,11 +9,7 @@ import HowToKanbanModuleTemplate from "module-template/HowToKanbanModuleTemplate
 import HowToRuleModule from "module/HowToRuleModule/HowToRuleModule";
 import RecruitScheduleModule from "module/RecruitScheduleModule/RecruitScheduleModule";
 
-//img
-import catholic_wide from "img/home/catholic_wide.png";
-
 // atoms
-import FlipText from "atom/FlipText/FlipText";
 import { Container, Button } from "reactstrap";
 
 const HomeTamplate = () => {
@@ -31,6 +27,7 @@ const HomeTamplate = () => {
                     </div>
                 </Container>
             </div>
+            <HowToKanbanModuleTemplate />
             <HowToRuleModule />
             <RecruitScheduleModule />
         </div>

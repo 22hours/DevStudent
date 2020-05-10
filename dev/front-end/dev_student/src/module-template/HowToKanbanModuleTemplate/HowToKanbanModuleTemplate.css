@@ -1,0 +1,34 @@
+.HowToKanbanModuleTemplate {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.HowToKanbanModuleTemplate .kanban-wrapper {
+    overflow: hidden;
+}
+
+.HowToKanbanModuleTemplate .kanban-col {
+    float: left;
+    width: 33%;
+    padding: 10px;
+    height: auto;
+}
+
+.HowToKanbanModuleTemplate .kanban-col .kanban-header {
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.HowToKanbanModuleTemplate .kanban-col .kanban-box {
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 5px;
+    height: auto;
+    padding: 5px;
+}
+
+/* ///////////////////////// Kanban Item //////////////////////////// */
+
+.HowToKanbanModuleTemplate .kanbanItem {
+}
