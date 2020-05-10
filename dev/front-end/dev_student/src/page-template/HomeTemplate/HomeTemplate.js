@@ -2,6 +2,9 @@ import React from "react";
 import "./HomeTamplate.css";
 import { Link } from "react-router-dom";
 
+//module template
+import HowToKanbanModuleTemplate from "module-template/HowToKanbanModuleTemplate/HowToKanbanModuleTemplate";
+
 //modules
 import HowToRuleModule from "module/HowToRuleModule/HowToRuleModule";
 import RecruitScheduleModule from "module/RecruitScheduleModule/RecruitScheduleModule";
@@ -24,8 +27,6 @@ const HomeTamplate = () => {
                     <div className="home-intro-button-row">
                         <Link to="/howto">
                             <Button color="info">지식을 찾아서</Button>
-                            {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        <Button color="info">질문하러가기</Button> */}
                         </Link>
                     </div>
                 </Container>
