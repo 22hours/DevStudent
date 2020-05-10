@@ -11,8 +11,19 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 
-const KanbanItem = ({ title }) => {
-    return <div className="KanbanItem">{title}</div>;
+const KanbanItem = ({ title, author, previews, tags, date, answerCount, likesCount, views }) => {
+    return (
+        <div className="KanbanItem">
+            <div className="item-row">
+                <div className="item-col about-col">
+                    <div className="title-row">{title}</div>
+                    <div className="date-row">{date}</div>
+                </div>
+                <div className="item-col profile-col">{date}</div>
+            </div>
+            <div className="item-row"></div>
+        </div>
+    );
 };
 
 const KanbanItemProvider = (type) => {
@@ -25,7 +36,14 @@ const KanbanItemProvider = (type) => {
 };
 
 const TestKanbanProvider = () => {
-    return <KanbanItem title={"title"} />;
+    return (
+        <React.Fragment>
+            <KanbanItem title={"titledddddddddddddddddddddddd"} date={"방금전"} />
+            <KanbanItem title={"title"} />
+            <KanbanItem title={"title"} />
+            <KanbanItem title={"title"} />
+        </React.Fragment>
+    );
 };
 
 const HowToKanbanModuleTemplate = () => {
