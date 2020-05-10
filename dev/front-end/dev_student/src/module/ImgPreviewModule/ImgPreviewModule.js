@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-
-const ImgPreviewModule = ({ img }) => {
+import "./ImgPreviewModule.css";
+import CancelIcon from "@material-ui/icons/Cancel";
+const ImgPreviewModule = ({ img, handleDeleteImg }) => {
     const [preview, setPreview] = useState();
     const handleCopyImgLink = (src) => {
         var copyvalue = "![](" + src + ")";
@@ -14,14 +15,21 @@ const ImgPreviewModule = ({ img }) => {
         var imgList = img.split("^-^");
         if (imgList[0] !== "") {
             const renderPreiew = imgList.map((it) => (
-                <img onClick={() => handleCopyImgLink(it)} id="preview-img" key={it} src={it} />
+                <div className="preview-img-wrapper">
+                    <div className="preview-img-box">
+                        <img onClick={() => handleCopyImgLink(it)} id="preview-img" key={it} src={it} />
+                    </div>
+                    <div className="preview-control-box" onClick={() => handleDeleteImg(it)}>
+                        <CancelIcon />
+                    </div>
+                </div>
             ));
             setPreview(renderPreiew);
         } else {
             setPreview("");
         }
     }, [img]);
-    return <div className="preview-img-box">{preview}</div>;
+    return <div className="ImgPreviewModule">{preview}</div>;
 };
 
 export default ImgPreviewModule;

@@ -59,6 +59,11 @@ const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
 
     useEffect(() => {
         console.log("img change!");
+        const res = img.split("^-^");
+
+        sessionStorage.setItem("devstu_imgs", JSON.stringify(res));
+
+        console.log(res);
     }, [img]);
 
     useEffect(() => {
@@ -67,9 +72,16 @@ const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
 
     useEffect(() => {
         if (imgLink === "") return;
+        var imgList = img.split("^-^");
+
+        if (imgList.length >= 3) {
+            alert("이미지는 3장 제한입니다");
+            return;
+        }
 
         var linkTemp = imgLink?.split("(")[1];
         var link = linkTemp?.split(")")[0];
+
         // var link = linkTemp.split("]")[0];
         if (img === "") setImg(link);
         else setImg(img + "^-^" + link);
@@ -83,6 +95,24 @@ const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
         document.body.appendChild(newElement);
         newElement.select();
         document.execCommand("copy");
+    };
+
+    const handleDeleteImg = (imgUrl) => {
+        var imgList = img.split("^-^");
+        console.log(imgList);
+
+        // const idx = imgList.indexOf(imgUrl);
+        // if (idx > -1) imgList.splice(idx, 1);
+
+        // console.log(imgList);
+        var res = "";
+        for (var i = 0; i < imgList.length; i++) {
+            if (imgList[i] === imgUrl) continue;
+            if (res === "") res += imgList[i];
+            else res = res + "^-^" + imgList[i];
+        }
+        console.log(res);
+        setImg(res);
     };
 
     const CopyImgLinkDiv = () => {
@@ -167,8 +197,7 @@ const MarkdownEditorModule = ({ comment, setComment, children, limit }) => {
                             handleImg={handleImg}
                             handleInputImg={handleInputImg}
                         />
-                        <ImgPreviewModule img={img} />
-                        {/* {img} */}
+                        <ImgPreviewModule img={img} handleDeleteImg={handleDeleteImg} />
                     </TabPane>
                     <TabPane tabId="2">
                         <Row>
