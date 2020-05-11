@@ -11,6 +11,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -36,7 +37,7 @@ public class FileUploadDownloadService {
         }
     }
 
-    public void setFileLocation(String date){
+    public void setFileLocation(String date) {
         this.fileLocation = Paths.get(date)
                 .toAbsolutePath().normalize();
 
@@ -47,7 +48,7 @@ public class FileUploadDownloadService {
         }
     }
 
-    public String storeFile(MultipartFile file,boolean isit) {
+    public String storeFile(MultipartFile file, boolean isit) {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         Path targetLocation = null;
         String rand = randMaker.getKey(false, 20);
@@ -55,12 +56,11 @@ public class FileUploadDownloadService {
             // 파일명에 부적합 문자가 있는지 확인한다.
             if (fileName.contains(".."))
                 throw new FileUploadException("파일명에 부적합 문자가 포함되어 있습니다. " + fileName);
-            if(isit) {
+            if (isit) {
                 String str = fileName.substring(fileName.lastIndexOf('.'));
                 rand = rand + str;
                 targetLocation = this.fileLocation.resolve(rand);
-            }
-            else{
+            } else {
                 targetLocation = this.fileLocation.resolve(fileName);
                 Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
                 return fileName;
@@ -75,6 +75,24 @@ public class FileUploadDownloadService {
         }
     }
 
+    public void deleteFiles() throws IOException {
+        File file = new File(String.valueOf(this.fileLocation));
+        if (file.exists()) {
+            if (file.isDirectory()) {
+                File[] files = file.listFiles();
+                for (int i = 0; i < files.length; i++) {
+                    if (files[i].delete()) {
+                        System.out.println(files[i].getName() + " 삭제성공");
+                    } else {
+                        System.out.println(files[i].getName() + " 삭제실패");
+                    }
+                }
+            }
+        }
+        else{
+            System.out.println("해당 파일이 존재하지 않습니다.");
+        }
+    }
 
     public Resource loadFileAsResource(String fileName) {
         try {
