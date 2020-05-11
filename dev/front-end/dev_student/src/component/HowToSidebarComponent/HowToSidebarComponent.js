@@ -22,10 +22,9 @@ const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
         width: "100%",
     };
 
-    const [param, setParam] = useState("views");
     const [requiredCount] = useState("10");
     const { loading, error, data } = useQuery(findAllQuestionsByViews, {
-        variables: { param: param, requiredCount: requiredCount },
+        variables: { param: "likesCount", requiredCount: requiredCount },
     });
 
     if (loading)

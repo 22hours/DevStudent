@@ -7,18 +7,6 @@ import "./HotQuestionItem.css";
 //import VisibilityIcon from "@material-ui/icons/Visibility";
 import LinkIcon from "@material-ui/icons/Link";
 const HotQuestionItem = ({ id, views, title }) => {
-    const list_style = {
-        fontSize: "11px",
-        width: "100%",
-        textAlign: "left",
-        borderTop: "0",
-        borderLeft: "0",
-        borderRight: "0",
-        paddingLeft: "0.6rem",
-        paddingTop: "0.40rem",
-        paddingBottom: "0.40rem",
-        // color:"#034390"
-    };
     var hotTitle = "";
     hotTitle = title;
     if (hotTitle.length > 25) {
