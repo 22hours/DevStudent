@@ -7,6 +7,22 @@
     overflow: hidden;
 }
 
+.HowToKanbanModuleTemplate .kanban-module-header {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.HowToKanbanModuleTemplate .kanban-module-header .kanban-header-wrapper {
+    display: inline-block;
+    /* width: calc(100% - 300px); */
+    margin-left: 20px;
+    margin-right: 20px;
+    border-bottom: 1px solid rgb(226, 226, 226);
+}
+
 .HowToKanbanModuleTemplate .kanban-col {
     float: left;
     width: 33%;
@@ -16,7 +32,7 @@
 
 .HowToKanbanModuleTemplate .kanban-col .kanban-header {
     width: 100%;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     margin-bottom: 10px;
 }
@@ -87,8 +103,23 @@
     border-radius: 50%;
 }
 
+.HowToKanbanModuleTemplate .KanbanItem .preview-row {
+    font-size: 14px;
+    color: gray;
+}
+
+.HowToKanbanModuleTemplate .KanbanItem .stats-row {
+    float: left;
+    font-size: 14px;
+}
+
 .HowToKanbanModuleTemplate .KanbanItem .author-row {
     text-align: right;
+}
+
+.HowToKanbanModuleTemplate .KanbanItem #date {
+    font-size: 14px;
+    color: gray;
 }
 
 .HowToKanbanModuleTemplate .KanbanItem #nickname {
@@ -102,4 +133,8 @@
     margin: 1px;
     margin-bottom: 3px;
     box-shadow: 0 1px 3px rgba(56, 56, 56, 0.16), 0 1px 3px rgba(94, 94, 94, 0.23);
+}
+
+.HowToKanbanModuleTemplate .KanbanItem .bottom {
+    margin-top: 20px;
 }

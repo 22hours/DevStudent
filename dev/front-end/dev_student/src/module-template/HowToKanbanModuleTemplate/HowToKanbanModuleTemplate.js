@@ -17,6 +17,7 @@ import { findAllQuestions } from "query/queries";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
 const KanbanItem = (props) => {
     return (
@@ -29,16 +30,18 @@ const KanbanItem = (props) => {
                     <div className="title-row">
                         <a href="/howto">{props.title}</a>
                     </div>
-                    <div className="date-row">
-                        {timeForToday(props.date)}
-                        {props.rank + 1}
-                    </div>
+                    <div className="preview-row">{props.previews}</div>
                 </div>
             </div>
-            <div className="item-row">
+            <div className="item-row bottom">
+                <div className="stats-row">
+                    <VisibilityIcon style={{ fontSize: "13px", color: "gray" }} /> {props.views}&nbsp;&nbsp;
+                    <TrendingUpIcon style={{ fontSize: "13px", color: "gray" }} /> {props.answerCount}&nbsp;&nbsp;
+                    <ThumbUpIcon style={{ fontSize: "13px", color: "gray" }} /> {props.likesCount}
+                </div>
                 <div className="author-row">
                     <img id="grade-avatar" src={GradeAvatar(props.author?.grade)}></img>
-                    &nbsp;&nbsp;
+                    &nbsp;
                     <span id="nickname">{props.author?.nickname}</span>
                 </div>
             </div>
@@ -65,33 +68,17 @@ const KanbanRenderer = ({ data }) => {
     return <React.Fragment>{item}</React.Fragment>;
 };
 
-const TestKanbanProvider = () => {
-    return (
-        <React.Fragment>
-            <KanbanItem
-                title={"titledddddddddddddddddddddddd"}
-                date={"방금전"}
-                author={{
-                    nickname: "nickname",
-                    grade: "short",
-                    point: "130",
-                }}
-            />
-            <KanbanItem title={"title"} />
-            <KanbanItem title={"title"} />
-            <KanbanItem title={"title"} />
-        </React.Fragment>
-    );
-};
-
 const HowToKanbanModuleTemplate = () => {
     return (
         <div className="HowToKanbanModuleTemplate">
             <Container className="kanban-wrapper">
+                <div className="kanban-module-header">
+                    <div className="kanban-header-wrapper">실시간 인기 차트</div>
+                </div>
                 <div className="kanban-col">
                     <div className="kanban-header">
                         <AccessTimeIcon />
-                        <br /> Latest
+                        <br /> 최신순
                     </div>
                     <div className="kanban-box">
                         <KanbanItemProvider type={"date"} />
@@ -100,7 +87,7 @@ const HowToKanbanModuleTemplate = () => {
                 <div className="kanban-col">
                     <div className="kanban-header">
                         <VisibilityIcon />
-                        <br /> Views
+                        <br /> 조회순
                     </div>
                     <div className="kanban-box">
                         <KanbanItemProvider type={"views"} />
@@ -109,7 +96,7 @@ const HowToKanbanModuleTemplate = () => {
                 <div className="kanban-col">
                     <div className="kanban-header">
                         <TrendingUpIcon />
-                        <br /> Answers
+                        <br /> 답변순
                     </div>
                     <div className="kanban-box">
                         <KanbanItemProvider type={"answerCount"} />
