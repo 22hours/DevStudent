@@ -50,7 +50,7 @@ const KanbanItem = (props) => {
 };
 
 const KanbanItemProvider = ({ type }) => {
-    const { loading, error, data } = useQuery(findAllQuestions, { variables: { param: type, requiredCount: 5 } });
+    const { loading, error, data } = useQuery(findAllQuestions, { variables: { param: type, requiredCount: 3 } });
     if (loading) return <p>loading now</p>;
     if (error) return <p>error now</p>;
     return (
