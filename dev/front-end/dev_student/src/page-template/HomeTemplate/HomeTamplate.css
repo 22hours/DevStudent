@@ -1,6 +1,8 @@
 .home-intro-wrapper {
     /* background: url('http://drive.google.com/uc?export=view&id=1xYwZSN-5yOl6t8zLvWqV7CU0DvAdWmvp') no-repeat fixed 50% 0; */
-    background: url(../../img/home/black_wide.png);
+    /* background: url(../../img/home/black_wide.png); */
+    background-image: url(https://source.unsplash.com/category/computer/1600x900);
+
     background-repeat: no-repeat;
     color: white;
     background-size: cover;
@@ -9,6 +11,11 @@
     position: relative;
     overflow: hidden;
     width: 100%;
+}
+
+.home-intro-wrapper .black-mask {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
     padding-top: 80px;
     padding-bottom: 80px;
 }
