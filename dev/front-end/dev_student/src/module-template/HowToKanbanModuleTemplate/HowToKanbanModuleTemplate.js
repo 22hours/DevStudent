@@ -11,7 +11,7 @@ import GradeAvatar from "atom/GradeAvatar/GradeAvatar";
 import RankAvatar from "atom/RankAvatar/RankAvatar";
 
 //queries
-import { findAllQuestionsByViews } from "query/queries";
+import { FIND_HOME_KANBAN } from "query/queries";
 
 //icons
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
@@ -49,15 +49,39 @@ const KanbanItem = (props) => {
     );
 };
 
-const KanbanItemProvider = ({ type }) => {
-    const { loading, error, data } = useQuery(findAllQuestionsByViews, {
-        variables: { param: type, requiredCount: 3 },
-    });
+const TotalKanbanItemProvider = () => {
+    const { loading, error, data } = useQuery(FIND_HOME_KANBAN, { variables: { requiredCount: 3 } });
     if (loading) return <p>loading now</p>;
     if (error) return <p>error now</p>;
     return (
         <React.Fragment>
-            <KanbanRenderer data={data?.findAllQuestions} />
+            <div className="kanban-col">
+                <div className="kanban-header">
+                    <AccessTimeIcon />
+                    <br /> 최신순
+                </div>
+                <div className="kanban-box">
+                    <KanbanRenderer data={data?.findHomeKanban?.date} />
+                </div>
+            </div>
+            <div className="kanban-col">
+                <div className="kanban-header">
+                    <VisibilityIcon />
+                    <br /> 조회순
+                </div>
+                <div className="kanban-box">
+                    <KanbanRenderer data={data?.findHomeKanban?.views} />
+                </div>
+            </div>
+            <div className="kanban-col">
+                <div className="kanban-header">
+                    <TrendingUpIcon />
+                    <br /> 답변순
+                </div>
+                <div className="kanban-box">
+                    <KanbanRenderer data={data?.findHomeKanban?.answerCount} />
+                </div>
+            </div>
         </React.Fragment>
     );
 };
@@ -77,33 +101,7 @@ const HowToKanbanModuleTemplate = () => {
                 <div className="kanban-module-header">
                     <div className="kanban-header-wrapper">실시간 인기 차트</div>
                 </div>
-                <div className="kanban-col">
-                    <div className="kanban-header">
-                        <AccessTimeIcon />
-                        <br /> 최신순
-                    </div>
-                    <div className="kanban-box">
-                        <KanbanItemProvider type={"date"} />
-                    </div>
-                </div>
-                <div className="kanban-col">
-                    <div className="kanban-header">
-                        <VisibilityIcon />
-                        <br /> 조회순
-                    </div>
-                    <div className="kanban-box">
-                        <KanbanItemProvider type={"views"} />
-                    </div>
-                </div>
-                <div className="kanban-col">
-                    <div className="kanban-header">
-                        <TrendingUpIcon />
-                        <br /> 답변순
-                    </div>
-                    <div className="kanban-box">
-                        <KanbanItemProvider type={"answerCount"} />
-                    </div>
-                </div>
+                <TotalKanbanItemProvider />
             </Container>
         </div>
     );
