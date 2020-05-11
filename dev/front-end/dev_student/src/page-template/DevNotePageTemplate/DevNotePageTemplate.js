@@ -7,7 +7,7 @@ const DevNoteItem = (props) => {
     const [title, setTitle] = useState();
     const [author, setAuthor] = useState();
     const [date, setDate] = useState();
-
+    const [preview, setPreview] = useState();
     useEffect(() => {
         var text = props.name.split(".")[0];
         var rawDate = text.split("_")[0];
@@ -20,6 +20,7 @@ const DevNoteItem = (props) => {
             .get("https://raw.githubusercontent.com/22hours/DevStudent/devnote/devnote/" + props.name)
             .then((response) => {
                 console.log(response);
+                setPreview(response.data.split("&&&")[0]);
             })
             .catch(() => alert("error!"));
     }, [1]);
@@ -28,6 +29,7 @@ const DevNoteItem = (props) => {
             <div className="img-row"></div>
             <div className="item-row">
                 <div className="title-row"> {title}</div>
+                <div className="preview-row">{preview}</div>
                 <div className="date-row"> {date}</div>
             </div>
         </div>
