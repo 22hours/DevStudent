@@ -5,6 +5,11 @@
     height: auto;
 }
 
+.DevNotePageTemplate a {
+    text-decoration: none;
+    color: black;
+}
+
 .DevNotePageTemplate .page-header {
     font-size: 25px;
     margin-bottom: 30px;

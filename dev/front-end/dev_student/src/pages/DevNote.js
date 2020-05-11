@@ -7,12 +7,11 @@ import DevNotePageTemplate from "page-template/DevNotePageTemplate/DevNotePageTe
 import MarkdownParser from "atom/MarkdownParser/MarkdownParser";
 // items
 import { text } from "item/DevNoteJson/DevNoteJsonItem.txt";
-const DevNote = () => {
+const DevNote = ({ location }) => {
     const [readme, setReadme] = useState();
     useEffect(() => {
         axios.get("https://raw.githubusercontent.com/22hours/DevStudent/master/Update.md").then((response) => {
             setReadme(response.data);
-            console.log(response.data);
         });
     }, [1]);
     return (
@@ -24,7 +23,7 @@ const DevNote = () => {
             {/* <Container style={{ paddingTop: "20px" }}>
                 <MarkdownParser content={readme} />
             </Container> */}
-            <DevNotePageTemplate />
+            <DevNotePageTemplate location={location} />
         </React.Fragment>
     );
 };
