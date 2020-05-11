@@ -87,32 +87,32 @@ const RulePageTemplate = () => {
                                 <div className="ds-row">
                                     <span id="grade-name">BEAN </span>
                                     <span id="grade-ds"> &nbsp;&nbsp;초기등급</span>
-                                    <span id="grade-point"> &nbsp;&nbsp;0 ~ 30</span>
+                                    <span id="grade-point"> &nbsp;&nbsp;0 ~ 10</span>
                                 </div>
                                 <div className="ds-row">
                                     <span id="grade-name">SHORT </span>
                                     <span id="grade-ds"> &nbsp;&nbsp;이제 막 활동을 시작한 등급</span>
-                                    <span id="grade-point"> &nbsp;&nbsp;31 ~ 200</span>
+                                    <span id="grade-point"> &nbsp;&nbsp;11 ~ 30</span>
                                 </div>
                                 <div className="ds-row">
                                     <span id="grade-name">TALL</span>
                                     <span id="grade-ds"> &nbsp;&nbsp;어느정도 활동을 한 등급</span>
-                                    <span id="grade-point"> &nbsp;&nbsp;201 ~ 500</span>
+                                    <span id="grade-point"> &nbsp;&nbsp;31 ~ 70</span>
                                 </div>
                                 <div className="ds-row">
                                     <span id="grade-name">GRANDE</span>
                                     <span id="grade-ds"> &nbsp;&nbsp;DEVSTU에 익숙해진 등급</span>
-                                    <span id="grade-point"> &nbsp;&nbsp;501 ~ 1000</span>
+                                    <span id="grade-point"> &nbsp;&nbsp;71 ~ 150</span>
                                 </div>
                                 <div className="ds-row">
                                     <span id="grade-name">VENTI</span>
                                     <span id="grade-ds"> &nbsp;&nbsp;트렌타로 가기 바로 전</span>
-                                    <span id="grade-point"> &nbsp;&nbsp;1001 ~ 2000</span>
+                                    <span id="grade-point"> &nbsp;&nbsp;151 ~ 310</span>
                                 </div>
                                 <div className="ds-row">
                                     <span id="grade-name">TRENTA</span>
                                     <span id="grade-ds"> &nbsp;&nbsp;DEVSTU의 대 지주</span>
-                                    <span id="grade-point"> &nbsp;&nbsp;2001 ~ </span>
+                                    <span id="grade-point"> &nbsp;&nbsp;311 ~ </span>
                                 </div>
                                 <div className="ds-row">
                                     <span id="grade-name">DEVS</span>
