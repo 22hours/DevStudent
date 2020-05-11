@@ -16,8 +16,9 @@
 
 .home-intro-wrapper .black-mask {
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding-top: 80px;
+    background-color: rgba(0, 0, 0, 0.4);
+    margin-top: -50px;
+    padding-top: 140px;
     padding-bottom: 80px;
 }
 
