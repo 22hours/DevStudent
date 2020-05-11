@@ -7,9 +7,9 @@ const DevNoteItem = (props) => {
     const [title, setTitle] = useState();
     const [author, setAuthor] = useState();
     const [date, setDate] = useState();
+
     useEffect(() => {
         var text = props.name.split(".")[0];
-        console.log(text);
         var rawDate = text.split("_")[0];
         var rawTitle = text.split("_")[1];
         var rawAuthor = text.split("_")[2];
@@ -17,8 +17,10 @@ const DevNoteItem = (props) => {
         setDate(rawDate);
         setAuthor(rawAuthor);
         axios
-            .get("https://raw.githubusercontent.com/22hours/DevStudent/master/devnote/" + props.name)
-            .then((response) => {})
+            .get("https://raw.githubusercontent.com/22hours/DevStudent/devnote/devnote/" + props.name)
+            .then((response) => {
+                console.log(response);
+            })
             .catch(() => alert("error!"));
     }, [1]);
     return (
@@ -26,6 +28,7 @@ const DevNoteItem = (props) => {
             <div className="img-row"></div>
             <div className="item-row">
                 <div className="title-row"> {title}</div>
+                <div className="date-row"> {date}</div>
             </div>
         </div>
     );
