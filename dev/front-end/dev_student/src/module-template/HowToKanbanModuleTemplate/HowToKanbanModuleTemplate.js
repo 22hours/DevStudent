@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./HowToKanbanModuleTemplate.css";
 import { Container } from "reactstrap";
 import { useQuery } from "react-apollo";
 
+//utils
+import { timeForToday } from "util/time";
+
+//atoms
 import GradeAvatar from "atom/GradeAvatar/GradeAvatar";
 
 //queries
@@ -13,32 +17,51 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 
-const KanbanItem = ({ title, author, previews, tags, date, answerCount, likesCount, views }) => {
+const KanbanItem = (props) => {
     return (
         <div className="KanbanItem">
             <div className="item-row">
+                <div className="item-col profile-col">
+                    <img src={GradeAvatar(props.author?.grade)}></img>
+                </div>
                 <div className="item-col about-col">
                     <div className="title-row">
-                        <a href="/howto">{title}</a>
+                        <a href="/howto">{props.title}</a>
                     </div>
-                    <div className="date-row">{date}</div>
-                </div>
-                <div className="item-col profile-col">
-                    <img src={GradeAvatar(author?.grade)}></img>
+                    <div className="date-row">
+                        {timeForToday(props.date)}
+                        {props.rank + 1}
+                    </div>
                 </div>
             </div>
-            <div className="item-row"></div>
+            <div className="item-row">
+                <div className="author-row">
+                    <img id="grade-avatar" src={GradeAvatar(props.author?.grade)}></img>
+                    &nbsp;&nbsp;
+                    <span id="nickname">{props.author?.nickname}</span>
+                </div>
+            </div>
         </div>
     );
 };
 
-const KanbanItemProvider = (type) => {
+const KanbanItemProvider = ({ type }) => {
     const { loading, error, data } = useQuery(findAllQuestions, { variables: { param: type, requiredCount: 5 } });
-    const [item, setItem] = useState();
     if (loading) return <p>loading now</p>;
     if (error) return <p>error now</p>;
-    setItem(data.findAllQuestion.map((it) => <KanbanItem key={it._id} title={it.title} />));
-    return;
+    return (
+        <React.Fragment>
+            <KanbanRenderer data={data?.findAllQuestions} />
+        </React.Fragment>
+    );
+};
+
+const KanbanRenderer = ({ data }) => {
+    const [item, setItem] = useState();
+    useEffect(() => {
+        setItem(data?.map((it, idx) => <KanbanItem rank={idx} key={it._id} {...it} />));
+    }, [1]);
+    return <React.Fragment>{item}</React.Fragment>;
 };
 
 const TestKanbanProvider = () => {
@@ -70,7 +93,7 @@ const HowToKanbanModuleTemplate = () => {
                         <br /> Latest
                     </div>
                     <div className="kanban-box">
-                        <TestKanbanProvider />
+                        <KanbanItemProvider type={"date"} />
                     </div>
                 </div>
                 <div className="kanban-col">
@@ -79,7 +102,7 @@ const HowToKanbanModuleTemplate = () => {
                         <br /> Views
                     </div>
                     <div className="kanban-box">
-                        <TestKanbanProvider />
+                        <KanbanItemProvider type={"views"} />
                     </div>
                 </div>
                 <div className="kanban-col">
@@ -88,7 +111,7 @@ const HowToKanbanModuleTemplate = () => {
                         <br /> Answers
                     </div>
                     <div className="kanban-box">
-                        <TestKanbanProvider />
+                        <KanbanItemProvider type={"answerCount"} />
                     </div>
                 </div>
             </Container>
