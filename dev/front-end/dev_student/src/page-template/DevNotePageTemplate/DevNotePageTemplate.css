@@ -1,0 +1,27 @@
+.DevNotePageTemplate {
+    padding-top: 30px;
+    background-color: rgb(248, 249, 250);
+    min-height: 100vh;
+    height: auto;
+}
+
+.DevNotePageTemplate .DevNoteItem {
+    /* padding: 10px; */
+    overflow: hidden;
+    background-color: white;
+    float: left;
+    border-radius: 5px;
+}
+
+.DevNotePageTemplate .DevNoteItem .img-row {
+    height: 150px;
+    width: 300px;
+    background-image: url(https://source.unsplash.com/category/nature/1600x900);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.DevNotePageTemplate .DevNoteItem .item-row {
+    padding: 10px;
+}

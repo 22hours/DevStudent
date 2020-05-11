@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container } from "reactstrap";
 import axios from "axios";
 //pageTemplate
-import AboutUsPageTemplate from "page-template/AboutUsPageTemplate/AboutUsPageTemplate";
+import DevNotePageTemplate from "page-template/DevNotePageTemplate/DevNotePageTemplate";
 //atoms
 import MarkdownParser from "atom/MarkdownParser/MarkdownParser";
 // items
@@ -21,9 +21,10 @@ const DevNote = () => {
                 <MarkdownParser content={text} />
             </Container> */}
             {/* <AboutUsPageTemplate /> */}
-            <Container style={{ paddingTop: "20px" }}>
+            {/* <Container style={{ paddingTop: "20px" }}>
                 <MarkdownParser content={readme} />
-            </Container>
+            </Container> */}
+            <DevNotePageTemplate />
         </React.Fragment>
     );
 };
