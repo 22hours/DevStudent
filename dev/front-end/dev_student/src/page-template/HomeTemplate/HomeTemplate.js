@@ -2,15 +2,14 @@ import React from "react";
 import "./HomeTamplate.css";
 import { Link } from "react-router-dom";
 
+//module template
+import HowToKanbanModuleTemplate from "module-template/HowToKanbanModuleTemplate/HowToKanbanModuleTemplate";
+
 //modules
 import HowToRuleModule from "module/HowToRuleModule/HowToRuleModule";
 import RecruitScheduleModule from "module/RecruitScheduleModule/RecruitScheduleModule";
 
-//img
-import catholic_wide from "img/home/catholic_wide.png";
-
 // atoms
-import FlipText from "atom/FlipText/FlipText";
 import { Container, Button } from "reactstrap";
 
 const HomeTamplate = () => {
@@ -24,12 +23,11 @@ const HomeTamplate = () => {
                     <div className="home-intro-button-row">
                         <Link to="/howto">
                             <Button color="info">지식을 찾아서</Button>
-                            {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        <Button color="info">질문하러가기</Button> */}
                         </Link>
                     </div>
                 </Container>
             </div>
+            <HowToKanbanModuleTemplate />
             <HowToRuleModule />
             <RecruitScheduleModule />
         </div>

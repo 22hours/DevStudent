@@ -41,11 +41,6 @@ class App extends Component {
             window.localStorage.setItem("user", JSON.stringify(data));
             window.localStorage.setItem("auth", true);
             window.location.replace("/");
-            // window.localStorage.setItem("nickname", nickname);
-            // window.localStorage.setItem("auth", true);
-            // window.localStorage.setItem("email", email);
-            // window.localStorage.setItem("token", accessToken);
-            // window.localStorage.setItem("refreshToken", refreshToken);
         };
 
         const logout = () => {
