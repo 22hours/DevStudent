@@ -4,12 +4,14 @@ import imageserver.image.Configuration.FileUploadProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @SpringBootApplication
 @EnableConfigurationProperties({
         FileUploadProperties.class
 })
+@EnableScheduling
 public class ImageApplication {
 
     public static void main(String[] args) {
