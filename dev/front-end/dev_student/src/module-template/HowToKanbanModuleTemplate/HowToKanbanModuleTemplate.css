@@ -61,6 +61,11 @@
     text-overflow: ellipsis;
 }
 
+.HowToKanbanModuleTemplate .KanbanItem .title-row a {
+    color: black;
+    text-decoration: none;
+}
+
 .HowToKanbanModuleTemplate .KanbanItem .date-row {
     font-size: 14px;
     color: gray;
@@ -70,5 +75,14 @@
     float: right;
     width: 50px;
     height: 50px;
-    background-color: black;
+    padding-left: 13px;
+    padding-top: 0px;
+    /* padding: 15px; */
+}
+
+.HowToKanbanModuleTemplate .KanbanItem .profile-col img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(56, 56, 56, 0.16), 0 1px 3px rgba(94, 94, 94, 0.23);
 }

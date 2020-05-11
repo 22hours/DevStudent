@@ -3,6 +3,8 @@ import "./HowToKanbanModuleTemplate.css";
 import { Container } from "reactstrap";
 import { useQuery } from "react-apollo";
 
+import GradeAvatar from "atom/GradeAvatar/GradeAvatar";
+
 //queries
 import { findAllQuestions } from "query/queries";
 
@@ -16,10 +18,14 @@ const KanbanItem = ({ title, author, previews, tags, date, answerCount, likesCou
         <div className="KanbanItem">
             <div className="item-row">
                 <div className="item-col about-col">
-                    <div className="title-row">{title}</div>
+                    <div className="title-row">
+                        <a href="/howto">{title}</a>
+                    </div>
                     <div className="date-row">{date}</div>
                 </div>
-                <div className="item-col profile-col">{date}</div>
+                <div className="item-col profile-col">
+                    <img src={GradeAvatar(author?.grade)}></img>
+                </div>
             </div>
             <div className="item-row"></div>
         </div>
@@ -38,7 +44,15 @@ const KanbanItemProvider = (type) => {
 const TestKanbanProvider = () => {
     return (
         <React.Fragment>
-            <KanbanItem title={"titledddddddddddddddddddddddd"} date={"방금전"} />
+            <KanbanItem
+                title={"titledddddddddddddddddddddddd"}
+                date={"방금전"}
+                author={{
+                    nickname: "nickname",
+                    grade: "short",
+                    point: "130",
+                }}
+            />
             <KanbanItem title={"title"} />
             <KanbanItem title={"title"} />
             <KanbanItem title={"title"} />
