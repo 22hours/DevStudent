@@ -157,7 +157,7 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
                                             </div>
                                             <div
                                                 className="github-address-inputbox"
-                                                style={{ width: " calc(100% - 200px)", display: "inline-block" }}
+                                                style={{ width: "195px", display: "inline-block" }}
                                             >
                                                 <Input
                                                     id="item-value"

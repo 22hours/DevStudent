@@ -3,7 +3,6 @@ import "./AuthorGradeModule.css";
 
 const AuthorGradeModule = ({ authorNickname, authorGrade }) => {
     var gradeColor = "";
-    console.log(authorGrade);
     if (authorGrade === "bean") gradeColor = "";
     if (authorGrade === "short") gradeColor = "green";
     if (authorGrade === "tall") gradeColor = "blue";

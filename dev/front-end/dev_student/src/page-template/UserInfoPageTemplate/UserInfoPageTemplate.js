@@ -14,7 +14,7 @@ const UserInfoPageTemplate = ({ email, nickname, gitLink, grade, point, userCont
         if (gitLink === null) {
             alert("Github 주소를 등록하지 않은 사용자입니다!");
         } else {
-            window.open(gitLink, "_blank");
+            window.open("https://github.com/" + gitLink, "_blank");
         }
     };
     return (
