@@ -57,7 +57,7 @@ const KanbanItemProvider = ({ type }) => {
     if (error) return <p>error now</p>;
     return (
         <React.Fragment>
-            <KanbanRenderer data={data?.findAllQuestionsByViews} />
+            <KanbanRenderer data={data?.findAllQuestions} />
         </React.Fragment>
     );
 };
