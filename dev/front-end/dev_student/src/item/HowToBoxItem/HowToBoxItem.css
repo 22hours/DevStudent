@@ -8,6 +8,10 @@
     overflow: hidden;
 }
 
+.HowToBoxItem:hover {
+    box-shadow: 0 3px 6px rgba(53, 53, 53, 0.16), 0 3px 6px rgba(49, 49, 49, 0.23);
+}
+
 .myItem {
     background-color: rgb(244, 253, 253) !important;
     /* border: 1px solid #4ba0b5; */
