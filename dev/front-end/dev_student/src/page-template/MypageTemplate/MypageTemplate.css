@@ -209,3 +209,7 @@
     display: inline;
     cursor: pointer;
 }
+
+.github-address-inputbox #item-value {
+    width: 100%;
+}
