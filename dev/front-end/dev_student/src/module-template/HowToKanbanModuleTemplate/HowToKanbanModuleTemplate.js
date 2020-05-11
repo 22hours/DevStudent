@@ -28,7 +28,7 @@ const KanbanItem = (props) => {
                 </div>
                 <div className="item-col about-col">
                     <div className="title-row">
-                        <a href="/howto">{props.title}</a>
+                        <a href={"/howto/question/" + props._id}>{props.title}</a>
                     </div>
                     <div className="preview-row">{props.previews}</div>
                 </div>
