@@ -27,7 +27,7 @@ public abstract class Find {
             query = new Query();
         else query = new Query(criteria);
 
-        if(!param.equals("date"))
+        if(pageNum==-1)
             query.addCriteria(Criteria.where("date").gt(date));
 
         query.with(Sort.by(Sort.Direction.DESC, param));

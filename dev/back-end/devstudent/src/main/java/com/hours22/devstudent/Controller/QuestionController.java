@@ -72,9 +72,9 @@ public class QuestionController{
     }
     @RequestMapping(value="/all/homekanban", method = RequestMethod.GET)
     public HomeKanban findHomeKanban(@RequestParam("requiredCount") int requiredCount){
-        List<Question> date = findAllQuestions.findAllQuestions("date", 1, requiredCount);
-        List<Question> answerCount = findAllQuestions.findAllQuestions("answerCount", 1, requiredCount);
-        List<Question> views = findAllQuestions.findAllQuestions("views",1,requiredCount);
+        List<Question> date = findAllQuestions.findAllQuestions("date", -1, requiredCount);
+        List<Question> answerCount = findAllQuestions.findAllQuestions("answerCount", -1, requiredCount);
+        List<Question> views = findAllQuestions.findAllQuestions("views",-1,requiredCount);
         return new HomeKanban(date,answerCount,views);
     }
     @RequestMapping(value="/create",method = RequestMethod.POST)
