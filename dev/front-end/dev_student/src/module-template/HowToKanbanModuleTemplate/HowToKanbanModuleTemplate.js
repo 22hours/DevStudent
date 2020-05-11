@@ -11,7 +11,7 @@ import GradeAvatar from "atom/GradeAvatar/GradeAvatar";
 import RankAvatar from "atom/RankAvatar/RankAvatar";
 
 //queries
-import { findAllQuestions } from "query/queries";
+import { findAllQuestionsByViews } from "query/queries";
 
 //icons
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
@@ -50,12 +50,14 @@ const KanbanItem = (props) => {
 };
 
 const KanbanItemProvider = ({ type }) => {
-    const { loading, error, data } = useQuery(findAllQuestions, { variables: { param: type, requiredCount: 3 } });
+    const { loading, error, data } = useQuery(findAllQuestionsByViews, {
+        variables: { param: type, requiredCount: 3 },
+    });
     if (loading) return <p>loading now</p>;
     if (error) return <p>error now</p>;
     return (
         <React.Fragment>
-            <KanbanRenderer data={data?.findAllQuestions} />
+            <KanbanRenderer data={data?.findAllQuestionsByViews} />
         </React.Fragment>
     );
 };
