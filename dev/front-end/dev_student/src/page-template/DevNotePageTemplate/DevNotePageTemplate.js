@@ -8,6 +8,7 @@ const DevNoteItem = (props) => {
     const [author, setAuthor] = useState();
     const [date, setDate] = useState();
     const [preview, setPreview] = useState();
+    console.log(props.name);
     useEffect(() => {
         var text = props.name.split(".")[0];
         var rawDate = text.split("_")[0];
