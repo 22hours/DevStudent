@@ -31,7 +31,9 @@ const DevNoteItem = (props) => {
             <div className="item-row">
                 <div className="title-row"> {title}</div>
                 <div className="preview-row">{preview}</div>
-                <div className="date-row"> {date}</div>
+            </div>
+            <div className="item-row author">
+                {author} <div className="date-row"> {date}</div>
             </div>
         </div>
     );
@@ -54,6 +56,9 @@ const DevNotePageTemplate = () => {
     return (
         <div className="DevNotePageTemplate">
             <Container>
+                <div className="page-header">
+                    <span id="header">Dev Notes</span>
+                </div>
                 <DevNoteProvider />
             </Container>
         </div>

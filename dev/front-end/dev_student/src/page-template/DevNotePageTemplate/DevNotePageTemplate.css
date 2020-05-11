@@ -5,6 +5,15 @@
     height: auto;
 }
 
+.DevNotePageTemplate .page-header {
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.DevNotePageTemplate .page-header #header {
+    border-bottom: 1px solid rgb(209, 209, 209);
+}
+
 .DevNotePageTemplate .DevNoteItem {
     /* padding: 10px; */
     overflow: hidden;
@@ -14,7 +23,7 @@
     margin-right: 30px;
     margin-bottom: 30px;
     width: 350px;
-    height: 300px;
+    height: 285px;
     box-shadow: 0 1px 3px rgba(128, 128, 128, 0.16), 0 1px 3px rgba(177, 177, 177, 0.23);
 }
 
@@ -29,6 +38,7 @@
 
 .DevNotePageTemplate .DevNoteItem .item-row {
     padding: 10px;
+    overflow: hidden;
 }
 
 .DevNotePageTemplate .DevNoteItem .title-row {
@@ -41,10 +51,15 @@
     font-size: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
+    height: 45px;
 }
 
 .DevNotePageTemplate .DevNoteItem .date-row {
     font-size: 14px;
     color: gray;
     float: right;
+}
+
+.DevNotePageTemplate .DevNoteItem .author {
+    border-top: 1px solid rgb(233, 233, 233);
 }
