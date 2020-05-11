@@ -7,23 +7,32 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public abstract class Find {
     @Autowired
     private MongoTemplate mongoTemplate;
-
+    private final long hour = 3600000;
     public List<Question> getQuestions(String param, int pageNum, int requiredCount, Criteria criteria) {
+        long time = System.currentTimeMillis();
+        time -= hour*24*30;
+        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = dayTime.format(new Date(time));
+
         Query query;
+
         if (criteria == null)
             query = new Query();
         else query = new Query(criteria);
-        System.out.println(1);
+
+        if(!param.equals("date"))
+            query.addCriteria(Criteria.where("date").gt(date));
+
         query.with(Sort.by(Sort.Direction.DESC, param));
         query.limit(requiredCount);
-        System.out.println(1);
         query.skip((pageNum - 1) * requiredCount);
-        System.out.println(1);
         List<Question> questions = this.mongoTemplate.find(query, Question.class);
         return questions;
     }
