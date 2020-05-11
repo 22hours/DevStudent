@@ -1,0 +1,33 @@
+.gradecolorgreen {
+    color: rgb(11, 134, 11);
+    font-weight: bold;
+}
+
+.gradecolorblue {
+    color: rgb(55, 125, 247);
+    font-weight: bold;
+}
+
+.gradecolorpurple {
+    color: rgb(138, 110, 202);
+    font-weight: bold;
+}
+.gradecolororange {
+    color: rgb(230, 155, 17);
+    font-weight: bold;
+}
+
+.gradecolorred {
+    color: rgb(190, 57, 57);
+    font-weight: bold;
+}
+
+.gradecolorblack {
+    color: black;
+    font-weight: bold;
+}
+
+.gradecolor {
+    color: rgb(54, 53, 53);
+    font-weight: bold;
+}

@@ -249,37 +249,9 @@
 }
 
 .question-box .header-box a:hover {
-    color: black;
-    font-weight: bold;
+    font-weight: bolder;
 }
 
 .comment-box a span {
     text-decoration: none;
-}
-
-.gradecolorgreen {
-    color: rgb(11, 134, 11);
-}
-
-.gradecolorblue {
-    color: rgb(13, 13, 173);
-}
-
-.gradecolorpurple {
-    color: rgb(114, 11, 114);
-}
-.gradecolororange {
-    color: rgb(230, 155, 17);
-}
-
-.gradecolorred {
-    color: rgb(197, 27, 27);
-}
-
-.gradecolorblack {
-    color: black;
-}
-
-.gradecolor {
-    color: rgb(54, 53, 53);
 }
