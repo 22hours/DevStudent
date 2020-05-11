@@ -24,9 +24,10 @@
 }
 
 .content-header {
-    font-family: "Do Hyeon", sans-serif;
-    font-size: 30px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 24px;
     color: black;
+    /* border-bottom: 1px solid rgb(212, 212, 212); */
     /* padding-left: 10px; */
     /* padding-right: 10px;
     padding-top: 5px;
