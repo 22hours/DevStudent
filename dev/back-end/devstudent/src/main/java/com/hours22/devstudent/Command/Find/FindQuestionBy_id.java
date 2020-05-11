@@ -1,14 +1,10 @@
 package com.hours22.devstudent.Command.Find;
 
 import com.hours22.devstudent.Command.Module.AddIsLiked;
-import com.hours22.devstudent.Entity.Answer;
-import com.hours22.devstudent.Entity.Like;
 import com.hours22.devstudent.Entity.Question;
 import com.hours22.devstudent.Repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class FindQuestionBy_id {

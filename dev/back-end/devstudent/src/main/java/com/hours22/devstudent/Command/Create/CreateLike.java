@@ -3,7 +3,6 @@ package com.hours22.devstudent.Command.Create;
 import com.hours22.devstudent.Command.Module.AddIsLiked;
 import com.hours22.devstudent.Command.Module.AddPoint;
 import com.hours22.devstudent.Entity.Answer;
-import com.hours22.devstudent.Entity.Comment;
 import com.hours22.devstudent.Entity.Like;
 import com.hours22.devstudent.Entity.Question;
 import com.hours22.devstudent.Repository.QuestionRepository;

@@ -1,9 +1,7 @@
 package com.hours22.devstudent.Command.Find;
 
 import com.hours22.devstudent.Entity.Question;
-import com.hours22.devstudent.Entity.Tag;
 import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
