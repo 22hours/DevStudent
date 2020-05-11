@@ -1,0 +1,78 @@
+.DevNotePageTemplate {
+    padding-top: 30px;
+    background-color: rgb(248, 249, 250);
+    min-height: 100vh;
+    height: auto;
+}
+
+.DevNotePageTemplate a {
+    text-decoration: none;
+    color: black;
+}
+
+.DevNotePageTemplate .page-header {
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.DevNotePageTemplate .page-header #header {
+    border-bottom: 1px solid rgb(209, 209, 209);
+}
+
+.DevNotePageTemplate .DevNoteItem {
+    overflow: hidden;
+    background-color: white;
+    float: left;
+    border-radius: 5px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    width: 350px;
+    z-index: 3;
+    cursor: pointer;
+    height: 285px;
+    box-shadow: 0 1px 3px rgba(128, 128, 128, 0.16), 0 1px 3px rgba(177, 177, 177, 0.23);
+}
+
+.DevNotePageTemplate .DevNoteItem:hover {
+    width: 370px;
+    box-shadow: 0 3px 6px rgba(53, 53, 53, 0.16), 0 3px 6px rgba(49, 49, 49, 0.23);
+}
+
+.DevNotePageTemplate .DevNoteItem .img-row {
+    height: 150px;
+    width: 100%;
+    background-image: url(https://source.unsplash.com/category/nature/1600x900);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.DevNotePageTemplate .DevNoteItem .item-row {
+    padding: 10px;
+    overflow: hidden;
+}
+
+.DevNotePageTemplate .DevNoteItem .title-row {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.DevNotePageTemplate .DevNoteItem .preview-row {
+    font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 45px;
+}
+
+.DevNotePageTemplate .DevNoteItem .date-row {
+    font-size: 14px;
+    color: gray;
+    float: right;
+}
+
+.DevNotePageTemplate .DevNoteItem .author {
+    font-size: 14px;
+    background-color: rgb(245, 245, 245);
+    border-top: 1px solid rgb(233, 233, 233);
+}

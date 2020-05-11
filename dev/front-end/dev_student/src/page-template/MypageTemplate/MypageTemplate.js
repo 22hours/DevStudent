@@ -25,11 +25,10 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
     const [updateUserInfo] = useMutation(UPDATE_USER_INFO);
     const nickname = localData.nickname;
     const toggle = () => setIsOpen(!isOpen);
-    const githubTest = /^[^((http(s?))\:\/\/)]([0-9a-zA-Z\-]+\.)+[a-zA-Z]{2,6}(\:[0-9]+)?(\/\S*)?$/;
 
     //items
     const [gitAddress, setGitAddress] = useState(localData.gitLink);
-    const [linkedInAddress, setLinkedInAddress] = useState("winterlood.github.io");
+    const [linkedInAddress, setLinkedInAddress] = useState("Comming Soon!!");
 
     const handleSubmit = () => {
         updateUserInfo({
@@ -82,17 +81,11 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
         paddingBottom: "32px",
     };
 
-    const gitCheck = () => {
-        if (githubTest.test(gitAddress)) {
-            setGitAddress("https://" + gitAddress);
-        }
-    };
-
     const moveGithubLink = () => {
         if (gitAddress === null) {
             alert("Github 주소를 등록해주세요.");
         } else {
-            window.open(gitAddress, "_blank");
+            window.open("https://github.com/" + gitAddress, "_blank");
         }
     };
 
@@ -156,14 +149,24 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
                                     <div className="item-box">
                                         <span id="item-label">GitHub</span>
                                         <div clsassName="link-input-box-wrapper">
-                                            <Input
-                                                id="item-value"
-                                                className="link-input-box"
-                                                value={gitAddress}
-                                                onChange={({ target: { value } }) => setGitAddress(value)}
-                                                onBlur={gitCheck}
-                                                placeholder="github.com/devstu"
-                                            ></Input>
+                                            <div
+                                                className="github-address"
+                                                style={{ width: "150px", display: "inline-block", marginRight: "5px" }}
+                                            >
+                                                https://github.com/
+                                            </div>
+                                            <div
+                                                className="github-address-inputbox"
+                                                style={{ width: "195px", display: "inline-block" }}
+                                            >
+                                                <Input
+                                                    id="item-value"
+                                                    className="link-input-box"
+                                                    value={gitAddress}
+                                                    onChange={({ target: { value } }) => setGitAddress(value)}
+                                                    placeholder="Write Your Github ID!!"
+                                                ></Input>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="item-box">
