@@ -15,7 +15,6 @@
 }
 
 .DevNotePageTemplate .DevNoteItem {
-    /* padding: 10px; */
     overflow: hidden;
     background-color: white;
     float: left;
@@ -23,13 +22,20 @@
     margin-right: 30px;
     margin-bottom: 30px;
     width: 350px;
+    z-index: 3;
+    cursor: pointer;
     height: 285px;
     box-shadow: 0 1px 3px rgba(128, 128, 128, 0.16), 0 1px 3px rgba(177, 177, 177, 0.23);
 }
 
+.DevNotePageTemplate .DevNoteItem:hover {
+    width: 370px;
+    box-shadow: 0 3px 6px rgba(53, 53, 53, 0.16), 0 3px 6px rgba(49, 49, 49, 0.23);
+}
+
 .DevNotePageTemplate .DevNoteItem .img-row {
     height: 150px;
-    width: 350px;
+    width: 100%;
     background-image: url(https://source.unsplash.com/category/nature/1600x900);
     background-size: cover;
     background-position: center;
@@ -61,5 +67,7 @@
 }
 
 .DevNotePageTemplate .DevNoteItem .author {
+    font-size: 14px;
+    background-color: rgb(245, 245, 245);
     border-top: 1px solid rgb(233, 233, 233);
 }
