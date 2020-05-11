@@ -1,0 +1,10 @@
+type HomeKanban{
+    date : [Question]
+    answerCount : [Question]
+    views : [Question]
+}
+
+
+extend type Query{
+    findHomeKanban(requiredCount : Int) : HomeKanban
+}

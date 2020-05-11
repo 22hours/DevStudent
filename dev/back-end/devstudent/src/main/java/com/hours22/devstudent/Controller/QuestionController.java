@@ -8,6 +8,7 @@ import com.hours22.devstudent.Command.Find.FindQuestionBy_id;
 import com.hours22.devstudent.Command.Find.FindQuestionsByOption;
 import com.hours22.devstudent.Command.Find.FindQuestionsByTags;
 import com.hours22.devstudent.Command.Update.UpdateAdoptedAnswerId;
+import com.hours22.devstudent.Entity.HomeKanban;
 import com.hours22.devstudent.Entity.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -69,6 +70,13 @@ public class QuestionController{
         List<String> tagList = new ArrayList<String>(Arrays.asList(temp.split(",")));
         return findQuestionsByTags.findQuestionsByTags(param, pageNum, requiredCount, tagList, logical);
     }
+    @RequestMapping(value="/all/homekanban", method = RequestMethod.GET)
+    public HomeKanban findHomeKanban(@RequestParam("requiredCount") int requiredCount){
+        List<Question> date = findAllQuestions.findAllQuestions("date", 1, requiredCount);
+        List<Question> answerCount = findAllQuestions.findAllQuestions("answerCount", 1, requiredCount);
+        List<Question> views = findAllQuestions.findAllQuestions("views",1,requiredCount);
+        return new HomeKanban(date,answerCount,views);
+    }
     @RequestMapping(value="/create",method = RequestMethod.POST)
     public Question createQuestion(@RequestBody Map<String, String> map) {
         String title = map.get("title");
@@ -101,5 +109,4 @@ public class QuestionController{
         String _id = map.get("_id");
         return deleteQuestion.deleteQuestion(_id);
     }
-
 }
