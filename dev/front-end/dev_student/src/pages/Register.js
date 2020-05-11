@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import RegisterPageTemplate from "page-template/RegisterPageTemplate/RegisterPageTemplate";
 
-const Register = () => {
+const Register = ({ location }) => {
     const [userEmail, setUserEmail] = useState("");
     const [password, setPassword] = useState("");
     const [rePwd, setRePwd] = useState("");
@@ -41,6 +42,10 @@ const Register = () => {
             setPwdClassName("is-valid");
         }
     };
+
+    const auth = localStorage.getItem("auth");
+    const { from } = location.state || { from: { pathname: "/" } };
+    if (auth) return <Redirect to={from} />;
 
     return (
         <RegisterPageTemplate
