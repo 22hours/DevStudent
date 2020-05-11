@@ -176,7 +176,8 @@
 .mypage-item-row .link-input-box {
     margin-top: 0;
     margin-bottom: 1rem;
-    width: 50%;
+    width: 350px;
+    margin-top: 5px;
 }
 
 .mypage-item-row .link-input-box-wrapper {
