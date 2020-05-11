@@ -8,6 +8,7 @@ import { timeForToday } from "util/time";
 
 //atoms
 import GradeAvatar from "atom/GradeAvatar/GradeAvatar";
+import RankAvatar from "atom/RankAvatar/RankAvatar";
 
 //queries
 import { findAllQuestions } from "query/queries";
@@ -22,7 +23,7 @@ const KanbanItem = (props) => {
         <div className="KanbanItem">
             <div className="item-row">
                 <div className="item-col profile-col">
-                    <img src={GradeAvatar(props.author?.grade)}></img>
+                    <img src={RankAvatar(props.rank + 1)}></img>
                 </div>
                 <div className="item-col about-col">
                     <div className="title-row">

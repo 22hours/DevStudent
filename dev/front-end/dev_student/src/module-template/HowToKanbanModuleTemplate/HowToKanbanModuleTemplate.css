@@ -83,9 +83,8 @@
 
 .HowToKanbanModuleTemplate .KanbanItem .profile-col img {
     width: 35px;
-    height: 35px;
+    height: 40px;
     border-radius: 50%;
-    box-shadow: 0 1px 3px rgba(56, 56, 56, 0.16), 0 1px 3px rgba(94, 94, 94, 0.23);
 }
 
 .HowToKanbanModuleTemplate .KanbanItem .author-row {
