@@ -9,6 +9,7 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import RequireLoginBoxModule from "../RequireLoginBoxModule/RequireLoginBoxModule";
+import AuthorGradeModule from "module/AuthorGradeModule/AuthorGradeModule";
 
 // atoms
 import Tag from "atom/Tag/Tag";
@@ -64,7 +65,6 @@ const HowToQABox = ({
     const toggleCollapse = () => setIsOpen(!isOpen);
     const [commentValue, setCommentValue] = useState("");
     const [gradeColor, setGradeColor] = useState("");
-
     const IsQorAOutter = () => {
         if (isQuestion === "Q") {
             return <div className="is-question-box-q">Q</div>;
@@ -209,17 +209,6 @@ const HowToQABox = ({
         );
     };
 
-    const AuthorGradeColor = () => {
-        if (authorGrade === "bean") setGradeColor("");
-        if (authorGrade === "short") setGradeColor("green");
-        if (authorGrade === "tall") setGradeColor("blue");
-        if (authorGrade === "grande") setGradeColor("purple");
-        if (authorGrade === "venti") setGradeColor("orange");
-        if (authorGrade === "trenta") setGradeColor("red");
-        if (authorGrade === "dev") setGradeColor("black");
-        return <div className={"gradecolor" + gradeColor}>{authorNickname}</div>;
-    };
-
     return (
         <div>
             {/* <div className="adopt-popup-layer">레레레</div> */}
@@ -232,9 +221,7 @@ const HowToQABox = ({
                     <div className="header-box">
                         <IsQorAInner />
                         <a href={"/userinfo/" + authorNickname}>
-                            <span>
-                                <AuthorGradeColor />
-                            </span>
+                            <AuthorGradeModule authorNickname={authorNickname} authorGrade={authorGrade} />
                         </a>
                         <LikesBoxInner />
                     </div>
