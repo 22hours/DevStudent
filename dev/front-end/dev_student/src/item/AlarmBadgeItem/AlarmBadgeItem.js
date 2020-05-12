@@ -1,13 +1,15 @@
 import React from "react";
 import { useQuery } from "react-apollo";
 import { COUNT_UNREAD_ALARMS } from "query/queries";
-import { Link } from "react-router-dom";
 
-//loading
+//icons
+import Badge from "@material-ui/core/Badge";
+import MailIcon from "@material-ui/icons/Mail";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-const CountAlarmModule = (props) => {
-    const { user } = props;
+const AlarmBadgeItem = () => {
+    const localData = JSON.parse(localStorage.getItem("user"));
+    const user = localData.nickname;
     const { loading, error, data } = useQuery(COUNT_UNREAD_ALARMS, {
         variables: { nickname: user },
     });
@@ -18,11 +20,14 @@ const CountAlarmModule = (props) => {
             </div>
         );
     if (error) return <div>Error!</div>;
-
+    var count = data.countUnreadAlarms.count;
+    if (count === "0") {
+        count = 0;
+    }
     return (
-        <Link to="/alarm">
-            <span style={{ fontSize: "15px", color: "#6c757d" }}> {data.countUnreadAlarms.count}</span>
-        </Link>
+        <Badge badgeContent={count} color="primary">
+            <MailIcon style={{ fontize: "5px" }} />
+        </Badge>
     );
 };
-export default CountAlarmModule;
+export default AlarmBadgeItem;

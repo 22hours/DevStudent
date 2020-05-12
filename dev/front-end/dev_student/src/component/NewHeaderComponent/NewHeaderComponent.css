@@ -34,7 +34,6 @@
     min-height: 50px;
     padding-left: 10px;
     padding-right: 10px;
-    line-height: 50px;
     background-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -149,6 +148,7 @@
 
 .header-user-col #nickname-span {
     cursor: pointer;
+    margin: 1px;
 }
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@ */
@@ -226,4 +226,12 @@
 
 .NewHeaderComponent .mobile-menu-collapse {
     background-color: rgba(255, 255, 255, 0.9);
+}
+
+.MuiBadge-badge.MuiBadge-anchorOriginTopRightRectangle.MuiBadge-colorPrimary {
+    color: white !important;
+}
+
+.MuiBadge-colorPrimary {
+    background-color: #4ba0b5 !important;
 }
