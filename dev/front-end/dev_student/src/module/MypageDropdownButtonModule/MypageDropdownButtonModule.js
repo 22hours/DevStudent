@@ -53,10 +53,12 @@ const MyPageDropdownButtonModule = (props) => {
                     <br></br>
                     <div>{localData?.email}</div>
                 </DropdownItem>
-                <DropdownItem style={{ fontSize: "15px", color: "#6c757d" }}>
-                    알림
-                    <RenderCountAlarmModule dropdownOpen={dropdownOpen} />
-                </DropdownItem>
+                <Link to="/alarm">
+                    <DropdownItem style={{ fontSize: "15px", color: "#6c757d" }}>
+                        알림
+                        <RenderCountAlarmModule dropdownOpen={dropdownOpen} />
+                    </DropdownItem>
+                </Link>
                 <Link to="/mypage">
                     <DropdownItem style={{ fontSize: "14px", color: "#6c757d" }}>마이페이지</DropdownItem>
                 </Link>
