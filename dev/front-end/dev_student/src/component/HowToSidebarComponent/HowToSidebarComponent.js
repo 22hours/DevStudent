@@ -37,8 +37,8 @@ const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
 
     const hotquestionList = (
         <div>
-            {data.findAllQuestions.map(({ _id, title, views }) => (
-                <HotQuestionItem id={_id} key={_id} title={title} views={views}></HotQuestionItem>
+            {data.findAllQuestions.map(({ _id, title, likesCount }) => (
+                <HotQuestionItem id={_id} key={_id} title={title} likesCount={likesCount}></HotQuestionItem>
             ))}
         </div>
     );
