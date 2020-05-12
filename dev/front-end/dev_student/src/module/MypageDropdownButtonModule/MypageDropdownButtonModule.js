@@ -43,7 +43,7 @@ const MyPageDropdownButtonModule = (props) => {
     };
 
     return (
-        <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+        <Dropdown isOpen={dropdownOpen} toggle={toggle} style={{ display: "inline" }}>
             <DropdownToggle className="user-nickname-btn" style={btn_style}>
                 <MemberArea nickname={localData?.nickname} />
             </DropdownToggle>
@@ -53,14 +53,15 @@ const MyPageDropdownButtonModule = (props) => {
                     <br></br>
                     <div>{localData?.email}</div>
                 </DropdownItem>
-                <DropdownItem style={{ fontSize: "15px" }}>
+                <DropdownItem style={{ fontSize: "15px", color: "#6c757d" }}>
+                    알림
                     <RenderCountAlarmModule dropdownOpen={dropdownOpen} />
                 </DropdownItem>
                 <Link to="/mypage">
-                    <DropdownItem style={{ fontSize: "14px" }}>마이페이지</DropdownItem>
+                    <DropdownItem style={{ fontSize: "14px", color: "#6c757d" }}>마이페이지</DropdownItem>
                 </Link>
                 <Link to="/logout">
-                    <DropdownItem style={{ fontSize: "14px" }}>로그아웃</DropdownItem>
+                    <DropdownItem style={{ fontSize: "14px", color: "#6c757d" }}>로그아웃</DropdownItem>
                 </Link>
             </DropdownMenu>
         </Dropdown>

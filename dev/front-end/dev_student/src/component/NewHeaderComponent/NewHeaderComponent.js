@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./NewHeaderComponent.css";
 import { Container, Collapse } from "reactstrap";
 import { Link } from "react-router-dom";
-
+import AlarmBadgeItem from "item/AlarmBadgeItem/AlarmBadgeItem";
 import MypageDropdownButtonModule from "module/MypageDropdownButtonModule/MypageDropdownButtonModule";
 
 // icon
@@ -34,7 +34,6 @@ const NewHeaderComponent = ({ nickname, location }) => {
     const toggle = () => setIsOpen(!isOpen);
     const handleScroll = (event) => {
         var scrollPosition = window.scrollY || document.documentElement.scrollTop;
-        console.log(scrollPosition);
         setScroll(scrollPosition);
     };
     useEffect(() => {
@@ -52,7 +51,12 @@ const NewHeaderComponent = ({ nickname, location }) => {
 
     const UserArea = () => {
         if (nickname) {
-            return <MemberArea />;
+            return (
+                <div>
+                    <AlarmBadgeItem /> &nbsp;
+                    <MemberArea />
+                </div>
+            );
         } else {
         }
         return (
@@ -115,7 +119,7 @@ const NewHeaderComponent = ({ nickname, location }) => {
             </div>
             <div className="header-wrapper-mobile mobile-only">
                 <div className="header-menu-col" onClick={() => toggle()}>
-                    <MenuIcon />
+                    <MenuIcon style={{ fontSize: "35px", marginTop: "7px" }} />
                 </div>
 
                 <div className="header-logo-col">
