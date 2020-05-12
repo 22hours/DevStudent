@@ -19,10 +19,6 @@ const CountAlarmModule = (props) => {
         );
     if (error) return <div>Error!</div>;
 
-    return (
-        <Link to="/alarm">
-            <span style={{ fontSize: "15px", color: "#6c757d" }}> {data.countUnreadAlarms.count}</span>
-        </Link>
-    );
+    return <span style={{ fontSize: "15px", color: "#6c757d" }}> {data.countUnreadAlarms.count}</span>;
 };
 export default CountAlarmModule;
