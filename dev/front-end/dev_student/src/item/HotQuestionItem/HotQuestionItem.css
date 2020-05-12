@@ -28,6 +28,7 @@
 .hot-question-list-items #views {
     color: rgb(95, 143, 158);
     font-size: 12px;
+    margin-left: 0.5px;
 }
 
 .hot-links-list-group-item a {
