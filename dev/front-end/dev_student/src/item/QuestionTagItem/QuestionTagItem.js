@@ -18,12 +18,7 @@ const QuestionTagItem = ({ count, name }) => {
                 <span id="x">
                     <ClearIcon style={{ fontSize: "10px" }} />
                 </span>
-                <span id="tagcount">
-                    {" "}
-                    <VisibilityIcon style={{ fontSize: "10px" }} />
-                    &nbsp;
-                    {count}
-                </span>
+                <span id="tagcount"> {count}</span>
             </div>
         </div>
     );

@@ -4,21 +4,13 @@ import React from "react";
 import "./HotQuestionItem.css";
 
 //icons
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+
 //import VisibilityIcon from "@material-ui/icons/Visibility";
-import LinkIcon from "@material-ui/icons/Link";
-const HotQuestionItem = ({ id, views, title }) => {
-    const list_style = {
-        fontSize: "11px",
-        width: "100%",
-        textAlign: "left",
-        borderTop: "0",
-        borderLeft: "0",
-        borderRight: "0",
-        paddingLeft: "0.6rem",
-        paddingTop: "0.40rem",
-        paddingBottom: "0.40rem",
-        // color:"#034390"
-    };
+// import LinkIcon from "@material-ui/icons/Link";
+// import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+
+const HotQuestionItem = ({ id, likesCount, title }) => {
     var hotTitle = "";
     hotTitle = title;
     if (hotTitle.length > 25) {
@@ -27,14 +19,15 @@ const HotQuestionItem = ({ id, views, title }) => {
     return (
         <div width="100%">
             <div className="hot-links-list-group-item">
-                <a href={"/howto/question/" + id}>
-                    <LinkIcon style={{ fontSize: "14px", color: "gray" }} /> {hotTitle}{" "}
-                </a>
-                <span id="views">
-                    {" "}
-                    &nbsp;
-                    {views}
+                <span>
+                    <ThumbUpIcon style={{ fontSize: "10px" }} color="action" />
                 </span>
+                <span id="views">{likesCount}</span>
+                &nbsp;&nbsp;
+                <a href={"/howto/question/" + id}>
+                    {/* <FiberManualRecordIcon style={{ fontSize: "5px", color: "gray" }} /> {hotTitle}{" "} */}
+                    {hotTitle}
+                </a>
             </div>
         </div>
     );
