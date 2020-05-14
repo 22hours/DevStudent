@@ -1,13 +1,14 @@
-name : firebase workflow
+name: my workflow
 on : [push]
 
 jobs:
   build:
-    name : hello github action
-    runs-on : ubuntu-18.04
-    steps :
-      -name : checkout source code
-       uses : actions/checkout@firebase-deploy
-
-      -name : echo Hello
-       run : echo "Hello"
+    name: hello github action
+    runs-on: ubuntu-18.04
+    steps:
+      - name: checkout source code
+        uses: actions/checkout@firebase-deploy
+        
+      - name: echo Hello
+        uses: echo "Hello"
+  
