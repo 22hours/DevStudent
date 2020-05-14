@@ -176,7 +176,7 @@
 .mobile-only .header-user-col {
     float: right;
     text-align: right;
-    width: 100px;
+    /* width: 100px; */
     height: 100%;
     z-index: 2;
 }
