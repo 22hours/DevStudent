@@ -31,6 +31,7 @@
 
 .new-question-main-wrapper .new-question-main-element-box {
     margin-bottom: 20px;
+    overflow: hidden;
 }
 .new-question-main-wrapper .new-question-main-element-box input {
     width: 100%;
@@ -53,4 +54,16 @@
     color: gray;
     font-size: 13px;
     float: right;
+}
+
+.new-question-main-wrapper .new-question-main-element-box .submit-right {
+    /* width: 100%; */
+    float: right;
+}
+.new-question-main-wrapper .new-question-main-element-box .submit-right button {
+    /* width: 100%; */
+}
+
+.not-overflow {
+    overflow: visible !important;
 }
