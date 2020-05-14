@@ -2,12 +2,11 @@ import React, { useState, useLayoutEffect } from "react";
 import "./RegisterPageTemplate.css";
 import { Container, Row, Col, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { Input, Button, FormText } from "reactstrap";
-import { CREATE_USER } from "mutation/mutations";
-import { CHECK_DUPLICATE_EMAIL } from "mutation/mutations";
-import { useMutation } from "@apollo/react-hooks";
+
 import { Link } from "react-router-dom";
 import { hashPassword } from "auth";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { request, CHECK_DUPLICATED_EMAIL, CREATE_USER } from "authRest";
 
 const RegisterTemplate = ({
     email,
@@ -28,8 +27,10 @@ const RegisterTemplate = ({
     setRePwdClassName,
     passwordRule,
 }) => {
-    const [createUser] = useMutation(CREATE_USER);
-    const [checkEmail, { data }] = useMutation(CHECK_DUPLICATE_EMAIL);
+    // const [createUser] = useMutation(CREATE_USER);
+    const [createUserResponse, setCreateUserResponse] = useState(null);
+    const [checkEmailResponse, setCheckEmailResponse] = useState(null);
+
     const [emailRuleCheck, setEmailRuleCheck] = useState("false");
     const [modal, setModal] = useState(false);
     const [emailClick, setEmailClick] = useState(false);
@@ -40,8 +41,8 @@ const RegisterTemplate = ({
     const toggle = () => setModal(!modal);
 
     useLayoutEffect(() => {
-        if (data == null) return;
-        if (data.checkDuplicateEmail.count === "duplicated") {
+        if (checkEmailResponse == null) return;
+        if (checkEmailResponse.count === "duplicated") {
             alert("중복된 이메일 입니다.");
             setEmailRuleCheck("false");
             setEmailClick(false);
@@ -51,8 +52,16 @@ const RegisterTemplate = ({
             setEmailRuleCheck("true");
             setEmailClick(false);
         }
-    }, [data]);
-
+    }, [checkEmailResponse]);
+    useLayoutEffect(() => {
+        if (createUserResponse == null) return;
+        if (createUserResponse === null) {
+            alert("회원가입 실패 다시 시도해주세요");
+            return;
+        } else {
+            toggle();
+        }
+    }, [createUserResponse]);
     const btn_style = {
         fontSize: "12px",
         height: "100%",
@@ -231,11 +240,11 @@ const RegisterTemplate = ({
                                                     return;
                                                 } else {
                                                     setEmailClick(true);
-                                                    checkEmail({
-                                                        variables: {
-                                                            email: email + emailSelect,
-                                                        },
-                                                    });
+                                                    request("post", CHECK_DUPLICATED_EMAIL, {
+                                                        email: email + emailSelect,
+                                                    })
+                                                        .then((response) => setCheckEmailResponse(response))
+                                                        .catch((response) => console.log(response));
                                                 }
                                             }}
                                         >
@@ -307,14 +316,13 @@ const RegisterTemplate = ({
                                             return;
                                         } else {
                                             setRegisterClick(true);
-                                            createUser({
-                                                variables: {
-                                                    password: hashPassword(password),
-                                                    email: email + emailSelect,
-                                                    schoolName: schoolName,
-                                                },
-                                            });
-                                            toggle();
+                                            request("post", CREATE_USER, {
+                                                password: hashPassword(password),
+                                                email: email + emailSelect,
+                                                schoolName: schoolName,
+                                            })
+                                                .then((response) => setCreateUserResponse(response))
+                                                .catch((response) => console.log(response));
                                         }
                                     }}
                                 >

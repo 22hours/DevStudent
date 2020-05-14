@@ -5,7 +5,7 @@ import "./NicknamePageTemplate.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import ServerError from "pages/ServerError";
 
-const NicknamePageTemplate = ({ nicknameClick, setNicknameClick, createNickname, nickName, setNickname }) => {
+const NicknamePageTemplate = ({ nicknameClick, setNicknameClick, handleCreateNickname, nickName, setNickname }) => {
     const [btnDisabled, setBtnDisabled] = useState("");
     const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
     const email = sessionStorage.getItem("email");
@@ -68,11 +68,9 @@ const NicknamePageTemplate = ({ nicknameClick, setNicknameClick, createNickname,
                                                 return;
                                             } else {
                                                 setNicknameClick(true);
-                                                createNickname({
-                                                    variables: {
-                                                        email: email,
-                                                        nickname: nickName,
-                                                    },
+                                                handleCreateNickname({
+                                                    email: email,
+                                                    nickname: nickName,
                                                 });
                                             }
                                         }}
