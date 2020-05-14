@@ -28,25 +28,44 @@ const GuestArea = () => {
 };
 
 const NewHeaderComponent = ({ nickname, location }) => {
-    const [clicked, setClicked] = useState("home");
+    const [clicked, setClicked] = useState("");
     const [isOpen, setIsOpen] = useState(true);
     const [scroll, setScroll] = useState(0);
     const toggle = () => setIsOpen(!isOpen);
     const handleScroll = (event) => {
+        if (location.pathname.split("/")[1] !== "") return;
         var scrollPosition = window.scrollY || document.documentElement.scrollTop;
-        setScroll(scrollPosition);
-    };
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [1]);
+        // setScroll(scrollPosition);
 
+        var element = document.getElementById("pc-header");
+        if (scrollPosition === 0) {
+            element.classList.remove("none");
+            element.classList.add("zero");
+        } else {
+            element.classList.remove("zero");
+            element.classList.add("none");
+        }
+    };
+
+    // + (clicked === "" && scroll === 0 ? "zero" : "none")}
     useEffect(() => {
         // 현재 위치에 불 켜기
         setClicked(location.pathname.split("/")[1]);
+        var element = document.getElementById("pc-header");
 
+        if (location.pathname.split("/")[1] === "") {
+            element.classList.remove("none");
+            element.classList.remove("zero");
+            element.classList.add("zero");
+        } else {
+            element.classList.remove("none");
+            element.classList.remove("zero");
+            element.classList.add("none");
+        }
         // collapse 무조건 끄기
         setIsOpen(false);
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, [location.pathname]);
 
     const UserArea = () => {
@@ -65,9 +84,10 @@ const NewHeaderComponent = ({ nickname, location }) => {
             </div>
         );
     };
+
     return (
         <div className={"NewHeaderComponent"}>
-            <div className={"header-wrapper pc-only " + (clicked === "" && scroll === 0 ? "zero" : "none")}>
+            <div id="pc-header" className={"header-wrapper pc-only"}>
                 <Container>
                     <Link to="/">
                         <div className="header-logo-col">
