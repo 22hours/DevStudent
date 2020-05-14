@@ -20,6 +20,13 @@ const NewQuestionMainComponent = ({ nickname, title, setTitle, body, setBody, ta
     }, [body]);
 
     useEffect(() => {
+        if (tags.length > 5) {
+            var newTags = new Array();
+            for (var i = 1; i < tags.length; i++) {
+                newTags.push(tags[i]);
+            }
+            setTags(newTags);
+        }
         setTagsCount(tags.length);
     }, [tags]);
     return (
@@ -65,7 +72,7 @@ const NewQuestionMainComponent = ({ nickname, title, setTitle, body, setBody, ta
                     <span className="new-question-notice-span">태그를 달아주세요!</span>
                 </div>
                 <TagInputModule tags={tags} setTags={setTags} limit={20} />
-                <span id="textLimit">{tagsCount}개 [ 1개 이상 ]</span>
+                <span id="textLimit">{tagsCount} / 5 개 [ 1개 이상 ]</span>
             </div>
             <div className="new-question-main-element-box">
                 {/* <div className="submit-left">
