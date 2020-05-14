@@ -4,6 +4,7 @@ import com.hours22.devstudent.Command.Find.FindUserInfo;
 import com.hours22.devstudent.Command.Update.UpdateUserInfo;
 import com.hours22.devstudent.Entity.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.annotation.WebServlet;
@@ -18,6 +19,7 @@ public class UserInfoController {
     @Autowired
     private FindUserInfo findUserInfo;
 
+    @Async(value = "updateUserInfo")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public UserInfo updateUserInfo(@RequestBody UserInfo userInfo){
         String nickname = userInfo.getNickname();
@@ -25,6 +27,7 @@ public class UserInfoController {
         return updateUserInfo.updateUserInfo(nickname, gitLink);
     }
 
+    @Async(value = "findUserByNickname")
     @RequestMapping(value="/find", method = RequestMethod.POST)
     public UserInfo findUserByNickname(@RequestBody Map<String, String> map){
         String nickname = map.get("nickname");

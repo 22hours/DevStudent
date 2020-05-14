@@ -4,6 +4,7 @@ import com.hours22.devstudent.Command.Delete.DeleteAlarm;
 import com.hours22.devstudent.Command.Find.FindAllAlarms;
 import com.hours22.devstudent.Entity.Alarm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +21,7 @@ public class AlarmController {
     @Autowired
     private DeleteAlarm deleteAlarm;
 
+    @Async(value = "allAlarms")
     @RequestMapping(value="/all",method = RequestMethod.GET)
     public List<Alarm> findAllAlarms(@RequestParam("nickname")String nickname,
                                      @RequestParam("pageNum")int pageNum,
@@ -27,6 +29,7 @@ public class AlarmController {
         return findAllAlarms.findAllAlarms(nickname, pageNum, requiredCount);
     }
 
+    @Async(value = "deleteAlarm")
     @RequestMapping(value="/delete",method = RequestMethod.POST)
     public Alarm deleteAlarm(@RequestBody Map<String, String> map){
         String alarm_id = map.get("alarm_id");

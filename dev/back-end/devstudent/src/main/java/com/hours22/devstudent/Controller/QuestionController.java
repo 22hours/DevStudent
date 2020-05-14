@@ -11,6 +11,7 @@ import com.hours22.devstudent.Command.Update.UpdateAdoptedAnswerId;
 import com.hours22.devstudent.Entity.HomeKanban;
 import com.hours22.devstudent.Entity.Question;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.annotation.WebServlet;
@@ -40,12 +41,15 @@ public class QuestionController{
     @Autowired
     private DeleteQuestion deleteQuestion;
 
+    @Async(value="AllQuestions")
     @RequestMapping(value="/all",method = RequestMethod.GET)
     public List<Question> findAllQuestions(@RequestParam("param")String param,
                                            @RequestParam("pageNum")int pageNum,
                                            @RequestParam("requiredCount")int requiredCount) {
         return findAllQuestions.findAllQuestions(param, pageNum, requiredCount);
     }
+
+    @Async(value = "QuestionsByOption")
     @RequestMapping(value="/all/option",method = RequestMethod.GET)
     public List<Question> findQuestionsByOption(@RequestParam("param")String param,
                                                 @RequestParam("option")String option,
@@ -54,11 +58,15 @@ public class QuestionController{
                                                 @RequestParam("requiredCount")int requiredCount) {
         return findQuestionsByOption.findQuestionsByOption(param, option, searchContent, pageNum, requiredCount);
     }
+
+    @Async(value = "QuestionBy_id")
     @RequestMapping(value="/find",method = RequestMethod.GET)
     public Question findQuestionBy_id(@RequestParam("_id")String _id,
                                       @RequestParam("nickname")String nickname) {
         return findQuestionBy_id.findQuestionBy_id(_id, nickname);
     }
+
+    @Async(value = "QuestionsByTags")
     @RequestMapping(value="/find",method = RequestMethod.POST)
     public List<Question> findQuestionsByTags(@RequestBody Map<String, String> map) {
         String param = map.get("param");
@@ -70,6 +78,8 @@ public class QuestionController{
         List<String> tagList = new ArrayList<String>(Arrays.asList(temp.split(",")));
         return findQuestionsByTags.findQuestionsByTags(param, pageNum, requiredCount, tagList, logical);
     }
+
+    @Async(value = "homeKanban")
     @RequestMapping(value="/all/homekanban", method = RequestMethod.GET)
     public HomeKanban findHomeKanban(@RequestParam("requiredCount") int requiredCount){
         List<Question> date = findAllQuestions.findAllQuestions("date", -1, requiredCount);
@@ -77,6 +87,8 @@ public class QuestionController{
         List<Question> views = findAllQuestions.findAllQuestions("views",-1,requiredCount);
         return new HomeKanban(date,answerCount,views);
     }
+
+    @Async(value = "createQuestion")
     @RequestMapping(value="/create",method = RequestMethod.POST)
     public Question createQuestion(@RequestBody Map<String, String> map) {
         String title = map.get("title");
@@ -87,6 +99,8 @@ public class QuestionController{
         List<String> tagList = new ArrayList<String>(Arrays.asList(temp.split(",")));
         return createQuestion.createQuestion(title, author, tagList, content);
     }
+
+    @Async(value = "createLike")
     @RequestMapping(value="/create/like",method = RequestMethod.POST)
     public Question createLike(@RequestBody Map<String, String> map) {
         String question_id = map.get("question_id");
@@ -96,6 +110,7 @@ public class QuestionController{
         return createLike.createLike(question_id, answer_id, nickname, status);
     }
 
+    @Async(value = "updateAdapt")
     @RequestMapping(value="/update/adopt",method = RequestMethod.POST)
     public Question updateAdoptedAnswerId(@RequestBody Map<String, String> map){
         String question_id = map.get("question_id");

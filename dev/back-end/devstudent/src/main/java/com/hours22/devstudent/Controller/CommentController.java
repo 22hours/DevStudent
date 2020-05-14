@@ -4,6 +4,7 @@ import com.hours22.devstudent.Command.Create.CreateComment;
 import com.hours22.devstudent.Command.Delete.DeleteComment;
 import com.hours22.devstudent.Entity.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +21,7 @@ public class CommentController{
     @Autowired
     private DeleteComment deleteComment;
 
+    @Async(value = "createComment")
     @RequestMapping(value="/create",method = RequestMethod.POST)
     public Comment createComment(@RequestBody Map<String, String> map) {
         String question_id = map.get("question_id");

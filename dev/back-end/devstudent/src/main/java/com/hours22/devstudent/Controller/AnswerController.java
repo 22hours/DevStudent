@@ -4,6 +4,7 @@ import com.hours22.devstudent.Command.Create.CreateAnswer;
 import com.hours22.devstudent.Command.Delete.DeleteAnswer;
 import com.hours22.devstudent.Entity.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +20,7 @@ public class AnswerController{
     @Autowired
     private DeleteAnswer deleteAnswer;
 
+    @Async(value = "createAnswer")
     @RequestMapping(value="/create",method = RequestMethod.POST)
     public Answer createAnswer(@RequestBody Map<String, String> map) {
         String question_id = map.get("question_id");

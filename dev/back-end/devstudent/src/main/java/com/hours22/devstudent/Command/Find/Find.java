@@ -14,7 +14,7 @@ import java.util.List;
 public abstract class Find {
     @Autowired
     private MongoTemplate mongoTemplate;
-    private final long hour = 3600000;
+    private final long hour = 3600000; // 1시간
     public List<Question> getQuestions(String param, int pageNum, int requiredCount, Criteria criteria) {
         long time = System.currentTimeMillis();
         time -= hour*24*30;
