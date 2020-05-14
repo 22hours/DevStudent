@@ -11,7 +11,7 @@ import java.util.concurrent.Executor;
 @EnableAsync
 public class SpringAsyncConfig {
 
-    @Bean(name = "findUserByNickname")
+    @Bean(name = "UserByNickname")
     public Executor threadPoolfindUserByNickname() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
@@ -22,7 +22,7 @@ public class SpringAsyncConfig {
         return taskExecutor;
     }
 
-    @Bean(name = "updateUserInfo")
+    @Bean(name = "UserInfo")
     public Executor threadPoolupdateUserInfo() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
@@ -33,7 +33,7 @@ public class SpringAsyncConfig {
         return taskExecutor;
     }
 
-    @Bean(name = "countTags")
+    @Bean(name = "Tags")
     public Executor threadPoolcountTags() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
@@ -44,7 +44,7 @@ public class SpringAsyncConfig {
         return taskExecutor;
     }
 
-    @Bean(name = "countUnreadAlarm")
+    @Bean(name = "UnreadAlarm")
     public Executor threadPoolcountUnreadAlarm() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
@@ -55,7 +55,7 @@ public class SpringAsyncConfig {
         return taskExecutor;
     }
 
-    @Bean(name = "countAllQuestions")
+    @Bean(name = "cAllQuestions")
     public Executor threadPoolcountAllQuestions() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
@@ -66,7 +66,7 @@ public class SpringAsyncConfig {
         return taskExecutor;
     }
 
-    @Bean(name = "createComment")
+    @Bean(name = "Comment")
     public Executor threadPoolcreateComment() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
@@ -77,7 +77,7 @@ public class SpringAsyncConfig {
         return taskExecutor;
     }
 
-    @Bean(name = "createAnswer")
+    @Bean(name = "Answer")
     public Executor threadPoolcreateAnswer() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
@@ -88,7 +88,7 @@ public class SpringAsyncConfig {
         return taskExecutor;
     }
 
-    @Bean(name = "deleteAlarm")
+    @Bean(name = "dAlarm")
     public Executor threadPooldeleteAlarm() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
@@ -121,7 +121,7 @@ public class SpringAsyncConfig {
         return taskExecutor;
     }
 
-    @Bean(name = "createLike")
+    @Bean(name = "Like")
     public Executor threadPoolcreateLike() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
@@ -132,7 +132,7 @@ public class SpringAsyncConfig {
         return taskExecutor;
     }
 
-    @Bean(name = "createQuestion")
+    @Bean(name = "Question")
     public Executor threadPoolcreateQuestion() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5); // 기본 스레드 개수

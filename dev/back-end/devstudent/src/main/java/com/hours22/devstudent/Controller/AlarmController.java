@@ -29,7 +29,7 @@ public class AlarmController {
         return findAllAlarms.findAllAlarms(nickname, pageNum, requiredCount);
     }
 
-    @Async(value = "deleteAlarm")
+    @Async(value = "dAlarm")
     @RequestMapping(value="/delete",method = RequestMethod.POST)
     public Alarm deleteAlarm(@RequestBody Map<String, String> map){
         String alarm_id = map.get("alarm_id");

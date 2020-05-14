@@ -21,13 +21,13 @@ public class CountController {
     @Autowired
     private CountUnreadAlarms countUnreadAlarms;
 
-    @Async(value = "countAllQuestions")
+    @Async(value = "cAllQuestions")
     @RequestMapping(value="/questions",method = RequestMethod.GET)
     public Count countAllQuestions() {
         return countAllQuestions.countAllQuestions();
     }
 
-    @Async(value = "countUnreadAlarm")
+    @Async(value = "UnreadAlarm")
     @RequestMapping(value="/unread/alarms",method = RequestMethod.GET)
     public Count countUnreadAlarms(@RequestParam("nickname")String nickname) {
         return countUnreadAlarms.countUnreadAlarms(nickname);

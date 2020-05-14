@@ -20,7 +20,7 @@ public class AnswerController{
     @Autowired
     private DeleteAnswer deleteAnswer;
 
-    @Async(value = "createAnswer")
+    @Async(value = "Answer")
     @RequestMapping(value="/create",method = RequestMethod.POST)
     public Answer createAnswer(@RequestBody Map<String, String> map) {
         String question_id = map.get("question_id");

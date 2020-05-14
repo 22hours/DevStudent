@@ -21,7 +21,7 @@ public class CommentController{
     @Autowired
     private DeleteComment deleteComment;
 
-    @Async(value = "createComment")
+    @Async(value = "Comment")
     @RequestMapping(value="/create",method = RequestMethod.POST)
     public Comment createComment(@RequestBody Map<String, String> map) {
         String question_id = map.get("question_id");

@@ -88,7 +88,7 @@ public class QuestionController{
         return new HomeKanban(date,answerCount,views);
     }
 
-    @Async(value = "createQuestion")
+    @Async(value = "Question")
     @RequestMapping(value="/create",method = RequestMethod.POST)
     public Question createQuestion(@RequestBody Map<String, String> map) {
         String title = map.get("title");
@@ -100,7 +100,7 @@ public class QuestionController{
         return createQuestion.createQuestion(title, author, tagList, content);
     }
 
-    @Async(value = "createLike")
+    @Async(value = "Like")
     @RequestMapping(value="/create/like",method = RequestMethod.POST)
     public Question createLike(@RequestBody Map<String, String> map) {
         String question_id = map.get("question_id");

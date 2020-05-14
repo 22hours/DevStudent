@@ -19,7 +19,7 @@ public class UserInfoController {
     @Autowired
     private FindUserInfo findUserInfo;
 
-    @Async(value = "updateUserInfo")
+    @Async(value = "UserInfo")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public UserInfo updateUserInfo(@RequestBody UserInfo userInfo){
         String nickname = userInfo.getNickname();
@@ -27,7 +27,7 @@ public class UserInfoController {
         return updateUserInfo.updateUserInfo(nickname, gitLink);
     }
 
-    @Async(value = "findUserByNickname")
+    @Async(value = "UserByNickname")
     @RequestMapping(value="/find", method = RequestMethod.POST)
     public UserInfo findUserByNickname(@RequestBody Map<String, String> map){
         String nickname = map.get("nickname");

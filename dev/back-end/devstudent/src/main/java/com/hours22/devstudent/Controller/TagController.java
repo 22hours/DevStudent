@@ -22,7 +22,7 @@ public class TagController {
     @Autowired
     private CountTags countTags;
 
-    @Async(value = "countTags")
+    @Async(value = "Tags")
     @RequestMapping(value="/count",method = RequestMethod.POST)
     public List<Tag> countTags(@RequestBody Map<String, String> map){
         int requiredCount = Integer.parseInt(map.get("requiredCount"));
