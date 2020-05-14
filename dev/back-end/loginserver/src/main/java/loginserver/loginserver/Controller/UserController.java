@@ -66,13 +66,13 @@ public class UserController {
 
     @Async(value = "logindevstu")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public CompletableFuture<String> loginToServer(@RequestBody Map<String, String> map) {
+    public CompletableFuture<String> loginToServer(@RequestHeader(value = "ip") String ip, @RequestBody Map<String, String> map) {
         String email = map.get("email");
         String password = map.get("password");
-        String ip = map.get("ip");
         User tempUser = login.login(email, password, ip);
         Gson gson = new Gson();
         String json = gson.toJson(tempUser);
+        System.out.println("Request IP = " + ip);
         System.out.println("Request = " + map.toString());
         System.out.println("Response = " + json);
         return CompletableFuture.completedFuture(json);
@@ -80,10 +80,11 @@ public class UserController {
     @Async(value = "nickname")
     @RequestMapping(value = "/create/nickname",method = RequestMethod.POST)
     //public User createNickname(@RequestBody User user) {// 중복은 0, 중복이 아닌 것은 1
-    public CompletableFuture<String> createNickname(@RequestBody Map<String, String> map) {// 중복은 0, 중복이 아닌 것은 1
+    public CompletableFuture<String> createNickname(@RequestHeader(value = \"ip") String ip, @RequestBody Map<String, String> map) {// 중복은 0, 중복이 아닌 것은 1
         String email = map.get("email");//user.getEmail();
         String nickname = map.get("nickname");//user.getNickname();
-        String ip = map.get("ip");
+        System.out.println("Request IP = " + ip);
+
         if (!userRepository.existsByNickname(nickname))
         {
             User tempUser = userRepository.findByEmail(email);
