@@ -1,25 +1,40 @@
 .NewHeaderComponent {
     top: 0px;
     z-index: 100;
-    background-color: rgba(255, 255, 255, 0.9);
     width: 100%;
     height: auto;
     min-height: 50px;
     position: relative;
     position: fixed;
+
     font-family: "Noto Sans KR", sans-serif;
-    border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.NewHeaderComponent #brand-img {
+    width: 100px;
 }
 
 .NewHeaderComponent .header-wrapper {
     height: 100%;
+    height: auto;
+    min-height: 52px;
+}
+
+.none {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.zero {
+    color: white !important;
 }
 
 .NewHeaderComponent .header-wrapper-mobile {
-    height: 100%;
+    height: auto;
+    min-height: 50px;
     padding-left: 10px;
     padding-right: 10px;
-    line-height: 50px;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@ */
@@ -57,9 +72,27 @@
     padding-right: 20px;
 }
 
+.zero .header-menu-col .menu-item {
+    color: white !important;
+}
+.zero .header-menu-col .menu-box:hover .menu-item {
+    color: rgb(4, 226, 255) !important;
+}
+.zero .header-menu-col .menu-box:hover {
+    border-bottom: 3px solid rgb(4, 226, 255) !important;
+}
+
+.zero .header-menu-col .on {
+    border-bottom: 3px solid rgb(4, 226, 255) !important;
+}
+.zero .header-menu-col .on a {
+    color: rgb(4, 226, 255) !important;
+    text-decoration: none !important;
+}
+
 .pc-only .header-menu-col .menu-item {
     font-family: "Noto Sans KR", sans-serif;
-    color: rgb(150, 150, 150);
+    color: rgb(141, 141, 141);
     font-size: 14px;
 }
 .pc-only .header-menu-col .menu-item {
@@ -94,6 +127,15 @@
     text-align: center;
     line-height: 50px;
 }
+
+.zero .header-user-col a {
+    color: rgb(255, 255, 255) !important;
+}
+
+.zero .header-user-col span {
+    color: rgb(255, 255, 255);
+}
+
 .header-user-col a {
     font-size: 13px !important;
     text-decoration: none !important;
@@ -106,6 +148,7 @@
 
 .header-user-col #nickname-span {
     cursor: pointer;
+    margin: 1px;
 }
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@ */
@@ -117,14 +160,16 @@
     float: left;
     height: 100%;
     cursor: pointer;
+    z-index: 2;
 }
 
 .mobile-only .header-logo-col {
     position: fixed;
     /* left 30, right 100 */
-    width: 100%;
-    z-index: -1;
-    padding-right: 10px;
+    /* width: 100%; */
+    z-index: 1;
+    margin-left: 38%;
+    /* padding-right: 10px; */
     text-align: center;
 }
 
@@ -133,6 +178,7 @@
     text-align: right;
     width: 100px;
     height: 100%;
+    z-index: 2;
 }
 
 .mobile-only .header-logo-col #mobile-logo {
@@ -146,7 +192,6 @@
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-top: 50px;
 }
 
 .NewHeaderComponent .collapse-wrapper .collapse-item-outter {
@@ -177,4 +222,16 @@
 .NewHeaderComponent .collapse-wrapper .collapse-item-outter:hover {
     background-color: rgba(255, 255, 255, 0.4);
     color: black !important;
+}
+
+.NewHeaderComponent .mobile-menu-collapse {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.MuiBadge-badge.MuiBadge-anchorOriginTopRightRectangle.MuiBadge-colorPrimary {
+    color: white !important;
+}
+
+.MuiBadge-colorPrimary {
+    background-color: #4ba0b5 !important;
 }

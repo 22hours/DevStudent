@@ -22,10 +22,9 @@ const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
         width: "100%",
     };
 
-    const [param, setParam] = useState("views");
     const [requiredCount] = useState("10");
     const { loading, error, data } = useQuery(findAllQuestionsByViews, {
-        variables: { param: param, requiredCount: requiredCount },
+        variables: { param: "likesCount", requiredCount: requiredCount },
     });
 
     if (loading)
@@ -38,8 +37,8 @@ const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
 
     const hotquestionList = (
         <div>
-            {data.findAllQuestions.map(({ _id, title, views }) => (
-                <HotQuestionItem id={_id} key={_id} title={title} views={views}></HotQuestionItem>
+            {data.findAllQuestions.map(({ _id, title, likesCount }) => (
+                <HotQuestionItem id={_id} key={_id} title={title} likesCount={likesCount}></HotQuestionItem>
             ))}
         </div>
     );

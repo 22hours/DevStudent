@@ -1,9 +1,12 @@
 .HowToKanbanModuleTemplate {
     padding-top: 20px;
     padding-bottom: 20px;
+    height: auto;
 }
 
 .HowToKanbanModuleTemplate .kanban-wrapper {
+    height: auto;
+
     overflow: hidden;
 }
 
@@ -28,8 +31,14 @@
     width: 33%;
     padding: 10px;
     height: auto;
+    margin-bottom: 10px;
 }
 
+.HowToKanbanModuleTemplate .kanban-col:hover {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(112, 112, 112, 0.23);
+}
 .HowToKanbanModuleTemplate .kanban-col .kanban-header {
     width: 100%;
     font-size: 16px;

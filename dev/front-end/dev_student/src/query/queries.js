@@ -324,3 +324,61 @@ export const FIND_USER_BY_NICKNAME = gql`
         }
     }
 `;
+
+export const FIND_HOME_KANBAN = gql`
+    query findHomeKanban($requiredCount: Int) {
+        findHomeKanban(requiredCount: $requiredCount) {
+            date {
+                _id
+                title
+                previews
+                views
+                answerCount
+                likesCount
+                author {
+                    email
+                    nickname
+                    point
+                    grade
+                    gitLink
+                    schoolName
+                    attendance
+                }
+            }
+            answerCount {
+                _id
+                title
+                previews
+                views
+                answerCount
+                likesCount
+                author {
+                    email
+                    nickname
+                    point
+                    grade
+                    gitLink
+                    schoolName
+                    attendance
+                }
+            }
+            views {
+                _id
+                title
+                previews
+                views
+                answerCount
+                likesCount
+                author {
+                    email
+                    nickname
+                    point
+                    grade
+                    gitLink
+                    schoolName
+                    attendance
+                }
+            }
+        }
+    }
+`;
