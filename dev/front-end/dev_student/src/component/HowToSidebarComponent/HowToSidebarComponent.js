@@ -49,7 +49,7 @@ const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
                 <div>
                     <Link to="/newquestion" style={btn_style}>
                         <Button onClick={handleNewQuestion} id="new-question-button" color="info" style={btn_style}>
-                            NewQuestion!
+                            New Question
                         </Button>
                     </Link>
                 </div>

@@ -89,11 +89,7 @@ const HowToBoxItem = (props) => {
                             <Avatar img={GradeAvatar(authorGrade)} />
                         </div>
                         <div className="person-info-col">
-                            <div id="user-nickname">
-                                <a id="nickname" href={"/userinfo/" + authorNickname}>
-                                    {authorNickname}
-                                </a>
-                            </div>
+                            <div id="user-nickname">{authorNickname}</div>
                             <div id="user-stat">{authorPoint} point</div>
                         </div>
                     </div>

@@ -104,8 +104,8 @@ const PageHeaderModule = ({ question_count, param, setParam }) => {
             </div>
             <div className="mobile-only new-question">
                 <a href="/newquestion">
-                    <Button style={{ width: "100%", fontSize: "11px", marginTop: "8px" }} color="info">
-                        새 질문
+                    <Button style={{ width: "100%", fontSize: "14px", marginTop: "8px" }} color="info">
+                        New Question
                     </Button>
                 </a>
             </div>
