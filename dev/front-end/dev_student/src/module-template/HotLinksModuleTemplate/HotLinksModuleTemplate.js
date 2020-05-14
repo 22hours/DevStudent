@@ -4,14 +4,14 @@ import WhatshotIcon from "@material-ui/icons/Whatshot";
 
 const HotLinksModuleTemplate = ({ hotquestionList }) => {
     return (
-        <div className="howto-hot-question-wrapper">
+        <div className="sidebar-item-wrapper">
             <div className="howto-hot-question-header-wrapper">
-                <div className="hot-question-header">
+                <div className="item-header">
                     핫 게시물 &nbsp;
                     <WhatshotIcon style={{ fontSize: "14px" }} />
                 </div>
             </div>
-            <div className="howto-hot-question-list-wrapper">
+            <div className="item-list-wrapper">
                 <div className="hot-question-list-items">{hotquestionList}</div>
             </div>
         </div>
