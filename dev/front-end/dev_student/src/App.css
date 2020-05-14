@@ -50,6 +50,20 @@
     }
 }
 
+/*
+    800~1000px 사이의 화면을 2분할 했을 때의 view
+*/
+
+@media all and (min-width: 800px) and (max-width: 1000px) {
+    .container {
+        max-width: none !important;
+        /* overflow: hidden; */
+        width: 100%;
+        /* margin-left: 5% !important;
+        margin-right: 5% !important; */
+    }
+}
+
 .disable {
     pointer-events: none !important;
 }
