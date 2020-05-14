@@ -55,31 +55,62 @@ const TotalKanbanItemProvider = () => {
     if (error) return <p>error now</p>;
     return (
         <React.Fragment>
-            <div className="kanban-col">
-                <div className="kanban-header">
-                    <AccessTimeIcon />
-                    <br /> 최신순
+            <div className="pc-only">
+                <div className="kanban-col">
+                    <div className="kanban-header">
+                        <AccessTimeIcon />
+                        <br /> 최신순
+                    </div>
+                    <div className="kanban-box">
+                        <KanbanRenderer data={data?.findHomeKanban?.date} />
+                    </div>
                 </div>
-                <div className="kanban-box">
-                    <KanbanRenderer data={data?.findHomeKanban?.date} />
+                <div className="kanban-col">
+                    <div className="kanban-header">
+                        <VisibilityIcon />
+                        <br /> 조회순
+                    </div>
+                    <div className="kanban-box">
+                        <KanbanRenderer data={data?.findHomeKanban?.views} />
+                    </div>
+                </div>
+                <div className="kanban-col">
+                    <div className="kanban-header">
+                        <TrendingUpIcon />
+                        <br /> 답변순
+                    </div>
+                    <div className="kanban-box">
+                        <KanbanRenderer data={data?.findHomeKanban?.answerCount} />
+                    </div>
                 </div>
             </div>
-            <div className="kanban-col">
-                <div className="kanban-header">
-                    <VisibilityIcon />
-                    <br /> 조회순
+            <div className="mobile-only">
+                <div className="kanban-row">
+                    <div className="kanban-header">
+                        <AccessTimeIcon />
+                        <br /> 최신순
+                    </div>
+                    <div className="kanban-box">
+                        <KanbanRenderer data={data?.findHomeKanban?.date} />
+                    </div>
                 </div>
-                <div className="kanban-box">
-                    <KanbanRenderer data={data?.findHomeKanban?.views} />
+                <div className="kanban-row">
+                    <div className="kanban-header">
+                        <VisibilityIcon />
+                        <br /> 조회순
+                    </div>
+                    <div className="kanban-box">
+                        <KanbanRenderer data={data?.findHomeKanban?.views} />
+                    </div>
                 </div>
-            </div>
-            <div className="kanban-col">
-                <div className="kanban-header">
-                    <TrendingUpIcon />
-                    <br /> 답변순
-                </div>
-                <div className="kanban-box">
-                    <KanbanRenderer data={data?.findHomeKanban?.answerCount} />
+                <div className="kanban-row">
+                    <div className="kanban-header">
+                        <TrendingUpIcon />
+                        <br /> 답변순
+                    </div>
+                    <div className="kanban-box">
+                        <KanbanRenderer data={data?.findHomeKanban?.answerCount} />
+                    </div>
                 </div>
             </div>
         </React.Fragment>

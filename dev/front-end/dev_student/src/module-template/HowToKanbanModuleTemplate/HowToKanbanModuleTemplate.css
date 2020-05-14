@@ -45,6 +45,12 @@
     text-align: center;
     margin-bottom: 10px;
 }
+.HowToKanbanModuleTemplate .kanban-row .kanban-header {
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 10px;
+}
 
 .HowToKanbanModuleTemplate .kanban-col .kanban-box {
     /* border: 1px solid rgb(230, 230, 230); */
@@ -85,6 +91,8 @@
     cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
+    height: auto;
+    max-height: 46px;
 }
 
 .HowToKanbanModuleTemplate .KanbanItem .title-row a {
@@ -115,6 +123,10 @@
 .HowToKanbanModuleTemplate .KanbanItem .preview-row {
     font-size: 14px;
     color: gray;
+    height: auto;
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .HowToKanbanModuleTemplate .KanbanItem .stats-row {
