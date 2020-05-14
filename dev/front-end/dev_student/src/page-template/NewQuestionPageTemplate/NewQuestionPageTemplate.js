@@ -36,6 +36,7 @@ const NewQuestionPageTemplate = ({ handleSubmit }) => {
                                 title={title}
                                 previews={body.substr(0, 100)}
                                 views={0}
+                                tags={tags}
                                 likesCount={0}
                                 answers={0}
                                 adoptedAnswerId={null}
