@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormGroup, Input, Button, Row, Collapse, Alert } from "reactstrap";
+import { FormGroup, Input, Button, Collapse } from "reactstrap";
 import "./PageHeaderModule.css";
 
 //icons
@@ -9,11 +9,13 @@ import HelpIcon from "@material-ui/icons/Help";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
+// import HowToSearchModule from "module/HowToSearchModule/HowToSearchModule";
 
 const PageHeaderModule = ({ question_count, param, setParam }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [serachBarIsOpen, setSearchBarIsOpen] = useState(false);
     const [filterIsOpen, setFilterIsOpen] = useState(false);
+    const [search, setSearch] = useState("");
 
     const toggleSearchBar = () => {
         setSearchBarIsOpen((prevState) => !prevState);
@@ -48,6 +50,24 @@ const PageHeaderModule = ({ question_count, param, setParam }) => {
                 return <WhatshotIcon />;
             default:
                 return <HelpIcon />;
+        }
+    };
+
+    const StartSearch = () => {
+        if (search === "") {
+            alert("검색어를 입력하세요.");
+        } else {
+            window.location.href = "/howto?search=" + search;
+        }
+    };
+
+    const EnterKey = (e) => {
+        if (e.key === "Enter") {
+            if (search === "") {
+                alert("검색어를 입력하세요.");
+            } else {
+                window.location.href = "/howto?search=" + search;
+            }
         }
     };
 
@@ -93,12 +113,19 @@ const PageHeaderModule = ({ question_count, param, setParam }) => {
                     <div className="searchbar-wrapper">
                         <FormGroup>
                             <Input
+                                value={search}
+                                onChange={({ target: { value } }) => setSearch(value)}
                                 type="search"
                                 name="search"
                                 id="exampleSearch"
                                 placeholder="무엇이든 검색해보세요!"
+                                onKeyPress={EnterKey}
                             />
                         </FormGroup>
+                        <SearchIcon
+                            style={{ fontSize: "22px", marginLeft: "10px", display: "inline-block", cursor: "pointer" }}
+                            onClick={StartSearch}
+                        />
                     </div>
                 </Collapse>
             </div>

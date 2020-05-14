@@ -105,3 +105,8 @@
 .new-question {
     width: 100%;
 }
+
+.searchbar-wrapper .form-group {
+    width: calc(100% - 50px) !important;
+    display: inline-block !important;
+}
