@@ -18,3 +18,26 @@
 
 .howto-sidebar-wrapper {
 }
+
+.howto-sidebar-wrapper .sidebar-item-wrapper {
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5%;
+    width: 100%;
+    border-color: rgb(236, 236, 236);
+    border-style: solid;
+    border-width: 1px;
+    background-color: white;
+}
+
+.sidebar-item-wrapper .item-header {
+    text-align: left;
+    margin-left: 5px;
+    font-size: 16px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.sidebar-item-wrapper .item-list-wrapper {
+}

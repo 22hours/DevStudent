@@ -27,13 +27,13 @@ const QuestionTagModuleTemplate = () => {
         <QuestionTagItem name={name} count={count} key={name}></QuestionTagItem>
     ));
     return (
-        <div className="question-tag-wrapper">
+        <div className="sidebar-item-wrapper">
             <div className="question-tag-header-wrapper">
-                <div className="question-tag-header">
+                <div className="item-header">
                     태그 <LocalOfferIcon style={{ fontSize: "14px" }} />
                 </div>{" "}
             </div>
-            <div className="question-tag-list-wrapper">
+            <div className="item-list-wrapper">
                 <div>{taglist}</div>
             </div>
         </div>

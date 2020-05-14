@@ -20,6 +20,7 @@ const HotQuestionItem = ({ id, likesCount, title }) => {
         <div width="100%">
             <div className="hot-links-list-group-item">
                 <span>
+                    &nbsp;
                     <ThumbUpIcon style={{ fontSize: "10px" }} color="action" />
                 </span>
                 <span id="views">{likesCount}</span>
