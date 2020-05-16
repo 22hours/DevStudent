@@ -1,5 +1,6 @@
 package com.hours22.devstudent.Controller;
 
+import com.google.gson.Gson;
 import com.hours22.devstudent.Command.Create.CreateLike;
 import com.hours22.devstudent.Command.Create.CreateQuestion;
 import com.hours22.devstudent.Command.Delete.DeleteQuestion;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("/main/question/*")
@@ -42,7 +44,7 @@ public class QuestionController{
     private DeleteQuestion deleteQuestion;
 
     @Async(value="AllQuestions")
-    @RequestMapping(value="/all",method = RequestMethod.GET)
+    @RequestMapping(value="/find/all",method = RequestMethod.GET)
     public List<Question> findAllQuestions(@RequestParam("param")String param,
                                            @RequestParam("pageNum")int pageNum,
                                            @RequestParam("requiredCount")int requiredCount) {
@@ -50,7 +52,7 @@ public class QuestionController{
     }
 
     @Async(value = "QuestionsByOption")
-    @RequestMapping(value="/all/option",method = RequestMethod.GET)
+    @RequestMapping(value="/find/all/option",method = RequestMethod.GET)
     public List<Question> findQuestionsByOption(@RequestParam("param")String param,
                                                 @RequestParam("option")String option,
                                                 @RequestParam("searchContent")String searchContent,
@@ -60,27 +62,27 @@ public class QuestionController{
     }
 
     @Async(value = "QuestionBy_id")
-    @RequestMapping(value="/find",method = RequestMethod.GET)
+    @RequestMapping(value="/find/_id",method = RequestMethod.GET)
     public Question findQuestionBy_id(@RequestParam("_id")String _id,
                                       @RequestParam("nickname")String nickname) {
         return findQuestionBy_id.findQuestionBy_id(_id, nickname);
     }
 
     @Async(value = "QuestionsByTags")
-    @RequestMapping(value="/find",method = RequestMethod.POST)
-    public List<Question> findQuestionsByTags(@RequestBody Map<String, String> map) {
-        String param = map.get("param");
-        int pageNum = Integer.parseInt(map.get("pageNum"));
-        int requiredCount = Integer.parseInt(map.get("requiredCount"));
-        String tags = map.get("tags");
-        String logical = map.get("logical");
+    @RequestMapping(value="/find/tags",method = RequestMethod.POST)
+    public List<Question> findQuestionsByTags(@RequestBody Map<String, Object> map) {
+        String param = map.get("param").toString();
+        int pageNum = Integer.parseInt(map.get("pageNum").toString());
+        int requiredCount = Integer.parseInt(map.get("requiredCount").toString());
+        String tags = map.get("tags").toString();
+        String logical = map.get("logical").toString();
         String temp = tags.substring(1,tags.length()-1);
         List<String> tagList = new ArrayList<String>(Arrays.asList(temp.split(",")));
         return findQuestionsByTags.findQuestionsByTags(param, pageNum, requiredCount, tagList, logical);
     }
 
     @Async(value = "homeKanban")
-    @RequestMapping(value="/all/homekanban", method = RequestMethod.GET)
+    @RequestMapping(value="/find/homekanban", method = RequestMethod.GET)
     public HomeKanban findHomeKanban(@RequestParam("requiredCount") int requiredCount){
         List<Question> date = findAllQuestions.findAllQuestions("date", -1, requiredCount);
         List<Question> answerCount = findAllQuestions.findAllQuestions("answerCount", -1, requiredCount);
@@ -90,14 +92,19 @@ public class QuestionController{
 
     @Async(value = "Question")
     @RequestMapping(value="/create",method = RequestMethod.POST)
-    public Question createQuestion(@RequestBody Map<String, String> map) {
-        String title = map.get("title");
-        String author = map.get("author");
-        String tags = map.get("tags");
-        String content = map.get("content");
+    public CompletableFuture<String> createQuestion(@RequestBody Map<String, Object> map) {
+        String title = map.get("title").toString();
+        String author = map.get("author").toString();
+        String content = map.get("content").toString();
+        String tags = map.get("tags").toString();
         String temp = tags.substring(1,tags.length()-1);
         List<String> tagList = new ArrayList<String>(Arrays.asList(temp.split(",")));
-        return createQuestion.createQuestion(title, author, tagList, content);
+        Question question = createQuestion.createQuestion(title, author, tagList, content);
+        Gson gson = new Gson();
+        String json = gson.toJson(question);
+        System.out.println("Request = " + map.toString());
+        System.out.println("Response = " + json);
+        return CompletableFuture.completedFuture(json);
     }
 
     @Async(value = "Like")

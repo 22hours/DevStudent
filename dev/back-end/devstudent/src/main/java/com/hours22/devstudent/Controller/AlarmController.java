@@ -22,7 +22,7 @@ public class AlarmController {
     private DeleteAlarm deleteAlarm;
 
     @Async(value = "allAlarms")
-    @RequestMapping(value="/all",method = RequestMethod.GET)
+    @RequestMapping(value="/find/all",method = RequestMethod.GET)
     public List<Alarm> findAllAlarms(@RequestParam("nickname")String nickname,
                                      @RequestParam("pageNum")int pageNum,
                                      @RequestParam("requiredCount")int requiredCount) {
