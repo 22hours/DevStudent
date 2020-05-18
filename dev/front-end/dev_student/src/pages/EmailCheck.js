@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { request, UPDATE_AUTH_STATE } from "authRest";
+import { POST, UPDATE_AUTH_STATE } from "rest";
 
 import EmailCheckPageTemplate from "page-template/EmailCheckPageTemplate/EmailCheckPageTemplate";
 import NotFoundPageTemplate from "page-template/NotFoundPageTemplate/NotFoundPageTemplate";
@@ -10,7 +10,7 @@ const EmailCheck = ({ match }) => {
     const [state, setState] = useState("wait");
     const [updateUserAuthStateResponse, setUpdateUserAuthStateResponse] = useState(null);
     const handleUpdateAuthState = async () => {
-        request("post", UPDATE_AUTH_STATE, {
+        POST("post", UPDATE_AUTH_STATE, {
             authState: rand,
         })
             .then((response) => {

@@ -21,7 +21,8 @@ let config = {
         ip: PublicIpGetter(),
     },
 };
-const request = (method, url, data) => {
+
+const POST = (method, url, data) => {
     const ip = localStorage.getItem("ip");
     return axios({
         method,
@@ -36,4 +37,4 @@ const request = (method, url, data) => {
         });
 };
 
-export { request, DOMAIN, CREATE_USER, UPDATE_AUTH_STATE, LOGIN_TO_SERVER, CREATE_NICKNAME, CHECK_DUPLICATED_EMAIL };
+export { POST, DOMAIN, CREATE_USER, UPDATE_AUTH_STATE, LOGIN_TO_SERVER, CREATE_NICKNAME, CHECK_DUPLICATED_EMAIL };

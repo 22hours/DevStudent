@@ -6,7 +6,7 @@ import { Input, Button, FormText } from "reactstrap";
 import { Link } from "react-router-dom";
 import { hashPassword } from "auth";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { request, CHECK_DUPLICATED_EMAIL, CREATE_USER } from "authRest";
+import { POST, CHECK_DUPLICATED_EMAIL, CREATE_USER } from "rest";
 
 const RegisterTemplate = ({
     email,
@@ -240,7 +240,7 @@ const RegisterTemplate = ({
                                                     return;
                                                 } else {
                                                     setEmailClick(true);
-                                                    request("post", CHECK_DUPLICATED_EMAIL, {
+                                                    POST("post", CHECK_DUPLICATED_EMAIL, {
                                                         email: email + emailSelect,
                                                     })
                                                         .then((response) => setCheckEmailResponse(response))
@@ -316,7 +316,7 @@ const RegisterTemplate = ({
                                             return;
                                         } else {
                                             setRegisterClick(true);
-                                            request("post", CREATE_USER, {
+                                            POST("post", CREATE_USER, {
                                                 password: hashPassword(password),
                                                 email: email + emailSelect,
                                                 schoolName: schoolName,
