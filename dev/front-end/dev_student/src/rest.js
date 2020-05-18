@@ -19,6 +19,10 @@ const CHECK_DUPLICATED_EMAIL = "user/check/email";
 
 const FIND_HOME_KANBAN = "main/question/find/homekanban";
 
+const FIND_ALL_QUESTIONS = "main/question/find/all";
+
+const FIND_QUESTIONS_BY_TAGS = "main/question/find/tags";
+
 // MUTATIONS
 
 const getIp = () => {
@@ -54,4 +58,6 @@ export {
     CREATE_NICKNAME,
     CHECK_DUPLICATED_EMAIL,
     FIND_HOME_KANBAN,
+    FIND_ALL_QUESTIONS,
+    FIND_QUESTIONS_BY_TAGS,
 };
