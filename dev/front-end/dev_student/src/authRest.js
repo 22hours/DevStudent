@@ -23,7 +23,6 @@ let config = {
 };
 const request = (method, url, data) => {
     const ip = localStorage.getItem("ip");
-    console.log(ip);
     return axios({
         method,
         url: DOMAIN + url,
