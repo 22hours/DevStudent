@@ -23,6 +23,10 @@ const FIND_ALL_QUESTIONS = "main/question/find/all";
 
 const FIND_QUESTIONS_BY_TAGS = "main/question/find/tags";
 
+const FIND_QUESTIONS_BY_OPTIONS = "main/question/find/all/option";
+
+const COUNT_TAGS = "main/count/all/tags";
+
 // MUTATIONS
 
 const getIp = () => {
@@ -60,4 +64,6 @@ export {
     FIND_HOME_KANBAN,
     FIND_ALL_QUESTIONS,
     FIND_QUESTIONS_BY_TAGS,
+    FIND_QUESTIONS_BY_OPTIONS,
+    COUNT_TAGS,
 };

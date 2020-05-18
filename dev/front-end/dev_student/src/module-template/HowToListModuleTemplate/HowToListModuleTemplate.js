@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "reactstrap";
 
-import { useQuery } from "@apollo/react-hooks";
-
-import { FIND_QUESTIONS_BY_TAG, findAllQuestionsPage, FIND_QUESTIONS_BY_OPTION } from "query/queries";
-
 import CircularProgress from "@material-ui/core/CircularProgress";
 import ServerError from "pages/ServerError";
 
@@ -20,7 +16,7 @@ import { timeForToday } from "util/time";
 
 //Queries
 
-import { POST, FIND_QUESTIONS_BY_TAGS, FIND_ALL_QUESTIONS } from "rest";
+import { POST, FIND_QUESTIONS_BY_TAGS, FIND_ALL_QUESTIONS, FIND_QUESTIONS_BY_OPTIONS } from "rest";
 
 const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
     const [tagData, setTagData] = useState();
@@ -83,12 +79,11 @@ const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount, questionAll 
     const getNonTagData = async () => {
         const data = await POST("post", FIND_ALL_QUESTIONS, { param: param, requiredCount: 10, pageNum: pageNum });
         setNonTagData(data);
+        if (data) setQuestionCount(Object.keys(data).length);
     };
     useEffect(() => {
         getNonTagData();
     }, [1]);
-
-    setQuestionCount(questionAll);
 
     if (nonTagData) {
         return nonTagData.map(
@@ -130,39 +125,58 @@ const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount, questionAll 
 
 const SearchProvider = ({ param, nowSearch, pageNum, setQuestionCount }) => {
     nowSearch = decodeURI(nowSearch);
-    const { loading, error, data } = useQuery(FIND_QUESTIONS_BY_OPTION, {
-        variables: { param: "date", requiredCount: 10, pageNum: pageNum, option: "content", searchContent: nowSearch },
-    });
-    if (loading)
-        return (
-            <div>
-                <CircularProgress />
-            </div>
+    const [searchData, setSearchData] = useState();
+    const getSerachData = async () => {
+        const data = await POST("post", FIND_QUESTIONS_BY_OPTIONS, {
+            param: "date",
+            requiredCount: 10,
+            pageNum: pageNum,
+            option: "content",
+            searchContent: nowSearch,
+        });
+        setSearchData(data);
+        if (data) setQuestionCount(Object.keys(data).length);
+    };
+    useEffect(() => {
+        getSerachData();
+    }, [1]);
+
+    if (searchData) {
+        return searchData.map(
+            ({
+                _id,
+                title,
+                author,
+                tags,
+                date,
+                content,
+                answerCount,
+                views,
+                previews,
+                adoptedAnswerId,
+                likesCount,
+            }) => (
+                <HowToBoxItem
+                    id={_id}
+                    key={_id}
+                    authorNickname={author.nickname}
+                    authorPoint={author.point}
+                    authorGrade={author.grade}
+                    title={title}
+                    answers={answerCount}
+                    views={views}
+                    date={date}
+                    dateToText={timeForToday(date)}
+                    previews={previews}
+                    tags={tags}
+                    likesCount={likesCount}
+                    adoptedAnswerId={adoptedAnswerId}
+                ></HowToBoxItem>
+            )
         );
-    if (error) return <p>Error!</p>;
-
-    setQuestionCount(Object.keys(data.findQuestionsByOption).length);
-
-    return data.findQuestionsByOption.map(
-        ({ _id, title, author, tags, date, content, answerCount, views, previews, adoptedAnswerId, likesCount }) => (
-            <HowToBoxItem
-                id={_id}
-                key={_id}
-                authorNickname={author.nickname}
-                authorPoint={author.point}
-                authorGrade={author.grade}
-                title={title}
-                answers={answerCount}
-                views={views}
-                date={date}
-                dateToText={timeForToday(date)}
-                previews={previews}
-                tags={tags}
-                likesCount={likesCount}
-                adoptedAnswerId={adoptedAnswerId}
-            ></HowToBoxItem>
-        )
-    );
+    } else {
+        return <p>loading now</p>;
+    }
 };
 
 const DataProvider = ({ param, nowTag, pageNum, setQuestionCount, questionCount, questionAll, nowSearch }) => {

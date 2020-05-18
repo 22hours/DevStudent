@@ -44,14 +44,6 @@ const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
         getLikesData();
     }, [1]);
 
-    // const hotquestionList = (
-    //     <div>
-    //         {likesData?.map(({ _id, title, likesCount }) => (
-    //             <HotQuestionItem id={_id} key={_id} title={title} likesCount={likesCount}></HotQuestionItem>
-    //         ))}
-    //     </div>
-    // );
-
     return (
         <React.Fragment>
             <div className="howto-sidebar-wrapper pc-only">
