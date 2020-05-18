@@ -14,23 +14,37 @@ import HowToContentModuleTemplate from "module-template/HowToContentModuleTempla
 
 // module
 import ScrollToTop from "module/ScrollToTop/ScrollToTop";
+
 // atom
 
+//Queires
+
+import { POST, FIND_ALL_QUESTIONS } from "rest";
+
 const HowTo = ({ location }) => {
-    const { loading, error, data } = useQuery(findAllQuestions, {
-        variables: { param: "date" },
-        fetchPolicy: "no-cache",
-    });
+    // const [questionData, setQuestionData] = useState();
+    // const [questionCount, setQuestionCount] = useState();
+    // const getQuestion = async () => {
+    //     const data = await POST("post", FIND_ALL_QUESTIONS, { param: "date", pageNum: 1, requiredCount: 10 });
+    //     setQuestionData(data);
+    //     if (data) setQuestionCount(Object.keys(data).length);
+    // };
+    // useEffect(() => {
+    //     getQuestion();
+    // }, [1]);
 
-    if (loading)
-        return (
-            <div>
-                <CircularProgress disableShrink size={24} />
-            </div>
-        );
-    if (error) return <ServerErrorPageTemplate />;
+    // const { loading, error, data } = useQuery(findAllQuestions, {
+    //     variables: { param: "date" },
+    //     fetchPolicy: "no-cache",
+    // });
 
-    const questionAll = Object.keys(data.findAllQuestions).length;
+    // if (loading)
+    //     return (
+    //         <div>
+    //             <CircularProgress disableShrink size={24} />
+    //         </div>
+    //     );
+    // if (error) return <ServerErrorPageTemplate />;
 
     return (
         <HowToTemplate>
@@ -45,7 +59,7 @@ const HowTo = ({ location }) => {
                                 <div>
                                     <HowToListModuleTemplate
                                         location={location}
-                                        questionAll={questionAll}
+                                        // questionAll={questionCount}
                                     ></HowToListModuleTemplate>
                                 </div>
                             )}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { findAllQuestionsByViews } from "query/queries";
@@ -15,33 +15,34 @@ import QuestionTagModuleTemplate from "module-template/QuestionTagModuleTemplate
 // items
 import HotQuestionItem from "item/HotQuestionItem/HotQuestionItem";
 
+// Queries
+import { POST, FIND_ALL_QUESTIONS } from "rest";
+
 const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
     const btn_style = {
         fontSize: "20px",
         color: "white",
         width: "100%",
     };
+    const requiredCount = "10";
 
-    const [requiredCount] = useState("10");
-    const { loading, error, data } = useQuery(findAllQuestionsByViews, {
-        variables: { param: "likesCount", requiredCount: requiredCount },
-    });
-
-    if (loading)
-        return (
-            <div>
-                <CircularProgress />
-            </div>
-        );
-    if (error) return <p>Error!</p>;
-
-    const hotquestionList = (
-        <div>
-            {data.findAllQuestions.map(({ _id, title, likesCount }) => (
+    const [hotquestionList, setHotquestionList] = useState();
+    const getLikesData = async () => {
+        const data = await POST("post", FIND_ALL_QUESTIONS, {
+            param: "likesCount",
+            requiredCount: requiredCount,
+            pageNum: "1",
+        });
+        console.log(data);
+        setHotquestionList(
+            data?.map(({ _id, title, likesCount }) => (
                 <HotQuestionItem id={_id} key={_id} title={title} likesCount={likesCount}></HotQuestionItem>
-            ))}
-        </div>
-    );
+            ))
+        );
+    };
+    useEffect(() => {
+        getLikesData();
+    }, [1]);
 
     return (
         <React.Fragment>
