@@ -1,17 +1,25 @@
 import axios from "axios";
 import PublicIpGetter from "module/PublicIpGetter/PublicIpGetter";
 
-const DOMAIN = "https://devstu.fdsafdsa.shop/user/";
+// USER API SERVER
 
-const CREATE_USER = "create";
+const DOMAIN = "https://devstu.fdsafdsa.shop/";
 
-const UPDATE_AUTH_STATE = "update/AuthState";
+const CREATE_USER = "user/create";
 
-const LOGIN_TO_SERVER = "login";
+const UPDATE_AUTH_STATE = "user/update/AuthState";
 
-const CREATE_NICKNAME = "create/nickname";
+const LOGIN_TO_SERVER = "user/login";
 
-const CHECK_DUPLICATED_EMAIL = "check/email";
+const CREATE_NICKNAME = "user/create/nickname";
+
+const CHECK_DUPLICATED_EMAIL = "user/check/email";
+
+// QUERY
+
+const FIND_HOME_KANBAN = "main/question/find/homekanban";
+
+// MUTATIONS
 
 const getIp = () => {
     return PublicIpGetter();
@@ -37,4 +45,13 @@ const POST = (method, url, data) => {
         });
 };
 
-export { POST, DOMAIN, CREATE_USER, UPDATE_AUTH_STATE, LOGIN_TO_SERVER, CREATE_NICKNAME, CHECK_DUPLICATED_EMAIL };
+export {
+    POST,
+    DOMAIN,
+    CREATE_USER,
+    UPDATE_AUTH_STATE,
+    LOGIN_TO_SERVER,
+    CREATE_NICKNAME,
+    CHECK_DUPLICATED_EMAIL,
+    FIND_HOME_KANBAN,
+};
