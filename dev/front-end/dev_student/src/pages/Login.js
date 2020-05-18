@@ -5,7 +5,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { hashPassword } from "auth";
 
-import { request, LOGIN_TO_SERVER } from "authRest";
+import { POST, LOGIN_TO_SERVER } from "rest";
 
 const Login = ({ logIn, location }) => {
     // const [loginToServer, { data }] = useMutation(LOGIN);
@@ -54,7 +54,7 @@ const Login = ({ logIn, location }) => {
         );
     };
     const loginToServer = () => {
-        request("post", LOGIN_TO_SERVER, { email: email, password: hashPassword(password) })
+        POST("post", LOGIN_TO_SERVER, { email: email, password: hashPassword(password) })
             .then((response) => setData(response))
             .catch((error) => console.log(error));
     };

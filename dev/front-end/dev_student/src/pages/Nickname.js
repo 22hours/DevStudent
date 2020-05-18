@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import NicknamePageTemplate from "page-template/NicknamePageTemplate/NicknamePageTemplate";
 import { useEffect } from "react";
-import { request, CREATE_NICKNAME } from "authRest";
+import { POST, CREATE_NICKNAME } from "rest";
 
 const Nickname = ({ location }) => {
     const [nickName, setNickname] = useState("");
     const [createNicknameResponse, setCreateNicknameResponse] = useState(null);
     const [nicknameClick, setNicknameClick] = useState(false);
     const handleCreateNickname = (data) => {
-        request("post", CREATE_NICKNAME, data)
+        POST("post", CREATE_NICKNAME, data)
             .then((response) => setCreateNicknameResponse(response))
             .catch((response) => console.log(response));
     };
