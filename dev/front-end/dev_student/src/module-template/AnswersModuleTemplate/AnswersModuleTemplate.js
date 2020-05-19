@@ -5,7 +5,7 @@ import { timeForToday } from "util/time";
 const AnswersModuleTemplate = ({ data, id, adoptedAnswerId, questionAuthorNickname }) => {
     const [items, setItems] = useState();
     useEffect(() => {
-        const resItems = data.map(({ _id, author, content, date, comments, isLiked, likesCount, grade }) => (
+        const resItems = data?.map(({ _id, author, content, date, comments, isLiked, likesCount, grade }) => (
             <HowToQABox
                 _id={_id}
                 key={_id}

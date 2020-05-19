@@ -29,6 +29,7 @@ const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
             tags: new Array(nowTag),
             logical: "or",
         });
+        console.log(data);
         setTagData(data);
         if (data) setQuestionCount(Object.keys(data).length);
     };
