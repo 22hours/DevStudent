@@ -1,9 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Input, Collapse, Button, Alert } from "reactstrap";
-import { useMutation } from "@apollo/react-hooks";
-import { useQuery } from "@apollo/react-hooks";
-import { UPDATE_USER_INFO } from "mutation/mutations";
-import { FIND_USER_BY_NICKNAME } from "query/queries";
+
 import ServerError from "pages/ServerError";
 import "./MypageTemplate.css";
 
@@ -18,44 +15,44 @@ import LaptopChromebookIcon from "@material-ui/icons/LaptopChromebook";
 import GradeAvatar from "atom/GradeAvatar/GradeAvatar";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-const MypageTemplate = ({ localData, alarmData, myContent }) => {
+//Queries
+import { POST, UPDATE_USER_INFO, FIND_USER_BY_NICKNAME } from "rest";
+
+const MypageTemplate = ({ localData, userAlarm, myContent }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [alertOpen, setAlertOpen] = useState(false);
     const [btnClick, setBtnClick] = useState(false);
-    const [updateUserInfo] = useMutation(UPDATE_USER_INFO);
     const nickname = localData.nickname;
     const toggle = () => setIsOpen(!isOpen);
-
     //items
     const [gitAddress, setGitAddress] = useState(localData.gitLink);
     const [linkedInAddress, setLinkedInAddress] = useState("Comming Soon!!");
 
-    const handleSubmit = () => {
-        updateUserInfo({
-            variables: {
-                nickname: nickname,
-                gitLink: gitAddress,
-            },
-        })
-            .then((response) => {
-                var data = response.data.updateUserInfo;
-                var localData = JSON.parse(localStorage.getItem("user"));
-                localData.gitLink = data.gitLink;
-                localStorage.setItem("user", JSON.stringify(localData));
-                setAlertOpen(!alertOpen);
-                setBtnClick(true);
-            })
-            .catch((err) => {
-                alert(err.message);
-            });
+    const [myData, setMyData] = useState();
+    const getMyData = async () => {
+        const data = await POST("post", FIND_USER_BY_NICKNAME, { nickname: nickname });
+        setMyData(data);
     };
+    useEffect(() => {
+        getMyData();
+    }, [1]);
 
     const SubmitButton = () => {
         if (btnClick === true) {
             return <div></div>;
         } else {
             return (
-                <Button style={btn_style} onClick={handleSubmit}>
+                <Button
+                    style={btn_style}
+                    onClick={() => {
+                        POST("post", UPDATE_USER_INFO, {
+                            nickname: myData.nickname,
+                            gitLink: gitAddress,
+                        })
+                            .then((response) => setAlertOpen(true))
+                            .catch((response) => console.log(response));
+                    }}
+                >
                     저장
                 </Button>
             );
@@ -89,32 +86,18 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
         }
     };
 
-    const { loading, error, data } = useQuery(FIND_USER_BY_NICKNAME, {
-        variables: { nickname: localData.nickname },
-    });
-
-    if (loading)
-        return (
-            <div>
-                <CircularProgress />
-            </div>
-        );
-    if (error) return <ServerError />;
-
-    const mydata = data.findUserByNickname;
-
     return (
         <React.Fragment>
             <div className="MypageTemplate">
                 <Container>
                     <div className="mypage-user-header-row">
                         <div className="avatar-col">
-                            <img src={GradeAvatar(mydata.grade)}></img>
+                            <img src={GradeAvatar(myData?.grade)}></img>
                         </div>
                         <div className="info-col">
-                            <div className={"badge-row " + mydata.grade}>{mydata.grade}</div>
+                            <div className={"badge-row " + myData?.grade}>{myData?.grade}</div>
                             <div className="nickname-row">
-                                {mydata.nickname}
+                                {myData?.nickname}
                                 &nbsp; &nbsp;
                                 <div className="mypage-githubicon" onClick={moveGithubLink}>
                                     <GitHubIcon style={{ fontSize: "20px" }} />
@@ -123,7 +106,7 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
                                 <LaptopChromebookIcon style={{ fontSize: "20px" }} />
                             </div>
                             <div className="sub-row">
-                                <span id="edit-myinfo"> {mydata.point} point </span>
+                                <span id="edit-myinfo"> {myData?.point} point </span>
                                 &nbsp; &nbsp; &nbsp; &nbsp;
                             </div>
                         </div>
@@ -139,11 +122,11 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
                             <div className="item-preview">
                                 <div className="item-box">
                                     <span id="item-label">이메일</span>
-                                    <p id="item-value">{mydata.email}</p>
+                                    <p id="item-value">{myData?.email}</p>
                                 </div>
                                 <div className="item-box">
                                     <span id="item-label">닉네임</span>
-                                    <p id="item-value">{mydata.nickname}</p>
+                                    <p id="item-value">{myData?.nickname}</p>
                                 </div>
                                 <Collapse isOpen={isOpen}>
                                     <div className="item-box">
@@ -205,7 +188,7 @@ const MypageTemplate = ({ localData, alarmData, myContent }) => {
                     <div className="mypage-alarm-wrapper">
                         <div className="mypage-item-row">
                             <div className="item-header">알람</div>
-                            <div className="item-preview">{alarmData}</div>
+                            <div className="item-preview">{userAlarm}</div>
                             <div className="item-collapse"></div>
                         </div>
                     </div>
