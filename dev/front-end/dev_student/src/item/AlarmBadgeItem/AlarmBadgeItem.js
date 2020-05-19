@@ -1,7 +1,6 @@
-import React from "react";
-import { useQuery } from "react-apollo";
-import { COUNT_UNREAD_ALARMS } from "query/queries";
-
+import React, { useState, useEffect } from "react";
+//Queries
+import { POST, COUNT_UNREAD_ALARMS } from "rest";
 //icons
 import Badge from "@material-ui/core/Badge";
 import MailIcon from "@material-ui/icons/Mail";
@@ -10,17 +9,19 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 const AlarmBadgeItem = () => {
     const localData = JSON.parse(localStorage.getItem("user"));
     const user = localData.nickname;
-    const { loading, error, data } = useQuery(COUNT_UNREAD_ALARMS, {
-        variables: { nickname: user },
-    });
-    if (loading)
-        return (
-            <div>
-                <CircularProgress size={15} />
-            </div>
-        );
-    if (error) return <div>Error!</div>;
-    var count = data.countUnreadAlarms.count;
+    const [countAlaram, setCountAlarm] = useState();
+    const getCountAlaram = async () => {
+        const data = await POST("post", COUNT_UNREAD_ALARMS, {
+            nickname: user,
+        });
+        setCountAlarm(data);
+    };
+    useEffect(() => {
+        getCountAlaram();
+    }, [1]);
+
+    var count = countAlaram?.count;
+
     if (count === "0") {
         count = 0;
     }
