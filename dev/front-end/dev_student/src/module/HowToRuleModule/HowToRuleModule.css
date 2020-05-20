@@ -21,7 +21,7 @@
     float: left;
 }
 
-.HowToRuleModule .howto-rule-content-col {
+.HowToRuleModule .pc-only .howto-rule-content-col {
     margin-left: -150px;
     margin-right: -150px;
     padding-left: 150px;

@@ -102,7 +102,11 @@ const HowToRuleModule = () => {
                         </HowToRuleItem>
                     </div>
                 </div>
-                <div className="mobile-only">mobile</div>
+                <div className="mobile-only">
+                    <div className="howto-rule-content-col">
+                        <HowToRuleContentItem nowClicked={clicked} />
+                    </div>
+                </div>
             </Container>
         </div>
     );

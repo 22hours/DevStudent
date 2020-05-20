@@ -123,8 +123,9 @@ const HowToQABox = ({
         if (nickname !== questionAuthorNickname) {
             return;
         }
-        if (adoptedAnswerId === null) adoptReturn = window.confirm("이 댓글을 채택하시겠습니까?");
-        else {
+        if (!adoptedAnswerId) {
+            adoptReturn = window.confirm("이 댓글을 채택하시겠습니까?");
+        } else {
             window.alert("이미 채택된 답변이 있습니다");
             return;
         }

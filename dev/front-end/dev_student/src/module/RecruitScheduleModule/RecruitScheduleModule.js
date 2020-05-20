@@ -36,7 +36,6 @@ const RecruitScheduleModule = () => {
                 console.log(error);
             });
     }, [1]);
-    const Recurit = async () => {};
     return (
         <React.Fragment>
             <div className="RecruitScheduleModule">
