@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
 
-const PublicIpGetter = async () => {
+const PublicIpGetter = () => {
+    console.log("GET IP NOW ...");
     axios
         .get("https://api.ipify.org/?format=json")
         .then((response) => {
