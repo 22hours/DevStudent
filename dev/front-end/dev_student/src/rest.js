@@ -50,16 +50,27 @@ export const UPDATE_ADOPTED_ANSWER_ID = "main/question/update/adopt";
 
 export const UPDATE_USER_INFO = "main/userInfo/update";
 
-const getIp = () => {
-    return PublicIpGetter();
-};
-let config = {
-    headers: {
-        ip: PublicIpGetter(),
-    },
-};
+const GET_IP = "https://api.ipify.org/?format=json";
+
 const localData = JSON.parse(localStorage.getItem("user"));
 const token = localData?.accessToken;
+
+const getHeader = () => {
+    const token = localData?.accessToken;
+    var ip = localStorage.getItem("ip");
+
+    if (token) {
+        return {
+            ip: ip,
+            Authorization: token,
+        };
+    } else {
+        return {
+            ip: ip,
+            Authorization: "guest",
+        };
+    }
+};
 
 export const POST = (method, url, data) => {
     const ip = localStorage.getItem("ip");
@@ -68,11 +79,11 @@ export const POST = (method, url, data) => {
         method,
         url: DOMAIN + url,
         data,
-        headers: { ip: ip, Authorization: token },
+        // headers: { ip: ip, Authorization: token },
+        headers: getHeader(),
     })
         .then((result) => result.data)
         .catch((result) => {
-            alert("error");
             console.log(result);
             return null;
         });
