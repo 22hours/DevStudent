@@ -6,10 +6,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 // css
 import "./HowToContentModuleTemplate.css";
-
-// queries
-import { findQuestionBy_id_Query } from "query/queries";
-
 // context
 
 // module templates

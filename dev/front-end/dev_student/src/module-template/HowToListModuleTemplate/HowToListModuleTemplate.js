@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "reactstrap";
 
-import CircularProgress from "@material-ui/core/CircularProgress";
 import ServerError from "pages/ServerError";
 
 // modules
