@@ -5,6 +5,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import ServerError from "pages/ServerError";
 
 // modules
+import NowLoading from "module/NowLoading/NowLoading";
+
 import PageHeaderModule from "module/PageHeaderModule/PageHeaderModule";
 import PageNavigation from "module/PageNavigtion/PageNavigation";
 
@@ -71,7 +73,7 @@ const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
             )
         );
     } else {
-        return <p>loading</p>;
+        return <NowLoading />;
     }
 };
 
@@ -120,7 +122,7 @@ const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount, questionAll 
             )
         );
     } else {
-        return <p>loading</p>;
+        return <NowLoading />;
     }
 };
 
@@ -176,7 +178,7 @@ const SearchProvider = ({ param, nowSearch, pageNum, setQuestionCount }) => {
             )
         );
     } else {
-        return <p>loading now</p>;
+        return <NowLoading />;
     }
 };
 

@@ -96,7 +96,13 @@ const HowToContentModuleTemplate = ({ match }) => {
             </React.Fragment>
         );
     } else {
-        return <p>loading now</p>;
+        return (
+            <p>
+                <CircularProgress />
+                <br />
+                로딩중입니다 잠시만 기다려주세요..
+            </p>
+        );
     }
 };
 

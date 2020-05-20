@@ -67,7 +67,7 @@ const getHeader = () => {
     } else {
         return {
             ip: ip,
-            // Authorization: "null",
+            Authorization: "guest",
         };
     }
 };
