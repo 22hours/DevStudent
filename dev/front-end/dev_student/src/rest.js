@@ -50,6 +50,15 @@ export const UPDATE_ADOPTED_ANSWER_ID = "main/question/update/adopt";
 
 export const UPDATE_USER_INFO = "main/userInfo/update";
 
+export const CREATE_QUESTION = "main/question/create";
+
+///////////////////////////////
+// IMAGE SERVER              //
+
+export const UPLOAD_DUMMY_FILE = "image/uploadDummyFile";
+
+export const UPLOAD_REAL_FILE = (date) => "image/uploadRealFile/" + date;
+
 const GET_IP = "https://api.ipify.org/?format=json";
 
 const localData = JSON.parse(localStorage.getItem("user"));
