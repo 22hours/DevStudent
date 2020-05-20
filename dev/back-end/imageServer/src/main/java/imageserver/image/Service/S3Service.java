@@ -85,6 +85,9 @@ public class S3Service {
         try {
             for (String fileName : fileNames) {
                 System.out.println("FileName = " + fileName);
+                String str = fileName.substring(fileName.lastIndexOf('/') + 1, fileName.lastIndexOf('.') + 4);
+                System.out.println("파싱한 값 : " + str);
+                fileName = str;
                 String from = this.temp + fileName;
                 String to = real + date + "/" + fileName;
                 s3Client.copyObject(bucket, from, bucket, to);
@@ -99,7 +102,6 @@ public class S3Service {
     public FileUploadData upload(MultipartFile file) throws IOException {
         try {
             String fileName = file.getOriginalFilename();
-            String tempFileName = null;
             String rand = randMaker.getKey(false, 20);
 
             if (fileName.contains(".."))
