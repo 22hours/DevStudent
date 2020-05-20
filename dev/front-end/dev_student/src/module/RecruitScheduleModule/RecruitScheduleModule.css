@@ -15,19 +15,17 @@
 }
 
 .RecruitScheduleModule .recruit-header #header {
-    font-family: "Do Hyeon", sans-serif;
     font-size: 24px;
     margin-bottom: 1px !important;
+    border-bottom: 1px solid rgb(226, 226, 226);
 }
 
 .RecruitScheduleModule .recruit-header #reference {
     font-size: 14px;
-    font-family: "Do Hyeon", sans-serif;
     color: gray;
 }
 
 .RecruitScheduleModule .recruit-header a {
-    font-family: "Do Hyeon", sans-serif;
     font-size: 14px;
     color: rgb(36, 168, 230);
 }
