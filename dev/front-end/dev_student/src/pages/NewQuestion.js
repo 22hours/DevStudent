@@ -29,21 +29,6 @@ const NewQuestion = () => {
         } else {
             alert("저장실패");
         }
-        // createQuestion({
-        //     variables: {
-        //         author: authorParam,
-        //         title: titleParam,
-        //         content: contentParam,
-        //         tags: tagsParam,
-        //     },
-        // })
-        //     .then((response) => {
-        //         alert("질문을 저장했습니다.");
-        //         window.location.href = "/howto";
-        //     })
-        //     .catch((err) => {
-        //         alert(err.messeage);
-        //     });
     };
     const handleSubmit = async (authorParam, titleParam, contentParam, tagsParam) => {
         if (JSON.parse(sessionStorage.getItem("devstu_imgs"))) {
@@ -52,10 +37,6 @@ const NewQuestion = () => {
                 UPLOAD_REAL_FILE(getTimeStamp()),
                 JSON.parse(sessionStorage.getItem("devstu_imgs"))
             );
-            // axios
-            //     .post(url, JSON.parse(sessionStorage.getItem("devstu_imgs")))
-            //     .then((response) => {})
-            //     .catch((error) => {});
         }
         sendDataToMainServer(authorParam, titleParam, contentParam, tagsParam);
     };
