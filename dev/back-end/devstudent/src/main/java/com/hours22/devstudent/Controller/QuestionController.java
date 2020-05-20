@@ -82,9 +82,9 @@ public class QuestionController{
 
     @Async(value = "QuestionBy_id")
     @CacheEvict(value = { "findAllQuestions", "findQuestionsByOption", "findQuestionsByTags", "findHomeKanban" }, allEntries = true)
-    @RequestMapping(value="/find/_id",method = RequestMethod.POST)
+    @RequestMapping(value="/find/id",method = RequestMethod.POST)
     public CompletableFuture<String> findQuestionBy_id(@RequestHeader(value = "ip") String ip,
-                                                       @RequestHeader(value = "Authorization") String token,
+                                                       @RequestHeader(value = "authorization") String token,
                                                        @RequestBody Map<String, String> map) {
         String _id = map.get("_id").toString();
         Question question = findQuestionBy_id.findQuestionBy_id(_id, token, ip);

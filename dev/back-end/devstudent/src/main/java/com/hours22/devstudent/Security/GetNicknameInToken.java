@@ -1,13 +1,11 @@
 package com.hours22.devstudent.Security;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
 
 @Component
@@ -19,7 +17,7 @@ public class GetNicknameInToken {
     private String hashSecretKey = "";
 
     public String getNicknameInToken(String token, String ip) {
-        if(token == null || token.equals("")){
+        if(token == null || token.equals("") || token.equals("guest")){
             return null;
         }
         hashSecretKey = sha256K.hashValueForSecret(secretKey + ip);

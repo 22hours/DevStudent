@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 
 public class JwtAuthenticationFilter extends GenericFilterBean {
+
     private CheckJwt checkJwt;
 
     public JwtAuthenticationFilter(CheckJwt checkJwt){
@@ -24,16 +25,16 @@ public class JwtAuthenticationFilter extends GenericFilterBean {
         System.out.println("ip 테스트용 Start");
         System.out.println(request.getRemoteAddr().toString());
         System.out.println("ip 테스트용 End");
-        String token = ((HttpServletRequest) request).getHeader("Authorization");
+        String token = ((HttpServletRequest) request).getHeader("authorization");
         String ip = httpServletRequest.getHeader("ip");
         System.out.println(ip);
-        if(token != null && !token.equals("")){
+        if(token != null && !token.equals("") && !token.equals("guest")){
             if(!checkJwt.checkJwt(token, ip)){
-                System.out.println("야 시발 이거 문제있다");
+                System.out.println("Problem Occured!");
                 throw new AccessDeniedException("403");
             }
         }
-        System.out.println("오류 없는데...");
+        System.out.println("No Error");
         filterChain.doFilter(request, response);
     }
 }
