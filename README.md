@@ -5,6 +5,7 @@
 **<p align="center">한국 대학생 개발자 커뮤니티</p>**
 
 
+
 <p align="center">
 <img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/22hours/devstudent?style=flat-square">
   <img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed-raw/22hours/devstudent?style=flat-square">
