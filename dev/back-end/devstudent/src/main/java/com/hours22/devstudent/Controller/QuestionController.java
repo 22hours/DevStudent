@@ -48,7 +48,6 @@ public class QuestionController{
     private DeleteQuestion deleteQuestion;
 
     @Async(value="AllQuestions")
-    @Cacheable(value = "findAllQuestions")
     @RequestMapping(value="/find/all",method = RequestMethod.POST)
     public CompletableFuture<String> findAllQuestions(@RequestBody Map<String, String> map) {
         String param = map.get("param").toString();
@@ -63,7 +62,6 @@ public class QuestionController{
     }
 
     @Async(value = "QuestionsByOption")
-    @Cacheable(value = "findQuestionsByOption")
     @RequestMapping(value="/find/all/option",method = RequestMethod.POST)
     public CompletableFuture<String> findQuestionsByOption(@RequestBody Map<String, String> map) {
         String param = map.get("param").toString();
@@ -81,7 +79,6 @@ public class QuestionController{
     }
 
     @Async(value = "QuestionBy_id")
-    @CacheEvict(value = { "findAllQuestions", "findQuestionsByOption", "findQuestionsByTags", "findHomeKanban" }, allEntries = true)
     @RequestMapping(value="/find/id",method = RequestMethod.POST)
     public CompletableFuture<String> findQuestionBy_id(@RequestHeader(value = "ip") String ip,
                                                        @RequestHeader(value = "authorization") String token,
@@ -96,7 +93,6 @@ public class QuestionController{
     }
 
     @Async(value = "QuestionsByTags")
-    @Cacheable(value = "findQuestionsByTags")
     @RequestMapping(value="/find/tags",method = RequestMethod.POST)
     public CompletableFuture<String> findQuestionsByTags(@RequestBody Map<String, Object> map) {
         String param = map.get("param").toString();
@@ -115,7 +111,6 @@ public class QuestionController{
     }
 
     @Async(value = "homeKanban")
-    @Cacheable(value = "findHomeKanban")
     @RequestMapping(value="/find/homekanban", method = RequestMethod.POST)
     public CompletableFuture<String> findHomeKanban(@RequestBody Map<String, String> map){
         int requiredCount = Integer.parseInt(map.get("requiredCount").toString());
@@ -131,7 +126,6 @@ public class QuestionController{
     }
 
     @Async(value = "Question")
-    @CacheEvict(value = { "findAllQuestions", "findQuestionsByOption", "findQuestionsByTags", "findHomeKanban", "countAllQuestions", "countTags" }, allEntries = true)
     @RequestMapping(value="/create",method = RequestMethod.POST)
     public CompletableFuture<String> createQuestion(@RequestBody Map<String, Object> map) {
         String title = map.get("title").toString();
@@ -149,8 +143,6 @@ public class QuestionController{
     }
 
     @Async(value = "Like")
-    @CacheEvict(value = { "findAllQuestions", "findQuestionsByOption", "findQuestionsByTags", "findHomeKanban" }, allEntries = true)
-
     @RequestMapping(value="/create/like",method = RequestMethod.POST)
     public CompletableFuture<String> createLike(@RequestBody Map<String, String> map) {
         System.out.println("뭐냐고");
@@ -167,7 +159,6 @@ public class QuestionController{
     }
 
     @Async(value = "updateAdapt")
-    @CacheEvict(value = { "findAllQuestions", "findQuestionsByOption", "findQuestionsByTags" }, allEntries = true)
     @RequestMapping(value="/update/adopt",method = RequestMethod.POST)
     public CompletableFuture<String> updateAdoptedAnswerId(@RequestBody Map<String, String> map){
         String question_id = map.get("question_id");

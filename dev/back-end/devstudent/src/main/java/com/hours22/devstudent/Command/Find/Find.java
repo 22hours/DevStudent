@@ -26,7 +26,6 @@ public abstract class Find {
         if (criteria == null)
             query = new Query();
         else query = new Query(criteria);
-
         if(pageNum==-1)
             query.addCriteria(Criteria.where("date").gt(date));
 

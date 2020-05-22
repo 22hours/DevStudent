@@ -25,7 +25,6 @@ public class AnswerController{
     private DeleteAnswer deleteAnswer;
 
     @Async(value = "Answer")
-    @CacheEvict(value = { "findAllQuestions", "findQuestionsByOption", "findQuestionsByTags", "findHomeKanban" }, allEntries = true)
     @RequestMapping(value="/create",method = RequestMethod.POST)
     public CompletableFuture<String> createAnswer(@RequestBody Map<String, String> map) {
         String question_id = map.get("question_id");

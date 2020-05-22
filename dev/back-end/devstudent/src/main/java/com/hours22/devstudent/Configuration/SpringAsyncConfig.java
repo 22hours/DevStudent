@@ -1,10 +1,18 @@
 package com.hours22.devstudent.Configuration;
 
+import com.google.gson.Gson;
+import com.hours22.devstudent.Entity.Count;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
 @Configuration
@@ -189,6 +197,28 @@ public class SpringAsyncConfig {
 
     @Bean(name = "AllQuestions")
     public Executor threadPoolAllQuestions() {
+        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
+        taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
+        taskExecutor.setMaxPoolSize(100); // 큐카파 넘어가면 스레드 축 생성
+        taskExecutor.setQueueCapacity(30); // 스레드 대기 큐
+        taskExecutor.setThreadNamePrefix("find-");
+        taskExecutor.initialize();
+        return taskExecutor;
+    }
+
+    @Bean(name = "CountQTags")
+    public Executor threadPoolCountQuestionsByTag() {
+        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
+        taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
+        taskExecutor.setMaxPoolSize(100); // 큐카파 넘어가면 스레드 축 생성
+        taskExecutor.setQueueCapacity(30); // 스레드 대기 큐
+        taskExecutor.setThreadNamePrefix("find-");
+        taskExecutor.initialize();
+        return taskExecutor;
+    }
+
+    @Bean(name = "CountQOption")
+    public Executor threadPoolCountQuestionsByOption() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
         taskExecutor.setMaxPoolSize(100); // 큐카파 넘어가면 스레드 축 생성

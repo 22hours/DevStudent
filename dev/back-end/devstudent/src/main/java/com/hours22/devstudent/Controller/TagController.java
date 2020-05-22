@@ -27,7 +27,6 @@ public class TagController {
     private CountTags countTags;
 
     @Async(value = "Tags")
-    @Cacheable(value = "countTags")
     @RequestMapping(value="/count",method = RequestMethod.POST)
     public CompletableFuture<String> countTags(@RequestBody Map<String, String> map){
         int requiredCount = Integer.parseInt(map.get("requiredCount"));

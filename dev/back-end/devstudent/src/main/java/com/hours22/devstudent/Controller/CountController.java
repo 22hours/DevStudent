@@ -1,9 +1,7 @@
 package com.hours22.devstudent.Controller;
 
 import com.google.gson.Gson;
-import com.hours22.devstudent.Command.Count.CountAllQuestions;
-import com.hours22.devstudent.Command.Count.CountTags;
-import com.hours22.devstudent.Command.Count.CountUnreadAlarms;
+import com.hours22.devstudent.Command.Count.*;
 import com.hours22.devstudent.Entity.Alarm;
 import com.hours22.devstudent.Entity.Count;
 import com.hours22.devstudent.Entity.Tag;
@@ -29,9 +27,12 @@ public class CountController {
     private CountUnreadAlarms countUnreadAlarms;
     @Autowired
     private CountTags countTags;
+    @Autowired
+    private CountQuestionsByTag countQuestionsByTag;
+    @Autowired
+    private CountQuestionsByOption countQuestionsByOption;
 
     @Async(value = "cAllQuestions")
-    @Cacheable(value = "countAllQuestions")
     @RequestMapping(value="/all/questions",method = RequestMethod.POST)
     public CompletableFuture<String> countAllQuestions() {
         Count count = countAllQuestions.countAllQuestions();
@@ -55,7 +56,6 @@ public class CountController {
     }
 
     @Async(value = "Tags")
-    @Cacheable(value = "countTags")
     @RequestMapping(value="/all/tags",method = RequestMethod.POST)
     public CompletableFuture<String> countTags(@RequestBody Map<String, Object> map){
         int requiredCount = Integer.parseInt(map.get("requiredCount").toString());
@@ -65,6 +65,30 @@ public class CountController {
         List<Tag> retrieveData = countTags.countTags(requiredCount, tagList);
         Gson gson = new Gson();
         String json = gson.toJson(retrieveData);
+        System.out.println("Request = " + map.toString());
+        System.out.println("Response = " + json);
+        return CompletableFuture.completedFuture(json);
+    }
+    @Async(value = "CountQTags")
+    @RequestMapping(value="/questions/tag",method = RequestMethod.POST)
+    public CompletableFuture<String> countQuestionsByTag(@RequestBody Map<String, Object> map){
+        String tag = map.get("tag").toString();
+        Count count = countQuestionsByTag.countQuestionsByTag(tag);
+        Gson gson = new Gson();
+        String json = gson.toJson(count);
+        System.out.println("Request = " + map.toString());
+        System.out.println("Response = " + json);
+        return CompletableFuture.completedFuture(json);
+    }
+
+    @Async(value = "CountQOption")
+    @RequestMapping(value="/questions/option",method = RequestMethod.POST)
+    public CompletableFuture<String> countQuestionsByOption(@RequestBody Map<String, Object> map){
+        String option = map.get("option").toString();
+        String searchContent = map.get("searchContent").toString();
+        Count count = countQuestionsByOption.countQuestionsByOption(option, searchContent);
+        Gson gson = new Gson();
+        String json = gson.toJson(count);
         System.out.println("Request = " + map.toString());
         System.out.println("Response = " + json);
         return CompletableFuture.completedFuture(json);
