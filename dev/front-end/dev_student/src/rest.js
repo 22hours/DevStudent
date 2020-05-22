@@ -99,3 +99,15 @@ export const POST = (method, url, data) => {
             return null;
         });
 };
+
+export const CUSTOM_REQUEST = (method, url, data) => {
+    return axios({
+        method,
+        url: url,
+        data,
+    })
+        .then((result) => result.data)
+        .catch((result) => {
+            return null;
+        });
+};

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 //module template
 import HowToKanbanModuleTemplate from "module-template/HowToKanbanModuleTemplate/HowToKanbanModuleTemplate";
+import ContributorsModuleTemplate from "module-template/ContributorsModuleTemplate/ContributorsModuleTemplate";
 
 //modules
 import HowToRuleModule from "module/HowToRuleModule/HowToRuleModule";
@@ -32,6 +33,7 @@ const HomeTamplate = () => {
             <HowToKanbanModuleTemplate />
             <HowToRuleModule />
             <RecruitScheduleModule />
+            <ContributorsModuleTemplate />
         </div>
     );
 };
