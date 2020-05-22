@@ -11,6 +11,7 @@ import "./HowToSidebarComponent.css";
 // module-template
 import HotLinksModuleTemplate from "module-template/HotLinksModuleTemplate/HotLinksModuleTemplate";
 import QuestionTagModuleTemplate from "module-template/QuestionTagModuleTemplate/QuestionTagModuleTemplate";
+import JobInfoModuleTemplate from "module-template/JobInfoModuleTemplate/JobInfoModuleTemplate";
 
 // items
 import HotQuestionItem from "item/HotQuestionItem/HotQuestionItem";
@@ -59,6 +60,9 @@ const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
                 </div>
                 <div>
                     <HotLinksModuleTemplate hotquestionList={hotquestionList}></HotLinksModuleTemplate>
+                </div>
+                <div>
+                    <JobInfoModuleTemplate />
                 </div>
             </div>
             <div style={{ marginBottom: "3.5%" }}></div>
