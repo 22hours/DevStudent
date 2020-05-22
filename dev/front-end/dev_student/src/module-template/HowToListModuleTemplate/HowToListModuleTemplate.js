@@ -87,7 +87,7 @@ const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
 
     const getQuestionCount = async () => {
         const data = await POST("post", COUNT_ALL_QUESTIONS);
-        setQuestionCount(data.count);
+        setQuestionCount(data?.count);
     };
     useEffect(() => {
         getQuestionCount();
