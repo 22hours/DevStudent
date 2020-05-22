@@ -122,3 +122,4 @@ target/
 # End of https://www.gitignore.io/api/java,java-web,intellij
 dev/front-end/dev_student/.firebase/hosting.YnVpbGQ.cache
 *.cache
+*.cache
