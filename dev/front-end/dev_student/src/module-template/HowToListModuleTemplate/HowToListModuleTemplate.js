@@ -83,7 +83,7 @@ const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
     };
     useEffect(() => {
         getNonTagData();
-    }, [pageNum]);
+    });
 
     const getQuestionCount = async () => {
         const data = await POST("post", COUNT_ALL_QUESTIONS);
@@ -91,7 +91,7 @@ const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
     };
     useEffect(() => {
         getQuestionCount();
-    }, [pageNum]);
+    });
 
     if (nonTagData) {
         return nonTagData.map(
