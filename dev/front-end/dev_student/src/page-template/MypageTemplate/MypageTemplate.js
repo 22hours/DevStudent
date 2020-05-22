@@ -27,7 +27,6 @@ const MypageTemplate = ({ localData, userAlarm, myContent }) => {
     //items
     const [gitAddress, setGitAddress] = useState(localData.gitLink);
     const [linkedInAddress, setLinkedInAddress] = useState("Comming Soon!!");
-
     const [myData, setMyData] = useState();
     const getMyData = async () => {
         const data = await POST("post", FIND_USER_BY_NICKNAME, { nickname: nickname });
@@ -36,6 +35,14 @@ const MypageTemplate = ({ localData, userAlarm, myContent }) => {
     useEffect(() => {
         getMyData();
     }, [1]);
+
+    const SaveAlertOpen = ({ response }) => {
+        setAlertOpen(true);
+        var localData = JSON.parse(localStorage.getItem("user"));
+        localData.gitLink = response.gitLink;
+        localStorage.setItem("user", JSON.stringify(localData));
+        setBtnClick(true);
+    };
 
     const SubmitButton = () => {
         if (btnClick === true) {
@@ -49,7 +56,7 @@ const MypageTemplate = ({ localData, userAlarm, myContent }) => {
                             nickname: myData.nickname,
                             gitLink: gitAddress,
                         })
-                            .then((response) => setAlertOpen(true))
+                            .then((response) => SaveAlertOpen({ response }))
                             .catch((response) => console.log(response));
                     }}
                 >

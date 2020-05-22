@@ -3,8 +3,7 @@ import { useQuery } from "react-apollo";
 import MypageTemplate from "page-template/MypageTemplate/MypageTemplate";
 //import { FIND_ALL_ALARMS, FIND_QUESTIONS_BY_OPTION } from "query/queries";
 import { Link } from "react-router-dom";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import ServerError from "pages/ServerError";
+import NowLoading from "module/NowLoading/NowLoading";
 
 import { POST, FIND_ALL_ALARMS, FIND_QUESTIONS_BY_OPTIONS } from "rest";
 
@@ -38,7 +37,11 @@ const AlarmPovider = () => {
             </Link>
         ));
     } else {
-        return <p>loading</p>;
+        return (
+            <p>
+                <NowLoading />
+            </p>
+        );
     }
 };
 const MyContentProvider = () => {
@@ -71,7 +74,11 @@ const MyContentProvider = () => {
             </Link>
         ));
     } else {
-        return <p>loading</p>;
+        return (
+            <p>
+                <NowLoading />
+            </p>
+        );
     }
 };
 
@@ -79,7 +86,6 @@ const MyPage = () => {
     const userAlarm = <AlarmPovider />;
     const myContent = <MyContentProvider />;
     const localData = JSON.parse(localStorage.getItem("user"));
-
     return <MypageTemplate localData={localData} userAlarm={userAlarm} myContent={myContent} />;
 };
 export default MyPage;
