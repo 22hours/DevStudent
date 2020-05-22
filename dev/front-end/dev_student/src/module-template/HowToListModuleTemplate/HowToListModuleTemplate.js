@@ -17,7 +17,7 @@ import { timeForToday } from "util/time";
 
 //Queries
 
-import { POST, FIND_QUESTIONS_BY_TAGS, FIND_ALL_QUESTIONS, FIND_QUESTIONS_BY_OPTIONS } from "rest";
+import { POST, FIND_QUESTIONS_BY_TAGS, FIND_ALL_QUESTIONS, FIND_QUESTIONS_BY_OPTIONS, COUNT_ALL_QUESTIONS } from "rest";
 
 const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
     const [tagData, setTagData] = useState();
@@ -30,13 +30,12 @@ const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
             tags: new Array(nowTag),
             logical: "or",
         });
-        console.log(data);
         setTagData(data);
         if (data) setQuestionCount(Object.keys(data).length);
     };
     useEffect(() => {
         getTagsData();
-    }, [1]);
+    }, [pageNum]);
 
     if (tagData) {
         return tagData?.map(
@@ -76,16 +75,23 @@ const TagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
     }
 };
 
-const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount, questionAll }) => {
+const NonTagProvider = ({ param, nowTag, pageNum, setQuestionCount }) => {
     const [nonTagData, setNonTagData] = useState();
     const getNonTagData = async () => {
         const data = await POST("post", FIND_ALL_QUESTIONS, { param: param, requiredCount: 10, pageNum: pageNum });
         setNonTagData(data);
-        if (data) setQuestionCount(Object.keys(data).length);
     };
     useEffect(() => {
         getNonTagData();
-    }, [1]);
+    }, [pageNum]);
+
+    const getQuestionCount = async () => {
+        const data = await POST("post", COUNT_ALL_QUESTIONS);
+        setQuestionCount(data.count);
+    };
+    useEffect(() => {
+        getQuestionCount();
+    }, [pageNum]);
 
     if (nonTagData) {
         return nonTagData.map(
@@ -181,9 +187,8 @@ const SearchProvider = ({ param, nowSearch, pageNum, setQuestionCount }) => {
     }
 };
 
-const DataProvider = ({ param, nowTag, pageNum, setQuestionCount, questionCount, questionAll, nowSearch }) => {
+const DataProvider = ({ param, nowTag, pageNum, setQuestionCount, questionCount, nowSearch }) => {
     if (nowSearch) {
-        console.log("SEARCH");
         return (
             <SearchProvider
                 param={param}
@@ -195,8 +200,6 @@ const DataProvider = ({ param, nowTag, pageNum, setQuestionCount, questionCount,
         );
     } else {
         if (nowTag) {
-            console.log("TAGS");
-
             return (
                 <TagProvider
                     param={param}
@@ -207,8 +210,6 @@ const DataProvider = ({ param, nowTag, pageNum, setQuestionCount, questionCount,
                 />
             );
         } else {
-            console.log("NON-TAGS");
-
             return (
                 <NonTagProvider
                     param={param}
@@ -216,22 +217,21 @@ const DataProvider = ({ param, nowTag, pageNum, setQuestionCount, questionCount,
                     pageNum={pageNum}
                     setQuestionCount={setQuestionCount}
                     questionCount={questionCount}
-                    questionAll={questionAll}
                 />
             );
         }
     }
 };
 
-const HowToListTemplate = ({ tags, location, questionAll }) => {
+const HowToListTemplate = ({ tags, location }) => {
     const [param, setParam] = useState("date");
     const [nowTag, setNowTag] = useState(location.search.split("tags=")[1]);
     const [nowSearch, setSearch] = useState(location.search.split("search=")[1]);
-    const [pageNum, setPage] = useState(1);
-    const [questionCount, setQuestionCount] = useState(questionAll);
+    const [pageNum, setPageNum] = useState(1);
+    const [questionCount, setQuestionCount] = useState();
 
     const handleChange = (event, value) => {
-        setPage(value);
+        setPageNum(value);
     };
 
     return (
@@ -250,7 +250,6 @@ const HowToListTemplate = ({ tags, location, questionAll }) => {
                     pageNum={pageNum}
                     questionCount={questionCount}
                     setQuestionCount={setQuestionCount}
-                    questionAll={questionAll}
                 />
             </div>
             <Container className="margin-top-3 red-border" />

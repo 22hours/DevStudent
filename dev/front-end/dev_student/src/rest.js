@@ -28,6 +28,8 @@ export const FIND_QUESTIONS_BY_OPTIONS = "main/question/find/all/option";
 
 export const COUNT_TAGS = "main/count/all/tags";
 
+export const COUNT_ALL_QUESTIONS = "main/count/all/questions";
+
 // mypage + alarms
 export const FIND_USER_BY_NICKNAME = "main/userInfo/find";
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Pagination from "@material-ui/lab/Pagination";
 
 const PageNavigation = ({ questionCount, handleChange, pageNum }) => {
