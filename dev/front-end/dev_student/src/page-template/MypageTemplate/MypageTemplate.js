@@ -86,7 +86,7 @@ const MypageTemplate = ({ localData, userAlarm, myContent }) => {
     };
 
     const moveGithubLink = () => {
-        if (gitAddress === null) {
+        if (gitAddress === "" || gitAddress === undefined) {
             alert("Github 주소를 등록해주세요.");
         } else {
             window.open("https://github.com/" + gitAddress, "_blank");
