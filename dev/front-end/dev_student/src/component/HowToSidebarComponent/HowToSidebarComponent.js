@@ -17,6 +17,7 @@ import HotQuestionItem from "item/HotQuestionItem/HotQuestionItem";
 
 // Queries
 import { POST, FIND_ALL_QUESTIONS } from "rest";
+import JobInfoModuleTemplate from "../../module-template/JobInfoModuleTemplate/JobInfoModuleTemplate";
 
 const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
     const btn_style = {
@@ -59,6 +60,9 @@ const HowToSidebarComponent = ({ tag, handleNewQuestion }) => {
                 </div>
                 <div>
                     <HotLinksModuleTemplate hotquestionList={hotquestionList}></HotLinksModuleTemplate>
+                </div>
+                <div>
+                    <JobInfoModuleTemplate />
                 </div>
             </div>
             <div style={{ marginBottom: "3.5%" }}></div>
