@@ -19,14 +19,14 @@ const HowToRuleContentItem = ({ nowClicked }) => {
                         <div className="content-img-div">
                             <img src={newquestion}></img>
                         </div>
-                        <div className="content-descript-div">
+                        {/* <div className="content-descript-div">
                             자세하게 적혀진 여러분의 질문을 모두 함께 고민할거에요! <br />
                             질문은 HowTo게시판에서 NewQuestion 버튼을 눌러 이용해주세요 <br />
                             <br />
                             <Link to="/newquestion">
                                 <Button color="info">질문하러 갈까요?</Button>
                             </Link>
-                        </div>
+                        </div> */}
                     </React.Fragment>
                 );
             case 2:
