@@ -11,7 +11,7 @@ import GradeAvatar from "atom/GradeAvatar/GradeAvatar";
 const ContentHeaderModule = (props) => {
     const { _id, title, authorNickname, authorGrade, date, dateToText, views, mine, adoptedAnswerId } = props;
     const HeaderBadge = () => {
-        if (adoptedAnswerId !== null) {
+        if (adoptedAnswerId) {
             return <span className="solved-bagde">SOLVED</span>;
         } else {
             return <span className="not-solved-bagde">HELP WANTED</span>;

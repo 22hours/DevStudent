@@ -1,5 +1,4 @@
 .HowToRuleContentItem {
-    margin-top: 30px;
     height: 100%;
 }
 
@@ -11,7 +10,7 @@
 .HowToRuleContentItem .content-img-div img {
     width: 100%;
     max-width: 630px;
-    height: 200px;
+    /* height: 200px; */
 }
 
 .HowToRuleContentItem .content-descript-div {
