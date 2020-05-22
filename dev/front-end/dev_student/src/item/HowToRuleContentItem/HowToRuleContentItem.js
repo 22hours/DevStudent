@@ -29,31 +29,14 @@ const HowToRuleContentItem = ({ nowClicked }) => {
                         </div> */}
                     </React.Fragment>
                 );
+
             case 2:
-                return (
-                    <React.Fragment>
-                        <div className="content-img-div">
-                            <img src={vote}></img>
-                        </div>
-                        <div className="content-descript-div">
-                            여러분이 얼마나 멋진 질문 혹은 답변을 했는지
-                            <br />
-                            또는 누군가가 얼마나 멋진 이야기를 했는지 투표하세요!
-                            <br />
-                            <br />
-                            <Link to="/howto">
-                                <Button color="info">오늘은 무슨 이야기들이 올라왔을까요?</Button>
-                            </Link>
-                        </div>
-                    </React.Fragment>
-                );
-            case 3:
                 return (
                     <React.Fragment>
                         <div className="content-img-div">
                             <img src={answer}></img>
                         </div>
-                        <div className="content-descript-div">
+                        {/* <div className="content-descript-div">
                             누군가의 질문에 답변하세요
                             <br />
                             우리의 지식을 공유해요
@@ -62,7 +45,26 @@ const HowToRuleContentItem = ({ nowClicked }) => {
                             <Link to="/howto">
                                 <Button color="info">답변하러 갈까요?</Button>
                             </Link>
+                        </div> */}
+                    </React.Fragment>
+                );
+
+            case 3:
+                return (
+                    <React.Fragment>
+                        <div className="content-img-div">
+                            <img src={vote}></img>
                         </div>
+                        {/* <div className="content-descript-div">
+                            여러분이 얼마나 멋진 질문 혹은 답변을 했는지
+                            <br />
+                            또는 누군가가 얼마나 멋진 이야기를 했는지 투표하세요!
+                            <br />
+                            <br />
+                            <Link to="/howto">
+                                <Button color="info">오늘은 무슨 이야기들이 올라왔을까요?</Button>
+                            </Link>
+                        </div> */}
                     </React.Fragment>
                 );
             case 4:
