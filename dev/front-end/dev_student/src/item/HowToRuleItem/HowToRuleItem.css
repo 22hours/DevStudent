@@ -7,22 +7,30 @@
 }
 
 .HowToRuleItem .howto-rule-item-box {
-    padding-top: 15px;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 15px;
-    margin-top: 20px;
+    padding-top: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 25px;
+    /* margin-top: 20px; */
     margin-right: 10px;
+    margin-bottom: 30px;
     height: 100%;
     color: gray;
+    border-radius: 7px;
+
     font-size: 15px;
-    font-family: "Do Hyeon", sans-serif;
-    text-align: center;
+}
+
+.HowToRuleItem .howto-rule-item-box .title {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.HowToRuleItem .clicked .title {
+    color: rgb(71, 172, 255);
 }
 
 .HowToRuleItem .clicked {
-    background-color: white;
-    box-shadow: 0 3px 6px rgba(100, 100, 100, 0.16), 0 3px 6px rgba(146, 146, 146, 0.23); /* 그림자 */
-    border-radius: 7px;
-    color: black;
+    background-color: rgb(242, 250, 253);
+    box-shadow: 0 2px 4px rgba(161, 161, 161, 0.16), 0 2px 4px rgba(179, 179, 179, 0.23); /* 그림자 */
 }

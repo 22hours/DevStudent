@@ -1,32 +1,33 @@
 .HowToRuleModule {
-    height: auto;
     overflow: hidden;
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: rgb(249, 249, 249);
 }
+
 .HowToRuleModule .howto-rule-header {
-    font-family: "Do Hyeon", sans-serif;
-    width: 100%;
     text-align: center;
-    font-size: 0px;
-}
-.HowToRuleModule .pc-only {
-    height: 100%;
-}
-.HowToRuleModule .howto-rule-item-col {
-    width: 150px;
-    height: 100%;
-
-    float: left;
+    margin-bottom: 80px;
 }
 
-.HowToRuleModule .pc-only .howto-rule-content-col {
-    margin-left: -150px;
-    margin-right: -150px;
-    padding-left: 150px;
-    padding-right: 150px;
-    width: 100%;
-    height: 100%;
+.HowToRuleModule .howto-rule-header .header {
+    font-size: 24px;
+    border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.HowToRuleModule .howto-rule-header .description {
+    font-size: 14px;
+    color: gray;
+}
+
+.HowToRuleModule .btn-col {
     float: left;
+    /* width: calc(100% - 500px); */
+    width: 50%;
+}
+
+.HowToRuleModule .img-col {
+    float: left;
+    /* width: 500px; */
+    width: 50%;
+    background-color: rebeccapurple;
 }
