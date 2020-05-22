@@ -1,11 +1,19 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { Spinner } from "reactstrap";
-import axios from "axios";
 import "./DropZoneModule.css";
+
+// rest
+import { POST, UPLOAD_DUMMY_FILE } from "rest";
+
 const DropZoneModule = ({ handleImg }) => {
     const [loading, setLoading] = useState(false);
-
+    const uploadDummy = async (formData) => {
+        const data = await POST("post", UPLOAD_DUMMY_FILE, formData);
+        if (data.fileDownloadUri) {
+            handleImg(data.fileDownloadUri, data.fileName);
+        }
+    };
     const onDrop = useCallback((acceptedFiles) => {
         //, Accept: "multipart/form-data"
         setLoading(true);
@@ -19,12 +27,7 @@ const DropZoneModule = ({ handleImg }) => {
         if (acceptedFiles[0].name.match(reg)) {
             const formData = new FormData();
             formData.append("file", acceptedFiles[0]);
-            axios
-                .post("https://devstu.koreaelection.shop/uploadDummyFile", formData)
-                .then((response) => {
-                    handleImg(response.data.fileDownloadUri, response.data.fileName);
-                })
-                .catch((error) => {});
+            uploadDummy(formData);
         } else {
             alert("해당 파일은 이미지 파일이 아닙니다.");
             return;

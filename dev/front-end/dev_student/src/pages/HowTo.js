@@ -14,24 +14,14 @@ import HowToContentModuleTemplate from "module-template/HowToContentModuleTempla
 
 // module
 import ScrollToTop from "module/ScrollToTop/ScrollToTop";
+
 // atom
 
+//Queires
+
+import { POST, FIND_ALL_QUESTIONS } from "rest";
+
 const HowTo = ({ location }) => {
-    const { loading, error, data } = useQuery(findAllQuestions, {
-        variables: { param: "date" },
-        fetchPolicy: "no-cache",
-    });
-
-    if (loading)
-        return (
-            <div>
-                <CircularProgress disableShrink size={24} />
-            </div>
-        );
-    if (error) return <ServerErrorPageTemplate />;
-
-    const questionAll = Object.keys(data.findAllQuestions).length;
-
     return (
         <HowToTemplate>
             <Router>
@@ -45,7 +35,7 @@ const HowTo = ({ location }) => {
                                 <div>
                                     <HowToListModuleTemplate
                                         location={location}
-                                        questionAll={questionAll}
+                                        // questionAll={questionCount}
                                     ></HowToListModuleTemplate>
                                 </div>
                             )}

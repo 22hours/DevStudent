@@ -3,7 +3,6 @@ import "./LoginPageTemplate.css";
 import { Container, Col, Row } from "reactstrap";
 import { TextField, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { hashPassword } from "auth";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const LoginPageTemplate = ({
@@ -37,12 +36,7 @@ const LoginPageTemplate = ({
             if (email.length < 1) return;
             if (password.length < 1) return;
             setBtnClick(true);
-            loginToServer({
-                variables: {
-                    email: email,
-                    password: hashPassword(password),
-                },
-            });
+            loginToServer();
         }
     };
 
@@ -92,12 +86,7 @@ const LoginPageTemplate = ({
                                             if (email.length < 1) return;
                                             if (password.length < 1) return;
                                             setBtnClick(true);
-                                            loginToServer({
-                                                variables: {
-                                                    email: email,
-                                                    password: hashPassword(password),
-                                                },
-                                            });
+                                            loginToServer();
                                         }}
                                         variant="contained"
                                         style={btn_style}

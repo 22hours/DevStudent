@@ -1,8 +1,9 @@
 <p align="center"><img src="/img/title_logo2.png" width="300px" height="120px"></p>
 
 ## 
-
+.
 **<p align="center">한국 대학생 개발자 커뮤니티</p>**
+
 
 
 <p align="center">

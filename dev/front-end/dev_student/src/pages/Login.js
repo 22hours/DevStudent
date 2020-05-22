@@ -1,14 +1,15 @@
 import React, { useState, useRef, useLayoutEffect } from "react";
 import { Redirect } from "react-router-dom";
-import { useMutation } from "@apollo/react-hooks";
-import { LOGIN } from "mutation/mutations";
 import LoginPageTemplate from "page-template/LoginPageTemplate/LoginPageTemplate";
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import { hashPassword } from "auth";
+
+import { POST, LOGIN_TO_SERVER } from "rest";
 
 const Login = ({ logIn, location }) => {
-    const [loginToServer, { data }] = useMutation(LOGIN);
-
+    // const [loginToServer, { data }] = useMutation(LOGIN);
+    const [data, setData] = useState(null);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [btnClick, setBtnClick] = useState(false);
@@ -52,7 +53,11 @@ const Login = ({ logIn, location }) => {
             </Modal>
         );
     };
-
+    const loginToServer = () => {
+        POST("post", LOGIN_TO_SERVER, { email: email, password: hashPassword(password) })
+            .then((response) => setData(response))
+            .catch((error) => console.log(error));
+    };
     const firstUpdate = useRef(true);
     useLayoutEffect(() => {
         if (firstUpdate.current) {
@@ -60,23 +65,16 @@ const Login = ({ logIn, location }) => {
             return;
         }
         if (data == null) return;
-
-        // if (data?.loginToServer.accessToken & data.loginToServer.nickname) {
-        //     logIn(data.loginToServer.nickname, email, data.loginToServer.accessToken, data.loginToServer.refreshToken);
-        //     return;
-        // }
-        if (data?.loginToServer.nickname) {
-            // logIn(data.loginToServer.nickname, email, data.loginToServer.accessToken, data.loginToServer.refreshToken);
-            logIn(data.loginToServer);
-        } else if (data.loginToServer.accessToken) {
-            if (data.loginToServer.email === "null") {
+        if (data?.nickname) {
+            logIn(data);
+        } else if (data.accessToken) {
+            if (data.email === "null") {
                 alert("이메일 인증 후 사용해주세요.");
                 setBtnClick(false);
             } else {
-                window.sessionStorage.setItem("token", data.loginToServer.accessToken);
-                window.sessionStorage.setItem("email", data.loginToServer.email);
+                window.sessionStorage.setItem("token", data.accessToken);
+                window.sessionStorage.setItem("email", data.email);
                 setPassword("");
-                // window.location.replace("/nickname/setting");
                 toggle();
             }
         } else {

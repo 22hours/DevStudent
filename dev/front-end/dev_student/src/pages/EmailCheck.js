@@ -1,27 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useMutation } from "react-apollo";
-import { UPDATE_USER_AUTH_STATE } from "mutation/mutations";
+
+import { POST, UPDATE_AUTH_STATE } from "rest";
 
 import EmailCheckPageTemplate from "page-template/EmailCheckPageTemplate/EmailCheckPageTemplate";
 import NotFoundPageTemplate from "page-template/NotFoundPageTemplate/NotFoundPageTemplate";
 
 const EmailCheck = ({ match }) => {
     const rand = match.params.rand;
-    const [updateUserAuthState] = useMutation(UPDATE_USER_AUTH_STATE);
     const [state, setState] = useState("wait");
-    const [data, setData] = useState();
+    const [updateUserAuthStateResponse, setUpdateUserAuthStateResponse] = useState(null);
     const handleUpdateAuthState = async () => {
-        updateUserAuthState({
-            variables: {
-                authState: rand,
-            },
+        POST("post", UPDATE_AUTH_STATE, {
+            authState: rand,
         })
             .then((response) => {
-                if (response.data.updateUserAuthState.email !== null) {
-                    setData(response.data.updateUserAuthState);
+                if (response.email !== null) {
+                    setUpdateUserAuthStateResponse(response.data.updateUserAuthState);
                     setState("success");
                 } else {
-                    setData(response.data.updateUserAuthState);
+                    setUpdateUserAuthStateResponse(response.updateUserAuthState);
                     setState("error");
                 }
             })

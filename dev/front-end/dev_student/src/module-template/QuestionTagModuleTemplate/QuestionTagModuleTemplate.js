@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./QuestionTagModuleTemplate.css";
-import { COUNT_TAGS } from "query/queries";
-import { useQuery } from "@apollo/react-hooks";
+
 import { tagArray } from "array/arrays";
 import ServerError from "pages/ServerError";
 
@@ -12,29 +11,33 @@ import QuestionTagItem from "item/QuestionTagItem/QuestionTagItem";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
+// Queries
+import { POST, COUNT_TAGS } from "rest";
+
 const QuestionTagModuleTemplate = () => {
-    const { loading, error, data } = useQuery(COUNT_TAGS, {
-        variables: { requiredCount: 10, tags: tagArray },
-    });
-    if (loading)
-        return (
-            <div>
-                <CircularProgress />
-            </div>
-        );
-    if (error) return <ServerError />;
-    const taglist = data.countTags.map(({ name, count }) => (
-        <QuestionTagItem name={name} count={count} key={name}></QuestionTagItem>
-    ));
+    const [tagData, setTagData] = useState();
+    const [tagList, setTagList] = useState();
+    const getTagData = async () => {
+        const data = await POST("post", COUNT_TAGS, { requiredCount: 10, tags: tagArray });
+        setTagData(data);
+        if (data)
+            setTagList(
+                data.map(({ name, count }) => <QuestionTagItem name={name} count={count} key={name}></QuestionTagItem>)
+            );
+    };
+    useEffect(() => {
+        getTagData();
+    }, [1]);
+
     return (
         <div className="sidebar-item-wrapper">
             <div className="question-tag-header-wrapper">
                 <div className="item-header">
                     태그 <LocalOfferIcon style={{ fontSize: "14px" }} />
-                </div>{" "}
+                </div>
             </div>
             <div className="item-list-wrapper">
-                <div>{taglist}</div>
+                <div>{tagList}</div>
             </div>
         </div>
     );

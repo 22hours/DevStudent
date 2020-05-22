@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
-import { CREATE_ANSWER } from "mutation/mutations";
-import { useMutation } from "@apollo/react-hooks";
+
 import UserContext from "context/UserContext";
 import { Input, TabContent, TabPane, Nav, NavItem, NavLink, Button, Row, Col } from "reactstrap";
 import classnames from "classnames";
@@ -8,36 +7,26 @@ import "./MarkdownAnswerModule.css";
 //atom
 import MarkdownParser from "atom/MarkdownParser/MarkdownParser";
 
+import { POST, CREATE_ANSWER } from "rest";
+
 const MarkdownAnswerModule = ({ id }) => {
     const localData = JSON.parse(localStorage.getItem("user"));
 
     const nickname = localData.nickname;
     const [activeTab, setActiveTab] = useState("1");
     const [comment, setComment] = useState();
-    const [createAnswer] = useMutation(CREATE_ANSWER);
     const toggle = (tab) => {
         if (activeTab !== tab) setActiveTab(tab);
     };
 
     const handleCreateAnswer = async () => {
-        createAnswer({
-            variables: {
-                question_id: id,
-                author: nickname,
-                content: comment,
-            },
-        })
-            .then((response) => {
-                if (response.data.createAnswer._id) {
-                    alert("댓글을 저장했습니다.");
-                } else {
-                    alert("댓글 저장 실패");
-                }
-                window.location.href = "/howto/question/" + id;
-            })
-            .catch((err) => {
-                alert(err.messeage);
-            });
+        const data = await POST("post", CREATE_ANSWER, { question_id: id, author: nickname, content: comment });
+        if (data._id) {
+            alert("댓글 저장 성공");
+            window.location.href = "/howto/question/" + id;
+        } else {
+            alert("댓글 저장 실패");
+        }
     };
 
     return (

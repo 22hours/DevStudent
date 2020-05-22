@@ -54,7 +54,7 @@ const HowToBoxItem = (props) => {
         <div className={"HowToBoxItem " + (authorNickname === nickname ? "myItem" : "none")}>
             <div className="howto-item-stats-col">
                 <div className={"stats-row "}>
-                    <div className={adoptedAnswerId !== null ? "solved" : answers === 0 ? "default" : "hot"}>
+                    <div className={adoptedAnswerId ? "solved" : answers === 0 ? "default" : "hot"}>
                         <div id="stats-value">{answers}</div>
                         <div id="stats-br">&nbsp;</div>
                         <div id="stats-label">답변</div>

@@ -16,16 +16,18 @@ import Tag from "atom/Tag/Tag";
 import MarkdownParser from "atom/MarkdownParser/MarkdownParser";
 
 // apollo
-import { CREATE_LIKE, CREATE_COMMENT, UPDATE_ADOPTED_ANSWER_ID } from "mutation/mutations";
+// import { CREATE_LIKE, CREATE_COMMENT, UPDATE_ADOPTED_ANSWER_ID } from "mutation/mutations";
 
 // utils
 import { timeForToday } from "util/time";
+
+import { POST, CREATE_LIKE, CREATE_COMMENT, UPDATE_ADOPTED_ANSWER_ID } from "rest";
 
 const QABoxComment = ({ comments }) => {
     const [commentList, setCommentList] = useState();
     useEffect(() => {
         setCommentList(
-            comments.map(({ _id, author, content, date }) => (
+            comments?.map(({ _id, author, content, date }) => (
                 <div key={_id} className="comment-box">
                     <a href={"/userinfo/" + author}>
                         <span id={"author"}>{author}&nbsp;</span>
@@ -58,9 +60,6 @@ const HowToQABox = ({
     authorGrade,
 }) => {
     const nickname = JSON.parse(localStorage.getItem("user"))?.nickname;
-    const [createComment, { loading: loadingComment, error: errorComment }] = useMutation(CREATE_COMMENT);
-    const [updateAdoptedAnswerId, { loading: loadingAdopt, error: errorAdopt }] = useMutation(UPDATE_ADOPTED_ANSWER_ID);
-    const [createLike, { loading: loadingLike, error: errorLike }] = useMutation(CREATE_LIKE);
     const [isOpen, setIsOpen] = useState(false);
     const toggleCollapse = () => setIsOpen(!isOpen);
     const [commentValue, setCommentValue] = useState("");
@@ -106,64 +105,58 @@ const HowToQABox = ({
     };
 
     const handleSubmit = async () => {
-        createComment({
-            variables: {
-                question_id: question_id,
-                answer_id: isQuestion === "Q" ? "Question" : _id,
-                author: nickname,
-                content: commentValue,
-            },
-        })
-            .then((response) => {
-                alert("댓글을 달았습니다!");
-                window.location.href = "/howto/question/" + question_id;
-            })
-            .catch((err) => {
-                alert(err.messeage);
-            });
+        const data = await POST("post", CREATE_COMMENT, {
+            question_id: question_id,
+            answer_id: isQuestion === "Q" ? "Question" : _id,
+            author: nickname,
+            content: commentValue,
+        });
+        if (data) {
+            alert("댓글을 달았습니다!");
+            window.location.href = "/howto/question/" + question_id;
+        } else {
+            alert("댓글 저장 실패");
+        }
     };
     const handleAdopt = async () => {
         var adoptReturn = null;
         if (nickname !== questionAuthorNickname) {
             return;
         }
-        if (adoptedAnswerId === null) adoptReturn = window.confirm("이 댓글을 채택하시겠습니까?");
-        else {
+        if (!adoptedAnswerId) {
+            adoptReturn = window.confirm("이 댓글을 채택하시겠습니까?");
+        } else {
             window.alert("이미 채택된 답변이 있습니다");
             return;
         }
         if (adoptReturn) {
-            updateAdoptedAnswerId({
-                variables: {
-                    question_id: question_id,
-                    answer_id: _id,
-                    nickname: nickname,
-                },
-            })
-                .then((response) => {
-                    alert("해당 답변을 채택하였습니다!");
-                    window.location.href = "/howto/question/" + question_id;
-                })
-                .catch((err) => {
-                    alert(err.messeage);
-                });
+            const data = await POST("post", UPDATE_ADOPTED_ANSWER_ID, {
+                question_id: question_id,
+                answer_id: _id,
+                nickname: nickname,
+            });
+            if (data) {
+                alert("해당 답변을 채택하였습니다!");
+                window.location.href = "/howto/question/" + question_id;
+            } else {
+                alert("채택 실패");
+            }
         }
     };
-    const handleEmote = (status) => {
+    const handleEmote = async (status) => {
         const auth = localStorage.getItem("auth");
         if (auth) {
-            createLike({
-                variables: {
-                    question_id: question_id,
-                    answer_id: isQuestion === "Q" ? "Question" : _id,
-                    nickname: nickname,
-                    status: status,
-                },
-            })
-                .then((response) => {
-                    window.location.href = "/howto/question/" + question_id;
-                })
-                .catch((error) => alert(error.messeage));
+            const data = await POST("post", CREATE_LIKE, {
+                question_id: question_id,
+                answer_id: isQuestion === "Q" ? "Question" : _id,
+                nickname: nickname,
+                status: status,
+            });
+            if (data) {
+                window.location.href = "/howto/question/" + question_id;
+            } else {
+                alert("좋아요 실패");
+            }
         } else {
             window.location.href = "/login";
         }

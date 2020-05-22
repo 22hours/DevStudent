@@ -10,14 +10,19 @@ import { timeForToday } from "util/time";
 import GradeAvatar from "atom/GradeAvatar/GradeAvatar";
 import RankAvatar from "atom/RankAvatar/RankAvatar";
 
-//queries
-import { FIND_HOME_KANBAN } from "query/queries";
+// modules
+import NowLoading from "module/NowLoading/NowLoading";
+
+// //queries
+// import { FIND_HOME_KANBAN } from "query/queries";
 
 //icons
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+
+import { POST, FIND_HOME_KANBAN } from "rest";
 
 const KanbanItem = (props) => {
     return (
@@ -49,90 +54,111 @@ const KanbanItem = (props) => {
     );
 };
 
-const TotalKanbanItemProvider = () => {
-    const { loading, error, data } = useQuery(FIND_HOME_KANBAN, { variables: { requiredCount: 3 } });
-    if (loading) return <p>loading now</p>;
-    if (error) return <p>error now</p>;
-    return (
-        <React.Fragment>
-            <div className="pc-only">
-                <div className="kanban-col">
-                    <div className="kanban-header">
-                        <AccessTimeIcon />
-                        <br /> 최신순
+const TotalKanbanItemProvider = ({ data }) => {
+    const [date, setDate] = useState();
+    const [views, setViews] = useState();
+    const [answerCount, setAnserCount] = useState();
+
+    useEffect(() => {
+        setDate(data?.date);
+        setViews(data?.views);
+        setAnserCount(data?.answerCount);
+    }, [data]);
+    if (data) {
+        return (
+            <React.Fragment>
+                <div className="pc-only">
+                    <div className="kanban-col">
+                        <div className="kanban-header">
+                            <AccessTimeIcon />
+                            <br /> 최신순
+                        </div>
+                        <div className="kanban-box">
+                            <KanbanRenderer data={date} />
+                        </div>
                     </div>
-                    <div className="kanban-box">
-                        <KanbanRenderer data={data?.findHomeKanban?.date} />
+                    <div className="kanban-col">
+                        <div className="kanban-header">
+                            <VisibilityIcon />
+                            <br /> 조회순
+                        </div>
+                        <div className="kanban-box">
+                            <KanbanRenderer data={views} />
+                        </div>
                     </div>
-                </div>
-                <div className="kanban-col">
-                    <div className="kanban-header">
-                        <VisibilityIcon />
-                        <br /> 조회순
-                    </div>
-                    <div className="kanban-box">
-                        <KanbanRenderer data={data?.findHomeKanban?.views} />
-                    </div>
-                </div>
-                <div className="kanban-col">
-                    <div className="kanban-header">
-                        <TrendingUpIcon />
-                        <br /> 답변순
-                    </div>
-                    <div className="kanban-box">
-                        <KanbanRenderer data={data?.findHomeKanban?.answerCount} />
-                    </div>
-                </div>
-            </div>
-            <div className="mobile-only">
-                <div className="kanban-row">
-                    <div className="kanban-header">
-                        <AccessTimeIcon />
-                        <br /> 최신순
-                    </div>
-                    <div className="kanban-box">
-                        <KanbanRenderer data={data?.findHomeKanban?.date} />
+                    <div className="kanban-col">
+                        <div className="kanban-header">
+                            <TrendingUpIcon />
+                            <br /> 답변순
+                        </div>
+                        <div className="kanban-box">
+                            <KanbanRenderer data={answerCount} />
+                        </div>
                     </div>
                 </div>
-                <div className="kanban-row">
-                    <div className="kanban-header">
-                        <VisibilityIcon />
-                        <br /> 조회순
+                <div className="mobile-only">
+                    <div className="kanban-row">
+                        <div className="kanban-header">
+                            <AccessTimeIcon />
+                            <br /> 최신순
+                        </div>
+                        <div className="kanban-box">
+                            <KanbanRenderer data={date} />
+                        </div>
                     </div>
-                    <div className="kanban-box">
-                        <KanbanRenderer data={data?.findHomeKanban?.views} />
+                    <div className="kanban-row">
+                        <div className="kanban-header">
+                            <VisibilityIcon />
+                            <br /> 조회순
+                        </div>
+                        <div className="kanban-box">
+                            <KanbanRenderer data={views} />
+                        </div>
+                    </div>
+                    <div className="kanban-row">
+                        <div className="kanban-header">
+                            <TrendingUpIcon />
+                            <br /> 답변순
+                        </div>
+                        <div className="kanban-box">
+                            <KanbanRenderer data={answerCount} />
+                        </div>
                     </div>
                 </div>
-                <div className="kanban-row">
-                    <div className="kanban-header">
-                        <TrendingUpIcon />
-                        <br /> 답변순
-                    </div>
-                    <div className="kanban-box">
-                        <KanbanRenderer data={data?.findHomeKanban?.answerCount} />
-                    </div>
-                </div>
-            </div>
-        </React.Fragment>
-    );
+            </React.Fragment>
+        );
+    } else {
+        return <NowLoading />;
+    }
 };
 
 const KanbanRenderer = ({ data }) => {
     const [item, setItem] = useState();
     useEffect(() => {
         setItem(data?.map((it, idx) => <KanbanItem rank={idx} key={it._id} {...it} />));
-    }, [1]);
+    }, [data]);
     return <React.Fragment>{item}</React.Fragment>;
 };
 
 const HowToKanbanModuleTemplate = () => {
+    const [kanbanData, setKanbanData] = useState();
+    const getKanban = async () => {
+        const data = await POST("post", FIND_HOME_KANBAN, { requiredCount: 3 });
+        if (data) {
+            console.log("kanban clear");
+            setKanbanData(data);
+        }
+    };
+    useEffect(() => {
+        getKanban();
+    }, [1]);
     return (
         <div className="HowToKanbanModuleTemplate">
             <Container className="kanban-wrapper">
                 <div className="kanban-module-header">
                     <div className="kanban-header-wrapper">실시간 인기 차트</div>
                 </div>
-                <TotalKanbanItemProvider />
+                <TotalKanbanItemProvider data={kanbanData} />
             </Container>
         </div>
     );
