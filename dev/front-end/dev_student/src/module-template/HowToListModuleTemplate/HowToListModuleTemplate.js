@@ -232,6 +232,7 @@ const HowToListTemplate = ({ tags, location }) => {
 
     const handleChange = (event, value) => {
         setPageNum(value);
+        window.scrollTo(0, 0);
     };
 
     return (
