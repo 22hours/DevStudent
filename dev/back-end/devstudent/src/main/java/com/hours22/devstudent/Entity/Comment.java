@@ -1,11 +1,13 @@
 package com.hours22.devstudent.Entity;
 
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@ToString
 @Getter
 public class Comment {
     @Id

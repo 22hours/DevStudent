@@ -1,5 +1,6 @@
 package com.hours22.devstudent.Controller;
 
+import com.google.gson.Gson;
 import com.hours22.devstudent.Command.Create.CreateLike;
 import com.hours22.devstudent.Command.Create.CreateQuestion;
 import com.hours22.devstudent.Command.Delete.DeleteQuestion;
@@ -8,8 +9,13 @@ import com.hours22.devstudent.Command.Find.FindQuestionBy_id;
 import com.hours22.devstudent.Command.Find.FindQuestionsByOption;
 import com.hours22.devstudent.Command.Find.FindQuestionsByTags;
 import com.hours22.devstudent.Command.Update.UpdateAdoptedAnswerId;
+import com.hours22.devstudent.Entity.HomeKanban;
 import com.hours22.devstudent.Entity.Question;
+import com.hours22.devstudent.Entity.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +23,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+
 
 @RestController
 @RequestMapping("/main/question/*")
@@ -39,67 +47,139 @@ public class QuestionController{
     @Autowired
     private DeleteQuestion deleteQuestion;
 
-    @RequestMapping(value="/all",method = RequestMethod.GET)
-    public List<Question> findAllQuestions(@RequestParam("param")String param,
-                                           @RequestParam("pageNum")int pageNum,
-                                           @RequestParam("requiredCount")int requiredCount) {
-        return findAllQuestions.findAllQuestions(param, pageNum, requiredCount);
+    @Async(value="AllQuestions")
+    @RequestMapping(value="/find/all",method = RequestMethod.POST)
+    public CompletableFuture<String> findAllQuestions(@RequestBody Map<String, String> map) {
+        String param = map.get("param").toString();
+        int pageNum = Integer.parseInt(map.get("pageNum").toString());
+        int requiredCount = Integer.parseInt(map.get("requiredCount").toString());
+        List<Question> questions = findAllQuestions.findAllQuestions(param, pageNum, requiredCount);
+        Gson gson = new Gson();
+        String json = gson.toJson(questions);
+        System.out.println("Request = " + map.toString());
+        System.out.println("Response = " + json);
+        return CompletableFuture.completedFuture(json);
     }
-    @RequestMapping(value="/all/option",method = RequestMethod.GET)
-    public List<Question> findQuestionsByOption(@RequestParam("param")String param,
-                                                @RequestParam("option")String option,
-                                                @RequestParam("searchContent")String searchContent,
-                                                @RequestParam("pageNum")int pageNum,
-                                                @RequestParam("requiredCount")int requiredCount) {
-        return findQuestionsByOption.findQuestionsByOption(param, option, searchContent, pageNum, requiredCount);
+
+    @Async(value = "QuestionsByOption")
+    @RequestMapping(value="/find/all/option",method = RequestMethod.POST)
+    public CompletableFuture<String> findQuestionsByOption(@RequestBody Map<String, String> map) {
+        String param = map.get("param").toString();
+        String option = map.get("option").toString();
+        String searchContent = map.get("searchContent").toString();
+        int pageNum = Integer.parseInt(map.get("pageNum").toString());
+        int requiredCount = Integer.parseInt(map.get("requiredCount").toString());
+
+        List<Question> questions = findQuestionsByOption.findQuestionsByOption(param, option, searchContent, pageNum, requiredCount);
+        Gson gson = new Gson();
+        String json = gson.toJson(questions);
+        System.out.println("Request = " + map.toString());
+        System.out.println("Response = " + json);
+        return CompletableFuture.completedFuture(json);
     }
-    @RequestMapping(value="/find",method = RequestMethod.GET)
-    public Question findQuestionBy_id(@RequestParam("_id")String _id,
-                                      @RequestParam("nickname")String nickname) {
-        return findQuestionBy_id.findQuestionBy_id(_id, nickname);
+
+    @Async(value = "QuestionBy_id")
+    @RequestMapping(value="/find/id",method = RequestMethod.POST)
+    public CompletableFuture<String> findQuestionBy_id(@RequestHeader(value = "ip") String ip,
+                                                       @RequestHeader(value = "authorization") String token,
+                                                       @RequestBody Map<String, String> map) {
+        String _id = map.get("_id").toString();
+        Question question = findQuestionBy_id.findQuestionBy_id(_id, token, ip);
+        Gson gson = new Gson();
+        String json = gson.toJson(question);
+        System.out.println("Request = " + map.toString());
+        System.out.println("Response = " + json);
+        return CompletableFuture.completedFuture(json);
     }
-    @RequestMapping(value="/find",method = RequestMethod.POST)
-    public List<Question> findQuestionsByTags(@RequestBody Map<String, String> map) {
-        String param = map.get("param");
-        int pageNum = Integer.parseInt(map.get("pageNum"));
-        int requiredCount = Integer.parseInt(map.get("requiredCount"));
-        String tags = map.get("tags");
-        String logical = map.get("logical");
+
+    @Async(value = "QuestionsByTags")
+    @RequestMapping(value="/find/tags",method = RequestMethod.POST)
+    public CompletableFuture<String> findQuestionsByTags(@RequestBody Map<String, Object> map) {
+        String param = map.get("param").toString();
+        int pageNum = Integer.parseInt(map.get("pageNum").toString());
+        int requiredCount = Integer.parseInt(map.get("requiredCount").toString());
+        String tags = map.get("tags").toString();
+        String logical = map.get("logical").toString();
         String temp = tags.substring(1,tags.length()-1);
         List<String> tagList = new ArrayList<String>(Arrays.asList(temp.split(",")));
-        return findQuestionsByTags.findQuestionsByTags(param, pageNum, requiredCount, tagList, logical);
+        List<Question> questions = findQuestionsByTags.findQuestionsByTags(param, pageNum, requiredCount, tagList, logical);
+        Gson gson = new Gson();
+        String json = gson.toJson(questions);
+        System.out.println("Request = " + map.toString());
+        System.out.println("Response = " + json);
+        return CompletableFuture.completedFuture(json);
     }
+
+    @Async(value = "homeKanban")
+    @RequestMapping(value="/find/homekanban", method = RequestMethod.POST)
+    public CompletableFuture<String> findHomeKanban(@RequestBody Map<String, String> map){
+        int requiredCount = Integer.parseInt(map.get("requiredCount").toString());
+        List<Question> date = findAllQuestions.findAllQuestions("date", -1, requiredCount);
+        List<Question> answerCount = findAllQuestions.findAllQuestions("answerCount", -1, requiredCount);
+        List<Question> views = findAllQuestions.findAllQuestions("views",-1,requiredCount);
+        HomeKanban homeKanban = new HomeKanban(date,answerCount,views);
+        Gson gson = new Gson();
+        String json = gson.toJson(homeKanban);
+        System.out.println("Request = " + map.toString());
+        System.out.println("Response = " + json);
+        return CompletableFuture.completedFuture(json);
+    }
+
+    @Async(value = "Question")
     @RequestMapping(value="/create",method = RequestMethod.POST)
-    public Question createQuestion(@RequestBody Map<String, String> map) {
-        String title = map.get("title");
-        String author = map.get("author");
-        String tags = map.get("tags");
-        String content = map.get("content");
+    public CompletableFuture<String> createQuestion(@RequestBody Map<String, Object> map) {
+        String title = map.get("title").toString();
+        String author = map.get("author").toString();
+        String content = map.get("content").toString();
+        String tags = map.get("tags").toString();
         String temp = tags.substring(1,tags.length()-1);
         List<String> tagList = new ArrayList<String>(Arrays.asList(temp.split(",")));
-        return createQuestion.createQuestion(title, author, tagList, content);
+        Question question = createQuestion.createQuestion(title, author, tagList, content);
+        Gson gson = new Gson();
+        String json = gson.toJson(question);
+        System.out.println("Request = " + map.toString());
+        System.out.println("Response = " + json);
+        return CompletableFuture.completedFuture(json);
     }
+
+    @Async(value = "Like")
     @RequestMapping(value="/create/like",method = RequestMethod.POST)
-    public Question createLike(@RequestBody Map<String, String> map) {
+    public CompletableFuture<String> createLike(@RequestBody Map<String, String> map) {
+        System.out.println("뭐냐고");
         String question_id = map.get("question_id");
         String answer_id = map.get("answer_id");
         String nickname = map.get("nickname");
         String status = map.get("status");
-        return createLike.createLike(question_id, answer_id, nickname, status);
+        Question question = createLike.createLike(question_id, answer_id, nickname, status);
+        Gson gson = new Gson();
+        String json = gson.toJson(question);
+        System.out.println("Request = " + map.toString());
+        System.out.println("Response = " + json);
+        return CompletableFuture.completedFuture(json);
     }
 
+    @Async(value = "updateAdapt")
     @RequestMapping(value="/update/adopt",method = RequestMethod.POST)
-    public Question updateAdoptedAnswerId(@RequestBody Map<String, String> map){
+    public CompletableFuture<String> updateAdoptedAnswerId(@RequestBody Map<String, String> map){
         String question_id = map.get("question_id");
         String answer_id = map.get("answer_id");
         String nickname = map.get("nickname");
-        return updateAdoptedAnswerId.updateAdoptedAnswerId(question_id, answer_id, nickname);
+        Question question = updateAdoptedAnswerId.updateAdoptedAnswerId(question_id, answer_id, nickname);
+        Gson gson = new Gson();
+        String json = gson.toJson(question);
+        System.out.println("Request = " + map.toString());
+        System.out.println("Response = " + json);
+        return CompletableFuture.completedFuture(json);
     }
 
     @RequestMapping(value="/delete",method = RequestMethod.POST)
-    public Question deleteQuestion(@RequestBody Map<String, String> map) {
+    public CompletableFuture<String> deleteQuestion(@RequestBody Map<String, String> map) {
         String _id = map.get("_id");
-        return deleteQuestion.deleteQuestion(_id);
+        Question question = deleteQuestion.deleteQuestion(_id);
+        Gson gson = new Gson();
+        String json = gson.toJson(question);
+        System.out.println("Request = " + map.toString());
+        System.out.println("Response = " + json);
+        return CompletableFuture.completedFuture(json);
     }
-
 }

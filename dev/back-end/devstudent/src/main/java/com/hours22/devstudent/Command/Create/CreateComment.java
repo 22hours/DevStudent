@@ -1,6 +1,5 @@
 package com.hours22.devstudent.Command.Create;
 
-import com.hours22.devstudent.Entity.Alarm;
 import com.hours22.devstudent.Entity.Answer;
 import com.hours22.devstudent.Entity.Comment;
 import com.hours22.devstudent.Entity.Question;

@@ -5,6 +5,23 @@ build/
 !**/src/main/**
 !**/src/test/**
 
+application.properties
+WebSecurityConfig.java
+RandMaker.java
+ReissuanceAccessToken.java
+SHA256K.java
+VerifyRefreshToken.java
+Login.java
+AuthMailSend.java
+CreateUser.java
+CreateToken.java
+CreateNewRefreshToken.java
+CreateNewAccessToken.java
+CreateDummyUser.java
+scheduledTasks.java
+CheckEmail.java
+
+
 ### STS ###
 .apt_generated
 .classpath
