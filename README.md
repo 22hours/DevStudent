@@ -17,13 +17,5 @@
 
 
 
-
-## members
-<center><img src="/img/contributors.png" width="100%" height="70"></center>
-
-
-## 기술 스택
-
-- graphQL, nginx, mongoDB, react, Rest API, Spring Boot
-
-<img src="./img/stack.PNG" width="330px" height="100px">
+(2020-05-22 ~ )
+보안상의 이유로 private repos 에서 작업합니다.
