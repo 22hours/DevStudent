@@ -16,6 +16,4 @@
 
 
 
-
-(2020-05-22 ~ )
-보안상의 이유로 private repos 에서 작업합니다.
+<p align="center">(2020-05-22 ~ )보안상의 이유로 private repos 에서 작업합니다.</p>
