@@ -1,11 +1,6 @@
-<p align="center"><img src="/img/title_logo2.png" width="300px" height="120px"></p>
+<p align="center"><img src="/img/blacklogo.png" width="450px" height="120px"></p>
 
 ## 
-.
-**<p align="center">한국 대학생 개발자 커뮤니티</p>**
-
-
-
 <p align="center">
 <img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/22hours/devstudent?style=flat-square">
   <img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed-raw/22hours/devstudent?style=flat-square">
@@ -14,7 +9,12 @@
   <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/22hours/devstudent?style=flat-square">
 </p>
 
-<h3 align="center"> DEVSTU? </h3>
+**<p align="center">지식을 지식으로 갚는, 한국 대학생 개발자 커뮤니티</p>**
+<p align="center">
+  <img src="/img/devstu-howto.JPG" width="400px" height="420px">
+  <img src="/img/devstu-question.JPG" width="400px" height="420px">
+</p>
+
 
 
 
