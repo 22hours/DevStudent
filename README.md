@@ -14,6 +14,17 @@
   <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/22hours/devstudent?style=flat-square">
 </p>
 
+<h3 align="center"> DEVSTU? </h3>
+
+
+
+<h3 align="center"> 공식 창구 </h3>
+
+공식 이메일 : <korea_developers@devstu.co.kr>
+  
+대표 이메일 : <winterlood@devstu.co.kr>
+
+
 <h3 align="center"> 긴급 공지 알림 사용법</h3>
 <p align="center">
 서버의 긴급 공지사항은  
