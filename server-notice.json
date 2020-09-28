@@ -1,7 +1,7 @@
 {
-  "status":false,
-  "notice":"Firebase 관련 정보 노출",
-  "sDate":"2020-08-08:10:23",
-  "eDate":"2020-08-11:10:23",
-  "errors":["index.html(Main html 화면)에서 관리자 도구 실행 후 script부분 검색 시 firebase 관련 API Key, Project ID 등 관련 사항들 노출"]
+  "status":true,
+  "notice":"정식 버전 출시 전 긴급점검",
+  "sDate":"2020-09-28:22:10",
+  "eDate":"2020-09-28:22:30",
+  "errors":["모든 기능"]
 }
